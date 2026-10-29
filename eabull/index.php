@@ -1,10 +1,11 @@
 <?php
 /**
- * หน้ารวมบทความ (/articles/) + หน้าหมวดหมู่/ป้ายกำกับ
+ * หน้ารวมบทความ (/articles/) และหน้าหมวดบทความ
  *
- * Glass Sky: หัวเพจแผงกระจก (H1 · คำโปรย · จำนวนบทความ · ชิปหมวด) → การ์ดบทความกระจก + ปุ่มโหลดเพิ่ม (แคปซูลกระจก)
- *            ยังไม่มีบทความ: แผง "กำลังเตรียมบทความ" + การ์ดคู่มือ (เฉพาะเพจที่เผยแพร่แล้ว)
- *            มีบทความ (หน้าแรกของรายการ): แผงรายการคู่มือท้ายหน้า
+ * ต้นแบบ dev/mockup/_src/pages/articles.html:
+ * หัวเพจ (จำนวนบทความจริง · ชิปหมวดจริงที่มีบทความ) → การ์ดบทความ .posts (eab_post_card) + ปุ่มโหลดเพิ่ม
+ * → เลือกอ่านตามหมวด (การ์ดหมวดที่มีบทความ) → คู่มือใช้งานทีละขั้น (.related)
+ * ยังไม่มีบทความ: กล่องแจ้ง + ปุ่ม + คู่มือ (ไม่แสดงการ์ดตัวอย่าง) · ข้อความแก้ได้ที่ ปรับแต่ง → 26) หน้ารวมบทความ & บทความ
  *
  * @package eabull
  */
@@ -15,66 +16,56 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$eab_desc   = get_the_archive_description();
-$eab_found  = (int) $GLOBALS['wp_query']->found_posts;
-$eab_guides = eab_pages_guide_items();
+$eab_is_cat = is_category();
+$eab_cats   = eab_pages_categories();
+$eab_query  = isset( $GLOBALS['wp_query'] ) ? $GLOBALS['wp_query'] : null;
+$eab_found  = $eab_query && isset( $eab_query->found_posts ) ? (int) $eab_query->found_posts : 0;
 $eab_has    = have_posts();
 
-if ( is_home() && ! is_front_page() ) {
-	$eab_posts_page = (int) get_option( 'page_for_posts' );
-	$eab_h1         = $eab_posts_page ? get_the_title( $eab_posts_page ) : eab_mod( 'articles_title' );
-} elseif ( is_search() ) {
-	$eab_h1 = eab_mod( 'search_title' ) . ': ' . get_search_query();
-} elseif ( is_archive() ) {
-	$eab_h1 = wp_strip_all_tags( get_the_archive_title() );
+/* หัวข้อ: หน้าหมวด = ชื่อหมวด · หน้ารวม = ชื่อเพจบทความ (ไม่มีเพจ = ค่าจาก Customizer) */
+if ( $eab_is_cat ) {
+	$eab_title = html_entity_decode( wp_strip_all_tags( (string) single_cat_title( '', false ) ), ENT_QUOTES, 'UTF-8' );
+	$eab_lead  = trim( wp_strip_all_tags( (string) category_description() ) );
 } else {
-	$eab_h1 = eab_mod( 'articles_title' );
+	$eab_posts_page = (int) get_option( 'page_for_posts' );
+	$eab_title      = $eab_posts_page ? eab_pages_title( $eab_posts_page ) : (string) eab_mod( 'ar_title' );
+	$eab_lead       = (string) eab_mod( 'ar_lead' );
 }
-$eab_sub = $eab_desc ? wp_strip_all_tags( $eab_desc ) : ( is_home() ? eab_mod( 'blog_subtitle' ) : '' );
+if ( '' === trim( $eab_title ) ) {
+	$eab_title = (string) eab_mod( 'ar_title' );
+}
 
-/* จำนวนบทความ + ชิปหมวด (อยู่ในหัวเพจ) */
-$eab_cats      = is_search() ? array() : get_categories( array( 'hide_empty' => true ) );
-$eab_posts_url = (int) get_option( 'page_for_posts' ) ? get_permalink( (int) get_option( 'page_for_posts' ) ) : home_url( '/articles/' );
-$eab_bar       = '';
-if ( $eab_found || count( $eab_cats ) > 1 ) {
-	$eab_bar .= '<div class="archive-bar">';
-	if ( $eab_found ) {
-		$eab_bar .= '<p class="archive-count">' . esc_html( eab_pages_count_text( 'articles_count_text', $eab_found ) ) . '</p>';
+$eab_meta = '';
+if ( $eab_found ) {
+	$eab_meta = eab_pages_meta( 'news | ' . eab_pages_count_text( 'ar_count_text', $eab_found ) );
+}
+$eab_chips = '';
+if ( $eab_cats ) {
+	$eab_chips = '<nav class="chips" aria-label="หมวดบทความ"><a class="chip" href="' . esc_url( eab_pages_articles_url() ) . '"' . ( $eab_is_cat ? '' : ' aria-current="page"' ) . '>' . esc_html( eab_mod( 'ar_all_label' ) ) . '</a>';
+	foreach ( $eab_cats as $eab_cat ) {
+		$eab_chips .= '<a class="chip" href="' . esc_url( $eab_cat['url'] ) . '"' . ( $eab_cat['current'] ? ' aria-current="page"' : '' ) . '>' . esc_html( $eab_cat['name'] ) . '</a>';
 	}
-	if ( count( $eab_cats ) > 1 ) {
-		$eab_bar .= '<nav class="cat-chips" aria-label="' . esc_attr( eab_mod( 'articles_kicker' ) ) . '">';
-		$eab_bar .= '<a class="chip-link' . ( is_home() ? ' is-active' : '' ) . '" href="' . esc_url( $eab_posts_url ) . '"' . ( is_home() ? ' aria-current="page"' : '' ) . '>' . esc_html( eab_mod( 'articles_all_label' ) ) . '</a>';
-		foreach ( $eab_cats as $eab_cat ) {
-			$eab_on   = is_category( $eab_cat->term_id );
-			$eab_bar .= '<a class="chip-link' . ( $eab_on ? ' is-active' : '' ) . '" href="' . esc_url( get_category_link( $eab_cat ) ) . '"' . ( $eab_on ? ' aria-current="page"' : '' ) . '>' . esc_html( $eab_cat->name ) . '</a>';
-		}
-		$eab_bar .= '</nav>';
-	}
-	$eab_bar .= '</div>';
+	$eab_chips .= '</nav>';
 }
 ?>
 
-<main id="main" class="pg articles-page">
-
+<main id="main">
 	<?php
-	eab_pages_hero(
+	eab_pages_phead(
 		array(
-			'kicker' => eab_mod( 'articles_kicker' ),
-			'title'  => $eab_h1,
-			'grad'   => is_home() ? eab_mod( 'articles_hero_grad' ) : '',
-			'lead'   => eab_pages_has( $eab_sub ) ? $eab_sub : '',
-			'after'  => $eab_bar,
-			'media'  => is_home() ? eab_pages_hero_media( '', 'articles' ) : '',
+			'title' => $eab_title,
+			'crumb' => $eab_is_cat ? $eab_title : (string) eab_mod( 'ar_crumb' ),
+			'lead'  => $eab_lead,
+			'meta'  => $eab_meta,
+			'after' => $eab_chips,
 		)
 	);
 	?>
 
-	<section class="pg-sec posts-wrap">
-		<div class="container">
-
-			<?php if ( $eab_has ) : ?>
-
-				<div class="posts-grid">
+	<?php if ( $eab_has ) : ?>
+		<section class="band" aria-label="<?php echo esc_attr( $eab_title ); ?>">
+			<div class="wrap">
+				<div class="posts">
 					<?php
 					while ( have_posts() ) :
 						the_post();
@@ -82,45 +73,61 @@ if ( $eab_found || count( $eab_cats ) > 1 ) {
 					endwhile;
 					?>
 				</div>
-
 				<?php eab_pages_load_more(); ?>
-
-			<?php else : ?>
-
-				<div class="glass-panel pg-panel articles-empty">
-					<p class="pg-empty no-posts"><span class="tile tile--gold" aria-hidden="true"><?php echo eab_icon( 'book' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><span><?php echo esc_html( eab_mod( is_search() ? 'search_empty_text' : 'articles_empty_text' ) ); ?></span></p>
-					<?php if ( $eab_guides ) : ?>
-						<?php eab_pages_sec_head( eab_mod( 'articles_guides_kicker' ), eab_mod( 'articles_guides_title' ), eab_mod( 'articles_guides_sub' ) ); ?>
-						<?php eab_pages_guide_grid( $eab_guides ); ?>
+			</div>
+		</section>
+	<?php else : ?>
+		<section class="band" aria-labelledby="empty-title">
+			<div class="wrap">
+				<div class="card">
+					<span class="tile tile--lg"><?php echo eab_icon( 'news' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+					<h2 id="empty-title"><?php echo eab_text( eab_mod( 'ar_empty_title' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></h2>
+					<?php if ( '' !== trim( (string) eab_mod( 'ar_empty_text' ) ) ) : ?>
+						<p><?php echo eab_pages_fmt( eab_mod( 'ar_empty_text' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
 					<?php endif; ?>
-				</div>
-
-			<?php endif; ?>
-
-		</div>
-	</section>
-
-	<?php
-	$eab_pillars = ( is_home() && ! is_paged() && $eab_has && eab_pages_has( eab_mod( 'articles_pillars_title' ) ) ) ? eab_pages_pillar_items() : array();
-	if ( count( $eab_pillars ) > 1 ) :
-		?>
-		<section class="pg-sec pillar-hub">
-			<div class="container">
-				<div class="glass-panel pg-panel">
-					<?php eab_pages_sec_head( '', eab_mod( 'articles_pillars_title' ), eab_mod( 'articles_pillars_sub' ) ); ?>
-					<?php eab_pages_guide_grid( $eab_pillars ); ?>
+					<?php $eab_btns = eab_pages_btns( eab_mod( 'ar_empty_btns' ), 'articles-empty' ); ?>
+					<?php if ( '' !== $eab_btns ) : ?>
+						<div class="btns"><?php echo $eab_btns; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>
 	<?php endif; ?>
 
-	<?php if ( is_home() && ! is_paged() && $eab_has && $eab_guides ) : ?>
-		<section class="pg-sec guide-hub">
-			<div class="container">
-				<div class="glass-panel pg-panel">
-					<?php eab_pages_sec_head( eab_mod( 'articles_guides_kicker' ), eab_mod( 'articles_guides_title' ), eab_mod( 'articles_guides_sub' ) ); ?>
-					<?php eab_pages_guide_grid( $eab_guides ); ?>
+	<?php if ( $eab_cats && ! $eab_is_cat && '' !== trim( (string) eab_mod( 'ar_topics_title' ) ) ) : ?>
+		<?php
+		$eab_icons = array();
+		foreach ( eab_pages_pairs( eab_mod( 'ar_topics_icons' ) ) as $eab_pair ) {
+			$eab_icons[ $eab_pair[0] ] = $eab_pair[1];
+		}
+		?>
+		<section class="band band--alt" aria-labelledby="topics-title">
+			<div class="wrap">
+				<?php echo eab_pages_shead( 'topics-title', eab_mod( 'ar_topics_title' ), eab_mod( 'ar_topics_sub' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
+				<div class="grid g4">
+					<?php foreach ( $eab_cats as $eab_cat ) : ?>
+						<a class="card" href="<?php echo esc_url( $eab_cat['url'] ); ?>">
+							<span class="tile tile--accent"><?php echo eab_icon( isset( $eab_icons[ $eab_cat['slug'] ] ) ? $eab_icons[ $eab_cat['slug'] ] : 'news' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+							<h3><?php echo esc_html( $eab_cat['name'] ); ?></h3>
+							<p><?php echo esc_html( '' !== $eab_cat['desc'] ? wp_trim_words( $eab_cat['desc'], 18 ) : eab_pages_count_text( 'ar_count_text', $eab_cat['count'] ) ); ?></p>
+							<span class="tlink"><?php echo esc_html( eab_mod( 'ar_topics_more' ) ); ?> <?php echo eab_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+						</a>
+					<?php endforeach; ?>
 				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
+	<?php
+	$eab_guides = eab_pages_rel_items( eab_mod( 'ar_guides_items' ) );
+	if ( '' !== $eab_guides ) :
+		$eab_more = eab_pages_pairs( eab_mod( 'ar_guides_more' ) );
+		$eab_more = $eab_more ? eab_pages_tlink( $eab_more[0][0], $eab_more[0][1] ) : '';
+		?>
+		<section class="band<?php echo $eab_has ? '' : ' band--alt'; ?>" aria-labelledby="guides-title">
+			<div class="wrap">
+				<?php echo eab_pages_shead( 'guides-title', eab_mod( 'ar_guides_title' ), '', $eab_more ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
+				<div class="related"><?php echo $eab_guides; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
 			</div>
 		</section>
 	<?php endif; ?>

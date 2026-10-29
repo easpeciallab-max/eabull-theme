@@ -1,22 +1,25 @@
 <?php
 /**
- * EA BULL · PDPA consent card + GA4 / Meta Pixel IDs
+ * EA BULL · PDPA cookie card + GA4 / Meta Pixel IDs
  *
- * วิธีทำงาน
- * - eab_consent_card() พิมพ์ต้น <body> ทาง wp_body_open (เป็นจุดแรกในลำดับ Tab เมื่อการ์ดเปิด) · เทมเพลตที่ไม่เรียก wp_body_open
- *   ได้การ์ดทาง wp_footer (priority 5) แทน · หน้า /go/ แบบไม่มีกรอบธีมก็ได้การ์ดด้วย
- * - หน้าตา Glass Sky (assets/css/consent.css): เดสก์ท็อปเป็นการ์ดกระจกลอยซ้ายล่าง · มือถือเป็น bottom sheet ที่อยู่เหนือแถบเมนูล่าง
- *   ปุ่มยอมรับ = กรมท่า (.btn-dark) · ปฏิเสธ = กระจก (.btn-ghost) · เลือกทีละหมวด = ปุ่มแบบลิงก์ · สวิตช์หมวดเป็นทองเมื่อเปิด
- * - ฝั่ง PHP ไม่แตะคุกกี้ของผู้เข้าชม เพื่อให้ปลั๊กอินแคชเก็บหน้าเดียวใช้ได้กับทุกคน · การแสดง/ซ่อนการ์ดเป็นงานของ assets/js/consent.js
- * - HTML ไม่มีสคริปต์ GA4 หรือ Pixel ติดมา · consent.js ค่อยใส่สคริปต์ของหมวดที่ผู้เข้าชมกดอนุญาต
- * - Consent Mode v2: <head> ประกาศทุกสัญญาณเป็น denied ไว้ก่อน แล้ว consent.js ส่ง update เมื่อได้รับอนุญาต
- * - เงื่อนไขเปิดการ์ดอัตโนมัติ: มีรหัส GA4/Pixel ถูกรูปแบบ หรือเจ้าของเว็บติ๊ก show_cookie_consent
- * - การ์ดพูดถึงเฉพาะบริการที่ใส่รหัสไว้จริง: {tools} ใน cookie_consent_text = ชื่อบริการที่มีรหัส · ไม่มีรหัสใดเลย = consent_none_text
- *   หมวดวิเคราะห์/การตลาดพิมพ์เมื่อมีรหัส GA4/Pixel ของหมวดนั้น · ไม่มี Pixel = ไม่มีหมวดการตลาด สัญญาณโฆษณาของ Google จึง denied ตลอด
- * - รูปแบบคุกกี้ eab_consent: v<รุ่น>.a<0|1|->.m<0|1|->.t<unix> ("-" คือหมวดที่ตอนตอบยังไม่มีบริการ) · 365 วัน · SameSite=Lax
- * - คำบนการ์ดแก้ได้ทั้งหมดที่ ปรับแต่ง → หมวด 18 (eab_cookie)
- * - เปิดการ์ดซ้ำจากที่ไหนก็ได้ด้วย <a href="#cookie-settings"> หรือคลาส .cookie-reopen (ตัวช่วย: eab_consent_link())
- * - API สำหรับสคริปต์อื่น: window.eabConsent.has('analytics'|'marketing') และเหตุการณ์ 'eab:consent' บน document
+ * Look: mockup dev/mockup/_src/partials/cookie.html (card bottom-left on desktop, full-width
+ * bottom sheet at 900px and below · base styles in style.css, extras in assets/css/consent.css).
+ * Behaviour: assets/js/consent.js (contract in docs/phase2.md section 4).
+ *
+ * - The card is printed once, hidden, at wp_body_open (wp_footer as a fallback). PHP never reads
+ *   the visitor's cookie, so page caches can serve one HTML to everybody; consent.js decides.
+ * - No GA4 or Pixel tag is in the HTML. consent.js adds a tag only after its category is allowed.
+ * - Google Consent Mode v2: when a GA4 ID exists, <head> sets every signal to denied first.
+ * - The card only names services whose ID is filled in. With no ID the text says the site uses
+ *   necessary cookies only and the card offers a single OK button (show_cookie_consent shows it
+ *   on the first visit, as in the approved mockup).
+ * - Category rows: necessary (always on) · analytics (only with a GA4 ID) · marketing (only with a
+ *   Pixel ID; without it Google ad signals stay denied).
+ * - Cookie eab_consent = v<version>.a<0|1|->.m<0|1|->.t<unix> · 365 days · SameSite=Lax.
+ * - Anything matching a[href$="#cookie-settings"], .cookie-reopen or [data-cookie-settings] opens
+ *   the settings view (helper: eab_consent_link()).
+ * - API for other scripts: window.eabConsent.has('analytics'|'marketing') and the
+ *   'eab:consent' event on document.
  *
  * @package eabull
  */
@@ -26,49 +29,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* ==============================================================
- * ค่าเริ่มต้น (ข้อความของ EA BULL เอง)
+ * Defaults
  * ============================================================== */
 
 function eab_consent_defaults( $d ) {
 	return array_merge(
 		$d,
 		array(
-			/* คีย์เดิมที่ใช้ต่อ · show_cookie_consent = แสดงการ์ดแม้ยังไม่มีรหัสติดตาม · cookie_consent_text = ข้อความชั้นแรก ({tools} = บริการที่ใส่รหัสไว้) */
-			'show_cookie_consent'      => false,
-			'cookie_consent_text'      => 'EA BULL เปิดเฉพาะคุกกี้ที่จำเป็นต่อการทำงานของเว็บไว้ก่อน ส่วน {tools} จะเริ่มทำงานหลังคุณกดยอมรับเท่านั้น เปลี่ยนตัวเลือกภายหลังได้จากลิงก์ "ตั้งค่าคุกกี้"',
+			'show_cookie_consent'      => true,
 			'ga_measurement_id'        => '',
 			'fb_pixel_id'              => '',
-			'consent_tool_ga_label'    => 'Google Analytics (วิเคราะห์การใช้งาน)',
-			'consent_tool_pixel_label' => 'Meta Pixel (การตลาด)',
-			'consent_tools_join'       => 'และ',
-
 			'consent_version'          => '1',
-			'consent_kicker'           => 'คุกกี้และ PDPA',
-			'consent_title'            => 'เลือกคุกกี้ที่คุณยินยอมให้ใช้',
+
+			'consent_title'            => 'เว็บนี้ใช้คุกกี้',
+			'consent_none_text'        => 'ตอนนี้ EA BULL ใช้เฉพาะคุกกี้ที่จำเป็นให้เว็บทำงาน เช่น จำค่าที่คุณเลือกในการ์ดนี้ ไม่มีคุกกี้วัดผลหรือโฆษณา',
+			'cookie_consent_text'      => 'เราใช้คุกกี้ที่จำเป็นให้เว็บทำงาน และขอใช้ {tools} ซึ่งจะเริ่มทำงานหลังคุณอนุญาตเท่านั้น เลือกได้ว่าจะอนุญาตหรือไม่',
+			'consent_tool_ga_label'    => 'Google Analytics นับจำนวนผู้เข้าชม',
+			'consent_tool_pixel_label' => 'Meta Pixel วัดผลโฆษณา',
+			'consent_tools_join'       => 'และ',
 			'consent_policy_label'     => 'อ่านนโยบายคุกกี้',
-			'consent_accept_label'     => 'ยอมรับทั้งหมด',
-			'consent_reject_label'     => 'ปฏิเสธ',
-			'consent_prefs_label'      => 'ตั้งค่า',
-			'consent_save_label'       => 'บันทึก',
+
 			'consent_ok_label'         => 'ตกลง',
-			'consent_close_label'      => 'ปิดหน้าต่างคุกกี้',
-			'consent_always_label'     => 'เปิดอยู่เสมอ',
-			'consent_detail_label'     => 'คุกกี้ในหมวดนี้',
+			'consent_reject_label'     => 'ปฏิเสธ',
+			'consent_accept_label'     => 'ยอมรับทั้งหมด',
+			'consent_prefs_label'      => 'ตั้งค่า',
+			'consent_back_label'       => 'ย้อนกลับ',
+			'consent_save_label'       => 'บันทึก',
+			'consent_close_label'      => 'ปิด',
+
 			'consent_necessary_name'   => 'คุกกี้ที่จำเป็น',
-			'consent_necessary_desc'   => 'ทำให้เว็บไซต์ทำงานได้และจดจำตัวเลือกคุกกี้ของคุณ หมวดนี้เปิดตลอด ปิดไม่ได้ และไม่ใช้ระบุตัวตนของผู้เข้าชม',
-			'consent_necessary_detail' => "eab_consent · เก็บตัวเลือกของแต่ละหมวด เลขรุ่นความยินยอม และเวลาที่บันทึก · อายุ 365 วัน\neabConsentDismissed · จำไว้ในแท็บนี้ว่าคุณปิดหน้าต่างคุกกี้แล้ว · หายไปเมื่อปิดแท็บ",
+			'consent_necessary_desc'   => 'ให้เว็บทำงานและจำค่าที่คุณเลือกในการ์ดนี้',
+			'consent_always_label'     => 'เปิดอยู่เสมอ',
 			'consent_analytics_name'   => 'วิเคราะห์การใช้งาน',
-			'consent_analytics_desc'   => 'Google Analytics ช่วยนับจำนวนผู้เข้าชม หน้าที่ถูกเปิด และปุ่มที่ถูกกด เพื่อปรับเนื้อหาให้ใช้งานง่ายขึ้น เริ่มทำงานหลังคุณยินยอมเท่านั้น',
-			'consent_analytics_detail' => "ผู้ให้บริการ · Google (Google Analytics 4)\n_ga · รหัสสุ่มที่แยกเบราว์เซอร์หนึ่งออกจากอีกเบราว์เซอร์ โดยไม่รู้ว่าผู้ใช้เป็นใคร · ไม่เกินประมาณ 2 ปี\n_ga_* · บันทึกสถานะของการเข้าชมรอบปัจจุบัน · ไม่เกินประมาณ 2 ปี",
-			/* ต่อท้ายรายละเอียดหมวดวิเคราะห์ เมื่อมี GA4 แต่ไม่มี Meta Pixel (ไม่มีหมวดการตลาดให้เปิด สัญญาณโฆษณาจึง denied ตลอด) */
-			'consent_ads_off_detail'   => 'สัญญาณโฆษณา (Google Consent Mode) · ปิดอยู่เสมอ เพราะเว็บนี้ไม่มีหมวดการตลาดให้เปิด Google จึงไม่ได้รับอนุญาตให้ใช้ข้อมูลการเข้าชมเพื่องานโฆษณา',
+			'consent_analytics_desc'   => 'Google Analytics นับผู้เข้าชมและหน้าที่เปิด ใช้รหัสสุ่มแทนชื่อของคุณ',
 			'consent_marketing_name'   => 'การตลาด',
-			'consent_marketing_desc'   => 'Meta Pixel วัดว่าโฆษณาบน Facebook และ Instagram พาคนมาที่เว็บไซต์ได้แค่ไหน และใช้กำหนดกลุ่มผู้ชมโฆษณา เริ่มทำงานหลังคุณยินยอมเท่านั้น',
-			'consent_marketing_detail' => "ผู้ให้บริการ · Meta Platforms (Meta Pixel)\n_fbp · ระบุเบราว์เซอร์เพื่อวัดผลโฆษณา · ประมาณ 90 วัน\n_fbc · จดรหัสคลิกของโฆษณาที่พาคุณมายังเว็บ · ประมาณ 90 วัน",
-			/* ต่อท้ายรายละเอียดหมวดการตลาด เมื่อมีทั้ง Meta Pixel และ GA4 */
-			'consent_marketing_google_detail' => "ผู้ให้บริการ · Google (Google Analytics 4)\n_gcl_au / _gcl_* · ผูกการเข้าชมเข้ากับแคมเปญโฆษณาบนเครือข่าย Google · ประมาณ 90 วัน\nสัญญาณโฆษณา (Google Consent Mode) · อนุญาตให้ Google ใช้ข้อมูลการเข้าชมเพื่องานโฆษณา · มีผลเมื่อเปิดหมวดนี้เท่านั้น",
-			'consent_none_text'        => 'เว็บนี้ใช้แค่คุกกี้ที่จำเป็นในขณะนี้ เพราะยังไม่ได้เชื่อม Google Analytics หรือ Meta Pixel',
-			'consent_prefs_note'       => 'เปลี่ยนตัวเลือกได้ทุกเมื่อจากลิงก์ "ตั้งค่าคุกกี้" ท้ายหน้าเว็บ การปฏิเสธไม่มีผลกับการอ่านเนื้อหาหรือการติดต่อทีมงานทาง LINE',
+			'consent_marketing_desc'   => 'Meta Pixel ใช้นับว่ามีคนมาจากโฆษณาบน Facebook หรือ Instagram กี่คน',
+			'consent_prefs_note'       => 'เปลี่ยนใจได้ทุกเมื่อจากลิงก์ "ตั้งค่าคุกกี้" ท้ายเว็บ',
 			'consent_link_label'       => 'ตั้งค่าคุกกี้',
 		)
 	);
@@ -76,13 +72,14 @@ function eab_consent_defaults( $d ) {
 add_filter( 'eab_defaults', 'eab_consent_defaults' );
 
 /* ==============================================================
- * Customizer · แทนหมวดคุกกี้เดิมทั้งหมวด (คงตำแหน่งเดิมในรายการ)
+ * Customizer · replaces the central cookie section (same place in the list)
  * ============================================================== */
 
 function eab_consent_sections( $sections, $d ) {
+	unset( $d );
 	$own = array( 'show_cookie_consent', 'cookie_consent_text', 'ga_measurement_id', 'fb_pixel_id' );
 
-	/* ย้ายฟิลด์ติดตาม/คุกกี้ออกจากหมวดอื่น (เช่น eab_seo) ให้อยู่ที่นี่ที่เดียว */
+	/* Tracking keys live in this section only. */
 	foreach ( $sections as $section_id => $section ) {
 		if ( 'eab_cookie' === $section_id || empty( $section['fields'] ) || ! is_array( $section['fields'] ) ) {
 			continue;
@@ -92,45 +89,37 @@ function eab_consent_sections( $sections, $d ) {
 		}
 	}
 
-	$detail_hint = 'บรรทัดละ 1 รายการ · รูปแบบ "ชื่อคุกกี้ · ใช้ทำอะไร · อายุ" · ชื่อคุกกี้แสดงตามตัวพิมพ์จริง';
-
 	$sections['eab_cookie'] = array(
-		'title'       => '18) คุกกี้ & ความยินยอม · PDPA',
-		'description' => 'การ์ดนี้แสดงเองทันทีที่มี GA4 Measurement ID หรือ Meta Pixel ID ถูกรูปแบบอย่างน้อยหนึ่งตัว (ติ๊กช่องด้านล่างถ้าอยากให้แสดงตั้งแต่ยังไม่มีรหัส) · สคริปต์ของแต่ละบริการเริ่มทำงานหลังผู้เข้าชมกดอนุญาตหมวดของบริการนั้นแล้วเท่านั้น · ห้ามให้ปลั๊กอินอื่นฝังแท็กซ้ำ (เช่น Site Kit หรือปลั๊กอิน Pixel) เพราะจะทำงานก่อนได้รับอนุญาต · เมื่อเพิ่มบริการหรือเปลี่ยนวัตถุประสงค์ของคุกกี้ ให้บวกเลขรุ่นขึ้น 1 ระบบจะขอความยินยอมจากทุกคนอีกรอบ · ลิงก์นโยบายโผล่เมื่อหน้า privacy-policy เผยแพร่แล้ว (ชี้ไปหัวข้อ #cookies) · ลิงก์ใด ๆ ที่ชี้ไป #cookie-settings จะเปิดการ์ดนี้',
+		'title'       => '18) คุกกี้และความยินยอม · PDPA',
+		'description' => 'การ์ดคุกกี้มุมซ้ายล่าง (มือถือเป็นแผ่นเต็มกว้างด้านล่าง) · ยังไม่ใส่รหัส GA4 หรือ Meta Pixel = การ์ดบอกว่าใช้เฉพาะคุกกี้ที่จำเป็นและมีปุ่มตกลงปุ่มเดียว · ใส่รหัสแล้ว การ์ดจะมีปุ่มยอมรับ ปฏิเสธ และตั้งค่าทีละหมวดให้เอง สคริปต์ของบริการโหลดหลังผู้เข้าชมอนุญาตเท่านั้น · อย่าติดตั้งปลั๊กอินที่ฝังแท็ก GA4 หรือ Pixel ซ้ำ เพราะจะโหลดก่อนได้รับอนุญาต · เพิ่มบริการหรือเปลี่ยนการใช้คุกกี้เมื่อไร ให้เพิ่มเลขรุ่นอีก 1 ทุกคนจะถูกถามใหม่',
 		'fields'      => array(
-			'ga_measurement_id'        => array( 'GA4 Measurement ID (รูปแบบ G-XXXXXXXXXX)', 'text', 'หาได้ใน GA4 → Admin → Data streams · ถ้ารูปแบบผิด ระบบจะไม่ยอมบันทึก' ),
-			'fb_pixel_id'              => array( 'Meta Pixel ID (ตัวเลข 10 ถึง 20 หลัก)', 'text', 'หาได้ใน Meta Events Manager → Data sources · ถ้ารูปแบบผิด ระบบจะไม่ยอมบันทึก' ),
-			'show_cookie_consent'      => array( 'แสดงการ์ดคุกกี้แม้ยังไม่ได้ใส่รหัสติดตาม', 'checkbox' ),
-			'consent_version'          => array( 'เลขรุ่นของความยินยอม', 'text', 'บวกเลขขึ้นเมื่อเปลี่ยนวิธีใช้คุกกี้ ระบบจะขอความยินยอมใหม่จากทุกคน' ),
-			'consent_kicker'           => array( 'การ์ด · ข้อความเล็กเหนือหัวข้อ', 'text' ),
-			'consent_title'            => array( 'การ์ด · หัวข้อ', 'text' ),
-			'cookie_consent_text'      => array( 'การ์ด · ข้อความหลัก (ก่อนกดเลือกทีละหมวด)', 'textarea', '{tools} = ชื่อบริการที่ใส่รหัสไว้จริงเท่านั้น (สองช่องถัดไป) · ถ้ายังไม่มีรหัสใดเลย การ์ดใช้ "ข้อความเมื่อยังไม่ได้ใส่รหัสติดตามใด ๆ" แทน' ),
-			'consent_tool_ga_label'    => array( 'การ์ด · ชื่อบริการ GA4 ที่ใช้แทน {tools}', 'text', 'แสดงเมื่อมี GA4 Measurement ID' ),
-			'consent_tool_pixel_label' => array( 'การ์ด · ชื่อบริการ Meta Pixel ที่ใช้แทน {tools}', 'text', 'แสดงเมื่อมี Meta Pixel ID' ),
-			'consent_tools_join'       => array( 'การ์ด · คำเชื่อมเมื่อมีทั้งสองบริการ', 'text' ),
-			'consent_policy_label'     => array( 'การ์ด · คำบนลิงก์ไปนโยบายคุกกี้', 'text' ),
-			'consent_accept_label'     => array( 'ข้อความปุ่ม · ยอมรับทุกหมวด', 'text' ),
-			'consent_reject_label'     => array( 'ข้อความปุ่ม · ปฏิเสธทุกหมวดที่ไม่จำเป็น', 'text' ),
-			'consent_prefs_label'      => array( 'ข้อความปุ่ม · ไปหน้าเลือกทีละหมวด', 'text' ),
-			'consent_save_label'       => array( 'ข้อความปุ่ม · บันทึกตัวเลือกที่ติ๊กไว้', 'text' ),
-			'consent_ok_label'         => array( 'ข้อความปุ่ม · ตกลง (ใช้เมื่อยังไม่มีรหัสติดตาม)', 'text' ),
-			'consent_close_label'      => array( 'ปุ่ม X · คำอ่านสำหรับผู้ใช้โปรแกรมอ่านจอ', 'text' ),
-			'consent_always_label'     => array( 'ป้ายบนหมวดจำเป็น (ปิดไม่ได้)', 'text' ),
-			'consent_detail_label'     => array( 'คำบนปุ่มเปิดรายละเอียดคุกกี้ของแต่ละหมวด', 'text' ),
-			'consent_necessary_name'   => array( 'หมวดจำเป็น · ชื่อหมวด', 'text' ),
-			'consent_necessary_desc'   => array( 'หมวดจำเป็น · คำอธิบายสั้น', 'textarea' ),
-			'consent_necessary_detail' => array( 'หมวดจำเป็น · รายละเอียดคุกกี้', 'textarea', $detail_hint ),
-			'consent_analytics_name'   => array( 'หมวดวัดสถิติ (GA4) · ชื่อหมวด', 'text' ),
-			'consent_analytics_desc'   => array( 'หมวดวัดสถิติ (GA4) · คำอธิบายสั้น', 'textarea' ),
-			'consent_analytics_detail' => array( 'หมวดวัดสถิติ (GA4) · รายละเอียดคุกกี้', 'textarea', $detail_hint ),
-			'consent_ads_off_detail'   => array( 'หมวดวัดสถิติ (GA4) · บรรทัดต่อท้ายเมื่อไม่มี Meta Pixel', 'textarea', 'ไม่มีหมวดการตลาด สัญญาณโฆษณาของ Google จึงปิดตลอด · บรรทัดนี้บอกผู้เข้าชมให้รู้' ),
-			'consent_marketing_name'   => array( 'หมวดโฆษณา (Meta Pixel) · ชื่อหมวด', 'text', 'หมวดนี้แสดงเฉพาะเมื่อมี Meta Pixel ID' ),
-			'consent_marketing_desc'   => array( 'หมวดโฆษณา (Meta Pixel) · คำอธิบายสั้น', 'textarea' ),
-			'consent_marketing_detail' => array( 'หมวดโฆษณา (Meta Pixel) · รายละเอียดคุกกี้', 'textarea', $detail_hint ),
-			'consent_marketing_google_detail' => array( 'หมวดโฆษณา · บรรทัดต่อท้ายเมื่อมี GA4 ด้วย (สัญญาณโฆษณาของ Google)', 'textarea', $detail_hint ),
-			'consent_none_text'        => array( 'ข้อความเมื่อยังไม่ได้ใส่รหัสติดตามใด ๆ', 'textarea' ),
-			'consent_prefs_note'       => array( 'ข้อความใต้รายการหมวด (หน้าเลือกทีละหมวด)', 'textarea' ),
-			'consent_link_label'       => array( 'ข้อความลิงก์ "ตั้งค่าคุกกี้" (หน้า /go และจุดที่ใช้ eab_consent_link)', 'text' ),
+			'ga_measurement_id'        => array( 'รหัส GA4 Measurement ID (G-XXXXXXXXXX)', 'text', 'ดูได้ที่ GA4 → Admin → Data streams · รูปแบบไม่ถูกต้องจะบันทึกไม่ได้' ),
+			'fb_pixel_id'              => array( 'รหัส Meta Pixel ID (ตัวเลข 10 ถึง 20 หลัก)', 'text', 'ดูได้ที่ Meta Events Manager → Data sources · รูปแบบไม่ถูกต้องจะบันทึกไม่ได้' ),
+			'show_cookie_consent'      => array( 'แสดงการ์ดตอนเข้าเว็บครั้งแรก แม้ยังไม่มีรหัสติดตาม', 'checkbox' ),
+			'consent_version'          => array( 'เลขรุ่นของความยินยอม', 'text', 'เพิ่มเลขเมื่อเปลี่ยนการใช้คุกกี้ ระบบจะถามผู้เข้าชมทุกคนอีกครั้ง' ),
+			'consent_title'            => array( 'หัวข้อการ์ด', 'text' ),
+			'consent_none_text'        => array( 'ข้อความตอนที่ยังไม่ได้ใส่รหัส GA4 และ Pixel', 'textarea' ),
+			'cookie_consent_text'      => array( 'ข้อความเมื่อมีรหัสติดตาม', 'textarea', '{tools} จะถูกแทนด้วยชื่อบริการที่ใส่รหัสไว้จริงจากสองช่องถัดไป' ),
+			'consent_tool_ga_label'    => array( 'ชื่อบริการ GA4 ที่ใช้แทน {tools}', 'text' ),
+			'consent_tool_pixel_label' => array( 'ชื่อบริการ Meta Pixel ที่ใช้แทน {tools}', 'text' ),
+			'consent_tools_join'       => array( 'คำเชื่อมเมื่อมีทั้งสองบริการ', 'text' ),
+			'consent_policy_label'     => array( 'ลิงก์ไปหัวข้อคุกกี้ในนโยบายความเป็นส่วนตัว', 'text', 'แสดงเมื่อหน้า privacy-policy เผยแพร่แล้ว' ),
+			'consent_ok_label'         => array( 'ปุ่ม · ตกลง (เมื่อยังไม่มีรหัสติดตาม)', 'text' ),
+			'consent_reject_label'     => array( 'ปุ่ม · ปฏิเสธ', 'text' ),
+			'consent_accept_label'     => array( 'ปุ่ม · ยอมรับทั้งหมด', 'text' ),
+			'consent_prefs_label'      => array( 'ปุ่ม · ไปหน้าตั้งค่าทีละหมวด', 'text' ),
+			'consent_back_label'       => array( 'ปุ่ม · ย้อนกลับจากหน้าตั้งค่า', 'text' ),
+			'consent_save_label'       => array( 'ปุ่ม · บันทึกตัวเลือก', 'text' ),
+			'consent_close_label'      => array( 'ปุ่ม X · คำอ่านสำหรับโปรแกรมอ่านจอ', 'text' ),
+			'consent_necessary_name'   => array( 'หมวดจำเป็น · ชื่อ', 'text' ),
+			'consent_necessary_desc'   => array( 'หมวดจำเป็น · คำอธิบาย', 'textarea' ),
+			'consent_always_label'     => array( 'หมวดจำเป็น · ป้ายแทนสวิตช์', 'text' ),
+			'consent_analytics_name'   => array( 'หมวดวิเคราะห์ (GA4) · ชื่อ', 'text', 'หมวดนี้แสดงเมื่อมีรหัส GA4 เท่านั้น' ),
+			'consent_analytics_desc'   => array( 'หมวดวิเคราะห์ (GA4) · คำอธิบาย', 'textarea' ),
+			'consent_marketing_name'   => array( 'หมวดการตลาด (Meta Pixel) · ชื่อ', 'text', 'หมวดนี้แสดงเมื่อมีรหัส Meta Pixel เท่านั้น' ),
+			'consent_marketing_desc'   => array( 'หมวดการตลาด (Meta Pixel) · คำอธิบาย', 'textarea' ),
+			'consent_prefs_note'       => array( 'หมายเหตุใต้รายการหมวด', 'text' ),
+			'consent_link_label'       => array( 'ชื่อปุ่ม "ตั้งค่าคุกกี้" (ท้ายเว็บ หน้า /go)', 'text' ),
 		),
 	);
 
@@ -139,11 +128,11 @@ function eab_consent_sections( $sections, $d ) {
 add_filter( 'eab_customizer_sections', 'eab_consent_sections', 30, 2 );
 
 /* ==============================================================
- * ตรวจรูปแบบรหัสติดตาม
+ * Tracking ID formats
  * ============================================================== */
 
 /**
- * GA4 Measurement ID ที่ใช้ได้ (G-XXXX) หรือ '' ถ้ารูปแบบไม่ตรง
+ * GA4 Measurement ID (G-XXXX) or ''.
  */
 function eab_consent_sanitize_ga_id( $value ) {
 	$value = strtoupper( preg_replace( '/\s+/', '', (string) $value ) );
@@ -151,7 +140,7 @@ function eab_consent_sanitize_ga_id( $value ) {
 }
 
 /**
- * Meta Pixel ID ที่ใช้ได้ (ตัวเลข 10 ถึง 20 หลัก) หรือ '' ถ้ารูปแบบไม่ตรง
+ * Meta Pixel ID (10 to 20 digits) or ''.
  */
 function eab_consent_sanitize_pixel_id( $value ) {
 	$value = preg_replace( '/\s+/', '', (string) $value );
@@ -159,14 +148,14 @@ function eab_consent_sanitize_pixel_id( $value ) {
 }
 
 /**
- * รุ่นความยินยอม · จำนวนเต็มตั้งแต่ 1 ขึ้นไป
+ * Consent version: whole number from 1.
  */
 function eab_consent_sanitize_version( $value ) {
 	return (string) max( 1, absint( $value ) );
 }
 
 /**
- * รหัสผิดรูปแบบ: แสดงข้อผิดพลาดตรงช่องกรอกและไม่ยอมบันทึก เจ้าของเว็บจะได้รู้ตัวทันที
+ * A malformed ID is refused in the Customizer with a message next to the field.
  */
 function eab_consent_validate_id( $validity, $value, $setting = null ) {
 	$value = trim( (string) $value );
@@ -174,15 +163,14 @@ function eab_consent_validate_id( $validity, $value, $setting = null ) {
 		return $validity;
 	}
 	if ( 'ga_measurement_id' === $setting->id && '' === eab_consent_sanitize_ga_id( $value ) ) {
-		$validity->add( 'eab_bad_ga_id', 'รูปแบบรหัส GA4 ไม่ถูกต้อง · รหัสที่ใช้ได้หน้าตาแบบ G-AB12CD34EF (เปิด GA4 → Admin → Data streams แล้วคัดลอก Measurement ID)' );
+		$validity->add( 'eab_bad_ga_id', 'รหัส GA4 ต้องขึ้นต้นด้วย G- ตามด้วยตัวอักษรหรือตัวเลข เช่น G-AB12CD34EF (คัดลอกจาก GA4 → Admin → Data streams)' );
 	}
 	if ( 'fb_pixel_id' === $setting->id && '' === eab_consent_sanitize_pixel_id( $value ) ) {
-		$validity->add( 'eab_bad_pixel_id', 'รูปแบบรหัส Meta Pixel ไม่ถูกต้อง · ใส่เฉพาะตัวเลข 10 ถึง 20 หลัก ห้ามมีตัวอักษรหรือช่องว่าง (คัดลอกจาก Meta Events Manager → Data sources)' );
+		$validity->add( 'eab_bad_pixel_id', 'รหัส Meta Pixel ต้องเป็นตัวเลขล้วน 10 ถึง 20 หลัก (คัดลอกจาก Meta Events Manager → Data sources)' );
 	}
 	return $validity;
 }
 
-/* sanitize ต่อท้ายตัวกลางของ customizer.php (sanitize_text_field ที่ priority 10) · validate แยกต่อ setting */
 add_filter( 'customize_sanitize_ga_measurement_id', 'eab_consent_sanitize_ga_id', 20 );
 add_filter( 'customize_sanitize_fb_pixel_id', 'eab_consent_sanitize_pixel_id', 20 );
 add_filter( 'customize_sanitize_consent_version', 'eab_consent_sanitize_version', 20 );
@@ -190,11 +178,11 @@ add_filter( 'customize_validate_ga_measurement_id', 'eab_consent_validate_id', 1
 add_filter( 'customize_validate_fb_pixel_id', 'eab_consent_validate_id', 10, 3 );
 
 /* ==============================================================
- * ค่าที่ใช้งานจริง
+ * Values in use
  * ============================================================== */
 
 /**
- * รหัสติดตามที่ผ่านการตรวจแล้ว (ค่าเก่าที่เคยบันทึกแบบไม่ตรวจก็ถูกกรองที่นี่)
+ * Checked tracking IDs (values saved before validation existed are filtered here too).
  *
  * @return array { ga: string, pixel: string }
  */
@@ -210,7 +198,7 @@ function eab_consent_version() {
 }
 
 /**
- * ชื่อบริการที่ใส่รหัสไว้จริง (GA4 ก่อน Meta Pixel) ต่อกันด้วยคำเชื่อม · '' เมื่อยังไม่มีรหัสใดเลย
+ * Names of the services that have an ID (GA4 first) · '' when none.
  */
 function eab_consent_tools_text() {
 	$ids    = eab_consent_ids();
@@ -231,27 +219,19 @@ function eab_consent_tools_text() {
 }
 
 /**
- * ข้อความชั้นแรกของการ์ด: cookie_consent_text ที่แทน {tools} ด้วยบริการที่ใส่รหัสไว้
- * ยังไม่มีรหัสใดเลย (การ์ดเปิดเพราะติ๊ก show_cookie_consent) = consent_none_text ไม่พูดถึงบริการที่ไม่ได้ทำงาน
+ * Intro text: the "necessary only" wording without IDs, otherwise cookie_consent_text with {tools}.
  */
 function eab_consent_intro_text() {
 	$ids = eab_consent_ids();
 	if ( '' === $ids['ga'] && '' === $ids['pixel'] ) {
-		return (string) eab_mod( 'consent_none_text' );
+		return trim( (string) eab_mod( 'consent_none_text' ) );
 	}
 	$text = str_replace( '{tools}', eab_consent_tools_text(), (string) eab_mod( 'cookie_consent_text' ) );
 	return trim( preg_replace( '/[ \t]{2,}/', ' ', $text ) );
 }
 
 /**
- * รวมรายละเอียดคุกกี้หลายชุด (บรรทัดละ 1 รายการ) · ข้ามชุดที่ว่าง
- */
-function eab_consent_join_details( ...$parts ) {
-	return implode( "\n", array_filter( array_map( 'trim', array_map( 'strval', $parts ) ), 'strlen' ) );
-}
-
-/**
- * ลิงก์นโยบาย (หัวข้อคุกกี้) · เฉพาะเมื่อหน้า privacy-policy เผยแพร่แล้ว
+ * Cookie section of the privacy policy · '' until the page is published.
  */
 function eab_consent_policy_url() {
 	$url = function_exists( 'eab_published_page_url' ) ? eab_published_page_url( 'privacy-policy' ) : '';
@@ -259,59 +239,47 @@ function eab_consent_policy_url() {
 }
 
 /**
- * ลิงก์ "ตั้งค่าคุกกี้" สำหรับท้ายเว็บ / หน้า /go/ / ที่อื่น ๆ · consent.js ดักคลิกแล้วเปิดการ์ดหน้าเลือกทีละหมวด
+ * "ตั้งค่าคุกกี้" opener for the footer, /go and content.
  *
- * @param array $args { class, label, echo }
+ * @param array $args {
+ *     @type string $tag   'a' (link to #cookie-settings, default) or 'button'.
+ *     @type string $class Extra classes ('linkish' for the footer row).
+ *     @type string $label Text ('' = consent_link_label).
+ *     @type bool   $echo  Print as well as return.
+ * }
  * @return string
  */
 function eab_consent_link( $args = array() ) {
 	$args  = wp_parse_args(
 		$args,
 		array(
+			'tag'   => 'a',
 			'class' => '',
 			'label' => '',
 			'echo'  => true,
 		)
 	);
-	$label = '' !== trim( (string) $args['label'] ) ? $args['label'] : eab_mod( 'consent_link_label' );
-	$html  = sprintf(
-		'<a class="%1$s" href="#cookie-settings">%2$s</a>',
-		esc_attr( trim( 'cookie-reopen ' . $args['class'] ) ),
-		esc_html( $label )
-	);
+	$label = '' !== trim( (string) $args['label'] ) ? trim( (string) $args['label'] ) : trim( (string) eab_mod( 'consent_link_label' ) );
+	if ( '' === $label ) {
+		return '';
+	}
+	if ( 'button' === $args['tag'] ) {
+		$html = '<button type="button" class="' . esc_attr( trim( (string) $args['class'] ) ) . '" data-cookie-settings>' . esc_html( $label ) . '</button>';
+	} else {
+		$html = '<a class="' . esc_attr( trim( 'cookie-reopen ' . $args['class'] ) ) . '" href="#cookie-settings">' . esc_html( $label ) . '</a>';
+	}
 	if ( $args['echo'] ) {
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
 	}
 	return $html;
 }
 
-/**
- * รายละเอียดคุกกี้ของหมวด: บรรทัดละ 1 รายการ · ชื่อคุกกี้ (มี _ หรือเป็น camelCase) ห่อด้วย <code class="keep-case">
- */
-function eab_consent_detail_html( $text ) {
-	$items = eab_lines( $text );
-	if ( ! $items ) {
-		return '';
-	}
-	$html = '';
-	foreach ( $items as $item ) {
-		$safe  = esc_html( $item );
-		$coded = preg_replace(
-			'/(?<![A-Za-z0-9_*])(_[A-Za-z0-9]+(?:_[A-Za-z0-9]+)*(?:_\*)?|[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+(?:_\*)?|[a-z]+(?:[A-Z][a-z0-9]+){2,})(?![A-Za-z0-9_])/',
-			'<code class="consent-code keep-case">$1</code>',
-			$safe
-		);
-		$html .= '<li>' . ( null === $coded ? $safe : $coded ) . '</li>';
-	}
-	return '<ul class="consent-detail-list">' . $html . '</ul>';
-}
-
 /* ==============================================================
- * ส่งค่าให้ consent.js และตั้ง Consent Mode เริ่มต้น
+ * Settings for consent.js · default Consent Mode
  * ============================================================== */
 
 /**
- * ส่งการตั้งค่าให้ consent.js ผ่าน window.eabConsentConfig · ค่าไม่ขึ้นกับผู้เข้าชม หน้าเว็บจึงยังแคชได้
+ * window.eabConsentConfig (the same for every visitor, so pages stay cacheable).
  */
 function eab_consent_script_data() {
 	if ( function_exists( 'wp_script_is' ) && ! wp_script_is( 'eab-consent-js', 'enqueued' ) ) {
@@ -332,8 +300,8 @@ function eab_consent_script_data() {
 add_action( 'wp_enqueue_scripts', 'eab_consent_script_data', 20 );
 
 /**
- * Consent Mode v2 · ค่าเริ่มต้น denied ทุกสัญญาณ พิมพ์ต้น <head> ก่อนแท็ก Google ใด ๆ
- * ใช้ฟังก์ชันภายใน (ไม่สร้าง window.gtag) สคริปต์อื่นจึงไม่ส่ง event ก่อนผู้ใช้อนุญาต
+ * Consent Mode v2 defaults (all denied), printed at the top of <head> before any Google tag.
+ * Uses a local function instead of window.gtag so nothing can send events before consent.
  */
 function eab_consent_mode_default() {
 	if ( is_admin() ) {
@@ -353,12 +321,31 @@ function eab_consent_mode_default() {
 add_action( 'wp_head', 'eab_consent_mode_default', 1 );
 
 /* ==============================================================
- * การ์ดความยินยอม
+ * The card
  * ============================================================== */
 
 /**
- * การ์ดออกมาพร้อม hidden ทุกครั้ง · เบราว์เซอร์ที่ปิด JS จะไม่เห็นการ์ด และไม่มีสคริปต์ติดตามตัวไหนทำงาน
- * พิมพ์ครั้งเดียวต่อหน้า (wp_body_open ก่อน · wp_footer เป็นทางสำรอง)
+ * One row of the settings view.
+ */
+function eab_consent_row( $key, $name, $desc, $locked ) {
+	$id   = 'consent-' . $key;
+	$html = '<div class="ckrow"' . ( $locked ? '' : ' data-cat="' . esc_attr( $key ) . '" hidden' ) . '>';
+	$html .= '<div><b id="' . esc_attr( $id ) . '-name">' . esc_html( $name ) . '</b>';
+	if ( '' !== trim( (string) $desc ) ) {
+		$html .= '<p id="' . esc_attr( $id ) . '-desc">' . esc_html( $desc ) . '</p>';
+	}
+	$html .= '</div>';
+	if ( $locked ) {
+		$html .= '<span class="ckrow__lock">' . esc_html( eab_mod( 'consent_always_label' ) ) . '</span>';
+	} else {
+		$html .= '<label class="switch"><input type="checkbox" role="switch" name="' . esc_attr( $key ) . '" aria-labelledby="' . esc_attr( $id ) . '-name"' . ( '' !== trim( (string) $desc ) ? ' aria-describedby="' . esc_attr( $id ) . '-desc"' : '' ) . '><span></span></label>';
+	}
+	return $html . '</div>';
+}
+
+/**
+ * Cookie card · always printed hidden: without JS nobody sees it and no tracking runs.
+ * Printed once per page (wp_body_open first, wp_footer as a fallback).
  */
 function eab_consent_card() {
 	static $printed = false;
@@ -367,110 +354,60 @@ function eab_consent_card() {
 	}
 	$printed = true;
 
-	$policy_url   = eab_consent_policy_url();
-	$policy_label = trim( (string) eab_mod( 'consent_policy_label' ) );
-	$policy_link  = ( $policy_url && '' !== $policy_label )
-		? ' <a class="consent-policy" href="' . esc_url( $policy_url ) . '">' . esc_html( $policy_label ) . '</a>'
-		: '';
-	$detail_label = eab_mod( 'consent_detail_label' );
-	$ids          = eab_consent_ids();
+	$ids    = eab_consent_ids();
+	$mode   = ( '' === $ids['ga'] && '' === $ids['pixel'] ) ? 'none' : 'optional';
+	$policy = eab_consent_policy_url();
+	$plabel = trim( (string) eab_mod( 'consent_policy_label' ) );
+	$note   = trim( (string) eab_mod( 'consent_prefs_note' ) );
 
-	/* พิมพ์เฉพาะหมวดที่มีบริการใส่รหัสไว้จริง · ไม่มี Pixel = ไม่มีหมวดการตลาด สัญญาณโฆษณาของ Google จึงคง denied (consent.js) */
-	$cats = array(
-		'necessary' => array(
-			'name'   => eab_mod( 'consent_necessary_name' ),
-			'desc'   => eab_mod( 'consent_necessary_desc' ),
-			'detail' => eab_mod( 'consent_necessary_detail' ),
-			'icon'   => 'lock',
-		),
-	);
-	if ( '' !== $ids['ga'] ) {
-		$cats['analytics'] = array(
-			'name'   => eab_mod( 'consent_analytics_name' ),
-			'desc'   => eab_mod( 'consent_analytics_desc' ),
-			'detail' => eab_consent_join_details(
-				eab_mod( 'consent_analytics_detail' ),
-				'' === $ids['pixel'] ? eab_mod( 'consent_ads_off_detail' ) : ''
-			),
-			'icon'   => 'chart',
-		);
-	}
-	if ( '' !== $ids['pixel'] ) {
-		$cats['marketing'] = array(
-			'name'   => eab_mod( 'consent_marketing_name' ),
-			'desc'   => eab_mod( 'consent_marketing_desc' ),
-			'detail' => eab_consent_join_details(
-				eab_mod( 'consent_marketing_detail' ),
-				'' !== $ids['ga'] ? eab_mod( 'consent_marketing_google_detail' ) : ''
-			),
-			'icon'   => 'target',
-		);
-	}
+	$btn = function ( $action, $class, $label_key, $when = '', $icon = '', $after = false ) use ( $mode ) {
+		$label = esc_html( eab_mod( $label_key ) );
+		$svg   = '' !== $icon ? eab_icon( $icon ) : '';
+		return '<button type="button" class="btn ' . esc_attr( $class ) . ' btn--sm" data-consent="' . esc_attr( $action ) . '"'
+			. ( '' !== $when ? ' data-when="' . esc_attr( $when ) . '"' . ( $when !== $mode ? ' hidden' : '' ) : '' ) . '>'
+			. ( $after ? $label . ' ' . $svg : $svg . $label ) . '</button>';
+	};
 	?>
-<section class="consent" id="cookie-settings" aria-labelledby="consent-title" data-view="intro" hidden>
-	<div class="consent-head">
-		<span class="consent-badge" aria-hidden="true"><?php echo eab_icon( 'shield' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
-		<div class="consent-head-text">
-			<?php if ( '' !== trim( (string) eab_mod( 'consent_kicker' ) ) && eab_show_kickers() ) : ?>
-				<p class="consent-kicker"><?php echo esc_html( eab_mod( 'consent_kicker' ) ); ?></p>
-			<?php endif; ?>
-			<p class="consent-title" id="consent-title" tabindex="-1"><?php echo eab_text( eab_mod( 'consent_title' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_text ?></p>
-		</div>
+<div class="cookie dark" id="cookie-settings" role="dialog" aria-labelledby="consent-title" data-view="intro" hidden>
+	<div class="cookie__head">
+		<span class="tile tile--accent" aria-hidden="true"><?php echo eab_icon( 'cookie' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+		<p class="cookie__title" id="consent-title" tabindex="-1"><?php echo esc_html( eab_mod( 'consent_title' ) ); ?></p>
+		<button type="button" class="cookie__x" data-consent="close" aria-label="<?php echo esc_attr( eab_mod( 'consent_close_label' ) ); ?>"><?php echo eab_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
 	</div>
 
-	<div class="consent-body">
-		<p class="consent-text" data-show="intro"><?php echo esc_html( eab_consent_intro_text() ); ?><?php echo $policy_link; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?></p>
-		<?php if ( '' === $ids['ga'] && '' === $ids['pixel'] ) : ?>
-			<p class="consent-note consent-note--none" data-show="prefs" data-when="none" hidden><?php echo esc_html( eab_mod( 'consent_none_text' ) ); ?></p>
+	<div class="cookie__view" data-show="intro">
+		<p><?php echo esc_html( eab_consent_intro_text() ); ?></p>
+		<?php if ( '' !== $policy && '' !== $plabel ) : ?>
+			<a class="cookie__more" href="<?php echo esc_url( $policy ); ?>"><?php echo esc_html( $plabel ); ?></a>
 		<?php endif; ?>
-
-		<div class="consent-prefs" data-show="prefs" hidden>
-			<ul class="consent-cats">
-				<?php foreach ( $cats as $eab_cat_key => $eab_cat ) : ?>
-					<?php
-					$eab_cat_id  = 'consent-' . $eab_cat_key;
-					$eab_locked  = 'necessary' === $eab_cat_key;
-					$eab_details = eab_consent_detail_html( $eab_cat['detail'] );
-					?>
-					<li class="consent-cat<?php echo $eab_locked ? ' is-locked' : ''; ?>"<?php echo $eab_locked ? '' : ' data-cat="' . esc_attr( $eab_cat_key ) . '" hidden'; ?>>
-						<div class="consent-cat-row">
-							<span class="consent-cat-icon" aria-hidden="true"><?php echo eab_icon( $eab_cat['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
-							<div class="consent-cat-main">
-								<p class="consent-cat-name" id="<?php echo esc_attr( $eab_cat_id ); ?>-name"><?php echo esc_html( $eab_cat['name'] ); ?></p>
-								<p class="consent-cat-desc" id="<?php echo esc_attr( $eab_cat_id ); ?>-desc"><?php echo esc_html( $eab_cat['desc'] ); ?></p>
-							</div>
-							<?php if ( $eab_locked ) : ?>
-								<span class="consent-always"><?php echo esc_html( eab_mod( 'consent_always_label' ) ); ?></span>
-							<?php else : ?>
-								<label class="consent-switch">
-									<input type="checkbox" role="switch" name="<?php echo esc_attr( $eab_cat_key ); ?>" aria-labelledby="<?php echo esc_attr( $eab_cat_id ); ?>-name" aria-describedby="<?php echo esc_attr( $eab_cat_id ); ?>-desc">
-									<span class="consent-track" aria-hidden="true"></span>
-								</label>
-							<?php endif; ?>
-						</div>
-						<?php if ( $eab_details && '' !== trim( (string) $detail_label ) ) : ?>
-							<details class="consent-more">
-								<summary><span><?php echo esc_html( $detail_label ); ?></span><?php echo eab_icon( 'arrow', 'icon consent-more-icon' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></summary>
-								<?php echo $eab_details; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_consent_detail_html ?>
-							</details>
-						<?php endif; ?>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<p class="consent-note"><?php echo esc_html( eab_mod( 'consent_prefs_note' ) ); ?><?php echo $policy_link; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?></p>
+		<div class="cookie__btns" data-when="none"<?php echo 'none' !== $mode ? ' hidden' : ''; ?>>
+			<?php echo $btn( 'ok', 'btn--primary', 'consent_ok_label' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		</div>
+		<div class="cookie__btns" data-when="optional"<?php echo 'optional' !== $mode ? ' hidden' : ''; ?>>
+			<?php echo $btn( 'reject', 'btn--outline', 'consent_reject_label' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo $btn( 'accept', 'btn--primary', 'consent_accept_label' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo $btn( 'prefs', 'btn--light', 'consent_prefs_label', '', 'arrow-right', true ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		</div>
 	</div>
 
-	<div class="consent-actions">
-		<button type="button" class="consent-btn consent-btn--save btn-dark" data-consent="save" data-show="prefs" data-when="optional" hidden><?php echo esc_html( eab_mod( 'consent_save_label' ) ); ?></button>
-		<button type="button" class="consent-btn consent-btn--choice consent-btn--reject btn-ghost" data-consent="reject" data-when="optional" hidden><?php echo esc_html( eab_mod( 'consent_reject_label' ) ); ?></button>
-		<button type="button" class="consent-btn consent-btn--choice consent-btn--accept btn-dark" data-consent="accept" data-when="optional" hidden><?php echo esc_html( eab_mod( 'consent_accept_label' ) ); ?></button>
-		<button type="button" class="consent-btn consent-btn--ok btn-dark" data-consent="ok" data-when="none" hidden><?php echo esc_html( eab_mod( 'consent_ok_label' ) ); ?></button>
-		<button type="button" class="consent-btn consent-btn--link" data-consent="prefs" data-show="intro" data-when="optional" hidden><?php echo esc_html( eab_mod( 'consent_prefs_label' ) ); ?><?php echo eab_icon( 'arrow', 'icon icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+	<div class="cookie__view" data-show="prefs" hidden>
+		<?php echo eab_consent_row( 'necessary', eab_mod( 'consent_necessary_name' ), eab_mod( 'consent_necessary_desc' ), true ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php if ( '' !== $ids['ga'] ) : ?>
+			<?php echo eab_consent_row( 'analytics', eab_mod( 'consent_analytics_name' ), eab_mod( 'consent_analytics_desc' ), false ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php endif; ?>
+		<?php if ( '' !== $ids['pixel'] ) : ?>
+			<?php echo eab_consent_row( 'marketing', eab_mod( 'consent_marketing_name' ), eab_mod( 'consent_marketing_desc' ), false ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php endif; ?>
+		<?php if ( '' !== $note ) : ?>
+			<p class="cookie__note"><?php echo esc_html( $note ); ?></p>
+		<?php endif; ?>
+		<div class="cookie__btns">
+			<?php echo $btn( 'back', 'btn--outline', 'consent_back_label', '', 'chevron-left' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo $btn( 'save', 'btn--primary', 'consent_save_label', 'optional' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo $btn( 'ok', 'btn--primary', 'consent_ok_label', 'none' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		</div>
 	</div>
-
-	<button type="button" class="consent-close" data-consent="close" aria-label="<?php echo esc_attr( eab_mod( 'consent_close_label' ) ); ?>"><?php echo eab_icon( 'x', 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
-</section>
+</div>
 	<?php
 }
 add_action( 'wp_body_open', 'eab_consent_card', 5 );

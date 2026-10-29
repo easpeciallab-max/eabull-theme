@@ -3,11 +3,12 @@
  * Preview stubs for the consent module (inc/modules/consent.php) · dev only, not deployed.
  *
  * Simulate settings in the preview with a query string:
- *   ?fx_consent=ga        → valid GA4 ID (analytics category)
- *   ?fx_consent=pixel     → valid Meta Pixel ID (marketing category)
+ *   ?fx_consent=ga        → valid GA4 ID (analytics row, accept / reject / settings buttons)
+ *   ?fx_consent=pixel     → valid Meta Pixel ID (marketing row)
  *   ?fx_consent=ga,pixel  → both
- *   ?fx_consent=force     → show_cookie_consent on, no tracking IDs ("necessary only" mode)
- *   ?fx_consent=bad       → malformed IDs (must be ignored: no card, no tags)
+ *   ?fx_consent=off       → show_cookie_consent off, no IDs (card only opens from "ตั้งค่าคุกกี้")
+ *   ?fx_consent=bad       → malformed IDs (must be ignored: "necessary only" card, no tags)
+ * Default (no switch) = the live state: no IDs, card shows the "necessary only" text with one OK button.
  */
 
 if ( ! function_exists( 'wp_script_is' ) ) {
@@ -23,19 +24,19 @@ if ( ! function_exists( 'wp_print_inline_script_tag' ) ) {
 }
 
 if ( isset( $_GET['fx_consent'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
-	$GLOBALS['fx_consent_sim'] = preg_match_all( '/ga|pixel|force|bad/', (string) $_GET['fx_consent'], $fx_m ) ? $fx_m[0] : array(); // phpcs:ignore
+	$GLOBALS['fx_consent_sim'] = preg_match_all( '/ga|pixel|off|bad/', (string) $_GET['fx_consent'], $fx_m ) ? $fx_m[0] : array(); // phpcs:ignore
 	add_filter(
 		'eab_defaults',
 		function ( $d ) {
 			$sim = $GLOBALS['fx_consent_sim'];
 			if ( in_array( 'ga', $sim, true ) ) {
-				$d['ga_measurement_id'] = 'G-EAWING0TEST';
+				$d['ga_measurement_id'] = 'G-EABULL0TEST';
 			}
 			if ( in_array( 'pixel', $sim, true ) ) {
 				$d['fb_pixel_id'] = '123456789012345';
 			}
-			if ( in_array( 'force', $sim, true ) ) {
-				$d['show_cookie_consent'] = true;
+			if ( in_array( 'off', $sim, true ) ) {
+				$d['show_cookie_consent'] = false;
 			}
 			if ( in_array( 'bad', $sim, true ) ) {
 				$d['ga_measurement_id'] = 'UA-12345-1';

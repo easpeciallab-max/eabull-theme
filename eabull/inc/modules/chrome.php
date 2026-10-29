@@ -1,15 +1,18 @@
 <?php
 /**
- * EA BULL · โมดูล Site Chrome (header · แผงติดต่อ · footer · แถบล่างมือถือ · ปุ่ม LINE ลอย)
+ * EA BULL · Site chrome: header + menu, yellow contact band, footer, mobile dock,
+ * floating contact button + quick sheet.
  *
- * หน้าตา "Glass Sky" (docs/design.md · ต้นแบบ dev/mockup/index.html)
- * - กรอบเว็บ .site-frame เปิดใน header.php ปิดใน footer.php
- * - header: แคปซูลกระจกลอย (โลโก้ · เมนู · ปุ่มทอง "ทัก LINE") · จอแคบเป็นปุ่มกลมเปิดแผ่นเมนูกระจก
- * - แผงติดต่อ "Let's talk" (eab_chrome_contact_panel): ข้อความ + รายการช่องทางซ้าย · การ์ดปุ่ม LINE / OpenChat + สิ่งที่ทีมงานจะถามขวา
- *   หน้าย่อยเรียกผ่าน eab_line_cta() · หน้าที่ไม่ได้เรียก (เช่นหน้าแรก) footer.php พิมพ์ให้ 1 ครั้งก่อน footer
- * - footer กระจกสว่าง: แบรนด์ · คู่มือ · หน้าในเว็บ · เอกสาร · คำเตือนความเสี่ยง · แถวลิขสิทธิ์ + ลิงก์นโยบาย + ตั้งค่าคุกกี้
- * - ค่าเริ่มต้น + ส่วน Customizer อยู่ในไฟล์นี้ (ฟิลเตอร์ eab_defaults / eab_customizer_sections)
- * - ปุ่มติดต่อทุกปุ่มใช้ eab_contact_target() · ไม่มีปุ่มใดชี้ไปที่ '#'
+ * Markup follows the approved mockup (dev/mockup/_src/partials/header|contact|footer|dock|fab.html)
+ * and the JS hooks in docs/phase2.md section 4 (main.js). Styles live in style.css; the
+ * few extra rules for WordPress menus and the QR image are in assets/css/chrome.css.
+ *
+ * - Every text, link and image is a Customizer setting (defaults + controls below).
+ * - LINE buttons use eab_contact_target(): LINE OA when set, otherwise the /go/ page,
+ *   otherwise href="#" + data-wait (toast). Each LINE link keeps its data-line-pos.
+ * - The dashboard link is empty until the owner's dashboard is ready: the button still
+ *   shows and answers with a toast (data-wait).
+ * - header.php and footer.php only arrange the pieces built here.
  *
  * @package eabull
  */
@@ -19,239 +22,271 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* ==============================================================
- * ค่าเริ่มต้น
+ * Defaults
  * ============================================================== */
-add_filter(
-	'eab_defaults',
-	function ( $d ) {
-		return array_merge(
-			$d,
-			array(
-				/* ช่องทาง (ต่อจาก facebook_url ใน "1) ช่องทางติดต่อ") */
-				'instagram_url'            => '',
-				'tiktok_url'               => '',
-				'youtube_url'              => '',
-				'float_line_text'          => 'ถามทีมงานทาง LINE',
 
-				/* แผงติดต่อท้ายหน้าย่อย (eab_line_cta) */
-				'chrome_cta_label'         => 'Talk to the team',
-				'contact_title'            => 'อยากรู้ว่า EA BULL เข้ากับแผนของคุณไหม?',
-				'contact_text'             => 'บอกทุนที่ตั้งใจใช้และบัญชี MT5 ที่มีอยู่ ทีมงานจะอธิบายขั้นตอนรับไฟล์และการติดตั้งให้ทาง LINE ค่อย ๆ ตัดสินใจได้ ไม่ต้องรีบ',
+function eab_chrome_defaults( $d ) {
+	$d = array_merge(
+		$d,
+		array(
+			/* Header */
+			'chrome_emblem'          => 'assets/img/brand/eabull-emblem.webp',
+			'chrome_brand_alt'       => 'EA BULL',
+			'chrome_home_aria'       => 'EA BULL หน้าแรก',
+			'chrome_skip_text'       => 'ข้ามไปเนื้อหา',
+			'chrome_nav_aria'        => 'เมนูหลัก',
+			'chrome_menu_open'       => 'เปิดเมนู',
+			'chrome_menu_close'      => 'ปิดเมนู',
+			'chrome_loading_text'    => 'กำลังโหลดบทความ…',
 
-				/* แผงติดต่อ · ใช้กับหน้าที่ไม่มีแผงติดต่อของตัวเอง (เช่น หน้าแรก) */
-				'footer_console_label'     => "Let's talk",
-				'footer_headline'          => 'มีคำถามก่อนเริ่ม คุยกับทีมงานได้เลย',
-				'footer_sub'               => 'ถามเรื่องแพ็กเกจ ทุนที่ตั้งใจใช้ หรือขั้นตอนติดตั้ง ทีมงานคนไทยตอบทาง LINE',
+			/* Main menu (used until a menu is assigned in Appearance → Menus) */
+			'nav_home_label'         => 'หน้าแรก',
+			'nav_products_label'     => 'สินค้า',
+			'nav_test_label'         => 'การทดสอบ',
+			'nav_test_items'         => "backtest | Backtest | ทดสอบย้อนหลังด้วย Strategy Tester\nforward-test | Forward Test | ทดสอบกับตลาดจริงด้วยบัญชีเล็ก",
+			'nav_guide_label'        => 'คู่มือการใช้งาน',
+			'nav_guide_items'        => "how-to-install | วิธีติดตั้ง EA บน MT5 | วางไฟล์ เปิดสวิตช์ ลากลงกราฟ\nopen-mt5-account | เปิดบัญชีเทรด MT5 | สมัคร Zaurix และยืนยันตัวตน\ndeposit | ฝากเงินเข้าบัญชีเทรด | ฝากผ่าน Portal ของโบรกเกอร์\nmt5-login | ติดตั้งและล็อกอิน MT5 | คอม มือถือ และแท็บเล็ต\nvps-windows | VPS บน Windows | เชื่อมต่อด้วย Remote Desktop\nvps-android | VPS บน Android | ใช้แอป Windows App\nvps-ios | VPS บน iPhone / iPad | ใช้แอป Windows App\ntools | เครื่องคำนวณ Lot / Drawdown | คิดขนาดไม้จากเงินที่ยอมเสีย",
+			'nav_pricing_label'      => 'แพ็กเกจ',
+			'nav_articles_label'     => 'บทความ',
+			'nav_contact_label'      => 'ติดต่อ',
 
-				/* แผงติดต่อ · การ์ดขวา */
-				'chrome_card_title'        => 'ส่งข้อความหาทีมงาน',
-				'chrome_card_text'         => 'แตะปุ่มด้านล่าง แล้วพิมพ์คำถามแรกได้ทันที',
-				'footer_line_text'         => 'ทัก LINE คุยกับทีมงาน',
-				'footer_qr_toggle_text'    => 'สแกนเพิ่มเพื่อน LINE',
-				'footer_qr_text'           => 'เปิดกล้องมือถือหรือแอป LINE แล้วสแกน เพื่อเพิ่มเพื่อน @eabull ได้ทันที',
-				'footer_line_qr_alt'       => 'QR Code สำหรับเพิ่ม LINE ของ EA BULL',
-				'footer_prep_title'        => 'สิ่งที่ทีมงานจะถาม',
-				'footer_prep_text'         => 'เตรียมคำตอบไว้ จะคุยกันได้เร็วขึ้น',
-				'footer_prep_items'        => "เงินทุนที่จะใช้กับ EA\nมีบัญชี MT5 แล้วหรือยัง และกับโบรกเกอร์ไหน\nใช้คอมพิวเตอร์ มือถือ หรือมี VPS อยู่แล้ว\nคำถามที่อยากรู้ก่อนเริ่ม",
-				'footer_hours_title'       => 'เวลาตอบแชท',
-				'footer_hours_text'        => '',
+			/* Customer dashboard (owner: not finished yet, keep the button ready) */
+			'dashboard_url'          => '',
+			'header_dash_label'      => 'แดชบอร์ด',
+			'chrome_dash_wait'       => 'ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ',
 
-				/* Footer · คอลัมน์ลิงก์ */
-				'footer_status_text'       => 'EA BULL ผู้ช่วยเทรดอัตโนมัติสำหรับ MetaTrader 5 ทำงานตามแผนและขีดจำกัดความเสี่ยงที่คุณตั้งเอง มีคู่มือภาษาไทยครบตั้งแต่เปิดบัญชีจนรันบน VPS และทีมงานคนไทยคอยดูแลทาง LINE',
-				'footer_about_points'      => "ใช้กับ MT5 บน Windows และ VPS\nดูพอร์ตผ่านแอป MT5 บนมือถือได้ทุกที่\nทีมงานคนไทยตอบทาง LINE OA",
-				'footer_index_title'       => 'หน้าในเว็บ',
-				'footer_docs_title'        => 'ข้อมูลและนโยบาย',
-				'footer_docs_items'        => "about|เกี่ยวกับเรา\nprivacy-policy|นโยบายความเป็นส่วนตัว\nterms-of-use|เงื่อนไขการใช้บริการ\ndata-deletion|ขอลบข้อมูลส่วนบุคคล",
-				'footer_risk_link'         => 'ความเสี่ยงของการใช้ EA',
-				'footer_risk_short'        => 'การเทรด Forex และ CFD มีความเสี่ยงสูง อาจขาดทุนจนหมดเงินทุน ผลในอดีตไม่รับประกันอนาคต EA BULL ไม่ใช่คำแนะนำการลงทุนและไม่รับประกันกำไร',
-				'footer_risk_more'         => 'อ่านคำเตือนฉบับเต็ม',
-				'footer_facebook_text'     => 'เพจ Facebook',
-				'footer_instagram_text'    => 'Instagram',
-				'footer_tiktok_text'       => 'TikTok',
-				'footer_youtube_text'      => 'YouTube',
-				'footer_email_text'        => 'ส่งอีเมลถึงทีมงาน',
+			/* Channels shared by every chrome part */
+			'footer_line_text'       => 'ทัก LINE คุยกับทีมงาน',
+			'chrome_line_wait'       => 'ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ',
+			'chrome_line_name'       => 'LINE',
+			'chrome_openchat_name'   => 'OpenChat',
+			'chrome_fb_name'         => 'Facebook',
 
-				/* Footer · แถวลิขสิทธิ์ */
-				'footer_copyright_text'    => 'สงวนลิขสิทธิ์',
-				'footer_legal_items'       => "privacy-policy|นโยบายความเป็นส่วนตัว\nterms-of-use|เงื่อนไขการใช้บริการ",
-				'footer_backtop_text'      => 'กลับขึ้นด้านบน',
+			/* Yellow contact band before the footer */
+			'contact_title'          => 'สงสัยตรงไหน ถามทีมงานก่อนเริ่มได้เลย',
+			'contact_text'           => 'ทักมาทาง LINE ได้ทุกเรื่อง ตั้งแต่เลือกแพ็กเกจ เปิดบัญชี ไปจนถึงติดตั้ง EA บน MT5',
+			'contact_hide_on'        => "privacy-policy\nterms-of-use\ndata-deletion",
+			'contact_line_title'     => 'LINE Official EA BULL',
+			'contact_line_sub'       => 'ทักแชตกับทีมงาน',
+			'contact_line_pending'   => 'ลิงก์รอข้อมูลจากเจ้าของ',
+			'contact_openchat_title' => 'OpenChat EA BULL',
+			'contact_openchat_sub'   => 'ห้องพูดคุยของผู้ใช้ EA BULL',
+			'contact_fb_title'       => 'Facebook EA BULL',
+			'contact_card_title'     => 'ส่งข้อความหาทีมงาน',
+			'contact_card_text'      => 'บอกเราว่าตอนนี้อยู่ขั้นไหน ทีมงานจะแนะนำขั้นต่อไปให้',
+			'contact_qr_title'       => 'สแกนเพิ่มเพื่อน LINE',
+			'contact_qr_text'        => 'สแกนด้วยกล้องโทรศัพท์ หรือเมนูสแกนในแอป LINE',
+			'contact_qr_wait'        => "QR LINE\nรอข้อมูล",
+			'contact_qr_alt'         => 'QR Code เพิ่มเพื่อน LINE ของ EA BULL',
+			'contact_ask_title'      => 'สิ่งที่ทีมงานจะถาม',
+			'contact_ask_items'      => "เงินทุนที่ตั้งใจใช้ และรับความเสี่ยงได้แค่ไหน\nมีบัญชี MT5 แล้วหรือยัง ใช้โบรกเกอร์ไหน\nจะรัน EA บนคอม มือถือ หรือ VPS\nข้อสงสัยที่อยากถามก่อนเริ่ม",
 
-				/* แถบล่างมือถือ (ช่องท้ายแถบ = ติดต่อ) · ช่อง 2 = แดชบอร์ด (ลิงก์ dashboard_url) */
-				'mobile_nav_dash_label'    => 'แดชบอร์ด',
-				'mobile_nav_contact_label' => 'ติดต่อ',
+			/* Footer */
+			'footer_about'           => 'EA BULL ผู้ช่วยเทรดอัตโนมัติบน MetaTrader 5 · แข็งแกร่งด้วยวินัย บุกตลาดอย่างมีแผน',
+			'footer_index_title'     => 'หน้าในเว็บ',
+			'footer_index_items'     => "home | หน้าแรก\nproducts | สินค้า\nbacktest | Backtest\nforward-test | Forward Test\npricing | แพ็กเกจ\narticles | บทความ\ngo | ติดต่อ",
+			'footer_docs_title'      => 'ข้อมูลและนโยบาย',
+			'footer_docs_items'      => "about | เกี่ยวกับเรา\nrisk-disclosure | ประกาศความเสี่ยง\nprivacy-policy | นโยบายความเป็นส่วนตัว\nterms-of-use | ข้อกำหนดการใช้บริการ\ndata-deletion | ขอลบข้อมูลส่วนบุคคล",
+			'footer_risk_short'      => 'การเทรดด้วย EA มีความเสี่ยงสูง อาจขาดทุนจนหมดเงินในบัญชี ผลทดสอบในอดีตไม่ได้บอกผลในอนาคต',
+			'footer_risk_more'       => 'อ่านประกาศความเสี่ยงฉบับเต็ม',
+			'footer_copyright_text'  => 'สงวนลิขสิทธิ์',
+			'footer_legal_items'     => "privacy-policy | นโยบายความเป็นส่วนตัว\nterms-of-use | ข้อกำหนดการใช้บริการ",
+			'footer_backtop_text'    => 'กลับขึ้นด้านบน',
 
-				/* เมนูหลัก (ใช้เมื่อยังไม่ได้สร้างเมนูใน WordPress) + ข้อความระบบ */
-				/* ปุ่มไปแดชบอร์ดลูกค้า (Header + ช่อง 2 ของแถบล่างมือถือ) */
-				'dashboard_url'            => '',
-				'header_dash_label'        => 'แดชบอร์ด',
-				'nav_home_label'           => 'หน้าแรก',
-				'nav_products_label'       => 'สินค้า',
-				'nav_test_label'           => 'การทดสอบ',
-				'nav_guide_label'          => 'คู่มือการใช้งาน',
-				'nav_pricing_label'        => 'แพ็กเกจ',
-				'nav_articles_label'       => 'บทความ',
-				'nav_contact_label'        => 'ติดต่อ',
-				'chrome_skip_text'         => 'ข้ามไปที่เนื้อหาหลัก',
-				'chrome_loading_text'      => 'กำลังโหลดบทความ…',
-			)
-		);
-	}
-);
+			/* Mobile dock (slot 1, 3, 4 keys and show_mobile_nav are defined in functions.php) */
+			'chrome_dock_aria'       => 'เมนูลัด',
+			'mobile_nav_dash_label'  => 'แดชบอร์ด',
+			'mobile_nav_line_label'  => 'LINE',
+
+			/* Floating contact button + quick sheet */
+			'show_float_line'        => true,
+			'float_line_text'        => 'ติดต่อทีมงาน',
+			'chrome_quick_title'     => 'คุยกับทีมงาน EA BULL',
+			'chrome_quick_sub'       => 'เลือกช่องทางที่สะดวก',
+			'chrome_quick_line'      => 'ทัก LINE',
+			'chrome_quick_fb'        => 'Facebook EA BULL',
+			'chrome_quick_go'        => 'หน้ารวมลิงก์เริ่มต้น',
+			'chrome_close_label'     => 'ปิด',
+		)
+	);
+	return $d;
+}
+add_filter( 'eab_defaults', 'eab_chrome_defaults' );
 
 /* ==============================================================
  * Customizer
  * ============================================================== */
 
-/**
- * แทรกรายการต่อจาก key ที่กำหนด (ไม่มี key นั้น = ต่อท้าย)
- */
-function eab_chrome_insert_after( $array, $after, $insert ) {
-	if ( ! is_array( $array ) ) {
-		$array = array();
+function eab_chrome_sections( $sections, $d ) {
+	unset( $d );
+
+	/* These central keys now belong to the sections below. */
+	if ( isset( $sections['eab_general']['fields'] ) ) {
+		foreach ( array( 'contact_title', 'contact_text', 'show_float_line', 'float_line_text' ) as $key ) {
+			unset( $sections['eab_general']['fields'][ $key ] );
+		}
 	}
-	if ( ! isset( $array[ $after ] ) ) {
-		return array_merge( $array, $insert );
-	}
-	$out = array();
-	foreach ( $array as $key => $value ) {
-		$out[ $key ] = $value;
-		if ( $key === $after ) {
-			foreach ( $insert as $new_key => $new_value ) {
-				$out[ $new_key ] = $new_value;
+
+	$items_hint = 'บรรทัดละ 1 หน้า รูปแบบ slug | ชื่อ | บรรทัดรอง · แสดงเฉพาะหน้าที่เผยแพร่แล้ว · ถ้าตั้งเมนูเองที่ รูปแบบ → เมนู แล้ว เมนูบนจะใช้เมนูนั้นแทน';
+	$list_hint  = 'บรรทัดละ 1 ลิงก์ รูปแบบ slug | ชื่อลิงก์ · ใช้ home (หน้าแรก) products (สินค้าตัวแรก) articles (หน้ารวมบทความ) ได้ · หน้าที่ยังไม่เผยแพร่จะถูกซ่อน';
+
+	$mine = array(
+		'eab_chrome_nav'     => array(
+			'title'       => '15) Header · เมนูหลัก · ปุ่มแดชบอร์ด',
+			'description' => 'แถบดำด้านบนทุกหน้า (ยกเว้น /go) · โลโก้ตัวอักษรใช้รูปจากหมวด 1 · เมนูในหมวดนี้ใช้จนกว่าจะตั้งเมนู "เมนูหลัก (Header)" ที่ รูปแบบ → เมนู',
+			'fields'      => array(
+				'chrome_emblem'        => array( 'รูปหัววัวหน้าโลโก้ตัวอักษร', 'image', 'ว่าง = ใช้รูปหัววัวของธีม' ),
+				'chrome_brand_alt'     => array( 'ชื่อแบรนด์ (alt ของโลโก้ และชื่อในแถวลิขสิทธิ์)', 'text' ),
+				'chrome_home_aria'     => array( 'ชื่อลิงก์โลโก้สำหรับโปรแกรมอ่านจอ', 'text' ),
+				'chrome_skip_text'     => array( 'ลิงก์ข้ามไปเนื้อหา (เห็นเมื่อกด Tab)', 'text' ),
+				'chrome_nav_aria'      => array( 'ชื่อเมนูหลักสำหรับโปรแกรมอ่านจอ', 'text' ),
+				'chrome_menu_open'     => array( 'ปุ่มเมนูบนมือถือ · คำอ่านตอนเมนูปิด', 'text' ),
+				'chrome_menu_close'    => array( 'ปุ่มเมนูบนมือถือ · คำอ่านตอนเมนูเปิด', 'text' ),
+				'nav_home_label'       => array( 'เมนู · หน้าแรก', 'text' ),
+				'nav_products_label'   => array( 'เมนู · หัวกลุ่มสินค้า (รายการมาจากหมวดสินค้า เรียงตามเลขรุ่น · ว่าง = ซ่อน)', 'text' ),
+				'nav_test_label'       => array( 'เมนู · หัวกลุ่มการทดสอบ', 'text' ),
+				'nav_test_items'       => array( 'เมนู · รายการในกลุ่มการทดสอบ', 'textarea', $items_hint ),
+				'nav_guide_label'      => array( 'เมนู · หัวกลุ่มคู่มือ (ใช้เป็นหัวคอลัมน์คู่มือใน Footer ด้วย)', 'text' ),
+				'nav_guide_items'      => array( 'เมนู · รายการในกลุ่มคู่มือ (คอลัมน์คู่มือใน Footer ใช้ชื่อชุดนี้)', 'textarea', $items_hint ),
+				'nav_pricing_label'    => array( 'เมนู · แพ็กเกจ', 'text' ),
+				'nav_articles_label'   => array( 'เมนู · บทความ', 'text' ),
+				'nav_contact_label'    => array( 'เมนู · ติดต่อ (ไปหน้า /go · ว่าง = ซ่อน)', 'text' ),
+				'dashboard_url'        => array( 'ลิงก์หน้าแดชบอร์ดของลูกค้า · ใช้กับปุ่มบนแถบด้านบนและช่องที่ 2 ของแถบล่าง', 'path', 'ว่าง = ปุ่มยังแสดงอยู่ กดแล้วขึ้นข้อความแจ้งจากช่องถัดไป' ),
+				'header_dash_label'    => array( 'ปุ่มแดชบอร์ดบน Header · ข้อความ', 'text' ),
+				'chrome_dash_wait'     => array( 'ข้อความแจ้งเมื่อกดปุ่มแดชบอร์ดที่ยังไม่มีลิงก์', 'text' ),
+				'footer_line_text'     => array( 'ข้อความปุ่ม LINE หลัก (ใช้ทั้งเว็บ)', 'text', 'ลิงก์มาจาก "ลิงก์ LINE OA" ในหมวด 1 · ยังไม่มีลิงก์ = ปุ่มพาไปหน้า /go' ),
+				'chrome_line_wait'     => array( 'ข้อความแจ้งเมื่อกดปุ่ม LINE ที่ยังไม่มีปลายทาง', 'text' ),
+				'chrome_line_name'     => array( 'ชื่อช่องทาง LINE (ไอคอนท้ายเว็บ)', 'text' ),
+				'chrome_openchat_name' => array( 'ชื่อช่องทาง OpenChat (ปุ่มเล็กในเมนูมือถือ ไอคอนท้ายเว็บ)', 'text' ),
+				'chrome_fb_name'       => array( 'ชื่อช่องทาง Facebook (ปุ่มเล็กในเมนูมือถือ ไอคอนท้ายเว็บ)', 'text' ),
+				'chrome_loading_text'  => array( 'ข้อความบนปุ่มระหว่างโหลดบทความเพิ่ม', 'text' ),
+			),
+		),
+		'eab_chrome_contact' => array(
+			'title'       => '15.1) แถบติดต่อสีเหลืองท้ายหน้า',
+			'description' => 'แสดงก่อน Footer ทุกหน้า · หน้าย่อยตั้งหัวข้อของตัวเองได้ ถ้าไม่ตั้งจะใช้หัวข้อในหมวดนี้ · ปุ่ม LINE ใช้ลิงก์จากหมวด 1',
+			'fields'      => array(
+				'contact_title'          => array( 'หัวข้อกลาง', 'text' ),
+				'contact_text'           => array( 'บรรทัดรองกลาง', 'textarea' ),
+				'contact_hide_on'        => array( 'หน้าที่ไม่แสดงแถบนี้ (slug บรรทัดละ 1 หน้า)', 'textarea' ),
+				'contact_line_title'     => array( 'รายการช่องทาง · LINE · ชื่อ', 'text' ),
+				'contact_line_sub'       => array( 'รายการช่องทาง · LINE · บรรทัดรอง', 'text' ),
+				'contact_line_pending'   => array( 'รายการช่องทาง · LINE · ต่อท้ายเมื่อยังไม่มีลิงก์ LINE OA', 'text' ),
+				'contact_openchat_title' => array( 'รายการช่องทาง · OpenChat · ชื่อ', 'text' ),
+				'contact_openchat_sub'   => array( 'รายการช่องทาง · OpenChat · บรรทัดรอง', 'text' ),
+				'contact_fb_title'       => array( 'รายการช่องทาง · Facebook · ชื่อ (บรรทัดรองแสดงที่อยู่เพจจากหมวด 1)', 'text' ),
+				'contact_card_title'     => array( 'การ์ดดำ · หัวข้อ', 'text' ),
+				'contact_card_text'      => array( 'การ์ดดำ · คำอธิบาย', 'text' ),
+				'contact_qr_title'       => array( 'การ์ดดำ · QR · หัวข้อ', 'text' ),
+				'contact_qr_text'        => array( 'การ์ดดำ · QR · คำอธิบาย', 'text' ),
+				'contact_qr_wait'        => array( 'การ์ดดำ · ข้อความในกรอบ QR ระหว่างรอรูป', 'textarea', 'รูป QR อัปโหลดที่หมวด 1 · แสดงเมื่อมีทั้งรูปและลิงก์ LINE OA' ),
+				'contact_qr_alt'         => array( 'การ์ดดำ · คำอธิบายรูป QR (alt)', 'text' ),
+				'contact_ask_title'      => array( 'การ์ดดำ · หัวข้อรายการคำถาม', 'text' ),
+				'contact_ask_items'      => array( 'การ์ดดำ · รายการคำถาม (บรรทัดละ 1 ข้อ · ว่าง = ซ่อน)', 'textarea' ),
+			),
+		),
+		'eab_footer'         => array(
+			'title'       => '15.2) Footer ท้ายเว็บ',
+			'description' => 'แบรนด์ · 3 คอลัมน์ลิงก์ (คอลัมน์แรกคือคู่มือจากหมวด 15) · กล่องเตือนความเสี่ยงแบบสั้นที่ลิงก์ไปหน้าประกาศความเสี่ยง · แถวลิขสิทธิ์',
+			'fields'      => array(
+				'footer_about'          => array( 'ข้อความใต้โลโก้', 'textarea' ),
+				'footer_index_title'    => array( 'คอลัมน์ 2 · หัวข้อ', 'text' ),
+				'footer_index_items'    => array( 'คอลัมน์ 2 · รายการลิงก์', 'textarea', $list_hint ),
+				'footer_docs_title'     => array( 'คอลัมน์ 3 · หัวข้อ', 'text' ),
+				'footer_docs_items'     => array( 'คอลัมน์ 3 · รายการลิงก์', 'textarea', $list_hint ),
+				'footer_risk_short'     => array( 'คำเตือนความเสี่ยงแบบสั้น (1 ถึง 2 บรรทัด)', 'textarea', 'ต้องบอกว่าขาดทุนได้และผลในอดีตไม่ได้บอกผลในอนาคต · ลิงก์ไปหน้า risk-disclosure ต่อท้ายให้เอง' ),
+				'footer_risk_more'      => array( 'คำบนลิงก์ต่อท้ายคำเตือน (ไปหน้า risk-disclosure)', 'text' ),
+				'footer_copyright_text' => array( 'แถวลิขสิทธิ์ · ข้อความหลังชื่อแบรนด์', 'text' ),
+				'footer_legal_items'    => array( 'แถวลิขสิทธิ์ · ลิงก์นโยบาย', 'textarea', $list_hint . ' · ปุ่ม "ตั้งค่าคุกกี้" ต่อท้ายให้เอง (ชื่อปุ่มตั้งที่หมวดคุกกี้)' ),
+				'footer_backtop_text'   => array( 'แถวล่างสุด · คำบนลิงก์เลื่อนกลับไปบนสุด (ว่าง = ซ่อน)', 'text' ),
+			),
+		),
+		'eab_mobile_nav'     => array(
+			'title'       => '16) แถบล่างมือถือ และปุ่มติดต่อลอย',
+			'description' => 'แถบดำ 5 ช่องบนจอกว้างไม่เกิน 900px · ช่องของหน้าที่เปิดอยู่เป็นสีเหลืองให้เอง · ช่อง 2 ใช้ลิงก์แดชบอร์ดจากหมวด 15 · ช่อง 5 ใช้ลิงก์ LINE จากหมวด 1 · ปุ่มเขียวมุมขวาล่างเปิดแผงติดต่อด่วน',
+			'fields'      => array(
+				'show_mobile_nav'          => array( 'แสดงแถบล่างบนมือถือ', 'checkbox' ),
+				'chrome_dock_aria'         => array( 'ชื่อแถบล่างสำหรับโปรแกรมอ่านจอ', 'text' ),
+				'mobile_nav_home_label'    => array( 'ช่อง 1 · ชื่อ', 'text' ),
+				'mobile_nav_home_url'      => array( 'ช่อง 1 · ลิงก์หรือ slug', 'text' ),
+				'mobile_nav_dash_label'    => array( 'ช่อง 2 · ชื่อ (แดชบอร์ด)', 'text' ),
+				'mobile_nav_price_label'   => array( 'ช่อง 3 · ชื่อ', 'text' ),
+				'mobile_nav_price_url'     => array( 'ช่อง 3 · ลิงก์หรือ slug', 'text' ),
+				'mobile_nav_install_label' => array( 'ช่อง 4 · ชื่อ (เป็นสีเหลืองในทุกหน้าคู่มือ)', 'text' ),
+				'mobile_nav_install_url'   => array( 'ช่อง 4 · ลิงก์หรือ slug', 'text' ),
+				'mobile_nav_line_label'    => array( 'ช่อง 5 · ชื่อ (LINE)', 'text' ),
+				'show_float_line'          => array( 'แสดงปุ่มติดต่อลอยมุมขวาล่าง', 'checkbox' ),
+				'float_line_text'          => array( 'ปุ่มติดต่อลอย · คำอ่านสำหรับโปรแกรมอ่านจอ', 'text' ),
+				'chrome_quick_title'       => array( 'แผงติดต่อด่วน · หัวข้อ', 'text' ),
+				'chrome_quick_sub'         => array( 'แผงติดต่อด่วน · บรรทัดรอง', 'text' ),
+				'chrome_quick_line'        => array( 'แผงติดต่อด่วน · ปุ่ม LINE', 'text' ),
+				'chrome_quick_fb'          => array( 'แผงติดต่อด่วน · ปุ่ม Facebook', 'text' ),
+				'chrome_quick_go'          => array( 'แผงติดต่อด่วน · ลิงก์ไปหน้า /go (ว่าง = ซ่อน)', 'text' ),
+				'chrome_close_label'       => array( 'ปุ่มปิด · คำอ่านสำหรับโปรแกรมอ่านจอ', 'text' ),
+			),
+		),
+	);
+
+	/* Put the chrome sections where the old footer section sat, once. */
+	$out    = array();
+	$placed = false;
+	foreach ( $sections as $section_id => $section ) {
+		if ( isset( $mine[ $section_id ] ) ) {
+			if ( ! $placed ) {
+				$out   += $mine;
+				$placed = true;
 			}
+			continue;
+		}
+		$out[ $section_id ] = $section;
+	}
+	if ( ! $placed ) {
+		$out += $mine;
+	}
+	return $out;
+}
+add_filter( 'eab_customizer_sections', 'eab_chrome_sections', 10, 2 );
+
+/* ==============================================================
+ * Small helpers
+ * ============================================================== */
+
+/**
+ * Trimmed setting value.
+ */
+function eab_chrome_mod( $key ) {
+	return trim( (string) eab_mod( $key ) );
+}
+
+/**
+ * Attribute string from an array (href goes through esc_url, the rest esc_attr).
+ * true = bare attribute, null/false/'' = skipped.
+ */
+function eab_chrome_attrs( $attrs ) {
+	$out = '';
+	foreach ( (array) $attrs as $name => $value ) {
+		if ( true === $value ) {
+			$out .= ' ' . esc_attr( $name );
+		} elseif ( null !== $value && false !== $value && '' !== $value ) {
+			$out .= ' ' . esc_attr( $name ) . '="' . ( 'href' === $name ? esc_url( $value ) : esc_attr( $value ) ) . '"';
 		}
 	}
 	return $out;
 }
 
-add_filter(
-	'eab_customizer_sections',
-	function ( $sections, $d ) {
-		/* 1) ช่องทางติดต่อ · โซเชียลเพิ่ม + ป้ายแผงติดต่อท้ายหน้าย่อย */
-		if ( isset( $sections['eab_general']['fields'] ) ) {
-			$sections['eab_general']['fields'] = eab_chrome_insert_after(
-				$sections['eab_general']['fields'],
-				'line_url',
-				array(
-					'contact_fallback_text' => array( 'ข้อความปุ่มติดต่อเมื่อยังไม่ใส่ลิงก์ LINE', 'text', 'ปุ่มจะพาไปหน้า /go/ (เมื่อเผยแพร่แล้ว) · ไม่มีทั้ง LINE และหน้า /go/ = ซ่อนปุ่มติดต่อทั้งเว็บ' ),
-				)
-			);
-			$sections['eab_general']['fields'] = eab_chrome_insert_after(
-				$sections['eab_general']['fields'],
-				'facebook_url',
-				array(
-					'instagram_url' => array( 'ลิงก์ Instagram (ถ้ามี)', 'url' ),
-					'tiktok_url'    => array( 'ลิงก์ TikTok (ถ้ามี)', 'url' ),
-					'youtube_url'   => array( 'ลิงก์ YouTube (ถ้ามี)', 'url' ),
-				)
-			);
-			$sections['eab_general']['fields'] = eab_chrome_insert_after(
-				$sections['eab_general']['fields'],
-				'contact_title',
-				array(
-					'chrome_cta_label' => array( 'แผงติดต่อท้ายหน้าย่อย · ป้ายเล็กเหนือหัวข้อ', 'text', 'ข้อความภาษาไทยแสดงแบบไม่เว้นระยะตัวอักษร' ),
-				)
-			);
-		}
-
-		$sections['eab_footer'] = array(
-			'title'       => '15) แผงติดต่อ + Footer ท้ายเว็บ',
-			'description' => 'แผงติดต่อ (กระจก 2 คอลัมน์) แสดงท้ายหน้าย่อยทุกหน้า · หน้าที่ไม่มีแผงติดต่อของตัวเอง (เช่น หน้าแรก) ใช้หัวข้อชุด "หน้าอื่น ๆ" ด้านล่าง · ปุ่มติดต่อใช้ลิงก์ LINE จาก "1) ช่องทางติดต่อ" (ไม่มี LINE = ไปหน้า /go/ ถ้าเผยแพร่แล้ว ไม่มีทั้งคู่ = ซ่อนแผง) · รายการช่องทางซ้ายมาจากลิงก์ที่กรอกในหมวด 1 · Footer กระจกสว่าง: แบรนด์ · คู่มือ · หน้าในเว็บ · เอกสาร · คำเตือนความเสี่ยง · แถวลิขสิทธิ์ · ช่องที่เว้นว่างจะถูกซ่อน',
-			'fields'      => array(
-				'footer_console_label'  => array( 'แผงติดต่อ (หน้าอื่น ๆ) · ป้ายเล็กเหนือหัวข้อ', 'text' ),
-				'footer_headline'       => array( 'แผงติดต่อ (หน้าอื่น ๆ) · หัวข้อ (ว่าง = ใช้หัวข้อแผงติดต่อท้ายหน้าย่อย)', 'text' ),
-				'footer_sub'            => array( 'แผงติดต่อ (หน้าอื่น ๆ) · คำอธิบาย (ว่าง = ใช้คำอธิบายแผงติดต่อท้ายหน้าย่อย)', 'textarea' ),
-				'chrome_card_title'     => array( 'การ์ดติดต่อ · หัวข้อ', 'text' ),
-				'chrome_card_text'      => array( 'การ์ดติดต่อ · คำอธิบายสั้น (ว่าง = ไม่แสดง)', 'text' ),
-				'footer_line_text'      => array( 'ข้อความปุ่ม LINE (ใช้กับปุ่มติดต่อทั่วทั้งเว็บ)', 'text' ),
-				'footer_qr_toggle_text' => array( 'QR · หัวข้อข้างรูป', 'text' ),
-				'footer_qr_text'        => array( 'QR · คำอธิบายข้างรูป', 'text' ),
-				'footer_line_qr_alt'    => array( 'คำอธิบายรูป QR (alt)', 'text' ),
-				'footer_prep_title'     => array( 'สิ่งที่ทีมงานจะถาม · หัวข้อ', 'text' ),
-				'footer_prep_text'      => array( 'สิ่งที่ทีมงานจะถาม · คำอธิบาย', 'textarea' ),
-				'footer_prep_items'     => array( 'สิ่งที่ทีมงานจะถาม · รายการ (บรรทัดละ 1 ข้อ · ว่าง = ซ่อน)', 'textarea' ),
-				'footer_hours_title'    => array( 'เวลาตอบแชท · หัวข้อ', 'text' ),
-				'footer_hours_text'     => array( 'เวลาตอบแชท · รายละเอียด (ว่าง = ไม่แสดง)', 'textarea', 'กรอกตามเวลาที่ทีมตอบได้จริงเท่านั้น บรรทัดละ 1 ช่วง' ),
-				'footer_facebook_text'  => array( 'ชื่อลิงก์ Facebook', 'text' ),
-				'footer_instagram_text' => array( 'ชื่อลิงก์ Instagram', 'text' ),
-				'footer_tiktok_text'    => array( 'ชื่อลิงก์ TikTok', 'text' ),
-				'footer_youtube_text'   => array( 'ชื่อลิงก์ YouTube', 'text' ),
-				'footer_email_text'     => array( 'ชื่อลิงก์อีเมล', 'text' ),
-				'footer_status_text'    => array( 'Footer · คำอธิบายใต้โลโก้ (ว่าง = ไม่แสดง)', 'textarea' ),
-				'footer_about_points'   => array( 'Footer · จุดเด่นใต้คำอธิบาย (บรรทัดละ 1 ข้อ · ว่าง = ไม่แสดง)', 'textarea' ),
-				'footer_index_title'    => array( 'Footer · หัวคอลัมน์หน้าในเว็บไซต์', 'text', 'รายการหน้ามาจากเมนูหลัก (เฉพาะระดับบน) · ยังไม่มีเมนู = ใช้หน้ามาตรฐานที่เผยแพร่แล้ว · คอลัมน์คู่มือใช้ชื่อ "เมนู · กลุ่มคู่มือ" ในหมวด 16.1' ),
-				'footer_docs_title'     => array( 'Footer · หัวคอลัมน์เอกสาร', 'text' ),
-				'footer_docs_items'     => array( 'Footer · รายการเอกสาร (slug|ชื่อลิงก์ บรรทัดละ 1 หน้า)', 'textarea', 'แสดงเฉพาะหน้าที่เผยแพร่แล้ว · หน้าที่อยู่ในแถวลิขสิทธิ์แล้วจะไม่แสดงซ้ำ · ลิงก์ประกาศความเสี่ยงแสดงเมื่อหน้า risk-disclosure เผยแพร่แล้ว (ข้อความเตือนฉบับเต็มแสดงใน footer เสมอ)' ),
-				'footer_risk_link'      => array( 'Footer · ชื่อลิงก์ประกาศความเสี่ยง', 'text' ),
-				'footer_risk_short'     => array( 'Footer · คำเตือนความเสี่ยงแบบสั้น (ว่าง = ใช้ฉบับเต็มจากหมวด 13)', 'textarea', 'ต้องบอกว่าขาดทุนได้ ผลในอดีตไม่รับประกันอนาคต และไม่ใช่คำแนะนำการลงทุน · ฉบับเต็มยังแสดงในหน้าแรก /go บทความ และหน้าประกาศความเสี่ยง' ),
-				'footer_risk_more'      => array( 'Footer · ข้อความลิงก์ไปคำเตือนฉบับเต็ม', 'text' ),
-				'footer_copyright_text' => array( 'แถวลิขสิทธิ์ · ข้อความต่อท้าย ©', 'text' ),
-				'footer_legal_items'    => array( 'แถวลิขสิทธิ์ · ลิงก์นโยบาย (slug|ชื่อลิงก์ บรรทัดละ 1 หน้า)', 'textarea', 'แสดงเฉพาะหน้าที่เผยแพร่แล้ว · ลิงก์ "ตั้งค่าคุกกี้" ต่อท้ายให้อัตโนมัติ (แก้ชื่อได้ที่หมวดคุกกี้)' ),
-				'footer_backtop_text'   => array( 'แถวลิขสิทธิ์ · ข้อความลิงก์กลับขึ้นด้านบน (ว่าง = ไม่แสดง)', 'text' ),
-			),
-		);
-
-		$sections['eab_mobile_nav'] = array(
-			'title'       => '16) เมนูลัดมือถือด้านล่าง',
-			'description' => 'แถบกระจกลอยด้านล่างบนจอมือถือ (กว้างไม่เกิน 820px) · ช่อง 1 ถึง 4 เป็นลิงก์ (ช่อง 2 = แดชบอร์ด) · ช่องท้ายแถบคือช่องติดต่อ: มีลิงก์ LINE = ทัก LINE · ไม่มี LINE = ไปหน้า /go/ (เมื่อเผยแพร่แล้ว) · ไม่มีทั้งคู่ = ไม่แสดง · ช่องที่ชื่อว่างจะถูกซ่อน · ช่องของหน้าปัจจุบันเป็นแคปซูลขาวให้อัตโนมัติ',
-			'fields'      => array(
-				'show_mobile_nav'          => array( 'แสดงเมนูลัดด้านล่างบนมือถือ', 'checkbox' ),
-				'mobile_nav_home_label'    => array( 'ช่อง 1 · ชื่อ', 'text' ),
-				'mobile_nav_home_url'      => array( 'ช่อง 1 · ลิงก์หรือ slug', 'text' ),
-				'mobile_nav_dash_label'    => array( 'ช่อง 2 · ชื่อปุ่มแดชบอร์ด (ลิงก์ตั้งที่หมวด 16.1 · ว่าง = ไม่แสดงช่องนี้)', 'text' ),
-				'mobile_nav_price_label'   => array( 'ช่อง 3 · ชื่อ', 'text' ),
-				'mobile_nav_price_url'     => array( 'ช่อง 3 · ลิงก์หรือ slug', 'text' ),
-				'mobile_nav_install_label' => array( 'ช่อง 4 · ชื่อ', 'text' ),
-				'mobile_nav_install_url'   => array( 'ช่อง 4 · ลิงก์หรือ slug', 'text' ),
-				'mobile_nav_line_label'    => array( 'ช่องท้ายแถบ · ชื่อเมื่อมีลิงก์ LINE', 'text' ),
-				'mobile_nav_contact_label' => array( 'ช่องท้ายแถบ · ชื่อเมื่อยังไม่มี LINE (ไปหน้า /go/)', 'text' ),
-			),
-		);
-
-		$sections = eab_chrome_insert_after(
-			$sections,
-			'eab_mobile_nav',
-			array(
-				'eab_chrome_nav' => array(
-					'title'       => '16.1) เมนูหลัก (Header) · ข้อความระบบ',
-					'description' => 'ชื่อเมนูที่ใช้เมื่อยังไม่ได้ตั้งเมนูใน รูปแบบ → เมนู (แสดงเฉพาะหน้าที่เผยแพร่แล้ว) · "ติดต่อ" จะต่อท้ายเมนูหลักให้อัตโนมัติเมื่อหน้า /go/ เผยแพร่แล้วและเมนูยังไม่มีลิงก์ติดต่อ · ชื่อเว็บและคำโปรยข้างโลโก้มาจาก ตั้งค่า → ทั่วไป (ชื่อเว็บไซต์ / คำโปรย)',
-					'fields'      => array(
-						'dashboard_url'       => array( 'ลิงก์แดชบอร์ดลูกค้า (ปุ่มบน Header และช่อง 2 ของแถบล่างมือถือ · ว่าง = ไม่แสดงทั้งสองที่)', 'text' ),
-						'header_dash_label'   => array( 'ปุ่มแดชบอร์ดบน Header · ชื่อ (ว่าง = ไม่แสดง)', 'text' ),
-						'nav_home_label'      => array( 'เมนู · หน้าแรก', 'text' ),
-						'nav_products_label'  => array( 'เมนู · กลุ่มสินค้า (เรียงตามเลขรุ่นเอง · ว่าง = ไม่แสดง)', 'text' ),
-						'nav_test_label'      => array( 'เมนู · กลุ่มการทดสอบ', 'text' ),
-						'nav_guide_label'     => array( 'เมนู · กลุ่มคู่มือ (ใช้เป็นหัวคอลัมน์คู่มือใน footer ด้วย)', 'text' ),
-						'nav_pricing_label'   => array( 'เมนู · แพ็กเกจ', 'text' ),
-						'nav_articles_label'  => array( 'เมนู · บทความ', 'text' ),
-						'nav_contact_label'   => array( 'เมนู · ติดต่อ (ว่าง = ไม่ต่อท้ายอัตโนมัติ)', 'text' ),
-						'chrome_skip_text'    => array( 'ลิงก์ข้ามไปเนื้อหา (เห็นเมื่อกด Tab)', 'text' ),
-						'chrome_loading_text' => array( 'ข้อความระหว่างโหลดบทความเพิ่ม', 'text' ),
-					),
-				),
-			)
-		);
-
-		return $sections;
-	},
-	10,
-	2
-);
-
-/* ==============================================================
- * ตัวช่วย
- * ============================================================== */
-
 /**
- * ลิงก์ใช้งานได้จริง (ไม่ว่าง ไม่ใช่ '#')
+ * Escaped text with product names that must keep their case (iPhone, iPad, iOS, macOS)
+ * wrapped in .nocaps, because the site upper-cases English with CSS.
  */
-function eab_chrome_url_ok( $url ) {
-	$url = trim( (string) $url );
-	return '' !== $url && '#' !== $url;
+function eab_chrome_nocaps( $text ) {
+	$html = esc_html( (string) $text );
+	$word = '(?:iPhone|iPad|iOS|macOS)';
+	$out  = preg_replace( '#(?<![A-Za-z])(' . $word . '(?:\s*/\s*' . $word . ')*)(?![A-Za-z])#', '<span class="nocaps">$1</span>', $html );
+	return null === $out ? $html : $out;
 }
 
 /**
- * คำที่ห้ามตัดกลางบรรทัดในหัวข้อ (eab_text) · คำทับศัพท์ที่ตัวตัดคำของเบราว์เซอร์มักแยกผิด
+ * Words the browser tends to split badly in headings (eab_text in components.php).
  */
 add_filter(
 	'eab_keep_words',
@@ -261,23 +296,7 @@ add_filter(
 );
 
 /**
- * body class: มีแถบล่างมือถือจริง (มีอย่างน้อย 1 ช่อง) → CSS เว้นที่ท้ายหน้า + ซ่อนปุ่มซ้ำบนมือถือ
- */
-add_filter(
-	'body_class',
-	function ( $classes ) {
-		if ( eab_mod( 'show_mobile_nav' ) ) {
-			$dock = eab_chrome_dock();
-			if ( ! empty( $dock['items'] ) ) {
-				$classes[] = 'has-dock';
-			}
-		}
-		return $classes;
-	}
-);
-
-/**
- * ข้อความของ JS (main.js) · ต่อจาก eab_assets() ที่ลงทะเบียน eab-main แล้ว
+ * Strings for main.js.
  */
 add_action(
 	'wp_enqueue_scripts',
@@ -286,7 +305,7 @@ add_action(
 			'eab-main',
 			'eabChrome',
 			array(
-				'loadingText' => (string) eab_mod( 'chrome_loading_text' ),
+				'loadingText' => eab_chrome_mod( 'chrome_loading_text' ),
 			)
 		);
 	},
@@ -294,34 +313,14 @@ add_action(
 );
 
 /**
- * ตัวสลับภาษา · ไม่ใช้ GTranslate (แปลฝั่งเบราว์เซอร์อย่างเดียว ไม่มี URL ให้ Google เก็บ และ widget ใส่ inline style ทับธีม)
- * ใช้ eab_language_switcher() เดิม โดยซ่อน shortcode [gtranslate] ระหว่างเรียก → ได้ TranslatePress / Polylang / WPML หรือรายการสำรอง
- */
-function eab_chrome_language_switcher() {
-	if ( ! eab_mod( 'show_language_switcher' ) || ! function_exists( 'eab_language_switcher' ) ) {
-		return;
-	}
-	global $shortcode_tags;
-	$gtranslate = null;
-	if ( is_array( $shortcode_tags ) && isset( $shortcode_tags['gtranslate'] ) ) {
-		$gtranslate = $shortcode_tags['gtranslate'];
-		unset( $shortcode_tags['gtranslate'] );
-	}
-	eab_language_switcher();
-	if ( null !== $gtranslate ) {
-		$shortcode_tags['gtranslate'] = $gtranslate;
-	}
-}
-
-/**
- * URL ของหน้าตาม slug เมื่อเผยแพร่แล้ว ('' = ยังไม่เผยแพร่/ไม่มี)
+ * URL of a page when it is published ('' otherwise).
  */
 function eab_chrome_page_url( $slug ) {
 	return function_exists( 'eab_published_page_url' ) ? (string) eab_published_page_url( $slug ) : '';
 }
 
 /**
- * URL หน้ารวมบทความ (หน้า Posts ของ WordPress หรือเพจ slug articles) · '' = ยังไม่เผยแพร่
+ * Posts page (WordPress "Posts page" or a page with slug articles) · '' when not published.
  */
 function eab_chrome_articles_url() {
 	$posts_page = (int) get_option( 'page_for_posts' );
@@ -332,161 +331,359 @@ function eab_chrome_articles_url() {
 }
 
 /**
- * โลโก้บนพื้นสว่าง (header/footer แสดงราว 52px): โลโก้ตัวอักษรที่อัปโหลดในหมวด 1 → ไฟล์เล็กในธีม (160px webp ~9 KB)
- * ไม่ใช้ Custom Logo ของ WordPress ตรงนี้ เพราะไฟล์ต้นฉบับใหญ่หลายร้อย KB (PageSpeed มือถือ 7 ต.ค. 2026)
+ * Path of the current request ("/" on the front page), from $wp->request.
  */
-function eab_chrome_logo_url() {
-	$custom = trim( (string) eab_mod( 'wordmark_dark' ) );
-	if ( '' !== $custom ) {
-		return $custom;
+function eab_chrome_here_path() {
+	static $path = null;
+	if ( null === $path ) {
+		$req  = ( isset( $GLOBALS['wp'] ) && is_object( $GLOBALS['wp'] ) && isset( $GLOBALS['wp']->request ) ) ? (string) $GLOBALS['wp']->request : '';
+		$path = '/' . trim( (string) wp_parse_url( home_url( '/' . ltrim( $req, '/' ) ), PHP_URL_PATH ), '/' );
 	}
-	return get_template_directory_uri() . '/assets/img/brand/eabull-logo-160.webp';
+	return $path;
 }
 
 /**
- * โลโก้ + ชื่อเว็บ + คำโปรย (ตั้งค่า → ทั่วไป) · ใช้ทั้ง header และ footer
+ * Path of a link on this site · '' for other hosts and for #anchors.
  */
-function eab_chrome_brand( $class = '' ) {
-	$name    = trim( (string) get_bloginfo( 'name' ) );
-	$tagline = trim( (string) get_bloginfo( 'description' ) );
-	$home    = trim( (string) eab_mod( 'nav_home_label' ) );
-	/* ชื่อลิงก์ = ข้อความที่ตาเห็น (WCAG 2.5.3) + "หน้าแรก" ที่อ่านได้เฉพาะโปรแกรมอ่านจอ · ไม่ใช้ aria-label เมื่อมีชื่อเว็บ */
+function eab_chrome_url_path( $url ) {
+	$url = trim( (string) $url );
+	if ( '' === $url || '#' === $url[0] ) {
+		return '';
+	}
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	if ( $host && strtolower( (string) $host ) !== strtolower( (string) wp_parse_url( home_url( '/' ), PHP_URL_HOST ) ) ) {
+		return '';
+	}
+	return '/' . trim( (string) wp_parse_url( $url, PHP_URL_PATH ), '/' );
+}
+
+/**
+ * The link points at the page being viewed.
+ */
+function eab_chrome_is_here( $url ) {
+	$path = eab_chrome_url_path( $url );
+	return '' !== $path && $path === eab_chrome_here_path();
+}
+
+/**
+ * Link to another host (opens in a new tab).
+ */
+function eab_chrome_is_external( $url ) {
+	$url = trim( (string) $url );
+	if ( ! preg_match( '#^(https?:)?//#i', $url ) ) {
+		return false;
+	}
+	$to = wp_parse_url( ( 0 === strpos( $url, '//' ) ? 'https:' : '' ) . $url, PHP_URL_HOST );
+	return strtolower( (string) $to ) !== strtolower( (string) wp_parse_url( home_url( '/' ), PHP_URL_HOST ) );
+}
+
+/**
+ * Products from the products module (set B: items with name, version, url, sub).
+ * Missing function or no items = empty list, so the menu group is skipped.
+ *
+ * @return array[] { title, sub, url, current }
+ */
+function eab_chrome_products() {
+	if ( ! function_exists( 'eab_products' ) ) {
+		return array();
+	}
+	$items = eab_products();
+	if ( ! is_array( $items ) ) {
+		return array();
+	}
+	$out = array();
+	foreach ( $items as $item ) {
+		if ( ! is_array( $item ) ) {
+			continue;
+		}
+		$name = isset( $item['name'] ) ? trim( (string) $item['name'] ) : '';
+		$slug = isset( $item['slug'] ) ? trim( (string) $item['slug'] ) : '';
+		$url  = ! empty( $item['url'] ) ? (string) $item['url'] : ( '' !== $slug ? eab_chrome_page_url( $slug ) : '' );
+		if ( '' === $name || '' === $url ) {
+			continue;
+		}
+		$ver = isset( $item['version'] ) ? trim( (string) $item['version'] ) : '';
+		if ( '' !== $ver ) {
+			$name .= ' · ' . ( preg_match( '/^v/i', $ver ) ? 'V' . substr( $ver, 1 ) : 'V' . $ver );
+		}
+		$out[] = array(
+			'title'   => $name,
+			'sub'     => isset( $item['sub'] ) ? trim( (string) $item['sub'] ) : '',
+			'url'     => $url,
+			'current' => eab_chrome_is_here( $url ) || ( '' !== $slug && is_page( $slug ) ),
+		);
+	}
+	return $out;
+}
+
+/**
+ * Turn a reference from a link list into a URL · '' when the page is not published.
+ * home · products (first product) · articles (posts page) · /path/ or full URL · page slug.
+ */
+function eab_chrome_resolve( $ref ) {
+	$ref = trim( (string) $ref );
+	if ( '' === $ref ) {
+		return '';
+	}
+	if ( 'home' === $ref || '/' === $ref ) {
+		return home_url( '/' );
+	}
+	if ( 'articles' === $ref ) {
+		return eab_chrome_articles_url();
+	}
+	if ( 'products' === $ref ) {
+		$products = eab_chrome_products();
+		return $products ? $products[0]['url'] : '';
+	}
+	if ( false !== strpos( $ref, '/' ) || false !== strpos( $ref, ':' ) || '#' === $ref[0] ) {
+		return eab_link_url( $ref );
+	}
+	return eab_chrome_page_url( sanitize_title( $ref ) );
+}
+
+/**
+ * The reference is the page being viewed.
+ */
+function eab_chrome_ref_current( $ref, $url ) {
+	if ( 'home' === $ref || '/' === $ref ) {
+		return is_front_page();
+	}
+	if ( 'articles' === $ref ) {
+		return is_home() || is_singular( 'post' ) || is_category();
+	}
+	if ( 'products' === $ref ) {
+		return false;
+	}
+	return ( false === strpos( $ref, '/' ) && is_page( sanitize_title( $ref ) ) ) || eab_chrome_is_here( $url );
+}
+
+/**
+ * Link list setting ("ref | title | sub line", one per line) → items, unpublished pages dropped.
+ *
+ * @return array[] { ref, title, sub, url, current }
+ */
+function eab_chrome_links( $key ) {
+	$out = array();
+	foreach ( eab_lines( eab_mod( $key ) ) as $line ) {
+		$parts = array_map( 'trim', explode( '|', $line ) );
+		if ( count( $parts ) < 2 || '' === $parts[0] || '' === $parts[1] ) {
+			continue;
+		}
+		$url = eab_chrome_resolve( $parts[0] );
+		if ( '' === $url ) {
+			continue;
+		}
+		$out[] = array(
+			'ref'     => $parts[0],
+			'title'   => $parts[1],
+			'sub'     => isset( $parts[2] ) ? $parts[2] : '',
+			'url'     => $url,
+			'current' => eab_chrome_ref_current( $parts[0], $url ),
+		);
+	}
+	return $out;
+}
+
+/* ==============================================================
+ * Channel links (LINE · OpenChat · Facebook · dashboard)
+ * ============================================================== */
+
+/**
+ * Attributes of every LINE link: LINE OA → /go/ page → toast. Keeps data-line-pos.
+ */
+function eab_chrome_line_link( $pos = '' ) {
+	$target = function_exists( 'eab_contact_target' ) ? eab_contact_target() : array(
+		'url'     => '',
+		'is_line' => false,
+	);
+	$attrs  = array();
+	if ( '' !== $target['url'] ) {
+		$attrs['href'] = $target['url'];
+		if ( $target['is_line'] ) {
+			$attrs['target'] = '_blank';
+			$attrs['rel']    = 'noopener';
+		}
+	} else {
+		$attrs['href']      = '#';
+		$attrs['data-wait'] = eab_chrome_mod( 'chrome_line_wait' );
+	}
+	$attrs['data-line-pos'] = $pos;
+	return $attrs;
+}
+
+/**
+ * The LINE link goes to a real LINE OA (not the /go/ fallback or a toast).
+ */
+function eab_chrome_has_line() {
+	return function_exists( 'eab_has_line_url' ) && eab_has_line_url();
+}
+
+/**
+ * OpenChat link attributes · empty array when no OpenChat URL is set.
+ */
+function eab_chrome_openchat_link( $pos = '' ) {
+	$url = eab_chrome_mod( 'line_openchat_url' );
+	if ( '' === $url || '#' === $url ) {
+		return array();
+	}
+	return array(
+		'href'          => $url,
+		'target'        => '_blank',
+		'rel'           => 'noopener',
+		'data-line-pos' => $pos,
+	);
+}
+
+/**
+ * Facebook link attributes · empty array when no page URL is set.
+ */
+function eab_chrome_fb_link() {
+	$url = eab_chrome_mod( 'facebook_url' );
+	if ( '' === $url || '#' === $url ) {
+		return array();
+	}
+	return array(
+		'href'   => $url,
+		'target' => '_blank',
+		'rel'    => 'noopener',
+	);
+}
+
+/**
+ * Dashboard link attributes · no URL yet = toast with chrome_dash_wait.
+ */
+function eab_chrome_dash_link() {
+	$url = eab_chrome_mod( 'dashboard_url' );
+	if ( '' === $url || '#' === $url ) {
+		return array(
+			'href'      => '#',
+			'data-wait' => eab_chrome_mod( 'chrome_dash_wait' ),
+		);
+	}
+	$href  = eab_link_url( $url );
+	$attrs = array( 'href' => $href );
+	if ( eab_chrome_is_external( $href ) ) {
+		$attrs['rel'] = 'noopener';
+	}
+	return $attrs;
+}
+
+/**
+ * Green LINE button (btn btn--line) · kept for older callers (docs/phase2.md section 5).
+ *
+ * @param string $class Extra classes (e.g. btn--block).
+ * @param string $pos   data-line-pos value.
+ * @param string $text  Button text ('' = footer_line_text).
+ * @param bool   $echo  Print (true) or return.
+ */
+function eab_chrome_contact_button( $class = '', $pos = 'content', $text = '', $echo = true ) {
+	$extra = array_diff( preg_split( '/\s+/', trim( (string) $class ) ), array( '', 'btn', 'btn--line' ) );
+	$label = '' !== trim( (string) $text ) ? trim( (string) $text ) : eab_chrome_mod( 'footer_line_text' );
+	$attrs = array_merge( array( 'class' => trim( 'btn btn--line ' . implode( ' ', $extra ) ) ), eab_chrome_line_link( $pos ) );
+	$html  = '<a' . eab_chrome_attrs( $attrs ) . '>' . eab_icon( 'chat' ) . esc_html( $label ) . '</a>';
+	if ( $echo ) {
+		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
+	}
+	return $html;
+}
+
+/**
+ * Square social icons (footer brand column and /go side column).
+ */
+function eab_chrome_social_icons( $pos = 'footer-social', $class = '' ) {
+	$items = array(
+		array( eab_chrome_line_link( $pos ), 'chat', eab_chrome_mod( 'chrome_line_name' ) ),
+		array( eab_chrome_openchat_link( $pos . '-openchat' ), 'users', eab_chrome_mod( 'chrome_openchat_name' ) ),
+		array( eab_chrome_fb_link(), 'facebook', eab_chrome_mod( 'chrome_fb_name' ) ),
+	);
+	$html = '';
+	foreach ( $items as $item ) {
+		if ( empty( $item[0] ) || '' === $item[2] ) {
+			continue;
+		}
+		$html .= '<a' . eab_chrome_attrs( array_merge( array( 'class' => 'ft__soc' ), $item[0], array( 'aria-label' => $item[2] ) ) ) . '>' . eab_icon( $item[1] ) . '</a>';
+	}
+	if ( '' === $html ) {
+		return '';
+	}
+	return '<div class="' . esc_attr( trim( 'ft__social ' . $class ) ) . '">' . $html . '</div>';
+}
+
+/* ==============================================================
+ * Header: brand, menu, dashboard button, menu toggle
+ * ============================================================== */
+
+/**
+ * Logo link (emblem + wordmark).
+ */
+function eab_chrome_brand() {
+	$emblem = eab_theme_asset_url( eab_chrome_mod( 'chrome_emblem' ) );
+	if ( '' === $emblem ) {
+		$emblem = get_template_directory_uri() . '/assets/img/brand/eabull-emblem.webp';
+	}
 	?>
-	<a class="<?php echo esc_attr( trim( 'brand ' . $class ) ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo '' === $name ? ' aria-label="' . esc_attr( '' !== $home ? $home : home_url( '/' ) ) . '"' : ''; ?>>
-		<img class="brand-logo-img" src="<?php echo esc_url( eab_chrome_logo_url() ); ?>" alt="" width="160" height="115" decoding="async">
-		<?php if ( '' !== $name ) : ?>
-			<span class="brand-text"><strong><?php echo esc_html( $name ); ?></strong> <?php if ( '' !== $tagline ) : ?><span><?php echo esc_html( $tagline ); ?></span><?php endif; ?><?php if ( '' !== $home ) : ?><span class="screen-reader-text"> · <?php echo esc_html( $home ); ?></span><?php endif; ?></span>
-		<?php endif; ?>
+	<a class="hd__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( eab_chrome_mod( 'chrome_home_aria' ) ); ?>">
+		<img class="hd__emblem" src="<?php echo esc_url( $emblem ); ?>" width="640" height="571" alt="" decoding="async">
+		<img class="hd__word" src="<?php echo esc_url( eab_wordmark_url( 'dark' ) ); ?>" width="720" height="100" alt="<?php echo esc_attr( eab_chrome_mod( 'chrome_brand_alt' ) ); ?>" decoding="async">
 	</a>
 	<?php
 }
 
 /**
- * ปุ่ม "แดชบอร์ด" ท้าย header (น้ำเงินทึบ) · ไม่มีลิงก์หรือชื่อ = ไม่พิมพ์ · จอที่มีแถบล่างซ่อนไว้ (แถบล่างมีช่องแดชบอร์ดแล้ว)
- */
-function eab_chrome_header_dash() {
-	$url   = trim( (string) eab_mod( 'dashboard_url' ) );
-	$label = trim( (string) eab_mod( 'header_dash_label' ) );
-	if ( '' === $url || '' === $label ) {
-		return;
-	}
-	printf(
-		'<a class="btn chrome-btn chrome-btn--sm header-dash" href="%1$s"><span>%2$s</span><span class="btn-ic" aria-hidden="true">%3$s</span></a>',
-		esc_url( eab_link_url( $url ) ),
-		esc_html( $label ),
-		eab_icon( 'gauge' ) // phpcs:ignore WordPress.Security.EscapeOutput
-	);
-}
-
-/**
- * ป้ายเล็กเหนือหัวข้อ · ข้อความไทยไม่เว้นระยะตัวอักษร (kicker--th)
- */
-function eab_chrome_kicker( $text ) {
-	$text = trim( (string) $text );
-	if ( '' === $text || ! eab_show_kickers() ) {
-		return;
-	}
-	$thai = preg_match( '/\p{Thai}/u', $text );
-	echo '<p class="kicker' . ( $thai ? ' kicker--th' : '' ) . '">' . esc_html( $text ) . '</p>';
-}
-
-/**
- * โครงเมนูมาตรฐานของ EA BULL (ใช้เมื่อยังไม่มีเมนูใน WP) · เฉพาะหน้าที่เผยแพร่แล้ว
+ * Menu used until a WordPress menu is assigned (same tree as the mockup).
  *
- * @return array[] { label, url, slug, current, children[] }
+ * @return array[] { label, url, current, children[] { title, sub, url, current }, wide }
  */
 function eab_chrome_nav_tree() {
 	static $tree = null;
 	if ( null !== $tree ) {
 		return $tree;
 	}
-	$tree = array(
-		array(
-			'label'    => (string) eab_mod( 'nav_home_label' ),
+	$tree = array();
+
+	$home = eab_chrome_mod( 'nav_home_label' );
+	if ( '' !== $home ) {
+		$tree[] = array(
+			'label'    => $home,
 			'url'      => home_url( '/' ),
 			'current'  => is_front_page(),
 			'children' => array(),
-		),
-	);
-
-	/* สินค้าทั้งหมดเรียงตามเลขรุ่น (products.php) · ทุกตัวมีเพจของตัวเอง */
-	$label = trim( (string) eab_mod( 'nav_products_label' ) );
-	if ( '' !== $label && function_exists( 'eab_products' ) ) {
-		$children = array();
-		$active   = false;
-		foreach ( eab_products() as $item ) {
-			$url = '' !== $item['slug'] ? eab_chrome_page_url( $item['slug'] ) : home_url( '/#modes' );
-			if ( '' === $url ) {
-				continue;
-			}
-			$here       = '' !== $item['slug'] && is_page( $item['slug'] );
-			$active     = $active || $here;
-			$children[] = array(
-				'label'   => $item['label'],
-				'url'     => $url,
-				'current' => $here,
-			);
-		}
-		if ( $children ) {
-			$tree[] = array(
-				'label'    => $label,
-				'url'      => $children[0]['url'],
-				'current'  => false,
-				'ancestor' => $active,
-				'children' => $children,
-			);
-		}
-	}
-
-	$groups = array(
-		'test'  => array( 'nav_test_label', 'backtest' ),
-		'guide' => array( 'nav_guide_label', 'how-to-install' ),
-	);
-	foreach ( $groups as $group => $conf ) {
-		$children = array();
-		$active   = false;
-		if ( function_exists( 'eab_guide_links' ) ) {
-			foreach ( eab_guide_links( array( $group ) ) as $slug => $link ) {
-				$url = eab_chrome_page_url( $slug );
-				if ( '' === $url ) {
-					continue;
-				}
-				$here       = is_page( $slug );
-				$active     = $active || $here;
-				$children[] = array(
-					'label'   => $link['label'],
-					'url'     => $url,
-					'current' => $here,
-				);
-			}
-		}
-		if ( empty( $children ) ) {
-			continue;
-		}
-		$landing = eab_chrome_page_url( $conf[1] );
-		$tree[]  = array(
-			'label'    => (string) eab_mod( $conf[0] ),
-			'url'      => '' !== $landing ? $landing : $children[0]['url'],
-			'current'  => false,
-			'ancestor' => $active,
-			'children' => $children,
 		);
 	}
 
-	$singles = array(
-		array( 'nav_pricing_label', eab_chrome_page_url( 'pricing' ), is_page( 'pricing' ) ),
-		array( 'nav_articles_label', eab_chrome_articles_url(), is_home() ),
-		array( 'nav_contact_label', eab_chrome_page_url( 'go' ), is_page( 'go' ) ),
+	$groups = array(
+		array( 'nav_products_label', eab_chrome_products(), false ),
+		array( 'nav_test_label', eab_chrome_links( 'nav_test_items' ), false ),
+		array( 'nav_guide_label', eab_chrome_links( 'nav_guide_items' ), true ),
 	);
-	foreach ( $singles as $single ) {
-		$label = trim( (string) eab_mod( $single[0] ) );
-		if ( '' === $single[1] || '' === $label ) {
+	foreach ( $groups as $group ) {
+		$label = eab_chrome_mod( $group[0] );
+		if ( '' === $label || empty( $group[1] ) ) {
 			continue;
 		}
 		$tree[] = array(
 			'label'    => $label,
-			'url'      => $single[1],
-			'current'  => (bool) $single[2],
+			'url'      => $group[1][0]['url'],
+			'current'  => false,
+			'children' => $group[1],
+			'wide'     => $group[2],
+		);
+	}
+
+	foreach ( array(
+		'nav_pricing_label'  => 'pricing',
+		'nav_articles_label' => 'articles',
+		'nav_contact_label'  => 'go',
+	) as $key => $ref ) {
+		$label = eab_chrome_mod( $key );
+		$url   = eab_chrome_resolve( $ref );
+		if ( '' === $label || '' === $url ) {
+			continue;
+		}
+		$tree[] = array(
+			'label'    => $label,
+			'url'      => $url,
+			'current'  => eab_chrome_ref_current( $ref, $url ),
 			'children' => array(),
 		);
 	}
@@ -494,50 +691,172 @@ function eab_chrome_nav_tree() {
 }
 
 /**
- * เมนูสำรอง (ยังไม่ได้ตั้งเมนูหลักใน WP) · แทน eab_fallback_menu() ที่ลิงก์ /go/ และ /articles/ แม้ยังไม่เผยแพร่
+ * Fallback menu markup (fallback_cb of wp_nav_menu): li.has-sub > button.nav__parent + ul.sub.
  */
-function eab_chrome_fallback_menu() {
-	echo '<ul class="nav-list">';
+function eab_chrome_fallback_menu( $args = array() ) {
+	unset( $args );
+	$html = '<ul class="nav__list">';
 	foreach ( eab_chrome_nav_tree() as $item ) {
-		$classes = array( 'menu-item' );
-		if ( ! empty( $item['children'] ) ) {
-			$classes[] = 'menu-item-has-children';
+		if ( empty( $item['children'] ) ) {
+			$html .= '<li><a class="nav__link" href="' . esc_url( $item['url'] ) . '"' . ( $item['current'] ? ' aria-current="page"' : '' ) . '>' . esc_html( $item['label'] ) . '</a></li>';
+			continue;
 		}
-		if ( ! empty( $item['current'] ) ) {
-			$classes[] = 'current-menu-item';
-		}
-		if ( ! empty( $item['ancestor'] ) ) {
-			$classes[] = 'current-menu-ancestor';
-		}
-		echo '<li class="' . esc_attr( implode( ' ', $classes ) ) . '"><a href="' . esc_url( $item['url'] ) . '"' . ( ! empty( $item['current'] ) ? ' aria-current="page"' : '' ) . '>' . esc_html( $item['label'] ) . '</a>';
-		if ( ! empty( $item['children'] ) ) {
-			echo '<ul class="sub-menu">';
-			foreach ( $item['children'] as $child ) {
-				echo '<li class="menu-item' . ( $child['current'] ? ' current-menu-item' : '' ) . '"><a href="' . esc_url( $child['url'] ) . '"' . ( $child['current'] ? ' aria-current="page"' : '' ) . '>' . esc_html( $child['label'] ) . '</a></li>';
+		$html .= '<li class="has-sub"><button class="nav__link nav__parent" type="button" aria-expanded="false">' . esc_html( $item['label'] ) . ' ' . eab_icon( 'chevron-down' ) . '</button>';
+		$html .= '<ul class="sub' . ( ! empty( $item['wide'] ) ? ' sub--wide' : '' ) . '">';
+		foreach ( $item['children'] as $child ) {
+			$html .= '<li><a href="' . esc_url( $child['url'] ) . '"' . ( $child['current'] ? ' aria-current="page"' : '' ) . '><b>' . eab_chrome_nocaps( $child['title'] ) . '</b>';
+			if ( '' !== $child['sub'] ) {
+				$html .= '<span>' . eab_chrome_nocaps( $child['sub'] ) . '</span>';
 			}
-			echo '</ul>';
+			$html .= '</a></li>';
 		}
-		echo '</li>';
+		$html .= '</ul></li>';
 	}
-	echo '</ul>';
+	$html .= '</ul>';
+	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
 }
 
 /**
- * ลิงก์ไปส่วนหนึ่งในหน้า (มี # เช่น EA BULL 5.0 → /#modes) ไม่นับเป็นหน้าปัจจุบัน
- * WordPress ตัด # ทิ้งก่อนเทียบ URL ลิงก์นี้จึงถูกไฮไลต์ทุกครั้งที่อยู่หน้าแรก และลากหัวเมนู "สินค้า" ให้ไฮไลต์ตามไปด้วย
- * เอาสถานะปัจจุบันออกจากลิงก์แบบนี้ แล้วเอาสถานะหัวเมนูออกจากหัวเมนูที่ไม่มีลูกเป็นหน้าปัจจุบันจริงเหลืออยู่
+ * The menu inside nav#nav: the WordPress menu "primary" or the fallback tree.
  */
-function eab_chrome_menu_hash_items( $items ) {
-	$parent  = array();
-	$hashed  = array();
+function eab_chrome_menu() {
+	wp_nav_menu(
+		array(
+			'theme_location' => 'primary',
+			'container'      => false,
+			'menu_class'     => 'nav__list',
+			'fallback_cb'    => 'eab_chrome_fallback_menu',
+			'depth'          => 2,
+		)
+	);
+}
+
+/**
+ * Buttons at the foot of the mobile menu sheet: LINE + OpenChat + Facebook.
+ */
+function eab_chrome_nav_foot() {
+	$openchat = eab_chrome_openchat_link( 'nav-openchat' );
+	$fb       = eab_chrome_fb_link();
+	?>
+	<div class="nav__foot">
+		<?php eab_chrome_contact_button( 'btn--block', 'nav' ); ?>
+		<?php if ( $openchat || $fb ) : ?>
+			<div class="nav__social">
+				<?php if ( $openchat ) : ?>
+					<a<?php echo eab_chrome_attrs( array_merge( array( 'class' => 'btn btn--openchat btn--sm' ), $openchat ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo eab_icon( 'users' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( eab_chrome_mod( 'chrome_openchat_name' ) ); ?></a>
+				<?php endif; ?>
+				<?php if ( $fb ) : ?>
+					<a<?php echo eab_chrome_attrs( array_merge( array( 'class' => 'btn btn--fb btn--sm' ), $fb ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo eab_icon( 'facebook' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( eab_chrome_mod( 'chrome_fb_name' ) ); ?></a>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
+/**
+ * Dashboard button at the end of the header (outlined yellow).
+ */
+function eab_chrome_header_dash() {
+	$label = eab_chrome_mod( 'header_dash_label' );
+	if ( '' === $label ) {
+		return;
+	}
+	echo '<a' . eab_chrome_attrs( array_merge( array( 'class' => 'hd__dash' ), eab_chrome_dash_link() ) ) . '>' . eab_icon( 'gauge' ) . '<span>' . esc_html( $label ) . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in parts
+}
+
+/**
+ * Menu toggle (main.js swaps aria-label with data-open / data-close).
+ */
+function eab_chrome_toggle() {
+	$open  = eab_chrome_mod( 'chrome_menu_open' );
+	$close = eab_chrome_mod( 'chrome_menu_close' );
+	?>
+	<button class="hd__toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="<?php echo esc_attr( $open ); ?>" data-open="<?php echo esc_attr( $open ); ?>" data-close="<?php echo esc_attr( $close ); ?>">
+		<span class="hd__ico-open"><?php echo eab_icon( 'menu' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><span class="hd__ico-close"><?php echo eab_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+	</button>
+	<?php
+}
+
+/* ==============================================================
+ * WordPress menus in the primary location: same classes as the fallback
+ * (top links .nav__link, parents .has-sub with a chevron, submenus .sub,
+ * child items <b>title</b><span>menu item description</span>).
+ * ============================================================== */
+
+function eab_chrome_is_primary( $args ) {
+	return is_object( $args ) && ! empty( $args->theme_location ) && 'primary' === $args->theme_location;
+}
+
+function eab_chrome_menu_li_class( $classes, $item, $args, $depth = 0 ) {
+	if ( eab_chrome_is_primary( $args ) && 0 === (int) $depth && in_array( 'menu-item-has-children', (array) $classes, true ) ) {
+		$classes[] = 'has-sub';
+		if ( ! empty( $GLOBALS['eab_chrome_wide'][ (int) $item->ID ] ) ) {
+			$classes[] = 'has-sub--wide';
+		}
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'eab_chrome_menu_li_class', 10, 4 );
+
+function eab_chrome_menu_link_attrs( $atts, $item, $args, $depth = 0 ) {
+	if ( eab_chrome_is_primary( $args ) && 0 === (int) $depth ) {
+		$atts['class'] = trim( ( isset( $atts['class'] ) ? $atts['class'] . ' ' : '' ) . 'nav__link' );
+	}
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'eab_chrome_menu_link_attrs', 10, 4 );
+
+function eab_chrome_menu_title( $title, $item, $args, $depth = 0 ) {
+	if ( ! eab_chrome_is_primary( $args ) ) {
+		return $title;
+	}
+	if ( 0 === (int) $depth ) {
+		return in_array( 'menu-item-has-children', (array) $item->classes, true ) ? $title . ' ' . eab_icon( 'chevron-down' ) : $title;
+	}
+	$desc = isset( $item->description ) ? trim( wp_strip_all_tags( (string) $item->description ) ) : '';
+	return '<b>' . $title . '</b>' . ( '' !== $desc ? '<span>' . esc_html( $desc ) . '</span>' : '' );
+}
+add_filter( 'nav_menu_item_title', 'eab_chrome_menu_title', 10, 4 );
+
+function eab_chrome_menu_sub_class( $classes, $args, $depth = 0 ) {
+	if ( eab_chrome_is_primary( $args ) ) {
+		$classes[] = 'sub';
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_submenu_css_class', 'eab_chrome_menu_sub_class', 10, 3 );
+
+/**
+ * Menu objects of the primary menu:
+ * - parents with 6 or more children get the wide two-column submenu;
+ * - a link with #anchor is never "current" (WordPress drops the hash when it compares URLs,
+ *   so a /#section link would light up on every visit to the front page, and its parent too).
+ */
+function eab_chrome_menu_objects( $items, $args = null ) {
+	if ( null !== $args && ! eab_chrome_is_primary( $args ) ) {
+		return $items;
+	}
+	$count  = array();
+	$parent = array();
+	$hashed = array();
 	foreach ( $items as $item ) {
-		$parent[ (int) $item->db_id ] = (int) $item->menu_item_parent;
-		/* หน้าแรกที่มี query (?utm=…) WordPress ใส่คลาส current-menu-item ให้ลิงก์หน้าแรกโดยไม่ตั้ง current จึงเช็กทั้งสองอย่าง */
+		$pid                            = (int) $item->menu_item_parent;
+		$parent[ (int) $item->db_id ] = $pid;
+		if ( $pid ) {
+			$count[ $pid ] = isset( $count[ $pid ] ) ? $count[ $pid ] + 1 : 1;
+		}
 		$is_current = ! empty( $item->current ) || in_array( 'current-menu-item', (array) $item->classes, true );
 		if ( $is_current && false !== strpos( (string) $item->url, '#' ) ) {
 			$item->current = false;
 			$item->classes = array_values( array_diff( (array) $item->classes, array( 'current-menu-item', 'current_page_item' ) ) );
 			$hashed[]      = (int) $item->db_id;
+		}
+	}
+	$GLOBALS['eab_chrome_wide'] = array();
+	foreach ( $count as $pid => $n ) {
+		if ( $n >= 6 ) {
+			$GLOBALS['eab_chrome_wide'][ $pid ] = true;
 		}
 	}
 	if ( ! $hashed ) {
@@ -572,363 +891,49 @@ function eab_chrome_menu_hash_items( $items ) {
 	}
 	return $items;
 }
-add_filter( 'wp_nav_menu_objects', 'eab_chrome_menu_hash_items', 20 );
+add_filter( 'wp_nav_menu_objects', 'eab_chrome_menu_objects', 20, 2 );
 
 /**
- * ต่อท้าย "ติดต่อ" (/go/) ในเมนูหลักที่สร้างเองใน WP
- * เฉพาะเมื่อหน้า go เผยแพร่แล้ว และเมนูยังไม่มีลิงก์ /go/ รายการชื่อเดียวกัน หรือลิงก์ LINE
+ * Append "ติดต่อ" (/go/) to a hand-made primary menu that has no /go/ or LINE link yet.
  */
 function eab_chrome_menu_contact( $items, $args ) {
-	if ( ! is_object( $args ) || empty( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+	if ( ! eab_chrome_is_primary( $args ) ) {
 		return $items;
 	}
-	$label = trim( (string) eab_mod( 'nav_contact_label' ) );
+	$label = eab_chrome_mod( 'nav_contact_label' );
 	$go    = eab_chrome_page_url( 'go' );
 	if ( '' === $label || '' === $go ) {
 		return $items;
 	}
-	/* มีลิงก์ /go/ อยู่แล้ว (รวมแบบไม่มี / ท้าย หรือมี ?query / #anchor) หรือมีรายการชื่อเดียวกัน */
 	if ( false !== strpos( $items, esc_url( $go ) ) || preg_match( '#href="[^"]*/go/?(?:[?\#][^"]*)?"#i', $items ) || false !== strpos( $items, '>' . esc_html( $label ) . '<' ) ) {
 		return $items;
 	}
-	/* มีลิงก์ LINE (OA / OpenChat / LIFF / line://) อยู่แล้ว */
 	if ( preg_match( '#href="(?:(?:https?:)?//(?:www\.)?(?:lin\.ee|line\.me|liff\.line\.me|page\.line\.me)/|line:)#i', $items ) ) {
 		return $items;
 	}
-	if ( eab_has_line_url() ) {
-		$line = trim( (string) eab_mod( 'line_url' ) );
-		if ( false !== strpos( $items, esc_url( $line ) ) ) {
-			return $items;
-		}
-	}
 	$here = is_page( 'go' );
-	return $items . '<li class="menu-item menu-item-eab-contact' . ( $here ? ' current-menu-item' : '' ) . '"><a href="' . esc_url( $go ) . '"' . ( $here ? ' aria-current="page"' : '' ) . '>' . esc_html( $label ) . '</a></li>';
+	return $items . '<li class="menu-item menu-item-eab-contact' . ( $here ? ' current-menu-item' : '' ) . '"><a class="nav__link" href="' . esc_url( $go ) . '"' . ( $here ? ' aria-current="page"' : '' ) . '>' . esc_html( $label ) . '</a></li>';
 }
 add_filter( 'wp_nav_menu_items', 'eab_chrome_menu_contact', 10, 2 );
 
-/**
- * โซเชียล + อีเมล ที่กรอกแล้ว
- *
- * @return array[] { icon, url, label, mailto }
- */
-function eab_chrome_socials() {
-	$out = array();
-	foreach ( array(
-		'facebook'  => array( 'facebook_url', 'footer_facebook_text' ),
-		'instagram' => array( 'instagram_url', 'footer_instagram_text' ),
-		'tiktok'    => array( 'tiktok_url', 'footer_tiktok_text' ),
-		'youtube'   => array( 'youtube_url', 'footer_youtube_text' ),
-	) as $icon => $keys ) {
-		$url   = trim( (string) eab_mod( $keys[0] ) );
-		$label = trim( (string) eab_mod( $keys[1] ) );
-		if ( ! eab_chrome_url_ok( $url ) || '' === $label ) {
-			continue;
-		}
-		$out[] = array(
-			'icon'  => $icon,
-			'url'   => $url,
-			'label' => $label,
-		);
-	}
-	$email = trim( (string) eab_mod( 'contact_email' ) );
-	$label = trim( (string) eab_mod( 'footer_email_text' ) );
-	if ( '' !== $email && '' !== $label && is_email( $email ) ) {
-		$out[] = array(
-			'icon'   => 'mail',
-			'mailto' => $email,
-			'label'  => $label,
-		);
-	}
-	return $out;
-}
-
-/**
- * href ของรายการโซเชียล (อีเมลเข้ารหัสด้วย antispambot)
- */
-function eab_chrome_social_href( $item ) {
-	if ( isset( $item['mailto'] ) ) {
-		return 'mailto:' . esc_attr( antispambot( $item['mailto'] ) );
-	}
-	return esc_url( $item['url'] );
-}
-
-/**
- * แถวไอคอนโซเชียล (แผ่นเมนูมือถือ · คอลัมน์แบรนด์ใน footer) · ไม่มีช่องทางที่กรอก = ไม่พิมพ์อะไร
- */
-function eab_chrome_social_row( $class = 'nav-social' ) {
-	$items = eab_chrome_socials();
-	if ( empty( $items ) ) {
-		return;
-	}
-	echo '<div class="' . esc_attr( $class ) . '">';
-	foreach ( $items as $item ) {
-		printf(
-			'<a class="social-link social-link--%5$s" href="%1$s"%2$s aria-label="%3$s">%4$s</a>',
-			eab_chrome_social_href( $item ), // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_chrome_social_href
-			isset( $item['mailto'] ) ? '' : ' target="_blank" rel="noopener"',
-			esc_attr( $item['label'] ),
-			eab_icon( $item['icon'], 'icon' ), // phpcs:ignore WordPress.Security.EscapeOutput
-			esc_attr( $item['icon'] )
-		);
-	}
-	echo '</div>';
-}
-
-/**
- * Footer · รายการหน้า (เมนูหลักระดับบน → โครงเมนูมาตรฐาน)
- *
- * @return array[] { 0 => label, 1 => url }
- */
-function eab_chrome_index_items() {
-	$items     = array();
-	$locations = function_exists( 'get_nav_menu_locations' ) ? get_nav_menu_locations() : array();
-	if ( ! empty( $locations['primary'] ) ) {
-		$menu_items = wp_get_nav_menu_items( (int) $locations['primary'] );
-		if ( is_array( $menu_items ) ) {
-			foreach ( $menu_items as $menu_item ) {
-				if ( (int) $menu_item->menu_item_parent > 0 || ! eab_chrome_url_ok( $menu_item->url ) ) {
-					continue;
-				}
-				$items[] = array( wp_strip_all_tags( (string) $menu_item->title ), (string) $menu_item->url );
-			}
-		}
-	}
-	if ( empty( $items ) ) {
-		foreach ( eab_chrome_nav_tree() as $node ) {
-			$items[] = array( $node['label'], $node['url'] );
-		}
-	}
-	return $items;
-}
-
-/**
- * Footer · คู่มือ (กลุ่ม guide ใน eab_site_pages) เฉพาะหน้าที่เผยแพร่แล้ว
- */
-function eab_chrome_guide_items() {
-	$out = array();
-	if ( ! function_exists( 'eab_guide_links' ) ) {
-		return $out;
-	}
-	foreach ( eab_guide_links( array( 'guide' ) ) as $slug => $link ) {
-		$url = eab_chrome_page_url( $slug );
-		if ( '' !== $url ) {
-			$out[] = array( $link['label'], $url );
-		}
-	}
-	return $out;
-}
-
-/**
- * ช่องทาง (LINE OA, OpenChat, โซเชียล, อีเมล) เฉพาะที่กรอกแล้ว · รายการช่องทางในแผงติดต่อ
- */
-function eab_chrome_channels() {
-	$out = array();
-	if ( eab_has_line_url() ) {
-		$out[] = array(
-			'icon'  => 'line',
-			'url'   => trim( (string) eab_mod( 'line_url' ) ),
-			'label' => (string) eab_mod( 'footer_line_text' ),
-			'pos'   => 'footer-channels',
-			'line'  => true,
-		);
-	}
-	$openchat = trim( (string) eab_mod( 'line_openchat_url' ) );
-	if ( eab_chrome_url_ok( $openchat ) ) {
-		$out[] = array(
-			'icon'  => 'users',
-			'url'   => $openchat,
-			'label' => (string) eab_mod( 'line_openchat_text' ),
-			'pos'   => 'footer-channels-openchat',
-		);
-	}
-	return array_merge( $out, eab_chrome_socials() );
-}
-
-/**
- * อ่านรายการ "slug|ชื่อลิงก์" จาก setting
- *
- * @return array slug => label (ไม่ตรวจสถานะการเผยแพร่)
- */
-function eab_chrome_slug_lines( $key ) {
-	$out = array();
-	foreach ( eab_lines( eab_mod( $key ) ) as $line ) {
-		if ( false === strpos( $line, '|' ) ) {
-			continue;
-		}
-		list( $slug, $label ) = array_map( 'trim', explode( '|', $line, 2 ) );
-		$slug = sanitize_title( $slug );
-		if ( '' !== $slug && '' !== $label ) {
-			$out[ $slug ] = $label;
-		}
-	}
-	return $out;
-}
-
-/**
- * แถวลิขสิทธิ์ · ลิงก์นโยบาย (เฉพาะหน้าที่เผยแพร่แล้ว)
- *
- * @return array[] { 0 => label, 1 => url }
- */
-function eab_chrome_legal_items() {
-	$out = array();
-	foreach ( eab_chrome_slug_lines( 'footer_legal_items' ) as $slug => $label ) {
-		$url = eab_chrome_page_url( $slug );
-		if ( '' !== $url ) {
-			$out[] = array( $label, $url );
-		}
-	}
-	return $out;
-}
-
-/**
- * Footer · เอกสาร (เฉพาะหน้าที่เผยแพร่แล้ว ไม่ซ้ำกับแถวลิขสิทธิ์) + ประกาศความเสี่ยง
- */
-function eab_chrome_doc_items() {
-	$out   = array();
-	$legal = eab_chrome_slug_lines( 'footer_legal_items' );
-	foreach ( eab_chrome_slug_lines( 'footer_docs_items' ) as $slug => $label ) {
-		if ( 'risk-disclosure' === $slug || isset( $legal[ $slug ] ) ) {
-			continue;
-		}
-		$url = eab_chrome_page_url( $slug );
-		if ( '' !== $url ) {
-			$out[] = array( $label, $url );
-		}
-	}
-	/* ประกาศความเสี่ยง: แสดงทุกครั้งที่หน้าเผยแพร่แล้ว (ข้อความเตือนฉบับเต็มอยู่ใน footer เสมอ จึงไม่ลิงก์ไปหน้าที่ยังไม่มี) */
-	$risk_label = trim( (string) eab_mod( 'footer_risk_link' ) );
-	$risk_url   = eab_chrome_page_url( 'risk-disclosure' );
-	if ( '' !== $risk_label && '' !== $risk_url && ! isset( $legal['risk-disclosure'] ) ) {
-		$out[] = array( $risk_label, $risk_url );
-	}
-	return $out;
-}
-
-/**
- * แถบล่างมือถือ · ช่องลิงก์ 1 ถึง 4 + ปุ่มทองติดต่อท้ายแถบ · ช่อง active คิดฝั่ง PHP (ปิด JS ก็ถูก)
- *
- * @return array { items[], active (int, -1 = ไม่มี) }
- */
-function eab_chrome_dock() {
-	static $cache = null;
-	if ( null !== $cache ) {
-		return $cache;
-	}
-	$slots  = array(
-		array(
-			'label' => eab_mod( 'mobile_nav_home_label' ),
-			'url'   => eab_link_url( eab_mod( 'mobile_nav_home_url' ) ),
-			'icon'  => 'home',
-		),
-		array(
-			'label' => '' !== trim( (string) eab_mod( 'dashboard_url' ) ) ? eab_mod( 'mobile_nav_dash_label' ) : '',
-			'url'   => eab_link_url( eab_mod( 'dashboard_url' ) ),
-			'icon'  => 'gauge',
-		),
-		array(
-			'label' => eab_mod( 'mobile_nav_price_label' ),
-			'url'   => eab_link_url( eab_mod( 'mobile_nav_price_url' ) ),
-			'icon'  => 'tag',
-		),
-		array(
-			'label' => eab_mod( 'mobile_nav_install_label' ),
-			'url'   => eab_link_url( eab_mod( 'mobile_nav_install_url' ) ),
-			'icon'  => 'book',
-		),
-	);
-	$target = eab_contact_target();
-	if ( '' !== $target['url'] ) {
-		$slots[] = array(
-			'label'  => eab_mod( $target['is_line'] ? 'mobile_nav_line_label' : 'mobile_nav_contact_label' ),
-			'url'    => $target['url'],
-			'icon'   => $target['is_line'] ? 'line' : 'chat',
-			'action' => true,
-			'line'   => $target['is_line'],
-		);
-	}
-
-	$items = array();
-	foreach ( $slots as $slot ) {
-		if ( '' === trim( (string) $slot['label'] ) || ! eab_chrome_url_ok( $slot['url'] ) ) {
-			continue;
-		}
-		$items[] = $slot;
-	}
-
-	/* หน้าปัจจุบัน: ใช้ $wp->request (ผ่าน routing ของ WP แล้ว ไม่มี query string) */
-	$request = ( isset( $GLOBALS['wp'] ) && is_object( $GLOBALS['wp'] ) && isset( $GLOBALS['wp']->request ) ) ? (string) $GLOBALS['wp']->request : '';
-	$home    = '/' . trim( (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH ), '/' );
-	$here    = '/' . trim( (string) wp_parse_url( home_url( '/' . ltrim( $request, '/' ) ), PHP_URL_PATH ), '/' );
-	$host    = wp_parse_url( home_url( '/' ), PHP_URL_HOST );
-	$active  = -1;
-	$score   = -1;
-
-	foreach ( $items as $idx => $item ) {
-		if ( ! empty( $item['action'] ) || 0 === strpos( $item['url'], '#' ) ) {
-			continue;
-		}
-		$link_host = wp_parse_url( $item['url'], PHP_URL_HOST );
-		if ( $link_host && $link_host !== $host ) {
-			continue;
-		}
-		$path = '/' . trim( (string) wp_parse_url( $item['url'], PHP_URL_PATH ), '/' );
-		$hit  = $path === $home ? $here === $home : ( $here === $path || 0 === strpos( $here, $path . '/' ) );
-		if ( $hit && strlen( $path ) > $score ) {
-			$active = (int) $idx;
-			$score  = strlen( $path );
-		}
-	}
-
-	$cache = array(
-		'items'  => $items,
-		'active' => $active,
-	);
-	return $cache;
-}
-
 /* ==============================================================
- * แผงติดต่อ "Let's talk" (ต้นแบบ .contact ใน dev/mockup)
- * ซ้าย: ป้ายเล็ก · H2 · คำอธิบาย · รายการช่องทาง (กระเบื้องไอคอน)
- * ขวา: การ์ด · ปุ่มทอง LINE · ปุ่มกรมท่า OpenChat · QR · สิ่งที่ทีมงานจะถาม
- * พิมพ์ได้ครั้งเดียวต่อหน้า ($GLOBALS['eab_chrome_cta_done'])
+ * Yellow contact band (mockup partials/contact.html)
+ * Printed once per page: by eab_line_cta() where a template calls it, otherwise
+ * by footer.php before the footer (skipped on the slugs in contact_hide_on).
  * ============================================================== */
 
 /**
- * ปุ่มติดต่อหลักแบบมีวงกลมไอคอนท้ายปุ่ม · ไม่มีปลายทาง = ไม่พิมพ์ (แอดมินเห็นคำแนะนำ)
- */
-function eab_chrome_contact_button( $class, $pos ) {
-	$target = eab_contact_target();
-	if ( '' === $target['url'] ) {
-		if ( current_user_can( 'edit_theme_options' ) ) {
-			echo '<p class="admin-hint">ปุ่มติดต่อถูกซ่อน: ใส่ลิงก์ LINE ที่ ปรับแต่ง → 1) ช่องทางติดต่อ (ข้อความนี้เห็นเฉพาะแอดมิน)</p>';
-		}
-		return;
-	}
-	$text = (string) eab_mod( $target['is_line'] ? 'footer_line_text' : 'contact_fallback_text' );
-	printf(
-		'<a class="%1$s" href="%2$s"%3$s data-line-pos="%4$s"><span>%5$s</span><span class="btn-ic" aria-hidden="true">%6$s</span></a>',
-		esc_attr( $class . ( $target['is_line'] ? ' is-line' : '' ) ),
-		esc_url( $target['url'] ),
-		$target['is_line'] ? ' target="_blank" rel="noopener"' : '',
-		esc_attr( $pos ),
-		esc_html( $text ),
-		eab_icon( $target['is_line'] ? 'line' : 'chat' ) // phpcs:ignore WordPress.Security.EscapeOutput
-	);
-}
-
-/**
- * แผงติดต่อ
+ * Contact band.
  *
- * @param array $args { kicker, title, sub, pos }
+ * @param array $args { title, sub, pos } (title/sub '' = the shared texts).
  */
 function eab_chrome_contact_panel( $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
-			'kicker' => '',
-			'title'  => '',
-			'sub'    => '',
-			'pos'    => 'page-cta',
+			'title' => '',
+			'sub'   => '',
+			'pos'   => 'page-cta',
 		)
 	);
 	if ( ! empty( $GLOBALS['eab_chrome_cta_done'] ) ) {
@@ -936,148 +941,247 @@ function eab_chrome_contact_panel( $args = array() ) {
 	}
 	$GLOBALS['eab_chrome_cta_done'] = true;
 
-	$target   = eab_contact_target();
-	$is_admin = current_user_can( 'edit_theme_options' );
-	if ( '' === $target['url'] && ! $is_admin ) {
-		return;
+	$title = '' !== trim( (string) $args['title'] ) ? trim( (string) $args['title'] ) : eab_chrome_mod( 'contact_title' );
+	$sub   = '' !== trim( (string) $args['sub'] ) ? trim( (string) $args['sub'] ) : eab_chrome_mod( 'contact_text' );
+	$pos   = sanitize_key( (string) $args['pos'] );
+
+	$has_line = eab_chrome_has_line();
+	$line_sub = eab_chrome_mod( 'contact_line_sub' );
+	$pending  = eab_chrome_mod( 'contact_line_pending' );
+	if ( ! $has_line && '' !== $pending ) {
+		$line_sub = '' !== $line_sub ? $line_sub . ' · ' . $pending : $pending;
 	}
+	$fb      = eab_chrome_fb_link();
+	$fb_host = $fb ? preg_replace( '#^(?:https?:)?//(?:www\.)?#i', '', rtrim( $fb['href'], '/' ) ) : '';
 
-	$pos        = sanitize_key( (string) $args['pos'] );
-	$openchat   = trim( (string) eab_mod( 'line_openchat_url' ) );
-	$openchat   = eab_chrome_url_ok( $openchat ) ? $openchat : '';
-	$qr         = $target['is_line'] ? eab_theme_asset_url( eab_mod( 'line_qr_image' ) ) : '';
-	$channels   = eab_chrome_channels();
-	$hours      = eab_lines( eab_mod( 'footer_hours_text' ) );
-	$prep       = eab_lines( eab_mod( 'footer_prep_items' ) );
-	$card_title = trim( (string) eab_mod( 'chrome_card_title' ) );
-	$card_text  = trim( (string) eab_mod( 'chrome_card_text' ) );
-	$tiles      = array(
-		'line'      => 'line',
-		'users'     => 'openchat',
-		'facebook'  => 'facebook',
-		'instagram' => 'blue',
-		'tiktok'    => 'blue',
-		'youtube'   => 'blue',
-		'mail'      => 'mail',
+	$channels = array(
+		array( eab_chrome_line_link( 'footer-channels' ), 'chat', eab_chrome_mod( 'contact_line_title' ), $line_sub, '' ),
+		array( eab_chrome_openchat_link( 'footer-channels-openchat' ), 'users', eab_chrome_mod( 'contact_openchat_title' ), eab_chrome_mod( 'contact_openchat_sub' ), '' ),
+		array( $fb, 'facebook', eab_chrome_mod( 'contact_fb_title' ), $fb_host, 'nocaps' ),
 	);
+
+	$openchat = eab_chrome_openchat_link( $pos . '-openchat' );
+	$qr_img   = $has_line ? eab_theme_asset_url( eab_chrome_mod( 'line_qr_image' ) ) : '';
+	$qr_wait  = eab_lines( eab_mod( 'contact_qr_wait' ) );
+	$ask      = eab_lines( eab_mod( 'contact_ask_items' ) );
 	?>
-	<section class="chrome-cta" id="contact" aria-labelledby="chrome-cta-title">
-		<div class="ctc-panel glass-panel">
-			<span class="orb ctc-orb" aria-hidden="true"></span>
-
-			<div class="ctc-copy">
-				<?php eab_chrome_kicker( $args['kicker'] ); ?>
-				<h2 class="ctc-title" id="chrome-cta-title"><?php echo eab_text( $args['title'] ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside eab_text ?></h2>
-				<?php if ( '' !== trim( (string) $args['sub'] ) ) : ?>
-					<p class="ctc-lead"><?php echo eab_text( $args['sub'] ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside eab_text ?></p>
-				<?php endif; ?>
-
-				<?php if ( $channels || $hours ) : ?>
-					<ul class="ctc-list">
-						<?php foreach ( $channels as $eab_channel ) : ?>
-							<?php $eab_tone = isset( $tiles[ $eab_channel['icon'] ] ) ? $tiles[ $eab_channel['icon'] ] : 'blue'; ?>
-							<li>
-								<a href="<?php echo eab_chrome_social_href( $eab_channel ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>"<?php echo isset( $eab_channel['mailto'] ) ? '' : ' target="_blank" rel="noopener"'; ?><?php echo ! empty( $eab_channel['pos'] ) ? ' data-line-pos="' . esc_attr( $eab_channel['pos'] ) . '"' : ''; ?>>
-									<span class="tile tile--<?php echo esc_attr( $eab_tone ); ?>" aria-hidden="true"><?php echo eab_icon( $eab_channel['icon'], 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
-									<span class="ctc-list-label"><?php echo esc_html( $eab_channel['label'] ); ?></span>
-								</a>
-							</li>
-						<?php endforeach; ?>
-						<?php if ( $hours ) : ?>
-							<li class="ctc-hours">
-								<span class="tile tile--navy" aria-hidden="true"><?php echo eab_icon( 'clock', 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
-								<span class="ctc-hours-text">
-									<strong><?php echo esc_html( eab_mod( 'footer_hours_title' ) ); ?></strong>
-									<?php foreach ( $hours as $eab_line ) : ?>
-										<span><?php echo esc_html( $eab_line ); ?></span>
-									<?php endforeach; ?>
-								</span>
-							</li>
-						<?php endif; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
-
-			<div class="ctc-card">
-				<?php if ( '' !== $card_title ) : ?>
-					<h3 class="ctc-card-title"><?php echo esc_html( $card_title ); ?></h3>
-				<?php endif; ?>
-				<?php if ( '' !== $card_text ) : ?>
-					<p class="ctc-card-text"><?php echo esc_html( $card_text ); ?></p>
-				<?php endif; ?>
-
-				<div class="ctc-actions">
-					<?php eab_chrome_contact_button( 'btn btn-fire chrome-btn ctc-btn', $pos ); ?>
-					<?php if ( '' !== $openchat ) : ?>
-						<a class="btn chrome-btn ctc-btn ctc-btn--openchat" href="<?php echo esc_url( $openchat ); ?>" target="_blank" rel="noopener" data-line-pos="<?php echo esc_attr( $pos . '-openchat' ); ?>"><span><?php echo esc_html( eab_mod( 'line_openchat_text' ) ); ?></span><span class="btn-ic" aria-hidden="true"><?php echo eab_icon( 'users' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></a>
-					<?php endif; ?>
-				</div>
-
-				<?php if ( '' !== $qr ) : ?>
-					<div class="ctc-qr">
-						<img src="<?php echo esc_url( $qr ); ?>" alt="<?php echo esc_attr( eab_mod( 'footer_line_qr_alt' ) ); ?>" width="600" height="600" loading="lazy" decoding="async">
-						<div class="ctc-qr-text">
-							<p class="ctc-qr-title"><?php echo eab_icon( 'qr', 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php echo esc_html( eab_mod( 'footer_qr_toggle_text' ) ); ?></span></p>
-							<?php if ( '' !== trim( (string) eab_mod( 'footer_qr_text' ) ) ) : ?>
-								<p class="ctc-qr-sub"><?php echo esc_html( eab_mod( 'footer_qr_text' ) ); ?></p>
-							<?php endif; ?>
-						</div>
-					</div>
-				<?php elseif ( $target['is_line'] && $is_admin ) : ?>
-					<p class="admin-hint">ยังไม่มีรูป QR · อัปโหลดที่ ปรับแต่ง → 1) ช่องทางติดต่อ → รูป QR Code LINE OA (ข้อความนี้เห็นเฉพาะแอดมิน)</p>
-				<?php endif; ?>
-
-				<?php if ( $prep ) : ?>
-					<div class="ctc-ask">
-						<?php if ( '' !== trim( (string) eab_mod( 'footer_prep_title' ) ) ) : ?>
-							<p class="ctc-ask-title"><?php echo esc_html( eab_mod( 'footer_prep_title' ) ); ?></p>
-						<?php endif; ?>
-						<?php if ( '' !== trim( (string) eab_mod( 'footer_prep_text' ) ) ) : ?>
-							<p class="ctc-ask-text"><?php echo esc_html( eab_mod( 'footer_prep_text' ) ); ?></p>
-						<?php endif; ?>
-						<ul class="ctc-ask-list">
-							<?php foreach ( $prep as $eab_item ) : ?>
-								<li><?php echo eab_icon( 'check', 'icon' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php echo esc_html( $eab_item ); ?></span></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				<?php endif; ?>
-			</div>
+<section class="contact yband" id="contact" aria-labelledby="contact-title">
+	<div class="wrap contact__grid">
+		<div class="contact__text">
+			<h2 id="contact-title"><?php echo esc_html( $title ); ?></h2>
+			<?php if ( '' !== $sub ) : ?>
+				<p class="contact__sub"><?php echo esc_html( $sub ); ?></p>
+			<?php endif; ?>
+			<ul class="chan">
+				<?php
+				foreach ( $channels as $chan ) :
+					if ( empty( $chan[0] ) || '' === $chan[2] ) {
+						continue;
+					}
+					$eab_out = ! empty( $chan[0]['target'] );
+					?>
+					<li><a<?php echo eab_chrome_attrs( $chan[0] ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><span class="tile tile--ink"><?php echo eab_icon( $chan[1] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span><span><b><?php echo esc_html( $chan[2] ); ?></b><?php if ( '' !== $chan[3] ) : ?><small<?php echo '' !== $chan[4] ? ' class="' . esc_attr( $chan[4] ) . '"' : ''; ?>><?php echo esc_html( $chan[3] ); ?></small><?php endif; ?></span><?php echo eab_icon( $eab_out ? 'arrow-up-right' : 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a></li>
+				<?php endforeach; ?>
+			</ul>
 		</div>
-	</section>
+		<div class="contact__card cut dark">
+			<?php if ( '' !== eab_chrome_mod( 'contact_card_title' ) ) : ?>
+				<h3><?php echo esc_html( eab_chrome_mod( 'contact_card_title' ) ); ?></h3>
+			<?php endif; ?>
+			<?php if ( '' !== eab_chrome_mod( 'contact_card_text' ) ) : ?>
+				<p><?php echo esc_html( eab_chrome_mod( 'contact_card_text' ) ); ?></p>
+			<?php endif; ?>
+			<div class="contact__btns">
+				<?php eab_chrome_contact_button( 'btn--block', $pos ); ?>
+				<?php if ( $openchat ) : ?>
+					<a<?php echo eab_chrome_attrs( array_merge( array( 'class' => 'btn btn--openchat btn--block' ), $openchat ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo eab_icon( 'users' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( eab_chrome_mod( 'line_openchat_text' ) ); ?></a>
+				<?php endif; ?>
+			</div>
+			<?php if ( '' !== eab_chrome_mod( 'contact_qr_title' ) ) : ?>
+				<div class="contact__qr">
+					<?php if ( '' !== $qr_img ) : ?>
+						<div class="qr qr--img"><img src="<?php echo esc_url( $qr_img ); ?>" width="600" height="600" alt="<?php echo esc_attr( eab_chrome_mod( 'contact_qr_alt' ) ); ?>" loading="lazy" decoding="async"></div>
+					<?php else : ?>
+						<div class="qr"><?php echo eab_icon( 'qr' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php echo implode( '<br>', array_map( 'esc_html', $qr_wait ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></div>
+					<?php endif; ?>
+					<div>
+						<b><?php echo esc_html( eab_chrome_mod( 'contact_qr_title' ) ); ?></b>
+						<?php if ( '' !== eab_chrome_mod( 'contact_qr_text' ) ) : ?>
+							<p><?php echo esc_html( eab_chrome_mod( 'contact_qr_text' ) ); ?></p>
+						<?php endif; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+			<?php if ( $ask ) : ?>
+				<div class="contact__ask">
+					<?php if ( '' !== eab_chrome_mod( 'contact_ask_title' ) ) : ?>
+						<b><?php echo esc_html( eab_chrome_mod( 'contact_ask_title' ) ); ?></b>
+					<?php endif; ?>
+					<ul class="checks">
+						<?php foreach ( $ask as $eab_item ) : ?>
+							<li><?php echo eab_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( $eab_item ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</section>
 	<?php
 }
 
 /**
- * แผงติดต่อท้ายหน้าย่อย · แทน eab_line_cta() เดิม (add_action 'eab_line_cta')
+ * eab_line_cta( $title, $sub ) from templates (functions.php forwards to this hook).
  */
 function eab_chrome_line_cta( $title = '', $sub = '' ) {
 	eab_chrome_contact_panel(
 		array(
-			'kicker' => eab_mod( 'chrome_cta_label' ),
-			'title'  => '' !== trim( (string) $title ) ? $title : eab_mod( 'contact_title' ),
-			'sub'    => '' !== trim( (string) $sub ) ? $sub : eab_mod( 'contact_text' ),
-			'pos'    => 'page-cta',
+			'title' => $title,
+			'sub'   => $sub,
+			'pos'   => 'page-cta',
 		)
 	);
 }
 add_action( 'eab_line_cta', 'eab_chrome_line_cta', 10, 2 );
 
 /**
- * แผงติดต่อในส่วนท้าย สำหรับหน้าที่ยังไม่มีแผงติดต่อ (เช่น หน้าแรก บทความ 404) · ปิดได้ด้วยฟิลเตอร์ eab_chrome_footer_contact
+ * Band before the footer on pages whose template did not print one.
+ * Off on the slugs listed in contact_hide_on, or with the filter eab_chrome_footer_contact.
  */
 function eab_chrome_footer_contact() {
-	if ( ! empty( $GLOBALS['eab_chrome_cta_done'] ) || ! apply_filters( 'eab_chrome_footer_contact', true ) ) {
+	if ( ! empty( $GLOBALS['eab_chrome_cta_done'] ) ) {
 		return;
 	}
-	$title = trim( (string) eab_mod( 'footer_headline' ) );
-	$sub   = trim( (string) eab_mod( 'footer_sub' ) );
-	eab_chrome_contact_panel(
-		array(
-			'kicker' => eab_mod( 'footer_console_label' ),
-			'title'  => '' !== $title ? $title : eab_mod( 'contact_title' ),
-			'sub'    => '' !== $sub ? $sub : eab_mod( 'contact_text' ),
-			'pos'    => 'footer',
-		)
+	$hidden = array_map( 'sanitize_title', eab_lines( eab_mod( 'contact_hide_on' ) ) );
+	$show   = ! ( $hidden && is_page( $hidden ) );
+	if ( ! apply_filters( 'eab_chrome_footer_contact', $show ) ) {
+		return;
+	}
+	eab_chrome_contact_panel( array( 'pos' => 'footer' ) );
+}
+
+/* ==============================================================
+ * Footer (footer.php prints the markup with these lists)
+ * ============================================================== */
+
+/**
+ * The three link columns: guides (menu items) · site pages · documents.
+ *
+ * @return array[] { title, items[] { title, url } }
+ */
+function eab_chrome_footer_columns() {
+	$cols = array(
+		array( eab_chrome_mod( 'nav_guide_label' ), eab_chrome_links( 'nav_guide_items' ) ),
+		array( eab_chrome_mod( 'footer_index_title' ), eab_chrome_links( 'footer_index_items' ) ),
+		array( eab_chrome_mod( 'footer_docs_title' ), eab_chrome_links( 'footer_docs_items' ) ),
 	);
+	$out  = array();
+	foreach ( $cols as $col ) {
+		if ( ! empty( $col[1] ) ) {
+			$out[] = array(
+				'title' => $col[0],
+				'items' => $col[1],
+			);
+		}
+	}
+	return $out;
+}
+
+/* ==============================================================
+ * Mobile dock (5 equal slots) and floating contact button
+ * ============================================================== */
+
+/**
+ * Dock slots · the slot of the page being viewed gets aria-current (CSS draws the hexagon).
+ *
+ * @return array[] { key, label, attrs, icon, current }
+ */
+function eab_chrome_dock_items() {
+	$guides = array();
+	foreach ( eab_chrome_links( 'nav_guide_items' ) as $link ) {
+		$guides[] = sanitize_title( $link['ref'] );
+	}
+	$home  = eab_link_url( eab_mod( 'mobile_nav_home_url' ) );
+	$price = eab_link_url( eab_mod( 'mobile_nav_price_url' ) );
+	$guide = eab_link_url( eab_mod( 'mobile_nav_install_url' ) );
+	$slots = array(
+		array( 'home', 'mobile_nav_home_label', array( 'href' => $home ), 'home', is_front_page() || ( '/' !== eab_chrome_url_path( $home ) && eab_chrome_is_here( $home ) ) ),
+		array( 'dash', 'mobile_nav_dash_label', eab_chrome_dash_link(), 'gauge', false ),
+		array( 'pricing', 'mobile_nav_price_label', array( 'href' => $price ), 'tag', eab_chrome_is_here( $price ) ),
+		array( 'guides', 'mobile_nav_install_label', array( 'href' => $guide ), 'book', eab_chrome_is_here( $guide ) || ( $guides && is_page( $guides ) ) ),
+		array( 'line', 'mobile_nav_line_label', eab_chrome_line_link( 'dock' ), 'chat', false ),
+	);
+	$out   = array();
+	foreach ( $slots as $slot ) {
+		$label = eab_chrome_mod( $slot[1] );
+		if ( '' === $label ) {
+			continue;
+		}
+		$out[] = array(
+			'key'     => $slot[0],
+			'label'   => $label,
+			'attrs'   => $slot[2],
+			'icon'    => $slot[3],
+			'current' => (bool) $slot[4],
+		);
+	}
+	return $out;
+}
+
+/**
+ * nav.dock (shown at 900px and below by style.css).
+ */
+function eab_chrome_dock() {
+	if ( ! eab_mod( 'show_mobile_nav' ) ) {
+		return;
+	}
+	$items = eab_chrome_dock_items();
+	if ( ! $items ) {
+		return;
+	}
+	echo '<nav class="dock" aria-label="' . esc_attr( eab_chrome_mod( 'chrome_dock_aria' ) ) . '">';
+	foreach ( $items as $item ) {
+		$attrs = array_merge( array( 'data-dock' => $item['key'] ), $item['attrs'], $item['current'] ? array( 'aria-current' => 'page' ) : array() );
+		echo '<a' . eab_chrome_attrs( $attrs ) . '><span class="dock__ico">' . eab_icon( $item['icon'] ) . '</span><span>' . esc_html( $item['label'] ) . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in parts
+	}
+	echo '</nav>';
+}
+
+/**
+ * Floating green button + quick contact sheet (#quick, opened by main.js).
+ */
+function eab_chrome_fab() {
+	if ( ! eab_mod( 'show_float_line' ) ) {
+		return;
+	}
+	$close    = eab_chrome_mod( 'chrome_close_label' );
+	$title    = eab_chrome_mod( 'chrome_quick_title' );
+	$openchat = eab_chrome_openchat_link( 'fab-openchat' );
+	$fb       = eab_chrome_fb_link();
+	$go       = eab_chrome_page_url( 'go' );
+	$go_label = eab_chrome_mod( 'chrome_quick_go' );
+	?>
+<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="<?php echo esc_attr( eab_chrome_mod( 'float_line_text' ) ); ?>"><?php echo eab_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+<div class="quick dark" id="quick" role="dialog" aria-label="<?php echo esc_attr( '' !== $title ? $title : eab_chrome_mod( 'float_line_text' ) ); ?>" hidden>
+	<div class="quick__head">
+		<b><?php echo esc_html( $title ); ?></b>
+		<button type="button" class="quick__x" data-quick-close aria-label="<?php echo esc_attr( $close ); ?>"><?php echo eab_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+	</div>
+	<?php if ( '' !== eab_chrome_mod( 'chrome_quick_sub' ) ) : ?>
+		<p><?php echo esc_html( eab_chrome_mod( 'chrome_quick_sub' ) ); ?></p>
+	<?php endif; ?>
+	<div class="quick__btns">
+		<?php eab_chrome_contact_button( 'btn--block', 'fab', eab_chrome_mod( 'chrome_quick_line' ) ); ?>
+		<?php if ( $openchat ) : ?>
+			<a<?php echo eab_chrome_attrs( array_merge( array( 'class' => 'btn btn--openchat btn--block' ), $openchat ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo eab_icon( 'users' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( eab_chrome_mod( 'line_openchat_text' ) ); ?></a>
+		<?php endif; ?>
+		<?php if ( $fb ) : ?>
+			<a<?php echo eab_chrome_attrs( array_merge( array( 'class' => 'btn btn--fb btn--block' ), $fb ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo eab_icon( 'facebook' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( eab_chrome_mod( 'chrome_quick_fb' ) ); ?></a>
+		<?php endif; ?>
+	</div>
+	<?php if ( '' !== $go && '' !== $go_label ) : ?>
+		<a class="quick__go" href="<?php echo esc_url( $go ); ?>"><?php echo esc_html( $go_label ); ?> <?php echo eab_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
+	<?php endif; ?>
+</div>
+	<?php
 }

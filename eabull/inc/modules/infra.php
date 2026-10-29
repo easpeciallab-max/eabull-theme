@@ -16,7 +16,7 @@
  *    ส่ง Permissions-Policy / X-Content-Type-Options / Referrer-Policy, ลบ X-Pingback / X-Powered-By
  * 3) ลดน้ำหนักหน้าเว็บ: ปิดสคริปต์อีโมจิ, ถอด CSS ของบล็อก Gutenberg เมื่อหน้านั้นไม่ได้ใช้บล็อก
  *    + ครอบตารางที่เจ้าของพิมพ์เองในเนื้อหาด้วย .table-wrap (เลื่อนซ้ายขวาได้บนมือถือ)
- * 4) ฟอนต์ Noto Sans Thai แบบ self-host (assets/fonts · SIL OFL 1.1) แทน Google Fonts
+ * 4) ฟอนต์ Inter + Anuphan แบบ self-host (ยังไม่มีไฟล์ = ใช้ Google Fonts ที่ eab_assets() โหลดไว้) (assets/fonts · SIL OFL 1.1) แทน Google Fonts
  *    ไม่มีการเรียก fonts.googleapis.com ก่อนผู้เข้าชมให้ความยินยอม · preload 2 ไฟล์ที่ใช้ในจอแรก
  *
  * @package eabull
@@ -614,7 +614,7 @@ function eab_infra_wrap_content_tables( $content ) {
 			return $content;
 		}
 		$before = $parts[ $i - 1 ];
-		if ( preg_match( '#<(?:div|figure)\b[^>]*\bclass="[^"]*\b(?:table-wrap|wp-block-table)\b[^"]*"[^>]*>\s*$#i', $before ) ) {
+		if ( preg_match( '#<(?:div|figure)\b[^>]*\bclass="[^"]*\b(?:table-wrap|tbl-wrap|wp-block-table)\b[^"]*"[^>]*>\s*$#i', $before ) ) {
 			$out .= $part;
 			continue;
 		}
@@ -625,14 +625,14 @@ function eab_infra_wrap_content_tables( $content ) {
 add_filter( 'the_content', 'eab_infra_wrap_content_tables', 22 );
 
 /* ==============================================================
- * 4) ฟอนต์ Noto Sans Thai แบบ self-host
+ * 4) ฟอนต์ Inter + Anuphan แบบ self-host (ยังไม่มีไฟล์ = ใช้ Google Fonts ที่ eab_assets() โหลดไว้)
  * ============================================================== */
 
 /**
- * ไฟล์ฟอนต์ในธีม (variable weight 300 ถึง 800 แยกชุดอักษรด้วย unicode-range) · 2 ไฟล์แรก = preload
+ * ไฟล์ฟอนต์ในธีม (แยกชุดอักษรด้วย unicode-range ใน fonts.css) · 2 ไฟล์แรก = preload
  */
 function eab_infra_font_files() {
-	return array( 'noto-sans-thai-thai.woff2', 'kanit-600-thai.woff2', 'noto-sans-thai-latin.woff2', 'noto-sans-thai-latin-ext.woff2', 'kanit-500-thai.woff2', 'kanit-500-latin.woff2', 'kanit-600-latin.woff2', 'kanit-700-thai.woff2', 'kanit-700-latin.woff2' );
+	return array( 'anuphan-thai.woff2', 'inter-latin.woff2', 'anuphan-latin.woff2', 'anuphan-latin-ext.woff2', 'inter-latin-ext.woff2' ); // dev/tools/fetch-fonts.py
 }
 
 function eab_infra_fonts_ready() {
@@ -671,18 +671,8 @@ function eab_infra_preload_fonts() {
 	}
 	$base  = get_template_directory_uri() . '/assets/fonts/';
 	$files = array_slice( eab_infra_font_files(), 0, 2 );
-	/* หน้าแรก: H1 ใน hero ใช้ Kanit 700 · โหลดก่อนกันข้อความเปลี่ยนสูงแล้วดันภาพข้าง ๆ (CLS) */
-	if ( is_front_page() ) {
-		$files = array_merge( $files, array( 'kanit-700-latin.woff2', 'kanit-700-thai.woff2' ) );
-	}
 	foreach ( $files as $file ) {
 		printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( $base . $file ) );
-	}
-	/* จอกว้าง (hero สองคอลัมน์ ≥ 961px): ภาพข้างข้อความจัดกึ่งกลางตามความสูงข้อความ ฟอนต์ที่มาช้าทำให้ภาพขยับ · โหลดฟอนต์ที่เหลือในจอแรกล่วงหน้า */
-	if ( is_front_page() ) {
-		foreach ( array( 'noto-sans-thai-latin.woff2', 'kanit-500-thai.woff2', 'kanit-500-latin.woff2', 'kanit-600-latin.woff2' ) as $file ) {
-			printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin media="(min-width: 961px)">' . "\n", esc_url( $base . $file ) );
-		}
 	}
 }
 add_action( 'wp_head', 'eab_infra_preload_fonts', 2 );

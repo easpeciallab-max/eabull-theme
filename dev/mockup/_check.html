@@ -22,6 +22,18 @@ var PAGES = ['index', 'home', 'product-1', 'product-2', 'product-3', 'pricing', 
   'how-to-install', 'open-mt5-account', 'deposit', 'mt5-login', 'vps-windows', 'vps-android', 'vps-ios', 'tools',
   'risk-disclosure', 'about', 'privacy-policy', 'terms-of-use', 'data-deletion', 'go', 'articles', 'article', 'search', '404'];
 var WIDTHS = [375, 820, 1366];
+/* Opened through the theme preview (http://localhost:8791/mockup/_check.html) it checks the
+   real theme pages instead of the mockup files. */
+var THEME = location.port === '8791';
+if (THEME) {
+  PAGES = ['', 'product-1', 'product-2', 'product-3', 'pricing', 'backtest', 'forward-test', 'how-to-install',
+    'open-mt5-account', 'deposit', 'mt5-login', 'vps-windows', 'vps-android', 'vps-ios', 'tools', 'risk-disclosure',
+    'about', 'privacy-policy', 'terms-of-use', 'data-deletion', 'go', 'articles', '?s=MT5', 'nope-404'];
+}
+function pageUrl(page) {
+  if (!THEME) return page + '.html?shot';
+  return page.charAt(0) === '?' ? '/' + page : '/' + page + (page ? '/' : '');
+}
 var results = window.checkResults = [];
 
 function load(page, w) {
@@ -45,20 +57,21 @@ function load(page, w) {
           if (w === 1366) {
             var h1 = d.querySelectorAll('h1').length;
             if (h1 !== 1) extra.push('h1=' + h1);
-            d.querySelectorAll('img').forEach(function (im) {
-              if (!im.hasAttribute('alt') || !im.getAttribute('width')) extra.push('img ' + im.getAttribute('src'));
+            d.querySelectorAll('img:not(.lb img)').forEach(function (im) {
+              if (!im.hasAttribute('alt') || !im.getAttribute('width')) extra.push('img ' + (im.getAttribute('src') || im.outerHTML.slice(0, 120)));
             });
             d.querySelectorAll('a[href^="http"]').forEach(function (a) {
-              if (!/noopener/.test(a.rel)) extra.push('noopener ' + a.href);
+              if (a.hostname !== location.hostname && !/noopener/.test(a.rel)) extra.push('noopener ' + a.href);
             });
             if (/[–—]/.test(d.body.innerText)) extra.push('มี dash');
+            if (/(Warning|Notice|Deprecated|Fatal error)<\/b>:/.test(d.documentElement.innerHTML)) extra.push('PHP notice');
           }
           f.remove();
           resolve({ over: over, wide: wide, extra: extra });
         }, 250);
       });
     };
-    f.src = page + '.html?shot';
+    f.src = pageUrl(page);
     document.body.appendChild(f);
   });
 }

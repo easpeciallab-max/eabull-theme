@@ -27,6 +27,7 @@
   - (รอบ 2) **แถบล่างมือถือ**: แถบดำ ข้อความและไอคอนสีขาว · หน้าที่เปิดอยู่ข้อความเป็นสีเหลือง และไอคอนอยู่ในกรอบหกเหลี่ยมที่ลอยขึ้นเหนือแถบ (เจ้าของออกแบบเอง · แทน 3 แบบที่ทำไว้ก่อน)
   - (รอบ 2) **ฟอนต์ให้ทันสมัยกว่าเดิม แนว Apple** → ทำให้เทียบ 3 แบบ **เจ้าของเลือกแบบ A: Inter (อังกฤษและตัวเลข) + Anuphan (ไทย ทั้งหัวข้อและเนื้อความ)** · ลบตัวเลือกอื่นออกแล้ว
   - (รอบ 2) **เลือกสีแบบ C**: ดำ + เหลืองสด + ขาวบางช่วง · ลบแบบสีอื่นออกจากโค้ดแล้ว
+  - **อนุมัติล่วงหน้า ("ทำตามที่คิดได้เลย")**: เมื่อธีมรื้อเสร็จและตรวจผ่าน ให้เปิดใช้ธีม EA BULL บน eabull.com · กด EA BULL Setup สร้างเพจ เมนู หน้าแรก · redirect results/guides/risk-warning ไปหน้าใหม่ · แทนเนื้อหา about/privacy/data-deletion · ปิด "ใส่โค้ด Analytics" ใน Site Kit · ปิดปลั๊กอิน PixelYourSite (ไม่ลบถาวร)
   - (รอบ 2) ภาพหน้าจอต้องแยก คอม / แท็บเล็ต / มือถือ ให้ชัด และมีภาพตอนเปิดเมนู ดรอปดาวน์ การ์ดคุกกี้ PDPA ฯลฯ ครบ → `dev/tools/shoot-set.py`
 
 ## ข้อมูลจริงที่ได้แล้ว
@@ -65,7 +66,7 @@
   - `_src/pages/<slug>.html` = เนื้อหาเฉพาะหน้า (บรรทัดแรกเป็น JSON ใน comment: title, desc, nav, dock …)
   - `_src/partials/` = header, footer, แถบ CTA, แถบล่างมือถือ, ปุ่ม LINE ลอย, แผงติดต่อ, การ์ดคุกกี้
 - CSS ชุดเดียว `assets/css/bull.css` · JS ชุดเดียว `assets/js/bull.js` · รูป `assets/img/` (ตัดจากโลโก้จริงด้วย `dev/tools/make-logo.py`)
-- ฟอนต์ Inter + Anuphan ในต้นแบบโหลดจาก Google Fonts (เฟส 2 ต้อง self-host)
+- ฟอนต์ Inter + Anuphan ในต้นแบบโหลดจาก Google Fonts (ธีมจริง self-host แล้ว)
 - Preview: launch config `eabull-mockup` → http://localhost:8790/ (EA WING ใช้ 8775)
 - ตรวจทุกหน้าที่จอ 375 / 820 / 1366 · `scrollWidth === innerWidth`
 
@@ -77,14 +78,19 @@
 - แผนและกติกาสำหรับคนทำอยู่ใน **`docs/phase2.md`** (ใครเป็นเจ้าของไฟล์ไหน hook ของ JS ปุ่มและลิงก์ สินค้าตัวอย่าง) · อ่านก่อนแก้ธีมทุกครั้ง
 - fork จาก `eawing/` เมื่อ 29 ต.ค. 2026 (ไม่เอาบทความ zip รูป และสินค้า 3 ตัวของ EA WING) · prefix `eab_` `eab-` `eabCamel` · text domain `eabull` · REST `eabull/v1` · shortcode `[eabull_*]` · cookie `eab_consent`
 - `style.css` = ดีไซน์จากต้นแบบที่อนุมัติ (bull.css) + คลาสเนื้อหา · `main.js` เขียนใหม่ (คงระบบนับคลิก LINE โหลดเพิ่ม lightbox ของเดิม) · `eab_icon()` ใช้ไอคอนชุดต้นแบบ · `eab_wait()` = ป้ายรอข้อมูลเจ้าของ
-- ฟอนต์ Inter + Anuphan โหลดจาก Google Fonts ชั่วคราว · **ต้องขออนุญาตเจ้าของดาวน์โหลดไฟล์ฟอนต์มา self-host ก่อนขึ้นเว็บ** (infra.php สลับให้เองเมื่อมี `assets/css/fonts.css` + ไฟล์ใน `eab_infra_font_files()`)
+- ฟอนต์ Inter + Anuphan **self-host แล้ว** (เจ้าของอนุญาตดาวน์โหลด 29 ต.ค. 2026 · `py -3 -I dev/tools/fetch-fonts.py` → `assets/fonts/*.woff2` + `assets/css/fonts.css` · infra.php สลับจาก Google Fonts ให้เองเมื่อไฟล์ใน `eab_infra_font_files()` ครบ)
 - รูปแบรนด์และปกธีมสร้างด้วย `py -3 -I dev/tools/make-brand.py` (จากโลโก้ของเจ้าของ)
+- **ภาพคู่มือ**: เจ้าของอนุญาตให้ใช้ภาพจาก EA WING (29 ต.ค. 2026 "ใช้รูปจากอีเอวิงก์ได้เลย อันไหนไม่ได้ก็ปรับให้เป็นของเรา") · `dev/tools/adapt-guide-images.py` คัดลอกภาพหน้าจอ Zaurix/MT5/Remote Desktop เป็น `assets/img/guides/eabull-*.webp` และแก้ภาพ MT5 ใน `assets/img/install/` (ชื่อไฟล์ EA_WING_V5.0 → EA_BULL · ลบบรรทัดสัญลักษณ์บนกราฟ) · `dev/tools/vps-screens.py` วาดภาพจำลองแอป Windows App 9 ภาพใหม่เป็นสี Bull Black ("EA BULL VPS") · ไม่เอามา: ภาพแดชบอร์ด/โหมด/การ์ดล็อกอินของสินค้า EA WING, ภาพผลทดสอบ, ปก, แบนเนอร์ · แผนภาพ `illus/` ของ EA WING ยังไม่ได้ทำใหม่ (สไตล์ Glass Sky)
 - Preview ธีม: launch config `eabull-preview` → http://localhost:8791/ (WordPress stubs ค่า = defaults) · ต้นแบบยังอยู่ที่ 8790
 - ตรวจ: PHP ที่ `C:/Users/THANAWUT HR/AppData/Local/Microsoft/WinGet/Packages/PHP.PHP.8.4_Microsoft.Winget.Source_8wekyb3d8bbwe/php.exe` · `dev/check-settings.php` (none) · `dev/check-content.php` all good · `dev/check-brand.php` (จับ wing/eawing/eaw_ ด้วย) no brand leaks · **`py -3 -I dev/tools/check-dup.py`** ต้องไม่มีข้อความซ้ำ EA WING (duplicate content)
-- git: repo นี้ init แล้ว branch `main` · credential helper ระดับ repo = `!gh auth git-credential` (บัญชี easpeciallab-max) · `core.autocrlf false` · **ยังไม่มี remote**: การสร้าง repo สาธารณะ `easpeciallab-max/eabull-theme` ถูกระบบหยุดไว้ รอเจ้าของยืนยัน (29 ต.ค. 2026) · WP Pusher บน eabull.com ยังไม่ได้ตั้ง (เจ้าของต้องล็อกอิน wp-admin เอง)
-- เจ้าของขอ (29 ต.ค. 2026): "เวลาสั่งในนี้ ให้เว็บอัปเดตได้ทันที" → ต้องมี GitHub + WP Pusher + `dev/deploy.sh` แบบ EA WING · เสนอเจ้าของว่าติดตั้งธีมไว้ก่อนแต่ยังไม่เปิดใช้จนรื้อหน้าตาและข้อความเสร็จ
+- git: branch `main` · remote `https://github.com/easpeciallab-max/eabull-theme` (public · เจ้าของสั่งสร้าง 29 ต.ค. 2026) · credential helper ระดับ repo = ค่าว่างก่อน แล้วตามด้วย `!gh auth git-credential` (ต้องมีค่าว่างนำ ไม่งั้น git ใช้บัญชี easpecial-th ของเครื่องแล้ว push ไม่ผ่าน) · `core.autocrlf false`
+- Deploy: WP Pusher บน eabull.com ติดตั้งธีม EA BULL แล้ว (branch main · subdirectory eabull · Push-to-Deploy เปิด) · webhook ใน GitHub (id 704677955 · เจ้าของวาง URL เอง) ทดสอบ push แล้วได้ 200 · ใช้ `bash dev/deploy.sh` เหมือน EA WING · **ธีมยังไม่ได้เปิดใช้บนเว็บจริง** (ยังรื้อหน้าตาไม่เสร็จ) · ธีม EA Special (easpecial-th/easpecial-theme) ยังเป็นธีมที่ใช้อยู่และอยู่ใน WP Pusher ห้ามแตะ · ลบได้หลังเปิดใช้ EA BULL และใช้งานจริงผ่านไปราว 2 สัปดาห์ (การลบถาวรเป็นงานของเจ้าของ)
+- สิ่งที่เห็นใน wp-admin 29 ต.ค. 2026 (ยังไม่ได้แก้ · ต้องถามเจ้าของก่อน): PixelYourSite เปิดอยู่ (ใส่ Pixel/GA4 ข้าม PDPA ได้) · Elementor + Elementor Pro (หมดอายุ) · GTranslate · All-in-One WP Migration · ตั้งซ่อนเว็บจากการค้นหาไว้ · มี post type `ea_product` ในเมนู
+- เจ้าของขอ (29 ต.ค. 2026): "เวลาสั่งในนี้ ให้เว็บอัปเดตได้ทันที" → GitHub + WP Pusher + `dev/deploy.sh` ตั้งเสร็จแล้ว (ด้านบน)
 
 ## สถานะ
 - 29 ต.ค. 2026: เริ่มโปรเจกต์ · repo ยังไม่ได้เป็น git · เว็บ eabull.com ยังเป็นเว็บตั้งต้น (ธีม easpecial, ชื่อเว็บ "EA Special", ปุ่ม LINE ลิงก์ไป @fenixpro ของแบรนด์อื่น) ยังไม่ได้แตะ
 - 29 ต.ค. 2026: **ต้นแบบเฟส 1 ครบ 27 หน้า** (รวมสินค้าตัวอย่าง 3 หน้า หน้าเทียบสี และหน้ารวมลิงก์) · ตรวจผ่านทุกหน้าที่ 375/820/1366 · ส่งภาพให้เจ้าของ 5 ชุดแล้ว เจ้าของเลือกฟอนต์ (Inter + Anuphan) และสีแบบ C แล้ว · **รอเจ้าของยืนยันอนุมัติดีไซน์ก่อนเริ่มเฟส 2**
+- 29 ต.ค. 2026: **เฟส 2 รื้อหน้าตาธีมเสร็จ** (ผู้ช่วย 4 ชุดตาม docs/phase2.md + งานกลาง) · ทุกหน้าใน preview ตรงกับต้นแบบ · ตรวจผ่าน: php -l ทุกไฟล์ · check-settings (none) · check-content all good · check-brand no brand leaks · `/mockup/_check.html` บน preview ธีม (http://localhost:8791/mockup/_check.html) ผ่าน 24 หน้า × 3 จอ · ข้อความที่แสดงจริงซ้ำ EA WING 0 ท่อน (หมายเหตุในโค้ดของ setup/seo/infra/customizer ยังมีข้อความเดิม ไม่แสดงบนเว็บ) · ภาพธีมด้วย `py -3 -I dev/tools/shoot-theme.py`
+- หน้าเกี่ยวกับเราใช้ `template-about.php` (ตามต้นแบบ + FAQ 5 ข้อก่อนบล็อกความเสี่ยง) · สินค้าใช้ `template-product.php` slug product-1..3 · ช่องที่ยังไม่มีข้อมูลขึ้นป้ายรอข้อมูล · ภาพคู่มือที่ยังไม่มี: open-mt5-account ขั้น 1, deposit ขั้น 3 5 6, how-to-install ขั้น 6
 - เรื่องที่ร่างไว้และต้องให้เจ้าของยืนยัน: ข้อกำหนดเขียนว่า EA BULL ไม่ใช่โบรกเกอร์และไม่ถือเงินเทรดของลูกค้า · เว็บไม่ให้บริการผู้ที่ยังไม่บรรลุนิติภาวะ · ปุ่ม "เข้า Portal Zaurix" ยังไม่มีลิงก์ (ลิงก์ที่ได้มาเป็นลิงก์สมัคร)

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EAB_VERSION', '1.0.73' );
+define( 'EAB_VERSION', '1.0.0' );
 
 /* --------------------------------------------------------------
  * Theme setup
@@ -54,11 +54,13 @@ function eab_assets() {
 	$style_version = file_exists( $style_path ) ? filemtime( $style_path ) : EAB_VERSION;
 	$script_version = file_exists( $script_path ) ? filemtime( $script_path ) : EAB_VERSION;
 
+	/* Inter + Anuphan (เจ้าของเลือก 29 ต.ค. 2026) · โหลดจาก Google Fonts จนกว่าจะมีไฟล์ self-host ครบ
+	 * แล้ว eab_infra_self_hosted_fonts() (infra.php) จะสลับไปใช้ assets/css/fonts.css ของธีมเอง */
 	wp_enqueue_style(
 		'eab-fonts',
-		get_template_directory_uri() . '/assets/css/fonts.css', // ฟอนต์ Noto Sans Thai แบบ self-host (ไม่โหลดจาก Google ก่อนยินยอมคุกกี้)
+		'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Anuphan:wght@400;500;600;700&display=swap',
 		array(),
-		file_exists( get_template_directory() . '/assets/css/fonts.css' ) ? filemtime( get_template_directory() . '/assets/css/fonts.css' ) : EAB_VERSION
+		null
 	);
 	wp_enqueue_style( 'eab-style', get_stylesheet_uri(), array( 'eab-fonts' ), $style_version );
 	wp_enqueue_script( 'eab-main', get_template_directory_uri() . '/assets/js/main.js', array(), $script_version, true );
@@ -254,7 +256,7 @@ function eab_defaults() {
 		'wordmark_light'  => '',
 		'line_openchat_url'  => 'https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw',
 		'line_openchat_text' => 'เข้ากลุ่ม OpenChat',
-		'line_qr_image'      => 'assets/img/brand/eabull-line-qr.png',
+		'line_qr_image'      => '', // QR ของ LINE OA EA BULL รอจากเจ้าของ
 
 		/* หน้า /go (ลิงก์รวม) · ลิงก์ร้านแอป MT5 */
 		'mt5_dl_windows' => 'https://www.metatrader5.com/en/download',
@@ -263,20 +265,18 @@ function eab_defaults() {
 
 		/* โบรกเกอร์ (ใช้ในคู่มือเปิดบัญชี / ล็อกอิน ผ่าน shortcode [eabull_broker]) */
 		'broker_name'        => 'Zaurix',
-		'broker_server'      => 'Zaurix-Server', // ใช้ตาม EA WING ไปก่อน (29 ต.ค. 2026) รอเจ้าของยืนยัน
+		'broker_server'      => 'Zaurix-Server', // ชื่อเดียวกับเว็บในเครือไปก่อน (29 ต.ค. 2026) รอเจ้าของยืนยัน
 		'broker_signup_url'  => 'https://portal.zaurix.com/sign-up?ref=211281', // ลิงก์พาร์ตเนอร์ EA BULL จากเจ้าของ 29 ต.ค. 2026
 		'broker_signup_text' => 'สมัครบัญชี Zaurix',
 
-		/* รุ่นของไฟล์ EA ที่แจกอยู่ · ใช้ผ่าน [eabull_ea] ในเนื้อหา และ {ea} {ea_file} {ea_version} {bt_range} ในข้อความคู่มือ
-		 * เปลี่ยนรุ่น = แก้ 3 ค่านี้ + ไฟล์ zip ของหน้า /go (go_fast_*) + ภาพหน้าจอใน assets/img/install */
-		'ea_version'         => '5.0',
-		'ea_bt_from'         => '2026.01.01',
-		'ea_bt_to'           => '2026.10.01',
+		/* ค่ากลางของไฟล์ EA แบบไม่ผูกสินค้า ([eabull_ea] ไม่ใส่ product) · สินค้าแต่ละตัวมีชื่อไฟล์และรุ่นของตัวเองใน product{n}_*
+		 * ว่างไว้จนกว่าเจ้าของให้ข้อมูล (shortcode แสดงป้ายรอข้อมูล) */
+		'ea_version'         => '',
+		'ea_bt_from'         => '',
+		'ea_bt_to'           => '',
 		'facebook_url'    => 'https://www.facebook.com/eabull.trading/',
 		'contact_email'   => 'easpeciallab@gmail.com',
 		'show_float_line' => false,
-		'show_language_switcher' => false,
-		'language_fallback_items' => "th|🇹🇭|TH|ไทย\nen|🇬🇧|EN|English\nzh|🇨🇳|ZH|中文\nfr|🇫🇷|FR|Français\nde|🇩🇪|DE|Deutsch\nru|🇷🇺|RU|Русский\nja|🇯🇵|JA|日本語\nko|🇰🇷|KO|한국어",
 
 		/* Mobile bottom bar */
 		'show_mobile_nav'         => true,
@@ -300,13 +300,9 @@ function eab_defaults() {
 		'show_hero'      => true,
 		'hero_title'     => 'EA BULL',
 		'show_kickers'   => false,
-		'hero_image'     => '',
 		/* Hero · แผงควบคุมจำลอง (แสดงเมื่อไม่ได้ใส่รูป Hero) */
-		'hero_panel_title'   => 'EA BULL',
-		'hero_panel_caption' => 'ภาพจำลองหน้าจอ EA ใช้ประกอบการอธิบาย ไม่ใช่ผลการเทรด',
 
 		/* สวิตช์ส่วนต่าง ๆ ของหน้าแรก (ข้อความอยู่ในโมดูล home) */
-		'show_about'    => true,
 		'show_features' => true,
 		'show_steps'    => true,
 
@@ -338,9 +334,6 @@ function eab_defaults() {
 		array(
 
 			/* หน้าแรก · การ์ดข้อมูลก่อนตัดสินใจ (ข้อความอยู่ในโมดูล home) */
-			'show_tests'        => true,
-			'show_install_home' => true,
-			'show_pricing_home' => true,
 
 			/* หน้า Backtest · ช่องผลทดสอบ (ค่าที่ขึ้นต้นด้วย "ระบุ" = ยังไม่กรอก และจะไม่แสดง) */
 			'bt_stat1_label'      => 'ช่วงข้อมูลที่ใช้ทดสอบ',
@@ -504,189 +497,36 @@ function eab_fallback_menu() {
 }
 
 /**
- * Language switcher slot.
- *
- * This prefers multilingual plugins for real translated URLs, hreflang, SEO,
- * and Elementor compatibility. The manual fallback is only a visible starter
- * until a plugin such as TranslatePress, Polylang, or WPML owns translations.
+ * หัวเพจย่อย (section.phead ของต้นแบบ) · breadcrumb ol.crumbs (+ BreadcrumbList schema ใน inc/seo.php) · H1 · คำโปรย .lead
+ * $args (ไม่บังคับ) ส่งต่อให้ eab_pages_phead(): meta / btns / sum (กล่องสรุปด้านขวา .sumbox) / after · HTML ที่ escape แล้ว
+ * $kicker คงไว้ให้ตัวเรียกเดิม (ดีไซน์ไม่มีคำเล็กเหนือหัวข้อ)
  */
-function eab_language_switcher() {
-	if ( ! eab_mod( 'show_language_switcher' ) ) {
-		return;
-	}
-
-	$plugin_markup = '';
-	$plugin_class  = '';
-
-	if ( shortcode_exists( 'language-switcher' ) ) {
-		$plugin_markup = do_shortcode( '[language-switcher]' );
-	} elseif ( function_exists( 'pll_the_languages' ) ) {
-		$plugin_markup = pll_the_languages(
-			array(
-				'echo'          => 0,
-				'show_flags'    => 0,
-				'show_names'    => 1,
-				'hide_if_empty' => 0,
+function eab_page_hero( $kicker, $title, $subtitle = '', $args = array() ) {
+	$title = html_entity_decode( wp_strip_all_tags( (string) $title ), ENT_QUOTES, 'UTF-8' );
+	if ( function_exists( 'eab_pages_phead' ) ) {
+		eab_pages_phead(
+			array_merge(
+				array(
+					'title' => $title,
+					'lead'  => (string) $subtitle,
+				),
+				(array) $args
 			)
 		);
-	} elseif ( function_exists( 'icl_get_languages' ) ) {
-		$wpml_languages = icl_get_languages( 'skip_missing=0&orderby=code' );
-
-		if ( is_array( $wpml_languages ) && $wpml_languages ) {
-			$plugin_markup = '<ul class="language-switcher-list">';
-			foreach ( $wpml_languages as $language ) {
-				if ( empty( $language['url'] ) || empty( $language['native_name'] ) ) {
-					continue;
-				}
-
-				$plugin_markup .= sprintf(
-					'<li><a class="%1$s" href="%2$s">%3$s</a></li>',
-					! empty( $language['active'] ) ? 'is-active' : '',
-					esc_url( $language['url'] ),
-					esc_html( $language['native_name'] )
-				);
-			}
-			$plugin_markup .= '</ul>';
-		}
-	}
-
-	if ( $plugin_markup ) {
-		echo '<div class="language-switcher language-switcher--plugin' . esc_attr( $plugin_class ) . '" aria-label="' . esc_attr__( 'Language switcher', 'eabull' ) . '">';
-		echo wp_kses_post( $plugin_markup );
-		echo '</div>';
 		return;
 	}
-
-	$languages = array();
-	foreach ( eab_lines( eab_mod( 'language_fallback_items' ) ) as $language_line ) {
-		$parts = array_map( 'trim', explode( '|', $language_line ) );
-		if ( count( $parts ) < 3 ) {
-			continue;
-		}
-
-		$code = sanitize_key( $parts[0] );
-		if ( ! $code ) {
-			continue;
-		}
-
-		if ( count( $parts ) >= 4 ) {
-			$flag  = $parts[1];
-			$short = $parts[2];
-			$label = $parts[3];
-		} else {
-			$flag  = '';
-			$short = $parts[1];
-			$label = $parts[2];
-		}
-
-		$languages[ $code ] = array(
-			'flag'  => $flag,
-			'short' => $short,
-			'label' => $label,
-		);
+	echo '<section class="phead"><div class="wrap"><h1>' . esc_html( $title ) . '</h1>';
+	if ( '' !== trim( (string) $subtitle ) ) {
+		echo '<p class="lead">' . esc_html( $subtitle ) . '</p>';
 	}
-
-	if ( ! $languages ) {
-		$languages = array(
-			'th' => array(
-				'flag'  => '🇹🇭',
-				'short' => 'TH',
-				'label' => 'ไทย',
-			),
-			'en' => array(
-				'flag'  => '🇬🇧',
-				'short' => 'EN',
-				'label' => 'English',
-			),
-		);
-	}
-
-	$current = substr( get_locale(), 0, 2 );
-	if ( isset( $_GET['lang'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$current = sanitize_key( wp_unslash( $_GET['lang'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	}
-
-	if ( ! isset( $languages[ $current ] ) ) {
-		$current = 'th';
-	}
-	?>
-	<details class="language-switcher language-switcher--fallback">
-		<summary aria-label="<?php echo esc_attr__( 'Choose language', 'eabull' ); ?>">
-			<span class="language-switcher-current">
-				<?php if ( ! empty( $languages[ $current ]['flag'] ) ) : ?>
-					<span class="language-switcher-flag" aria-hidden="true"><?php echo esc_html( $languages[ $current ]['flag'] ); ?></span>
-				<?php endif; ?>
-				<span class="language-switcher-code"><?php echo esc_html( $languages[ $current ]['short'] ); ?></span>
-			</span>
-		</summary>
-		<div class="language-switcher-menu">
-			<?php foreach ( $languages as $code => $language ) : ?>
-				<a class="<?php echo esc_attr( $code === $current ? 'is-active' : '' ); ?>" href="<?php echo esc_url( add_query_arg( 'lang', $code ) ); ?>">
-					<?php if ( ! empty( $language['flag'] ) ) : ?>
-						<span class="language-switcher-flag" aria-hidden="true"><?php echo esc_html( $language['flag'] ); ?></span>
-					<?php endif; ?>
-					<span class="language-switcher-code"><?php echo esc_html( $language['short'] ); ?></span>
-					<small><?php echo esc_html( $language['label'] ); ?></small>
-				</a>
-			<?php endforeach; ?>
-		</div>
-	</details>
-	<?php
+	echo '</div></section>';
 }
 
 /**
- * หัวหน้าเพจ (page hero) ใช้ร่วมกันทุกหน้าย่อย · มี breadcrumb (+ BreadcrumbList schema ใน inc/seo.php)
- */
-function eab_page_hero( $kicker, $title, $subtitle = '' ) {
-	$crumbs = eab_breadcrumbs( $title );
-	?>
-	<section class="phero">
-		<div class="container phero-inner reveal">
-			<?php if ( count( $crumbs ) > 1 ) : ?>
-				<nav class="crumbs" aria-label="เส้นทางนำทาง">
-					<ol>
-						<?php foreach ( $crumbs as $eab_i => $eab_crumb ) : ?>
-							<li>
-								<?php if ( $eab_crumb['url'] && $eab_i < count( $crumbs ) - 1 ) : ?>
-									<a href="<?php echo esc_url( $eab_crumb['url'] ); ?>"><?php echo esc_html( $eab_crumb['name'] ); ?></a>
-								<?php else : ?>
-									<span aria-current="page"><?php echo esc_html( $eab_crumb['name'] ); ?></span>
-								<?php endif; ?>
-							</li>
-						<?php endforeach; ?>
-					</ol>
-				</nav>
-			<?php endif; ?>
-			<?php if ( $kicker && eab_show_kickers() ) : ?>
-				<span class="kicker"><?php echo esc_html( $kicker ); ?></span>
-			<?php endif; ?>
-			<h1 class="phero-title"><?php echo esc_html( $title ); ?></h1>
-			<?php if ( $subtitle ) : ?>
-				<p class="phero-sub"><?php echo esc_html( $subtitle ); ?></p>
-			<?php endif; ?>
-		</div>
-	</section>
-	<?php
-}
-
-/**
- * การ์ดสถานะ "ยังไม่มีผลทดสอบที่เผยแพร่" (หน้า Backtest / Forward) · ไม่แสดงตัวเลขสมมติ
- */
-function eab_results_pending( $type = 'backtest' ) {
-	?>
-	<div class="results-pending reveal">
-		<?php echo eab_icon_badge( 'backtest' === $type ? 'candles' : 'pulse' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-		<div>
-			<span class="card-label"><?php echo esc_html( eab_mod( 'results_pending_label' ) ? eab_mod( 'results_pending_label' ) : ( 'backtest' === $type ? 'Backtest' : 'Forward Test' ) ); ?></span>
-			<h2><?php echo esc_html( eab_mod( 'results_pending_title' ) ); ?></h2>
-			<p><?php echo esc_html( eab_mod( 'results_pending_text' ) ); ?></p>
-		</div>
-	</div>
-	<?php
-}
-
-/**
- * เส้นทาง breadcrumb ของหน้าปัจจุบัน: หน้าแรก › (กลุ่ม) › หน้านี้
+ * เส้นทาง breadcrumb ของหน้าปัจจุบัน (ol.crumbs ของต้นแบบ + BreadcrumbList ใน inc/seo.php ใช้ชุดเดียวกัน)
+ * หน้าแรก › (บทความ | กลุ่มของเพจ) › (หมวด) › หน้านี้ · url ว่าง = ข้อความธรรมดา
+ * กลุ่มของเพจ: การทดสอบ (ข้อความ) · คู่มือการใช้งาน (ลิงก์ไปคู่มือติดตั้ง) · สินค้า (ลิงก์ไปหน้าแรก #products)
+ * ชื่อหน้านี้: $title → ชื่อเมนูใน eab_site_pages() เมื่อ $title เป็นชื่อเพจเต็ม → ฟิลเตอร์ eab_breadcrumb_current
  */
 function eab_breadcrumbs( $title = '' ) {
 	$crumbs = array(
@@ -698,38 +538,63 @@ function eab_breadcrumbs( $title = '' ) {
 	if ( is_front_page() ) {
 		return $crumbs;
 	}
-	if ( is_singular( 'post' ) || is_home() || is_archive() || is_search() ) {
-		$posts_page = (int) get_option( 'page_for_posts' );
-		$crumbs[]   = array(
-			'name' => 'บทความ',
-			'url'  => $posts_page ? get_permalink( $posts_page ) : home_url( '/articles/' ),
+	$articles_label = eab_mod( 'ar_crumb' ) ? eab_mod( 'ar_crumb' ) : 'บทความ';
+	$posts_page     = (int) get_option( 'page_for_posts' );
+	$articles_url   = $posts_page ? get_permalink( $posts_page ) : home_url( '/articles/' );
+	$slug           = '';
+	$page_title     = html_entity_decode( wp_strip_all_tags( (string) get_the_title() ), ENT_QUOTES, 'UTF-8' );
+	$name           = '' !== (string) $title ? (string) $title : $page_title;
+
+	if ( is_search() ) {
+		$name = '' !== (string) $title ? (string) $title : ( eab_mod( 'se_crumb' ) ? eab_mod( 'se_crumb' ) : 'ค้นหา' );
+	} elseif ( is_home() ) {
+		$crumbs[] = array(
+			'name' => $articles_label,
+			'url'  => '',
 		);
-		if ( is_home() ) {
-			array_pop( $crumbs );
-			$crumbs[] = array(
-				'name' => 'บทความ',
-				'url'  => '',
-			);
-			return $crumbs;
+		return $crumbs;
+	} elseif ( is_singular( 'post' ) || is_archive() ) {
+		$crumbs[] = array(
+			'name' => $articles_label,
+			'url'  => $articles_url,
+		);
+		if ( is_singular( 'post' ) ) {
+			$cats = get_the_category();
+			if ( ! empty( $cats ) ) {
+				$crumbs[] = array(
+					'name' => $cats[0]->name,
+					'url'  => get_category_link( $cats[0]->term_id ),
+				);
+			}
 		}
 	} elseif ( is_page() && function_exists( 'eab_site_pages' ) ) {
 		$slug   = (string) get_post_field( 'post_name', get_queried_object_id() );
 		$pages  = eab_site_pages();
 		$group  = isset( $pages[ $slug ]['group'] ) ? $pages[ $slug ]['group'] : '';
 		$parent = array(
-			'test'  => array( eab_mod( 'nav_test_label' ) ? eab_mod( 'nav_test_label' ) : 'การทดสอบ', '/backtest/' ),
-			'guide' => array( eab_mod( 'nav_guide_label' ) ? eab_mod( 'nav_guide_label' ) : 'คู่มือการใช้งาน', '/how-to-install/' ),
+			'test'    => array( eab_mod( 'nav_test_label' ) ? eab_mod( 'nav_test_label' ) : 'การทดสอบ', '' ),
+			'guide'   => array( eab_mod( 'nav_guide_label' ) ? eab_mod( 'nav_guide_label' ) : 'คู่มือการใช้งาน', 'how-to-install' === $slug ? '' : home_url( '/how-to-install/' ) ),
+			'product' => array( 'สินค้า', home_url( '/#products' ) ),
 		);
+		if ( 'data-deletion' === $slug && function_exists( 'eab_published_page_url' ) && eab_published_page_url( 'privacy-policy' ) ) {
+			$crumbs[] = array(
+				'name' => isset( $pages['privacy-policy']['title'] ) ? $pages['privacy-policy']['title'] : 'นโยบายความเป็นส่วนตัว',
+				'url'  => eab_published_page_url( 'privacy-policy' ),
+			);
+		}
 		// เมื่อมีปลั๊กอิน SEO: ให้ breadcrumb ที่มองเห็นตรงกับ BreadcrumbList ของปลั๊กอิน (ไม่ใส่ระดับกลุ่มที่ปลั๊กอินไม่รู้จัก)
-		if ( isset( $parent[ $group ] ) && ! in_array( $slug, array( 'backtest', 'how-to-install' ), true ) && ! ( function_exists( 'eab_has_seo_plugin' ) && eab_has_seo_plugin() ) ) {
+		if ( isset( $parent[ $group ] ) && ! ( function_exists( 'eab_has_seo_plugin' ) && eab_has_seo_plugin() ) ) {
 			$crumbs[] = array(
 				'name' => $parent[ $group ][0],
-				'url'  => home_url( $parent[ $group ][1] ),
+				'url'  => $parent[ $group ][1],
 			);
+		}
+		if ( ! empty( $pages[ $slug ]['menu'] ) && $name === $page_title ) {
+			$name = $pages[ $slug ]['menu'];
 		}
 	}
 	$crumbs[] = array(
-		'name' => $title ? $title : wp_strip_all_tags( get_the_title() ),
+		'name' => (string) apply_filters( 'eab_breadcrumb_current', $name, $slug ),
 		'url'  => is_singular() ? get_permalink() : '',
 	);
 	return $crumbs;
@@ -739,42 +604,30 @@ function eab_breadcrumbs( $title = '' ) {
  * เนื้อหาแบบยาวของเพจ (จาก editor) + สารบัญอัตโนมัติ · ใช้ต่อท้ายเทมเพลตเพจที่มีส่วนออกแบบไว้ด้านบน
  */
 function eab_page_longform( $section_class = 'section' ) {
+	/* band ของต้นแบบ: .wrap.doclay > details.toc + article.doc.paper · คลาสเก่าของธีมต้นทาง (section, longform ฯลฯ) ไม่มีผลแล้ว */
+	$band = preg_match( '/\bband\b/', (string) $section_class ) ? (string) $section_class : 'band band--alt';
+	if ( function_exists( 'eab_pages_doclay' ) ) {
+		eab_pages_doclay( array( 'band' => $band ) );
+		return;
+	}
 	$content = apply_filters( 'the_content', get_the_content() );
 	if ( '' === trim( wp_strip_all_tags( $content ) ) ) {
 		return;
 	}
-	$toc = isset( $GLOBALS['eab_toc'] ) ? $GLOBALS['eab_toc'] : array();
-	$toc = array_values(
-		array_filter(
-			$toc,
-			function ( $item ) {
-				return 2 === $item['level'];
-			}
-		)
-	);
-	?>
-	<section class="<?php echo esc_attr( $section_class ); ?> longform">
-		<div class="container">
-			<div class="longform-layout<?php echo count( $toc ) > 2 ? '' : ' longform-layout--solo'; ?>">
-				<?php if ( count( $toc ) > 2 ) : ?>
-					<aside class="longform-toc" aria-label="<?php echo esc_attr( eab_mod( 'doc_toc_label' ) ? eab_mod( 'doc_toc_label' ) : 'สารบัญ' ); ?>">
-						<details open>
-							<summary><?php echo esc_html( eab_mod( 'doc_toc_label' ) ? eab_mod( 'doc_toc_label' ) : 'สารบัญ' ); ?></summary>
-							<ol>
-								<?php foreach ( $toc as $eab_item ) : ?>
-									<li><a href="#<?php echo esc_attr( $eab_item['id'] ); ?>"><?php echo esc_html( $eab_item['text'] ); ?></a></li>
-								<?php endforeach; ?>
-							</ol>
-						</details>
-					</aside>
-				<?php endif; ?>
-				<div class="entry-content guide-content">
-					<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput ?>
-				</div>
-			</div>
-		</div>
-	</section>
-	<?php
+	echo '<section class="' . esc_attr( $band ) . '"><div class="wrap"><article class="doc paper">' . $content . '</article></div></section>'; // phpcs:ignore WordPress.Security.EscapeOutput -- the_content
+}
+
+/**
+ * ช่องข้อมูลธุรกิจหรือสินค้าที่เจ้าของยังไม่ได้ให้ (ห้ามแต่งขึ้นเอง · CLAUDE.md หลักข้อ 1)
+ * ค่าว่าง = ป้าย .wait "รอข้อมูลจากเจ้าของ" ให้เห็นชัดว่ายังขาด · มีค่า = ข้อความนั้น (escape แล้ว)
+ */
+function eab_wait( $value, $label = '' ) {
+	$value = is_string( $value ) ? trim( $value ) : $value;
+	if ( null === $value || '' === $value ) {
+		$label = '' !== $label ? $label : apply_filters( 'eab_wait_label', 'รอข้อมูลจากเจ้าของ' );
+		return '<span class="wait">' . esc_html( $label ) . '</span>';
+	}
+	return esc_html( $value );
 }
 
 /**
@@ -860,18 +713,102 @@ function eab_icon( $name, $class = 'icon' ) {
 		'tiktok'   => '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.6 2.3 4.3 5 4.5"/>',
 		'youtube'  => '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',
 		'dollar'   => '<path d="M12 2v20"/><path d="M17 6.5c-1-1.3-2.7-2-5-2-2.8 0-4.5 1.4-4.5 3.4 0 4.6 10 2.4 10 7.2 0 2-1.9 3.4-5 3.4-2.4 0-4.3-.8-5.3-2.3"/>',
+		/* ชุดไอคอนของต้นแบบ Bull Black (dev/mockup/_src/icons.json) · ชื่อซ้ำทับของเดิม */
+		'home' => '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+		'box' => '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
+		'flask' => '<path d="M9 3h6"/><path d="M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/>',
+		'book' => '<path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3"/><path d="M8 7h8"/>',
+		'tag' => '<path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+		'news' => '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/>',
+		'chat' => '<path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/>',
+		'gauge' => '<path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.2"/>',
+		'menu' => '<path d="M4 7h16M4 12h16M4 17h16"/>',
+		'close' => '<path d="M6 6l12 12M18 6L6 18"/>',
+		'chevron-down' => '<path d="M6 9l6 6 6-6"/>',
+		'chevron-right' => '<path d="M9 6l6 6-6 6"/>',
+		'chevron-left' => '<path d="M15 6l-6 6 6 6"/>',
+		'arrow-right' => '<path d="M4 12h15"/><path d="M13 6l6 6-6 6"/>',
+		'arrow-up-right' => '<path d="M7 17L17 7"/><path d="M8 7h9v9"/>',
+		'arrow-up' => '<path d="M12 20V5"/><path d="M6 11l6-6 6 6"/>',
+		'check' => '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+		'x' => '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+		'alert' => '<path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/>',
+		'info' => '<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.2"/>',
+		'bulb' => '<path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 14.5A6 6 0 1 1 15.5 14.5c-.9.8-1.5 1.8-1.5 3h-4c0-1.2-.6-2.2-1.5-3z"/>',
+		'shield' => '<path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/>',
+		'monitor' => '<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/>',
+		'phone' => '<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
+		'tablet' => '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M11 18h2"/>',
+		'server' => '<rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/>',
+		'bars' => '<path d="M6 20v-5M12 20v-9M18 20V5"/>',
+		'candles' => '<path d="M7 3v3M7 14v7M17 3v5M17 16v5"/><rect x="5" y="6" width="4" height="8"/><rect x="15" y="8" width="4" height="8"/>',
+		'clock' => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+		'download' => '<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/>',
+		'wallet' => '<path d="M3 7a2 2 0 0 1 2-2h13v4"/><path d="M3 7v11a2 2 0 0 0 2 2h15V9H5a2 2 0 0 1-2-2z"/><path d="M16 14.5h.01"/>',
+		'bank' => '<path d="M3 9l9-5 9 5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/>',
+		'user' => '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+		'users' => '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/>',
+		'idcard' => '<rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16a3.3 3.3 0 0 1 6.4 0"/><path d="M14.5 10h4M14.5 13.5h3"/>',
+		'mail' => '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3.5 6l8.5 7 8.5-7"/>',
+		'lock' => '<rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+		'key' => '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9"/><path d="M16 7l3 3"/>',
+		'cpu' => '<rect x="6" y="6" width="12" height="12" rx="1"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/>',
+		'sliders' => '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
+		'calculator' => '<rect x="5" y="3" width="14" height="18" rx="1"/><rect x="8" y="6" width="8" height="3"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01"/>',
+		'search' => '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+		'cookie' => '<path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 3.5 3.5 3 3 0 0 0 3.5 3.5 3 3 0 0 0 2.5 2.5z"/><path d="M8.5 9.5h.01M8 15h.01M13 16h.01M12 12h.01"/>',
+		'file' => '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 17h5"/>',
+		'folder' => '<path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>',
+		'link' => '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+		'external' => '<path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+		'plus' => '<path d="M12 5v14M5 12h14"/>',
+		'minus' => '<path d="M5 12h14"/>',
+		'facebook' => '<path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/>',
+		'qr' => '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3M14 21h1M21 14v1"/>',
+		'refresh' => '<path d="M20 11a8 8 0 0 0-14.6-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.6 4.5L20 16"/><path d="M20 21v-5h-5"/>',
+		'bolt' => '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+		'target' => '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+		'calendar' => '<rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+		'layers' => '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+		'play' => '<path d="M7 4l13 8-13 8z"/>',
+		'power' => '<path d="M12 3v9"/><path d="M6.3 6.3a8 8 0 1 0 11.4 0"/>',
+		'eye' => '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+		'trash' => '<path d="M4 7h16M10 11v6M14 11v6M5 7l1 13h12l1-13M9 7V4h6v3"/>',
+		'scale' => '<path d="M12 3v18M5 21h14M4 7h16"/><path d="M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z"/>',
+		'grid' => '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
+		'globe' => '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+		'wifi' => '<path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/>',
+		'list' => '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
+		'flag' => '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+		'hourglass' => '<path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9"/>',
 	);
 
 	// แบรนด์ไอคอน LINE (โลโก้จริง) · เป็น path แบบ fill ไม่ใช่ stroke จึง render แยก.
 	if ( 'line' === $name ) {
-		return '<svg class="' . esc_attr( $class ) . '" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.348 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>';
+		return '<svg class="' . esc_attr( trim( 'i ' . ( 'icon' === $class ? '' : $class ) ) ) . '" data-icon="line" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.348 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>';
 	}
 
-	if ( ! isset( $svg[ $name ] ) ) {
+	/* ชื่อเดิมของธีมต้นทาง → ไอคอนชุด Bull Black */
+	$alias = array(
+		'warn'    => 'alert',
+		'arrow'   => 'arrow-right',
+		'calc'    => 'calculator',
+		'gear'    => 'sliders',
+		'windows' => 'monitor',
+		'macos'   => 'monitor',
+		'apple'   => 'tablet',
+		'android' => 'phone',
+		'image'   => 'file',
+		'chart'   => 'bars',
+	);
+	$use = isset( $alias[ $name ] ) && isset( $svg[ $alias[ $name ] ] ) ? $alias[ $name ] : $name;
+	if ( ! isset( $svg[ $use ] ) ) {
 		return '';
 	}
 
-	return '<svg class="' . esc_attr( $class ) . '" data-icon="' . esc_attr( $name ) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' . $svg[ $name ] . '</svg>';
+	/* .i = ขนาดและสีตาม CSS ของ Bull Black · คลาสอื่นที่ส่งมาต่อท้าย */
+	$classes = trim( 'i ' . ( 'icon' === $class ? '' : $class ) );
+	return '<svg class="' . esc_attr( $classes ) . '" data-icon="' . esc_attr( $name ) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' . $svg[ $use ] . '</svg>';
 }
 
 /* --------------------------------------------------------------
@@ -912,10 +849,13 @@ function eab_collect_toc( $content ) {
 
 	$GLOBALS['eab_toc'] = array();
 	$index                = 0;
+	$used                 = array();
 
+	/* H2/H3 ในเนื้อหา → สารบัญ details.toc ของ .doclay / .artlay · หัวข้อที่มี id อยู่แล้ว (เช่น #cookies) ใช้ id เดิม
+	 * id ที่ซ้ำกันในหน้าเดียวได้เลขต่อท้าย เพื่อให้ลิงก์สารบัญชี้ถูกหัวข้อ */
 	return preg_replace_callback(
 		'/<(h[23])([^>]*)>(.*?)<\/\1>/is',
-		function ( $matches ) use ( &$index ) {
+		function ( $matches ) use ( &$index, &$used ) {
 			$index++;
 			$tag   = strtolower( $matches[1] );
 			$attrs = $matches[2];
@@ -923,10 +863,15 @@ function eab_collect_toc( $content ) {
 
 			if ( preg_match( '/\bid=["\']([^"\']+)["\']/', $attrs, $id_match ) ) {
 				$id = $id_match[1];
+				if ( isset( $used[ $id ] ) ) {
+					$id    = $id . '-' . $index;
+					$attrs = preg_replace( '/\bid=["\'][^"\']+["\']/', 'id="' . $id . '"', $attrs );
+				}
 			} else {
 				$id     = 'toc-' . $index;
 				$attrs .= ' id="' . $id . '"';
 			}
+			$used[ $id ] = true;
 
 			$GLOBALS['eab_toc'][] = array(
 				'level' => (int) substr( $tag, 1 ),
@@ -948,25 +893,47 @@ add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
  * การ์ดบทความ (ใช้ร่วมกันที่ index และ AJAX โหลดเพิ่ม)
  * -------------------------------------------------------------- */
 function eab_post_card() {
-	$cats = get_the_category();
-	$cat  = ! empty( $cats ) ? $cats[0] : null;
+	/* การ์ด a.post ของต้นแบบ (หน้ารวมบทความ ผลค้นหา บทความในหมวดเดียวกัน และ AJAX โหลดเพิ่ม · markup เดียวกันทุกที่)
+	 * บทความ: หมวด · วันที่ · ลิงก์อ่านต่อ · เพจ (ผลค้นหา): ป้ายคู่มือ · ลิงก์เปิดหน้า · ไม่มีรูปปก = ไอคอนกลางกรอบ */
+	$is_page = 'page' === get_post_type();
+	$cats    = $is_page ? array() : get_the_category();
+	$cat     = ! empty( $cats ) ? $cats[0] : null;
+	$date    = function_exists( 'eab_pages_thai_date' ) ? eab_pages_thai_date( get_the_date( 'c' ) ) : get_the_date();
+	$meta    = $is_page ? (string) eab_mod( 'ar_page_meta' ) : trim( ( $cat ? $cat->name . ' · ' : '' ) . $date, ' ·' );
+	$badge   = $is_page ? trim( (string) eab_mod( 'ar_page_badge' ) ) : '';
+	$more    = (string) eab_mod( $is_page ? 'ar_page_more' : 'ar_read_more' );
+	$excerpt = wp_trim_words( wp_strip_all_tags( get_the_excerpt() ), 22 );
 	?>
-	<article <?php post_class( 'post-card' ); ?>>
-		<?php if ( has_post_thumbnail() ) : ?>
-			<a class="post-card-thumb" href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'medium_large', array( 'alt' => function_exists( 'eab_pages_featured_alt' ) ? eab_pages_featured_alt( get_the_ID() ) : get_the_title() ) ); ?>
-				<?php if ( $cat ) : ?>
-					<span class="post-card-cat"><?php echo esc_html( $cat->name ); ?></span>
-				<?php endif; ?>
-			</a>
-		<?php endif; ?>
-		<div class="post-card-body">
-			<span class="post-meta"><?php echo esc_html( get_the_date() ); ?></span>
-			<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-			<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 22 ) ); ?></p>
-			<span class="post-card-more">อ่านต่อ <?php echo eab_icon( 'arrow', 'icon icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+	<a class="post" href="<?php the_permalink(); ?>">
+		<div class="post__img">
+			<?php
+			if ( has_post_thumbnail() ) {
+				the_post_thumbnail(
+					'medium_large',
+					array(
+						'alt'     => '',
+						'loading' => 'lazy',
+					)
+				);
+			} else {
+				echo eab_icon( $is_page ? 'book' : 'news' ); // phpcs:ignore WordPress.Security.EscapeOutput
+			}
+			?>
+			<?php if ( '' !== $badge ) : ?>
+				<span class="badge"><?php echo esc_html( $badge ); ?></span>
+			<?php endif; ?>
 		</div>
-	</article>
+		<div class="post__body">
+			<?php if ( '' !== $meta ) : ?>
+				<span class="post__meta"><?php echo esc_html( $meta ); ?></span>
+			<?php endif; ?>
+			<h3><?php echo esc_html( html_entity_decode( wp_strip_all_tags( get_the_title() ), ENT_QUOTES, 'UTF-8' ) ); ?></h3>
+			<?php if ( '' !== trim( $excerpt ) ) : ?>
+				<p><?php echo esc_html( $excerpt ); ?></p>
+			<?php endif; ?>
+			<span class="tlink"><?php echo esc_html( '' !== trim( $more ) ? $more : 'อ่านต่อ' ); ?> <?php echo eab_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+		</div>
+	</a>
 	<?php
 }
 
@@ -1009,7 +976,8 @@ function eab_load_more() {
 
 	// บังคับค่าที่ปลอดภัย ไม่ให้ฝั่ง client กำหนดเอง
 	$query['paged']               = $page;
-	$query['post_type']           = 'post';
+	/* ผลค้นหาแสดงทั้งบทความและเพจ (search.php) · หน้ารายการบทความ/หมวดเป็นบทความอย่างเดียว */
+	$query['post_type']           = isset( $query['s'] ) ? array( 'post', 'page' ) : 'post';
 	$query['post_status']         = 'publish';
 	$query['posts_per_page']      = (int) get_option( 'posts_per_page' );
 	$query['ignore_sticky_posts'] = true;

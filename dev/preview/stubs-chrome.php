@@ -1,7 +1,13 @@
 <?php
 /**
- * Preview stubs for the SITE CHROME module (header/footer/dock) · not part of the theme.
- * Loaded by dev/preview/wp-stubs.php · every function is wrapped so other modules' stubs can coexist.
+ * Preview stubs for the site chrome module (header, contact band, footer, dock, floating button).
+ * Loaded by dev/preview/wp-stubs.php · not part of the theme · every function is wrapped so the
+ * stubs of other modules can define the same helpers.
+ *
+ * Preview-only switches (query string):
+ *   ?fx_chrome_demo=1  sample LINE OA, QR image and dashboard links (example URLs, not real ones)
+ *                      to check the "LINE is set" state: QR in the contact card, LINE links that
+ *                      open line.me instead of /go/, dashboard button with a real href
  */
 
 if ( ! function_exists( 'wp_parse_url' ) ) {
@@ -18,22 +24,7 @@ if ( ! function_exists( 'wp_date' ) ) {
 	}
 }
 
-if ( ! function_exists( 'antispambot' ) ) {
-	function antispambot( $email ) {
-		return (string) $email;
-	}
-}
-
-if ( ! function_exists( 'is_email' ) ) {
-	function is_email( $email ) {
-		return false !== filter_var( (string) $email, FILTER_VALIDATE_EMAIL ) ? $email : false;
-	}
-}
-
-/*
- * โหมดตัวอย่าง (เฉพาะ preview): ?fx_chrome_demo=1 → เติมช่องทางติดต่อตัวอย่าง (ลิงก์ example ไม่ใช่ของจริง)
- * ใช้ดูสถานะ "มี LINE แล้ว": QR, OpenChat, คอลัมน์ช่องทาง, ปุ่ม LINE กลางบาร์ล่าง, ปุ่ม LINE ลอย
- */
+// phpcs:disable WordPress.Security.NonceVerification -- local preview only
 if ( isset( $_GET['fx_chrome_demo'] ) ) {
 	add_filter(
 		'eab_defaults',
@@ -41,13 +32,9 @@ if ( isset( $_GET['fx_chrome_demo'] ) ) {
 			return array_merge(
 				$d,
 				array(
-					'line_url'          => 'https://lin.ee/example',
-					'line_openchat_url' => 'https://line.me/ti/g2/example',
-					'line_qr_image'     => 'http://localhost:8791/theme/assets/img/brand/eabull-icon-512.png',
-					'facebook_url'      => 'https://www.facebook.com/example',
-					'youtube_url'       => 'https://www.youtube.com/@example',
-					'contact_email'     => 'team@example.com',
-					'footer_hours_text' => "จันทร์-ศุกร์ 10:00-19:00 น. (ตัวอย่างใน preview)",
+					'line_url'      => 'https://lin.ee/example',
+					'line_qr_image' => 'assets/img/brand/eabull-icon-512.png',
+					'dashboard_url' => 'https://example.com/dashboard/',
 				)
 			);
 		},
@@ -55,7 +42,9 @@ if ( isset( $_GET['fx_chrome_demo'] ) ) {
 	);
 }
 
-/* $wp->request: เส้นทางของหน้าปัจจุบัน (บาร์ล่างมือถือใช้คิดช่องที่ active) */
+// phpcs:enable
+
+/* $wp->request: path of the current page (dock and menu use it to mark the current item) */
 if ( ! isset( $GLOBALS['wp'] ) ) {
 	$fx_chrome_path = parse_url( isset( $_SERVER['REQUEST_URI'] ) ? (string) $_SERVER['REQUEST_URI'] : '/', PHP_URL_PATH );
 	$GLOBALS['wp']  = (object) array( 'request' => trim( is_string( $fx_chrome_path ) ? $fx_chrome_path : '', '/' ) );

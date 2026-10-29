@@ -78,8 +78,6 @@ function eab_customize_register( $wp_customize ) {
 				'contact_text'       => array( 'บล็อกติดต่อท้ายหน้าย่อย · คำอธิบาย', 'textarea' ),
 				'wordmark_dark'      => array( 'โลโก้ตัวอักษร (ตัวเข้ม · สำหรับพื้นขาว / Header)', 'image', 'ไม่ใส่ = ใช้โลโก้ EA BULL ที่ฝังในธีม' ),
 				'wordmark_light'     => array( 'โลโก้ตัวอักษร (ตัวขาว · สำหรับพื้นดำ / Footer)', 'image' ),
-				'show_language_switcher' => array( 'แสดงตัวสลับภาษาในเมนูบน', 'checkbox' ),
-				'language_fallback_items' => array( 'รายการภาษาสำรอง (code|ธง|ป้ายสั้น|ชื่อภาษา)', 'textarea' ),
 			),
 		),
 
@@ -104,14 +102,11 @@ function eab_customize_register( $wp_customize ) {
 				'hero_btn2_url'  => array( 'ลิงก์ปุ่มรอง (เช่น #how-it-works หรือ /pricing/)', 'text' ),
 				'hero_note'      => array( 'ข้อความเตือนความเสี่ยงใต้ปุ่ม', 'text' ),
 				'hero_tagline'   => array( 'ข้อความอังกฤษเว้นระยะใต้ภาพ (เว้นว่าง = ซ่อน)', 'text' ),
-				'hero_image'     => array( 'ภาพ Hero (ไม่ใส่ = แสดงแผงควบคุม EA จำลอง)', 'image', 'แนะนำภาพสี่เหลี่ยมจัตุรัส 1200px ขึ้นไป · ถ้าภาพมีตัวเลขกำไร ต้องระบุว่าเป็นภาพประกอบ' ),
-				'hero_panel_title'   => array( 'แผงจำลอง · ชื่อ', 'text' ),
 				'hero_panel_status'  => array( 'แผงจำลอง · สถานะ', 'text' ),
 				'hero_panel_badge'   => array( 'แผงจำลอง · ป้ายขวาบน', 'text' ),
 				'hero_panel_fields'  => array( 'แผงจำลอง · ช่องข้อมูล (บรรทัดละ 1: ชื่อ|ค่า)', 'textarea', 'ห้ามใส่ตัวเลขกำไร/Win rate สมมติ' ),
 				'hero_panel_button'  => array( 'แผงจำลอง · ข้อความแถบเขียว', 'text' ),
 				'hero_panel_tags'    => array( 'แผงจำลอง · ข้อความเล็กข้างแถบเขียว', 'text' ),
-				'hero_panel_caption' => array( 'แผงจำลอง · คำบรรยายใต้แผง (จำเป็น)', 'text' ),
 			),
 		),
 
@@ -136,7 +131,6 @@ function eab_customize_register( $wp_customize ) {
 		'eab_about' => array(
 			'title'  => '4) EA BULL คืออะไร',
 			'fields' => array(
-				'show_about'  => array( 'แสดงส่วนนี้', 'checkbox' ),
 				'about_title' => array( 'หัวข้อ', 'text' ),
 				'about_text'  => array( 'เนื้อหา (เว้นบรรทัด = ขึ้นย่อหน้าใหม่)', 'textarea' ),
 				'about_points' => array( 'รายการสรุป (บรรทัดละ 1: หัวข้อ|รายละเอียด)', 'textarea' ),
@@ -286,7 +280,6 @@ function eab_customize_register( $wp_customize ) {
 				'pkg3_featured'    => array( 'แพ็กเกจ 3 · ติดป้าย "แนะนำ"', 'checkbox' ),
 				'pricing_btn_text' => array( 'ข้อความปุ่มบนการ์ดราคา', 'text' ),
 				'pricing_note'     => array( 'หมายเหตุท้ายส่วนราคา', 'text' ),
-				'show_pricing_home'  => array( 'แสดงตัวอย่างแพ็กเกจบนหน้าแรก', 'checkbox' ),
 				'pricing_home_title' => array( 'หน้าแรก · หัวข้อแพ็กเกจ', 'text' ),
 				'pricing_home_sub'   => array( 'หน้าแรก · คำอธิบายแพ็กเกจ', 'textarea' ),
 			),
@@ -604,7 +597,6 @@ function eab_customize_register( $wp_customize ) {
 		'title'       => '28) หน้าแรก · วิธีทดสอบ & ติดตั้งย่อ',
 		'description' => 'ส่วนแท็บ Backtest/Forward และส่วนติดตั้ง 3 ขั้นบนหน้าแรก',
 		'fields'      => array(
-			'show_tests'         => array( 'แสดงส่วนวิธีทดสอบ', 'checkbox' ),
 			'tests_kicker'       => array( 'วิธีทดสอบ · ป้ายเล็ก', 'text' ),
 			'tests_title'        => array( 'วิธีทดสอบ · หัวข้อ', 'text' ),
 			'tests_subtitle'     => array( 'วิธีทดสอบ · คำอธิบาย', 'textarea' ),
@@ -615,7 +607,6 @@ function eab_customize_register( $wp_customize ) {
 			'tests_fw_text'      => array( 'แท็บ Forward · เนื้อหา', 'textarea' ),
 			'tests_fw_img'       => array( 'แท็บ Forward · ภาพประกอบ', 'image' ),
 			'tests_note'         => array( 'วิธีทดสอบ · หมายเหตุ', 'textarea' ),
-			'show_install_home'  => array( 'แสดงส่วนติดตั้ง 3 ขั้น', 'checkbox' ),
 			'install_home_title' => array( 'ติดตั้ง · หัวข้อ', 'text' ),
 			'install_home_sub'   => array( 'ติดตั้ง · คำอธิบาย', 'textarea' ),
 			'ih_step1_title'     => array( 'ขั้น 1 · หัวข้อ', 'text' ),
@@ -636,9 +627,9 @@ function eab_customize_register( $wp_customize ) {
 			'broker_server'      => array( 'ชื่อเซิร์ฟเวอร์ MT5', 'text' ),
 			'broker_signup_url'  => array( 'ลิงก์สมัครบัญชี (ถ้ามี · ใช้ในหน้า /go ขั้นที่ 1)', 'url' ),
 			'broker_signup_text' => array( 'ข้อความปุ่มสมัครบัญชี', 'text' ),
-			'ea_version'         => array( 'ไฟล์ EA · เลขรุ่นที่แจกอยู่ (เช่น 5.0 · ชื่อไฟล์ในเนื้อหาจะเป็น EA_BULL_V5.0.ex5 ผ่าน shortcode [eabull_ea])', 'text' ),
-			'ea_bt_from'         => array( 'ไฟล์ EA · วันเริ่มของช่วง Backtest มาตรฐาน (รูปแบบ 2026.01.01)', 'text' ),
-			'ea_bt_to'           => array( 'ไฟล์ EA · วันจบของช่วง Backtest มาตรฐาน (ค่าที่กรอกในช่อง Date ของ Strategy Tester)', 'text' ),
+			'ea_version'         => array( 'ไฟล์ EA กลาง · เลขรุ่น (ใช้เมื่อ [eabull_ea] ไม่ระบุสินค้า · สินค้าแต่ละตัวตั้งในหมวดสินค้า · ว่าง = ป้ายรอข้อมูล)', 'text' ),
+			'ea_bt_from'         => array( 'ไฟล์ EA กลาง · วันเริ่มของช่วง Backtest (รูปแบบ 2026.01.01 · ว่าง = ป้ายรอข้อมูล)', 'text' ),
+			'ea_bt_to'           => array( 'ไฟล์ EA กลาง · วันจบของช่วง Backtest (ค่าในช่อง Date ของ Strategy Tester)', 'text' ),
 		),
 	);
 

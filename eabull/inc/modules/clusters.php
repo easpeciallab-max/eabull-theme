@@ -2,10 +2,10 @@
 /**
  * EA BULL · กลุ่มบทความ (เสาหลัก + บทความเสริม) · docs/content-plan.md
  *
- * - หมวดบทความ = กลุ่ม · แต่ละหมวดมีบทความเสาหลัก 1 บท (eab_cluster_pillars())
- * - ท้ายบทความแสดงกล่อง "บทความในชุดนี้" อัตโนมัติ (เฉพาะบทความที่เผยแพร่แล้ว):
- *   บทความเสริม = ลิงก์ขึ้นเสาหลัก + บทความพี่น้องล่าสุด · เสาหลัก = รายการบทความเสริมทั้งหมดของกลุ่ม
- * - หน้าหมวดหน้าแรก: เสาหลักขึ้นเป็นบทความแรก
+ * - 1 หมวด = 1 ชุดบทความ มีบทความหลักหนึ่งบทตาม eab_cluster_pillars()
+ * - กล่อง .series ท้ายบทความ ลิสต์เฉพาะบทความที่เผยแพร่แล้ว:
+ *   บนบทความลูก = ลิงก์บทความหลัก + บทความล่าสุดในหมวด · บนบทความหลัก = บทความลูกทุกบท
+ * - หน้าแรกของหน้าหมวด: บทความหลักขึ้นก่อนบทอื่น
  * - ข้อความทุกคำเป็น setting ในหมวด Customizer "บทความ · กล่องชุดบทความ"
  *
  * @package eabull
@@ -36,10 +36,10 @@ function eab_cluster_pillars() {
 
 function eab_cluster_defaults( $d ) {
 	$d['show_cluster_box']        = true;
-	$d['cluster_box_title']       = 'บทความในชุด {cat}';
-	$d['cluster_pillar_label']    = 'เริ่มอ่านจากบทความหลักของชุดนี้';
-	$d['cluster_pillar_title']    = 'บทความทั้งหมดในชุด {cat}';
-	$d['cluster_more_label']      = 'ดูบทความทั้งหมดในหมวด {cat}';
+	$d['cluster_box_title']       = 'บทความในชุดนี้';
+	$d['cluster_pillar_label']    = 'บทความหลักของชุด';
+	$d['cluster_pillar_title']    = 'บทความในชุด {cat}';
+	$d['cluster_more_label']      = 'ทุกบทความในหมวด {cat}';
 	$d['cluster_sibling_count']   = 6;
 	return $d;
 }
@@ -48,14 +48,14 @@ add_filter( 'eab_defaults', 'eab_cluster_defaults' );
 function eab_cluster_sections( $sections, $d ) {
 	$sections['eab_cluster'] = array(
 		'title'       => 'บทความ · กล่องชุดบทความ',
-		'description' => 'กล่องท้ายบทความที่ลิงก์บทความในหมวดเดียวกัน (เสาหลัก + บทความเสริม) แสดงเฉพาะบทความที่เผยแพร่แล้ว · {cat} = ชื่อหมวด',
+		'description' => 'กล่องรายชื่อบทความหมวดเดียวกันใต้เนื้อหาบทความ (นับเฉพาะที่เผยแพร่) · {cat} แทนชื่อหมวด',
 		'fields'      => array(
 			'show_cluster_box'      => array( 'แสดงกล่องชุดบทความท้ายบทความ', 'checkbox' ),
 			'cluster_box_title'     => array( 'หัวกล่อง (บทความเสริม)', 'text' ),
 			'cluster_pillar_label'  => array( 'ป้ายเหนือลิงก์บทความหลัก', 'text' ),
 			'cluster_pillar_title'  => array( 'หัวกล่อง (บนบทความหลักของชุด)', 'text' ),
 			'cluster_more_label'    => array( 'ข้อความลิงก์ไปหน้าหมวด', 'text' ),
-			'cluster_sibling_count' => array( 'จำนวนบทความพี่น้องที่แสดง (บนบทความเสริม)', 'number' ),
+			'cluster_sibling_count' => array( 'บทความลูก: จำนวนบทความอื่นในหมวดที่ลิสต์', 'number' ),
 		),
 	);
 	return $sections;
@@ -63,7 +63,7 @@ function eab_cluster_sections( $sections, $d ) {
 add_filter( 'eab_customizer_sections', 'eab_cluster_sections', 40, 2 );
 
 /**
- * หมวดแรกของบทความที่มีเสาหลักกำหนดไว้ → array( term, pillar WP_Post|null ) หรือ null
+ * หมวดของบทความที่อยู่ใน eab_cluster_pillars() → array( term, บทความหลัก|null ) · ไม่อยู่ = null
  */
 function eab_cluster_of( $post_id ) {
 	$map = eab_cluster_pillars();
@@ -121,35 +121,32 @@ function eab_cluster_box( $post_id = 0 ) {
 	$cat   = $term->name;
 	$title = str_replace( '{cat}', $cat, (string) eab_mod( $is_pillar ? 'cluster_pillar_title' : 'cluster_box_title' ) );
 	$more  = str_replace( '{cat}', $cat, (string) eab_mod( 'cluster_more_label' ) );
+	$name  = function ( $p ) {
+		return html_entity_decode( wp_strip_all_tags( (string) get_the_title( $p ) ), ENT_QUOTES, 'UTF-8' );
+	};
+	/* กล่อง .series ของต้นแบบ (article.html): หัวกล่องตัวหนา · ลิงก์บทความหลัก · รายการลำดับ · ลิงก์ไปหน้าหมวด */
 	?>
-	<nav class="cluster-box<?php echo $is_pillar ? ' cluster-box--pillar' : ''; ?>" aria-label="<?php echo esc_attr( $title ); ?>">
-		<p class="cluster-box-title"><?php echo esc_html( $title ); ?></p>
+	<nav class="series mt-32" aria-label="<?php echo esc_attr( $title ); ?>">
+		<b><?php echo esc_html( $title ); ?></b>
 		<?php if ( $pillar && ! $is_pillar ) : ?>
-			<a class="cluster-pillar" href="<?php echo esc_url( get_permalink( $pillar ) ); ?>">
-				<span class="tile tile--gold" aria-hidden="true"><?php echo eab_icon( 'book' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
-				<span class="cluster-pillar-text">
-					<span class="cluster-pillar-label"><?php echo esc_html( eab_mod( 'cluster_pillar_label' ) ); ?></span>
-					<span class="cluster-pillar-name"><?php echo esc_html( wp_strip_all_tags( get_the_title( $pillar ) ) ); ?></span>
-				</span>
-				<?php echo eab_icon( 'arrow', 'icon cluster-arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-			</a>
+			<p class="small"><?php echo esc_html( eab_mod( 'cluster_pillar_label' ) ); ?>: <a href="<?php echo esc_url( get_permalink( $pillar ) ); ?>"><?php echo esc_html( $name( $pillar ) ); ?></a></p>
 		<?php endif; ?>
 		<?php if ( $items ) : ?>
-			<ul class="cluster-list">
+			<ol>
 				<?php foreach ( $items as $item ) : ?>
-					<li><a href="<?php echo esc_url( get_permalink( $item ) ); ?>"><?php echo esc_html( wp_strip_all_tags( get_the_title( $item ) ) ); ?></a></li>
+					<li><a href="<?php echo esc_url( get_permalink( $item ) ); ?>"><?php echo esc_html( $name( $item ) ); ?></a></li>
 				<?php endforeach; ?>
-			</ul>
+			</ol>
 		<?php endif; ?>
 		<?php if ( '' !== trim( $more ) ) : ?>
-			<a class="cluster-more" href="<?php echo esc_url( get_category_link( $term ) ); ?>"><span><?php echo esc_html( $more ); ?></span> <?php echo eab_icon( 'arrow', 'icon icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
+			<p class="small"><a class="tlink" href="<?php echo esc_url( get_category_link( $term ) ); ?>"><?php echo esc_html( $more ); ?> <?php echo eab_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a></p>
 		<?php endif; ?>
 	</nav>
 	<?php
 }
 
 /**
- * หน้าหมวด (หน้าแรกของรายการ): บทความเสาหลักขึ้นก่อน · หน้าถัดไปไม่แสดงซ้ำ
+ * หน้าหมวด: ดันบทความหลักขึ้นเป็นการ์ดแรกของหน้าแรก · หน้า 2 ขึ้นไปไม่ใส่ซ้ำ
  */
 function eab_cluster_pillar_first( $posts, $query ) {
 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_category() ) {

@@ -403,11 +403,12 @@ function eab_seo_product_schema() {
 function eab_schema_extra() {
 	$faqs = array();
 
-	/* FAQ หน้าแรก (Customizer) */
-	if ( is_front_page() && eab_mod( 'show_faq' ) ) {
-		for ( $i = 1; $i <= ( function_exists( 'eab_home_faq_count' ) ? eab_home_faq_count() : 10 ); $i++ ) {
-			$q = trim( wp_strip_all_tags( (string) eab_mod( 'faq' . $i . '_q' ) ) );
-			$a = trim( wp_strip_all_tags( (string) eab_mod( 'faq' . $i . '_a' ) ) );
+	/* FAQ หน้าแรก (Customizer home_faqN_q / home_faqN_a ผ่าน eab_home_faqs() ใน inc/modules/home.php)
+	 * ข้อที่คำตอบยังมี {wait} (รอข้อมูลจากเจ้าของ) ไม่ใส่ใน schema · plain = ข้อความล้วนแล้ว */
+	if ( is_front_page() && eab_mod( 'show_faq' ) && function_exists( 'eab_home_faqs' ) ) {
+		foreach ( eab_home_faqs() as $item ) {
+			$q = trim( wp_strip_all_tags( (string) $item['q'] ) );
+			$a = trim( wp_strip_all_tags( (string) $item['plain'] ) );
 			if ( '' !== $q && '' !== $a ) {
 				$faqs[] = array(
 					'@type'          => 'Question',
@@ -586,7 +587,7 @@ function eab_share_image() {
  * ใช้ฟิลเตอร์เดียวกับ eab_pages_featured_alt() ของโมดูลหน้าเนื้อหา · เพิ่มข้อความกลางอื่นที่ฟิลเตอร์นี้แล้วมีผลทั้งสองที่
  */
 function eab_seo_is_generic_alt( $alt ) {
-	$generic = (array) apply_filters( 'eab_pages_generic_alts', array( 'EA BULL ผู้ช่วยเทรดอัตโนมัติสำหรับ MT5 (ภาพประกอบ)' ) );
+	$generic = (array) apply_filters( 'eab_pages_generic_alts', array( 'ภาพประกอบ EA BULL ระบบเทรดอัตโนมัติบน MetaTrader 5' ) );
 	return in_array( trim( (string) $alt ), array_map( 'trim', array_map( 'strval', $generic ) ), true );
 }
 
@@ -1178,10 +1179,6 @@ function eab_seo_legacy_redirects() {
 		$path = substr( $path, strlen( $home ) );
 	}
 	$path = strtolower( trailingslashit( '/' . ltrim( rawurldecode( $path ), '/' ) ) );
-	/* ไฟล์ EA รุ่นเก่าที่ถอดออกจากธีมแล้ว (ลิงก์ตรงที่เคยแชร์ไว้) → หน้าลิงก์รวม ซึ่งมีไฟล์รุ่นปัจจุบัน */
-	if ( preg_match( '#/assets/downloads/(ea_wing|wing_twin|wing_nitro)_v[0-9.]+\.zip/$#', $path ) ) {
-		$map[ $path ] = '/go/';
-	}
 	if ( empty( $map[ $path ] ) ) {
 		return;
 	}
@@ -1266,15 +1263,20 @@ function eab_seo_sitemap_theme_images( $images, $post_id ) {
 	}
 	$keys = array();
 	$slug = (string) $post->post_name;
+	/* หน้าสินค้า (inc/modules/products.php): slug ของเพจตรงกับ slug ของสินค้าใน Customizer */
+	$product = null;
+	if ( function_exists( 'eab_products' ) ) {
+		foreach ( eab_products() as $item ) {
+			if ( '' !== $item['slug'] && $item['slug'] === $slug ) {
+				$product = $item;
+				break;
+			}
+		}
+	}
 	if ( (int) get_option( 'page_on_front' ) === (int) $post_id ) {
-		$keys = array( 'ih_step1_img', 'home_mode1_img', 'home_mode2_img', 'home_mode3_img', 'home_nitro_img', 'home_eabull_img', 'home_twin_img', 'hero_image' );
-	} elseif ( in_array( $slug, array( 'wing-nitro', 'ea-wing', 'wing-twin' ), true ) ) {
-		$prefix = array(
-			'wing-nitro' => 'nitro',
-			'ea-wing'    => 'eabull',
-			'wing-twin'  => 'twin',
-		);
-		$keys   = array( $prefix[ $slug ] . '_hero_img' );
+		$keys = array( 'home_hero_img' );
+	} elseif ( $product ) {
+		$keys = array( 'product' . $product['n'] . '_panel_img', 'product' . $product['n'] . '_report_img' );
 	} elseif ( function_exists( 'eab_guide_map' ) ) {
 		$map    = eab_guide_map();
 		$prefix = isset( $map[ $slug ] ) ? $map[ $slug ] . '_step' : ( 'how-to-install' === $slug ? 'inst_step' : '' );

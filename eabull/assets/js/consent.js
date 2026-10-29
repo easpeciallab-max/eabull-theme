@@ -1,14 +1,21 @@
 /**
- * EA BULL · PDPA consent engine · HTML มาจาก inc/modules/consent.php
+ * EA BULL · PDPA consent engine · markup from inc/modules/consent.php
  *
- * - HTML ของการ์ดเหมือนกันทุกคน สคริปต์นี้อ่านคุกกี้ในเบราว์เซอร์แล้วเลือกเองว่าจะเปิดการ์ดหรือไม่
- * - gtag.js กับ fbevents.js ถูกใส่เข้าหน้าหลังได้รับอนุญาตหมวดของมันเท่านั้น · ปุ่ม X / Esc = ยังไม่ตอบ (ถามอีกทีในการเข้าชมครั้งหน้า)
- * - eab_consent = v<รุ่น>.a<0|1|->.m<0|1|->.t<unix> · 365 วัน · SameSite=Lax
- *   "-" หมายถึงตอนตอบยังไม่มีบริการในหมวดนั้น · ถ้าเจ้าของเว็บเพิ่มบริการทีหลัง คนกลุ่มนี้จะเห็นการ์ดอีกครั้ง
- * - Consent Mode v2: <head> ประกาศ denied ไว้แล้ว (consent.php) · ได้รับอนุญาตเมื่อไรจึงส่ง update แล้วค่อยใส่ gtag.js
- * - เปลี่ยนใจจากอนุญาตเป็นไม่อนุญาต: ตั้ง ga-disable, ส่ง update denied, fbq('consent','revoke'), ล้างคุกกี้ของบริการ แล้วโหลดหน้าใหม่
- * - ตัวเปิดการ์ด (ดู TRIGGERS): a[href$="#cookie-settings"], .cookie-reopen, [data-cookie-settings]
- * - API: window.eabConsent.has('analytics'|'marketing') / .get() / .open() · เหตุการณ์ 'eab:consent' บน document
+ * - The card HTML is the same for every visitor; this script reads the consent cookie in the
+ *   browser and decides whether to show the card.
+ * - gtag.js and fbevents.js are added only after their category is allowed.
+ *   The X button and Esc mean "not answered yet" (asked again on the next visit).
+ * - Cookie eab_consent = v<version>.a<0|1|->.m<0|1|->.t<unix> · 365 days · SameSite=Lax.
+ *   "-" = the category had no service when the visitor answered; adding one later asks again.
+ * - Consent Mode v2: <head> already declared every signal denied (consent.php); an update is
+ *   sent when the visitor allows a category, then gtag.js is loaded.
+ * - Turning a category off: ga-disable, consent update denied, fbq('consent','revoke'),
+ *   service cookies removed, page reloaded.
+ * - Card hooks: #cookie-settings[data-view] · [data-show="intro|prefs"] · [data-when="none|optional"]
+ *   · [data-cat] rows with an input named after the category ·
+ *   [data-consent="accept|reject|ok|save|prefs|back|close"] · #consent-title (focus target).
+ * - Openers outside the card (TRIGGERS): a[href$="#cookie-settings"], .cookie-reopen, [data-cookie-settings].
+ * - API: window.eabConsent.has('analytics'|'marketing') / .get() / .open() · event 'eab:consent' on document.
  */
 (function () {
 	'use strict';
@@ -29,9 +36,8 @@
 	var box = null;
 	var bound = false;
 	var trigger = null;
-	var frame = 0;
 
-	/* ---------------- คุกกี้ความยินยอม ---------------- */
+	/* ---------------- Consent cookie ---------------- */
 
 	function read() {
 		var m = document.cookie.match(/(?:^|;\s*)eab_consent=([^;]+)/);
@@ -54,7 +60,7 @@
 		document.cookie = COOKIE + '=' + value + '; max-age=' + MAX_AGE + '; path=/; SameSite=Lax' + (window.location.protocol === 'https:' ? '; Secure' : '');
 	}
 
-	/* ยังไม่มีคำตอบ หรือมีเครื่องมือใหม่ที่ผู้เข้าชมยังไม่เคยถูกถาม */
+	/* No answer yet, or a service was added that the visitor was never asked about */
 	function needsAnswer(stored) {
 		if (!stored) {
 			return true;
@@ -82,7 +88,7 @@
 		} catch (err) {}
 	}
 
-	/* ลบคุกกี้ตามชื่อ ทั้งโฮสต์ปัจจุบันและโดเมนแม่ทุกชั้น (GA/Pixel มักตั้งไว้ที่ .โดเมนหลัก) */
+	/* Remove cookies by name on this host and every parent domain (GA and Pixel often use .domain) */
 	function clearCookies(pattern) {
 		var parts = window.location.hostname.split('.');
 		var domains = [''];
@@ -101,7 +107,7 @@
 		});
 	}
 
-	/* ---------------- แท็กติดตาม ---------------- */
+	/* ---------------- Tracking tags ---------------- */
 
 	function signals(choice) {
 		var ads = choice.marketing ? 'granted' : 'denied';
@@ -215,7 +221,7 @@
 		}
 
 		if (revoke) {
-			/* แท็กที่โหลดไปแล้วยังค้างในหน้า · แจ้งเลิกใช้แล้วรีโหลดให้หน้าใหม่ไม่มีแท็กนั้นเลย */
+			/* Tags already on the page cannot be unloaded: send the update, then reload without them */
 			if (loaded.analytics && typeof window.gtag === 'function') {
 				window.gtag('consent', 'update', signals(choice));
 			}
@@ -229,13 +235,24 @@
 		hide();
 	}
 
-	/* ---------------- การ์ด ---------------- */
+	/* ---------------- Card ---------------- */
 
 	function each(selector, fn) {
 		if (!box) {
 			return;
 		}
 		Array.prototype.forEach.call(box.querySelectorAll(selector), fn);
+	}
+
+	function title() {
+		return box ? box.querySelector('#consent-title') : null;
+	}
+
+	function focusTitle() {
+		var el = title();
+		if (el) {
+			el.focus();
+		}
 	}
 
 	function view(name) {
@@ -254,38 +271,6 @@
 				input.checked = !!(current && current[cat]);
 			}
 		});
-		each('details.consent-more', function (el) {
-			el.open = false;
-		});
-	}
-
-	/* มือถือ: ยกการ์ดขึ้นเหนือบาร์เมนูล่าง (วัดจากตำแหน่งจริง รองรับบาร์ทุกแบบ) */
-	function placeAboveDock() {
-		if (!box || box.hidden) {
-			return;
-		}
-		var offset = 0;
-		var dock = document.querySelector('.mobile-app-nav, .dock, [data-dock]');
-		if (dock) {
-			var style = window.getComputedStyle(dock);
-			if (style.display !== 'none' && style.visibility !== 'hidden' && style.position === 'fixed') {
-				var rect = dock.getBoundingClientRect();
-				if (rect.height > 0 && rect.top > window.innerHeight * 0.5) {
-					offset = Math.max(0, Math.round(window.innerHeight - rect.top));
-				}
-			}
-		}
-		box.style.setProperty('--consent-dock', offset + 'px');
-	}
-
-	function queuePlace() {
-		if (frame || !box || box.hidden) {
-			return;
-		}
-		frame = window.requestAnimationFrame(function () {
-			frame = 0;
-			placeAboveDock();
-		});
 	}
 
 	function show(name, focus) {
@@ -294,12 +279,8 @@
 		}
 		view(name);
 		box.hidden = false;
-		placeAboveDock();
 		if (focus) {
-			var title = box.querySelector('.consent-title');
-			if (title) {
-				title.focus();
-			}
+			focusTitle();
 		}
 	}
 
@@ -340,13 +321,9 @@
 				picked[input.name] = input.checked;
 			});
 			save(picked);
-		} else if (action === 'prefs') {
-			view('prefs');
-			var title = box.querySelector('.consent-title');
-			if (title) {
-				title.focus();
-			}
-			queuePlace();
+		} else if (action === 'prefs' || action === 'back') {
+			view(action === 'prefs' ? 'prefs' : 'intro');
+			focusTitle();
 		} else if (action === 'close') {
 			dismiss();
 		}
@@ -377,7 +354,7 @@
 			show('intro', false);
 		}
 
-		/* ตัวเปิดการ์ดจากนอกการ์ด (footer, หน้า /go/, เนื้อหาหน้า privacy-policy ฯลฯ) */
+		/* Openers outside the card (footer, /go, privacy policy text) */
 		document.addEventListener('click', function (e) {
 			var el = e.target && e.target.closest ? e.target.closest(TRIGGERS) : null;
 			if (!el || box.contains(el)) {
@@ -394,24 +371,22 @@
 			}
 		}
 		fromHash();
-		/* เปิดจาก URL ที่มี #cookie-settings: เบราว์เซอร์เลื่อนหา fragment หลัง DOM พร้อมและดึงโฟกัสออก จึงคืนโฟกัสให้หัวการ์ดอีกครั้งตอน load */
+		/* Opened from a URL with #cookie-settings: the browser scrolls to the fragment after the DOM is
+		   ready and takes focus away, so focus the card title again on load */
 		if (window.location.hash === '#cookie-settings' && document.readyState !== 'complete') {
 			window.addEventListener('load', function () {
-				var title = box.querySelector('.consent-title');
-				if (!box.hidden && title && !box.contains(document.activeElement)) {
-					title.focus();
+				var el = title();
+				if (!box.hidden && el && !box.contains(document.activeElement)) {
+					el.focus();
 				}
 			}, { once: true });
 		}
 		window.addEventListener('hashchange', fromHash);
-		window.addEventListener('resize', queuePlace);
-		window.addEventListener('orientationchange', queuePlace);
-		window.addEventListener('scroll', queuePlace, { passive: true });
 	}
 
-	/* ---------------- เริ่มทำงาน ---------------- */
+	/* ---------------- Start ---------------- */
 
-	/* ใช้คำตอบที่เก็บไว้ทันที (ไม่ต้องรอ DOM) ให้แท็กที่ได้รับอนุญาตแล้วโหลดเร็วที่สุด */
+	/* Apply a stored answer at once (no need to wait for the DOM) so allowed tags load early */
 	var stored = read();
 	if (stored) {
 		apply(stored);

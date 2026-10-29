@@ -23,9 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function eab_site_pages() {
 	return array(
-		'home'             => array( 'title' => 'หน้าแรก', 'template' => '', 'content' => '', 'group' => 'hub', 'front' => true, 'seo' => array( 'seo_title' => 'EA BULL · EA MT5 ผู้ช่วยเทรดอัตโนมัติอย่างมีแบบแผน', 'description' => 'EA BULL ผู้ช่วยเทรดอัตโนมัติสำหรับ MetaTrader 5 ทำงานตามเงื่อนไขที่ตั้งไว้ เน้นวางแผน ติดตามผล และบริหารความเสี่ยง มีคู่มือภาษาไทยและทีมงานช่วยติดตั้งทาง LINE', 'keyword' => 'EA BULL EA MT5' ) ),
-		'backtest'         => array( 'title' => 'ทดสอบ EA ย้อนหลังใน MT5', 'template' => 'template-backtest.php', 'content' => 'pages/backtest', 'group' => 'test', 'menu' => 'Backtest' ),
-		'forward-test'     => array( 'title' => 'ทดสอบ EA กับตลาดจริง', 'template' => 'template-forward.php', 'content' => 'pages/forward-test', 'group' => 'test', 'menu' => 'Forward Test' ),
+		'home'             => array( 'title' => 'หน้าแรก', 'template' => '', 'content' => '', 'group' => 'hub', 'front' => true, 'seo' => array( 'seo_title' => 'EA BULL · ระบบเทรดอัตโนมัติ EA บน MetaTrader 5', 'description' => 'EA BULL ระบบเทรดอัตโนมัติสำหรับ MetaTrader 5 เลือก EA ตามเลขรุ่น ติดตั้งตามคู่มือ รันบน VPS และติดตามผลจากมือถือ ปรึกษาทีมงานทาง LINE', 'keyword' => 'EA BULL EA MT5' ) ),
+		'backtest'         => array( 'title' => 'ทดสอบ EA ย้อนหลังด้วย Strategy Tester ของ MT5', 'template' => 'template-backtest.php', 'content' => 'pages/backtest', 'group' => 'test', 'menu' => 'Backtest' ),
+		'forward-test'     => array( 'title' => 'Forward Test: ลอง EA กับตลาดจริงก่อนเพิ่มเงิน', 'template' => 'template-forward.php', 'content' => 'pages/forward-test', 'group' => 'test', 'menu' => 'Forward Test' ),
 		'how-to-install'   => array( 'title' => 'วิธีติดตั้ง EA ใน MT5', 'template' => 'template-install.php', 'content' => 'pages/how-to-install', 'group' => 'guide', 'menu' => 'วิธีติดตั้ง EA บน MT5' ),
 		'open-mt5-account' => array( 'title' => 'เปิดบัญชี MT5', 'template' => 'template-guide.php', 'content' => 'pages/open-mt5-account', 'group' => 'guide', 'menu' => 'เปิดบัญชีเทรด MT5' ),
 		'deposit'          => array( 'title' => 'ฝากเงินเข้าบัญชี Zaurix', 'template' => 'template-guide.php', 'content' => 'pages/deposit', 'group' => 'guide', 'menu' => 'ฝากเงิน Zaurix' ),
@@ -34,14 +34,15 @@ function eab_site_pages() {
 		'vps-android'      => array( 'title' => 'คู่มือ VPS บน Android', 'template' => 'template-guide.php', 'content' => 'pages/vps-android', 'group' => 'guide', 'menu' => 'VPS บน Android' ),
 		'vps-ios'          => array( 'title' => 'คู่มือ VPS บน iPhone', 'template' => 'template-guide.php', 'content' => 'pages/vps-ios', 'group' => 'guide', 'menu' => 'VPS บน iPhone / iPad' ),
 		'tools'            => array( 'title' => 'เครื่องมือคำนวณ', 'template' => 'template-guide.php', 'content' => 'pages/tools', 'group' => 'guide', 'menu' => 'เครื่องคำนวณ Lot / Drawdown' ),
-		'pricing'          => array( 'title' => 'แพ็กเกจและราคา', 'template' => 'template-pricing.php', 'content' => 'pages/pricing', 'group' => 'pricing' ),
-		'wing-nitro'       => array( 'title' => 'WING NITRO', 'template' => 'template-nitro.php', 'content' => 'pages/wing-nitro', 'group' => 'product' ),
-		'ea-wing'          => array( 'title' => 'EA BULL', 'template' => 'template-eabull.php', 'content' => 'pages/ea-wing', 'group' => 'product' ),
-		'wing-twin'        => array( 'title' => 'WING TWIN', 'template' => 'template-twin.php', 'content' => 'pages/wing-twin', 'group' => 'product' ),
-		'risk-disclosure'  => array( 'title' => 'ประกาศความเสี่ยง', 'template' => 'template-risk.php', 'content' => 'pages/risk-disclosure', 'group' => 'doc' ),
-		'about'            => array( 'title' => 'เกี่ยวกับเรา', 'template' => '', 'content' => 'pages/about', 'group' => 'doc' ),
+		'pricing'          => array( 'title' => 'แพ็กเกจ EA BULL', 'template' => 'template-pricing.php', 'content' => 'pages/pricing', 'group' => 'pricing' ),
+		/* สินค้าตัวอย่าง 3 รุ่น (slug ชั่วคราว · ชื่อ เลขรุ่น และ slug จริงตั้งใน Customizer หมวด 3.x · inc/modules/products.php) */
+		'product-1'        => array( 'title' => 'สินค้าตัวอย่าง 1', 'template' => 'template-product.php', 'content' => 'pages/product-1', 'group' => 'product' ),
+		'product-2'        => array( 'title' => 'สินค้าตัวอย่าง 2', 'template' => 'template-product.php', 'content' => 'pages/product-2', 'group' => 'product' ),
+		'product-3'        => array( 'title' => 'สินค้าตัวอย่าง 3', 'template' => 'template-product.php', 'content' => 'pages/product-3', 'group' => 'product' ),
+		'risk-disclosure'  => array( 'title' => 'ความเสี่ยงของการใช้ EA เทรดบน MT5', 'template' => 'template-risk.php', 'content' => 'pages/risk-disclosure', 'group' => 'doc' ),
+		'about'            => array( 'title' => 'เกี่ยวกับ EA BULL', 'template' => 'template-about.php', 'content' => 'pages/about', 'group' => 'doc' ),
 		'privacy-policy'   => array( 'title' => 'นโยบายความเป็นส่วนตัว', 'template' => '', 'content' => 'pages/privacy-policy', 'group' => 'doc', 'status' => 'draft' ),
-		'terms-of-use'     => array( 'title' => 'ข้อกำหนดและเงื่อนไขการใช้บริการ', 'template' => '', 'content' => 'pages/terms-of-use', 'group' => 'doc', 'status' => 'draft' ),
+		'terms-of-use'     => array( 'title' => 'ข้อกำหนดการใช้บริการ', 'template' => '', 'content' => 'pages/terms-of-use', 'group' => 'doc', 'status' => 'draft' ),
 		'data-deletion'    => array( 'title' => 'คำขอลบข้อมูลส่วนบุคคล', 'template' => '', 'content' => 'pages/data-deletion', 'group' => 'doc', 'status' => 'draft' ),
 		'go'               => array( 'title' => 'ติดต่อ EA BULL', 'template' => 'template-go.php', 'content' => '', 'group' => 'hub', 'seo' => array( 'seo_title' => 'ติดต่อ EA BULL · LINE และลิงก์รวมสำหรับเริ่มใช้งาน', 'description' => 'ทัก LINE ทีมงาน EA BULL หรือเข้ากลุ่ม OpenChat แล้วเดินตาม 6 ขั้นตอนเริ่มใช้งาน: เปิดบัญชี ติดตั้ง MT5 ฝากเงิน รับไฟล์ EA ติดตั้ง และรันบน VPS', 'keyword' => 'ติดต่อ EA BULL' ) ),
 		'articles'         => array( 'title' => 'บทความ EA BULL', 'template' => '', 'content' => '', 'group' => 'hub', 'posts' => true, 'seo' => array( 'seo_title' => 'บทความ EA MT5: พื้นฐาน วางแผน ติดตามผล ความเสี่ยง · EA BULL', 'description' => 'บทความภาษาไทยสำหรับคนใช้ EA บน MT5: พื้นฐานการติดตั้งและแก้ปัญหา เขียนแผนการเทรด แบ่งทุน ติดตามพอร์ตบนมือถือ อ่าน Log และคุมความเสี่ยงอย่างเป็นระบบ', 'keyword' => 'บทความ EA MT5' ) ),
@@ -58,30 +59,8 @@ function eab_seed_article_covers() {
 }
 
 function eab_seed_article_covers_legacy() {
-	/* บทความรอบแรกของ EA BULL (docs/plan.md ข้อ 4) · slug ที่ยังไม่มีไฟล์เนื้อหาจะถูกข้ามอัตโนมัติ */
-	return array(
-		'trading-plan-for-ea'     => 'eabull-plan-fly-further-sky.webp',
-		'risk-per-trade'          => 'eabull-plan-blue-icons.webp',
-		'capital-split-ea'        => 'eabull-plan-white-wing.webp',
-		'daily-loss-limit'        => 'eabull-plan-track-risk-light.webp',
-		'mt5-mobile-monitor'      => 'eabull-mt5-laptop-phone.webp',
-		'mt5-push-notification'   => 'eabull-plan-sky-blue.webp',
-		'mt5-journal-experts-tab' => 'eabull-mt5-navigator-laptop.webp',
-		'mt5-history-report'      => 'eabull-plan-sky-chart.webp',
-		'equity-vs-balance'       => 'eabull-plan-sky-clouds.webp',
-		'risk-reward-ratio'       => 'eabull-plan-feathers.webp',
-		'currency-correlation'    => 'eabull-plan-track-risk-night.webp',
-		'weekend-gap-ea'          => 'eabull-plan-feathers-night.webp',
-		/* รอบที่ 2 (7 ต.ค. 2026): คำค้นตอนติดตั้งและแก้ปัญหา · ปกของตัวเองใน covers/ */
-		'what-is-ea'               => 'eabull-mt5-navigator-laptop.webp',
-		'allow-dll-imports'        => 'eabull-mt5-navigator-laptop.webp',
-		'algo-trading-button'      => 'eabull-mt5-navigator-laptop.webp',
-		'ea-not-trading'           => 'eabull-plan-track-risk-light.webp',
-		'vps-for-ea'               => 'eabull-mt5-laptop-phone.webp',
-		'backtest-vs-forward-test' => 'eabull-plan-sky-chart.webp',
-		'leverage-margin'          => 'eabull-plan-blue-icons.webp',
-		'xauusd-m1-chart'          => 'eabull-plan-sky-chart.webp',
-	);
+	/* บทความของ EA BULL เป็นงานเฟส 4 (docs/brief.md) · ยังไม่มีบทความเริ่มต้นและปกที่ต้องผูก */
+	return array();
 }
 
 /**
@@ -432,7 +411,7 @@ function eab_banner_attachment( $file, $alt = '' ) {
 		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		return 0;
 	}
-	update_post_meta( $id, '_wp_attachment_image_alt', '' !== $alt ? $alt : 'EA BULL ผู้ช่วยเทรดอัตโนมัติสำหรับ MT5 (ภาพประกอบ)' );
+	update_post_meta( $id, '_wp_attachment_image_alt', '' !== $alt ? $alt : 'ภาพประกอบ EA BULL ระบบเทรดอัตโนมัติบน MetaTrader 5' );
 	$map[ $file ] = (int) $id;
 	update_option( 'eab_banner_attachments', $map, false );
 	return (int) $id;
@@ -602,11 +581,11 @@ function eab_setup_menu_build() {
 	};
 
 	$add( 'หน้าแรก', home_url( '/' ) );
-	// สินค้าทั้งหมดเรียงตามเลขรุ่น (products.php) · หัวเมนูลิงก์ไปสินค้าตัวแรก
+	// สินค้าทั้งหมดเรียงตามเลขรุ่น (products.php · item: label = "ชื่อ · Vเลขรุ่น", slug) · หัวเมนูลิงก์ไปสินค้าตัวแรก
 	$list    = function_exists( 'eab_products' ) ? eab_products() : array();
 	$targets = array();
 	foreach ( $list as $item ) {
-		$targets[ $item['label'] ] = '' !== $item['slug'] ? $item['slug'] : home_url( '/#modes' );
+		$targets[ $item['label'] ] = '' !== $item['slug'] ? $item['slug'] : home_url( '/#products' );
 	}
 	if ( $targets ) {
 		$products = $add( 'สินค้า', reset( $targets ) );
@@ -748,7 +727,7 @@ function eab_setup_seo() {
 
 	/* 2) alt ของโลโก้ใน Media (ไอคอนเว็บ + โลโก้ที่ตั้งไว้) */
 	$logo_ids = array_filter( array_unique( array( (int) get_option( 'site_icon' ), (int) get_theme_mod( 'custom_logo' ) ) ) );
-	foreach ( get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => 20, 's' => 'EA-WING', 'fields' => 'ids' ) ) as $att ) {
+	foreach ( get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => 20, 's' => 'EA-BULL', 'fields' => 'ids' ) ) as $att ) {
 		$logo_ids[] = (int) $att;
 	}
 	$alt_done = 0;
