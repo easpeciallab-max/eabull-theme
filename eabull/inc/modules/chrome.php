@@ -52,7 +52,7 @@ function eab_chrome_defaults( $d ) {
 
 			/* Customer dashboard (owner 29 Oct 2026: link it now, the look is still being finished) */
 			'dashboard_url'          => 'https://dashboard.eabull.com/',
-			'header_dash_label'      => 'แดชบอร์ด',
+			'header_dash_label'      => 'ไปยังแดชบอร์ด',
 			'chrome_dash_wait'       => 'ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ',
 
 			/* Channels shared by every chrome part */
@@ -755,14 +755,15 @@ function eab_chrome_nav_foot() {
 }
 
 /**
- * Dashboard button at the end of the header (outlined yellow).
+ * Dashboard button at the end of the header (outlined yellow) · text then an arrow, so it reads as
+ * "go to the dashboard" (owner 29 Oct 2026, was a gauge icon in front).
  */
 function eab_chrome_header_dash() {
 	$label = eab_chrome_mod( 'header_dash_label' );
 	if ( '' === $label ) {
 		return;
 	}
-	echo '<a' . eab_chrome_attrs( array_merge( array( 'class' => 'hd__dash' ), eab_chrome_dash_link() ) ) . '>' . eab_icon( 'gauge' ) . '<span>' . esc_html( $label ) . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in parts
+	echo '<a' . eab_chrome_attrs( array_merge( array( 'class' => 'hd__dash' ), eab_chrome_dash_link() ) ) . '><span>' . esc_html( $label ) . '</span>' . eab_icon( 'arrow-right' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in parts
 }
 
 /**
