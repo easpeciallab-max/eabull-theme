@@ -222,6 +222,7 @@ function eab_homeplus_features() {
 <section class="band" id="features" aria-labelledby="features-title">
 	<div class="wrap">
 		<?php eab_home_shead( 'features-title', eab_mod( 'home_feat_title' ), eab_mod( 'home_feat_sub' ) ); ?>
+		<?php echo eab_homeplus_photo( 'home_img_feat', 1600, 600, 'photo photo--wide' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
 		<div class="feat" data-reveal>
 			<?php foreach ( $items as $i => $item ) : ?>
 			<div class="feat__item">
@@ -414,6 +415,7 @@ function eab_homeplus_faq() {
 			<p><?php echo eab_home_inline( $sub ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
 			<?php endif; ?>
 			<div class="btns"><?php eab_home_contact_link( eab_mod( 'home_faq_btn' ), 'btn btn--line', 'home-faq' ); ?></div>
+			<?php echo eab_homeplus_photo( 'home_img_faq', 960, 720, 'photo photo--4x3 faq__img' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
 		</div>
 		<div>
 			<?php foreach ( $faqs as $i => $faq ) : ?>
@@ -533,6 +535,8 @@ function eab_homeplus_intro() {
 			<p><?php echo eab_homeplus_nocaps( eab_home_inline( preg_replace( '/\s*\n\s*/', ' ', $para ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
 			<?php endforeach; ?>
 		</div>
+		<div class="intro__side">
+		<?php echo eab_homeplus_photo( 'home_img_intro', 960, 720, 'photo photo--4x3' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
 		<?php if ( $facts ) : ?>
 		<aside class="intro__facts cut" aria-labelledby="intro-facts-title">
 			<?php if ( '' !== $facts_title ) : ?>
@@ -545,6 +549,7 @@ function eab_homeplus_intro() {
 			</dl>
 		</aside>
 		<?php endif; ?>
+		</div>
 	</div>
 </section>
 	<?php
@@ -671,7 +676,10 @@ function eab_homeplus_learn() {
 <section class="band" id="ea-basics" aria-labelledby="learn-title">
 	<div class="wrap">
 		<?php eab_home_shead( 'learn-title', eab_mod( 'home_learn_title' ), eab_mod( 'home_learn_sub' ) ); ?>
-		<div class="learn"><?php echo eab_homeplus_nocaps( eab_homeplus_prose( $body ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
+		<div class="learn-wrap">
+			<div class="learn"><?php echo eab_homeplus_nocaps( eab_homeplus_prose( $body ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
+			<?php echo eab_homeplus_photo( 'home_img_learn', 720, 900, 'photo photo--tall' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
+		</div>
 	</div>
 </section>
 	<?php
@@ -729,4 +737,16 @@ function eab_homeplus_hero_chart() {
 		$bars .= '<i style="--h:' . $h . ';--d:' . number_format( fmod( $i * 0.37, 3.2 ), 2, '.', '' ) . '"></i>';
 	}
 	return '<div class="hero__chart" aria-hidden="true">' . $bars . '</div>';
+}
+
+/**
+ * รูปประกอบหน้าแรก (Customizer: ไฟล์ในธีมหรือ URL + alt) · '' เมื่อไม่ได้ใส่รูป
+ */
+function eab_homeplus_photo( $key, $w, $h, $class ) {
+	$src = eab_theme_asset_url( eab_mod( $key ) );
+	if ( '' === $src ) {
+		return '';
+	}
+	$size = eab_home_img_size( eab_mod( $key ), $w, $h );
+	return '<figure class="' . esc_attr( $class ) . '"><img src="' . esc_url( $src ) . '" width="' . (int) $size[0] . '" height="' . (int) $size[1] . '" alt="' . esc_attr( eab_mod( $key . '_alt' ) ) . '" loading="lazy" decoding="async"></figure>';
 }

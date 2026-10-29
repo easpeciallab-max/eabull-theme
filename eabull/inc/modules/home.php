@@ -183,6 +183,15 @@ function eab_home_defaults( $d ) {
 		'home_faq12_a'         => 'Pro เป็นสิทธิ์ใช้งานบนบัญชี MT5 ของคุณ 1 ถึง 2 บัญชี ส่วน VIP มีทีมงานช่วยติดตั้งให้ ทั้งสองแบบจ่ายครั้งเดียว เทียบทีละหัวข้อได้ที่[หน้าแพ็กเกจ](/pricing/)',
 
 		/* ---------- เนื้อหาเพิ่มของหน้าแรก (เจ้าของขอ 29 ต.ค. 2026: บอกเรื่องเว็บให้ครบ และแข็งแรงด้าน SEO) ---------- */
+		/* รูปประกอบหน้าแรก 4 รูป: ภาพฟรีจาก Unsplash ปรับโทนดำทองชุดเดียวกัน (dev/tools/home-photos.py) */
+		'home_img_intro'         => 'assets/img/home/eabull-ea-mt5-candlestick-chart.webp',
+		'home_img_intro_alt'     => 'ภาพประกอบ กราฟแท่งเทียนขาขึ้นบนจอเทรด',
+		'home_img_feat'          => 'assets/img/home/eabull-mt5-trader-desk.webp',
+		'home_img_feat_alt'      => 'ภาพประกอบ โต๊ะเทรดที่มีจอกราฟและเครื่องคิดเลข',
+		'home_img_learn'         => 'assets/img/home/eabull-mt5-chart-tablet.webp',
+		'home_img_learn_alt'     => 'ภาพประกอบ กราฟราคาบนแท็บเล็ต',
+		'home_img_faq'           => 'assets/img/home/eabull-mt5-mobile-chart.webp',
+		'home_img_faq_alt'       => 'ภาพประกอบ ดูกราฟราคาจากมือถือ',
 		'show_home_intro'        => true,
 		'home_intro_title'       => 'รู้จัก EA BULL ก่อนเริ่ม',
 		'home_intro_text'        => "EA BULL คือแบรนด์ EA หรือ Expert Advisor สำหรับ MetaTrader 5 ระบบเทรดอัตโนมัติที่ทำงานอยู่ในโปรแกรม MT5 บนคอม Windows หรือ VPS อ่านราคาบนกราฟแล้วส่งคำสั่งซื้อขายตามกติกาที่เขียนไว้ คุณเป็นคนเลือกสินค้า โหมด และขนาดไม้ให้เข้ากับทุนของตัวเอง\n\n"
@@ -373,6 +382,14 @@ function eab_home_customizer_sections( $sections, $d ) {
 			'title'       => '2.9) หน้าแรก · รู้จัก EA BULL · แพ็กเกจ · คู่มือทั้งหมด · EA คืออะไร',
 			'description' => 'เนื้อหาเพิ่มของหน้าแรก · ' . $fmt,
 			'fields'      => array(
+				'home_img_intro'         => array( 'รูป · รู้จัก EA BULL (960×720)', 'image', 'ว่าง = ไม่มีรูป · รูปชุดเดิมสร้างด้วย dev/tools/home-photos.py' ),
+				'home_img_intro_alt'     => array( 'รูป · รู้จัก EA BULL · คำอธิบายภาพ (alt)', 'text' ),
+				'home_img_feat'          => array( 'รูป · สิ่งที่ EA BULL ทำแทนคุณ (1600×600)', 'image' ),
+				'home_img_feat_alt'      => array( 'รูป · สิ่งที่ EA BULL ทำแทนคุณ · คำอธิบายภาพ (alt)', 'text' ),
+				'home_img_learn'         => array( 'รูป · EA คืออะไร (720×900)', 'image' ),
+				'home_img_learn_alt'     => array( 'รูป · EA คืออะไร · คำอธิบายภาพ (alt)', 'text' ),
+				'home_img_faq'           => array( 'รูป · FAQ (960×720)', 'image' ),
+				'home_img_faq_alt'       => array( 'รูป · FAQ · คำอธิบายภาพ (alt)', 'text' ),
 				'show_home_intro'        => array( 'แสดง "รู้จัก EA BULL"', 'checkbox' ),
 				'home_intro_title'       => array( 'รู้จัก EA BULL · หัวข้อ (H2)', 'text' ),
 				'home_intro_text'        => array( 'รู้จัก EA BULL · เนื้อหา (เว้นบรรทัด = ย่อหน้าใหม่)', 'textarea', $rule ),

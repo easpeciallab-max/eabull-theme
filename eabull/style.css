@@ -507,6 +507,18 @@ a.card:hover { border-color: var(--accent); }
 .hub__go { width: 18px; height: 18px; color: var(--muted); transition: transform .15s, color .15s; }
 .hub__item:hover .hub__go { color: var(--accent); transform: translateX(3px); }
 .learn { max-width: 820px; }
+/* home photos: one toned set, square corners with the brand cut, thin frame (owner 29 Oct 2026) */
+.photo { margin: 0; overflow: hidden; background: var(--k1); border: 1px solid var(--line); --cut: 18px; clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo--4x3 { aspect-ratio: 4 / 3; }
+.photo--wide { aspect-ratio: 8 / 3; margin-bottom: 36px; }
+.photo--tall { aspect-ratio: 4 / 5; }
+@media (max-width: 700px) { .photo--wide { aspect-ratio: 16 / 9; } }
+.intro__side { display: grid; gap: 16px; align-content: start; }
+.learn-wrap { display: grid; gap: 32px; }
+@media (min-width: 960px) { .learn-wrap { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 56px; align-items: start; } .learn-wrap .photo--tall { position: sticky; top: calc(var(--hd-h) + 32px); } }
+.faq__img { margin-top: 28px; }
+@media (max-width: 959px) { .faq__img { display: none; } }
 .learn h3 { margin-top: 34px; font-size: 21px; }
 .learn h3:first-child { margin-top: 0; }
 .learn p { margin-top: 12px; font-size: 17px; line-height: 1.85; color: var(--fg-2); }
