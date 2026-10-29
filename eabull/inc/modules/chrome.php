@@ -10,8 +10,8 @@
  * - Every text, link and image is a Customizer setting (defaults + controls below).
  * - LINE buttons use eab_contact_target(): LINE OA when set, otherwise the /go/ page,
  *   otherwise href="#" + data-wait (toast). Each LINE link keeps its data-line-pos.
- * - The dashboard link is empty until the owner's dashboard is ready: the button still
- *   shows and answers with a toast (data-wait).
+ * - Dashboard link: https://dashboard.eabull.com/ (owner asked to link it 29 Oct 2026 while it is
+ *   still being restyled) · emptied = the button still shows and answers with a toast (data-wait).
  * - header.php and footer.php only arrange the pieces built here.
  *
  * @package eabull
@@ -50,8 +50,8 @@ function eab_chrome_defaults( $d ) {
 			'nav_articles_label'     => 'บทความ',
 			'nav_contact_label'      => 'ติดต่อ',
 
-			/* Customer dashboard (owner: not finished yet, keep the button ready) */
-			'dashboard_url'          => '',
+			/* Customer dashboard (owner 29 Oct 2026: link it now, the look is still being finished) */
+			'dashboard_url'          => 'https://dashboard.eabull.com/',
 			'header_dash_label'      => 'แดชบอร์ด',
 			'chrome_dash_wait'       => 'ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ',
 
