@@ -79,7 +79,7 @@ function eab_chrome_defaults( $d ) {
 			'contact_qr_wait'        => "QR LINE\nรอข้อมูล",
 			'contact_qr_alt'         => 'QR Code เพิ่มเพื่อน LINE ของ EA BULL',
 			'contact_ask_title'      => 'สิ่งที่ทีมงานจะถาม',
-			'contact_ask_items'      => "เงินทุนที่ตั้งใจใช้ และรับความเสี่ยงได้แค่ไหน\nมีบัญชี MT5 แล้วหรือยัง ใช้โบรกเกอร์ไหน\nจะรัน EA บนคอม มือถือ หรือ VPS\nข้อสงสัยที่อยากถามก่อนเริ่ม",
+			'contact_ask_items'      => "เงินทุนที่ตั้งใจใช้ และรับความเสี่ยงได้แค่ไหน\nเปิดบัญชี MT5 ไว้แล้วหรือยัง และเปิดกับโบรกเกอร์เจ้าไหน\nจะรัน EA บนคอม มือถือ หรือ VPS\nข้อสงสัยที่อยากถามก่อนเริ่ม",
 
 			/* Footer */
 			'footer_about'           => 'EA BULL ผู้ช่วยเทรดอัตโนมัติบน MetaTrader 5 · แข็งแกร่งด้วยวินัย บุกตลาดอย่างมีแผน',
@@ -87,7 +87,7 @@ function eab_chrome_defaults( $d ) {
 			'footer_index_items'     => "home | หน้าแรก\nproducts | สินค้า\nbacktest | Backtest\nforward-test | Forward Test\npricing | แพ็กเกจ\narticles | บทความ\ngo | ติดต่อ",
 			'footer_docs_title'      => 'ข้อมูลและนโยบาย',
 			'footer_docs_items'      => "about | เกี่ยวกับเรา\nrisk-disclosure | ประกาศความเสี่ยง\nprivacy-policy | นโยบายความเป็นส่วนตัว\nterms-of-use | ข้อกำหนดการใช้บริการ\ndata-deletion | ขอลบข้อมูลส่วนบุคคล",
-			'footer_risk_short'      => 'การเทรดด้วย EA มีความเสี่ยงสูง อาจขาดทุนจนหมดเงินในบัญชี ผลทดสอบในอดีตไม่ได้บอกผลในอนาคต',
+			'footer_risk_short'      => 'EA ช่วยทำตามแผน แต่ไม่ได้กันขาดทุน เงินในบัญชีเทรดหมดได้ และตัวเลขทดสอบย้อนหลังไม่ได้บอกว่าข้างหน้าจะเป็นอย่างไร',
 			'footer_risk_more'       => 'อ่านประกาศความเสี่ยงฉบับเต็ม',
 			'footer_copyright_text'  => 'สงวนลิขสิทธิ์',
 			'footer_legal_items'     => "privacy-policy | นโยบายความเป็นส่วนตัว\nterms-of-use | ข้อกำหนดการใช้บริการ",

@@ -64,7 +64,7 @@ function eab_consent_defaults( $d ) {
 			'consent_analytics_desc'   => 'Google Analytics นับผู้เข้าชมและหน้าที่เปิด ใช้รหัสสุ่มแทนชื่อของคุณ',
 			'consent_marketing_name'   => 'การตลาด',
 			'consent_marketing_desc'   => 'Meta Pixel ใช้นับว่ามีคนมาจากโฆษณาบน Facebook หรือ Instagram กี่คน',
-			'consent_prefs_note'       => 'เปลี่ยนใจได้ทุกเมื่อจากลิงก์ "ตั้งค่าคุกกี้" ท้ายเว็บ',
+			'consent_prefs_note'       => 'อยากเปลี่ยนการตั้งค่าภายหลัง กดลิงก์ "ตั้งค่าคุกกี้" ที่ส่วนท้ายของทุกหน้า',
 			'consent_link_label'       => 'ตั้งค่าคุกกี้',
 		)
 	);
