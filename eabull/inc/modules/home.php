@@ -619,7 +619,7 @@ function eab_home_rows( $text, $min = 1 ) {
  * @param string $icon  ไอคอนหน้าข้อความ ('' = ไม่มี)
  * @param string $after ไอคอนท้ายข้อความ ('' = ไม่มี)
  */
-function eab_home_contact_link( $text, $class, $pos, $icon = 'chat', $after = '' ) {
+function eab_home_contact_link( $text, $class, $pos, $icon = 'line', $after = '' ) {
 	static $hinted = false;
 	if ( function_exists( 'eab_contact_target' ) ) {
 		$target = eab_contact_target();

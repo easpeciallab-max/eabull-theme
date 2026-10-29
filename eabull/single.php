@@ -88,7 +88,7 @@ while ( have_posts() ) :
 						?>
 						<div class="share mt-32">
 							<b><?php echo esc_html( eab_mod( 'art_share_label' ) ); ?></b>
-							<a class="btn btn--line btn--sm" href="<?php echo esc_url( 'https://social-plugins.line.me/lineit/share?url=' . rawurlencode( $eab_link ) ); ?>" target="_blank" rel="noopener" data-line-pos="article-share"><?php echo eab_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>LINE</a>
+							<a class="btn btn--line btn--sm" href="<?php echo esc_url( 'https://social-plugins.line.me/lineit/share?url=' . rawurlencode( $eab_link ) ); ?>" target="_blank" rel="noopener" data-line-pos="article-share"><?php echo eab_icon( 'line' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>LINE</a>
 							<a class="btn btn--fb btn--sm" href="<?php echo esc_url( 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $eab_link ) ); ?>" target="_blank" rel="noopener"><?php echo eab_icon( 'facebook' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>Facebook</a>
 							<button class="btn btn--outline btn--sm share-copy" type="button" data-url="<?php echo esc_url( $eab_link ); ?>" data-done="<?php echo esc_attr( eab_mod( 'art_copy_done' ) ); ?>"><?php echo eab_icon( 'link' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo esc_html( eab_mod( 'art_copy_label' ) ); ?></button>
 						</div>

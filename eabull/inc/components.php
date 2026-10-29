@@ -158,7 +158,7 @@ function eab_contact_button( $args = array() ) {
 		esc_attr( implode( ' ', $class ) ),
 		esc_url( $href ),
 		$attrs, // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
-		$args['icon'] ? eab_icon( 'chat' ) : '', // phpcs:ignore WordPress.Security.EscapeOutput
+		$args['icon'] ? eab_icon( 'line' ) : '', // phpcs:ignore WordPress.Security.EscapeOutput
 		esc_html( $text ),
 		$args['arrow'] ? ' ' . eab_icon( 'arrow-right' ) : '' // phpcs:ignore WordPress.Security.EscapeOutput
 	);

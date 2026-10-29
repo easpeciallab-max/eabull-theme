@@ -580,7 +580,7 @@ function eab_chrome_contact_button( $class = '', $pos = 'content', $text = '', $
 	$extra = array_diff( preg_split( '/\s+/', trim( (string) $class ) ), array( '', 'btn', 'btn--line' ) );
 	$label = '' !== trim( (string) $text ) ? trim( (string) $text ) : eab_chrome_mod( 'footer_line_text' );
 	$attrs = array_merge( array( 'class' => trim( 'btn btn--line ' . implode( ' ', $extra ) ) ), eab_chrome_line_link( $pos ) );
-	$html  = '<a' . eab_chrome_attrs( $attrs ) . '>' . eab_icon( 'chat' ) . esc_html( $label ) . '</a>';
+	$html  = '<a' . eab_chrome_attrs( $attrs ) . '>' . eab_icon( 'line' ) . esc_html( $label ) . '</a>';
 	if ( $echo ) {
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
 	}
@@ -592,7 +592,7 @@ function eab_chrome_contact_button( $class = '', $pos = 'content', $text = '', $
  */
 function eab_chrome_social_icons( $pos = 'footer-social', $class = '' ) {
 	$items = array(
-		array( eab_chrome_line_link( $pos ), 'chat', eab_chrome_mod( 'chrome_line_name' ) ),
+		array( eab_chrome_line_link( $pos ), 'line', eab_chrome_mod( 'chrome_line_name' ) ),
 		array( eab_chrome_openchat_link( $pos . '-openchat' ), 'users', eab_chrome_mod( 'chrome_openchat_name' ) ),
 		array( eab_chrome_fb_link(), 'facebook', eab_chrome_mod( 'chrome_fb_name' ) ),
 	);
@@ -955,7 +955,7 @@ function eab_chrome_contact_panel( $args = array() ) {
 	$fb_host = $fb ? preg_replace( '#^(?:https?:)?//(?:www\.)?#i', '', rtrim( $fb['href'], '/' ) ) : '';
 
 	$channels = array(
-		array( eab_chrome_line_link( 'footer-channels' ), 'chat', eab_chrome_mod( 'contact_line_title' ), $line_sub, '' ),
+		array( eab_chrome_line_link( 'footer-channels' ), 'line', eab_chrome_mod( 'contact_line_title' ), $line_sub, '' ),
 		array( eab_chrome_openchat_link( 'footer-channels-openchat' ), 'users', eab_chrome_mod( 'contact_openchat_title' ), eab_chrome_mod( 'contact_openchat_sub' ), '' ),
 		array( $fb, 'facebook', eab_chrome_mod( 'contact_fb_title' ), $fb_host, 'nocaps' ),
 	);
@@ -1109,7 +1109,7 @@ function eab_chrome_dock_items() {
 		array( 'dash', 'mobile_nav_dash_label', eab_chrome_dash_link(), 'gauge', false ),
 		array( 'pricing', 'mobile_nav_price_label', array( 'href' => $price ), 'tag', eab_chrome_is_here( $price ) ),
 		array( 'guides', 'mobile_nav_install_label', array( 'href' => $guide ), 'book', eab_chrome_is_here( $guide ) || ( $guides && is_page( $guides ) ) ),
-		array( 'line', 'mobile_nav_line_label', eab_chrome_line_link( 'dock' ), 'chat', false ),
+		array( 'line', 'mobile_nav_line_label', eab_chrome_line_link( 'dock' ), 'line', false ),
 	);
 	$out   = array();
 	foreach ( $slots as $slot ) {
@@ -1161,7 +1161,7 @@ function eab_chrome_fab() {
 	$go       = eab_chrome_page_url( 'go' );
 	$go_label = eab_chrome_mod( 'chrome_quick_go' );
 	?>
-<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="<?php echo esc_attr( eab_chrome_mod( 'float_line_text' ) ); ?>"><?php echo eab_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="<?php echo esc_attr( eab_chrome_mod( 'float_line_text' ) ); ?>"><?php echo eab_icon( 'line' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
 <div class="quick dark" id="quick" role="dialog" aria-label="<?php echo esc_attr( '' !== $title ? $title : eab_chrome_mod( 'float_line_text' ) ); ?>" hidden>
 	<div class="quick__head">
 		<b><?php echo esc_html( $title ); ?></b>

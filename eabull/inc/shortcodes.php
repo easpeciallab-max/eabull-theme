@@ -32,7 +32,7 @@ function eab_sc_line( $atts, $content = '' ) {
 		$text = eab_mod( 'contact_fallback_text' );
 	}
 	return '<p class="sc-line"><a class="btn btn--line" href="' . esc_url( $target['url'] ) . '"' . ( $target['is_line'] ? ' target="_blank" rel="noopener"' : '' ) . ' data-line-pos="' . esc_attr( sanitize_key( $atts['pos'] ) ) . '">'
-		. eab_icon( 'chat' ) . esc_html( $text ) . '</a></p>';
+		. eab_icon( 'line' ) . esc_html( $text ) . '</a></p>';
 }
 add_shortcode( 'eabull_line', 'eab_sc_line' );
 

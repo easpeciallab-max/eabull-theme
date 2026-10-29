@@ -338,7 +338,7 @@ function eab_go_btn( $class, $label, $attrs, $icon = '' ) {
  * Green LINE button used in the steps (kept name for older callers, docs/phase2.md section 5).
  */
 function eab_go_line_button( $label, $pos, $class = '' ) {
-	return eab_go_btn( trim( 'btn btn--line ' . $class ), $label, eab_go_line_link( $pos ), 'chat' );
+	return eab_go_btn( trim( 'btn btn--line ' . $class ), $label, eab_go_line_link( $pos ), 'line' );
 }
 
 /**
@@ -446,7 +446,7 @@ function eab_go_steps() {
 			array( eab_go_mod( 'go_vps_windows_label' ), eab_go_link( eab_go_mod( 'go_vps_windows_url' ) ), 'monitor' ),
 			array( eab_go_mod( 'go_vps_android_label' ), eab_go_link( eab_go_mod( 'go_vps_android_url' ) ), 'phone' ),
 			array( eab_go_mod( 'go_vps_ios_label' ), eab_go_link( eab_go_mod( 'go_vps_ios_url' ) ), 'tablet' ),
-			array( eab_go_mod( 'go_vps_line_label' ), eab_go_line_link( 'go-vps' ), 'chat' ),
+			array( eab_go_mod( 'go_vps_line_label' ), eab_go_line_link( 'go-vps' ), 'line' ),
 		)
 	);
 
