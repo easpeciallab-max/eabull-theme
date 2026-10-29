@@ -20,6 +20,10 @@ function eab_homeplus_section( $name ) {
 	$toggles = array(
 		'hero'     => 'show_hero',
 		'plat'     => 'home_show_plat',
+		'intro'    => 'show_home_intro',
+		'plans'    => 'show_home_plans',
+		'hub'      => 'show_home_hub',
+		'learn'    => 'show_home_learn',
 		'products' => 'show_home_products',
 		'modes'    => 'show_home_modes',
 		'features' => 'show_features',
@@ -87,7 +91,10 @@ function eab_homeplus_hero() {
 		<?php if ( $pillars ) : ?>
 		<div class="pillars">
 			<?php foreach ( $pillars as $pillar ) : ?>
-			<div class="pillar"><b><?php echo esc_html( $pillar[0] ); ?></b><?php if ( ! empty( $pillar[1] ) ) : ?><span><?php echo esc_html( $pillar[1] ); ?></span><?php endif; ?></div>
+			<div class="pillar">
+				<span class="pillar__ic"><?php echo eab_icon( ! empty( $pillar[2] ) ? $pillar[2] : 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+				<div><b><?php echo esc_html( $pillar[0] ); ?></b><?php if ( ! empty( $pillar[1] ) ) : ?><span><?php echo esc_html( $pillar[1] ); ?></span><?php endif; ?></div>
+			</div>
 			<?php endforeach; ?>
 		</div>
 		<?php endif; ?>
@@ -111,13 +118,15 @@ function eab_homeplus_plat() {
 		<?php if ( '' !== $label ) : ?>
 		<span class="plat__label"><?php echo esc_html( $label ); ?></span>
 		<?php endif; ?>
+		<ul class="plat__list">
 		<?php foreach ( $items as $item ) : ?>
 			<?php
 			/* ชื่อที่ขึ้นต้นด้วยตัวเล็ก เช่น iPhone / iPad ไม่ถูกแปลงเป็นตัวพิมพ์ใหญ่ (.nocaps) */
 			$text = preg_match( '/\bi[A-Z]/', $item ) ? '<span class="nocaps">' . esc_html( $item ) . '</span>' : esc_html( $item );
 			?>
-		<span><?php echo eab_icon( eab_home_plat_icon( $item ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $text; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?></span>
+			<li><?php echo eab_icon( eab_home_plat_icon( $item ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?><?php echo $text; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?></li>
 		<?php endforeach; ?>
+		</ul>
 	</div>
 </div>
 	<?php
@@ -501,4 +510,207 @@ function eab_homeplus_articles() {
 </section>
 	<?php
 	wp_reset_postdata();
+}
+
+/* ==============================================================
+ * รู้จัก EA BULL · ย่อหน้าแนะนำ + กล่องข้อมูลสำคัญ (เจ้าของขอเนื้อหาหน้าแรกเพิ่ม 29 ต.ค. 2026)
+ * ============================================================== */
+function eab_homeplus_intro() {
+	$title = trim( (string) eab_mod( 'home_intro_title' ) );
+	$paras = array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', (string) eab_mod( 'home_intro_text' ) ) ) );
+	$facts = eab_home_rows( str_replace( '{plans}', eab_homeplus_plans_line(), (string) eab_mod( 'home_intro_facts' ) ), 2 );
+	if ( '' === $title && ! $paras ) {
+		return;
+	}
+	$facts_title = trim( (string) eab_mod( 'home_intro_facts_title' ) );
+	?>
+<section class="band band--alt" id="about-ea-bull" aria-labelledby="intro-title">
+	<div class="wrap intro">
+		<div class="intro__text">
+			<h2 id="intro-title"><?php echo eab_home_bars() . eab_home_inline( $title ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></h2>
+			<?php foreach ( $paras as $para ) : ?>
+			<p><?php echo eab_homeplus_nocaps( eab_home_inline( preg_replace( '/\s*\n\s*/', ' ', $para ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
+			<?php endforeach; ?>
+		</div>
+		<?php if ( $facts ) : ?>
+		<aside class="intro__facts cut" aria-labelledby="intro-facts-title">
+			<?php if ( '' !== $facts_title ) : ?>
+			<h3 id="intro-facts-title"><?php echo esc_html( $facts_title ); ?></h3>
+			<?php endif; ?>
+			<dl class="facts">
+				<?php foreach ( $facts as $fact ) : ?>
+				<div><dt><?php echo esc_html( $fact[0] ); ?></dt><dd><?php echo eab_homeplus_nocaps( eab_home_inline( $fact[1] ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></dd></div>
+				<?php endforeach; ?>
+			</dl>
+		</aside>
+		<?php endif; ?>
+	</div>
+</section>
+	<?php
+}
+
+/**
+ * ชื่อและราคาแพ็กเกจในบรรทัดเดียว เช่น "Starter ฟรี · Pro 6,990 บาท · VIP 9,990 บาท" (จากหมวดแพ็กเกจ)
+ */
+function eab_homeplus_plans_line() {
+	$parts = array();
+	foreach ( eab_homeplus_plan_list() as $plan ) {
+		$parts[] = trim( $plan['name'] . ' ' . $plan['price'] . ( preg_match( '/\d/', $plan['price'] ) ? ' บาท' : '' ) );
+	}
+	return implode( ' · ', $parts );
+}
+
+/**
+ * แพ็กเกจ 3 ตัวจาก Customizer หมวดแพ็กเกจ (ข้ามตัวที่ไม่มีชื่อ)
+ *
+ * @return array[] { name, price, period, tag, featured }
+ */
+function eab_homeplus_plan_list() {
+	$out = array();
+	for ( $i = 1; $i <= 3; $i++ ) {
+		$name = trim( (string) eab_mod( 'pkg' . $i . '_name' ) );
+		if ( '' === $name ) {
+			continue;
+		}
+		$out[] = array(
+			'name'     => $name,
+			'price'    => trim( (string) eab_mod( 'pkg' . $i . '_price' ) ),
+			'period'   => trim( (string) eab_mod( 'pkg' . $i . '_period' ) ),
+			'tag'      => trim( (string) eab_mod( 'pkg' . $i . '_tag' ) ),
+			'featured' => (bool) eab_mod( 'pkg' . $i . '_featured' ),
+		);
+	}
+	return $out;
+}
+
+/* ==============================================================
+ * แพ็กเกจและราคา · การ์ดย่อ 3 ใบ ลิงก์ไปหน้าแพ็กเกจ
+ * ============================================================== */
+function eab_homeplus_plans() {
+	$plans = eab_homeplus_plan_list();
+	$url   = eab_home_link( '/pricing/' );
+	if ( ! $plans || '' === $url ) {
+		return;
+	}
+	$btn  = trim( (string) eab_mod( 'home_plans_btn' ) );
+	$flag = trim( (string) eab_mod( 'pr_flag_label' ) );
+	?>
+<section class="band" id="plans" aria-labelledby="plans-title">
+	<div class="wrap">
+		<?php eab_home_shead( 'plans-title', eab_mod( 'home_plans_title' ), eab_mod( 'home_plans_sub' ), eab_mod( 'home_plans_more' ), $url ); ?>
+		<div class="plans">
+			<?php foreach ( $plans as $plan ) : ?>
+			<div class="plan<?php echo $plan['featured'] ? ' plan--hot' : ''; ?>">
+				<?php if ( $plan['featured'] && '' !== $flag ) : ?>
+				<span class="plan__flag"><?php echo esc_html( $flag ); ?></span>
+				<?php endif; ?>
+				<h3><?php echo esc_html( $plan['name'] ); ?></h3>
+				<p class="plan__price"><b><?php echo esc_html( $plan['price'] ); ?></b><?php if ( '' !== $plan['period'] ) : ?> <span><?php echo esc_html( $plan['period'] ); ?></span><?php endif; ?></p>
+				<?php if ( '' !== $plan['tag'] ) : ?>
+				<p class="plan__tag"><?php echo esc_html( $plan['tag'] ); ?></p>
+				<?php endif; ?>
+				<?php if ( '' !== $btn ) : ?>
+				<a class="btn <?php echo $plan['featured'] ? 'btn--primary' : 'btn--outline'; ?> btn--block" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $btn ); ?> <?php echo eab_icon( 'arrow-right' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
+				<?php endif; ?>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+	<?php
+}
+
+/* ==============================================================
+ * คู่มือและเครื่องมือทั้งหมด · การ์ดลิงก์ (ไอคอน | /slug/ | ชื่อ | คำอธิบาย)
+ * ============================================================== */
+function eab_homeplus_hub() {
+	$items = array();
+	foreach ( eab_home_rows( eab_mod( 'home_hub_items' ), 3 ) as $row ) {
+		$url = eab_home_link( $row[1] );
+		if ( '' === $url ) {
+			continue; /* เพจที่ยังไม่เผยแพร่ไม่ขึ้น */
+		}
+		$items[] = array(
+			'icon'  => '' !== $row[0] ? $row[0] : 'book',
+			'url'   => $url,
+			'title' => $row[2],
+			'text'  => isset( $row[3] ) ? $row[3] : '',
+		);
+	}
+	if ( ! $items ) {
+		return;
+	}
+	?>
+<section class="band band--alt" id="guides-hub" aria-labelledby="hub-title">
+	<div class="wrap">
+		<?php eab_home_shead( 'hub-title', eab_mod( 'home_hub_title' ), eab_mod( 'home_hub_sub' ) ); ?>
+		<ul class="hub">
+			<?php foreach ( $items as $item ) : ?>
+			<li><a class="hub__item" href="<?php echo esc_url( $item['url'] ); ?>">
+				<span class="tile"><?php echo eab_icon( $item['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
+				<span class="hub__text"><b><?php echo eab_homeplus_nocaps( esc_html( $item['title'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></b><?php if ( '' !== $item['text'] ) : ?><span><?php echo eab_homeplus_nocaps( esc_html( $item['text'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></span><?php endif; ?></span>
+				<?php echo eab_icon( 'arrow-right', 'hub__go' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			</a></li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+	<?php
+}
+
+/* ==============================================================
+ * EA บน MT5 คืออะไร · บทความสั้นสำหรับคนเริ่มต้น (### หัวข้อย่อย · - รายการ · เว้นบรรทัด = ย่อหน้า)
+ * ============================================================== */
+function eab_homeplus_learn() {
+	$body = trim( (string) eab_mod( 'home_learn_body' ) );
+	if ( '' === $body ) {
+		return;
+	}
+	?>
+<section class="band" id="ea-basics" aria-labelledby="learn-title">
+	<div class="wrap">
+		<?php eab_home_shead( 'learn-title', eab_mod( 'home_learn_title' ), eab_mod( 'home_learn_sub' ) ); ?>
+		<div class="learn"><?php echo eab_homeplus_nocaps( eab_homeplus_prose( $body ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
+	</div>
+</section>
+	<?php
+}
+
+/**
+ * ข้อความหลายย่อหน้าจาก Customizer → HTML (h3 / ul / p) ที่ escape แล้ว
+ */
+function eab_homeplus_prose( $text ) {
+	$html = '';
+	foreach ( preg_split( '/\n\s*\n/', str_replace( "\r", '', (string) $text ) ) as $block ) {
+		$lines = array_values( array_filter( array_map( 'trim', explode( "\n", $block ) ), 'strlen' ) );
+		while ( $lines && 0 === strpos( $lines[0], '### ' ) ) {
+			$html .= '<h3>' . eab_home_inline( substr( array_shift( $lines ), 4 ) ) . '</h3>';
+		}
+		if ( ! $lines ) {
+			continue;
+		}
+		if ( 0 === strpos( $lines[0], '- ' ) ) {
+			$html .= '<ul>';
+			foreach ( $lines as $line ) {
+				$html .= '<li>' . eab_home_inline( ltrim( substr( $line, 0 === strpos( $line, '- ' ) ? 2 : 0 ) ) ) . '</li>';
+			}
+			$html .= '</ul>';
+			continue;
+		}
+		$html .= '<p>' . eab_home_inline( implode( ' ', $lines ) ) . '</p>';
+	}
+	return $html;
+}
+
+/**
+ * คำที่ขึ้นต้นด้วยตัวเล็กแบบ iPhone / iPad ไม่ถูกแปลงเป็นตัวพิมพ์ใหญ่ (.nocaps) · แตะเฉพาะข้อความนอกแท็ก
+ */
+function eab_homeplus_nocaps( $html ) {
+	return preg_replace_callback(
+		'/(<[^>]+>)|\bi[A-Z][A-Za-z]*/',
+		function ( $m ) {
+			return isset( $m[1] ) && '' !== $m[1] ? $m[1] : '<span class="nocaps">' . $m[0] . '</span>';
+		},
+		(string) $html
+	);
 }

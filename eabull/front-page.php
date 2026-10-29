@@ -2,8 +2,8 @@
 /**
  * Front page · EA BULL · ดีไซน์ Bull Black (docs/design.md · ต้นแบบ dev/mockup/_src/pages/home.html)
  *
- * hero → แถบแพลตฟอร์ม → สินค้า (เรียงตามเลขรุ่น) → โหมด (แท็บ) → สิ่งที่ EA BULL ทำแทนคุณ → 6 ขั้นตอน
- * → ตารางเทียบ → เช็กลิสต์ความพร้อม → FAQ → ความเสี่ยง → บทความล่าสุด (เฉพาะเมื่อมีบทความเผยแพร่)
+ * hero → แถบแพลตฟอร์ม → รู้จัก EA BULL → สินค้า (เรียงตามเลขรุ่น) → โหมด (แท็บ) → สิ่งที่ EA BULL ทำแทนคุณ → 6 ขั้นตอน
+ * → แพ็กเกจ → คู่มือทั้งหมด → ตารางเทียบ → EA คืออะไร → เช็กลิสต์ความพร้อม → FAQ → (ความเสี่ยง: ปิดไว้) → บทความล่าสุด
  * - ตัวพิมพ์แต่ละส่วน: inc/modules/homeplus.php (สินค้า: inc/modules/products.php)
  * - ค่าเริ่มต้นและหมวด Customizer: inc/modules/home.php · ทุกข้อความมาจาก setting · escape ทุก output
  * - แถบติดต่อก่อน footer: โมดูล chrome พิมพ์เอง
@@ -37,7 +37,7 @@ endif;
 
 <main id="main">
 <?php
-foreach ( array( 'hero', 'plat', 'products', 'modes', 'features', 'steps', 'compare', 'ready', 'faq', 'risk', 'articles' ) as $eab_section ) {
+foreach ( array( 'hero', 'plat', 'intro', 'products', 'modes', 'features', 'steps', 'plans', 'hub', 'compare', 'learn', 'ready', 'faq', 'risk', 'articles' ) as $eab_section ) {
 	eab_homeplus_section( $eab_section );
 }
 ?>

@@ -4,7 +4,7 @@
  *
  * Standalone link page (mockup dev/mockup/_src/pages/go.html): no header, footer, dock or
  * floating button · noindex via inc/seo.php · the cookie card still prints through wp_body_open.
- * One narrow card on every screen, stacked like EA WING's /go (owner 29 Oct 2026): brand, contact,
+ * One narrow card on every screen, stacked top to bottom (owner 29 Oct 2026): brand, contact,
  * 6 steps, info links, socials, policy links. Texts and links: Customizer sections 30) and 31) (inc/modules/go.php).
  *
  * @package eabull
