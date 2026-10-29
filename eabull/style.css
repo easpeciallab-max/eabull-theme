@@ -335,8 +335,9 @@ h4 { font-size: 17px; }
 .sub a b { display: block; grid-column: 2; font: 600 15.5px/1.4 var(--f-head); }
 .sub a span { display: block; grid-column: 2; font-size: 13.5px; color: var(--muted); }
 /* icon tile in front of each dropdown item (owner 29 Oct 2026) */
-.sub__ic { grid-row: 1 / span 2; display: grid; place-items: center; width: 34px; height: 34px; background: var(--k2); border: 1px solid var(--line); color: var(--accent); transition: background-color .15s, color .15s, border-color .15s; }
+.sub__ic { grid-row: 1; display: grid; place-items: center; width: 34px; height: 34px; background: var(--k2); border: 1px solid var(--line); color: var(--accent); transition: background-color .15s, color .15s, border-color .15s; }
 .sub__ic .i { width: 18px; height: 18px; }
+.sub a:has(> span) .sub__ic { grid-row: 1 / span 2; }
 .sub a:hover .sub__ic, .sub a[aria-current] .sub__ic { background: var(--accent); border-color: var(--accent); color: var(--k0); }
 .sub a b span { display: inline; font: inherit; color: inherit; }
 .sub a:hover { background: var(--k3); }
