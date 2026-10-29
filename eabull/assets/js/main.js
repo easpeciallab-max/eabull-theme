@@ -12,6 +12,23 @@
 	window.eab = window.eab || {};
 	window.eab.reduced = reduced;
 
+	/* Motion (owner 29 Oct 2026) · section heading bars, [data-reveal] children one by one, step track.
+	   style.css hides the start states only with .js and when motion is allowed, so this just adds .is-in. */
+	var motionEls = $$('.shead, [data-reveal], .track');
+	motionEls.forEach(function (el) {
+		Array.prototype.forEach.call(el.children, function (child, i) { child.style.setProperty('--i', i); });
+	});
+	if (!reduced && 'IntersectionObserver' in window) {
+		var motionObs = new IntersectionObserver(function (entries) {
+			entries.forEach(function (en) {
+				if (en.isIntersecting) { en.target.classList.add('is-in'); motionObs.unobserve(en.target); }
+			});
+		}, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+		motionEls.forEach(function (el) { motionObs.observe(el); });
+	} else {
+		motionEls.forEach(function (el) { el.classList.add('is-in'); });
+	}
+
 	/* Toast · links without a real URL yet carry data-wait="<message>" */
 	var toast = $('#toast');
 	var toastTimer;

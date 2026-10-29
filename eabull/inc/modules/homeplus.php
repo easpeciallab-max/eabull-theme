@@ -64,6 +64,7 @@ function eab_homeplus_hero() {
 	$pillars = eab_home_rows( eab_mod( 'home_pillars' ) );
 	?>
 <section class="hero" aria-labelledby="hero-title">
+	<?php echo eab_homeplus_hero_chart(); // phpcs:ignore WordPress.Security.EscapeOutput -- static markup ?>
 	<div class="wrap">
 		<?php if ( '' !== $img ) : ?>
 		<img class="hero__emblem" src="<?php echo esc_url( $img ); ?>" width="<?php echo (int) $size[0]; ?>" height="<?php echo (int) $size[1]; ?>" alt="<?php echo esc_attr( eab_mod( 'home_hero_img_alt' ) ); ?>" fetchpriority="high" decoding="async">
@@ -89,7 +90,7 @@ function eab_homeplus_hero() {
 		<p class="hero__risk"><?php echo eab_icon( 'alert' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php echo eab_home_inline( $risk ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></span></p>
 		<?php endif; ?>
 		<?php if ( $pillars ) : ?>
-		<div class="pillars">
+		<div class="pillars" data-reveal>
 			<?php foreach ( $pillars as $pillar ) : ?>
 			<div class="pillar">
 				<span class="pillar__ic"><?php echo eab_icon( ! empty( $pillar[2] ) ? $pillar[2] : 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
@@ -221,7 +222,7 @@ function eab_homeplus_features() {
 <section class="band" id="features" aria-labelledby="features-title">
 	<div class="wrap">
 		<?php eab_home_shead( 'features-title', eab_mod( 'home_feat_title' ), eab_mod( 'home_feat_sub' ) ); ?>
-		<div class="feat">
+		<div class="feat" data-reveal>
 			<?php foreach ( $items as $i => $item ) : ?>
 			<div class="feat__item">
 				<span class="feat__n"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
@@ -417,7 +418,7 @@ function eab_homeplus_faq() {
 		<div>
 			<?php foreach ( $faqs as $i => $faq ) : ?>
 			<details class="qa"<?php echo 0 === $i ? ' open' : ''; ?>>
-				<summary><?php echo esc_html( $faq['q'] ); ?><?php echo eab_icon( 'plus' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></summary>
+				<summary><?php echo esc_html( $faq['q'] ); ?><span class="faq-plus" aria-hidden="true"></span></summary>
 				<div class="qa__a">
 					<?php foreach ( preg_split( '/\n\s*\n/', $faq['a'] ) as $para ) : ?>
 						<?php if ( '' !== trim( $para ) ) : ?>
@@ -598,7 +599,7 @@ function eab_homeplus_plans() {
 <section class="band" id="plans" aria-labelledby="plans-title">
 	<div class="wrap">
 		<?php eab_home_shead( 'plans-title', eab_mod( 'home_plans_title' ), eab_mod( 'home_plans_sub' ), eab_mod( 'home_plans_more' ), $url ); ?>
-		<div class="plans">
+		<div class="plans" data-reveal>
 			<?php foreach ( $plans as $plan ) : ?>
 			<div class="plan<?php echo $plan['featured'] ? ' plan--hot' : ''; ?>">
 				<?php if ( $plan['featured'] && '' !== $flag ) : ?>
@@ -644,7 +645,7 @@ function eab_homeplus_hub() {
 <section class="band band--alt" id="guides-hub" aria-labelledby="hub-title">
 	<div class="wrap">
 		<?php eab_home_shead( 'hub-title', eab_mod( 'home_hub_title' ), eab_mod( 'home_hub_sub' ) ); ?>
-		<ul class="hub">
+		<ul class="hub" data-reveal>
 			<?php foreach ( $items as $item ) : ?>
 			<li><a class="hub__item" href="<?php echo esc_url( $item['url'] ); ?>">
 				<span class="tile"><?php echo eab_icon( $item['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
@@ -713,4 +714,19 @@ function eab_homeplus_nocaps( $html ) {
 		},
 		(string) $html
 	);
+}
+
+/**
+ * แท่งกราฟขาขึ้นด้านหลังหัววัว (ตกแต่ง · aria-hidden) · ขยับช้า ๆ ด้วย CSS เมื่อเครื่องไม่ได้ตั้งลดการเคลื่อนไหว
+ * ความสูงคำนวณตายตัว (แนวโน้มขึ้น + แกว่งเล็กน้อย) ไม่สุ่ม เพื่อให้ทุกครั้งที่โหลดหน้าเหมือนกัน
+ */
+function eab_homeplus_hero_chart() {
+	$n    = 28;
+	$bars = '';
+	for ( $i = 0; $i < $n; $i++ ) {
+		$h     = 22 + 70 * $i / ( $n - 1 ) + 11 * sin( $i * 1.7 ) + 6 * cos( $i * 0.9 );
+		$h     = max( 12, min( 100, (int) round( $h ) ) );
+		$bars .= '<i style="--h:' . $h . ';--d:' . number_format( fmod( $i * 0.37, 3.2 ), 2, '.', '' ) . '"></i>';
+	}
+	return '<div class="hero__chart" aria-hidden="true">' . $bars . '</div>';
 }

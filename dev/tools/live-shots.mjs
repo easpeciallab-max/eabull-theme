@@ -53,6 +53,8 @@ async function go(url) {
 async function shot(file, full) {
   let params = { format: 'png' };
   if (full) {
+    // scroll through once so scroll-triggered reveals (main.js .is-in) have run, then back to the top
+    await evaluate(`(async () => { const H = document.documentElement.scrollHeight; for (let y = 0; y < H; y += 500) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 90)); } window.scrollTo(0, 0); await new Promise(r => setTimeout(r, 900)); return 1; })()`);
     const h = await evaluate('Math.ceil(document.documentElement.scrollHeight)');
     const w = await evaluate('document.documentElement.clientWidth');
     params = { ...params, captureBeyondViewport: true, clip: { x: 0, y: 0, width: w, height: h, scale: 1 } };

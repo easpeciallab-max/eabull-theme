@@ -1368,7 +1368,7 @@ function eab_pages_table( $text, $opt = array() ) {
 function eab_pages_qa( $text ) {
 	$html = '';
 	foreach ( eab_pages_pairs( $text ) as $i => $pair ) {
-		$html .= '<details class="qa"' . ( 0 === $i ? ' open' : '' ) . '><summary>' . eab_pages_fmt( $pair[0] ) . eab_icon( 'plus' ) . '</summary><div class="qa__a"><p>' . eab_pages_fmt( $pair[1] ) . '</p></div></details>';
+		$html .= '<details class="qa"' . ( 0 === $i ? ' open' : '' ) . '><summary>' . eab_pages_fmt( $pair[0] ) . '<span class="faq-plus" aria-hidden="true"></span></summary><div class="qa__a"><p>' . eab_pages_fmt( $pair[1] ) . '</p></div></details>';
 	}
 	return $html;
 }
