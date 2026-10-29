@@ -1,0 +1,754 @@
+<?php
+/**
+ * EA BULL · Customizer (หน้า "ปรับแต่ง")
+ * ทุกข้อความ รูปภาพ ลิงก์ และการเปิดและปิด section แก้ได้จากที่นี่
+ *
+ * @package eabull
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/* ---------------- Sanitize helpers ---------------- */
+
+function eab_sanitize_checkbox( $checked ) {
+	return ( isset( $checked ) && true === (bool) $checked );
+}
+
+/**
+ * ลิงก์ที่รับได้ทั้ง /slug/, #anchor และ URL เต็ม (ไม่ตัด %XX) · ใช้กับฟิลด์ชนิด 'path'
+ */
+function eab_sanitize_path( $value ) {
+	$value = trim( (string) $value );
+	if ( '' === $value ) {
+		return '';
+	}
+	if ( preg_match( '#^(https?:)?//#i', $value ) || preg_match( '#^(mailto|tel):#i', $value ) ) {
+		return esc_url_raw( $value );
+	}
+	if ( '#' === $value[0] || '/' === $value[0] ) {
+		return preg_replace( '/[\x00-\x1F\x7F<>"\'\\\\]/', '', $value );
+	}
+	return sanitize_text_field( $value );
+}
+
+function eab_sanitize_color_mode( $value ) {
+	return in_array( $value, array( 'dark', 'balanced' ), true ) ? $value : 'dark';
+}
+
+function eab_sanitize_pricing_mode( $value ) {
+	return in_array( $value, array( 'price', 'contact' ), true ) ? $value : 'contact';
+}
+
+/* ---------------- Register ---------------- */
+
+function eab_customize_register( $wp_customize ) {
+
+	$d = eab_defaults();
+
+	$wp_customize->add_panel(
+		'eab_panel',
+		array(
+			'title'       => 'EA BULL · ตั้งค่าหน้าเว็บ',
+			'description' => 'แก้ไขข้อความ รูปภาพ ลิงก์ และเปิดและปิดแต่ละส่วนของหน้าแรกได้ทั้งหมดจากเมนูนี้ กด "เผยแพร่" เพื่อบันทึก',
+			'priority'    => 10,
+		)
+	);
+
+	/*
+	 * โครงสร้าง: section_id => [ title, description, fields ]
+	 * field: id => [ label, type, (choices/description) ]
+	 */
+	$sections = array(
+
+		'eab_general' => array(
+			'title'       => '1) ช่องทางติดต่อ (สำคัญ ตั้งค่าก่อน)',
+			'description' => 'ลิงก์ LINE จะถูกใช้กับปุ่มทุกปุ่มบนเว็บโดยอัตโนมัติ',
+			'fields'      => array(
+				'line_url'        => array( 'ลิงก์ LINE OA', 'url', 'เช่น https://lin.ee/xxxxx หรือ https://line.me/R/ti/p/@xxxxx' ),
+				'facebook_url'    => array( 'ลิงก์ Facebook Page (ถ้ามี)', 'url' ),
+				'contact_email'   => array( 'อีเมลติดต่อ (ถ้ามี)', 'text' ),
+				'show_float_line' => array( 'แสดงปุ่ม LINE ลอยมุมขวาล่าง', 'checkbox' ),
+				'float_line_text' => array( 'ข้อความบนปุ่ม LINE ลอย', 'text' ),
+				'line_openchat_url'  => array( 'ลิงก์ LINE OpenChat (ถ้ามี)', 'url' ),
+				'line_openchat_text' => array( 'ข้อความปุ่ม OpenChat', 'text' ),
+				'line_qr_image'      => array( 'รูป QR Code LINE OA (ถ้ามี)', 'image' ),
+				'contact_title'      => array( 'บล็อกติดต่อท้ายหน้าย่อย · หัวข้อ', 'text' ),
+				'contact_text'       => array( 'บล็อกติดต่อท้ายหน้าย่อย · คำอธิบาย', 'textarea' ),
+				'wordmark_dark'      => array( 'โลโก้ตัวอักษร (ตัวเข้ม · สำหรับพื้นขาว / Header)', 'image', 'ไม่ใส่ = ใช้โลโก้ EA BULL ที่ฝังในธีม' ),
+				'wordmark_light'     => array( 'โลโก้ตัวอักษร (ตัวขาว · สำหรับพื้นดำ / Footer)', 'image' ),
+				'show_language_switcher' => array( 'แสดงตัวสลับภาษาในเมนูบน', 'checkbox' ),
+				'language_fallback_items' => array( 'รายการภาษาสำรอง (code|ธง|ป้ายสั้น|ชื่อภาษา)', 'textarea' ),
+			),
+		),
+
+		'eab_hero' => array(
+			'title'  => '2) Hero · ส่วนแรกของหน้า',
+			'fields' => array(
+				'show_hero'      => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'show_kickers'   => array( 'แสดงคำเล็กเหนือหัวข้อทั้งเว็บ (เช่น Let\'s talk · Install Guide)', 'checkbox' ),
+				'hero_badge'     => array( 'ป้ายเล็กเหนือชื่อ', 'text' ),
+				'hero_title'     => array( 'ชื่อแบรนด์ (แสดงเหนือหัวข้อใหญ่ · อยู่ใน H1)', 'text' ),
+				'hero_subtitle'  => array( 'หัวข้อใหญ่ (H1)', 'text' ),
+				'hero_subtitle_em' => array( 'คำเน้นสีเขียวท้ายหัวข้อ (เช่น MT5)', 'text' ),
+				'hero_desc'      => array( 'คำอธิบายสั้น', 'textarea' ),
+				'hero_point1_title' => array( 'จุดเด่น 1 · หัวข้อ', 'text' ),
+				'hero_point1_desc'  => array( 'จุดเด่น 1 · รายละเอียด', 'text' ),
+				'hero_point2_title' => array( 'จุดเด่น 2 · หัวข้อ', 'text' ),
+				'hero_point2_desc'  => array( 'จุดเด่น 2 · รายละเอียด', 'text' ),
+				'hero_point3_title' => array( 'จุดเด่น 3 · หัวข้อ', 'text' ),
+				'hero_point3_desc'  => array( 'จุดเด่น 3 · รายละเอียด', 'text' ),
+				'hero_btn1_text' => array( 'ข้อความปุ่มหลัก (ลิงก์ไป LINE)', 'text' ),
+				'hero_btn2_text' => array( 'ข้อความปุ่มรอง', 'text' ),
+				'hero_btn2_url'  => array( 'ลิงก์ปุ่มรอง (เช่น #how-it-works หรือ /pricing/)', 'text' ),
+				'hero_note'      => array( 'ข้อความเตือนความเสี่ยงใต้ปุ่ม', 'text' ),
+				'hero_tagline'   => array( 'ข้อความอังกฤษเว้นระยะใต้ภาพ (เว้นว่าง = ซ่อน)', 'text' ),
+				'hero_image'     => array( 'ภาพ Hero (ไม่ใส่ = แสดงแผงควบคุม EA จำลอง)', 'image', 'แนะนำภาพสี่เหลี่ยมจัตุรัส 1200px ขึ้นไป · ถ้าภาพมีตัวเลขกำไร ต้องระบุว่าเป็นภาพประกอบ' ),
+				'hero_panel_title'   => array( 'แผงจำลอง · ชื่อ', 'text' ),
+				'hero_panel_status'  => array( 'แผงจำลอง · สถานะ', 'text' ),
+				'hero_panel_badge'   => array( 'แผงจำลอง · ป้ายขวาบน', 'text' ),
+				'hero_panel_fields'  => array( 'แผงจำลอง · ช่องข้อมูล (บรรทัดละ 1: ชื่อ|ค่า)', 'textarea', 'ห้ามใส่ตัวเลขกำไร/Win rate สมมติ' ),
+				'hero_panel_button'  => array( 'แผงจำลอง · ข้อความแถบเขียว', 'text' ),
+				'hero_panel_tags'    => array( 'แผงจำลอง · ข้อความเล็กข้างแถบเขียว', 'text' ),
+				'hero_panel_caption' => array( 'แผงจำลอง · คำบรรยายใต้แผง (จำเป็น)', 'text' ),
+			),
+		),
+
+		'eab_pain' => array(
+			'title'  => '3) ปัญหาของนักเทรด',
+			'fields' => array(
+				'show_pain'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'pain_title'    => array( 'หัวข้อ', 'text' ),
+				'pain_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'pain1_title'   => array( 'การ์ด 1 · หัวข้อ', 'text' ),
+				'pain1_desc'    => array( 'การ์ด 1 · รายละเอียด', 'textarea' ),
+				'pain2_title'   => array( 'การ์ด 2 · หัวข้อ', 'text' ),
+				'pain2_desc'    => array( 'การ์ด 2 · รายละเอียด', 'textarea' ),
+				'pain3_title'   => array( 'การ์ด 3 · หัวข้อ', 'text' ),
+				'pain3_desc'    => array( 'การ์ด 3 · รายละเอียด', 'textarea' ),
+				'pain4_title'   => array( 'การ์ด 4 · หัวข้อ', 'text' ),
+				'pain4_desc'    => array( 'การ์ด 4 · รายละเอียด', 'textarea' ),
+				'pain_answer'   => array( 'แถบสรุปใต้การ์ด (เว้นว่าง = ซ่อน)', 'textarea' ),
+			),
+		),
+
+		'eab_about' => array(
+			'title'  => '4) EA BULL คืออะไร',
+			'fields' => array(
+				'show_about'  => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'about_title' => array( 'หัวข้อ', 'text' ),
+				'about_text'  => array( 'เนื้อหา (เว้นบรรทัด = ขึ้นย่อหน้าใหม่)', 'textarea' ),
+				'about_points' => array( 'รายการสรุป (บรรทัดละ 1: หัวข้อ|รายละเอียด)', 'textarea' ),
+				'about_image'  => array( 'ภาพประกอบด้านขวา', 'image' ),
+				'about_image_caption' => array( 'คำบรรยายภาพ', 'text' ),
+			),
+		),
+
+		'eab_features' => array(
+			'title'  => '5) จุดเด่นของระบบ (6 ข้อ)',
+			'fields' => array(
+				'show_features'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'features_title'    => array( 'หัวข้อ', 'text' ),
+				'features_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'feat1_title'       => array( 'จุดเด่น 1 · หัวข้อ', 'text' ),
+				'feat1_desc'        => array( 'จุดเด่น 1 · รายละเอียด', 'textarea' ),
+				'feat2_title'       => array( 'จุดเด่น 2 · หัวข้อ', 'text' ),
+				'feat2_desc'        => array( 'จุดเด่น 2 · รายละเอียด', 'textarea' ),
+				'feat3_title'       => array( 'จุดเด่น 3 · หัวข้อ', 'text' ),
+				'feat3_desc'        => array( 'จุดเด่น 3 · รายละเอียด', 'textarea' ),
+				'feat4_title'       => array( 'จุดเด่น 4 · หัวข้อ', 'text' ),
+				'feat4_desc'        => array( 'จุดเด่น 4 · รายละเอียด', 'textarea' ),
+				'feat5_title'       => array( 'จุดเด่น 5 · หัวข้อ', 'text' ),
+				'feat5_desc'        => array( 'จุดเด่น 5 · รายละเอียด', 'textarea' ),
+				'feat6_title'       => array( 'จุดเด่น 6 · หัวข้อ', 'text' ),
+				'feat6_desc'        => array( 'จุดเด่น 6 · รายละเอียด', 'textarea' ),
+			),
+		),
+
+		'eab_gallery' => array(
+			'title'       => '6) ภาพ Dashboard / ระบบจริง',
+			'description' => 'ถ้ายังไม่อัปโหลดภาพ ธีมจะแสดงกรอบตัวอย่าง (ระบุว่าเป็นภาพประกอบ) ให้อัตโนมัติ',
+			'fields'      => array(
+				'show_gallery'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'gallery_title'    => array( 'หัวข้อ', 'text' ),
+				'gallery_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'gallery_img1'     => array( 'ภาพที่ 1', 'image' ),
+				'gallery_cap1'     => array( 'คำบรรยายภาพที่ 1', 'text' ),
+				'gallery_img2'     => array( 'ภาพที่ 2', 'image' ),
+				'gallery_cap2'     => array( 'คำบรรยายภาพที่ 2', 'text' ),
+				'gallery_img3'     => array( 'ภาพที่ 3', 'image' ),
+				'gallery_cap3'     => array( 'คำบรรยายภาพที่ 3', 'text' ),
+				'gallery_img4'     => array( 'ภาพที่ 4', 'image' ),
+				'gallery_cap4'     => array( 'คำบรรยายภาพที่ 4', 'text' ),
+				'gallery_img5'     => array( 'ภาพที่ 5', 'image' ),
+				'gallery_cap5'     => array( 'คำบรรยายภาพที่ 5', 'text' ),
+				'gallery_img6'     => array( 'ภาพที่ 6', 'image' ),
+				'gallery_cap6'     => array( 'คำบรรยายภาพที่ 6', 'text' ),
+				'gallery_note'     => array( 'หมายเหตุท้ายส่วน', 'text' ),
+			),
+		),
+
+		'eab_steps' => array(
+			'title'  => '7) วิธีเริ่มใช้งาน (4 ขั้นตอน)',
+			'fields' => array(
+				'show_steps'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'steps_kicker'   => array( 'ป้ายเล็กเหนือหัวข้อ', 'text' ),
+				'steps_title'    => array( 'หัวข้อ', 'text' ),
+				'steps_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'step1_title'    => array( 'ขั้นตอน 1 · หัวข้อ', 'text' ),
+				'step1_desc'     => array( 'ขั้นตอน 1 · รายละเอียด', 'textarea' ),
+				'step2_title'    => array( 'ขั้นตอน 2 · หัวข้อ', 'text' ),
+				'step2_desc'     => array( 'ขั้นตอน 2 · รายละเอียด', 'textarea' ),
+				'step3_title'    => array( 'ขั้นตอน 3 · หัวข้อ', 'text' ),
+				'step3_desc'     => array( 'ขั้นตอน 3 · รายละเอียด', 'textarea' ),
+				'step4_title'    => array( 'ขั้นตอน 4 · หัวข้อ', 'text' ),
+				'step4_desc'     => array( 'ขั้นตอน 4 · รายละเอียด', 'textarea' ),
+				'steps_checklist_title' => array( 'รายการเตรียมตัว · หัวข้อ', 'text' ),
+				'steps_checklist'       => array( 'รายการเตรียมตัว (บรรทัดละ 1 ข้อ)', 'textarea' ),
+			),
+		),
+
+		'eab_perf' => array(
+			'title'       => '8) ผลการทดสอบ / Performance',
+			'description' => 'กรอกข้อมูลจริงจากการทดสอบเท่านั้น และอย่าลบข้อความ Disclaimer',
+			'fields'      => array(
+				'show_perf'          => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'perf_kicker'        => array( 'ป้ายเล็กเหนือหัวข้อ', 'text' ),
+				'perf_title'         => array( 'หัวข้อ', 'text' ),
+				'perf_subtitle'      => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'stat1_label'        => array( 'ข้อมูล 1 · หัวข้อ', 'text' ),
+				'stat1_value'        => array( 'ข้อมูล 1 · ค่า', 'text' ),
+				'stat2_label'        => array( 'ข้อมูล 2 · หัวข้อ', 'text' ),
+				'stat2_value'        => array( 'ข้อมูล 2 · ค่า', 'text' ),
+				'stat3_label'        => array( 'ข้อมูล 3 · หัวข้อ', 'text' ),
+				'stat3_value'        => array( 'ข้อมูล 3 · ค่า', 'text' ),
+				'stat4_label'        => array( 'ข้อมูล 4 · หัวข้อ', 'text' ),
+				'stat4_value'        => array( 'ข้อมูล 4 · ค่า', 'text' ),
+				'stat5_label'        => array( 'ข้อมูล 5 · หัวข้อ', 'text' ),
+				'stat5_value'        => array( 'ข้อมูล 5 · ค่า', 'text' ),
+				'stat6_label'        => array( 'ข้อมูล 6 · หัวข้อ', 'text' ),
+				'stat6_value'        => array( 'ข้อมูล 6 · ค่า', 'text' ),
+				'perf_image'         => array( 'ภาพกราฟผลทดสอบ (Backtest/Forward)', 'image' ),
+				'perf_image_caption' => array( 'คำบรรยายภาพ', 'text' ),
+				'verified_link_label' => array( 'ข้อความปุ่มผลเรียลไทม์ (ถ้ามี)', 'text' ),
+				'verified_link_url'   => array( 'ลิงก์ผลที่ตรวจสอบได้ เช่น Myfxbook / FXBlue (แสดงปุ่มเมื่อกรอกเท่านั้น)', 'url' ),
+				'perf_note'          => array( 'หมายเหตุเงื่อนไขการทดสอบ', 'textarea' ),
+				'perf_disclaimer'    => array( 'ข้อความ Disclaimer (จำเป็นต้องมี)', 'textarea' ),
+			),
+		),
+
+		'eab_fit' => array(
+			'title'  => '9) เหมาะกับใคร / ไม่เหมาะกับใคร',
+			'fields' => array(
+				'show_fit'       => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'fit_title'      => array( 'หัวข้อ', 'text' ),
+				'fit_subtitle'   => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'fit_good_title' => array( 'หัวข้อฝั่ง "เหมาะกับ"', 'text' ),
+				'fit_good_items' => array( 'รายการฝั่ง "เหมาะกับ" (บรรทัดละ 1 ข้อ)', 'textarea' ),
+				'fit_bad_title'  => array( 'หัวข้อฝั่ง "ไม่เหมาะกับ"', 'text' ),
+				'fit_bad_items'  => array( 'รายการฝั่ง "ไม่เหมาะกับ" (บรรทัดละ 1 ข้อ)', 'textarea' ),
+			),
+		),
+
+		'eab_pricing' => array(
+			'title'       => '10) แพ็กเกจราคา',
+			'description' => 'เลือกได้ว่าจะโชว์ราคา หรือให้สอบถามราคาทาง LINE',
+			'fields'      => array(
+				'show_pricing'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'pricing_title'    => array( 'หัวข้อ', 'text' ),
+				'pricing_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'pricing_mode'     => array(
+					'รูปแบบการแสดงราคา',
+					'radio',
+					array(
+						'price'   => 'แสดงตัวเลขราคา',
+						'contact' => 'ไม่แสดงราคา · ให้สอบถามทาง LINE',
+					),
+				),
+				'pkg1_name'        => array( 'แพ็กเกจ 1 · ชื่อ', 'text' ),
+				'pkg1_tag'         => array( 'แพ็กเกจ 1 · คำอธิบายสั้น', 'text' ),
+				'pkg1_price'       => array( 'แพ็กเกจ 1 · ราคา', 'text' ),
+				'pkg1_period'      => array( 'แพ็กเกจ 1 · หน่วย/ระยะเวลา', 'text' ),
+				'pkg1_features'    => array( 'แพ็กเกจ 1 · สิ่งที่ได้ (บรรทัดละ 1 ข้อ)', 'textarea' ),
+				'pkg1_featured'    => array( 'แพ็กเกจ 1 · ติดป้าย "แนะนำ"', 'checkbox' ),
+				'pkg2_name'        => array( 'แพ็กเกจ 2 · ชื่อ', 'text' ),
+				'pkg2_tag'         => array( 'แพ็กเกจ 2 · คำอธิบายสั้น', 'text' ),
+				'pkg2_price'       => array( 'แพ็กเกจ 2 · ราคา', 'text' ),
+				'pkg2_period'      => array( 'แพ็กเกจ 2 · หน่วย/ระยะเวลา', 'text' ),
+				'pkg2_features'    => array( 'แพ็กเกจ 2 · สิ่งที่ได้ (บรรทัดละ 1 ข้อ)', 'textarea' ),
+				'pkg2_featured'    => array( 'แพ็กเกจ 2 · ติดป้าย "แนะนำ"', 'checkbox' ),
+				'pkg3_name'        => array( 'แพ็กเกจ 3 · ชื่อ', 'text' ),
+				'pkg3_tag'         => array( 'แพ็กเกจ 3 · คำอธิบายสั้น', 'text' ),
+				'pkg3_price'       => array( 'แพ็กเกจ 3 · ราคา', 'text' ),
+				'pkg3_period'      => array( 'แพ็กเกจ 3 · หน่วย/ระยะเวลา', 'text' ),
+				'pkg3_features'    => array( 'แพ็กเกจ 3 · สิ่งที่ได้ (บรรทัดละ 1 ข้อ)', 'textarea' ),
+				'pkg3_featured'    => array( 'แพ็กเกจ 3 · ติดป้าย "แนะนำ"', 'checkbox' ),
+				'pricing_btn_text' => array( 'ข้อความปุ่มบนการ์ดราคา', 'text' ),
+				'pricing_note'     => array( 'หมายเหตุท้ายส่วนราคา', 'text' ),
+				'show_pricing_home'  => array( 'แสดงตัวอย่างแพ็กเกจบนหน้าแรก', 'checkbox' ),
+				'pricing_home_title' => array( 'หน้าแรก · หัวข้อแพ็กเกจ', 'text' ),
+				'pricing_home_sub'   => array( 'หน้าแรก · คำอธิบายแพ็กเกจ', 'textarea' ),
+			),
+		),
+
+		'eab_reviews' => array(
+			'title'       => '11) รีวิวลูกค้า',
+			'description' => 'สำคัญ: ใช้รีวิวจริงจากลูกค้าเท่านั้น ห้ามแต่งรีวิว และหลีกเลี่ยงรีวิวแนวการันตีกำไร เมื่อมีรีวิวจริงแล้วค่อยติ๊ก "แสดงส่วนนี้"',
+			'fields'      => array(
+				'show_reviews'     => array( 'แสดงส่วนนี้ (เปิดเมื่อมีรีวิวจริง)', 'checkbox' ),
+				'reviews_title'    => array( 'หัวข้อ', 'text' ),
+				'reviews_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+				'rev1_text'        => array( 'รีวิว 1 · ข้อความ', 'textarea' ),
+				'rev1_name'        => array( 'รีวิว 1 · ชื่อผู้รีวิว', 'text' ),
+				'rev2_text'        => array( 'รีวิว 2 · ข้อความ', 'textarea' ),
+				'rev2_name'        => array( 'รีวิว 2 · ชื่อผู้รีวิว', 'text' ),
+				'rev3_text'        => array( 'รีวิว 3 · ข้อความ', 'textarea' ),
+				'rev3_name'        => array( 'รีวิว 3 · ชื่อผู้รีวิว', 'text' ),
+			),
+		),
+
+		'eab_faq' => array(
+			'title'       => '12) FAQ คำถามที่พบบ่อย',
+			'description' => 'มีช่องให้ 10 ข้อ ข้อไหนเว้นว่างไว้จะไม่แสดงผล',
+			'fields'      => array(
+				'show_faq'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'faq_title'    => array( 'หัวข้อ', 'text' ),
+				'faq_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+			),
+		),
+
+		'eab_risk' => array(
+			'title'       => '13) คำเตือนความเสี่ยง',
+			'description' => 'ส่วนนี้สำคัญต่อความน่าเชื่อถือของแบรนด์ ไม่แนะนำให้ปิด',
+			'fields'      => array(
+				'show_risk'  => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'risk_title' => array( 'หัวข้อ', 'text' ),
+				'risk_text'  => array( 'ข้อความคำเตือน', 'textarea' ),
+			),
+		),
+
+		'eab_cta' => array(
+			'title'  => '14) CTA ปิดท้าย',
+			'fields' => array(
+				'show_cta'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+				'show_mid_cta'  => array( 'แสดงแถบทัก LINE คั่นกลางหน้าแรก', 'checkbox' ),
+				'mid_cta_title' => array( 'แถบกลางหน้า · หัวข้อ', 'text' ),
+				'mid_cta_text'  => array( 'แถบกลางหน้า · คำอธิบาย', 'textarea' ),
+				'cta_title'    => array( 'หัวข้อ', 'text' ),
+				'cta_subtitle' => array( 'คำอธิบาย', 'textarea' ),
+				'cta_btn_text' => array( 'ข้อความปุ่ม', 'text' ),
+			),
+		),
+
+		'eab_footer' => array(
+			'title'  => '15) Footer ท้ายเว็บ',
+			'fields' => array(
+				'footer_kicker'       => array( 'ข้อความเล็กเหนือ CTA footer', 'text' ),
+				'footer_cta_title'    => array( 'หัวข้อ CTA ใน footer', 'text' ),
+				'footer_cta_text'     => array( 'คำอธิบาย CTA ใน footer', 'textarea' ),
+				'footer_line_text'    => array( 'ข้อความปุ่ม LINE ใน footer', 'text' ),
+				'footer_facebook_text' => array( 'ข้อความลิงก์ Facebook ใน footer', 'text' ),
+				'footer_email_text'    => array( 'ข้อความลิงก์ Email ใน footer', 'text' ),
+				'footer_prep_title'    => array( 'หัวข้อการ์ดเตรียมข้อมูลก่อนทัก LINE', 'text' ),
+				'footer_prep_text'     => array( 'คำอธิบายการ์ดเตรียมข้อมูลก่อนทัก LINE', 'textarea' ),
+				'footer_prep_items'    => array( 'รายการที่ควรเตรียม (บรรทัดละ 1 รายการ)', 'textarea' ),
+				'footer_tagline'      => array( 'คำโปรยใต้โลโก้', 'textarea' ),
+				'footer_trust_items'  => array( 'ป้ายความน่าเชื่อถือ (บรรทัดละ 1 รายการ)', 'textarea' ),
+				'footer_risk_link'    => array( 'ข้อความลิงก์คำเตือนความเสี่ยง', 'text' ),
+			),
+		),
+
+		'eab_mobile_nav' => array(
+			'title'       => '16) เมนูลัดมือถือด้านล่าง',
+			'description' => 'เมนูลัดด้านล่างบนมือถือ ใช้สำหรับพาผู้เข้าชมไปยังหน้าหลักที่สำคัญและปุ่มทัก LINE',
+			'fields'      => array(
+				'show_mobile_nav'        => array( 'แสดงเมนูลัดด้านล่างบนมือถือ', 'checkbox' ),
+				'mobile_nav_home_label'  => array( 'เมนู 1 · ชื่อ', 'text' ),
+				'mobile_nav_home_url'    => array( 'เมนู 1 · ลิงก์หรือ slug', 'text' ),
+				'mobile_nav_dash_label'  => array( 'เมนู 2 · ชื่อปุ่มแดชบอร์ด', 'text' ),
+				'mobile_nav_price_label'   => array( 'เมนู 3 · ชื่อ', 'text' ),
+				'mobile_nav_price_url'     => array( 'เมนู 3 · ลิงก์หรือ slug', 'text' ),
+				'mobile_nav_install_label' => array( 'เมนู 4 · ชื่อ', 'text' ),
+				'mobile_nav_install_url'   => array( 'เมนู 4 · ลิงก์หรือ slug', 'text' ),
+				'mobile_nav_line_label'    => array( 'เมนู 5 · ชื่อปุ่ม LINE', 'text' ),
+			),
+		),
+	);
+
+	$sections['eab_seo'] = array(
+		'title'       => '17) SEO / แชร์ลิงก์',
+		'description' => 'รูปและคำโปรยเวลาแชร์ลิงก์ใน LINE/Facebook (Open Graph) บทความจะใช้ภาพหน้าปก (Featured image) อัตโนมัติ',
+		'fields'      => array(
+			'og_default_image'       => array( 'รูปสำหรับแชร์ (แนะนำ 1200×630px)', 'image' ),
+			'og_default_description' => array( 'คำโปรยเวลาแชร์หน้าหลัก/หน้าที่ไม่มีภาพ', 'textarea' ),
+		),
+	);
+
+	$sections['eab_cookie'] = array(
+		'title'       => '18) คุกกี้ / Tracking',
+		'description' => 'แถบขอความยินยอมคุกกี้ และโค้ดติดตาม (Google Analytics / Facebook Pixel จะโหลดเฉพาะหลังผู้ใช้กด "ยอมรับ" เท่านั้น)',
+		'fields'      => array(
+			'show_cookie_consent' => array( 'แสดงแถบขอความยินยอมคุกกี้', 'checkbox' ),
+			'cookie_consent_text' => array( 'ข้อความบนแถบคุกกี้', 'textarea' ),
+			'ga_measurement_id'   => array( 'Google Analytics 4 ID (เช่น G-XXXXXXXXXX)', 'text' ),
+			'fb_pixel_id'         => array( 'Facebook Pixel ID', 'text' ),
+		),
+	);
+
+	/* เพิ่ม FAQ 10 ข้อเข้า section FAQ */
+	for ( $i = 1; $i <= 10; $i++ ) {
+		$sections['eab_faq']['fields'][ 'faq' . $i . '_q' ] = array( 'คำถามข้อ ' . $i, 'text' );
+		$sections['eab_faq']['fields'][ 'faq' . $i . '_a' ] = array( 'คำตอบข้อ ' . $i, 'textarea' );
+	}
+
+	/* ===================================================
+	 * หมวดเพิ่มเติมสำหรับหน้าย่อย (multipage)
+	 * =================================================== */
+
+	$sections['eab_home'] = array(
+		'title'       => '19) หน้าแรก · ไฮไลต์ & การ์ดนำทาง',
+		'description' => 'แถบไฮไลต์ใต้ Hero และการ์ด 5 ใบที่ลิงก์ไปยังหน้าย่อย ลิงก์ตั้งค่าตาม slug มาตรฐานแล้ว แก้ได้หากใช้ slug อื่น',
+		'fields'      => array(
+			'show_highlight'   => array( 'แสดงแถบไฮไลต์ใต้ Hero', 'checkbox' ),
+			'highlight1'       => array( 'ไฮไลต์ 1', 'text' ),
+			'highlight2'       => array( 'ไฮไลต์ 2', 'text' ),
+			'highlight3'       => array( 'ไฮไลต์ 3', 'text' ),
+			'highlight4'       => array( 'ไฮไลต์ 4', 'text' ),
+			'highlight_note'   => array( 'หมายเหตุใต้แถบข้อมูล', 'text' ),
+			'show_live_status'     => array( 'แสดงแถบสถานะเคลื่อนไหวใต้ Hero', 'checkbox' ),
+			'live_status_kicker'   => array( 'ป้ายแถบสถานะ', 'text' ),
+			'live_status_items'    => array( 'ข้อความในแถบสถานะ (บรรทัดละ 1 ข้อ)', 'textarea' ),
+			'show_control_center'  => array( 'แสดงส่วน Control Center หน้าแรก', 'checkbox' ),
+			'control_kicker'       => array( 'Control Center · ป้ายเล็ก', 'text' ),
+			'control_title'        => array( 'Control Center · หัวข้อ', 'text' ),
+			'control_subtitle'     => array( 'Control Center · คำอธิบาย', 'textarea' ),
+			'control_panel_title'  => array( 'แผงสถานะ · หัวข้อ', 'text' ),
+			'control_panel_status' => array( 'แผงสถานะ · สถานะหลัก', 'text' ),
+			'control_badge'        => array( 'แผงสถานะ · ป้ายด้านขวา', 'text' ),
+			'control_panel_text'   => array( 'แผงสถานะ · รายละเอียด', 'textarea' ),
+			'control_metric1_label' => array( 'ข้อมูลย่อย 1 · หัวข้อ', 'text' ),
+			'control_metric1_value' => array( 'ข้อมูลย่อย 1 · ค่า', 'text' ),
+			'control_metric2_label' => array( 'ข้อมูลย่อย 2 · หัวข้อ', 'text' ),
+			'control_metric2_value' => array( 'ข้อมูลย่อย 2 · ค่า', 'text' ),
+			'control_metric3_label' => array( 'ข้อมูลย่อย 3 · หัวข้อ', 'text' ),
+			'control_metric3_value' => array( 'ข้อมูลย่อย 3 · ค่า', 'text' ),
+			'control_list_title'   => array( 'รายการเตรียมตัว · หัวข้อ', 'text' ),
+			'control_list_items'   => array( 'รายการเตรียมตัว (บรรทัดละ 1 ข้อ)', 'textarea' ),
+			'home_cards_title' => array( 'หัวข้อกลุ่มการ์ด', 'text' ),
+			'home_cards_sub'   => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+			'card1_title'      => array( 'การ์ด 1 · หัวข้อ', 'text' ),
+			'card1_desc'       => array( 'การ์ด 1 · รายละเอียด', 'textarea' ),
+			'card1_url'        => array( 'การ์ด 1 · ลิงก์', 'url' ),
+			'card2_title'      => array( 'การ์ด 2 · หัวข้อ', 'text' ),
+			'card2_desc'       => array( 'การ์ด 2 · รายละเอียด', 'textarea' ),
+			'card2_url'        => array( 'การ์ด 2 · ลิงก์', 'url' ),
+			'card3_title'      => array( 'การ์ด 3 · หัวข้อ', 'text' ),
+			'card3_desc'       => array( 'การ์ด 3 · รายละเอียด', 'textarea' ),
+			'card3_url'        => array( 'การ์ด 3 · ลิงก์', 'url' ),
+			'card4_title'      => array( 'การ์ด 4 · หัวข้อ', 'text' ),
+			'card4_desc'       => array( 'การ์ด 4 · รายละเอียด', 'textarea' ),
+			'card4_url'        => array( 'การ์ด 4 · ลิงก์', 'url' ),
+			'card5_title'      => array( 'การ์ด 5 · หัวข้อ', 'text' ),
+			'card5_desc'       => array( 'การ์ด 5 · รายละเอียด', 'textarea' ),
+			'card5_url'        => array( 'การ์ด 5 · ลิงก์', 'url' ),
+			'card6_title'      => array( 'การ์ด 6 · หัวข้อ', 'text' ),
+			'card6_desc'       => array( 'การ์ด 6 · รายละเอียด', 'textarea' ),
+			'card6_url'        => array( 'การ์ด 6 · ลิงก์', 'url' ),
+		),
+	);
+
+	$sections['eab_backtest'] = array(
+		'title'       => '20) หน้า Backtest',
+		'description' => 'กรอกผลการทดสอบย้อนหลังจริงเท่านั้น และอย่าลบ Disclaimer',
+		'fields'      => array(
+			'backtest_sub'         => array( 'คำโปรยใต้ชื่อหน้า', 'text' ),
+			'backtest_intro'       => array( 'ย่อหน้าเกริ่นนำ', 'textarea' ),
+			'bt_stat1_label'       => array( 'สถิติ 1 · หัวข้อ', 'text' ),
+			'bt_stat1_value'       => array( 'สถิติ 1 · ค่า', 'text' ),
+			'bt_stat2_label'       => array( 'สถิติ 2 · หัวข้อ', 'text' ),
+			'bt_stat2_value'       => array( 'สถิติ 2 · ค่า', 'text' ),
+			'bt_stat3_label'       => array( 'สถิติ 3 · หัวข้อ', 'text' ),
+			'bt_stat3_value'       => array( 'สถิติ 3 · ค่า', 'text' ),
+			'bt_stat4_label'       => array( 'สถิติ 4 · หัวข้อ', 'text' ),
+			'bt_stat4_value'       => array( 'สถิติ 4 · ค่า', 'text' ),
+			'bt_stat5_label'       => array( 'สถิติ 5 · หัวข้อ', 'text' ),
+			'bt_stat5_value'       => array( 'สถิติ 5 · ค่า', 'text' ),
+			'bt_stat6_label'       => array( 'สถิติ 6 · หัวข้อ', 'text' ),
+			'bt_stat6_value'       => array( 'สถิติ 6 · ค่า', 'text' ),
+			'bt_stat7_label'       => array( 'สถิติ 7 · หัวข้อ', 'text' ),
+			'bt_stat7_value'       => array( 'สถิติ 7 · ค่า', 'text' ),
+			'bt_stat8_label'       => array( 'สถิติ 8 · หัวข้อ', 'text' ),
+			'bt_stat8_value'       => array( 'สถิติ 8 · ค่า', 'text' ),
+			'backtest_img'         => array( 'ภาพกราฟ/รายงานผล Backtest', 'image' ),
+			'backtest_img_caption' => array( 'คำบรรยายภาพ', 'text' ),
+			'backtest_note'        => array( 'หมายเหตุเงื่อนไขการทดสอบ', 'textarea' ),
+			'backtest_disclaimer'  => array( 'Disclaimer (จำเป็น)', 'textarea' ),
+			'results_pending_title' => array( 'การ์ดยังไม่มีผลทดสอบ · หัวข้อ (แสดงเมื่อยังไม่กรอกตัวเลขจริง ใช้ทั้งหน้า Backtest และ Forward)', 'text' ),
+			'results_pending_text'  => array( 'การ์ดยังไม่มีผลทดสอบ · รายละเอียด', 'textarea' ),
+		),
+	);
+
+	$sections['eab_forward'] = array(
+		'title'       => '21) หน้า Forward Test',
+		'description' => 'กรอกผลการทดสอบบนบัญชีจริง/เดโม่จริงเท่านั้น และอย่าลบ Disclaimer',
+		'fields'      => array(
+			'forward_sub'         => array( 'คำโปรยใต้ชื่อหน้า', 'text' ),
+			'forward_intro'       => array( 'ย่อหน้าเกริ่นนำ', 'textarea' ),
+			'forward_note'        => array( 'หมายเหตุ', 'textarea' ),
+			'forward_disclaimer'  => array( 'Disclaimer (จำเป็น)', 'textarea' ),
+		),
+	);
+
+	$sections['eab_install'] = array(
+		'title'       => '22) หน้า How to Install',
+		'description' => 'คู่มือติดตั้งทีละขั้นตอน อัปโหลดภาพประกอบแต่ละขั้นได้ (เว้นว่างได้)',
+		'fields'      => array(
+			'install_sub'      => array( 'คำโปรยใต้ชื่อหน้า', 'text' ),
+			'install_intro'    => array( 'ย่อหน้าเกริ่นนำ', 'textarea' ),
+			'install_req'      => array( 'สิ่งที่ต้องเตรียม (บรรทัดละ 1 ข้อ)', 'textarea' ),
+			'inst_step1_title' => array( 'ขั้นตอน 1 · หัวข้อ', 'text' ),
+			'inst_step1_desc'  => array( 'ขั้นตอน 1 · รายละเอียด', 'textarea' ),
+			'inst_step1_img'   => array( 'ขั้นตอน 1 · ภาพ', 'image' ),
+			'inst_step2_title' => array( 'ขั้นตอน 2 · หัวข้อ', 'text' ),
+			'inst_step2_desc'  => array( 'ขั้นตอน 2 · รายละเอียด', 'textarea' ),
+			'inst_step2_img'   => array( 'ขั้นตอน 2 · ภาพ', 'image' ),
+			'inst_step3_title' => array( 'ขั้นตอน 3 · หัวข้อ', 'text' ),
+			'inst_step3_desc'  => array( 'ขั้นตอน 3 · รายละเอียด', 'textarea' ),
+			'inst_step3_img'   => array( 'ขั้นตอน 3 · ภาพ', 'image' ),
+			'inst_step4_title' => array( 'ขั้นตอน 4 · หัวข้อ', 'text' ),
+			'inst_step4_desc'  => array( 'ขั้นตอน 4 · รายละเอียด', 'textarea' ),
+			'inst_step4_img'   => array( 'ขั้นตอน 4 · ภาพ', 'image' ),
+			'inst_step5_title' => array( 'ขั้นตอน 5 · หัวข้อ', 'text' ),
+			'inst_step5_desc'  => array( 'ขั้นตอน 5 · รายละเอียด', 'textarea' ),
+			'inst_step5_img'   => array( 'ขั้นตอน 5 · ภาพ', 'image' ),
+			'inst_step6_title' => array( 'ขั้นตอน 6 · หัวข้อ', 'text' ),
+			'inst_step6_desc'  => array( 'ขั้นตอน 6 · รายละเอียด', 'textarea' ),
+			'inst_step6_img'   => array( 'ขั้นตอน 6 · ภาพ', 'image' ),
+			'install_note'     => array( 'ข้อความปิดท้าย', 'text' ),
+		),
+	);
+
+	$sections['eab_pricing_extra'] = array(
+		'title'       => '23) หน้า Pricing (เพิ่มเติม)',
+		'description' => 'หน้านี้ใช้แพ็กเกจจากหมวด "แพ็กเกจราคา" ร่วมกัน และเพิ่มตารางเปรียบเทียบได้ที่นี่',
+		'fields'      => array(
+			'pricing_sub'   => array( 'คำโปรยใต้ชื่อหน้า', 'text' ),
+			'compare_title' => array( 'หัวข้อตารางเปรียบเทียบ', 'text' ),
+			'compare_rows'  => array( 'ตารางเปรียบเทียบ (บรรทัดละ 1 แถว คั่นช่องด้วย | บรรทัดแรกคือหัวตาราง ใช้ ✓ และ ✗ ได้)', 'textarea' ),
+		),
+	);
+
+	$sections['eab_riskpage'] = array(
+		'title'       => '24) หน้า Risk Disclosure',
+		'description' => 'หน้าประกาศความเสี่ยงฉบับเต็ม มี 6 หัวข้อ เว้นว่างหัวข้อที่ไม่ใช้ได้',
+		'fields'      => array(
+			'riskpage_sub'     => array( 'คำโปรยใต้ชื่อหน้า', 'text' ),
+			'riskpage_intro'   => array( 'ย่อหน้าเกริ่นนำ', 'textarea' ),
+			'riskpage_image'   => array( 'ภาพประกอบความเสี่ยง', 'image' ),
+			'riskpage_image_caption' => array( 'คำบรรยายภาพประกอบความเสี่ยง', 'text' ),
+			'rp_block1_title'  => array( 'หัวข้อ 1', 'text' ),
+			'rp_block1_text'   => array( 'เนื้อหา 1', 'textarea' ),
+			'rp_block2_title'  => array( 'หัวข้อ 2', 'text' ),
+			'rp_block2_text'   => array( 'เนื้อหา 2', 'textarea' ),
+			'rp_block3_title'  => array( 'หัวข้อ 3', 'text' ),
+			'rp_block3_text'   => array( 'เนื้อหา 3', 'textarea' ),
+			'rp_block4_title'  => array( 'หัวข้อ 4', 'text' ),
+			'rp_block4_text'   => array( 'เนื้อหา 4', 'textarea' ),
+			'rp_block5_title'  => array( 'หัวข้อ 5', 'text' ),
+			'rp_block5_text'   => array( 'เนื้อหา 5', 'textarea' ),
+			'rp_block6_title'  => array( 'หัวข้อ 6', 'text' ),
+			'rp_block6_text'   => array( 'เนื้อหา 6', 'textarea' ),
+			'riskpage_updated' => array( 'วันที่ปรับปรุงล่าสุด', 'text' ),
+		),
+	);
+
+	$sections['eab_team'] = array(
+		'title'       => '25) ทีมงาน / ใครอยู่เบื้องหลัง',
+		'description' => 'แสดงตัวตนของทีม/ผู้พัฒนาเพื่อสร้างความน่าเชื่อถือ แนะนำประสบการณ์และเหตุผลที่สร้างระบบ เปิด "แสดงส่วนนี้" เมื่อกรอกข้อมูลจริงแล้ว ห้ามใส่ข้อมูลเท็จ',
+		'fields'      => array(
+			'show_team'   => array( 'แสดงส่วนนี้ (เปิดเมื่อกรอกข้อมูลจริง)', 'checkbox' ),
+			'team_kicker' => array( 'ป้ายเล็กเหนือหัวข้อ', 'text' ),
+			'team_title'  => array( 'หัวข้อ', 'text' ),
+			'team_text'   => array( 'เนื้อหา (เว้นบรรทัด = ย่อหน้าใหม่)', 'textarea' ),
+			'team_points' => array( 'จุดเด่นของทีม (บรรทัดละ 1 ข้อ)', 'textarea' ),
+			'team_img'    => array( 'รูปทีม / ผู้พัฒนา (ถ้ามี)', 'image' ),
+		),
+	);
+
+	$sections['eab_assurance'] = array(
+		'title'       => '26) ความมั่นใจก่อนเริ่ม',
+		'description' => 'จุดสร้างความสบายใจก่อนตัดสินใจ ใช้ข้อความที่เป็นจริง ไม่การันตีกำไร',
+		'fields'      => array(
+			'show_assurance'     => array( 'แสดงส่วนนี้', 'checkbox' ),
+			'assurance_kicker'   => array( 'ป้ายเล็กเหนือหัวข้อ', 'text' ),
+			'assurance_title'    => array( 'หัวข้อ', 'text' ),
+			'assurance_subtitle' => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+			'assurance_items'    => array( 'รายการความมั่นใจ (บรรทัดละ 1 ข้อ)', 'textarea' ),
+		),
+	);
+
+	$sections['eab_blog'] = array(
+		'title'       => '27) หน้าแรก · บทความล่าสุด',
+		'description' => 'แสดงบทความล่าสุด 3 รายการบนหน้าแรก ส่วนนี้จะซ่อนอัตโนมัติเมื่อยังไม่มีบทความที่เผยแพร่',
+		'fields'      => array(
+			'show_blog'      => array( 'แสดงส่วนนี้', 'checkbox' ),
+			'blog_kicker'    => array( 'ป้ายเล็กเหนือหัวข้อ', 'text' ),
+			'blog_title'     => array( 'หัวข้อ', 'text' ),
+			'blog_subtitle'  => array( 'คำอธิบายใต้หัวข้อ', 'textarea' ),
+			'blog_all_label' => array( 'ข้อความลิงก์ดูบทความทั้งหมด', 'text' ),
+		),
+	);
+
+	$sections['eab_home_extra'] = array(
+		'title'       => '28) หน้าแรก · วิธีทดสอบ & ติดตั้งย่อ',
+		'description' => 'ส่วนแท็บ Backtest/Forward และส่วนติดตั้ง 3 ขั้นบนหน้าแรก',
+		'fields'      => array(
+			'show_tests'         => array( 'แสดงส่วนวิธีทดสอบ', 'checkbox' ),
+			'tests_kicker'       => array( 'วิธีทดสอบ · ป้ายเล็ก', 'text' ),
+			'tests_title'        => array( 'วิธีทดสอบ · หัวข้อ', 'text' ),
+			'tests_subtitle'     => array( 'วิธีทดสอบ · คำอธิบาย', 'textarea' ),
+			'tests_bt_title'     => array( 'แท็บ Backtest · หัวข้อ', 'text' ),
+			'tests_bt_text'      => array( 'แท็บ Backtest · เนื้อหา', 'textarea' ),
+			'tests_bt_img'       => array( 'แท็บ Backtest · ภาพประกอบ', 'image' ),
+			'tests_fw_title'     => array( 'แท็บ Forward · หัวข้อ', 'text' ),
+			'tests_fw_text'      => array( 'แท็บ Forward · เนื้อหา', 'textarea' ),
+			'tests_fw_img'       => array( 'แท็บ Forward · ภาพประกอบ', 'image' ),
+			'tests_note'         => array( 'วิธีทดสอบ · หมายเหตุ', 'textarea' ),
+			'show_install_home'  => array( 'แสดงส่วนติดตั้ง 3 ขั้น', 'checkbox' ),
+			'install_home_title' => array( 'ติดตั้ง · หัวข้อ', 'text' ),
+			'install_home_sub'   => array( 'ติดตั้ง · คำอธิบาย', 'textarea' ),
+			'ih_step1_title'     => array( 'ขั้น 1 · หัวข้อ', 'text' ),
+			'ih_step1_desc'      => array( 'ขั้น 1 · รายละเอียด', 'textarea' ),
+			'ih_step2_title'     => array( 'ขั้น 2 · หัวข้อ', 'text' ),
+			'ih_step2_desc'      => array( 'ขั้น 2 · รายละเอียด', 'textarea' ),
+			'ih_step3_title'     => array( 'ขั้น 3 · หัวข้อ', 'text' ),
+			'ih_step3_desc'      => array( 'ขั้น 3 · รายละเอียด', 'textarea' ),
+			'install_home_note'  => array( 'ติดตั้ง · หมายเหตุ', 'text' ),
+		),
+	);
+
+	$sections['eab_broker'] = array(
+		'title'       => '29) โบรกเกอร์ และรุ่นของไฟล์ EA',
+		'description' => 'ข้อความเหล่านี้แทรกในเนื้อหาคู่มือผ่าน shortcode [eabull_broker] · ถ้าไม่มีโบรกเกอร์พาร์ตเนอร์ ปล่อยค่าเริ่มต้นไว้ได้',
+		'fields'      => array(
+			'broker_name'        => array( 'ชื่อโบรกเกอร์', 'text' ),
+			'broker_server'      => array( 'ชื่อเซิร์ฟเวอร์ MT5', 'text' ),
+			'broker_signup_url'  => array( 'ลิงก์สมัครบัญชี (ถ้ามี · ใช้ในหน้า /go ขั้นที่ 1)', 'url' ),
+			'broker_signup_text' => array( 'ข้อความปุ่มสมัครบัญชี', 'text' ),
+			'ea_version'         => array( 'ไฟล์ EA · เลขรุ่นที่แจกอยู่ (เช่น 5.0 · ชื่อไฟล์ในเนื้อหาจะเป็น EA_BULL_V5.0.ex5 ผ่าน shortcode [eabull_ea])', 'text' ),
+			'ea_bt_from'         => array( 'ไฟล์ EA · วันเริ่มของช่วง Backtest มาตรฐาน (รูปแบบ 2026.01.01)', 'text' ),
+			'ea_bt_to'           => array( 'ไฟล์ EA · วันจบของช่วง Backtest มาตรฐาน (ค่าที่กรอกในช่อง Date ของ Strategy Tester)', 'text' ),
+		),
+	);
+
+	$sections['eab_go'] = array(
+		'title'       => '30) หน้า /go (ลิงก์รวม)',
+		'description' => 'หน้าลิงก์รวมสำหรับใส่ในโปรไฟล์ LINE OA / Facebook / TikTok',
+		'fields'      => array(
+			'go_sub'         => array( 'คำอธิบายใต้ชื่อ', 'text' ),
+			'go_steps_title' => array( 'หัวข้อรายการขั้นตอน', 'text' ),
+			'go_step1'       => array( 'ขั้นที่ 1 (ลิงก์สมัครบัญชี หรือคู่มือเปิดบัญชี)', 'text' ),
+			'go_step2'       => array( 'ขั้นที่ 2 (คู่มือเปิดบัญชี)', 'text' ),
+			'go_step3'       => array( 'ขั้นที่ 3 (ดาวน์โหลด/ล็อกอิน MT5)', 'text' ),
+			'go_step4'       => array( 'ขั้นที่ 4 (ขอไฟล์ EA ทาง LINE)', 'text' ),
+			'go_step5'       => array( 'ขั้นที่ 5 (ติดตั้ง EA)', 'text' ),
+			'go_step6'       => array( 'ขั้นที่ 6 (VPS)', 'text' ),
+			'mt5_dl_windows' => array( 'ลิงก์ดาวน์โหลด MT5 · Windows', 'url' ),
+			'mt5_dl_android' => array( 'ลิงก์ดาวน์โหลด MT5 · Android', 'url' ),
+			'mt5_dl_ios'     => array( 'ลิงก์ดาวน์โหลด MT5 · iPhone', 'url' ),
+		),
+	);
+
+	/* โมดูล (inc/modules/*.php) เพิ่ม section ของตัวเองผ่านฟิลเตอร์นี้ */
+	$sections = apply_filters( 'eab_customizer_sections', $sections, $d );
+
+	$priority = 10;
+
+	foreach ( $sections as $section_id => $section ) {
+
+		$wp_customize->add_section(
+			$section_id,
+			array(
+				'panel'       => 'eab_panel',
+				'title'       => $section['title'],
+				'description' => isset( $section['description'] ) ? $section['description'] : '',
+				'priority'    => $priority,
+			)
+		);
+		$priority += 10;
+
+		foreach ( $section['fields'] as $field_id => $field ) {
+
+			$label = $field[0];
+			$type  = $field[1];
+			$extra = isset( $field[2] ) ? $field[2] : '';
+
+			switch ( $type ) {
+				case 'checkbox':
+					$sanitize = 'eab_sanitize_checkbox';
+					break;
+				case 'url':
+				case 'image':
+					$sanitize = 'esc_url_raw';
+					break;
+				case 'path':
+					$sanitize = 'eab_sanitize_path';
+					$type     = 'text';
+					break;
+				case 'textarea':
+					$sanitize = 'sanitize_textarea_field';
+					break;
+				case 'radio':
+					$sanitize = 'eab_sanitize_pricing_mode';
+					break;
+				default:
+					$sanitize = 'sanitize_text_field';
+			}
+
+			$wp_customize->add_setting(
+				$field_id,
+				array(
+					'default'           => isset( $d[ $field_id ] ) ? $d[ $field_id ] : '',
+					'type'              => 'theme_mod',
+					'sanitize_callback' => $sanitize,
+				)
+			);
+
+			if ( 'image' === $type ) {
+				$wp_customize->add_control(
+					new WP_Customize_Image_Control(
+						$wp_customize,
+						$field_id,
+						array(
+							'label'       => $label,
+							'section'     => $section_id,
+							'description' => is_string( $extra ) ? $extra : '',
+						)
+					)
+				);
+			} elseif ( 'radio' === $type ) {
+				$wp_customize->add_control(
+					$field_id,
+					array(
+						'label'   => $label,
+						'section' => $section_id,
+						'type'    => 'radio',
+						'choices' => is_array( $extra ) ? $extra : array(),
+					)
+				);
+			} else {
+				$wp_customize->add_control(
+					$field_id,
+					array(
+						'label'       => $label,
+						'section'     => $section_id,
+						'type'        => $type,
+						'description' => is_string( $extra ) ? $extra : '',
+					)
+				);
+			}
+		}
+	}
+}
+add_action( 'customize_register', 'eab_customize_register' );

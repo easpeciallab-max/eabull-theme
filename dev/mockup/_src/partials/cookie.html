@@ -1,0 +1,35 @@
+<div class="cookie dark" id="cookie" role="dialog" aria-labelledby="cookie-title" hidden>
+  <div class="cookie__head">
+    <span class="tile tile--accent">{{i:cookie}}</span>
+    <h2 id="cookie-title">เว็บนี้ใช้คุกกี้</h2>
+    <button type="button" class="cookie__x" data-ck="close" aria-label="ปิด">{{i:close}}</button>
+  </div>
+  <div class="cookie__view" data-ck-view="intro">
+    <p data-ck-text="none">ตอนนี้ EA BULL ใช้เฉพาะคุกกี้ที่จำเป็นให้เว็บทำงาน เช่น จำค่าที่คุณเลือกในการ์ดนี้ ไม่มีคุกกี้วัดผลหรือโฆษณา</p>
+    <p data-ck-text="ga" hidden>เราใช้คุกกี้ที่จำเป็นให้เว็บทำงาน และขอใช้ Google Analytics นับจำนวนผู้เข้าชมแบบไม่ระบุตัวตน เลือกได้ว่าจะอนุญาตหรือไม่</p>
+    <a class="cookie__more" href="privacy-policy.html#cookies">อ่านนโยบายคุกกี้</a>
+    <div class="cookie__btns" data-ck-btns="none">
+      <button type="button" class="btn btn--primary btn--sm" data-ck="accept">ตกลง</button>
+    </div>
+    <div class="cookie__btns" data-ck-btns="ga" hidden>
+      <button type="button" class="btn btn--outline btn--sm" data-ck="reject">ปฏิเสธ</button>
+      <button type="button" class="btn btn--primary btn--sm" data-ck="accept">ยอมรับทั้งหมด</button>
+      <button type="button" class="btn btn--light btn--sm" data-ck="settings">ตั้งค่า {{i:arrow-right}}</button>
+    </div>
+  </div>
+  <div class="cookie__view" data-ck-view="settings" hidden>
+    <div class="ckrow">
+      <div><b>คุกกี้ที่จำเป็น</b><p>ให้เว็บทำงานและจำค่าที่คุณเลือกในการ์ดนี้</p></div>
+      <span class="ckrow__lock">เปิดอยู่เสมอ</span>
+    </div>
+    <div class="ckrow">
+      <div><b>วิเคราะห์การใช้งาน</b><p>Google Analytics นับผู้เข้าชมและหน้าที่เปิด · แสดงเมื่อใส่รหัส GA4 แล้วเท่านั้น</p></div>
+      <label class="switch"><input type="checkbox" data-ck-cat="analytics"><span></span><i class="sr-only">อนุญาตคุกกี้วิเคราะห์การใช้งาน</i></label>
+    </div>
+    <p class="cookie__note">เปลี่ยนใจได้ทุกเมื่อจากลิงก์ "ตั้งค่าคุกกี้" ท้ายเว็บ</p>
+    <div class="cookie__btns">
+      <button type="button" class="btn btn--outline btn--sm" data-ck="back">{{i:chevron-left}}ย้อนกลับ</button>
+      <button type="button" class="btn btn--primary btn--sm" data-ck="save">บันทึก</button>
+    </div>
+  </div>
+</div>

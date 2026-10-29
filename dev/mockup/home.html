@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ระบบเทรดอัตโนมัติบน MetaTrader 5 · EA BULL</title>
+<meta name="description" content="EA BULL ระบบเทรดอัตโนมัติสำหรับ MetaTrader 5 เลือก EA ตามเลขรุ่น ติดตั้งตามคู่มือ รันบน VPS และติดตามผลจากมือถือ ปรึกษาทีมงานทาง LINE">
+<meta property="og:title" content="ระบบเทรดอัตโนมัติบน MetaTrader 5 · EA BULL">
+<meta property="og:description" content="EA BULL ระบบเทรดอัตโนมัติสำหรับ MetaTrader 5 เลือก EA ตามเลขรุ่น ติดตั้งตามคู่มือ รันบน VPS และติดตามผลจากมือถือ ปรึกษาทีมงานทาง LINE">
+<meta property="og:image" content="assets/img/bull-logo.png">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Anuphan:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/bull.css?v=202610291603">
+</head>
+<body class="">
+<a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<header class="hd" id="top">
+  <div class="wrap hd__in">
+    <a class="hd__brand" href="home.html" aria-label="EA BULL หน้าแรก">
+      <img class="hd__emblem" src="assets/img/bull-emblem.webp" width="640" height="571" alt="">
+      <img class="hd__word" src="assets/img/bull-wordmark.webp" width="720" height="100" alt="EA BULL">
+    </a>
+    <nav class="nav" id="nav" aria-label="เมนูหลัก">
+      <ul class="nav__list">
+        <li><a class="nav__link" data-nav="home" aria-current="page" href="home.html">หน้าแรก</a></li>
+        <li class="has-sub">
+          <button class="nav__link nav__parent" type="button" data-nav="products" aria-expanded="false">สินค้า <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub">
+            <li><a data-nav="product-1" href="product-1.html"><b>สินค้าตัวอย่าง 1 · V1.0</b><span>หน้าสินค้าตัวอย่าง รอข้อมูลจริง</span></a></li>
+            <li><a data-nav="product-2" href="product-2.html"><b>สินค้าตัวอย่าง 2 · V2.0</b><span>หน้าสินค้าตัวอย่าง รอข้อมูลจริง</span></a></li>
+            <li><a data-nav="product-3" href="product-3.html"><b>สินค้าตัวอย่าง 3 · V3.0</b><span>หน้าสินค้าตัวอย่าง รอข้อมูลจริง</span></a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <button class="nav__link nav__parent" type="button" data-nav="tests" aria-expanded="false">การทดสอบ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub">
+            <li><a data-nav="backtest" href="backtest.html"><b>Backtest</b><span>ทดสอบย้อนหลังด้วย Strategy Tester</span></a></li>
+            <li><a data-nav="forward-test" href="forward-test.html"><b>Forward Test</b><span>ทดสอบกับตลาดจริงด้วยบัญชีเล็ก</span></a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <button class="nav__link nav__parent" type="button" data-nav="guides" aria-expanded="false">คู่มือการใช้งาน <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub sub--wide">
+            <li><a data-nav="how-to-install" href="how-to-install.html"><b>วิธีติดตั้ง EA บน MT5</b><span>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</span></a></li>
+            <li><a data-nav="open-mt5-account" href="open-mt5-account.html"><b>เปิดบัญชีเทรด MT5</b><span>สมัคร Zaurix และยืนยันตัวตน</span></a></li>
+            <li><a data-nav="deposit" href="deposit.html"><b>ฝากเงินเข้าบัญชีเทรด</b><span>ฝากผ่าน Portal ของโบรกเกอร์</span></a></li>
+            <li><a data-nav="mt5-login" href="mt5-login.html"><b>ติดตั้งและล็อกอิน MT5</b><span>คอม มือถือ และแท็บเล็ต</span></a></li>
+            <li><a data-nav="vps-windows" href="vps-windows.html"><b>VPS บน Windows</b><span>เชื่อมต่อด้วย Remote Desktop</span></a></li>
+            <li><a data-nav="vps-android" href="vps-android.html"><b>VPS บน Android</b><span>ใช้แอป Windows App</span></a></li>
+            <li><a data-nav="vps-ios" href="vps-ios.html"><b>VPS บน <span class="nocaps">iPhone</span> / <span class="nocaps">iPad</span></b><span>ใช้แอป Windows App</span></a></li>
+            <li><a data-nav="tools" href="tools.html"><b>เครื่องคำนวณ Lot / Drawdown</b><span>คิดขนาดไม้จากเงินที่ยอมเสีย</span></a></li>
+          </ul>
+        </li>
+        <li><a class="nav__link" data-nav="pricing" href="pricing.html">แพ็กเกจ</a></li>
+        <li><a class="nav__link" data-nav="articles" href="articles.html">บทความ</a></li>
+        <li><a class="nav__link" data-nav="go" href="go.html">ติดต่อ</a></li>
+      </ul>
+      <div class="nav__foot">
+        <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE คุยกับทีมงาน</a>
+        <div class="nav__social">
+          <a class="btn btn--openchat btn--sm" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>OpenChat</a>
+          <a class="btn btn--fb btn--sm" href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg>Facebook</a>
+        </div>
+      </div>
+    </nav>
+    <a class="hd__dash" href="#" data-wait="ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.2"/></svg><span>แดชบอร์ด</span></a>
+    <button class="hd__toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="เปิดเมนู">
+      <span class="hd__ico-open"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="hd__ico-close"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <img class="hero__emblem" src="assets/img/bull-emblem.webp" width="640" height="571" alt="หัววัวทองและแท่งกราฟ สัญลักษณ์ของ EA BULL">
+    <h1 id="hero-title">ให้ EA BULL <span class="nw">เทรดตามแผน</span> บน <span class="nw">MetaTrader 5</span></h1>
+    <p class="hero__tag">แข็งแกร่งด้วยวินัย บุกตลาดอย่างมีแผน</p>
+    <p class="lead">EA BULL คือ Expert Advisor สำหรับ MT5 ที่เปิดและปิดออเดอร์ตามกติกาในระบบ ติดตั้งตามคู่มือทีละขั้น ปล่อยรันบน VPS แล้วดูบัญชีจากแอป MT5 บนมือถือ ถามทุกเรื่องกับทีมงานทาง LINE</p>
+    <div class="btns">
+      <a class="btn btn--primary btn--lg" href="#products">เลือก EA ที่เหมาะกับคุณ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--outline btn--lg" href="#steps">เริ่มใช้งานใน 6 ขั้นตอน</a>
+    </div>
+    <p class="hero__risk"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>การเทรดผ่าน MT5 ด้วยเลเวอเรจมีความเสี่ยงสูง อาจขาดทุนจนหมดเงินในบัญชี ผลทดสอบในอดีตไม่ได้บอกผลในอนาคต <a href="risk-disclosure.html">อ่านประกาศความเสี่ยง</a></span></p>
+    <div class="pillars">
+      <div class="pillar"><b>วินัย</b><span>ทำตามกติกาเดิมทุกออเดอร์</span></div>
+      <div class="pillar"><b>แผน</b><span>รู้ทุนและความเสี่ยงก่อนเริ่ม</span></div>
+      <div class="pillar"><b>ระบบ</b><span>ติดตั้ง ติดตาม ปรับ เป็นขั้นตอน</span></div>
+    </div>
+  </div>
+</section>
+<div class="plat">
+  <div class="wrap plat__in">
+    <span class="plat__label">ใช้งานร่วมกับ</span>
+    <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v3M7 14v7M17 3v5M17 16v5"/><rect x="5" y="6" width="4" height="8"/><rect x="15" y="8" width="4" height="8"/></svg>MetaTrader 5</span>
+    <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg>Windows</span>
+    <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>Android</span>
+    <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M11 18h2"/></svg><span class="nocaps">iPhone / iPad</span></span>
+    <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>VPS</span>
+  </div>
+</div>
+
+<section class="band" id="products" aria-labelledby="products-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="products-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>สินค้า EA ของ EA BULL</h2>
+        <p>เรียงตามเลขรุ่นจากน้อยไปมาก แต่ละตัวมีหน้าของตัวเองที่บอกวิธีทำงาน ทุนที่ต้องใช้ และผลทดสอบพร้อมเงื่อนไข</p>
+      </div>
+    </div>
+    <p class="mk-note"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.2"/></svg><span>ต้นแบบนี้ใช้สินค้าตัวอย่าง 3 รุ่น ชื่อ เลขรุ่น และทุกช่องข้อมูลรอเอกสารจากเจ้าของ</span></p>
+    <div class="prods mt-24">
+      <article class="prow">
+        <div class="prow__ver"><small>รุ่น</small><b>1.0</b></div>
+        <div class="prow__body">
+          <div>
+            <div class="prow__title"><h3>สินค้าตัวอย่าง 1</h3><span class="badge badge--ex">ตัวอย่าง</span></div>
+            <p>คำอธิบายสั้นของสินค้า 1 ถึง 2 บรรทัด <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+          </div>
+          <ul class="specs">
+            <li><span>สินทรัพย์</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>กรอบเวลากราฟ</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>ประเภทบัญชี</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>ทุนที่แนะนำ</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+          </ul>
+          <div class="prow__cta">
+            <a class="btn btn--light" href="product-1.html">ดูรายละเอียด <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--outline" href="#" data-wait="ไฟล์ EA รอจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>ดาวน์โหลดไฟล์</a>
+          </div>
+        </div>
+      </article>
+      <article class="prow">
+        <div class="prow__ver"><small>รุ่น</small><b>2.0</b></div>
+        <div class="prow__body">
+          <div>
+            <div class="prow__title"><h3>สินค้าตัวอย่าง 2</h3><span class="badge badge--ex">ตัวอย่าง</span></div>
+            <p>คำอธิบายสั้นของสินค้า 1 ถึง 2 บรรทัด <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+          </div>
+          <ul class="specs">
+            <li><span>สินทรัพย์</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>กรอบเวลากราฟ</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>ประเภทบัญชี</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>ทุนที่แนะนำ</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+          </ul>
+          <div class="prow__cta">
+            <a class="btn btn--light" href="product-2.html">ดูรายละเอียด <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--outline" href="#" data-wait="ไฟล์ EA รอจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>ดาวน์โหลดไฟล์</a>
+          </div>
+        </div>
+      </article>
+      <article class="prow">
+        <div class="prow__ver"><small>รุ่น</small><b>3.0</b></div>
+        <div class="prow__body">
+          <div>
+            <div class="prow__title"><h3>สินค้าตัวอย่าง 3</h3><span class="badge badge--ex">ตัวอย่าง</span></div>
+            <p>คำอธิบายสั้นของสินค้า 1 ถึง 2 บรรทัด <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+          </div>
+          <ul class="specs">
+            <li><span>สินทรัพย์</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>กรอบเวลากราฟ</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>ประเภทบัญชี</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+            <li><span>ทุนที่แนะนำ</span><span class="wait">รอข้อมูลจากเจ้าของ</span></li>
+          </ul>
+          <div class="prow__cta">
+            <a class="btn btn--light" href="product-3.html">ดูรายละเอียด <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--outline" href="#" data-wait="ไฟล์ EA รอจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>ดาวน์โหลดไฟล์</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="note note--warn mt-24"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>EA แต่ละตัวรับความเสี่ยงไม่เท่ากัน อ่านหน้าสินค้าและ<a href="risk-disclosure.html">ประกาศความเสี่ยง</a>ให้ครบก่อนเลือก</span></p>
+  </div>
+</section>
+
+<section class="band band--alt" id="modes" aria-labelledby="modes-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="modes-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>เลือกโหมดให้ตรงกับทุน</h2>
+        <p>แต่ละโหมดใช้เงินในบัญชีและรับความเสี่ยงไม่เท่ากัน ดูให้ครบทุกแท็บก่อนตัดสินใจ</p>
+      </div>
+    </div>
+    <div class="tabs" data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="โหมดของ EA">
+        <button class="tabs__btn" role="tab" id="mode-t1" aria-controls="mode-p1" aria-selected="true" type="button"><b>โหมด 1</b><span>ชื่อโหมดรอข้อมูล</span></button>
+        <button class="tabs__btn" role="tab" id="mode-t2" aria-controls="mode-p2" aria-selected="false" type="button"><b>โหมด 2</b><span>ชื่อโหมดรอข้อมูล</span></button>
+        <button class="tabs__btn" role="tab" id="mode-t3" aria-controls="mode-p3" aria-selected="false" type="button"><b>โหมด 3</b><span>ชื่อโหมดรอข้อมูล</span></button>
+      </div>
+      <div class="tabs__panel" role="tabpanel" id="mode-p1" aria-labelledby="mode-t1">
+        <div class="mode">
+          <div>
+            <h3>โหมด 1</h3>
+            <p>คำอธิบายว่าโหมดนี้ทำงานอย่างไร เหมาะกับใคร <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+            <p class="note note--warn mt-24"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ยิ่งโหมดรับความเสี่ยงสูง ยิ่งต้องมีเงินสำรองในบัญชีมาก ถ้าเงินน้อยกว่าที่แนะนำ บัญชีเสียหายได้เร็ว</span></p>
+          </div>
+          <table class="spec-tbl">
+            <tbody>
+              <tr><th scope="row">ระดับความเสี่ยง</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">เงินในบัญชีที่แนะนำ</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">ประเภทบัญชีที่ใช้ได้</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">สิ่งที่ต้องรู้ก่อนเลือก</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tabs__panel" role="tabpanel" id="mode-p2" aria-labelledby="mode-t2" hidden>
+        <div class="mode">
+          <div>
+            <h3>โหมด 2</h3>
+            <p>คำอธิบายว่าโหมดนี้ทำงานอย่างไร เหมาะกับใคร <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+            <p class="note note--warn mt-24"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ยิ่งโหมดรับความเสี่ยงสูง ยิ่งต้องมีเงินสำรองในบัญชีมาก ถ้าเงินน้อยกว่าที่แนะนำ บัญชีเสียหายได้เร็ว</span></p>
+          </div>
+          <table class="spec-tbl">
+            <tbody>
+              <tr><th scope="row">ระดับความเสี่ยง</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">เงินในบัญชีที่แนะนำ</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">ประเภทบัญชีที่ใช้ได้</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">สิ่งที่ต้องรู้ก่อนเลือก</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tabs__panel" role="tabpanel" id="mode-p3" aria-labelledby="mode-t3" hidden>
+        <div class="mode">
+          <div>
+            <h3>โหมด 3</h3>
+            <p>คำอธิบายว่าโหมดนี้ทำงานอย่างไร เหมาะกับใคร <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+            <p class="note note--warn mt-24"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ยิ่งโหมดรับความเสี่ยงสูง ยิ่งต้องมีเงินสำรองในบัญชีมาก ถ้าเงินน้อยกว่าที่แนะนำ บัญชีเสียหายได้เร็ว</span></p>
+          </div>
+          <table class="spec-tbl">
+            <tbody>
+              <tr><th scope="row">ระดับความเสี่ยง</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">เงินในบัญชีที่แนะนำ</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">ประเภทบัญชีที่ใช้ได้</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+              <tr><th scope="row">สิ่งที่ต้องรู้ก่อนเลือก</th><td><span class="wait">รอข้อมูลจากเจ้าของ</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="features-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>สิ่งที่ EA BULL ทำแทนคุณ</h2>
+        <p>งานซ้ำ ๆ ที่กินเวลาหน้าจอ ให้ระบบทำ ส่วนคุณดูภาพรวมและตัดสินใจเรื่องทุน</p>
+      </div>
+    </div>
+    <div class="feat">
+      <div class="feat__item">
+        <span class="feat__n">01</span>
+        <div>
+          <h3>ส่งคำสั่งตามกติกาที่ตั้งไว้</h3>
+          <p>EA เปิดและปิดออเดอร์ตามเงื่อนไขในระบบ ไม่ต้องนั่งกดเองทุกไม้ และไม่เปลี่ยนแผนกลางทางเพราะอารมณ์</p>
+          <a class="tlink" href="how-to-install.html">วิธีติดตั้ง EA บน MT5 <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="feat__item">
+        <span class="feat__n">02</span>
+        <div>
+          <h3>ทำงานต่อเนื่องบน VPS</h3>
+          <p>รัน MT5 ไว้บนเครื่อง VPS ที่เปิดอยู่ตลอด EA ทำงานต่อได้แม้คอมที่บ้านปิดหรือเน็ตบ้านหลุด</p>
+          <a class="tlink" href="vps-windows.html">คู่มือใช้ VPS <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="feat__item">
+        <span class="feat__n">03</span>
+        <div>
+          <h3>ดูบัญชีจากมือถือได้ทุกที่</h3>
+          <p>ล็อกอินบัญชีเดียวกันในแอป MT5 บนมือถือ ดูยอดเงิน ออเดอร์ที่เปิดอยู่ และประวัติย้อนหลัง</p>
+          <a class="tlink" href="mt5-login.html">ติดตั้งและล็อกอิน MT5 <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="feat__item">
+        <span class="feat__n">04</span>
+        <div>
+          <h3>คิดขนาดไม้ก่อนใช้เงินจริง</h3>
+          <p>ใส่ทุนและเงินที่ยอมเสียลงเครื่องคำนวณ ดูว่าขนาด Lot เท่าไรเหมาะกับแผน และถ้าพอร์ตลดลงต้องกำไรคืนแค่ไหน</p>
+          <a class="tlink" href="tools.html">เครื่องคำนวณ Lot และ Drawdown <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="steps-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>จากบัญชีแรกถึง EA ทำงาน: 6 ขั้นตอน</h2>
+        <p>ทุกขั้นมีคู่มือละเอียดพร้อมภาพหน้าจอ ติดตรงไหนทักทีมงานได้</p>
+      </div>
+      <a class="tlink" href="go.html">ดูทุกลิงก์ในหน้าเดียว <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ol class="track">
+      <li><span class="track__n">01</span><h3>เปิดบัญชีเทรด MT5</h3><p>สมัครกับ Zaurix โบรกเกอร์พันธมิตรของ EA BULL แล้วยืนยันตัวตน</p><a class="tlink" href="open-mt5-account.html">คู่มือเปิดบัญชี <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><span class="track__n">02</span><h3>ติดตั้งและล็อกอิน MT5</h3><p>ลง MT5 บนคอมหรือ VPS และในมือถือ ใช้บัญชีเดียวกัน</p><a class="tlink" href="mt5-login.html">คู่มือ MT5 <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><span class="track__n">03</span><h3>ฝากเงินเข้าบัญชี</h3><p>ฝากผ่าน Portal ของโบรกเกอร์ แล้วเช็กยอดใน MT5</p><a class="tlink" href="deposit.html">คู่มือฝากเงิน <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><span class="track__n">04</span><h3>รับไฟล์ EA</h3><p>ทักทีมงานทาง LINE เพื่อรับไฟล์และขั้นตอนเปิดใช้งาน</p><a class="tlink" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ">ทัก LINE <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><span class="track__n">05</span><h3>ติดตั้ง EA บน MT5</h3><p>วางไฟล์ในโฟลเดอร์ Experts เปิดสวิตช์ แล้วลากลงกราฟ</p><a class="tlink" href="how-to-install.html">คู่มือติดตั้ง <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+      <li><span class="track__n">06</span><h3>รันบน VPS</h3><p>ย้าย MT5 ไปเครื่องที่เปิดตลอด ให้ EA ทำงานไม่สะดุด</p><a class="tlink" href="vps-windows.html">คู่มือ VPS <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band paper" id="compare" aria-labelledby="compare-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="compare-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>นั่งเฝ้าจอเอง หรือให้ EA ทำตามกติกา</h2>
+        <p>เทียบวิธีทำงานทีละเรื่อง เพื่อให้เห็นว่าอะไรเปลี่ยน และอะไรยังเป็นหน้าที่ของคุณ</p>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl tbl--stack">
+        <thead>
+          <tr><th scope="col">หัวข้อ</th><th scope="col">เทรดเองทุกไม้</th><th scope="col" class="us">ใช้ EA BULL</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">เวลาที่ต้องใช้</th>
+            <td data-label="เทรดเองทุกไม้"><span class="yn yn--n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>ต้องเฝ้าจอช่วงที่ตลาดเคลื่อนไหว</span></span></td>
+            <td data-label="ใช้ EA BULL" class="us"><span class="yn yn--y"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ตั้งค่าครั้งแรก แล้วตรวจผลเป็นระยะ</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">การทำตามแผน</th>
+            <td data-label="เทรดเองทุกไม้"><span class="yn yn--n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>ขึ้นกับอารมณ์และความเหนื่อยตอนนั้น</span></span></td>
+            <td data-label="ใช้ EA BULL" class="us"><span class="yn yn--y"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ใช้เงื่อนไขเดิมทุกครั้ง</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">ตอนที่คุณไม่ว่างหรือหลับ</th>
+            <td data-label="เทรดเองทุกไม้"><span class="yn yn--n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>พลาดจังหวะ หรือปิดออเดอร์ไม่ทัน</span></span></td>
+            <td data-label="ใช้ EA BULL" class="us"><span class="yn yn--y"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ทำงานต่อได้ถ้ารันบน VPS</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">การส่งคำสั่ง</th>
+            <td data-label="เทรดเองทุกไม้"><span class="yn yn--n"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>ต้องกดเองทุกครั้ง</span></span></td>
+            <td data-label="ใช้ EA BULL" class="us"><span class="yn yn--y"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ส่งเมื่อเงื่อนไขครบ โดยไม่ต้องรอคนกด</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">โอกาสขาดทุน</th>
+            <td data-label="เทรดเองทุกไม้"><span class="yn yn--m"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>มี</span></span></td>
+            <td data-label="ใช้ EA BULL" class="us"><span class="yn yn--m"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ยังมีอยู่ EA ไม่ได้ทำให้ความเสี่ยงหายไป</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row">สิ่งที่คุณยังต้องทำ</th>
+            <td data-label="เทรดเองทุกไม้">ทุกอย่าง ตั้งแต่วิเคราะห์ถึงปิดออเดอร์</td>
+            <td data-label="ใช้ EA BULL" class="us">เลือกโหมดให้ตรงทุน ดูแลเครื่องที่รัน และติดตามผล</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note note--info mt-16"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.2"/></svg><span>ตารางนี้เทียบวิธีทำงาน ไม่ได้บอกว่าใช้ EA แล้วจะได้กำไร</span></p>
+  </div>
+</section>
+
+<section class="band" id="ready" aria-labelledby="ready-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="ready-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>ก่อนเปิดใช้จริง เช็กความพร้อม 6 ข้อ</h2>
+        <p>ติ๊กข้อที่ทำแล้ว ข้อไหนยังไม่พร้อมมีลิงก์ไปคู่มือให้</p>
+      </div>
+    </div>
+    <div class="ready" data-ready>
+      <ul class="ready__list">
+        <li><label class="ready__item"><input class="box" type="checkbox"><span><b>มีบัญชีเทรด MT5 แล้ว</b><small>ยังไม่มี ดู<a href="open-mt5-account.html">วิธีเปิดบัญชี</a></small></span></label></li>
+        <li><label class="ready__item"><input class="box" type="checkbox"><span><b>ติดตั้ง MT5 และล็อกอินได้</b><small>ดู<a href="mt5-login.html">คู่มือติดตั้งและล็อกอิน MT5</a></small></span></label></li>
+        <li><label class="ready__item"><input class="box" type="checkbox"><span><b>มีเครื่องที่เปิด MT5 ไว้ได้ตลอด หรือมี VPS</b><small>ดู<a href="vps-windows.html">คู่มือ VPS</a></small></span></label></li>
+        <li><label class="ready__item"><input class="box" type="checkbox"><span><b>อ่านประกาศความเสี่ยงแล้ว</b><small>เข้าใจว่าอาจขาดทุนจนหมดบัญชี · <a href="risk-disclosure.html">อ่านประกาศความเสี่ยง</a></small></span></label></li>
+        <li><label class="ready__item"><input class="box" type="checkbox"><span><b>เงินที่จะใช้ เป็นเงินที่เสียได้</b><small>ไม่ใช่เงินค่าใช้จ่ายจำเป็นหรือเงินกู้</small></span></label></li>
+        <li><label class="ready__item"><input class="box" type="checkbox"><span><b>วางแผนเริ่มจากเดโมหรือเงินจำนวนน้อย</b><small>ดู<a href="forward-test.html">คู่มือ Forward Test</a></small></span></label></li>
+      </ul>
+      <div class="ready__meter" aria-live="polite">
+        <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="ready__count"><span data-ready-count>0</span><small> / 6 ข้อ</small></p>
+        <p class="ready__status" data-ready-status>ยังเหลืออีก 6 ข้อ</p>
+        <div class="ready__done" data-ready-done hidden>
+          <p>ครบแล้ว ทักทีมงานเพื่อเลือกสินค้าและโหมดที่เข้ากับทุนของคุณ</p>
+          <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE เริ่มใช้งาน</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq">
+    <div class="faq__head">
+      <h2 id="faq-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>คำถามที่พบบ่อย</h2>
+      <p>คำถามที่ทีมงานได้รับบ่อยก่อนลูกค้าเริ่มใช้ ไม่เจอคำตอบที่ต้องการ ถามทาง LINE ได้เลย</p>
+      <div class="btns"><a class="btn btn--line" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ถามทีมงานทาง LINE</a></div>
+    </div>
+    <div>
+      <details class="qa" open>
+        <summary>EA BULL คืออะไร<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>EA ย่อมาจาก Expert Advisor คือโปรแกรมที่ทำงานใน MetaTrader 5 และส่งคำสั่งซื้อขายตามเงื่อนไขที่เขียนไว้ EA BULL คือชื่อแบรนด์ของเรา รายละเอียดสินค้าแต่ละตัว <span class="wait">รอข้อมูลจากเจ้าของ</span></p></div>
+      </details>
+      <details class="qa">
+        <summary>ต้องเปิดบัญชีกับโบรกเกอร์ไหน<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>เราแนะนำ Zaurix ซึ่งเป็นโบรกเกอร์พันธมิตรของ EA BULL และเราอาจได้รับค่าตอบแทนเมื่อคุณสมัครผ่านลิงก์ของเรา ใช้โบรกเกอร์อื่นได้หรือไม่ <span class="wait">รอข้อมูลจากเจ้าของ</span></p></div>
+      </details>
+      <details class="qa">
+        <summary>ต้องเปิดคอมทิ้งไว้ตลอดไหม<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>EA ทำงานเมื่อ MT5 เปิดอยู่และต่ออินเทอร์เน็ต ถ้าไม่อยากเปิดคอมทิ้งไว้ ให้รัน MT5 บน VPS แทน ดู<a href="vps-windows.html">คู่มือ VPS</a></p></div>
+      </details>
+      <details class="qa">
+        <summary>ใช้แค่มือถืออย่างเดียวได้ไหม<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>แอป MT5 บนมือถือรัน EA ไม่ได้ ใช้ได้แค่ดูบัญชีและออเดอร์ ตัว EA ต้องรันบน MT5 ของ Windows หรือบน VPS แล้วใช้มือถือไว้ติดตามผล</p></div>
+      </details>
+      <details class="qa">
+        <summary>ต้องใช้เงินทุนเท่าไร<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>ขึ้นกับสินค้าและโหมดที่เลือก <span class="wait">รอข้อมูลจากเจ้าของ</span> ไม่ว่าตัวไหน ให้ใช้เฉพาะเงินที่เสียได้เท่านั้น</p></div>
+      </details>
+      <details class="qa">
+        <summary>ราคาเท่าไร จ่ายอย่างไร<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p><span class="wait">รอข้อมูลจากเจ้าของ</span> ดูรายละเอียดที่<a href="pricing.html">หน้าแพ็กเกจ</a> หรือถามทีมงานทาง LINE</p></div>
+      </details>
+      <details class="qa">
+        <summary>ใช้แล้วได้กำไรแน่ไหม<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>ไม่มี EA ตัวไหนรับรองกำไรได้ EA BULL ก็เช่นกัน ตลาดเปลี่ยนได้ตลอด และบัญชีอาจขาดทุนจนหมดได้ อ่าน<a href="risk-disclosure.html">ประกาศความเสี่ยง</a>ก่อนเริ่ม</p></div>
+      </details>
+      <details class="qa">
+        <summary>ทดลองก่อนใช้เงินจริงได้ไหม<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="qa__a"><p>ควรเริ่มจากบัญชีเดโมหรือบัญชีเงินน้อยก่อน ดู<a href="forward-test.html">คู่มือ Forward Test</a> ส่วนการเปิดใช้งานบนบัญชีเดโม <span class="wait">รอข้อมูลจากเจ้าของ</span></p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="risk" aria-labelledby="risk-title">
+  <div class="wrap">
+    <div class="riskbox">
+      <h2 id="risk-title"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg>อ่านก่อนใช้เงินจริง: ความเสี่ยงของการใช้ EA</h2>
+      <div class="riskbox__cols">
+        <ul>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>อาจขาดทุนจนหมดเงินในบัญชี โดยเฉพาะเมื่อใช้เลเวอเรจสูงหรือมีเงินน้อยกว่าที่แนะนำ</span></li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ผล Backtest และผลในอดีตไม่ได้บอกว่าอนาคตจะออกมาแบบเดียวกัน</span></li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ช่วงข่าวแรง ราคาอาจกระโดด สเปรดกว้างขึ้น และออเดอร์อาจได้ราคาต่างจากที่ตั้งไว้</span></li>
+        </ul>
+        <ul>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ไฟดับ เน็ตหลุด หรือเซิร์ฟเวอร์ของโบรกเกอร์และ VPS มีปัญหา ทำให้ EA หยุดทำงานได้</span></li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ความเสี่ยงเฉพาะของสินค้าแต่ละตัว <span class="wait">รอเอกสารสินค้าจากเจ้าของ</span></span></li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>เนื้อหาในเว็บนี้ไม่ใช่คำแนะนำการลงทุน คุณเป็นผู้ตัดสินใจและรับผลเอง</span></li>
+        </ul>
+      </div>
+      <div class="btns"><a class="btn btn--outline" href="risk-disclosure.html">อ่านประกาศความเสี่ยงฉบับเต็ม <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="latest" aria-labelledby="latest-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="latest-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>บทความล่าสุด</h2>
+        <p>ความรู้เรื่อง MT5 VPS และการบริหารความเสี่ยง</p>
+      </div>
+      <a class="tlink" href="articles.html">ดูบทความทั้งหมด <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="posts">
+      <a class="post" href="article.html">
+        <div class="post__img"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><span class="badge badge--ex">ตัวอย่าง</span></div>
+        <div class="post__body">
+          <span class="post__meta">หมวดตัวอย่าง · วันที่ตัวอย่าง</span>
+          <h3>หัวข้อบทความตัวอย่าง 1</h3>
+          <p>ข้อความตัวอย่างสำหรับดูโครงการ์ด บทความจริงจะเขียนในเฟส 4</p>
+          <span class="tlink">อ่านต่อ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="post" href="article.html">
+        <div class="post__img"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><span class="badge badge--ex">ตัวอย่าง</span></div>
+        <div class="post__body">
+          <span class="post__meta">หมวดตัวอย่าง · วันที่ตัวอย่าง</span>
+          <h3>หัวข้อบทความตัวอย่าง 2 ที่ยาวกว่าใบอื่นเพื่อดูการตัดบรรทัด</h3>
+          <p>ข้อความตัวอย่างสำหรับดูโครงการ์ด บทความจริงจะเขียนในเฟส 4</p>
+          <span class="tlink">อ่านต่อ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="post" href="article.html">
+        <div class="post__img"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg><span class="badge badge--ex">ตัวอย่าง</span></div>
+        <div class="post__body">
+          <span class="post__meta">หมวดตัวอย่าง · วันที่ตัวอย่าง</span>
+          <h3>หัวข้อบทความตัวอย่าง 3</h3>
+          <p>ข้อความตัวอย่างสำหรับดูโครงการ์ด บทความจริงจะเขียนในเฟส 4</p>
+          <span class="tlink">อ่านต่อ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+<section class="contact yband" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact__grid">
+    <div class="contact__text">
+      <h2 id="contact-title">มีคำถามก่อนเริ่ม คุยกับทีมงานได้เลย</h2>
+      <p class="contact__sub">ทักมาทาง LINE ได้ทุกเรื่อง ตั้งแต่เลือกแพ็กเกจ เปิดบัญชี ไปจนถึงติดตั้ง EA บน MT5</p>
+      <ul class="chan">
+        <li><a href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><span class="tile tile--ink"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></span><span><b>LINE Official EA BULL</b><small>ทักแชตกับทีมงาน · ลิงก์รอข้อมูลจากเจ้าของ</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><span class="tile tile--ink"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></span><span><b>OpenChat EA BULL</b><small>ห้องพูดคุยของผู้ใช้ EA BULL</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></li>
+        <li><a href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener"><span class="tile tile--ink"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg></span><span><b>Facebook EA BULL</b><small class="nocaps">facebook.com/eabull.trading</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></li>
+      </ul>
+    </div>
+    <div class="contact__card cut dark">
+      <h3>ส่งข้อความหาทีมงาน</h3>
+      <p>บอกเราว่าตอนนี้อยู่ขั้นไหน ทีมงานจะแนะนำขั้นต่อไปให้</p>
+      <div class="contact__btns">
+        <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE คุยกับทีมงาน</a>
+        <a class="btn btn--openchat btn--block" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>เข้ากลุ่ม OpenChat</a>
+      </div>
+      <div class="contact__qr">
+        <div class="qr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3M14 21h1M21 14v1"/></svg><span>QR LINE<br>รอข้อมูล</span></div>
+        <div>
+          <b>สแกนเพิ่มเพื่อน LINE</b>
+          <p>เปิดกล้องมือถือหรือแอป LINE แล้วสแกน</p>
+        </div>
+      </div>
+      <div class="contact__ask">
+        <b>สิ่งที่ทีมงานจะถาม</b>
+        <ul class="checks">
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>เงินทุนที่ตั้งใจใช้ และรับความเสี่ยงได้แค่ไหน</li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>มีบัญชี MT5 แล้วหรือยัง ใช้โบรกเกอร์ไหน</li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>จะรัน EA บนคอม มือถือ หรือ VPS</li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ข้อสงสัยที่อยากถามก่อนเริ่ม</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <img src="assets/img/bull-wordmark.webp" width="720" height="100" alt="EA BULL">
+        <p>EA BULL ผู้ช่วยเทรดอัตโนมัติบน MetaTrader 5 · แข็งแกร่งด้วยวินัย บุกตลาดอย่างมีแผน</p>
+        <div class="ft__social">
+          <a class="ft__soc" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ" aria-label="LINE"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></a>
+          <a class="ft__soc" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener" aria-label="OpenChat"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></a>
+          <a class="ft__soc" href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg></a>
+        </div>
+      </div>
+      <div class="ft__cols">
+        <div>
+          <h2>คู่มือการใช้งาน</h2>
+          <ul>
+            <li><a href="how-to-install.html">วิธีติดตั้ง EA บน MT5</a></li>
+            <li><a href="open-mt5-account.html">เปิดบัญชีเทรด MT5</a></li>
+            <li><a href="deposit.html">ฝากเงินเข้าบัญชีเทรด</a></li>
+            <li><a href="mt5-login.html">ติดตั้งและล็อกอิน MT5</a></li>
+            <li><a href="vps-windows.html">VPS บน Windows</a></li>
+            <li><a href="vps-android.html">VPS บน Android</a></li>
+            <li><a href="vps-ios.html">VPS บน <span class="nocaps">iPhone</span> / <span class="nocaps">iPad</span></a></li>
+            <li><a href="tools.html">เครื่องคำนวณ Lot / Drawdown</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>หน้าในเว็บ</h2>
+          <ul>
+            <li><a href="home.html">หน้าแรก</a></li>
+            <li><a href="product-1.html">สินค้า</a></li>
+            <li><a href="backtest.html">Backtest</a></li>
+            <li><a href="forward-test.html">Forward Test</a></li>
+            <li><a href="pricing.html">แพ็กเกจ</a></li>
+            <li><a href="articles.html">บทความ</a></li>
+            <li><a href="go.html">ติดต่อ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>ข้อมูลและนโยบาย</h2>
+          <ul>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            <li><a href="risk-disclosure.html">ประกาศความเสี่ยง</a></li>
+            <li><a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a></li>
+            <li><a href="terms-of-use.html">ข้อกำหนดการใช้บริการ</a></li>
+            <li><a href="data-deletion.html">ขอลบข้อมูลส่วนบุคคล</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ft__risk">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg>
+      <p>การเทรดด้วย EA มีความเสี่ยงสูง อาจขาดทุนจนหมดเงินในบัญชี ผลทดสอบในอดีตไม่ได้บอกผลในอนาคต <a href="risk-disclosure.html">อ่านประกาศความเสี่ยงฉบับเต็ม</a></p>
+    </div>
+    <div class="ft__bottom">
+      <span>© 2026 EA BULL · สงวนลิขสิทธิ์</span>
+      <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a>
+      <a href="terms-of-use.html">ข้อกำหนดการใช้บริการ</a>
+      <button type="button" class="linkish" data-open-cookie>ตั้งค่าคุกกี้</button>
+      <a href="#top" class="ft__top-link">กลับขึ้นด้านบน <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5"/><path d="M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </div>
+</footer>
+<nav class="dock" aria-label="เมนูลัด">
+  <a data-dock="home" aria-current="page" href="home.html"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span>หน้าแรก</span></a>
+  <a data-dock="dash" href="#" data-wait="ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.2"/></svg></span><span>แดชบอร์ด</span></a>
+  <a data-dock="pricing" href="pricing.html"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span>แพ็กเกจ</span></a>
+  <a data-dock="guides" href="how-to-install.html"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3"/><path d="M8 7h8"/></svg></span><span>คู่มือ</span></a>
+  <a data-dock="line" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></span><span>LINE</span></a>
+</nav>
+<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="ติดต่อทีมงาน"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></button>
+<div class="quick dark" id="quick" role="dialog" aria-label="ติดต่อทีมงาน" hidden>
+  <div class="quick__head">
+    <b>คุยกับทีมงาน EA BULL</b>
+    <button type="button" class="quick__x" data-quick-close aria-label="ปิด"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <p>เลือกช่องทางที่สะดวก</p>
+  <div class="quick__btns">
+    <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE</a>
+    <a class="btn btn--openchat btn--block" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>เข้ากลุ่ม OpenChat</a>
+    <a class="btn btn--fb btn--block" href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg>Facebook EA BULL</a>
+  </div>
+  <a class="quick__go" href="go.html">หน้ารวมลิงก์เริ่มต้น <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+</div>
+
+<div class="cookie dark" id="cookie" role="dialog" aria-labelledby="cookie-title" hidden>
+  <div class="cookie__head">
+    <span class="tile tile--accent"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 3.5 3.5 3 3 0 0 0 3.5 3.5 3 3 0 0 0 2.5 2.5z"/><path d="M8.5 9.5h.01M8 15h.01M13 16h.01M12 12h.01"/></svg></span>
+    <h2 id="cookie-title">เว็บนี้ใช้คุกกี้</h2>
+    <button type="button" class="cookie__x" data-ck="close" aria-label="ปิด"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cookie__view" data-ck-view="intro">
+    <p data-ck-text="none">ตอนนี้ EA BULL ใช้เฉพาะคุกกี้ที่จำเป็นให้เว็บทำงาน เช่น จำค่าที่คุณเลือกในการ์ดนี้ ไม่มีคุกกี้วัดผลหรือโฆษณา</p>
+    <p data-ck-text="ga" hidden>เราใช้คุกกี้ที่จำเป็นให้เว็บทำงาน และขอใช้ Google Analytics นับจำนวนผู้เข้าชมแบบไม่ระบุตัวตน เลือกได้ว่าจะอนุญาตหรือไม่</p>
+    <a class="cookie__more" href="privacy-policy.html#cookies">อ่านนโยบายคุกกี้</a>
+    <div class="cookie__btns" data-ck-btns="none">
+      <button type="button" class="btn btn--primary btn--sm" data-ck="accept">ตกลง</button>
+    </div>
+    <div class="cookie__btns" data-ck-btns="ga" hidden>
+      <button type="button" class="btn btn--outline btn--sm" data-ck="reject">ปฏิเสธ</button>
+      <button type="button" class="btn btn--primary btn--sm" data-ck="accept">ยอมรับทั้งหมด</button>
+      <button type="button" class="btn btn--light btn--sm" data-ck="settings">ตั้งค่า <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="cookie__view" data-ck-view="settings" hidden>
+    <div class="ckrow">
+      <div><b>คุกกี้ที่จำเป็น</b><p>ให้เว็บทำงานและจำค่าที่คุณเลือกในการ์ดนี้</p></div>
+      <span class="ckrow__lock">เปิดอยู่เสมอ</span>
+    </div>
+    <div class="ckrow">
+      <div><b>วิเคราะห์การใช้งาน</b><p>Google Analytics นับผู้เข้าชมและหน้าที่เปิด · แสดงเมื่อใส่รหัส GA4 แล้วเท่านั้น</p></div>
+      <label class="switch"><input type="checkbox" data-ck-cat="analytics"><span></span><i class="sr-only">อนุญาตคุกกี้วิเคราะห์การใช้งาน</i></label>
+    </div>
+    <p class="cookie__note">เปลี่ยนใจได้ทุกเมื่อจากลิงก์ "ตั้งค่าคุกกี้" ท้ายเว็บ</p>
+    <div class="cookie__btns">
+      <button type="button" class="btn btn--outline btn--sm" data-ck="back"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>ย้อนกลับ</button>
+      <button type="button" class="btn btn--primary btn--sm" data-ck="save">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/bull.js?v=202610291603" defer></script>
+</body>
+</html>

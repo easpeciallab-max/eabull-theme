@@ -1,0 +1,191 @@
+<!--{"title": "เข้า VPS จาก iPhone และ iPad", "desc": "คู่มือเชื่อมต่อ Windows VPS จาก iPhone และ iPad ด้วยแอป Windows App ของ Microsoft จาก App Store เพิ่มเครื่องด้วย IP ตั้งบัญชีผู้ใช้ แล้วเข้าไปเช็ก MT5 และ EA ได้ทุกที่", "nav": ["guides", "vps-ios"], "dock": "guides", "cta": {"title": "เข้า VPS จากมือถือไม่ได้ ทักทีมงานได้", "sub": "แคปหน้าจอข้อความที่ขึ้นในแอป Windows App ส่งมาทาง LINE ทีมงานจะช่วยดูว่าติดที่ขั้นไหน"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>VPS บน <span class="nocaps">iPhone / iPad</span></li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>เข้า VPS จาก <span class="nocaps">iPhone</span> และ <span class="nocaps">iPad</span></h1>
+        <p class="lead">ใช้แอป Windows App ของ Microsoft จาก App Store เชื่อมต่อ Windows VPS จาก <span class="nocaps">iPhone</span> หรือ <span class="nocaps">iPad</span> ดูว่า MT5 และ EA ยังทำงานอยู่ หรือแก้ปัญหาเร่งด่วนได้จากที่ไหนก็ได้</p>
+        <div class="phead__meta">
+          <span>{{i:clock}}ใช้เวลาราว 10 นาที</span>
+          <span>{{i:tablet}}สำหรับ <span class="nocaps">iPhone</span> และ <span class="nocaps">iPad</span></span>
+          <span>{{i:list}}6 ขั้นตอน</span>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">ติดตั้ง Windows App {{i:chevron-right}} แตะ + {{i:chevron-right}} เลือก PC {{i:chevron-right}} ใส่ IP {{i:chevron-right}} ตั้งบัญชีผู้ใช้ {{i:chevron-right}} บันทึกแล้วเชื่อมต่อ</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2>{{bars}}ก่อนเริ่ม</h2>
+        <p class="lead">ใช้ข้อมูลเข้า VPS ชุดเดียวกับที่ใช้บนคอม และ MT5 กับ EA ควรติดตั้งบน VPS ไว้แล้ว ถ้ายังไม่ได้ทำ เริ่มจากคู่มือ VPS บน Windows ก่อน</p>
+        <p class="muted">ผู้ให้บริการ VPS ที่แนะนำ {{wait}}</p>
+        <div class="btns">
+          <a class="btn btn--outline btn--sm" href="vps-windows.html">คู่มือ VPS บน Windows</a>
+        </div>
+      </div>
+      <div class="prep">
+        <h3>{{i:check}}ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>IP ของ VPS</dt><dd>ตัวเลขชุด เช่น 000.000.000.000 จากอีเมลของผู้ให้บริการ</dd></div>
+          <div><dt>ชื่อผู้ใช้</dt><dd>ส่วนใหญ่เป็น Administrator</dd></div>
+          <div><dt>รหัสผ่าน</dt><dd>รหัสที่ผู้ให้บริการ VPS ส่งมา</dd></div>
+          <div><dt><span class="nocaps">iPhone / iPad</span></dt><dd>ใช้ App Store ได้ และต่ออินเทอร์เน็ตที่เสถียร</dd></div>
+        </dl>
+        <p class="note note--warn">{{i:alert}}<span>อย่าส่งรหัสผ่าน VPS ให้ใครในแชต คนที่มีรหัสนี้เข้าไปปิด MT5 หรือเปลี่ยนค่า EA ได้</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>ติดตั้ง Windows App</a></li>
+        <li><a href="#step-2"><b>02</b>เปิดแอปแล้วแตะ +</a></li>
+        <li><a href="#step-3"><b>03</b>เลือกเพิ่ม PC</a></li>
+        <li><a href="#step-4"><b>04</b>ใส่ IP ของ VPS</a></li>
+        <li><a href="#step-5"><b>05</b>ตั้งบัญชีผู้ใช้และชื่อเครื่อง</a></li>
+        <li><a href="#step-6"><b>06</b>บันทึกแล้วเชื่อมต่อ</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนเข้า VPS จาก iPhone และ iPad</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>ติดตั้งแอป Windows App</h3>
+            <p>เปิด App Store ค้นหา <b>Windows App</b> ที่ผู้พัฒนาเป็น Microsoft Corporation แล้วกดรับแอป แอปเดียวกันใช้ได้ทั้งบน <span class="nocaps">iPhone</span> และ <span class="nocaps">iPad</span></p>
+            <div class="grid g2 mt-16">
+              <div class="app">
+                <div class="app__head"><span class="tile">{{i:tablet}}</span><span><b>Windows App</b><small>Microsoft Corporation · App Store</small></span></div>
+                <p>แอปทางการของ Microsoft สำหรับเชื่อมต่อเครื่อง Windows จากระยะไกล ใช้กับ VPS ได้</p>
+                <a class="btn btn--light btn--sm" href="https://apps.apple.com/app/windows-app/id714464092" target="_blank" rel="noopener">เปิด App Store {{i:external}}</a>
+              </div>
+            </div>
+            <div class="shot shot--tall">{{i:download}}<span><b>ภาพ 01 · หน้า Windows App ใน App Store</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>เปิดแอปแล้วแตะปุ่ม +</h3>
+            <p>เปิด Windows App ครั้งแรกอาจมีหน้าแนะนำหรือขออนุญาตเข้าถึงเครือข่าย อ่านแล้วกดผ่านไป จากนั้นแตะปุ่ม <b>+</b> เพื่อเพิ่มเครื่องที่จะเชื่อมต่อ</p>
+            <div class="shot shot--tall">{{i:plus}}<span><b>ภาพ 02 · ปุ่ม + ในหน้าแรกของแอป</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>เลือกเพิ่ม PC</h3>
+            <p>จากเมนูที่ขึ้นมา เลือก <b>Add PC</b> เพื่อเพิ่มเครื่อง VPS ด้วย IP หน้าตั้งค่าเครื่องใหม่จะเปิดขึ้น</p>
+            <div class="shot shot--tall">{{i:monitor}}<span><b>ภาพ 03 · เมนู Add PC</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ใส่ IP ของ VPS</h3>
+            <p>แตะช่อง <b>PC Name</b> แล้วพิมพ์ IP ของ VPS ถ้าผู้ให้บริการให้หมายเลขพอร์ตมาด้วย ให้พิมพ์ต่อท้ายแบบ IP:พอร์ต</p>
+            <div class="shot shot--tall">{{i:globe}}<span><b>ภาพ 04 · ช่อง PC Name</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>ตั้งบัญชีผู้ใช้และชื่อเครื่อง</h3>
+            <p>ที่ช่อง <b>Credentials</b> หรือ User Account แตะเพิ่มบัญชีผู้ใช้ ใส่ชื่อผู้ใช้และรหัสผ่านของ VPS แล้วบันทึก จากนั้นตั้ง <b>Friendly Name</b> เป็นชื่อที่จำง่าย เช่น VPS EA BULL</p>
+            <p class="note note--warn">{{i:alert}}<span>บันทึกรหัสผ่านไว้ในแอปเฉพาะเครื่องส่วนตัวที่ตั้งรหัสหรือ Face ID ไว้แล้ว</span></p>
+            <div class="shot shot--tall">{{i:user}}<span><b>ภาพ 05 · ช่อง Credentials และ Friendly Name</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>บันทึกแล้วแตะเครื่องเพื่อเชื่อมต่อ</h3>
+            <p>แตะ <b>Save</b> เครื่อง VPS จะขึ้นเป็นการ์ดในหน้าแรกของแอป แตะการ์ดนั้นเพื่อเชื่อมต่อ ครั้งแรกจะมีหน้าต่างเตือนเรื่องใบรับรองของเครื่องปลายทาง ตรวจว่าเป็น IP ของ VPS ที่คุณเช่าแล้วแตะยอมรับเพื่อไปต่อ</p>
+            <p>เมื่อเข้าได้จะเห็นหน้าจอ Windows ของ VPS เปิด MT5 แล้วดูว่าปุ่ม Algo Trading ยังเป็นสีเขียว</p>
+            <p class="note note--bad">{{i:x}}<span><b>ห้ามกด Sign out หรือ Shut down ใน VPS</b> MT5 จะปิดตามและ EA หยุดทำงาน ออกด้วยการตัดการเชื่อมต่อจากแถบเมนูของแอปแทน</span></p>
+            <div class="shot shot--tall">{{i:server}}<span><b>ภาพ 06 · การ์ดเครื่อง VPS ในหน้าแรกของแอป</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="รายละเอียดเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#ios-tips">เคล็ดลับใช้งานบน <span class="nocaps">iPhone</span> และ <span class="nocaps">iPad</span></a></li>
+        <li><a href="#ios-check">เช็กก่อนออกจากแอป</a></li>
+        <li><a href="#ios-trouble">เชื่อมต่อไม่ได้ ทำอย่างไร</a></li>
+        <li><a href="#ios-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="ios-tips">เคล็ดลับใช้งานบน <span class="nocaps">iPhone</span> และ <span class="nocaps">iPad</span></h2>
+      <ul>
+        <li>บน <span class="nocaps">iPhone</span> หมุนจอเป็นแนวนอน หน้าจอ VPS จะใหญ่ขึ้นและกดปุ่มใน MT5 ได้ง่ายกว่า</li>
+        <li>บน <span class="nocaps">iPad</span> ต่อเมาส์หรือคีย์บอร์ดบลูทูธได้ ใช้งาน MT5 บน VPS ได้ใกล้เคียงกับคอม</li>
+        <li>ปุ่มใน MT5 เล็กจนแตะยาก ให้ใช้สองนิ้วถ่างเพื่อซูม หรือสลับเป็นโหมดเมาส์จากแถบเมนูของแอป</li>
+        <li>ออกจาก VPS ด้วยการตัดการเชื่อมต่อ (Disconnect) จากแถบเมนูของแอป ไม่ใช่กด Sign out ใน Windows</li>
+        <li>ถ้าสลับไปแอปอื่นนาน ๆ <span class="nocaps">iOS</span> อาจตัดการเชื่อมต่อเอง ไม่เป็นไร MT5 บน VPS ยังทำงานต่อ แค่แตะการ์ดเครื่องเพื่อเข้าใหม่</li>
+      </ul>
+
+      <h2 id="ios-check">เช็กก่อนออกจากแอป</h2>
+      <ul class="checks">
+        <li>{{i:check}}MT5 บน VPS ยังเปิดอยู่ มุมขวาล่างไม่ขึ้น No connection</li>
+        <li>{{i:check}}ปุ่ม Algo Trading บนแถบเครื่องมือเป็นสีเขียว</li>
+        <li>{{i:check}}มุมขวาบนของกราฟที่ติด EA แสดงชื่อ EA และไอคอนไม่เป็นสีเทา</li>
+        <li>{{i:check}}ออกด้วยการตัดการเชื่อมต่อ ไม่ได้กด Sign out</li>
+      </ul>
+
+      <h2 id="ios-trouble">เชื่อมต่อไม่ได้ ทำอย่างไร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">เชื่อมต่อไม่ได้หรือหมดเวลา</th><td data-label="สาเหตุที่พบบ่อย">IP หรือพอร์ตผิด VPS ปิดอยู่ หรืออินเทอร์เน็ตไม่เสถียร</td><td data-label="วิธีแก้">ตรวจ IP อีกครั้ง เปลี่ยนไปใช้ Wi-Fi แล้วลองใหม่ ถ้ายังไม่ได้ ถามผู้ให้บริการ VPS</td></tr>
+            <tr><th scope="row">รหัสผ่านไม่ถูกต้อง</th><td data-label="สาเหตุที่พบบ่อย">แป้นพิมพ์ขึ้นต้นด้วยตัวพิมพ์ใหญ่เอง หรือมีเว้นวรรคเกินมา</td><td data-label="วิธีแก้">แก้ไขบัญชีผู้ใช้ในการ์ดเครื่อง แล้วพิมพ์ชื่อผู้ใช้และรหัสผ่านใหม่อย่างระวัง</td></tr>
+            <tr><th scope="row">หน้าจอเล็กมาก กดไม่โดน</th><td data-label="สาเหตุที่พบบ่อย">ความละเอียดจอของ VPS สูงกว่าจอมือถือ</td><td data-label="วิธีแก้">หมุนจอเป็นแนวนอน ซูมด้วยสองนิ้ว หรือใช้ <span class="nocaps">iPad</span> กับเมาส์</td></tr>
+            <tr><th scope="row">EA หยุดหลังออกจากแอป</th><td data-label="สาเหตุที่พบบ่อย">กด Sign out ใน VPS</td><td data-label="วิธีแก้">เชื่อมต่อใหม่ เปิด MT5 เช็กปุ่ม Algo Trading แล้วออกด้วยการตัดการเชื่อมต่อ</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="ios-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ปิดแอปแล้ว EA ยังทำงานไหม{{i:plus}}</summary><div class="qa__a"><p>ทำงาน ถ้าออกด้วยการตัดการเชื่อมต่อ เพราะ MT5 รันอยู่บน VPS ไม่ได้รันบน <span class="nocaps">iPhone</span> หรือ <span class="nocaps">iPad</span> ของคุณ</p></div></details>
+      <details class="qa"><summary>ต้องใช้ <span class="nocaps">iOS</span> เวอร์ชันไหน{{i:plus}}</summary><div class="qa__a"><p>ดูเวอร์ชันที่รองรับในหน้า Windows App บน App Store ถ้ากดรับแอปไม่ได้ ให้อัปเดตเครื่องก่อน</p></div></details>
+      <details class="qa"><summary>เข้า VPS จากมือถือขณะที่คอมเชื่อมต่ออยู่ได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ได้ แต่ส่วนใหญ่ใช้ชื่อผู้ใช้เดียวกันได้ทีละเครื่อง เมื่อมือถือเชื่อมต่อ หน้าต่าง Remote Desktop บนคอมจะหลุด MT5 บน VPS ยังทำงานต่อ</p></div></details>
+      <details class="qa"><summary>ใช้แค่แอป MT5 บน <span class="nocaps">iPhone</span> แทน VPS ได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ไม่ได้ แอป MT5 บน <span class="nocaps">iOS</span> รัน EA ไม่ได้ ใช้ได้แค่ดูบัญชี ดู<a href="mt5-login.html">คู่มือติดตั้งและล็อกอิน MT5</a></p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="vps-windows.html"><span class="tile">{{i:monitor}}</span><span><b>VPS บน Windows</b><small>เชื่อมต่อด้วย Remote Desktop</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="vps-android.html"><span class="tile">{{i:phone}}</span><span><b>VPS บน Android</b><small>เชื่อมต่อด้วยแอป Windows App</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="mt5-login.html"><span class="tile">{{i:download}}</span><span><b>ติดตั้งและล็อกอิน MT5</b><small>ดูบัญชีจากแอปบนมือถือ</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,168 @@
+<!--{"title": "ใช้ Windows VPS รัน EA ด้วย Remote Desktop", "desc": "คู่มือเชื่อมต่อ Windows VPS จากคอมด้วย Remote Desktop ติดตั้ง MT5 บน VPS และปล่อยให้ EA BULL ทำงานต่อแม้ปิดคอมที่บ้าน ทีละขั้นพร้อมจุดที่ต้องระวัง", "nav": ["guides", "vps-windows"], "dock": "guides", "cta": {"title": "ตั้ง VPS ไม่ผ่าน ทักทีมงานได้", "sub": "ส่งภาพหน้าจอที่ติดมาทาง LINE ทีมงานจะช่วยดูว่าค้างที่ขั้นไหน"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>VPS บน Windows</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>รัน EA บน Windows VPS ด้วย Remote Desktop</h1>
+        <p class="lead">VPS คือคอมพิวเตอร์เช่าที่เปิดอยู่ตลอดในศูนย์ข้อมูล ย้าย MT5 ไปไว้ที่นั่น EA ก็ทำงานต่อได้แม้คอมที่บ้านปิดหรือไฟดับ คู่มือนี้พาเชื่อมต่อครั้งแรกจนถึงปล่อย MT5 ทิ้งไว้</p>
+        <div class="phead__meta">
+          <span>{{i:clock}}ใช้เวลาราว 15 นาที</span>
+          <span>{{i:monitor}}สำหรับคอม Windows</span>
+          <span>{{i:list}}6 ขั้นตอน</span>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">เปิด Remote Desktop {{i:chevron-right}} ใส่ IP {{i:chevron-right}} ใส่ชื่อผู้ใช้ {{i:chevron-right}} ยืนยันเครื่อง {{i:chevron-right}} ลง MT5 {{i:chevron-right}} ปล่อยทำงาน</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2>{{bars}}ก่อนเริ่ม</h2>
+        <p class="lead">ข้อมูลเข้า VPS มาจากผู้ให้บริการ VPS ที่คุณเช่า เก็บไว้ในที่ปลอดภัย อย่าส่งรหัสผ่านให้ใครในแชต</p>
+        <p class="muted">ถ้ายังไม่มี VPS ทักทีมงานเพื่อถามสเปกที่เหมาะกับ MT5 ได้ ส่วนผู้ให้บริการที่แนะนำ {{wait}}</p>
+      </div>
+      <div class="prep">
+        <h3>{{i:check}}ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>IP ของ VPS</dt><dd>ตัวเลขชุด เช่น 000.000.000.000 จากอีเมลของผู้ให้บริการ</dd></div>
+          <div><dt>ชื่อผู้ใช้</dt><dd>ส่วนใหญ่เป็น Administrator</dd></div>
+          <div><dt>รหัสผ่าน</dt><dd>รหัสที่ผู้ให้บริการส่งมา</dd></div>
+          <div><dt>คอม Windows</dt><dd>มีโปรแกรม Remote Desktop Connection อยู่แล้วในเครื่อง</dd></div>
+        </dl>
+        <p class="note note--info">{{i:info}}<span>ใช้มือถือแทนคอมได้ ดูคู่มือ <a href="vps-android.html">Android</a> หรือ <a href="vps-ios.html"><span class="nocaps">iPhone / iPad</span></a></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>เปิด Remote Desktop</a></li>
+        <li><a href="#step-2"><b>02</b>ใส่ IP ของ VPS</a></li>
+        <li><a href="#step-3"><b>03</b>ใส่ชื่อผู้ใช้และรหัสผ่าน</a></li>
+        <li><a href="#step-4"><b>04</b>ยืนยันเครื่องครั้งแรก</a></li>
+        <li><a href="#step-5"><b>05</b>ติดตั้ง MT5 บน VPS</a></li>
+        <li><a href="#step-6"><b>06</b>ปิดหน้าต่างให้ถูกวิธี</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนเชื่อมต่อ Windows VPS</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>เปิดโปรแกรม Remote Desktop Connection</h3>
+            <p>กดปุ่ม Windows แล้วพิมพ์ <b>Remote Desktop</b> เลือกโปรแกรม Remote Desktop Connection ที่ขึ้นมา หรือกด Windows + R แล้วพิมพ์ <span class="nocaps">mstsc</span></p>
+            <div class="shot">{{i:monitor}}<span><b>ภาพ 01 · ค้นหา Remote Desktop ในเมนู Start</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>ใส่ IP ของ VPS ในช่อง Computer</h3>
+            <p>พิมพ์ IP ที่ได้จากผู้ให้บริการลงในช่อง Computer แล้วกด Show Options ถ้าอยากบันทึกชื่อผู้ใช้ไว้ใช้ครั้งหน้า</p>
+            <div class="shot">{{i:monitor}}<span><b>ภาพ 02 · ช่อง Computer</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>ใส่ชื่อผู้ใช้และรหัสผ่าน</h3>
+            <p>กด Connect หน้าต่างขอรหัสจะขึ้นมา ถ้าชื่อผู้ใช้ที่แสดงไม่ใช่ของ VPS ให้กด More choices แล้วเลือก Use a different account จากนั้นใส่ชื่อผู้ใช้และรหัสผ่านของ VPS</p>
+            <p class="note note--warn">{{i:alert}}<span>ติ๊ก Remember me เฉพาะคอมส่วนตัวที่ไม่มีคนอื่นใช้</span></p>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ยืนยันเครื่องในการเชื่อมต่อครั้งแรก</h3>
+            <p>ครั้งแรกจะมีหน้าต่างเตือนเรื่องใบรับรองของเครื่องปลายทาง ตรวจว่าเป็น IP ของ VPS ที่คุณเช่าแล้วกด Yes หน้าจอ Windows ของ VPS จะเปิดขึ้นมาในหน้าต่างใหม่</p>
+            <div class="shot">{{i:shield}}<span><b>ภาพ 04 · หน้าต่างยืนยันใบรับรอง</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>ติดตั้ง MT5 บน VPS แล้วติดตั้ง EA</h3>
+            <p>เปิดเบราว์เซอร์ในหน้าจอ VPS ดาวน์โหลด MT5 จากเว็บทางการ ล็อกอินบัญชีเทรด แล้วติดตั้ง EA ตามคู่มือเดียวกับบนคอม</p>
+            <ul>
+              <li><a href="mt5-login.html">คู่มือติดตั้งและล็อกอิน MT5</a></li>
+              <li><a href="how-to-install.html">คู่มือติดตั้ง EA บน MT5</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>ปิดหน้าต่าง Remote Desktop ให้ถูกวิธี</h3>
+            <p>กดกากบาทที่แถบด้านบนของหน้าต่าง Remote Desktop เพื่อตัดการเชื่อมต่อ VPS ยังเปิดอยู่และ MT5 ทำงานต่อ</p>
+            <p class="note note--bad">{{i:x}}<span><b>ห้ามกด Sign out หรือ Shut down ใน VPS</b> MT5 จะปิดตามและ EA หยุดทำงาน</span></p>
+            <p class="note note--tip">{{i:bulb}}<span>ล็อกอินบัญชีเดียวกันในแอป MT5 บนมือถือ ไว้ดูว่า EA ยังทำงานอยู่โดยไม่ต้องเข้า VPS ทุกครั้ง</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="ข้อมูลเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#vps-check">เช็กหลังตั้งค่าเสร็จ</a></li>
+        <li><a href="#vps-trouble">เชื่อมต่อไม่ได้ ทำอย่างไร</a></li>
+        <li><a href="#vps-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="vps-check">เช็กหลังตั้งค่าเสร็จ</h2>
+      <ul class="checks">
+        <li>{{i:check}}MT5 บน VPS ล็อกอินบัญชีเทรดแล้ว มุมขวาล่างไม่ขึ้น No connection</li>
+        <li>{{i:check}}ปุ่ม Algo Trading บนแถบเครื่องมือเป็นสีเขียว</li>
+        <li>{{i:check}}มุมขวาบนของกราฟที่ติดตั้ง EA ไม่มีเครื่องหมายหยุดทำงาน</li>
+        <li>{{i:check}}ปิดหน้าต่าง Remote Desktop ด้วยกากบาท ไม่ได้กด Sign out</li>
+      </ul>
+      <h2 id="vps-trouble">เชื่อมต่อไม่ได้ ทำอย่างไร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ขึ้นว่าเชื่อมต่อไม่ได้</th><td data-label="สาเหตุที่พบบ่อย">พิมพ์ IP ผิด หรือ VPS ยังไม่พร้อมใช้</td><td data-label="วิธีแก้">ตรวจ IP อีกครั้ง หรือถามผู้ให้บริการ VPS</td></tr>
+            <tr><th scope="row">รหัสผ่านไม่ถูกต้อง</th><td data-label="สาเหตุที่พบบ่อย">ใช้ชื่อผู้ใช้ของคอมที่บ้านแทน</td><td data-label="วิธีแก้">กด More choices แล้วเลือก Use a different account</td></tr>
+            <tr><th scope="row">EA หยุดหลังปิดหน้าต่าง</th><td data-label="สาเหตุที่พบบ่อย">กด Sign out ใน VPS</td><td data-label="วิธีแก้">เชื่อมต่อใหม่ เปิด MT5 แล้วปิดหน้าต่างด้วยกากบาท</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 id="vps-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ปิดคอมที่บ้านแล้ว EA ยังทำงานไหม{{i:plus}}</summary><div class="qa__a"><p>ทำงาน เพราะ MT5 รันอยู่บน VPS ไม่ได้รันบนคอมของคุณ</p></div></details>
+      <details class="qa"><summary>ต้องเช่า VPS สเปกแค่ไหน{{i:plus}}</summary><div class="qa__a"><p>{{wait}} ทักทีมงานเพื่อถามสเปกที่ใช้กับ EA BULL ได้</p></div></details>
+      <details class="qa"><summary>ใช้ VPS เครื่องเดียวรันหลายบัญชีได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ติดตั้ง MT5 แยกโฟลเดอร์ได้หลายชุด แต่จำนวนบัญชีที่ใช้สิทธิ์ EA ได้ขึ้นกับแพ็กเกจ {{wait}}</p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="vps-android.html"><span class="tile">{{i:phone}}</span><span><b>VPS บน Android</b><small>เชื่อมต่อด้วยแอป Windows App</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="vps-ios.html"><span class="tile">{{i:tablet}}</span><span><b>VPS บน <span class="nocaps">iPhone / iPad</span></b><small>เชื่อมต่อด้วยแอป Windows App</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="how-to-install.html"><span class="tile">{{i:download}}</span><span><b>ติดตั้ง EA บน MT5</b><small>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

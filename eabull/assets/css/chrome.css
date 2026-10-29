@@ -1,0 +1,1633 @@
+/*
+ * EA BULL · Site chrome "Glass Sky" (docs/design.md · ต้นแบบ dev/mockup/glass.css)
+ * กรอบเว็บ · header แคปซูลกระจก + แผ่นเมนูมือถือ · แผงติดต่อ · footer กระจกสว่าง · แถบล่างมือถือ · ปุ่ม LINE ลอย
+ * โหลดหลัง style.css + components.css · ใช้ token ใน :root ของ style.css (ส่วน 43) · ทับกฎ header/footer เดิมของธีมต้นแบบ
+ *
+ * ข้อควรระวัง: ห้ามใส่ backdrop-filter / transform / filter บน .site-frame .site-header .header-bar
+ * เพราะจะกลายเป็นกรอบอ้างอิงของ position: fixed (แผ่นเมนูมือถือ) · กระจกจึงอยู่บน ::before แทน
+ */
+
+:root {
+	--ch-ink-2: #33415F;
+	--ch-muted: #5A6785;
+	--ch-hairline: rgba(10, 46, 102, 0.1);
+	--ch-glass-solid: rgba(255, 255, 255, 0.94);
+	--dock-h: 64px;
+}
+
+/* ==========================================================
+   0) ลิงก์ข้ามไปเนื้อหา
+   ========================================================== */
+.skip-link {
+	position: fixed;
+	top: 12px;
+	left: -9999px;
+	z-index: 1000;
+	padding: 10px 20px;
+	border-radius: 999px;
+	background: var(--grad-gold);
+	color: var(--navy);
+	font-family: var(--font-display);
+	font-weight: 500;
+	box-shadow: var(--shadow-lift);
+}
+
+.skip-link:focus {
+	left: 12px;
+	background: #FFFFFF;
+	color: var(--navy);
+	outline: 2px solid var(--navy);
+}
+
+/* ==========================================================
+   1) กรอบเว็บ · ไม่มีขอบ เงา หรือแผงกระจกรอบนอก (เจ้าของไม่ต้องการกรอบซ้อนกรอบ 6 ต.ค. 2026)
+   จอ ≥ 821px แค่จัดความกว้างเนื้อหาไว้กลางจอ · ≤ 820px เต็มจอ
+   ========================================================== */
+.site-frame {
+	position: relative;
+	overflow-x: clip;
+}
+
+@media (min-width: 821px) {
+	.site-frame {
+		width: min(1200px, calc(100% - 32px));
+		margin: 20px auto 28px;
+		padding: 0;
+	}
+}
+
+@media (max-width: 820px) {
+	.site-frame {
+		width: 100%;
+		margin: 0;
+		padding: 10px 10px 14px;
+	}
+}
+
+/* ==========================================================
+   2) Header · แคปซูลกระจกลอย (sticky) · โลโก้ซ้าย เมนูกลาง ปุ่มทองขวา
+   ========================================================== */
+.site-header,
+.site-header.scrolled {
+	position: sticky;
+	top: 12px;
+	z-index: 130;
+	display: block;
+	height: auto;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+.header-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	min-height: 62px;
+	padding: 8px 8px 8px 16px;
+	border: 1px solid var(--glass-line);
+	border-radius: 999px;
+	box-shadow: var(--shadow-soft);
+	transition: box-shadow 0.25s ease;
+}
+
+.header-bar::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: inherit;
+	background: var(--glass-strong);
+	-webkit-backdrop-filter: var(--glass-blur);
+	backdrop-filter: var(--glass-blur);
+	pointer-events: none;
+}
+
+.site-header.scrolled .header-bar {
+	box-shadow: var(--shadow-lift);
+}
+
+/* ---------- โลโก้ + ชื่อเว็บ + คำโปรย ---------- */
+.site-header .brand,
+.brand--foot {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	flex: 0 0 auto;
+	min-width: 0;
+	color: var(--navy);
+	text-decoration: none;
+}
+
+.site-header .brand:hover,
+.brand--foot:hover {
+	color: var(--navy);
+}
+
+.brand-logo-img {
+	display: block;
+	width: 52px;
+	height: auto;
+	flex: 0 0 auto;
+}
+
+.brand-text {
+	display: grid;
+	min-width: 0;
+	line-height: 1.15;
+}
+
+.brand-text strong {
+	font-family: var(--font-display);
+	font-size: 1.02rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: var(--navy);
+}
+
+.brand-text > span {
+	overflow: hidden;
+	font-size: 0.72rem;
+	color: var(--ch-muted);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---------- ปุ่มของ chrome (ทอง / กรมท่า) · ข้อความซ้าย วงกลมไอคอนขวา ---------- */
+.chrome-btn.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: 52px;
+	padding: 6px 7px 6px 22px;
+	font-family: var(--font-display);
+	font-size: 0.98rem;
+	font-weight: 500;
+	line-height: 1.3;
+	letter-spacing: 0;
+	text-align: left;
+	text-decoration: none;
+	white-space: normal;
+}
+
+.chrome-btn .btn-ic {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+}
+
+.chrome-btn .btn-ic .icon {
+	width: 18px;
+	height: 18px;
+}
+
+.btn-fire.chrome-btn .btn-ic {
+	background: rgba(255, 255, 255, 0.45);
+}
+
+.btn-dark.chrome-btn .btn-ic {
+	background: rgba(255, 255, 255, 0.14);
+	color: var(--gold-1);
+}
+
+.chrome-btn--sm.btn {
+	gap: 10px;
+	min-height: 44px;
+	padding: 4px 5px 4px 18px;
+	font-size: 0.9rem;
+	white-space: nowrap;
+}
+
+.chrome-btn--sm .btn-ic {
+	width: 34px;
+	height: 34px;
+}
+
+.chrome-btn--sm .btn-ic .icon {
+	width: 16px;
+	height: 16px;
+}
+
+/* ปุ่ม "แดชบอร์ด" ท้าย header: น้ำเงินปีกทึบ ตัวขาว · วงกลมขาว ไอคอนน้ำเงิน (ปุ่มติดต่อบน header เอาออก 24 ต.ค. 2026 · LINE ยังมีปุ่มลอยและแถบล่าง) */
+.header-dash.btn,
+.header-dash.btn:visited {
+	flex: 0 0 auto;
+	border-color: transparent;
+	background: var(--blue);
+	color: #FFFFFF;
+}
+
+.header-dash.btn:hover,
+.header-dash.btn:focus-visible {
+	background: #094C8F;
+	color: #FFFFFF;
+}
+
+.header-dash .btn-ic {
+	background: #FFFFFF;
+	color: var(--blue);
+}
+
+/* ---------- เมนูหลัก (จอกว้าง ≥ 1081px) ---------- */
+@media (min-width: 1081px) {
+	.site-header .site-nav {
+		position: static;
+		display: flex;
+		align-items: center;
+		gap: 0;
+		margin: 0 auto;
+		padding: 0;
+		background: transparent;
+	}
+
+
+	.site-header .nav-list {
+		display: flex;
+		align-items: center;
+		gap: 2px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-header .nav-list > li {
+		position: relative;
+		display: block;
+		height: auto;
+	}
+
+	.site-header .nav-list > li > a {
+		position: relative;
+		display: block;
+		padding: 8px 14px;
+		border-radius: 999px;
+		font-family: var(--font-display);
+		font-size: 0.88rem;
+		font-weight: 500;
+		line-height: 1.5;
+		letter-spacing: 0;
+		color: var(--ch-ink-2);
+		white-space: nowrap;
+		transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+	}
+
+	.site-header .nav-list > li > a:hover {
+		background: rgba(255, 255, 255, 0.75);
+		color: var(--navy);
+	}
+
+	/* หน้าปัจจุบัน: แคปซูลขาว (ไม่มีจุดใต้) */
+	.site-header .nav-list > .current-menu-item > a,
+	.site-header .nav-list > .current-menu-ancestor > a,
+	.site-header .nav-list > .current-menu-parent > a,
+	.site-header .nav-list > .current_page_item > a,
+	.site-header .nav-list > li > a[aria-current="page"] {
+		background: #FFFFFF;
+		color: var(--navy);
+		box-shadow: 0 4px 12px rgba(10, 46, 102, 0.08);
+	}
+
+	/* หัวข้อที่มีเมนูย่อย: ลูกศรเล็ก */
+	.site-header .nav-list > .menu-item-has-children > a {
+		padding-right: 30px;
+	}
+
+	.site-header .nav-list > .menu-item-has-children > a::before {
+		display: block;
+		right: 14px;
+		width: 6px;
+		height: 6px;
+		border-right-width: 1.5px;
+		border-bottom-width: 1.5px;
+		opacity: 0.7;
+	}
+
+	/* เมนูย่อย: แผงกระจก */
+	.site-header .nav-list .sub-menu {
+		position: absolute;
+		top: calc(100% + 14px);
+		left: 50%;
+		z-index: 30;
+		display: grid;
+		gap: 2px;
+		width: 260px;
+		margin: 0;
+		padding: 8px;
+		list-style: none;
+		border: 1px solid var(--glass-line);
+		border-radius: 20px;
+		background: rgba(255, 255, 255, 0.86);
+		box-shadow: var(--shadow-lift);
+		-webkit-backdrop-filter: var(--glass-blur);
+		backdrop-filter: var(--glass-blur);
+		opacity: 0;
+		visibility: hidden;
+		transform: translate(-50%, 6px);
+		transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+	}
+
+	.site-header .nav-list .sub-menu::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: -16px;
+		height: 16px;
+	}
+
+	.site-header .nav-list li.is-open > .sub-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%, 0);
+	}
+
+	.site-header .nav-list .sub-menu a {
+		display: block;
+		padding: 10px 14px;
+		border-radius: 14px;
+		font-size: 0.9rem;
+		font-weight: 400;
+		line-height: 1.35;
+		letter-spacing: 0;
+		color: var(--ch-ink-2);
+	}
+
+	.site-header .nav-list .sub-menu a:hover,
+	.site-header .nav-list .sub-menu a:focus-visible {
+		background: var(--sky-1);
+		color: var(--navy);
+	}
+
+	.site-header .nav-list .sub-menu .current-menu-item > a {
+		background: #FFFFFF;
+		color: var(--navy);
+		font-weight: 600;
+		box-shadow: 0 2px 8px rgba(10, 46, 102, 0.06);
+	}
+}
+
+@media (min-width: 1081px) and (hover: hover) and (pointer: fine) {
+	.site-header .nav-list > li:hover > .sub-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%, 0);
+	}
+}
+
+/* ขีดใต้ลิงก์แบบเดิมของธีมต้นแบบ: ไม่ใช้ */
+.site-header .nav-list a::after {
+	display: none;
+}
+
+.site-header .nav-list .menu-item-has-children > a::before {
+	border-color: currentColor;
+}
+
+/* 1081 ถึง 1240px: ซ่อนคำโปรยข้างโลโก้ ให้เมนูมีที่พอ */
+@media (min-width: 1081px) and (max-width: 1240px) {
+	.site-header .brand-text > span {
+		display: none;
+	}
+}
+
+/* ---------- ปุ่มเปิดเมนู (สามขีด ไม่มีวงกลม) ---------- */
+.site-header .nav-toggle {
+	display: none;
+}
+
+/* ไม่มี JS แผ่นเมนูเปิดไม่ได้ · ซ่อนปุ่มที่กดแล้วไม่เกิดอะไร (แถบล่าง + คอลัมน์ลิงก์ท้ายเว็บยังพาไปทุกหน้า) */
+.no-js .nav-toggle {
+	display: none !important;
+}
+
+/* แถวโซเชียลในแผ่นเมนู (แสดงเฉพาะโหมดแผ่นเมนู) */
+.site-header .nav-social {
+	display: none;
+}
+
+/* ==========================================================
+   3) แผ่นเมนูกระจก (≤ 1080px) · position: fixed ใต้แคปซูล (JS ตั้ง --sheet-top/left/right)
+   - แผ่นที่ปิดอยู่ไม่รับการแตะ (pointer-events + visibility)
+   - หัวข้อที่มีเมนูย่อย = เปิด/ปิดเมนูย่อย ไม่ปิดแผ่น
+   ========================================================== */
+@media (max-width: 1080px) {
+	.site-header .header-bar {
+		gap: 10px;
+	}
+
+	.site-header .brand {
+		margin-right: auto;
+	}
+
+	.site-header .nav-toggle {
+		position: relative;
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		flex: 0 0 auto;
+		width: 44px;
+		height: 44px;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 10px;
+		background: transparent;
+		box-shadow: none;
+		color: var(--navy);
+		cursor: pointer;
+	}
+
+	.site-header .nav-toggle span {
+		display: block;
+		width: 26px;
+		height: 3px;
+		border-radius: 3px;
+		background: var(--navy);
+	}
+
+	/* เปิดแผ่นเมนู: สามขีดเป็นกากบาท (ระยะเลื่อน = สูงขีด 3 + ช่องว่าง 5) */
+	.nav-open .site-header .nav-toggle span:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+
+	.nav-open .site-header .nav-toggle span:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
+
+	.site-header .site-nav {
+		position: fixed;
+		top: var(--sheet-top, 84px);
+		left: var(--sheet-left, 12px);
+		right: var(--sheet-right, 12px);
+		z-index: 2;
+		display: block;
+		width: auto;
+		max-width: 440px;
+		height: auto;
+		max-height: calc(100vh - var(--sheet-top, 84px) - 16px);
+		max-height: calc(100dvh - var(--sheet-top, 84px) - 16px);
+		margin: 0 0 0 auto;
+		padding: 12px;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		border: 1px solid var(--glass-line);
+		border-radius: 26px;
+		background: rgba(255, 255, 255, 0.9);
+		box-shadow: var(--shadow-lift);
+		-webkit-backdrop-filter: var(--glass-blur);
+		backdrop-filter: var(--glass-blur);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transform: translateY(-6px);
+		transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+	}
+
+	.nav-open .site-header .site-nav {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transform: none;
+	}
+
+	.site-header .nav-list {
+		display: grid;
+		gap: 2px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-header .nav-list > li {
+		display: block;
+		height: auto;
+	}
+
+	.site-header .nav-list a {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 46px;
+		padding: 11px 16px;
+		border-radius: 16px;
+		font-family: var(--font-display);
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.35;
+		letter-spacing: 0;
+		color: var(--ch-ink-2);
+		transition: background-color 0.15s ease, color 0.15s ease;
+	}
+
+	.site-header .nav-list a:hover,
+	.site-header .nav-list a:focus-visible {
+		background: var(--sky-1);
+		color: var(--navy);
+	}
+
+	.site-header .nav-list .current-menu-item > a,
+	.site-header .nav-list .current-menu-ancestor > a,
+	.site-header .nav-list .current_page_item > a,
+	.site-header .nav-list a[aria-current="page"] {
+		background: #FFFFFF;
+		color: var(--navy);
+		font-weight: 600;
+		box-shadow: 0 4px 12px rgba(10, 46, 102, 0.07);
+	}
+
+	.site-header .nav-list .menu-item-has-children > a {
+		padding-right: 48px;
+	}
+
+	.site-header .nav-list .menu-item-has-children > a::before {
+		display: block;
+		right: 20px;
+		left: auto;
+	}
+
+	.site-header .nav-list .sub-menu {
+		position: static;
+		display: none;
+		width: auto;
+		margin: 4px 0 8px 14px;
+		padding: 2px 0 2px 10px;
+		list-style: none;
+		border: 0;
+		border-left: 2px solid rgba(230, 184, 0, 0.45);
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+		opacity: 1;
+		visibility: inherit;
+		transform: none;
+	}
+
+	.site-header .nav-list li.is-open > .sub-menu {
+		display: grid;
+		gap: 2px;
+		left: auto;
+		opacity: 1;
+		visibility: inherit;
+		transform: none;
+	}
+
+	.site-header .nav-list .sub-menu::before {
+		display: none;
+	}
+
+	.site-header .nav-list .sub-menu a {
+		min-height: 42px;
+		padding: 9px 14px;
+		font-family: var(--font-body);
+		font-size: 0.94rem;
+		font-weight: 400;
+	}
+
+	.site-header .nav-list .sub-menu .current-menu-item > a {
+		padding-left: 26px;
+		font-weight: 600;
+	}
+
+	.site-header .nav-social {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 10px 0 0;
+		padding: 12px 4px 2px;
+		border-top: 1px solid var(--ch-hairline);
+	}
+
+	.site-header .nav-social .social-link {
+		display: inline-grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border: 1px solid var(--glass-line);
+		border-radius: 50%;
+		background: #FFFFFF;
+		color: var(--navy);
+		box-shadow: 0 4px 12px rgba(10, 46, 102, 0.06);
+	}
+
+	.site-header .nav-social .social-link .icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	.site-header .language-switcher {
+		margin-left: 0;
+	}
+}
+
+/* ==========================================================
+   4) จอเล็ก · แคปซูลชิดขอบ ปุ่มทองซ่อนเมื่อมีแถบล่าง (แถบล่างมีปุ่ม LINE แล้ว)
+   ========================================================== */
+@media (max-width: 820px) {
+	.site-header,
+	.site-header.scrolled {
+		top: 8px;
+	}
+
+	.header-bar {
+		min-height: 58px;
+		padding: 6px 6px 6px 12px;
+	}
+
+	.has-dock .header-dash {
+		display: none;
+	}
+}
+
+@media (max-width: 420px) {
+	.brand-logo-img {
+		width: 46px;
+	}
+
+	.brand-text strong {
+		font-size: 0.96rem;
+	}
+
+	.brand-text > span {
+		font-size: 0.68rem;
+	}
+
+	/* ไม่มีแถบล่าง: ปุ่มแดชบอร์ดเหลือเฉพาะไอคอน (ชื่อปุ่มยังอ่านได้ด้วยโปรแกรมอ่านหน้าจอ) */
+	body:not(.has-dock) .header-dash.btn {
+		gap: 0;
+		padding: 4px;
+	}
+
+	body:not(.has-dock) .header-dash > span:first-child {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		white-space: nowrap;
+	}
+}
+
+/* ==========================================================
+   5) แผงติดต่อ "Let's talk" (.chrome-cta) · ข้อความ + รายการช่องทางซ้าย · การ์ดปุ่มขวา · ลูกแก้วมุมขวาล่าง
+   ========================================================== */
+.chrome-cta {
+	margin-top: 14px;
+	scroll-margin-top: calc(var(--header-h) + 14px);
+}
+
+.ctc-panel.glass-panel {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+	gap: clamp(20px, 4vw, 48px);
+	align-items: start;
+	overflow: hidden;
+}
+
+.ctc-orb {
+	right: -50px;
+	bottom: -50px;
+	z-index: 0;
+	width: 160px;
+	height: 160px;
+}
+
+.ctc-copy {
+	position: relative;
+	z-index: 1;
+	min-width: 0;
+}
+
+.chrome-cta .kicker {
+	display: inline-block;
+	margin: 0 0 10px;
+	line-height: 1.5;
+}
+
+/* ป้ายภาษาไทย: ไม่เว้นระยะตัวอักษร ไม่แปลงตัวพิมพ์ */
+.chrome-cta .kicker--th {
+	font-size: 0.88rem;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+.ctc-title {
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: clamp(1.45rem, 2.6vw, 2rem);
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: 0;
+	color: var(--ink);
+	text-wrap: balance;
+}
+
+.ctc-lead {
+	margin: 12px 0 0;
+	max-width: 46em;
+	color: var(--ch-muted);
+	line-height: 1.7;
+}
+
+.ctc-list {
+	display: grid;
+	gap: 12px;
+	margin: 26px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ctc-list a,
+.ctc-hours {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	color: var(--ch-ink-2);
+	text-decoration: none;
+	line-height: 1.45;
+}
+
+.ctc-list a:hover {
+	color: var(--navy);
+}
+
+.ctc-list a:hover .ctc-list-label {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.ctc-list .tile {
+	width: 40px;
+	height: 40px;
+	border-radius: 12px;
+}
+
+.ctc-list .tile .icon {
+	width: 20px;
+	height: 20px;
+}
+
+.ctc-hours {
+	align-items: flex-start;
+}
+
+.ctc-hours-text {
+	display: grid;
+	gap: 2px;
+	padding-top: 1px;
+	font-size: 0.92rem;
+}
+
+.ctc-hours-text strong {
+	font-weight: 600;
+	color: var(--ink);
+}
+
+/* การ์ดขวา */
+.ctc-card {
+	position: relative;
+	z-index: 1;
+	min-width: 0;
+	padding: 26px;
+	border: 1px solid var(--glass-line);
+	border-radius: 26px;
+	background: rgba(255, 255, 255, 0.86);
+	box-shadow: var(--shadow-lift);
+}
+
+.ctc-card-title {
+	margin: 0 0 4px;
+	font-family: var(--font-display);
+	font-size: 1.15rem;
+	font-weight: 600;
+	line-height: 1.35;
+	color: var(--ink);
+}
+
+.ctc-card-text {
+	margin: 0 0 18px;
+	font-size: 0.88rem;
+	color: var(--ch-muted);
+}
+
+.ctc-actions {
+	display: grid;
+	gap: 10px;
+}
+
+.ctc-btn.btn {
+	width: 100%;
+}
+
+.chrome-cta .admin-hint {
+	margin: 12px 0 0;
+	font-size: 0.8rem;
+	line-height: 1.5;
+	color: var(--gold-text);
+}
+
+/* QR LINE · รูปจริงคู่คำอธิบาย (แสดงตลอด) */
+.ctc-qr {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: 14px;
+	padding: 12px;
+	border: 1px solid rgba(6, 199, 85, 0.28);
+	border-radius: 18px;
+	background: #F3FCF6;
+}
+
+.ctc-qr img {
+	display: block;
+	flex: 0 0 auto;
+	width: 116px;
+	height: 116px;
+	padding: 6px;
+	border-radius: 12px;
+	background: #FFFFFF;
+	box-shadow: 0 4px 12px rgba(10, 46, 102, 0.06);
+}
+
+.ctc-qr-text {
+	min-width: 0;
+}
+
+.ctc-qr-title {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0 0 4px;
+	font-family: var(--font-display);
+	font-size: 0.98rem;
+	font-weight: 600;
+	color: #04813A;
+}
+
+.ctc-qr-title .icon {
+	width: 18px;
+	height: 18px;
+}
+
+.ctc-qr-sub {
+	margin: 0;
+	font-size: 0.84rem;
+	line-height: 1.55;
+	color: var(--ch-ink-2);
+}
+
+/* สิ่งที่ทีมงานจะถาม */
+.ctc-ask {
+	margin-top: 18px;
+	padding-top: 16px;
+	border-top: 1px solid var(--ch-hairline);
+}
+
+.ctc-ask-title {
+	margin: 0;
+	font-family: var(--font-display);
+	font-size: 0.96rem;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--ink);
+}
+
+.ctc-ask-text {
+	margin: 4px 0 10px;
+	font-size: 0.84rem;
+	line-height: 1.55;
+	color: var(--ch-muted);
+}
+
+.ctc-ask-list {
+	display: grid;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.88rem;
+	line-height: 1.55;
+	color: var(--ch-ink-2);
+}
+
+.ctc-ask-list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+}
+
+.ctc-ask-list .icon {
+	flex: 0 0 auto;
+	width: 18px;
+	height: 18px;
+	margin-top: 2px;
+	color: var(--gold-4);
+}
+
+@media (max-width: 820px) {
+	.ctc-panel.glass-panel {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ctc-orb {
+		width: 120px;
+		height: 120px;
+		right: -40px;
+		bottom: -40px;
+	}
+}
+
+@media (max-width: 480px) {
+	.ctc-card {
+		padding: 20px 16px;
+		border-radius: 22px;
+	}
+
+	.chrome-btn.btn {
+		padding-left: 18px;
+	}
+}
+
+/* ==========================================================
+   6) Footer · แผงกระจกสว่างในกรอบเว็บ
+   ========================================================== */
+.site-footer.site-foot {
+	position: relative;
+	margin: 14px 0 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--ch-muted);
+	overflow: visible;
+}
+
+.site-footer.site-foot::before {
+	content: none;
+	display: none;
+}
+
+.foot.glass-panel {
+	margin-top: 14px;
+	padding: clamp(24px, 4vw, 40px);
+}
+
+.site-foot > .foot.glass-panel:first-child {
+	margin-top: 0;
+}
+
+.foot-top {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 2.3fr);
+	gap: 28px 48px;
+}
+
+.foot-brand {
+	min-width: 0;
+}
+
+.foot-about {
+	margin: 14px 0 0;
+	max-width: 30em;
+	font-size: 0.88rem;
+	line-height: 1.65;
+	color: var(--ch-muted);
+}
+
+.foot-social {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 16px;
+}
+
+.foot-social .social-link {
+	display: inline-grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid var(--glass-line);
+	border-radius: 50%;
+	background: #FFFFFF;
+	color: var(--navy);
+	box-shadow: 0 4px 12px rgba(10, 46, 102, 0.06);
+	transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.foot-social .social-link:hover {
+	border-color: var(--gold-3);
+	color: var(--blue);
+}
+
+.foot-social .social-link .icon {
+	width: 19px;
+	height: 19px;
+}
+
+.foot-cols {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 24px 32px;
+	min-width: 0;
+}
+
+.foot-col {
+	min-width: 0;
+}
+
+.foot-col-title {
+	margin: 0 0 12px;
+	font-family: var(--font-display);
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0;
+	color: var(--ink);
+}
+
+.foot-list {
+	display: grid;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.foot-list a {
+	display: inline-block;
+	padding: 2px 0;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	color: var(--ch-muted);
+	text-decoration: none;
+	transition: color 0.15s ease;
+}
+
+.foot-list a:hover {
+	color: var(--navy);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* คำเตือนความเสี่ยง · กล่องทองอ่อน (ต้นแบบ .risk) */
+.foot-risk {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-top: 28px;
+	padding: 18px 22px;
+	border: 1px solid rgba(230, 184, 0, 0.35);
+	border-radius: 20px;
+	background: rgba(255, 249, 224, 0.8);
+}
+
+.foot-risk .tile {
+	flex: 0 0 auto;
+	width: 36px;
+	height: 36px;
+	border-radius: 12px;
+}
+
+.foot-risk .tile .icon {
+	width: 18px;
+	height: 18px;
+}
+
+.foot-risk p {
+	margin: 0;
+	font-size: 0.82rem;
+	line-height: 1.7;
+	color: #655000;
+}
+
+/* แถวลิขสิทธิ์ */
+.foot-bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px 24px;
+	margin-top: 22px;
+	padding-top: 18px;
+	border-top: 1px solid var(--ch-hairline);
+	font-size: 0.82rem;
+	line-height: 1.5;
+	color: var(--ch-muted);
+}
+
+.foot-copy {
+	margin: 0;
+}
+
+.foot-legal {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 18px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.foot-legal a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 0;
+	color: var(--ch-muted);
+	text-decoration: none;
+}
+
+.foot-legal a:hover {
+	color: var(--navy);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.foot-top-link .icon {
+	width: 14px;
+	height: 14px;
+	transform: rotate(-90deg);
+}
+
+@media (max-width: 960px) {
+	.foot-top {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 560px) {
+	.foot-cols {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 22px 18px;
+	}
+
+	.foot-risk {
+		padding: 16px;
+	}
+
+	.foot-bar {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+@media (max-width: 360px) {
+	.foot-cols {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* ==========================================================
+   7) แถบล่างมือถือ (≤ 820px) · แถบกรมท่าทึบ ทรงแคปซูล 5 ช่องกว้างเท่ากัน · ช่องปัจจุบันขาวทึบ · ช่อง LINE หน้าตาเหมือนช่องอื่น
+   ช่องปัจจุบันมาจาก PHP (aria-current) · เว้นที่ท้ายหน้าด้วย padding-bottom ของ body.has-dock
+   ========================================================== */
+.mobile-app-nav.dock {
+	display: none;
+}
+
+@media (max-width: 820px) {
+	body.has-dock {
+		padding-bottom: calc(var(--dock-h) + 22px + env(safe-area-inset-bottom));
+	}
+
+	.mobile-app-nav.dock {
+		position: fixed;
+		left: 12px;
+		right: 12px;
+		bottom: calc(12px + env(safe-area-inset-bottom));
+		z-index: 120;
+		display: flex;
+		gap: 4px;
+		max-width: 520px;
+		margin: 0 auto;
+		padding: 6px;
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		border-radius: 999px; /* ทรงแคปซูลแบบ header */
+		background: var(--navy); /* แถบกรมท่าทึบ (เจ้าของเลือก 6 ต.ค. 2026) */
+		box-shadow: none;
+		transform: none;
+		animation: none;
+	}
+
+	.dock-key {
+		position: relative;
+		display: grid;
+		flex: 1 1 0;
+		justify-items: center;
+		align-content: center;
+		gap: 3px;
+		min-width: 0;
+		min-height: 54px;
+		padding: 6px 2px;
+		border-radius: 999px;
+		color: rgba(255, 255, 255, 0.82);
+		font-size: 0.7rem;
+		font-weight: 500;
+		line-height: 1.2;
+		text-align: center;
+		text-decoration: none;
+		-webkit-tap-highlight-color: transparent;
+		transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease, min-height 0.2s ease, gap 0.2s ease;
+	}
+
+	.dock-cap {
+		display: grid;
+		place-items: center;
+	}
+
+	.dock-cap .icon {
+		width: 22px;
+		height: 22px;
+	}
+
+	.dock-label {
+		max-width: 100%;
+		max-height: 1.4em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		transition: opacity 0.18s ease, max-height 0.2s ease;
+	}
+
+	/* หน้าปัจจุบัน: ช่องขาวทึบบนแถบน้ำเงิน ตัวกรมท่า · เห็นชัดว่าอยู่หน้าไหน */
+	.dock-key.is-active {
+		background: #FFFFFF;
+		color: var(--navy);
+		font-weight: 600;
+	}
+
+	.dock-key.is-active .dock-cap {
+		color: var(--blue);
+	}
+
+	.dock-key.is-going {
+		background: rgba(255, 255, 255, 0.18);
+		color: #FFFFFF;
+	}
+
+	.dock-key.is-press {
+		transform: scale(0.95);
+	}
+
+	/* ปุ่มติดต่อท้ายแถบ · หน้าตาเหมือนช่องอื่น (เจ้าของไม่ต้องการให้เด่นกว่า) */
+
+	@media (hover: hover) {
+		.dock-key:not(.is-active):hover {
+			background: rgba(255, 255, 255, 0.12);
+			color: #FFFFFF;
+		}
+
+	}
+
+}
+
+/* ==========================================================
+   8) ปุ่ม LINE ลอย · ทองกลม + วงแหวนกระจก · ซ่อนบนมือถือเมื่อมีแถบล่าง
+   ========================================================== */
+.line-fab,
+.float-line {
+	position: fixed;
+	right: 22px;
+	bottom: calc(22px + env(safe-area-inset-bottom));
+	z-index: 95;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	width: auto;
+	height: auto;
+	padding: 6px;
+	border: 1px solid var(--glass-line);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.55);
+	box-shadow: var(--shadow-lift);
+	color: var(--navy);
+	font-family: var(--font-display);
+	font-size: 0.95rem;
+	font-weight: 500;
+	text-decoration: none;
+	-webkit-backdrop-filter: blur(14px) saturate(140%);
+	backdrop-filter: blur(14px) saturate(140%);
+	transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.line-fab:hover,
+.float-line:hover {
+	background: rgba(255, 255, 255, 0.7);
+	color: var(--navy);
+	transform: translateY(-2px);
+}
+
+.line-fab .fab-core,
+.float-line .fab-core {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: 52px;
+	height: 52px;
+	padding: 0;
+	border: 1px solid rgba(194, 154, 0, 0.55);
+	border-radius: 50%;
+	background: var(--grad-gold);
+	color: var(--navy);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 8px 18px rgba(194, 154, 0, 0.3);
+}
+
+.fab-core .icon {
+	width: 26px;
+	height: 26px;
+}
+
+.float-line {
+	padding-right: 20px;
+}
+
+.float-line .float-line-text {
+	display: inline;
+}
+
+@media (max-width: 820px) {
+	.has-dock .line-fab,
+	.has-dock .float-line {
+		display: none;
+	}
+
+	/* ไม่มีแถบล่าง: ปุ่มกลมกลับมาบนมือถือ (style.css ซ่อน .line-fab ไว้ที่ ≤ 760px) */
+	body:not(.has-dock) .line-fab,
+	body:not(.has-dock) .float-line {
+		display: inline-flex;
+		right: 14px;
+		bottom: calc(14px + env(safe-area-inset-bottom));
+		padding: 5px;
+	}
+
+	body:not(.has-dock) .float-line .float-line-text {
+		display: none;
+	}
+
+	body:not(.has-dock) .fab-core {
+		width: 48px;
+		height: 48px;
+	}
+}
+
+/* ==========================================================
+   9) การเข้าถึง · ลดการเคลื่อนไหว · เบราว์เซอร์ที่ไม่รองรับ backdrop-filter
+   ========================================================== */
+.site-frame :focus-visible,
+.mobile-app-nav.dock :focus-visible,
+.line-fab:focus-visible,
+.float-line:focus-visible {
+	outline: 2px solid var(--blue);
+	outline-offset: 3px;
+}
+
+.dock-key:focus-visible,
+.line-fab:focus-visible,
+.float-line:focus-visible,
+.chrome-btn:focus-visible,
+.site-header .nav-toggle:focus-visible {
+	border-radius: 999px;
+}
+
+/* แถบล่างเป็นกรมท่า: วงโฟกัสสีขาวให้เห็นบนพื้นเข้ม */
+.mobile-app-nav.dock :focus-visible {
+	outline-color: #FFFFFF;
+	outline-offset: -3px;
+	border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.header-bar,
+	.site-header .site-nav,
+	.site-header .nav-list a,
+	.site-header .nav-list .sub-menu,
+	.dock-key,
+	.dock-label,
+	.line-fab,
+	.float-line,
+	.foot-social .social-link {
+		transition: none;
+	}
+
+	.line-fab:hover,
+	.float-line:hover,
+	.chrome-btn.btn:hover,
+	.dock-key.is-press {
+		transform: none;
+	}
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+	.header-bar::before,
+	.site-header .site-nav,
+	.site-header .nav-list .sub-menu,
+	.mobile-app-nav.dock,
+	.ctc-card {
+		background: var(--ch-glass-solid);
+	}
+
+	.line-fab,
+	.float-line {
+		background: rgba(255, 255, 255, 0.92);
+	}
+}
+
+/* ==========================================================
+   ปุ่ม LINE ลอยใช้สีเขียวของ LINE (เจ้าของขอ 6 ต.ค. 2026) · header และแถบล่างอยู่ในบล็อกสีแบรนด์ท้ายไฟล์
+   ========================================================== */
+
+.line-fab .fab-core,
+.float-line .fab-core {
+	border-color: transparent;
+	background: var(--line-green);
+	color: #FFFFFF;
+	box-shadow: 0 8px 18px rgba(6, 199, 85, 0.32);
+}
+
+/* ==========================================================
+   สีตามแบรนด์ของแต่ละช่องทาง (เจ้าของขอ 6 ต.ค. 2026: ไม่ต้องกลืนกับธีม ใช้สีดั้งเดิมที่คนจำได้)
+   LINE / OpenChat เขียว LINE · Facebook น้ำเงิน Facebook · อีเมล กรมท่า
+   ========================================================== */
+:root {
+	--brand-facebook: #1877F2;
+	--brand-facebook-dark: #0E5FCC;
+}
+
+/* ไอคอนวงกลมใต้โลโก้ footer และในแผ่นเมนูมือถือ */
+.social-link.social-link--facebook {
+	border-color: transparent;
+	background: var(--brand-facebook);
+	color: #FFFFFF;
+}
+
+.social-link.social-link--mail {
+	border-color: transparent;
+	background: var(--navy);
+	color: #FFFFFF;
+}
+
+.social-link.social-link--instagram {
+	border-color: transparent;
+	background: linear-gradient(45deg, #F58529, #DD2A7B 55%, #8134AF);
+	color: #FFFFFF;
+}
+
+.social-link.social-link--tiktok {
+	border-color: transparent;
+	background: #000000;
+	color: #FFFFFF;
+}
+
+.social-link.social-link--youtube {
+	border-color: transparent;
+	background: #FF0000;
+	color: #FFFFFF;
+}
+
+.foot-social .social-link[class*="social-link--"]:hover {
+	border-color: transparent;
+	color: #FFFFFF;
+	filter: brightness(1.08);
+}
+
+/* กระเบื้องไอคอนในรายการช่องทางของแผงติดต่อ */
+.tile.tile--line {
+	background: var(--line-green);
+	color: #FFFFFF;
+}
+
+.tile.tile--openchat {
+	background: #E6F9EE;
+	color: #04813A;
+}
+
+.tile.tile--facebook {
+	background: var(--brand-facebook);
+	color: #FFFFFF;
+}
+
+.tile.tile--mail {
+	background: var(--navy);
+	color: #FFFFFF;
+}
+
+/* ปุ่มในการ์ดติดต่อ: LINE เขียวทึบ · OpenChat ขาวขอบเขียว */
+.ctc-btn.btn.is-line,
+.ctc-btn.btn.is-line:visited {
+	border-color: transparent;
+	background: var(--line-green);
+	box-shadow: 0 8px 20px rgba(6, 199, 85, 0.28);
+	color: #FFFFFF;
+}
+
+.ctc-btn.btn.is-line:hover,
+.ctc-btn.btn.is-line:focus-visible {
+	background: var(--line-green-dark);
+	color: #FFFFFF;
+}
+
+.ctc-btn.btn.is-line .btn-ic {
+	background: #FFFFFF;
+	color: var(--line-green);
+}
+
+.ctc-btn--openchat.btn,
+.ctc-btn--openchat.btn:visited {
+	border: 1.5px solid var(--line-green);
+	background: #FFFFFF;
+	box-shadow: none;
+	color: #04813A;
+}
+
+.ctc-btn--openchat.btn:hover,
+.ctc-btn--openchat.btn:focus-visible {
+	background: #F3FCF6;
+	color: #04813A;
+}
+
+.ctc-btn--openchat .btn-ic {
+	background: #E6F9EE;
+	color: #04813A;
+}
+
+
+/* footer · ลิงก์ไปคำเตือนฉบับเต็มต่อท้ายคำเตือนแบบสั้น */
+.foot-risk-more {
+	font-weight: 600;
+	color: var(--gold-text);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	white-space: nowrap;
+}
+
+/* footer · จุดเด่นใต้คำอธิบาย */
+.foot-points {
+	display: grid;
+	gap: 6px;
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.86rem;
+	color: var(--ch-ink-2);
+}
+
+.foot-points li {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	line-height: 1.5;
+}
+
+.foot-points .icon {
+	flex: 0 0 auto;
+	width: 16px;
+	height: 16px;
+	margin-top: 3px;
+	color: var(--line-green);
+}
+
+
+/* ==========================================================
+   ปุ่มทุกปุ่มที่ลิงก์ไป LINE OA (/ti/p/ หรือ lin.ee) เป็นสีเขียว LINE ทั้งเว็บ (เจ้าของขอ 6 ต.ค. 2026)
+   ครอบคลุมปุ่มในหน้าแรก การ์ดแพ็กเกจ หัวเพจ ปุ่มในเนื้อหา ([eabull_line]) · ไม่รวม OpenChat (/ti/g2/)
+   ========================================================== */
+a.btn[href*="/ti/p/"],
+a.btn[href*="lin.ee/"],
+a.btn[href*="/ti/p/"]:visited,
+a.btn[href*="lin.ee/"]:visited {
+	border-color: transparent !important;
+	background: var(--line-green) !important;
+	color: #FFFFFF !important;
+}
+
+a.btn[href*="/ti/p/"]:hover,
+a.btn[href*="lin.ee/"]:hover,
+a.btn[href*="/ti/p/"]:focus-visible,
+a.btn[href*="lin.ee/"]:focus-visible {
+	background: var(--line-green-dark) !important;
+	color: #FFFFFF !important;
+}
+
+a.btn[href*="/ti/p/"] :is(.btn-ic, .hm-btn-ic),
+a.btn[href*="lin.ee/"] :is(.btn-ic, .hm-btn-ic) {
+	background: #FFFFFF !important;
+	color: var(--line-green) !important;
+}
+
+a.btn[href*="/ti/p/"] > svg.icon,
+a.btn[href*="lin.ee/"] > svg.icon {
+	color: #FFFFFF !important;
+}

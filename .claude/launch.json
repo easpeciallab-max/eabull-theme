@@ -1,0 +1,36 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "eabull-mockup",
+      "runtimeExecutable": "py",
+      "runtimeArgs": [
+        "-3",
+        "-m",
+        "http.server",
+        "8790",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "D:/EA VIDEO/ea-bull-repo/dev/mockup"
+      ],
+      "port": 8790
+    },
+    {
+      "name": "eabull-preview",
+      "runtimeExecutable": "C:/Users/THANAWUT HR/AppData/Local/Microsoft/WinGet/Packages/PHP.PHP.8.4_Microsoft.Winget.Source_8wekyb3d8bbwe/php.exe",
+      "runtimeArgs": [
+        "-d",
+        "extension_dir=C:/Users/THANAWUT HR/AppData/Local/Microsoft/WinGet/Packages/PHP.PHP.8.4_Microsoft.Winget.Source_8wekyb3d8bbwe/ext",
+        "-d",
+        "extension=mbstring",
+        "-d",
+        "extension=gd",
+        "-S",
+        "localhost:8791",
+        "dev/preview/router.php"
+      ],
+      "port": 8791
+    }
+  ]
+}

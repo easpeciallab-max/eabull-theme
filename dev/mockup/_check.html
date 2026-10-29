@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- Dev helper: loads every mockup page at 375 / 820 / 1366 px in an iframe and
+     checks for horizontal overflow, missing H1, duplicate H1, images without
+     alt or size, and external links without noopener. Open /_check.html. -->
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ตรวจต้นแบบ</title>
+<style>
+  body { margin: 24px; background: #0B0B0C; color: #F4F4F5; font: 15px/1.6 system-ui, sans-serif; }
+  table { border-collapse: collapse; } td, th { padding: 4px 10px; border-bottom: 1px solid #2E2E33; text-align: left; }
+  .ok { color: #3DD68C; } .bad { color: #FF6B6B; }
+  iframe { position: absolute; left: -99999px; top: 0; border: 0; height: 900px; }
+</style>
+</head>
+<body>
+<h1>ตรวจต้นแบบ</h1>
+<p id="state">กำลังตรวจ…</p>
+<table><thead><tr><th>หน้า</th><th>375</th><th>820</th><th>1366</th><th>อื่น ๆ</th></tr></thead><tbody id="out"></tbody></table>
+<script>
+var PAGES = ['index', 'home', 'product-1', 'product-2', 'product-3', 'pricing', 'backtest', 'forward-test',
+  'how-to-install', 'open-mt5-account', 'deposit', 'mt5-login', 'vps-windows', 'vps-android', 'vps-ios', 'tools',
+  'risk-disclosure', 'about', 'privacy-policy', 'terms-of-use', 'data-deletion', 'go', 'articles', 'article', 'search', '404'];
+var WIDTHS = [375, 820, 1366];
+var results = window.checkResults = [];
+
+function load(page, w) {
+  return new Promise(function (resolve) {
+    var f = document.createElement('iframe');
+    f.style.width = w + 'px';
+    f.onload = function () {
+      var d = f.contentDocument;
+      (d.fonts ? d.fonts.ready : Promise.resolve()).then(function () {
+        setTimeout(function () {
+          var de = d.documentElement;
+          var over = de.scrollWidth - de.clientWidth;
+          var wide = [];
+          if (over > 0) {
+            d.querySelectorAll('body *').forEach(function (el) {
+              var r = el.getBoundingClientRect();
+              if (r.right > de.clientWidth + 1 && wide.length < 3 && getComputedStyle(el).position !== 'fixed') wide.push(el.tagName.toLowerCase() + '.' + (el.className || '').toString().split(' ')[0]);
+            });
+          }
+          var extra = [];
+          if (w === 1366) {
+            var h1 = d.querySelectorAll('h1').length;
+            if (h1 !== 1) extra.push('h1=' + h1);
+            d.querySelectorAll('img').forEach(function (im) {
+              if (!im.hasAttribute('alt') || !im.getAttribute('width')) extra.push('img ' + im.getAttribute('src'));
+            });
+            d.querySelectorAll('a[href^="http"]').forEach(function (a) {
+              if (!/noopener/.test(a.rel)) extra.push('noopener ' + a.href);
+            });
+            if (/[–—]/.test(d.body.innerText)) extra.push('มี dash');
+          }
+          f.remove();
+          resolve({ over: over, wide: wide, extra: extra });
+        }, 250);
+      });
+    };
+    f.src = page + '.html?shot';
+    document.body.appendChild(f);
+  });
+}
+
+(async function () {
+  var out = document.getElementById('out');
+  var bad = 0;
+  for (var i = 0; i < PAGES.length; i++) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + PAGES[i] + '</td>';
+    var extra = [];
+    for (var j = 0; j < WIDTHS.length; j++) {
+      var r = await load(PAGES[i], WIDTHS[j]);
+      var td = document.createElement('td');
+      td.className = r.over > 0 ? 'bad' : 'ok';
+      td.textContent = r.over > 0 ? ('+' + r.over + 'px ' + r.wide.join(' ')) : 'ok';
+      if (r.over > 0) bad++;
+      tr.appendChild(td);
+      extra = extra.concat(r.extra);
+      results.push({ page: PAGES[i], w: WIDTHS[j], over: r.over, wide: r.wide, extra: r.extra });
+    }
+    var te = document.createElement('td');
+    te.className = extra.length ? 'bad' : 'ok';
+    te.textContent = extra.length ? extra.join(' · ') : 'ok';
+    if (extra.length) bad++;
+    tr.appendChild(te);
+    out.appendChild(tr);
+  }
+  document.getElementById('state').textContent = bad ? 'พบปัญหา ' + bad + ' จุด' : 'ผ่านทุกหน้า';
+  window.checkDone = true;
+})();
+</script>
+</body>
+</html>

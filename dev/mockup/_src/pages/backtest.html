@@ -1,0 +1,255 @@
+<!--{"title": "Backtest: ทดสอบ EA ย้อนหลังด้วย Strategy Tester", "desc": "ผล Backtest ของ EA BULL พร้อมเงื่อนไขการทดสอบ วิธีใช้ Strategy Tester ของ MT5 ทีละขั้น วิธีอ่านรายงานทีละช่อง ข้อจำกัดของการจำลอง และสัญญาณที่ควรระวัง", "nav": ["tests", "backtest"], "cta": {"title": "อ่านรายงานแล้วยังไม่แน่ใจ ถามทีมงานได้", "sub": "ส่งภาพรายงาน Strategy Tester มาทาง LINE ทีมงานช่วยดูว่าเงื่อนไขที่ใช้ทดสอบตรงกับที่สินค้าแนะนำหรือไม่"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li>การทดสอบ</li>
+      <li>Backtest</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>ทดสอบ EA ย้อนหลังด้วย Strategy Tester ของ MT5</h1>
+        <p class="lead">Backtest คือการให้ EA เทรดกับราคาในอดีตภายในโปรแกรม MT5 เพื่อดูว่ากติกาของระบบทำงานอย่างไร หน้านี้รวมผลทดสอบของ EA BULL พร้อมเงื่อนไข วิธีทดสอบเองทีละขั้น และวิธีอ่านรายงานโดยไม่หลงตัวเลข</p>
+        <div class="phead__meta">
+          <span>{{i:monitor}}ใช้ MT5 บนคอม Windows</span>
+          <span>{{i:flask}}Strategy Tester มากับ MT5 อยู่แล้ว</span>
+          <span>{{i:list}}8 ขั้นตอน</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn--primary" href="#guide">ทดสอบเองทีละขั้น {{i:arrow-right}}</a>
+          <a class="btn btn--line" {{link:line}}>{{i:chat}}ถามเรื่องผลทดสอบทาง LINE</a>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">Ctrl+R {{i:chevron-right}} เลือก EA {{i:chevron-right}} สินทรัพย์และกรอบเวลา {{i:chevron-right}} ช่วงวันที่ {{i:chevron-right}} วิธีจำลองราคา {{i:chevron-right}} ทุนและเลเวอเรจ {{i:chevron-right}} Start {{i:chevron-right}} อ่านรายงาน</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="results" aria-labelledby="results-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="results-title">{{bars}}ผล Backtest ของ EA BULL</h2>
+        <p>ตัวเลขทุกช่องมาจากรายงาน MT5 ของเจ้าของ และแสดงคู่กับเงื่อนไขที่ใช้ทดสอบเสมอ อ่านเงื่อนไขก่อนอ่านผล</p>
+      </div>
+    </div>
+    <p class="mk-note">{{i:info}}<span>ผลจริงจะแยกตามสินค้าแต่ละตัว ต้นแบบนี้แสดงโครงหนึ่งชุด ทุกช่องรอรายงานจากเจ้าของ</span></p>
+    <div class="stats mt-24">
+      <div class="stat"><span>ช่วงข้อมูล</span>{{wait}}</div>
+      <div class="stat"><span>สินทรัพย์ / โบรกเกอร์</span>{{wait}}</div>
+      <div class="stat"><span>กรอบเวลา / โหมด</span>{{wait}}</div>
+      <div class="stat"><span>ทุนตั้งต้น</span>{{wait}}</div>
+      <div class="stat"><span>Net Profit</span>{{wait}}</div>
+      <div class="stat"><span>Profit Factor</span>{{wait}}</div>
+      <div class="stat"><span>ติดลบลอยสูงสุด</span>{{wait}}</div>
+      <div class="stat"><span>จำนวนออเดอร์</span>{{wait}}</div>
+    </div>
+    <div class="grid g2 mt-24">
+      <div>
+        <div class="shot">{{i:file}}<span><b>รายงาน Strategy Tester ฉบับเต็ม</b>รายงาน MT5 รอจากเจ้าของ</span></div>
+        <p class="cap">ช่องนี้ใช้เฉพาะรายงานจาก MT5 จริงของเจ้าของ ห้ามใช้ภาพที่ทำขึ้นเองหรือแต่งตัวเลข</p>
+      </div>
+      <div>
+        <div class="shot">{{i:candles}}<span><b>กราฟ Balance และ Equity จากแท็บ Graph</b>รายงาน MT5 รอจากเจ้าของ</span></div>
+        <p class="cap">กราฟต้องมาจากรายงานชุดเดียวกับตัวเลขด้านบน ไม่ใช่ภาพประกอบ</p>
+      </div>
+    </div>
+    <p class="note note--warn mt-24">{{i:alert}}<span>ผลนี้ได้จากเงื่อนไขด้านบนเท่านั้น ถ้าคุณใช้โบรกเกอร์ ทุน เลเวอเรจ หรือโหมดต่างไป ผลจะต่างไปด้วย และผลในอดีตไม่ได้บอกผลในอนาคต</span></p>
+    <div class="row mt-24">
+      <a class="btn btn--outline btn--sm" href="product-1.html">สินค้าตัวอย่าง 1 · V1.0</a>
+      <a class="btn btn--outline btn--sm" href="product-2.html">สินค้าตัวอย่าง 2 · V2.0</a>
+      <a class="btn btn--outline btn--sm" href="product-3.html">สินค้าตัวอย่าง 3 · V3.0</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="guide" aria-labelledby="guide-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>เปิด Strategy Tester</a></li>
+        <li><a href="#step-2"><b>02</b>เลือก EA</a></li>
+        <li><a href="#step-3"><b>03</b>สินทรัพย์และกรอบเวลา</a></li>
+        <li><a href="#step-4"><b>04</b>ตั้งช่วงวันที่</a></li>
+        <li><a href="#step-5"><b>05</b>เลือกวิธีจำลองราคา</a></li>
+        <li><a href="#step-6"><b>06</b>ทุน เลเวอเรจ และค่าของ EA</a></li>
+        <li><a href="#step-7"><b>07</b>กด Start</a></li>
+        <li><a href="#step-8"><b>08</b>อ่านผลในรายงาน</a></li>
+      </ol>
+    </nav>
+    <div>
+      <div class="shead">
+        <div class="shead__text">
+          <h2 id="guide-title">{{bars}}ทดสอบเองใน MT5 ทีละขั้น</h2>
+          <p>ใช้ได้กับ EA ทุกตัวที่ติดตั้งใน MT5 บนคอมแล้ว ถ้ายังไม่ได้ติดตั้ง ดู<a class="tlink" href="how-to-install.html">คู่มือติดตั้ง EA</a></p>
+        </div>
+      </div>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>เปิดหน้าต่าง Strategy Tester</h3>
+            <p>ใน MT5 บนคอม กด Ctrl+R หรือเปิดเมนู View แล้วเลือก Strategy Tester หน้าต่างทดสอบจะขึ้นที่ด้านล่างของโปรแกรม ไปที่แท็บ Settings เพื่อเริ่มตั้งค่า</p>
+            <div class="shot">{{i:monitor}}<span><b>ภาพ 01 · หน้าต่าง Strategy Tester แท็บ Settings</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>เลือก EA ในช่อง Expert</h3>
+            <p>กดช่อง Expert แล้วเลือกไฟล์ EA ที่ต้องการทดสอบ ถ้าไม่เห็นชื่อในรายการ แปลว่าไฟล์ยังไม่อยู่ในโฟลเดอร์ Experts หรือ MT5 ยังไม่รีเฟรชรายการ</p>
+            <div class="shot">{{i:list}}<span><b>ภาพ 02 · รายการ EA ในช่อง Expert</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>เลือกสินทรัพย์และกรอบเวลา</h3>
+            <p>ช่อง Symbol เลือกสินทรัพย์ให้ตรงกับชื่อในบัญชีของคุณ บางโบรกเกอร์มีตัวอักษรต่อท้ายชื่อสินทรัพย์ ช่องข้างกันเลือกกรอบเวลาให้ตรงกับที่ EA กำหนด</p>
+            <div class="shot">{{i:candles}}<span><b>ภาพ 03 · ช่อง Symbol และกรอบเวลา</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ตั้งช่วงวันที่ทดสอบ</h3>
+            <p>ช่อง Date เลือก Custom period แล้วใส่วันเริ่มและวันจบ ช่วงยาวที่ผ่านทั้งตลาดขึ้น ตลาดลง และช่วงข่าวแรง บอกอะไรได้มากกว่าช่วงสั้นที่เลือกมาเฉพาะตอนตลาดเป็นใจ</p>
+            <div class="shot">{{i:calendar}}<span><b>ภาพ 04 · ช่อง Date แบบ Custom period</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>เลือกวิธีจำลองราคาในช่อง Modelling</h3>
+            <p>เลือก Every tick based on real ticks ซึ่งใช้ข้อมูลราคาทุกจังหวะที่เกิดขึ้นจริงจากเซิร์ฟเวอร์ของโบรกเกอร์ ใกล้ตลาดจริงที่สุด แต่ดาวน์โหลดข้อมูลและทดสอบนานกว่าแบบอื่น</p>
+            <p class="note note--warn">{{i:alert}}<span>แบบ 1 minute OHLC และ Open prices only เร็วกว่าแต่หยาบกว่า ไม่เหมาะกับ EA ที่ตัดสินใจระหว่างแท่ง ผลอาจดูดีเกินจริง</span></p>
+            <div class="shot">{{i:sliders}}<span><b>ภาพ 05 · ตัวเลือกในช่อง Modelling</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>ใส่ทุน เลเวอเรจ และค่าของ EA</h3>
+            <p>ช่อง Deposit ใส่เงินตั้งต้นและสกุลเงินให้ตรงกับบัญชีที่จะใช้จริง ช่อง Leverage เลือกให้ตรงกับบัญชีเช่นกัน จากนั้นเปิดแท็บ Inputs ตั้งค่าของ EA ให้ตรงกับโหมดที่จะใช้</p>
+            <p class="note note--tip">{{i:bulb}}<span>ช่อง Delays เลือกแบบมีดีเลย์ได้ ถ้าอยากเห็นผลที่ใกล้การส่งคำสั่งจริงมากขึ้น</span></p>
+            <div class="shot">{{i:wallet}}<span><b>ภาพ 06 · ช่อง Deposit และ Leverage</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+            <p class="cap">ตัวเลขในภาพเป็นตัวอย่างการกรอกเท่านั้น ไม่ใช่ทุนที่แนะนำ</p>
+          </div>
+        </li>
+        <li class="gstep" id="step-7">
+          <span class="gstep__n">07</span>
+          <div class="gstep__body">
+            <h3>กด Start แล้วรอให้ทดสอบจบ</h3>
+            <p>กด Start ที่มุมขวาล่าง แถบความคืบหน้าจะวิ่ง การดึงข้อมูลราคาครั้งแรกอาจใช้เวลานาน ระหว่างนั้นอย่าปิด MT5 ถ้าติ๊ก Visual mode จะเห็น EA เทรดบนกราฟทีละแท่ง ช้ากว่าแต่ช่วยให้เข้าใจวิธีทำงาน</p>
+            <div class="shot">{{i:play}}<span><b>ภาพ 07 · ปุ่ม Start และแถบความคืบหน้า</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-8">
+          <span class="gstep__n">08</span>
+          <div class="gstep__body">
+            <h3>อ่านผลในแท็บ Backtest และ Graph</h3>
+            <p>เมื่อจบ ตัวเลขสรุปอยู่ในแท็บ Backtest (MT5 รุ่นเก่าใช้ชื่อ Results) และเส้นเงินอยู่ในแท็บ Graph คลิกขวาในหน้ารายงานเพื่อบันทึกเป็นไฟล์ เก็บไว้เทียบกับการทดสอบครั้งต่อไป วิธีอ่านแต่ละช่องอยู่ด้านล่าง</p>
+            <div class="shot">{{i:file}}<span><b>ภาพ 08 · แท็บ Backtest และ Graph</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+            <p class="cap">ภาพประกอบวิธีอ่านเท่านั้น ตัวเลขในภาพไม่ใช่ผลของ EA BULL</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="อ่านผล Backtest ให้เป็น">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#can">บอกอะไรได้ และบอกอะไรไม่ได้</a></li>
+        <li><a href="#report">อ่านรายงานทีละช่อง</a></li>
+        <li><a href="#limits">ข้อจำกัดของการจำลอง</a></li>
+        <li><a href="#flags">สัญญาณที่ควรระวัง</a></li>
+        <li><a href="#bt-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="can">Backtest บอกอะไรได้ และบอกอะไรไม่ได้</h2>
+      <p>Backtest เป็นเครื่องมือดูพฤติกรรมของระบบ ไม่ใช่เครื่องทำนายผล ใช้มันตอบคำถามว่า EA ทำอะไรในสถานการณ์ที่เคยเกิดขึ้นแล้ว</p>
+      <h3>บอกได้</h3>
+      <ul class="checks">
+        <li>{{i:check}}กติกาของ EA ทำงานตามที่อธิบายไว้หรือไม่ เปิดและปิดออเดอร์ตอนไหน</li>
+        <li>{{i:check}}ช่วงที่ระบบเคยติดลบหนัก ลึกแค่ไหน และกินเวลานานเท่าไร</li>
+        <li>{{i:check}}ทุนและเลเวอเรจแบบไหนที่บัญชีเคยรับแรงได้ในอดีต</li>
+        <li>{{i:check}}เทรดถี่แค่ไหน และขนาดออเดอร์โดยประมาณเท่าไร</li>
+      </ul>
+      <h3>บอกไม่ได้</h3>
+      <ul class="checks checks--x">
+        <li>{{i:x}}ผลในอนาคต ตลาดข้างหน้าอาจไม่เหมือนช่วงที่ทดสอบ</li>
+        <li>{{i:x}}ราคาที่ได้จริงตอนข่าวแรงหรือตอนตลาดเปิดแล้วราคากระโดด</li>
+        <li>{{i:x}}ผลบนโบรกเกอร์อื่นที่สเปรดและค่าคอมมิชชันต่างกัน</li>
+        <li>{{i:x}}ปัญหาของเครื่องที่รัน เช่น ไฟดับ เน็ตหลุด หรือ VPS ค้าง</li>
+      </ul>
+
+      <h2 id="report">อ่านรายงานทีละช่อง</h2>
+      <p>ชื่อช่องในรายงานเป็นภาษาอังกฤษ ตารางนี้สรุปช่องที่ควรดูก่อน และวิธีดูไม่ให้เข้าใจผิด</p>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">ช่องในรายงาน</th><th scope="col">ความหมาย</th><th scope="col">ดูอย่างไร</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Total Net Profit</th><td data-label="ความหมาย">กำไรหรือขาดทุนสุทธิทั้งช่วง (Gross Profit ลบ Gross Loss)</td><td data-label="ดูอย่างไร">ดูคู่กับ Drawdown เสมอ กำไรสูงที่แลกกับการติดลบลึกอาจรับไม่ไหวในบัญชีจริง</td></tr>
+            <tr><th scope="row">Profit Factor</th><td data-label="ความหมาย">Gross Profit หารด้วย Gross Loss มากกว่า 1 แปลว่าช่วงนั้นได้มากกว่าเสีย</td><td data-label="ดูอย่างไร">ค่าสูงมากที่มาจากออเดอร์จำนวนน้อย ยังเชื่อถือได้ไม่มาก</td></tr>
+            <tr><th scope="row">Expected Payoff</th><td data-label="ความหมาย">กำไรหรือขาดทุนเฉลี่ยต่อออเดอร์</td><td data-label="ดูอย่างไร">ถ้าใกล้ศูนย์มาก ต้นทุนการเทรดที่สูงขึ้นเล็กน้อยก็พลิกเป็นขาดทุนได้</td></tr>
+            <tr><th scope="row">Balance Drawdown</th><td data-label="ความหมาย">ยอดเงินลดลงสูงสุดจากจุดสูงสุด คิดเฉพาะออเดอร์ที่ปิดแล้ว</td><td data-label="ดูอย่างไร">ไม่รวมการติดลบของออเดอร์ที่ยังเปิดค้าง จึงดูน้อยกว่าความจริงได้</td></tr>
+            <tr><th scope="row">Equity Drawdown</th><td data-label="ความหมาย">มูลค่าบัญชีลดลงสูงสุด รวมออเดอร์ที่เปิดค้างอยู่</td><td data-label="ดูอย่างไร">ช่องนี้คือการติดลบลอยที่บัญชีต้องทนจริง เทียบกับเงินที่คุณยอมเสียได้</td></tr>
+            <tr><th scope="row">Total Trades</th><td data-label="ความหมาย">จำนวนออเดอร์ทั้งหมดในช่วงทดสอบ</td><td data-label="ดูอย่างไร">ถ้าน้อยเกินไป ตัวเลขช่องอื่นก็เชื่อถือได้น้อยตาม</td></tr>
+            <tr><th scope="row">Profit Trades / Loss Trades</th><td data-label="ความหมาย">สัดส่วนออเดอร์ที่ปิดกำไรและปิดขาดทุน</td><td data-label="ดูอย่างไร">ชนะบ่อยไม่ได้แปลว่าดี ถ้าออเดอร์ที่แพ้ขาดทุนครั้งละมาก</td></tr>
+            <tr><th scope="row">Largest Loss Trade</th><td data-label="ความหมาย">ออเดอร์ที่ขาดทุนมากที่สุดในช่วงทดสอบ</td><td data-label="ดูอย่างไร">ดูว่าออเดอร์เดียวกินเงินในบัญชีไปเท่าไร</td></tr>
+            <tr><th scope="row">History Quality</th><td data-label="ความหมาย">คุณภาพของข้อมูลราคาที่ใช้ทดสอบ</td><td data-label="ดูอย่างไร">ค่าต่ำแปลว่าข้อมูลขาดหายบางช่วง ผลอาจไม่ตรงกับที่ตลาดเป็นจริง</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="limits">ข้อจำกัดของการจำลอง</h2>
+      <ul>
+        <li><b>สเปรด</b>: ทดสอบใช้สเปรดจากข้อมูลในอดีต แต่ช่วงข่าวและช่วงตลาดเปิดในอนาคตอาจกว้างกว่านั้น</li>
+        <li><b>การส่งคำสั่ง</b>: ในการทดสอบ ออเดอร์มักได้ราคาตามที่ขอ ตลาดจริงมีราคาคลาดและคำสั่งที่ถูกปฏิเสธ</li>
+        <li><b>ค่าใช้จ่าย</b>: ค่าคอมมิชชันและค่าสวอปขึ้นกับการตั้งค่าของบัญชีที่ใช้ทดสอบ ตรวจว่ารายงานรวมไว้แล้ว</li>
+        <li><b>ข้อมูลราคาของโบรกเกอร์</b>: ราคาแต่ละโบรกเกอร์ต่างกันเล็กน้อย ผลบนบัญชีของคุณจึงต่างจากรายงานได้</li>
+        <li><b>การปรับค่าให้เข้ากับอดีต</b>: ค่าที่ปรับจนผลสวยที่สุดในช่วงหนึ่ง มักทำผลแบบเดิมไม่ได้ในช่วงอื่น</li>
+        <li><b>เหตุการณ์นอกโปรแกรม</b>: VPS ดับ เน็ตหลุด หรือโบรกเกอร์ปิดปรับปรุง ไม่อยู่ในการจำลอง</li>
+      </ul>
+      <p>รายละเอียดของทุกช่องตั้งค่าอ่านได้ที่<a href="https://www.metatrader5.com/en/terminal/help/algotrading/testing" target="_blank" rel="noopener">คู่มือ Strategy Tester ทางการของ MetaTrader 5</a> (ภาษาอังกฤษ)</p>
+
+      <h2 id="flags">สัญญาณที่ควรระวัง</h2>
+      <p>ใช้เช็กได้ทั้งรายงานของเราและรายงานที่เห็นจากที่อื่น ถ้าเจอหลายข้อพร้อมกัน ให้ถามหาข้อมูลเพิ่มก่อนเชื่อตัวเลข</p>
+      <ul class="checks checks--x">
+        <li>{{i:x}}แสดงแต่กำไร ไม่บอก Drawdown หรือเงื่อนไขที่ใช้ทดสอบ</li>
+        <li>{{i:x}}ช่วงทดสอบสั้น หรือเลือกเฉพาะช่วงที่ตลาดเป็นใจ</li>
+        <li>{{i:x}}ใช้ Open prices only หรือ History Quality ต่ำ กับ EA ที่เทรดถี่</li>
+        <li>{{i:x}}เส้น Balance เรียบผิดปกติ แต่ Equity ติดลบลึกเป็นช่วง ๆ</li>
+        <li>{{i:x}}ทุนหรือเลเวอเรจในรายงานต่างจากที่แนะนำให้ลูกค้าใช้</li>
+        <li>{{i:x}}ภาพที่ไม่ใช่รายงานจาก MT5 หรือไม่บอกชื่อโบรกเกอร์และสินทรัพย์</li>
+        <li>{{i:x}}โฆษณาผลตอบแทนรายเดือนเป็นตัวเลขตายตัว</li>
+      </ul>
+
+      <h2 id="bt-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ทดสอบ EA BULL ใน Strategy Tester เองได้ไหม{{i:plus}}</summary><div class="qa__a"><p>{{wait}} ถ้าทำได้ ให้ตั้งเงื่อนไขตามที่หน้าสินค้าระบุ เพื่อให้เทียบกับรายงานของเจ้าของได้</p></div></details>
+      <details class="qa"><summary>ทำไมผลที่ทดสอบเองไม่ตรงกับรายงานในเว็บ{{i:plus}}</summary><div class="qa__a"><p>เงื่อนไขต่างกันแม้นิดเดียวก็ทำให้ผลต่างได้ เช่น โบรกเกอร์ ข้อมูลราคา ช่วงวันที่ ทุน เลเวอเรจ โหมด และวิธีจำลองราคา ตรวจทีละช่องเทียบกับเงื่อนไขในหน้านี้</p></div></details>
+      <details class="qa"><summary>ทดสอบบนมือถือได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ไม่ได้ Strategy Tester อยู่ใน MT5 บนคอม แอป MT5 บนมือถือไม่มีฟังก์ชันนี้</p></div></details>
+      <details class="qa"><summary>Backtest ออกมาดี ใช้เงินจริงได้เลยไหม{{i:plus}}</summary><div class="qa__a"><p>ควรลองกับตลาดจริงด้วยบัญชีเดโมหรือเงินน้อยก่อน ดู<a href="forward-test.html">คู่มือ Forward Test</a> และอ่าน<a href="risk-disclosure.html">ประกาศความเสี่ยง</a>ให้ครบ</p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}หน้าที่ควรอ่านต่อ</h2></div></div>
+    <div class="related">
+      <a class="rel" href="forward-test.html"><span class="tile">{{i:target}}</span><span><b>Forward Test</b><small>ลองกับตลาดจริงด้วยบัญชีเล็ก</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="tools.html"><span class="tile">{{i:calculator}}</span><span><b>เครื่องคำนวณ Lot / Drawdown</b><small>คิดขนาดไม้จากเงินที่ยอมเสีย</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="risk-disclosure.html"><span class="tile">{{i:alert}}</span><span><b>ประกาศความเสี่ยง</b><small>อ่านก่อนใช้เงินจริง</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

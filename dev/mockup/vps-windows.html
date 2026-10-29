@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ใช้ Windows VPS รัน EA ด้วย Remote Desktop · EA BULL</title>
+<meta name="description" content="คู่มือเชื่อมต่อ Windows VPS จากคอมด้วย Remote Desktop ติดตั้ง MT5 บน VPS และปล่อยให้ EA BULL ทำงานต่อแม้ปิดคอมที่บ้าน ทีละขั้นพร้อมจุดที่ต้องระวัง">
+<meta property="og:title" content="ใช้ Windows VPS รัน EA ด้วย Remote Desktop · EA BULL">
+<meta property="og:description" content="คู่มือเชื่อมต่อ Windows VPS จากคอมด้วย Remote Desktop ติดตั้ง MT5 บน VPS และปล่อยให้ EA BULL ทำงานต่อแม้ปิดคอมที่บ้าน ทีละขั้นพร้อมจุดที่ต้องระวัง">
+<meta property="og:image" content="assets/img/bull-logo.png">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Anuphan:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/bull.css?v=202610291603">
+</head>
+<body class="">
+<a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<header class="hd" id="top">
+  <div class="wrap hd__in">
+    <a class="hd__brand" href="home.html" aria-label="EA BULL หน้าแรก">
+      <img class="hd__emblem" src="assets/img/bull-emblem.webp" width="640" height="571" alt="">
+      <img class="hd__word" src="assets/img/bull-wordmark.webp" width="720" height="100" alt="EA BULL">
+    </a>
+    <nav class="nav" id="nav" aria-label="เมนูหลัก">
+      <ul class="nav__list">
+        <li><a class="nav__link" data-nav="home" href="home.html">หน้าแรก</a></li>
+        <li class="has-sub">
+          <button class="nav__link nav__parent" type="button" data-nav="products" aria-expanded="false">สินค้า <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub">
+            <li><a data-nav="product-1" href="product-1.html"><b>สินค้าตัวอย่าง 1 · V1.0</b><span>หน้าสินค้าตัวอย่าง รอข้อมูลจริง</span></a></li>
+            <li><a data-nav="product-2" href="product-2.html"><b>สินค้าตัวอย่าง 2 · V2.0</b><span>หน้าสินค้าตัวอย่าง รอข้อมูลจริง</span></a></li>
+            <li><a data-nav="product-3" href="product-3.html"><b>สินค้าตัวอย่าง 3 · V3.0</b><span>หน้าสินค้าตัวอย่าง รอข้อมูลจริง</span></a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <button class="nav__link nav__parent" type="button" data-nav="tests" aria-expanded="false">การทดสอบ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub">
+            <li><a data-nav="backtest" href="backtest.html"><b>Backtest</b><span>ทดสอบย้อนหลังด้วย Strategy Tester</span></a></li>
+            <li><a data-nav="forward-test" href="forward-test.html"><b>Forward Test</b><span>ทดสอบกับตลาดจริงด้วยบัญชีเล็ก</span></a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <button class="nav__link nav__parent" type="button" data-nav="guides" aria-current="page" aria-expanded="false">คู่มือการใช้งาน <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub sub--wide">
+            <li><a data-nav="how-to-install" href="how-to-install.html"><b>วิธีติดตั้ง EA บน MT5</b><span>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</span></a></li>
+            <li><a data-nav="open-mt5-account" href="open-mt5-account.html"><b>เปิดบัญชีเทรด MT5</b><span>สมัคร Zaurix และยืนยันตัวตน</span></a></li>
+            <li><a data-nav="deposit" href="deposit.html"><b>ฝากเงินเข้าบัญชีเทรด</b><span>ฝากผ่าน Portal ของโบรกเกอร์</span></a></li>
+            <li><a data-nav="mt5-login" href="mt5-login.html"><b>ติดตั้งและล็อกอิน MT5</b><span>คอม มือถือ และแท็บเล็ต</span></a></li>
+            <li><a data-nav="vps-windows" aria-current="page" href="vps-windows.html"><b>VPS บน Windows</b><span>เชื่อมต่อด้วย Remote Desktop</span></a></li>
+            <li><a data-nav="vps-android" href="vps-android.html"><b>VPS บน Android</b><span>ใช้แอป Windows App</span></a></li>
+            <li><a data-nav="vps-ios" href="vps-ios.html"><b>VPS บน <span class="nocaps">iPhone</span> / <span class="nocaps">iPad</span></b><span>ใช้แอป Windows App</span></a></li>
+            <li><a data-nav="tools" href="tools.html"><b>เครื่องคำนวณ Lot / Drawdown</b><span>คิดขนาดไม้จากเงินที่ยอมเสีย</span></a></li>
+          </ul>
+        </li>
+        <li><a class="nav__link" data-nav="pricing" href="pricing.html">แพ็กเกจ</a></li>
+        <li><a class="nav__link" data-nav="articles" href="articles.html">บทความ</a></li>
+        <li><a class="nav__link" data-nav="go" href="go.html">ติดต่อ</a></li>
+      </ul>
+      <div class="nav__foot">
+        <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE คุยกับทีมงาน</a>
+        <div class="nav__social">
+          <a class="btn btn--openchat btn--sm" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>OpenChat</a>
+          <a class="btn btn--fb btn--sm" href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg>Facebook</a>
+        </div>
+      </div>
+    </nav>
+    <a class="hd__dash" href="#" data-wait="ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.2"/></svg><span>แดชบอร์ด</span></a>
+    <button class="hd__toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="เปิดเมนู">
+      <span class="hd__ico-open"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="hd__ico-close"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>VPS บน Windows</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>รัน EA บน Windows VPS ด้วย Remote Desktop</h1>
+        <p class="lead">VPS คือคอมพิวเตอร์เช่าที่เปิดอยู่ตลอดในศูนย์ข้อมูล ย้าย MT5 ไปไว้ที่นั่น EA ก็ทำงานต่อได้แม้คอมที่บ้านปิดหรือไฟดับ คู่มือนี้พาเชื่อมต่อครั้งแรกจนถึงปล่อย MT5 ทิ้งไว้</p>
+        <div class="phead__meta">
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ใช้เวลาราว 15 นาที</span>
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg>สำหรับคอม Windows</span>
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg>6 ขั้นตอน</span>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">เปิด Remote Desktop <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg> ใส่ IP <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg> ใส่ชื่อผู้ใช้ <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg> ยืนยันเครื่อง <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg> ลง MT5 <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg> ปล่อยทำงาน</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>ก่อนเริ่ม</h2>
+        <p class="lead">ข้อมูลเข้า VPS มาจากผู้ให้บริการ VPS ที่คุณเช่า เก็บไว้ในที่ปลอดภัย อย่าส่งรหัสผ่านให้ใครในแชต</p>
+        <p class="muted">ถ้ายังไม่มี VPS ทักทีมงานเพื่อถามสเปกที่เหมาะกับ MT5 ได้ ส่วนผู้ให้บริการที่แนะนำ <span class="wait">รอข้อมูลจากเจ้าของ</span></p>
+      </div>
+      <div class="prep">
+        <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>IP ของ VPS</dt><dd>ตัวเลขชุด เช่น 000.000.000.000 จากอีเมลของผู้ให้บริการ</dd></div>
+          <div><dt>ชื่อผู้ใช้</dt><dd>ส่วนใหญ่เป็น Administrator</dd></div>
+          <div><dt>รหัสผ่าน</dt><dd>รหัสที่ผู้ให้บริการส่งมา</dd></div>
+          <div><dt>คอม Windows</dt><dd>มีโปรแกรม Remote Desktop Connection อยู่แล้วในเครื่อง</dd></div>
+        </dl>
+        <p class="note note--info"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.2"/></svg><span>ใช้มือถือแทนคอมได้ ดูคู่มือ <a href="vps-android.html">Android</a> หรือ <a href="vps-ios.html"><span class="nocaps">iPhone / iPad</span></a></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>เปิด Remote Desktop</a></li>
+        <li><a href="#step-2"><b>02</b>ใส่ IP ของ VPS</a></li>
+        <li><a href="#step-3"><b>03</b>ใส่ชื่อผู้ใช้และรหัสผ่าน</a></li>
+        <li><a href="#step-4"><b>04</b>ยืนยันเครื่องครั้งแรก</a></li>
+        <li><a href="#step-5"><b>05</b>ติดตั้ง MT5 บน VPS</a></li>
+        <li><a href="#step-6"><b>06</b>ปิดหน้าต่างให้ถูกวิธี</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนเชื่อมต่อ Windows VPS</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>เปิดโปรแกรม Remote Desktop Connection</h3>
+            <p>กดปุ่ม Windows แล้วพิมพ์ <b>Remote Desktop</b> เลือกโปรแกรม Remote Desktop Connection ที่ขึ้นมา หรือกด Windows + R แล้วพิมพ์ <span class="nocaps">mstsc</span></p>
+            <div class="shot"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg><span><b>ภาพ 01 · ค้นหา Remote Desktop ในเมนู Start</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>ใส่ IP ของ VPS ในช่อง Computer</h3>
+            <p>พิมพ์ IP ที่ได้จากผู้ให้บริการลงในช่อง Computer แล้วกด Show Options ถ้าอยากบันทึกชื่อผู้ใช้ไว้ใช้ครั้งหน้า</p>
+            <div class="shot"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg><span><b>ภาพ 02 · ช่อง Computer</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>ใส่ชื่อผู้ใช้และรหัสผ่าน</h3>
+            <p>กด Connect หน้าต่างขอรหัสจะขึ้นมา ถ้าชื่อผู้ใช้ที่แสดงไม่ใช่ของ VPS ให้กด More choices แล้วเลือก Use a different account จากนั้นใส่ชื่อผู้ใช้และรหัสผ่านของ VPS</p>
+            <p class="note note--warn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg><span>ติ๊ก Remember me เฉพาะคอมส่วนตัวที่ไม่มีคนอื่นใช้</span></p>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ยืนยันเครื่องในการเชื่อมต่อครั้งแรก</h3>
+            <p>ครั้งแรกจะมีหน้าต่างเตือนเรื่องใบรับรองของเครื่องปลายทาง ตรวจว่าเป็น IP ของ VPS ที่คุณเช่าแล้วกด Yes หน้าจอ Windows ของ VPS จะเปิดขึ้นมาในหน้าต่างใหม่</p>
+            <div class="shot"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg><span><b>ภาพ 04 · หน้าต่างยืนยันใบรับรอง</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>ติดตั้ง MT5 บน VPS แล้วติดตั้ง EA</h3>
+            <p>เปิดเบราว์เซอร์ในหน้าจอ VPS ดาวน์โหลด MT5 จากเว็บทางการ ล็อกอินบัญชีเทรด แล้วติดตั้ง EA ตามคู่มือเดียวกับบนคอม</p>
+            <ul>
+              <li><a href="mt5-login.html">คู่มือติดตั้งและล็อกอิน MT5</a></li>
+              <li><a href="how-to-install.html">คู่มือติดตั้ง EA บน MT5</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>ปิดหน้าต่าง Remote Desktop ให้ถูกวิธี</h3>
+            <p>กดกากบาทที่แถบด้านบนของหน้าต่าง Remote Desktop เพื่อตัดการเชื่อมต่อ VPS ยังเปิดอยู่และ MT5 ทำงานต่อ</p>
+            <p class="note note--bad"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span><b>ห้ามกด Sign out หรือ Shut down ใน VPS</b> MT5 จะปิดตามและ EA หยุดทำงาน</span></p>
+            <p class="note note--tip"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M8.5 14.5A6 6 0 1 1 15.5 14.5c-.9.8-1.5 1.8-1.5 3h-4c0-1.2-.6-2.2-1.5-3z"/></svg><span>ล็อกอินบัญชีเดียวกันในแอป MT5 บนมือถือ ไว้ดูว่า EA ยังทำงานอยู่โดยไม่ต้องเข้า VPS ทุกครั้ง</span></p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="ข้อมูลเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <ol>
+        <li><a href="#vps-check">เช็กหลังตั้งค่าเสร็จ</a></li>
+        <li><a href="#vps-trouble">เชื่อมต่อไม่ได้ ทำอย่างไร</a></li>
+        <li><a href="#vps-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="vps-check">เช็กหลังตั้งค่าเสร็จ</h2>
+      <ul class="checks">
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>MT5 บน VPS ล็อกอินบัญชีเทรดแล้ว มุมขวาล่างไม่ขึ้น No connection</li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ปุ่ม Algo Trading บนแถบเครื่องมือเป็นสีเขียว</li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>มุมขวาบนของกราฟที่ติดตั้ง EA ไม่มีเครื่องหมายหยุดทำงาน</li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ปิดหน้าต่าง Remote Desktop ด้วยกากบาท ไม่ได้กด Sign out</li>
+      </ul>
+      <h2 id="vps-trouble">เชื่อมต่อไม่ได้ ทำอย่างไร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ขึ้นว่าเชื่อมต่อไม่ได้</th><td data-label="สาเหตุที่พบบ่อย">พิมพ์ IP ผิด หรือ VPS ยังไม่พร้อมใช้</td><td data-label="วิธีแก้">ตรวจ IP อีกครั้ง หรือถามผู้ให้บริการ VPS</td></tr>
+            <tr><th scope="row">รหัสผ่านไม่ถูกต้อง</th><td data-label="สาเหตุที่พบบ่อย">ใช้ชื่อผู้ใช้ของคอมที่บ้านแทน</td><td data-label="วิธีแก้">กด More choices แล้วเลือก Use a different account</td></tr>
+            <tr><th scope="row">EA หยุดหลังปิดหน้าต่าง</th><td data-label="สาเหตุที่พบบ่อย">กด Sign out ใน VPS</td><td data-label="วิธีแก้">เชื่อมต่อใหม่ เปิด MT5 แล้วปิดหน้าต่างด้วยกากบาท</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 id="vps-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ปิดคอมที่บ้านแล้ว EA ยังทำงานไหม<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="qa__a"><p>ทำงาน เพราะ MT5 รันอยู่บน VPS ไม่ได้รันบนคอมของคุณ</p></div></details>
+      <details class="qa"><summary>ต้องเช่า VPS สเปกแค่ไหน<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="qa__a"><p><span class="wait">รอข้อมูลจากเจ้าของ</span> ทักทีมงานเพื่อถามสเปกที่ใช้กับ EA BULL ได้</p></div></details>
+      <details class="qa"><summary>ใช้ VPS เครื่องเดียวรันหลายบัญชีได้ไหม<svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="qa__a"><p>ติดตั้ง MT5 แยกโฟลเดอร์ได้หลายชุด แต่จำนวนบัญชีที่ใช้สิทธิ์ EA ได้ขึ้นกับแพ็กเกจ <span class="wait">รอข้อมูลจากเจ้าของ</span></p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="vps-android.html"><span class="tile"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg></span><span><b>VPS บน Android</b><small>เชื่อมต่อด้วยแอป Windows App</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <a class="rel" href="vps-ios.html"><span class="tile"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M11 18h2"/></svg></span><span><b>VPS บน <span class="nocaps">iPhone / iPad</span></b><small>เชื่อมต่อด้วยแอป Windows App</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <a class="rel" href="how-to-install.html"><span class="tile"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg></span><span><b>ติดตั้ง EA บน MT5</b><small>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+<section class="contact yband" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact__grid">
+    <div class="contact__text">
+      <h2 id="contact-title">ตั้ง VPS ไม่ผ่าน ทักทีมงานได้</h2>
+      <p class="contact__sub">ส่งภาพหน้าจอที่ติดมาทาง LINE ทีมงานจะช่วยดูว่าค้างที่ขั้นไหน</p>
+      <ul class="chan">
+        <li><a href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><span class="tile tile--ink"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></span><span><b>LINE Official EA BULL</b><small>ทักแชตกับทีมงาน · ลิงก์รอข้อมูลจากเจ้าของ</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a></li>
+        <li><a href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><span class="tile tile--ink"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></span><span><b>OpenChat EA BULL</b><small>ห้องพูดคุยของผู้ใช้ EA BULL</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></li>
+        <li><a href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener"><span class="tile tile--ink"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg></span><span><b>Facebook EA BULL</b><small class="nocaps">facebook.com/eabull.trading</small></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></li>
+      </ul>
+    </div>
+    <div class="contact__card cut dark">
+      <h3>ส่งข้อความหาทีมงาน</h3>
+      <p>บอกเราว่าตอนนี้อยู่ขั้นไหน ทีมงานจะแนะนำขั้นต่อไปให้</p>
+      <div class="contact__btns">
+        <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE คุยกับทีมงาน</a>
+        <a class="btn btn--openchat btn--block" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>เข้ากลุ่ม OpenChat</a>
+      </div>
+      <div class="contact__qr">
+        <div class="qr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3M14 21h1M21 14v1"/></svg><span>QR LINE<br>รอข้อมูล</span></div>
+        <div>
+          <b>สแกนเพิ่มเพื่อน LINE</b>
+          <p>เปิดกล้องมือถือหรือแอป LINE แล้วสแกน</p>
+        </div>
+      </div>
+      <div class="contact__ask">
+        <b>สิ่งที่ทีมงานจะถาม</b>
+        <ul class="checks">
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>เงินทุนที่ตั้งใจใช้ และรับความเสี่ยงได้แค่ไหน</li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>มีบัญชี MT5 แล้วหรือยัง ใช้โบรกเกอร์ไหน</li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>จะรัน EA บนคอม มือถือ หรือ VPS</li>
+          <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>ข้อสงสัยที่อยากถามก่อนเริ่ม</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <img src="assets/img/bull-wordmark.webp" width="720" height="100" alt="EA BULL">
+        <p>EA BULL ผู้ช่วยเทรดอัตโนมัติบน MetaTrader 5 · แข็งแกร่งด้วยวินัย บุกตลาดอย่างมีแผน</p>
+        <div class="ft__social">
+          <a class="ft__soc" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ" aria-label="LINE"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></a>
+          <a class="ft__soc" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener" aria-label="OpenChat"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></a>
+          <a class="ft__soc" href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg></a>
+        </div>
+      </div>
+      <div class="ft__cols">
+        <div>
+          <h2>คู่มือการใช้งาน</h2>
+          <ul>
+            <li><a href="how-to-install.html">วิธีติดตั้ง EA บน MT5</a></li>
+            <li><a href="open-mt5-account.html">เปิดบัญชีเทรด MT5</a></li>
+            <li><a href="deposit.html">ฝากเงินเข้าบัญชีเทรด</a></li>
+            <li><a href="mt5-login.html">ติดตั้งและล็อกอิน MT5</a></li>
+            <li><a href="vps-windows.html">VPS บน Windows</a></li>
+            <li><a href="vps-android.html">VPS บน Android</a></li>
+            <li><a href="vps-ios.html">VPS บน <span class="nocaps">iPhone</span> / <span class="nocaps">iPad</span></a></li>
+            <li><a href="tools.html">เครื่องคำนวณ Lot / Drawdown</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>หน้าในเว็บ</h2>
+          <ul>
+            <li><a href="home.html">หน้าแรก</a></li>
+            <li><a href="product-1.html">สินค้า</a></li>
+            <li><a href="backtest.html">Backtest</a></li>
+            <li><a href="forward-test.html">Forward Test</a></li>
+            <li><a href="pricing.html">แพ็กเกจ</a></li>
+            <li><a href="articles.html">บทความ</a></li>
+            <li><a href="go.html">ติดต่อ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>ข้อมูลและนโยบาย</h2>
+          <ul>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            <li><a href="risk-disclosure.html">ประกาศความเสี่ยง</a></li>
+            <li><a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a></li>
+            <li><a href="terms-of-use.html">ข้อกำหนดการใช้บริการ</a></li>
+            <li><a href="data-deletion.html">ขอลบข้อมูลส่วนบุคคล</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ft__risk">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg>
+      <p>การเทรดด้วย EA มีความเสี่ยงสูง อาจขาดทุนจนหมดเงินในบัญชี ผลทดสอบในอดีตไม่ได้บอกผลในอนาคต <a href="risk-disclosure.html">อ่านประกาศความเสี่ยงฉบับเต็ม</a></p>
+    </div>
+    <div class="ft__bottom">
+      <span>© 2026 EA BULL · สงวนลิขสิทธิ์</span>
+      <a href="privacy-policy.html">นโยบายความเป็นส่วนตัว</a>
+      <a href="terms-of-use.html">ข้อกำหนดการใช้บริการ</a>
+      <button type="button" class="linkish" data-open-cookie>ตั้งค่าคุกกี้</button>
+      <a href="#top" class="ft__top-link">กลับขึ้นด้านบน <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5"/><path d="M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </div>
+</footer>
+<nav class="dock" aria-label="เมนูลัด">
+  <a data-dock="home" href="home.html"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span>หน้าแรก</span></a>
+  <a data-dock="dash" href="#" data-wait="ลิงก์แดชบอร์ดลูกค้า ยังไม่เสร็จ"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.2"/></svg></span><span>แดชบอร์ด</span></a>
+  <a data-dock="pricing" href="pricing.html"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span>แพ็กเกจ</span></a>
+  <a data-dock="guides" aria-current="page" href="how-to-install.html"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3"/><path d="M8 7h8"/></svg></span><span>คู่มือ</span></a>
+  <a data-dock="line" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><span class="dock__ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></span><span>LINE</span></a>
+</nav>
+<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="ติดต่อทีมงาน"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg></button>
+<div class="quick dark" id="quick" role="dialog" aria-label="ติดต่อทีมงาน" hidden>
+  <div class="quick__head">
+    <b>คุยกับทีมงาน EA BULL</b>
+    <button type="button" class="quick__x" data-quick-close aria-label="ปิด"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <p>เลือกช่องทางที่สะดวก</p>
+  <div class="quick__btns">
+    <a class="btn btn--line btn--block" href="#" data-wait="ลิงก์ LINE OA ของ EA BULL รอข้อมูลจากเจ้าของ"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1 0-2-.1-2.9-.4L4 21l1.3-3.9C3.9 15.6 3 13.6 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5z"/></svg>ทัก LINE</a>
+    <a class="btn btn--openchat btn--block" href="https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14a6.5 6.5 0 0 1 3.5 6"/></svg>เข้ากลุ่ม OpenChat</a>
+    <a class="btn btn--fb btn--block" href="https://www.facebook.com/eabull.trading/" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21v-8h3l.5-3.5H14V7.8c0-1 .3-1.8 1.8-1.8H18V3a24 24 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.5v2H8V13h3v8"/></svg>Facebook EA BULL</a>
+  </div>
+  <a class="quick__go" href="go.html">หน้ารวมลิงก์เริ่มต้น <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></a>
+</div>
+
+<div class="cookie dark" id="cookie" role="dialog" aria-labelledby="cookie-title" hidden>
+  <div class="cookie__head">
+    <span class="tile tile--accent"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 3.5 3.5 3 3 0 0 0 3.5 3.5 3 3 0 0 0 2.5 2.5z"/><path d="M8.5 9.5h.01M8 15h.01M13 16h.01M12 12h.01"/></svg></span>
+    <h2 id="cookie-title">เว็บนี้ใช้คุกกี้</h2>
+    <button type="button" class="cookie__x" data-ck="close" aria-label="ปิด"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cookie__view" data-ck-view="intro">
+    <p data-ck-text="none">ตอนนี้ EA BULL ใช้เฉพาะคุกกี้ที่จำเป็นให้เว็บทำงาน เช่น จำค่าที่คุณเลือกในการ์ดนี้ ไม่มีคุกกี้วัดผลหรือโฆษณา</p>
+    <p data-ck-text="ga" hidden>เราใช้คุกกี้ที่จำเป็นให้เว็บทำงาน และขอใช้ Google Analytics นับจำนวนผู้เข้าชมแบบไม่ระบุตัวตน เลือกได้ว่าจะอนุญาตหรือไม่</p>
+    <a class="cookie__more" href="privacy-policy.html#cookies">อ่านนโยบายคุกกี้</a>
+    <div class="cookie__btns" data-ck-btns="none">
+      <button type="button" class="btn btn--primary btn--sm" data-ck="accept">ตกลง</button>
+    </div>
+    <div class="cookie__btns" data-ck-btns="ga" hidden>
+      <button type="button" class="btn btn--outline btn--sm" data-ck="reject">ปฏิเสธ</button>
+      <button type="button" class="btn btn--primary btn--sm" data-ck="accept">ยอมรับทั้งหมด</button>
+      <button type="button" class="btn btn--light btn--sm" data-ck="settings">ตั้งค่า <svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="cookie__view" data-ck-view="settings" hidden>
+    <div class="ckrow">
+      <div><b>คุกกี้ที่จำเป็น</b><p>ให้เว็บทำงานและจำค่าที่คุณเลือกในการ์ดนี้</p></div>
+      <span class="ckrow__lock">เปิดอยู่เสมอ</span>
+    </div>
+    <div class="ckrow">
+      <div><b>วิเคราะห์การใช้งาน</b><p>Google Analytics นับผู้เข้าชมและหน้าที่เปิด · แสดงเมื่อใส่รหัส GA4 แล้วเท่านั้น</p></div>
+      <label class="switch"><input type="checkbox" data-ck-cat="analytics"><span></span><i class="sr-only">อนุญาตคุกกี้วิเคราะห์การใช้งาน</i></label>
+    </div>
+    <p class="cookie__note">เปลี่ยนใจได้ทุกเมื่อจากลิงก์ "ตั้งค่าคุกกี้" ท้ายเว็บ</p>
+    <div class="cookie__btns">
+      <button type="button" class="btn btn--outline btn--sm" data-ck="back"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>ย้อนกลับ</button>
+      <button type="button" class="btn btn--primary btn--sm" data-ck="save">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/bull.js?v=202610291603" defer></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!--{"title": "เครื่องคำนวณ Lot และ Drawdown", "desc": "คำนวณขนาด Lot จากเงินในบัญชี เปอร์เซ็นต์ที่ยอมเสีย และระยะ Stop Loss พร้อมดูว่าถ้าพอร์ตลดลงต้องได้กำไรกลับเท่าไรจึงคืนทุน ใช้วางแผนก่อนเปิด EA บน MT5", "nav": ["guides", "tools"], "dock": "guides", "cta": {"title": "ไม่แน่ใจตัวเลขของบัญชีคุณ ถามทีมงานได้", "sub": "ส่งทุน สินทรัพย์ที่จะเทรด และระยะ Stop Loss ที่ตั้งใจใช้มาทาง LINE ทีมงานช่วยดูวิธีคิดให้"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>เครื่องคำนวณ Lot และ Drawdown</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>เครื่องคำนวณ Lot และ Drawdown</h1>
+        <p class="lead">ก่อนเปิดไม้หรือเปิด EA ให้รู้ 2 ตัวเลขนี้ก่อน: ขนาด Lot ที่ไม่ทำให้เสียเกินเงินที่ตั้งใจไว้ และถ้าพอร์ตลดลงแล้ว ต้องได้กำไรกลับเท่าไรจึงจะกลับมาที่ทุนเดิม</p>
+        <div class="phead__meta">
+          <span>{{i:calculator}}2 เครื่องคำนวณ</span>
+          <span>{{i:lock}}คำนวณในเบราว์เซอร์ ไม่ส่งตัวเลขไปที่ไหน</span>
+          <span>{{i:clock}}ใช้เวลาไม่ถึง 1 นาที</span>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปวิธีใช้">
+        <h2>สรุปแบบสั้น</h2>
+        <ol>
+          <li><b>1</b><span>ใส่เงินในบัญชี เปอร์เซ็นต์ที่ยอมเสีย และระยะ Stop Loss</span></li>
+          <li><b>2</b><span>เลือกประเภทสินทรัพย์ ระบบใส่มูลค่า pip ให้</span></li>
+          <li><b>3</b><span>อ่านขนาด Lot แล้วเช็กมูลค่า pip กับโบรกเกอร์อีกครั้ง</span></li>
+          <li><b>4</b><span>ใส่ % ที่พอร์ตลดลง ดูว่าต้องกำไรกลับเท่าไร</span></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="lot" aria-labelledby="lot-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="lot-title">{{bars}}คำนวณขนาด Lot จากเงินที่ยอมเสีย</h2>
+        <p>บอกว่าไม้นี้ยอมเสียได้กี่เปอร์เซ็นต์ของบัญชี และ Stop Loss อยู่ห่างกี่ pip เครื่องจะหาขนาด Lot ที่ใหญ่ที่สุดที่ยังไม่เสียเกินจำนวนนั้น</p>
+      </div>
+    </div>
+    <div class="calc" data-calc="lot">
+      <div class="calc__in">
+        <h3><span class="tile tile--accent">{{i:calculator}}</span>ข้อมูลของไม้นี้</h3>
+        <p class="field--full small muted">ตัวเลขที่ใส่ไว้เป็นตัวอย่าง แก้เป็นของคุณได้ทุกช่อง</p>
+        <div class="field">
+          <label for="lot-balance">เงินในบัญชี (USD)</label>
+          <input id="lot-balance" name="balance" type="number" inputmode="decimal" min="0" step="any" value="1000">
+          <small>ใช้ยอด Balance หรือ Equity ที่ดูใน MT5</small>
+        </div>
+        <div class="field">
+          <label for="lot-risk">ยอมเสียต่อไม้ (%)</label>
+          <input id="lot-risk" name="risk" type="number" inputmode="decimal" min="0" max="100" step="any" value="1">
+          <small>เปอร์เซ็นต์ของเงินในบัญชี</small>
+        </div>
+        <div class="field">
+          <label for="lot-sl">ระยะ Stop Loss (pip)</label>
+          <input id="lot-sl" name="sl" type="number" inputmode="decimal" min="0" step="any" value="50">
+          <small>ระยะจากราคาเข้าถึงจุดตัดขาดทุน</small>
+        </div>
+        <div class="field">
+          <label for="lot-step">ขนาด Lot ที่ปรับได้ทีละ</label>
+          <input id="lot-step" name="step" type="number" inputmode="decimal" min="0.01" step="0.01" value="0.01">
+          <small>ดูได้จากสเปกสินทรัพย์ในโบรกเกอร์</small>
+        </div>
+        <div class="field field--full">
+          <label for="lot-preset">ประเภทสินทรัพย์</label>
+          <select id="lot-preset" name="preset">
+            <option value="10">คู่เงินที่ลงท้าย USD เช่น EURUSD · 1 pip = 10 USD ต่อ 1 lot</option>
+            <option value="10">XAUUSD สัญญา 100 ออนซ์ · 1 pip (0.10) = 10 USD ต่อ 1 lot</option>
+            <option value="custom">ใส่มูลค่า pip เอง</option>
+          </select>
+          <small>มูลค่า pip ต่อ 1 lot ของตัวเลือกนี้จะแสดงในช่องถัดไป</small>
+        </div>
+        <div class="field field--full">
+          <label for="lot-pip">มูลค่า 1 pip ต่อ 1 lot (USD)</label>
+          <input id="lot-pip" name="pip" type="number" inputmode="decimal" min="0" step="any" value="10" readonly>
+          <small>แก้ช่องนี้ได้เมื่อเลือก "ใส่มูลค่า pip เอง"</small>
+        </div>
+      </div>
+      <div class="calc__out" aria-live="polite">
+        <div class="out"><span>เงินที่ยอมเสียในไม้นี้</span><b data-out="money">10.00 USD</b></div>
+        <div class="out"><span>ขนาด Lot ที่ไม่เสียเกินจำนวนนี้</span><b data-out="lot">0.02 lot</b></div>
+        <p class="note note--warn">{{i:alert}}<span>มูลค่า pip ต่างกันได้ตามโบรกเกอร์ ชื่อสินทรัพย์ และสกุลเงินของบัญชี เช็กในสเปกสินทรัพย์ของโบรกเกอร์ก่อนใช้ตัวเลขนี้จริง</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--line" id="dd" aria-labelledby="dd-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="dd-title">{{bars}}พอร์ตลดลงแล้ว ต้องกำไรกลับเท่าไร</h2>
+        <p>Drawdown คือระยะที่เงินในบัญชีลดลงจากจุดสูงสุด ยิ่งลดลงมาก ยิ่งต้องได้กำไรกลับเป็นเปอร์เซ็นต์ที่สูงกว่าเดิมจึงจะคืนทุน</p>
+      </div>
+    </div>
+    <div class="calc" data-calc="dd">
+      <div class="calc__in">
+        <h3><span class="tile tile--accent">{{i:gauge}}</span>ขนาดที่พอร์ตลดลง</h3>
+        <p class="field--full small muted">ตัวเลขที่ใส่ไว้เป็นตัวอย่าง แก้เป็นของคุณได้ทุกช่อง</p>
+        <div class="field">
+          <label for="dd-pct">พอร์ตลดลง (%)</label>
+          <input id="dd-pct" name="dd" type="number" inputmode="decimal" min="0" max="99.9" step="any" value="20">
+          <small>คิดจากจุดสูงสุดของบัญชี</small>
+        </div>
+        <div class="field">
+          <label for="dd-cap">ทุนตั้งต้น (USD) ไม่ใส่ก็ได้</label>
+          <input id="dd-cap" name="capital" type="number" inputmode="decimal" min="0" step="any" value="1000">
+          <small>ใส่เพื่อดูว่าเงินจะเหลือเท่าไร</small>
+        </div>
+      </div>
+      <div class="calc__out" aria-live="polite">
+        <div class="out"><span>ต้องได้กำไรกลับเท่านี้จึงคืนทุน</span><b data-out="back">25.00%</b></div>
+        <div class="out out--sm"><span>เงินที่เหลือในบัญชี</span><b data-out="left">800.00 USD</b></div>
+        <div class="out">
+          <span>สัดส่วนเงินที่เหลือเทียบกับทุนตั้งต้น</span>
+          <div class="ddbar mt-16"><i data-out="bar"></i></div>
+        </div>
+      </div>
+    </div>
+    <p class="note note--info mt-24">{{i:info}}<span>ทั้ง 2 เครื่องคำนวณในเบราว์เซอร์ของคุณเอง ตัวเลขที่ใส่ไม่ได้ถูกส่งหรือบันทึกไว้ที่ไหน ปิดหน้านี้แล้วค่าจะหายไป</span></p>
+  </div>
+</section>
+
+<section class="band band--alt" aria-label="วิธีใช้เครื่องคำนวณ">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#use-lot">วิธีใช้เครื่องคำนวณ Lot</a></li>
+        <li><a href="#use-dd">วิธีอ่านเครื่องคำนวณ Drawdown</a></li>
+        <li><a href="#example">ตัวอย่างการคำนวณ</a></li>
+        <li><a href="#together">ใช้ 2 ตัวเลขร่วมกัน</a></li>
+        <li><a href="#caution">ข้อควรระวัง</a></li>
+        <li><a href="#tools-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="use-lot">วิธีใช้เครื่องคำนวณ Lot</h2>
+      <ol>
+        <li><b>เงินในบัญชี</b> ใส่ยอดที่เห็นใน MT5 ถ้ามีออเดอร์เปิดค้างอยู่ ใช้ Equity จะใกล้ความจริงกว่า Balance</li>
+        <li><b>ยอมเสียต่อไม้</b> คือเปอร์เซ็นต์ของบัญชีที่รับได้ถ้าไม้นี้โดน Stop Loss ตั้งให้เล็กพอที่แพ้ติดกันหลายไม้แล้วบัญชียังอยู่ได้</li>
+        <li><b>ระยะ Stop Loss</b> นับเป็น pip จากราคาที่เข้าถึงราคาที่ตัดขาดทุน</li>
+        <li><b>ประเภทสินทรัพย์</b> เลือกให้ตรงกับที่จะเทรด ระบบจะใส่มูลค่า pip ต่อ 1 lot ให้ ถ้าไม่ตรงกับทั้ง 2 แบบ เลือก "ใส่มูลค่า pip เอง" แล้วพิมพ์ตัวเลขจากสเปกของโบรกเกอร์</li>
+        <li><b>ขนาด Lot ที่ปรับได้ทีละ</b> บัญชีส่วนใหญ่ปรับได้ทีละ 0.01 lot ผลลัพธ์จะปัดลงเสมอ เพื่อไม่ให้เสียเกินจำนวนที่ตั้งไว้</li>
+      </ol>
+      <h2 id="use-dd">วิธีอ่านเครื่องคำนวณ Drawdown</h2>
+      <p>ใส่เปอร์เซ็นต์ที่พอร์ตลดลงจากจุดสูงสุด เครื่องจะบอกว่าต้องได้กำไรกลับกี่เปอร์เซ็นต์ของเงินที่เหลือจึงจะกลับมาเท่าเดิม ถ้าใส่ทุนตั้งต้นด้วย จะเห็นเงินที่เหลือเป็น USD และแถบสีเหลืองแสดงสัดส่วนเงินที่ยังอยู่</p>
+      <p>ตัวเลขนี้ใช้ได้ทั้งตอนวางแผนก่อนเริ่ม และตอนอ่านผล Backtest ที่มีค่า Drawdown สูงสุดของช่วงทดสอบ ดูวิธีอ่านผลที่<a href="backtest.html">คู่มือ Backtest</a></p>
+
+      <h2 id="example">ตัวอย่างการคำนวณ</h2>
+      <p class="note note--info">{{i:info}}<span><b>ตัวเลขในส่วนนี้เป็นตัวอย่างสมมติ</b> ใช้อธิบายวิธีคิดเท่านั้น ไม่ใช่ผลเทรดและไม่ใช่ค่าที่แนะนำให้ใช้</span></p>
+      <h3>ตัวอย่างที่ 1: คู่เงิน EURUSD</h3>
+      <p>บัญชีมี 1,000 USD ยอมเสีย 1% ต่อไม้ เท่ากับ 10 USD ตั้ง Stop Loss ห่าง 50 pip และ 1 pip ของ EURUSD มีค่า 10 USD ต่อ 1 lot</p>
+      <p>ขนาด Lot = 10 ÷ (50 × 10) = <b>0.02 lot</b> ถ้าราคาวิ่งไปโดน Stop Loss จะเสียราว 10 USD ตามที่ตั้งไว้ (ยังไม่รวมสเปรด ค่าคอมมิชชัน และราคาที่อาจคลาด)</p>
+      <h3>ตัวอย่างที่ 2: XAUUSD</h3>
+      <p>บัญชีมี 2,000 USD ยอมเสีย 1% เท่ากับ 20 USD ตั้ง Stop Loss ห่าง 5.00 USD ของราคาทอง ซึ่งเท่ากับ 50 pip เมื่อนับ 1 pip = 0.10</p>
+      <p>ขนาด Lot = 20 ÷ (50 × 10) = <b>0.04 lot</b> โบรกเกอร์บางแห่งนับ pip ของทองไม่เหมือนกัน ให้เช็กสเปกก่อนเสมอ</p>
+      <h3>ตัวอย่างที่ 3: พอร์ตลดลงแล้วต้องกำไรกลับเท่าไร</h3>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">พอร์ตลดลง</th><th scope="col">เงินที่เหลือจาก 1,000 USD</th><th scope="col">ต้องกำไรกลับจึงคืนทุน</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">10%</th><td data-label="เงินที่เหลือจาก 1,000 USD">900 USD</td><td data-label="ต้องกำไรกลับจึงคืนทุน">11.11%</td></tr>
+            <tr><th scope="row">20%</th><td data-label="เงินที่เหลือจาก 1,000 USD">800 USD</td><td data-label="ต้องกำไรกลับจึงคืนทุน">25.00%</td></tr>
+            <tr><th scope="row">30%</th><td data-label="เงินที่เหลือจาก 1,000 USD">700 USD</td><td data-label="ต้องกำไรกลับจึงคืนทุน">42.86%</td></tr>
+            <tr><th scope="row">50%</th><td data-label="เงินที่เหลือจาก 1,000 USD">500 USD</td><td data-label="ต้องกำไรกลับจึงคืนทุน">100.00%</td></tr>
+            <tr><th scope="row">75%</th><td data-label="เงินที่เหลือจาก 1,000 USD">250 USD</td><td data-label="ต้องกำไรกลับจึงคืนทุน">300.00%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>ตารางนี้เป็นคณิตศาสตร์ล้วน ไม่ได้มาจากผลเทรดของ EA ตัวใด สิ่งที่ควรเห็นคือ ลดลงครึ่งหนึ่งแล้วต้องได้กำไรกลับเท่าตัวจึงจะคืนทุน</p>
+
+      <h2 id="together">ใช้ 2 ตัวเลขร่วมกัน</h2>
+      <p>เริ่มจากถามตัวเองว่าพอร์ตลดลงได้มากที่สุดเท่าไรที่ยังรับได้ แล้วค่อยย้อนกลับมาตั้งเปอร์เซ็นต์ที่ยอมเสียต่อไม้ ไม่ใช่เริ่มจากขนาด Lot ที่อยากเปิด</p>
+      <p>ตัวอย่างสมมติ ถ้าแพ้ติดกัน 10 ไม้ และแต่ละไม้เสียเป็นเปอร์เซ็นต์ของเงินที่เหลือ</p>
+      <ul>
+        <li>ไม้ละ 1% พอร์ตลดลงราว 9.56% ต้องกำไรกลับราว 10.57%</li>
+        <li>ไม้ละ 3% พอร์ตลดลงราว 26.26% ต้องกำไรกลับราว 35.61%</li>
+      </ul>
+      <p>ตัวอย่างนี้ไม่ได้บอกว่า EA จะแพ้ติดกันกี่ไม้ แต่ช่วยให้เห็นว่าเปอร์เซ็นต์ต่อไม้ที่ต่างกันเล็กน้อย ทำให้ผลรวมต่างกันมาก</p>
+      <p>ถ้า EA เปิดหลายออเดอร์พร้อมกัน ความเสี่ยงของบัญชีคือผลรวมของทุกออเดอร์ที่เปิดอยู่ ไม่ใช่แค่ไม้เดียว วิธีที่สินค้าแต่ละตัวกำหนดขนาดไม้ {{wait}} ดูเพิ่มที่หน้า<a href="product-1.html">สินค้าตัวอย่าง 1 · V1.0</a> <a href="product-2.html">สินค้าตัวอย่าง 2 · V2.0</a> และ<a href="product-3.html">สินค้าตัวอย่าง 3 · V3.0</a></p>
+
+      <h2 id="caution">ข้อควรระวัง</h2>
+      <ul>
+        <li><b>มูลค่า pip ไม่เท่ากันทุกที่</b> ขึ้นกับโบรกเกอร์ ชื่อสินทรัพย์ที่อาจมีตัวต่อท้าย และสกุลเงินของบัญชี</li>
+        <li><b>ขาดทุนจริงอาจมากกว่าที่คำนวณ</b> ช่วงข่าวแรงหรือตลาดเปิดต่างจากราคาปิด ออเดอร์อาจปิดที่ราคาแย่กว่า Stop Loss</li>
+        <li><b>ยังไม่รวมค่าใช้จ่าย</b> สเปรด ค่าคอมมิชชัน และค่าถือข้ามคืน (Swap) ทำให้ตัวเลขจริงต่างไปได้</li>
+        <li><b>ขนาด Lot ต่ำสุดและสูงสุดมีกำหนด</b> ถ้าผลลัพธ์เล็กกว่าขนาดต่ำสุดที่โบรกเกอร์ให้เปิด แปลว่าเงินที่ยอมเสียไม่พอกับระยะ Stop Loss นี้</li>
+        <li><b>มาร์จิ้นเป็นอีกเรื่อง</b> เครื่องนี้ไม่ได้คิดว่าบัญชีมีมาร์จิ้นพอเปิดไม้หรือไม่ ดูเรื่องเลเวอเรจและ Stop Out ใน<a href="risk-disclosure.html">ประกาศความเสี่ยง</a></li>
+        <li><b>เป็นเครื่องช่วยคิด ไม่ใช่คำแนะนำการลงทุน</b> คุณเป็นผู้ตัดสินใจและรับผลเอง</li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn--line" {{link:line}}>{{i:chat}}ส่งตัวเลขให้ทีมงานช่วยดูทาง LINE</a>
+      </div>
+
+      <h2 id="tools-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>pip กับ point ต่างกันอย่างไร{{i:plus}}</summary><div class="qa__a"><p>ใน MT5 ราคาขยับทีละ point ซึ่งเป็นหลักทศนิยมสุดท้าย สำหรับคู่เงินส่วนใหญ่ 1 pip เท่ากับ 10 point ถ้าระยะ Stop Loss ที่ดูมาเป็น point ให้หารด้วย 10 ก่อนใส่ในเครื่องคำนวณ สินทรัพย์อื่นอาจนับไม่เหมือนกัน เช็กสเปกของโบรกเกอร์</p></div></details>
+      <details class="qa"><summary>ทำไมขนาด Lot ออกมาเป็น 0.00{{i:plus}}</summary><div class="qa__a"><p>เงินที่ยอมเสียน้อยเกินไปเมื่อเทียบกับระยะ Stop Loss จนเปิดได้ไม่ถึงขนาดเล็กที่สุด ทางเลือกคือข้ามไม้นี้ หรือทบทวนแผนใหม่ อย่าเพิ่มขนาดไม้จนเสียเกินที่ตั้งใจไว้</p></div></details>
+      <details class="qa"><summary>บัญชีไม่ได้เป็นสกุล USD ใช้ได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ใช้ได้ถ้าแปลงทุกช่องเป็นสกุลเดียวกันก่อน คือใส่เงินในบัญชีและมูลค่า pip เป็นสกุลเงินของบัญชีคุณ แล้วเลือก "ใส่มูลค่า pip เอง"</p></div></details>
+      <details class="qa"><summary>ให้ EA ใช้ขนาด Lot ตามที่คำนวณได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ขึ้นกับการตั้งค่าของสินค้าแต่ละตัว {{wait}} ถามทีมงานทาง LINE ก่อนแก้ค่าใน EA เพราะบางค่าเปลี่ยนแล้วความเสี่ยงของทั้งบัญชีเปลี่ยนตาม</p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="backtest.html"><span class="tile">{{i:flask}}</span><span><b>Backtest</b><small>อ่านค่า Drawdown สูงสุดจากผลทดสอบ</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="forward-test.html"><span class="tile">{{i:candles}}</span><span><b>Forward Test</b><small>ลองกับตลาดจริงด้วยบัญชีเล็ก</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="risk-disclosure.html"><span class="tile">{{i:alert}}</span><span><b>ประกาศความเสี่ยง</b><small>เลเวอเรจ Stop Out และสิ่งที่ต้องรู้</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

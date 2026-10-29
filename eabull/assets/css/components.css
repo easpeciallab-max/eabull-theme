@@ -1,0 +1,499 @@
+/*
+ * EA BULL · ส่วนประกอบกลาง (inc/components.php) · Glass Sky (docs/design.md)
+ * โหลดหลัง style.css และก่อน CSS ของโมดูล · ใช้ token ใน :root ของ style.css (ส่วน 1 และ 43)
+ * กฎที่ใช้ :where() หรือ specificity ต่ำ ตั้งใจให้ CSS ของแต่ละหน้าปรับทับได้ง่าย
+ */
+
+/* ==========================================================
+   1) หัวบท · kicker + H2 + คำอธิบาย + ปุ่มแคปซูลกระจก "ดูทั้งหมด ↗"
+   ========================================================== */
+.ch-head {
+	max-width: 760px;
+	margin: 0 auto clamp(26px, 4vw, 40px);
+}
+
+.ch-head--center {
+	text-align: center;
+}
+
+.ch-head--left {
+	margin-left: 0;
+	text-align: left;
+}
+
+.ch-head > .kicker {
+	display: inline-flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	margin: 0 0 10px;
+}
+
+.ch-index {
+	font-variant-numeric: tabular-nums;
+}
+
+.ch-num {
+	color: var(--gold-text);
+	font-weight: 600;
+}
+
+.ch-total {
+	color: var(--ash);
+}
+
+.ch-kicker {
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 1px solid rgba(230, 184, 0, 0.6);
+}
+
+.ch-head h2 {
+	margin: 0;
+	text-wrap: balance;
+}
+
+.ch-sub {
+	max-width: 46em;
+	margin: 12px 0 0;
+	color: var(--ash);
+}
+
+.ch-head--center .ch-sub {
+	margin-inline: auto;
+}
+
+/* มีปุ่มด้านขวา: หัวข้อซ้าย ปุ่มชิดขวาล่าง */
+.ch-head--more {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	column-gap: 24px;
+	align-items: end;
+	max-width: none;
+}
+
+.ch-head--more > * {
+	grid-column: 1;
+}
+
+.ch-head--more > .kicker {
+	justify-self: start;
+}
+
+.ch-head--more > .ch-more {
+	grid-column: 2;
+	grid-row: 1 / span 3;
+	align-self: end;
+}
+
+.ch-more {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 44px;
+	padding: 5px 6px 5px 18px;
+	border: 1px solid var(--glass-line);
+	border-radius: 999px;
+	background: var(--glass-strong);
+	box-shadow: var(--shadow-soft);
+	color: var(--navy);
+	font-family: var(--font-display);
+	font-size: 0.88rem;
+	font-weight: 500;
+	line-height: 1.2;
+	white-space: nowrap;
+	text-decoration: none;
+	-webkit-backdrop-filter: var(--glass-blur);
+	backdrop-filter: var(--glass-blur);
+	transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ch-more:hover {
+	background: #FFFFFF;
+	box-shadow: var(--shadow-lift);
+	color: var(--navy);
+	transform: translateY(-1px);
+}
+
+.ch-more-ic {
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: var(--sky-1);
+	color: var(--blue);
+}
+
+.ch-more-ic .icon {
+	width: 15px;
+	height: 15px;
+	transform: rotate(-45deg);
+}
+
+/* ==========================================================
+   2) ปุ่มติดต่อ (eab_contact_button) · ไอคอน LINE + ข้อความ + ลูกศรในวงกลม
+   specificity 0,2,0 · CSS ของหน้าที่ระบุบริบท (เช่น .site-header .btn-contact) ทับได้
+   ========================================================== */
+.btn-contact > .btn-contact-ic {
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+}
+
+.btn-contact > .btn-contact-ar {
+	box-sizing: border-box;
+	flex: 0 0 auto;
+	width: 30px;
+	height: 30px;
+	margin: -4px -6px -4px 2px;
+	padding: 7px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.5);
+	transform: rotate(-45deg);
+}
+
+.btn-dark.btn-contact > .btn-contact-ar {
+	background: rgba(255, 255, 255, 0.14);
+	color: var(--gold-1);
+}
+
+.btn-ghost.btn-contact > .btn-contact-ar {
+	background: var(--sky-1);
+	color: var(--blue);
+}
+
+/* ==========================================================
+   3) ช่องรูป · กรอบโค้ง 18px ขอบกระจก
+   ========================================================== */
+.media-frame {
+	position: relative;
+	margin: 0;
+}
+
+.media-open {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	padding: 6px;
+	border: 1px solid var(--glass-line);
+	border-radius: 18px;
+	background: var(--glass-strong);
+	box-shadow: var(--shadow-soft);
+	cursor: zoom-in;
+	-webkit-backdrop-filter: var(--glass-blur);
+	backdrop-filter: var(--glass-blur);
+	transition: box-shadow 0.18s ease;
+}
+
+.media-open:hover {
+	box-shadow: var(--shadow-lift);
+}
+
+.media-open:focus-visible {
+	outline: 2px solid var(--blue);
+	outline-offset: 3px;
+}
+
+.media-open img,
+.media-open picture {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 12px;
+}
+
+.media-open-hint {
+	position: absolute;
+	right: 16px;
+	bottom: 16px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.24);
+	border-radius: 999px;
+	background: rgba(10, 46, 102, 0.86);
+	color: #FFFFFF;
+	font-family: var(--font-display);
+	font-size: 0.76rem;
+	font-weight: 500;
+	line-height: 1.3;
+	opacity: 0;
+	transform: translateY(4px);
+	transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.media-open-hint--icon {
+	padding: 7px;
+}
+
+.media-open-hint .icon {
+	width: 14px;
+	height: 14px;
+}
+
+.media-open:hover .media-open-hint,
+.media-open:focus-visible .media-open-hint {
+	opacity: 1;
+	transform: none;
+}
+
+@media (hover: none) {
+	.media-open-hint {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.media-cap {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 10px;
+	margin-top: 10px;
+	padding: 0 4px;
+	color: var(--ash);
+	font-size: 0.82rem;
+	line-height: 1.55;
+}
+
+.media-cap-label {
+	color: var(--gold-text);
+	font-family: var(--font-display);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+}
+
+/* ช่องว่างรอรูป (เห็นเฉพาะแอดมิน) · คนทั่วไปไม่เห็นอะไรเลย */
+.media-slot-empty {
+	display: grid;
+	place-items: center;
+	align-content: center;
+	gap: 10px;
+	min-height: 220px;
+	padding: 24px;
+	border: 2px dashed rgba(194, 154, 0, 0.55);
+	border-radius: 18px;
+	background: rgba(255, 249, 224, 0.72);
+	color: var(--gold-text);
+	font-size: 0.86rem;
+	line-height: 1.6;
+	text-align: center;
+}
+
+.media-slot-icon {
+	display: inline-grid;
+	place-items: center;
+	width: 52px;
+	height: 52px;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	border-radius: var(--r-tile);
+	background: linear-gradient(145deg, #FFF7D6, #FFEA99);
+}
+
+.media-slot-empty .icon {
+	width: 26px;
+	height: 26px;
+}
+
+.media-slot-note strong {
+	display: block;
+	margin-bottom: 4px;
+	font-family: var(--font-display);
+	font-weight: 600;
+}
+
+.media-slot-empty .media-cap {
+	justify-content: center;
+}
+
+.admin-hint {
+	display: inline-block;
+	padding: 8px 14px;
+	border: 1px dashed rgba(194, 154, 0, 0.6);
+	border-radius: 12px;
+	background: rgba(255, 249, 224, 0.85);
+	color: var(--gold-text);
+	font-size: 0.82rem;
+	line-height: 1.55;
+}
+
+/* ==========================================================
+   4) ข้อความจาก eab_rich_text · รายการ หัวข้อย่อย ตาราง
+   ========================================================== */
+:where(.rt-list) {
+	padding-left: 1.3em;
+}
+
+:where(.rt-list) > li + li {
+	margin-top: 0.35em;
+}
+
+:where(.rt-list) > li::marker {
+	color: var(--gold-3);
+}
+
+:where(.rt-list--num) > li::marker {
+	color: var(--blue);
+	font-family: var(--font-display);
+	font-weight: 600;
+}
+
+:where(.rt-h3) {
+	color: var(--navy);
+}
+
+/* ตารางจอแคบเรียงเป็นการ์ดกระจกทีละแถว (≤640px) */
+@media (max-width: 640px) {
+	.table-wrap--stack {
+		overflow: visible;
+		border: 0;
+		background: none;
+		box-shadow: none;
+	}
+
+	.table-wrap--stack .data-table {
+		min-width: 0;
+	}
+
+	.table-wrap--stack thead {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+	}
+
+	.table-wrap--stack tr {
+		display: block;
+		margin-bottom: 12px;
+		overflow: hidden;
+		border: 1px solid var(--glass-line);
+		border-radius: 16px;
+		background: rgba(255, 255, 255, 0.92);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.table-wrap--stack td {
+		display: grid;
+		grid-template-columns: minmax(96px, 38%) minmax(0, 1fr);
+		gap: 10px;
+		border-bottom: 1px solid rgba(10, 46, 102, 0.08);
+	}
+
+	.table-wrap--stack td::before {
+		content: attr(data-label);
+		color: var(--navy);
+		font-family: var(--font-display);
+		font-size: 0.8rem;
+		font-weight: 600;
+	}
+
+	.table-wrap--stack tr:nth-child(even) td {
+		background: transparent;
+	}
+
+	.table-wrap--stack td:last-child {
+		border-bottom: 0;
+	}
+}
+
+/* ---------- หัวข้อเนื้อหาจาก Customizer ---------- */
+.doc-section + .doc-section {
+	margin-top: 2.2em;
+}
+
+/* ---------- อื่น ๆ ---------- */
+.nobr {
+	white-space: nowrap;
+}
+
+/* ==========================================================
+   5) เบราว์เซอร์ที่ไม่มี backdrop-filter · ลดการเคลื่อนไหว · จอเล็ก
+   ========================================================== */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+	.ch-more,
+	.media-open {
+		background: rgba(255, 255, 255, 0.94);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ch-more,
+	.media-open,
+	.media-open-hint {
+		transition: none;
+	}
+
+	.ch-more:hover {
+		transform: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.ch-head--more {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.ch-head--more > .ch-more {
+		grid-column: 1;
+		grid-row: auto;
+		justify-self: start;
+		margin-top: 16px;
+	}
+
+	.media-open {
+		padding: 4px;
+		border-radius: 16px;
+	}
+
+	.media-open img,
+	.media-open picture {
+		border-radius: 11px;
+	}
+}
+
+/* ==========================================================
+   แผนภาพในเนื้อหา [eabull_figure] (inc/shortcodes.php) · กรอบเส้นบาง ไม่มีเงา
+   ========================================================== */
+.eab-figure {
+	margin: 1.6em 0;
+	border: 1px solid rgba(10, 46, 102, 0.1);
+	border-radius: 22px;
+	overflow: hidden;
+	background: #F7FAFE;
+}
+
+.eab-figure picture,
+.eab-figure img,
+.entry-content .eab-figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	border-radius: 0;
+}
+
+.eab-figure figcaption {
+	padding: 10px 16px;
+	border-top: 1px solid rgba(10, 46, 102, 0.08);
+	background: #FFFFFF;
+	font-size: 0.86rem;
+	line-height: 1.6;
+	color: var(--muted, #4A5A78);
+	text-align: center;
+}
+
+/* ภาพหน้าจอเล็ก (เช่น หน้าต่าง Navigator): แสดงไม่เกินขนาดจริง วางกลางกรอบ ไม่ยืดจนแตก */
+.eab-figure--fit {
+	padding: 14px;
+	text-align: center;
+}
+
+.eab-figure--fit picture,
+.eab-figure--fit img,
+.entry-content .eab-figure--fit img {
+	display: inline-block;
+	width: auto;
+	max-width: 100%;
+	border-radius: 10px;
+}

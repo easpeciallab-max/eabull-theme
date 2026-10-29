@@ -1,0 +1,201 @@
+<!--{"title": "ฝากเงินเข้าบัญชีเทรดผ่าน Zaurix Portal", "desc": "คู่มือฝากเงินเข้าบัญชีเทรด MT5 ผ่าน Portal ของ Zaurix โบรกเกอร์พันธมิตรของ EA BULL ตั้งแต่เลือกช่องทาง เลือกบัญชีปลายทาง ใส่จำนวนเงิน ไปจนถึงเช็กยอด Balance ใน MT5", "nav": ["guides", "deposit"], "dock": "guides", "cta": {"title": "ฝากเงินแล้วยอดยังไม่เข้า ทักทีมงานได้", "sub": "เตรียมเลขบัญชีเทรดและภาพสลิปไว้ แล้วทักมาทาง LINE ทีมงานจะช่วยดูว่ารายการค้างอยู่ตรงไหน"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>ฝากเงินเข้าบัญชีเทรด</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>ฝากเงินเข้าบัญชีเทรดผ่าน Zaurix Portal</h1>
+        <p class="lead">Zaurix เป็นโบรกเกอร์พันธมิตรของ EA BULL เราอาจได้รับค่าตอบแทนเมื่อคุณสมัครผ่านลิงก์ของเรา คู่มือนี้พาฝากเงินจาก Portal ของโบรกเกอร์เข้าบัญชีเทรด MT5 แล้วเช็กว่ายอดเข้าถูกบัญชี</p>
+        <div class="phead__meta">
+          <span>{{i:clock}}ทำรายการราว 5 นาที</span>
+          <span>{{i:wallet}}ฝากผ่าน Portal ของโบรกเกอร์</span>
+          <span>{{i:list}}6 ขั้นตอน</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn--primary" {{wait-link:ลิงก์เข้า Portal รอยืนยันจากเจ้าของ}}>เปิด Zaurix Portal {{i:external}}</a>
+          <a class="btn btn--outline" href="#steps">ดูขั้นตอน {{i:arrow-right}}</a>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">เข้า Portal {{i:chevron-right}} Deposit {{i:chevron-right}} เลือกช่องทาง {{i:chevron-right}} เลือกบัญชีเทรด {{i:chevron-right}} ใส่จำนวนเงิน {{i:chevron-right}} ยืนยัน {{i:chevron-right}} เช็ก Balance</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2>{{bars}}ก่อนเริ่ม</h2>
+        <p class="lead">ฝากเฉพาะเงินที่เสียได้ การเทรดด้วย EA มีความเสี่ยงและอาจขาดทุนจนหมดบัญชี อ่านประกาศความเสี่ยงให้ครบก่อนฝากเงินจริง</p>
+        <p class="muted">ช่องทางฝาก ยอดขั้นต่ำ ค่าธรรมเนียม และเวลาที่เงินเข้า เป็นไปตามที่โบรกเกอร์กำหนดและอาจเปลี่ยนได้ ดูที่หน้า Deposit ใน Portal ทุกครั้งก่อนฝาก</p>
+        <div class="btns">
+          <a class="btn btn--outline btn--sm" href="risk-disclosure.html">อ่านประกาศความเสี่ยง</a>
+        </div>
+      </div>
+      <div class="prep">
+        <h3>{{i:check}}ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>บัญชี Zaurix</dt><dd>ยืนยันอีเมลและยืนยันตัวตนผ่านแล้ว</dd></div>
+          <div><dt>บัญชีเทรด MT5</dt><dd>สร้างใน Portal แล้ว และรู้เลข Login</dd></div>
+          <div><dt>ช่องทางจ่ายเงิน</dt><dd>บัญชีที่เป็นชื่อของคุณเอง · ช่องทางที่รองรับ {{wait}}</dd></div>
+          <div><dt>จำนวนเงิน</dt><dd>ทุนที่แนะนำของสินค้า {{wait}} · ขั้นต่ำของโบรกเกอร์ {{wait}}</dd></div>
+        </dl>
+        <p class="note note--warn">{{i:alert}}<span>ใช้บัญชีธนาคารหรือช่องทางจ่ายที่เป็นชื่อของคุณเอง ให้ตรงกับชื่อในบัญชีโบรกเกอร์ ตรวจสอบรายการและถอนเงินภายหลังได้ง่ายกว่า</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>เข้า Portal แล้วเลือก Deposit</a></li>
+        <li><a href="#step-2"><b>02</b>เลือกช่องทางฝาก</a></li>
+        <li><a href="#step-3"><b>03</b>เลือกบัญชีเทรดปลายทาง</a></li>
+        <li><a href="#step-4"><b>04</b>ใส่จำนวนเงิน</a></li>
+        <li><a href="#step-5"><b>05</b>ยืนยันและเก็บหลักฐาน</a></li>
+        <li><a href="#step-6"><b>06</b>เช็กยอดใน MT5</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนฝากเงินเข้าบัญชีเทรด</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>เข้าสู่ระบบ Portal แล้วเลือก Deposit</h3>
+            <p>เปิด Zaurix Portal แล้วเข้าสู่ระบบด้วยอีเมลและรหัสผ่านที่ตั้งตอนสมัคร จากนั้นเลือกเมนู <b>Deposit</b> หรือฝากเงิน ตามที่หน้าเว็บโบรกเกอร์แจ้ง</p>
+            <div class="btns mt-16">
+              <a class="btn btn--primary" {{wait-link:ลิงก์เข้า Portal รอยืนยันจากเจ้าของ}}>เปิด Zaurix Portal {{i:external}}</a>
+            </div>
+            <p class="note note--warn">{{i:alert}}<span>เข้า Portal จากลิงก์ในเว็บนี้หรือที่คุณบันทึกไว้เองเท่านั้น ระวังเว็บปลอมที่ส่งต่อกันมาทางแชต</span></p>
+            <div class="shot">{{i:wallet}}<span><b>ภาพ 01 · เมนู Deposit ใน Portal</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>เลือกช่องทางฝาก</h3>
+            <p>หน้า Deposit จะแสดงช่องทางที่ใช้ได้ในตอนนั้น เลือกช่องทางที่สะดวก แต่ละช่องทางอาจมียอดขั้นต่ำ ค่าธรรมเนียม และเวลาที่เงินเข้าต่างกัน อ่านรายละเอียดของช่องทางก่อนเลือก</p>
+            <ul>
+              <li>ช่องทางที่รองรับสำหรับลูกค้าในไทย: {{wait}}</li>
+            </ul>
+            <div class="shot">{{i:bank}}<span><b>ภาพ 02 · รายการช่องทางฝากเงิน</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>เลือกบัญชีเทรดปลายทาง</h3>
+            <p>เลือกบัญชีเทรด MT5 ที่จะใช้กับ EA BULL ตรวจเลข Login ให้ตรงกับบัญชีที่ล็อกอินไว้ใน MT5 ถ้ามีหลายบัญชี ระวังอย่าเลือกผิด</p>
+            <p class="note note--info">{{i:info}}<span>บาง Portal ให้ฝากเข้ากระเป๋าเงิน (Wallet) ก่อน แล้วค่อยโอนเข้าบัญชีเทรดอีกขั้น ถ้าหน้าเว็บเป็นแบบนี้ ให้ทำตามที่หน้าเว็บโบรกเกอร์แจ้ง</span></p>
+            <div class="shot">{{i:layers}}<span><b>ภาพ 03 · เลือกบัญชีเทรดปลายทาง</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ใส่จำนวนเงิน</h3>
+            <p>ใส่จำนวนเงินที่จะฝาก ดูสกุลเงินที่หน้าเว็บแสดง ถ้ามีการแปลงสกุลเงิน ให้ดูอัตราแลกเปลี่ยนและยอดที่จะเข้าบัญชีเทรดจริงก่อนไปต่อ</p>
+            <ul>
+              <li>ยอดฝากขั้นต่ำ: {{wait}}</li>
+              <li>ทุนที่แนะนำของแต่ละสินค้า: {{wait}}</li>
+            </ul>
+            <p class="note note--warn">{{i:alert}}<span>ฝากเฉพาะเงินที่เสียได้ ไม่ใช้เงินกู้ เงินค่าใช้จ่ายจำเป็น หรือเงินที่ต้องใช้ในเร็ว ๆ นี้</span></p>
+            <div class="shot">{{i:calculator}}<span><b>ภาพ 04 · ช่องใส่จำนวนเงิน</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>ยืนยันและเก็บหลักฐาน</h3>
+            <p>ตรวจบัญชีปลายทาง จำนวนเงิน และช่องทางอีกครั้ง แล้วกดยืนยัน ทำรายการจ่ายต่อตามขั้นตอนที่หน้าเว็บโบรกเกอร์แจ้ง</p>
+            <p>เก็บสลิปหรือภาพหน้าจอการโอนไว้ทุกครั้ง ให้เห็นวันที่ เวลา และจำนวนเงิน ใช้ตรวจสอบถ้ายอดยังไม่เข้า</p>
+            <p class="note note--info">{{i:info}}<span>ค่าธรรมเนียมการฝากของแต่ละช่องทาง {{wait}}</span></p>
+            <div class="shot">{{i:file}}<span><b>ภาพ 05 · หน้ายืนยันรายการฝาก</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>เช็กยอด Balance ใน MT5</h3>
+            <p>เปิด MT5 ที่ล็อกอินบัญชีเดียวกัน บนคอมดูแท็บ <b>Trade</b> ในหน้าต่าง Toolbox บนมือถือดูหน้า Trade ยอด <b>Balance</b> ควรเพิ่มตามจำนวนที่ฝาก และในแท็บ History จะมีรายการฝากเงินขึ้นมา</p>
+            <p>ถ้าเกินเวลาที่ช่องทางนั้นแจ้งแล้วยอดยังไม่เข้า ติดต่อฝ่ายบริการของโบรกเกอร์พร้อมสลิป หรือทักทีมงานให้ช่วยดู</p>
+            <div class="btns mt-16">
+              <a class="btn btn--line" {{link:line}}>{{i:chat}}ทักทีมงานทาง LINE</a>
+            </div>
+            <div class="shot">{{i:candles}}<span><b>ภาพ 06 · ตัวอย่างยอด Balance ในแท็บ Trade ของ MT5</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="รายละเอียดเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#dep-check">เช็กหลังฝากเงิน</a></li>
+        <li><a href="#dep-trouble">ยอดไม่เข้า ทำอย่างไร</a></li>
+        <li><a href="#dep-fee">ค่าธรรมเนียมและการถอนเงิน</a></li>
+        <li><a href="#dep-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="dep-check">เช็กหลังฝากเงิน</h2>
+      <ul class="checks">
+        <li>{{i:check}}ยอด Balance ใน MT5 เพิ่มตามจำนวนที่ฝาก</li>
+        <li>{{i:check}}เงินเข้าบัญชีเทรดที่ถูกต้อง เลข Login ตรงกับที่ล็อกอินใน MT5</li>
+        <li>{{i:check}}เก็บสลิปหรือภาพหน้าจอการโอนไว้แล้ว</li>
+        <li>{{i:check}}เงินที่ฝากเป็นเงินที่เสียได้ ไม่กระทบค่าใช้จ่ายจำเป็น</li>
+      </ul>
+
+      <h2 id="dep-trouble">ยอดไม่เข้า ทำอย่างไร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ยอดยังไม่เข้า</th><td data-label="สาเหตุที่พบบ่อย">ช่องทางนั้นใช้เวลาตรวจสอบ หรือข้อมูลการโอนไม่ตรงกับที่หน้าเว็บแจ้ง</td><td data-label="วิธีแก้">ดูสถานะรายการใน Portal รอตามเวลาที่ช่องทางแจ้ง ถ้าเกินเวลา ติดต่อโบรกเกอร์พร้อมสลิป</td></tr>
+            <tr><th scope="row">เงินไปอยู่ผิดบัญชี</th><td data-label="สาเหตุที่พบบ่อย">เลือกบัญชีปลายทางผิด หรือเงินยังค้างอยู่ใน Wallet</td><td data-label="วิธีแก้">ใช้เมนูโอนเงินระหว่างบัญชีใน Portal ถ้ามี ตามที่หน้าเว็บโบรกเกอร์แจ้ง</td></tr>
+            <tr><th scope="row">MT5 ไม่แสดงยอดใหม่</th><td data-label="สาเหตุที่พบบ่อย">MT5 ล็อกอินอยู่อีกบัญชี หรือการเชื่อมต่อหลุด</td><td data-label="วิธีแก้">เช็กเลขบัญชีใน Navigator และสถานะมุมขวาล่าง แล้วล็อกอินใหม่</td></tr>
+            <tr><th scope="row">ยอดที่เข้าไม่เท่ากับที่โอน</th><td data-label="สาเหตุที่พบบ่อย">ค่าธรรมเนียมหรืออัตราแลกเปลี่ยน</td><td data-label="วิธีแก้">ดูรายละเอียดรายการใน Portal · ค่าธรรมเนียม {{wait}}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="dep-fee">ค่าธรรมเนียมและการถอนเงิน</h2>
+      <p>ค่าธรรมเนียมฝากถอน ยอดขั้นต่ำ และระยะเวลา เป็นไปตามที่โบรกเกอร์กำหนดและอาจเปลี่ยนได้ ข้อมูลที่ทีมงานยืนยันแล้ว {{wait}}</p>
+      <p>การถอนเงินทำผ่าน Portal เช่นเดียวกับการฝาก ขั้นตอนและเงื่อนไขการถอน {{wait}}</p>
+      <p class="note note--warn">{{i:alert}}<span>ถ้า EA มีออเดอร์เปิดอยู่ การถอนเงินทำให้เงินสำรองในบัญชีลดลง และเสี่ยงโดนปิดออเดอร์อัตโนมัติ (Stop out) ปรึกษาทีมงานก่อนถอนระหว่างที่ EA ทำงาน</span></p>
+
+      <h2 id="dep-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ต้องฝากขั้นต่ำเท่าไร{{i:plus}}</summary><div class="qa__a"><p>ขั้นต่ำของโบรกเกอร์ {{wait}} ส่วนทุนที่แนะนำสำหรับ EA แต่ละตัว {{wait}} ดูในหน้าสินค้า</p></div></details>
+      <details class="qa"><summary>ฝากจากบัญชีของคนอื่นได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ไม่แนะนำ ใช้บัญชีที่เป็นชื่อของคุณเองเสมอ เงื่อนไขการรับเงินจากบัญชีบุคคลอื่นเป็นไปตามที่โบรกเกอร์กำหนด</p></div></details>
+      <details class="qa"><summary>เงินเข้าใช้เวลานานแค่ไหน{{i:plus}}</summary><div class="qa__a"><p>ขึ้นกับช่องทางที่เลือก ดูเวลาที่แจ้งในหน้า Deposit ก่อนทำรายการ</p></div></details>
+      <details class="qa"><summary>ฝากเพิ่มระหว่างที่ EA ทำงานได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ฝากได้ ยอด Balance จะเพิ่มเมื่อเงินเข้า ส่วนผลต่อการคำนวณขนาดไม้ของ EA {{wait}}</p></div></details>
+      <details class="qa"><summary>ต้องฝากเงินก่อนติดตั้ง EA ไหม{{i:plus}}</summary><div class="qa__a"><p>ติดตั้ง EA ก่อนก็ได้ แต่ EA จะส่งคำสั่งได้เมื่อบัญชีมีเงินพอ ดู<a href="how-to-install.html">คู่มือติดตั้ง EA บน MT5</a></p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="mt5-login.html"><span class="tile">{{i:download}}</span><span><b>ติดตั้งและล็อกอิน MT5</b><small>เช็กยอดจากคอมและมือถือ</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="how-to-install.html"><span class="tile">{{i:box}}</span><span><b>ติดตั้ง EA บน MT5</b><small>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="tools.html"><span class="tile">{{i:calculator}}</span><span><b>เครื่องคำนวณ Lot และ Drawdown</b><small>คิดขนาดไม้จากเงินที่ยอมเสีย</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

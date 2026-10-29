@@ -1,0 +1,208 @@
+<!--{"title": "เปิดบัญชีเทรด MT5 กับ Zaurix", "desc": "คู่มือเปิดบัญชีเทรด MT5 กับ Zaurix โบรกเกอร์พันธมิตรของ EA BULL ตั้งแต่สมัคร ยืนยันอีเมล ยืนยันตัวตน สร้างบัญชี MT5 จนพร้อมฝากเงิน พร้อมวิธีดูแลรหัสผ่าน", "nav": ["guides", "open-mt5-account"], "dock": "guides", "cta": {"title": "สมัครแล้วติดขั้นไหน ถามทีมงานได้", "sub": "ส่งภาพหน้าจอที่ติดมาทาง LINE ปิดข้อมูลส่วนตัวที่ไม่จำเป็นไว้ และไม่ต้องส่งรหัสผ่านใด ๆ"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>เปิดบัญชีเทรด MT5</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>เปิดบัญชีเทรด MT5 กับ Zaurix</h1>
+        <p class="lead">Zaurix เป็นโบรกเกอร์พันธมิตรของ EA BULL เราอาจได้รับค่าตอบแทนเมื่อคุณสมัครผ่านลิงก์ในหน้านี้ คู่มือนี้พาสมัครสมาชิก ยืนยันตัวตน และสร้างบัญชีเทรด MT5 ให้พร้อมใช้กับ EA</p>
+        <div class="phead__meta">
+          <span>{{i:clock}}กรอกข้อมูลราว 10 นาที</span>
+          <span>{{i:idcard}}ต้องใช้เอกสารยืนยันตัวตน</span>
+          <span>{{i:list}}6 ขั้นตอน</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn--primary" {{link:zaurix}}>สมัคร Zaurix {{i:external}}</a>
+          <a class="btn btn--outline" href="#steps">ดูขั้นตอน {{i:arrow-right}}</a>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">เปิดลิงก์สมัคร {{i:chevron-right}} กรอกข้อมูล {{i:chevron-right}} ยืนยันอีเมล {{i:chevron-right}} ยืนยันตัวตน {{i:chevron-right}} สร้างบัญชี MT5 {{i:chevron-right}} ฝากเงิน</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2>{{bars}}ก่อนเริ่ม</h2>
+        <p class="lead">ใช้ข้อมูลจริงของคุณเอง ชื่อที่กรอกควรตรงกับเอกสารยืนยันตัวตนและบัญชีธนาคารที่จะใช้ฝากถอน จะได้ไม่ติดตอนตรวจเอกสาร</p>
+        <p class="muted">หน้าจอของโบรกเกอร์อาจเปลี่ยนไปจากภาพในคู่มือนี้ ถ้าชื่อเมนูหรือปุ่มไม่ตรง ให้ทำตามที่หน้าเว็บโบรกเกอร์แจ้ง</p>
+      </div>
+      <div class="prep">
+        <h3>{{i:check}}ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>อีเมล</dt><dd>อีเมลที่เปิดอ่านได้ทันที ใช้รับลิงก์หรือรหัสยืนยัน</dd></div>
+          <div><dt>เอกสารยืนยันตัวตน</dt><dd>ตามรายการที่หน้าเว็บโบรกเกอร์แจ้ง ส่วนใหญ่เป็นบัตรประชาชนหรือหนังสือเดินทาง</dd></div>
+          <div><dt>กล้องหรือสแกนเนอร์</dt><dd>ถ่ายเอกสารให้ชัด เห็นครบทุกมุม</dd></div>
+          <div><dt>ที่จดรหัส</dt><dd>ที่เก็บ Login รหัสผ่าน และ Server ที่มีแต่คุณเข้าถึงได้</dd></div>
+        </dl>
+        <p class="note note--warn">{{i:alert}}<span>อย่าส่งรหัสผ่าน Portal หรือรหัสผ่านบัญชีเทรดให้ใครทางแชต รวมถึงคนที่อ้างว่าเป็นทีมงาน</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>เปิดลิงก์สมัคร</a></li>
+        <li><a href="#step-2"><b>02</b>กรอกแบบฟอร์ม</a></li>
+        <li><a href="#step-3"><b>03</b>ยืนยันอีเมล</a></li>
+        <li><a href="#step-4"><b>04</b>ยืนยันตัวตน</a></li>
+        <li><a href="#step-5"><b>05</b>สร้างบัญชีเทรด MT5</a></li>
+        <li><a href="#step-6"><b>06</b>ไปฝากเงิน</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนเปิดบัญชีเทรด MT5</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>เปิดลิงก์สมัครของ Zaurix</h3>
+            <p>กดปุ่มด้านล่าง หน้าสมัครของ Zaurix จะเปิดในแท็บใหม่ ดูที่แถบที่อยู่ของเบราว์เซอร์ว่าเป็น <span class="nocaps">portal.zaurix.com</span> ก่อนกรอกข้อมูลทุกครั้ง</p>
+            <div class="btns mt-16">
+              <a class="btn btn--primary" {{link:zaurix}}>เปิดหน้าสมัคร Zaurix {{i:external}}</a>
+            </div>
+            <div class="shot">{{i:globe}}<span><b>ภาพ 01 · หน้าสมัครของ Zaurix</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>กรอกแบบฟอร์มสมัคร</h3>
+            <p>กรอกชื่อ นามสกุล อีเมล และข้อมูลอื่นตามที่หน้าเว็บโบรกเกอร์ขอ ชื่อภาษาอังกฤษให้สะกดตรงกับเอกสารที่จะใช้ยืนยันตัวตน ตั้งรหัสผ่านที่ไม่ซ้ำกับเว็บอื่น แล้วอ่านเงื่อนไขของโบรกเกอร์ให้ครบก่อนกดยืนยัน</p>
+            <div class="shot">{{i:user}}<span><b>ภาพ 02 · แบบฟอร์มสมัครสมาชิก</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>ยืนยันอีเมล</h3>
+            <p>เปิดกล่องอีเมลที่ใช้สมัคร หาอีเมลจาก Zaurix แล้วกดลิงก์ยืนยัน หรือนำรหัสมากรอกตามที่หน้าเว็บแจ้ง ถ้าไม่เห็นในกล่องจดหมายหลัก ให้ดูในโฟลเดอร์ Spam หรือ Promotions</p>
+            <div class="shot">{{i:mail}}<span><b>ภาพ 03 · อีเมลยืนยันจาก Zaurix</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ยืนยันตัวตน</h3>
+            <p>เข้าสู่ระบบ Portal แล้วไปที่ส่วนยืนยันตัวตนตามที่หน้าเว็บโบรกเกอร์แจ้ง อัปโหลดเอกสารตามรายการที่ขอ ภาพต้องชัด เห็นครบทั้ง 4 มุม และไม่มีแสงสะท้อนทับตัวอักษร</p>
+            <ul>
+              <li>เอกสารที่ต้องใช้: ตามรายการในหน้ายืนยันตัวตนของโบรกเกอร์</li>
+              <li>เวลาตรวจเอกสาร: ขึ้นกับโบรกเกอร์ ดูสถานะได้ใน Portal</li>
+            </ul>
+            <p class="note note--info">{{i:info}}<span>ระหว่างที่สถานะยังไม่ผ่าน บางเมนูใน Portal อาจยังใช้ไม่ได้ รอให้สถานะขึ้นว่าผ่านก่อนทำขั้นต่อไป</span></p>
+            <div class="shot">{{i:idcard}}<span><b>ภาพ 04 · หน้ายืนยันตัวตนใน Portal</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>สร้างบัญชีเทรด MT5 แล้วจดข้อมูลล็อกอิน</h3>
+            <p>ใน Portal เลือกเมนูเปิดบัญชีเทรดใหม่ เลือกแพลตฟอร์ม MT5 และประเภทบัญชีตามที่ทีมงานแนะนำ เมื่อสร้างเสร็จ หน้าเว็บหรืออีเมลจะแจ้งข้อมูล 3 อย่างนี้ จดเก็บไว้ใช้ล็อกอิน MT5</p>
+            <ul>
+              <li>ประเภทบัญชีสำหรับ EA BULL: {{wait}}</li>
+              <li>เลเวอเรจและสกุลเงินของบัญชี: {{wait}}</li>
+            </ul>
+            <div class="prep mt-16">
+              <dl>
+                <div><dt>Login</dt><dd>เลขบัญชีเทรด เป็นตัวเลข</dd></div>
+                <div><dt>Password</dt><dd>รหัสผ่านบัญชีเทรด อาจไม่ใช่รหัสเดียวกับ Portal</dd></div>
+                <div><dt>Server</dt><dd>ชื่อเซิร์ฟเวอร์ที่ใช้ล็อกอิน {{wait}}</dd></div>
+              </dl>
+            </div>
+            <p class="note note--bad">{{i:x}}<span><b>อย่าส่งรหัสผ่านให้ใครในแชต</b> ทั้งรหัส Portal และรหัสบัญชีเทรด ถ้าเผลอส่งไปแล้ว ให้เปลี่ยนรหัสผ่านใน Portal ทันที</span></p>
+            <div class="shot">{{i:candles}}<span><b>ภาพ 05 · หน้าสร้างบัญชีเทรด MT5 ใน Portal</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>ไปฝากเงินและล็อกอิน MT5</h3>
+            <p>บัญชีพร้อมแล้ว ขั้นต่อไปคือฝากเงินเข้าบัญชีเทรดผ่าน Portal แล้วล็อกอินบัญชีนี้ใน MT5 บนคอมหรือ VPS และในมือถือ</p>
+            <div class="btns mt-16">
+              <a class="btn btn--light" href="deposit.html">คู่มือฝากเงิน {{i:arrow-right}}</a>
+              <a class="btn btn--outline" href="mt5-login.html">คู่มือล็อกอิน MT5</a>
+            </div>
+            <p class="note note--tip">{{i:bulb}}<span>เริ่มจากบัญชีเดโมหรือเงินจำนวนน้อยก่อน เพื่อดูการทำงานของ EA ในสภาพตลาดจริงโดยไม่ต้องเสี่ยงเงินก้อนใหญ่</span></p>
+            <div class="shot">{{i:list}}<span><b>ภาพ 06 · บัญชี MT5 ที่สร้างแล้วในรายการบัญชีของ Portal</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="รายละเอียดเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#acc-check">เช็กก่อนไปขั้นต่อไป</a></li>
+        <li><a href="#acc-trouble">ติดปัญหาตอนสมัคร</a></li>
+        <li><a href="#acc-safe">ดูแลบัญชีและรหัสผ่าน</a></li>
+        <li><a href="#acc-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="acc-check">เช็กก่อนไปขั้นต่อไป</h2>
+      <ul class="checks">
+        <li>{{i:check}}ยืนยันอีเมลแล้ว</li>
+        <li>{{i:check}}สถานะยืนยันตัวตนใน Portal ขึ้นว่าผ่าน</li>
+        <li>{{i:check}}สร้างบัญชีเทรดแพลตฟอร์ม MT5 ตามประเภทที่ทีมงานแนะนำแล้ว</li>
+        <li>{{i:check}}จด Login รหัสผ่าน และ Server เก็บไว้ในที่ที่มีแต่คุณเข้าถึงได้</li>
+        <li>{{i:check}}ไม่ได้ส่งรหัสผ่านให้ใครทางแชต</li>
+      </ul>
+
+      <h2 id="acc-trouble">ติดปัญหาตอนสมัคร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ไม่ได้รับอีเมลยืนยัน</th><td data-label="สาเหตุที่พบบ่อย">อีเมลไปอยู่ใน Spam หรือพิมพ์อีเมลผิดตอนสมัคร</td><td data-label="วิธีแก้">ดูโฟลเดอร์ Spam ขอส่งอีเมลใหม่จากหน้าเว็บ หรือติดต่อฝ่ายบริการของโบรกเกอร์</td></tr>
+            <tr><th scope="row">เอกสารไม่ผ่าน</th><td data-label="สาเหตุที่พบบ่อย">ภาพไม่ชัด เห็นไม่ครบ หรือชื่อไม่ตรงกับที่กรอก</td><td data-label="วิธีแก้">ถ่ายใหม่ในที่แสงพอ ให้เห็นครบทุกมุม แล้วอัปโหลดอีกครั้ง</td></tr>
+            <tr><th scope="row">หาเมนูสร้างบัญชี MT5 ไม่เจอ</th><td data-label="สาเหตุที่พบบ่อย">หน้าเว็บโบรกเกอร์ปรับเมนู หรือสถานะยืนยันตัวตนยังไม่ผ่าน</td><td data-label="วิธีแก้">เช็กสถานะยืนยันตัวตน แล้วทำตามที่หน้าเว็บโบรกเกอร์แจ้ง หรือส่งภาพหน้าจอให้ทีมงานทาง LINE</td></tr>
+            <tr><th scope="row">ลืมรหัสผ่านบัญชีเทรด</th><td data-label="สาเหตุที่พบบ่อย">ไม่ได้จดไว้ หรือสับสนกับรหัส Portal</td><td data-label="วิธีแก้">เปลี่ยนรหัสผ่านบัญชีเทรดใน Portal ตามที่หน้าเว็บโบรกเกอร์แจ้ง แล้วล็อกอิน MT5 ใหม่ทุกเครื่อง</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="acc-safe">ดูแลบัญชีและรหัสผ่าน</h2>
+      <ul>
+        <li>ใช้รหัสผ่าน Portal ที่ไม่ซ้ำกับเว็บอื่น และเปิดการยืนยันตัวตนสองชั้นถ้า Portal มีให้ใช้</li>
+        <li>เข้า Portal จากลิงก์ในเว็บนี้หรือที่คุณบันทึกไว้เอง ระวังลิงก์ปลอมที่ส่งมาทางแชตหรือ SMS</li>
+        <li>MT5 มีรหัสผ่านแบบดูอย่างเดียว (Investor password) ที่เปิดดูบัญชีได้แต่ส่งคำสั่งไม่ได้ ถ้าต้องให้คนอื่นดูบัญชี ใช้รหัสนี้แทนรหัสหลัก</li>
+        <li>ถ้าสงสัยว่ารหัสรั่ว เปลี่ยนรหัสผ่านทั้ง Portal และบัญชีเทรดทันที</li>
+      </ul>
+
+      <h2 id="acc-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ต้องเปิดบัญชีกับ Zaurix เท่านั้นไหม{{i:plus}}</summary><div class="qa__a"><p>เราแนะนำ Zaurix ซึ่งเป็นโบรกเกอร์พันธมิตรของ EA BULL ส่วนการใช้ EA กับโบรกเกอร์อื่น {{wait}}</p></div></details>
+      <details class="qa"><summary>มีบัญชี Zaurix อยู่แล้ว ต้องสมัครใหม่ไหม{{i:plus}}</summary><div class="qa__a"><p>{{wait}} ทักทีมงานทาง LINE เพื่อเช็กก่อนสมัครใหม่</p></div></details>
+      <details class="qa"><summary>เปิดบัญชีมีค่าใช้จ่ายไหม{{i:plus}}</summary><div class="qa__a"><p>ค่าธรรมเนียมและเงื่อนไขของบัญชีเป็นไปตามที่โบรกเกอร์กำหนด อ่านในหน้าเว็บโบรกเกอร์ก่อนสมัคร · ข้อมูลที่ทีมงานยืนยันแล้ว {{wait}}</p></div></details>
+      <details class="qa"><summary>ยืนยันตัวตนใช้เวลานานแค่ไหน{{i:plus}}</summary><div class="qa__a"><p>ขึ้นกับโบรกเกอร์และความครบถ้วนของเอกสาร ดูสถานะได้ใน Portal ถ้ารอนานผิดปกติ ติดต่อฝ่ายบริการของโบรกเกอร์</p></div></details>
+      <details class="qa"><summary>เปิดหลายบัญชีเทรดได้ไหม{{i:plus}}</summary><div class="qa__a"><p>เปิดบัญชีเทรดเพิ่มใน Portal ได้ตามเงื่อนไขของโบรกเกอร์ ส่วนจำนวนบัญชีที่ใช้ EA BULL ได้ขึ้นกับแพ็กเกจ {{wait}}</p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="deposit.html"><span class="tile">{{i:wallet}}</span><span><b>ฝากเงินเข้าบัญชีเทรด</b><small>ฝากผ่าน Portal แล้วเช็กยอดใน MT5</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="mt5-login.html"><span class="tile">{{i:download}}</span><span><b>ติดตั้งและล็อกอิน MT5</b><small>คอม มือถือ และแท็บเล็ต</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="how-to-install.html"><span class="tile">{{i:box}}</span><span><b>ติดตั้ง EA บน MT5</b><small>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

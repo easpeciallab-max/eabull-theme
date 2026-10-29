@@ -1,0 +1,276 @@
+<!--{"title": "Forward Test: ลอง EA กับตลาดจริงก่อนเพิ่มเงิน", "desc": "คู่มือ Forward Test สำหรับ EA บน MT5: ต่างจาก Backtest อย่างไร เลือกบัญชีทดสอบ วางแผนและจดบันทึก ติดตามผลใน MT5 อ่านผลของคนอื่นอย่างระวัง และเช็กลิสต์ก่อนเพิ่มเงิน", "nav": ["tests", "forward-test"], "cta": {"title": "อยากเริ่มทดสอบ แต่ไม่แน่ใจว่าเริ่มตรงไหน", "sub": "ทักทีมงานทาง LINE บอกว่ามีบัญชีแบบไหนและสนใจสินค้าตัวใด ทีมงานจะแนะนำขั้นแรกให้"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li>การทดสอบ</li>
+      <li>Forward Test</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>Forward Test: ลอง EA กับตลาดจริงก่อนเพิ่มเงิน</h1>
+        <p class="lead">Forward Test คือการปล่อย EA เทรดกับราคาที่เกิดขึ้นจริงจากวันนี้ไปข้างหน้า บนบัญชีเดโมหรือบัญชีเงินน้อย เพื่อดูว่าระบบทำงานกับโบรกเกอร์ เครื่องที่รัน และเงินในบัญชีของคุณอย่างไร</p>
+        <div class="phead__meta">
+          <span>{{i:calendar}}ใช้เวลาเป็นสัปดาห์ขึ้นไป</span>
+          <span>{{i:phone}}ติดตามผลได้จากแอป MT5</span>
+          <span>{{i:list}}วางแผน 5 ขั้น</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn--primary" href="#plan">วางแผนการทดสอบ {{i:arrow-right}}</a>
+          <a class="btn btn--line" {{link:line}}>{{i:chat}}ขอคำแนะนำทาง LINE</a>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปแบบสั้น">
+        <h2>สรุปแบบสั้น</h2>
+        <ol>
+          <li><b>1</b><span>เลือกบัญชีที่ใช้ทดสอบ</span></li>
+          <li><b>2</b><span>ตั้งค่าให้เหมือนแผนจริง แล้วไม่เปลี่ยนกลางทาง</span></li>
+          <li><b>3</b><span>จดบันทึกทุกสัปดาห์</span></li>
+          <li><b>4</b><span>หยุดตามกติกาที่เขียนไว้ก่อนเริ่ม</span></li>
+          <li><b>5</b><span>ทบทวนผลก่อนเพิ่มเงิน</span></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="vs" aria-labelledby="vs-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="vs-title">{{bars}}Forward Test ต่างจาก Backtest อย่างไร</h2>
+        <p>Backtest ตอบว่ากติกาของ EA ทำอะไรกับราคาในอดีต Forward Test ตอบว่ามันทำงานอย่างไรกับสภาพการเทรดของคุณตอนนี้ สองอย่างนี้ใช้คู่กัน ไม่ได้ใช้แทนกัน</p>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl tbl--stack">
+        <thead><tr><th scope="col">หัวข้อ</th><th scope="col">Backtest</th><th scope="col">Forward Test</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">ราคาที่ใช้</th><td data-label="Backtest">ราคาในอดีตที่โหลดมาจำลอง</td><td data-label="Forward Test">ราคาที่เกิดขึ้นจริงตั้งแต่วันเริ่มทดสอบ</td></tr>
+          <tr><th scope="row">เวลาที่ใช้</th><td data-label="Backtest">ไม่กี่นาทีถึงหลายชั่วโมง ทดสอบได้หลายปีในครั้งเดียว</td><td data-label="Forward Test">ต้องรอตามเวลาจริง เป็นสัปดาห์หรือนานกว่า</td></tr>
+          <tr><th scope="row">สเปรดและการส่งคำสั่ง</th><td data-label="Backtest">จำลองจากข้อมูลและค่าที่ตั้งไว้</td><td data-label="Forward Test">มาจากเซิร์ฟเวอร์โบรกเกอร์ บัญชีจริงใกล้ความจริงที่สุด</td></tr>
+          <tr><th scope="row">เครื่องที่รัน</th><td data-label="Backtest">ไม่ได้ทดสอบ</td><td data-label="Forward Test">ทดสอบไปด้วย ทั้ง VPS เน็ต และการรีสตาร์ทเครื่อง</td></tr>
+          <tr><th scope="row">เงินที่เสี่ยง</th><td data-label="Backtest">ไม่มี</td><td data-label="Forward Test">ไม่มีบนเดโม มีจริงบนบัญชีเงินน้อย</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note note--info mt-16">{{i:info}}<span>หน้านี้เป็นคู่มือทดสอบด้วยตัวเอง ไม่ได้แสดงผลเทรดของ EA BULL ผลทดสอบย้อนหลังพร้อมเงื่อนไขอยู่ที่หน้า <a href="backtest.html">Backtest</a> และหน้าสินค้าแต่ละตัว</span></p>
+  </div>
+</section>
+
+<section class="band band--alt" id="where" aria-labelledby="where-title">
+  <div class="wrap">
+    <div class="shead">
+      <div class="shead__text">
+        <h2 id="where-title">{{bars}}เลือกบัญชีที่ใช้ทดสอบ</h2>
+        <p>เริ่มจากเดโมเพื่อเช็กว่าติดตั้งและตั้งค่าถูก แล้วค่อยขยับไปบัญชีเงินจริงจำนวนน้อย เพื่อดูสเปรดและการส่งคำสั่งจริง</p>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl tbl--stack">
+        <thead><tr><th scope="col">บัญชี</th><th scope="col">ข้อดี</th><th scope="col">ข้อจำกัด</th><th scope="col">เหมาะกับ</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">บัญชีเดโม</th><td data-label="ข้อดี">ไม่ใช้เงินจริง เปิดได้เร็ว</td><td data-label="ข้อจำกัด">สเปรดและการส่งคำสั่งอาจดีกว่าบัญชีจริง และไม่มีแรงกดดันจากเงินจริง</td><td data-label="เหมาะกับ">เช็กว่า EA ทำงาน ติดตั้งครบ และตั้งค่าถูก</td></tr>
+          <tr><th scope="row">บัญชีเงินน้อย</th><td data-label="ข้อดี">ได้สเปรด การส่งคำสั่ง และค่าใช้จ่ายจริง</td><td data-label="ข้อจำกัด">มีเงินจริงที่อาจเสีย ขนาดไม้ต่ำสุดอาจใหญ่เกินเมื่อเทียบกับเงินในบัญชี</td><td data-label="เหมาะกับ">ทดสอบก่อนเพิ่มเงิน ด้วยเงินที่เสียได้ทั้งก้อน</td></tr>
+          <tr><th scope="row">บัญชีเซนต์ (ถ้าโบรกเกอร์มี)</th><td data-label="ข้อดี">ยอดเงินแสดงเป็นเซนต์ เทรดขนาดเล็กได้ด้วยเงินจริงจำนวนน้อย</td><td data-label="ข้อจำกัด">ไม่ใช่ทุกโบรกเกอร์มี สเปรดและเงื่อนไขอาจต่างจากบัญชีปกติ</td><td data-label="เหมาะกับ">ทดสอบด้วยเงินจริงในสัดส่วนใกล้แผน แต่ใช้เงินน้อยกว่า</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note note--info mt-16">{{i:info}}<span>Zaurix เป็นโบรกเกอร์พันธมิตรของ EA BULL ประเภทบัญชีที่มีให้เลือก และบัญชีที่ใช้กับ EA BULL ได้ {{wait}} ดูวิธีสมัครที่<a href="open-mt5-account.html">คู่มือเปิดบัญชี MT5</a></span></p>
+  </div>
+</section>
+
+<section class="band" id="plan" aria-labelledby="plan-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>วางแผน</h2>
+      <ol>
+        <li><a href="#plan-1"><b>01</b>กำหนดระยะเวลา</a></li>
+        <li><a href="#plan-2"><b>02</b>ตั้งค่าให้เหมือนแผนจริง</a></li>
+        <li><a href="#plan-3"><b>03</b>จดบันทึกทุกสัปดาห์</a></li>
+        <li><a href="#plan-4"><b>04</b>ตั้งกติกาหยุด</a></li>
+        <li><a href="#plan-5"><b>05</b>ทบทวนผล</a></li>
+      </ol>
+    </nav>
+    <div>
+      <div class="shead">
+        <div class="shead__text">
+          <h2 id="plan-title">{{bars}}วางแผนการทดสอบ</h2>
+          <p>เขียนแผนให้จบก่อนเปิด EA ตัวแรก แผนที่ตั้งไว้ก่อนช่วยให้ไม่ตัดสินใจตามอารมณ์ตอนบัญชีขึ้นหรือลง</p>
+        </div>
+      </div>
+      <ol class="gsteps">
+        <li class="gstep" id="plan-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>กำหนดระยะเวลาก่อนเริ่ม</h3>
+            <p>ตั้งวันเริ่มและวันจบไว้ตั้งแต่แรก ช่วงที่ยาวพอควรผ่านทั้งตลาดขึ้น ตลาดลง และสัปดาห์ที่มีข่าวสำคัญ ผลจากไม่กี่วันบอกอะไรได้น้อยมาก</p>
+            <p>ระยะเวลาที่ EA BULL แนะนำสำหรับแต่ละสินค้า {{wait}}</p>
+          </div>
+        </li>
+        <li class="gstep" id="plan-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>ตั้งค่าให้เหมือนแผนจริง</h3>
+            <p>ใช้สินค้า โหมด สินทรัพย์ กรอบเวลา และเครื่องที่รันชุดเดียวกับที่จะใช้จริง และไม่เปลี่ยนค่ากลางทาง ถ้าเปลี่ยน ผลก่อนและหลังจะเทียบกันไม่ได้</p>
+            <a class="tlink" href="tools.html">คิดขนาดไม้ด้วยเครื่องคำนวณ Lot {{i:arrow-right}}</a>
+          </div>
+        </li>
+        <li class="gstep" id="plan-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>จดบันทึกทุกสัปดาห์</h3>
+            <p>ใช้สมุดหรือสเปรดชีตก็ได้ จดเรื่องเดิมทุกครั้ง เพื่อให้เห็นแนวโน้ม ไม่ใช่จำเฉพาะวันที่กำไรหรือขาดทุนหนัก</p>
+            <ul>
+              <li>วันที่ ยอด Balance และ Equity</li>
+              <li>ติดลบลอยสูงสุดที่เห็นในสัปดาห์นั้น</li>
+              <li>จำนวนออเดอร์ที่เปิดและปิด</li>
+              <li>เหตุการณ์ เช่น ข่าวแรง VPS รีสตาร์ท หรือเน็ตหลุด</li>
+              <li>สิ่งที่คุณเปลี่ยน ถ้ามี พร้อมเหตุผล</li>
+            </ul>
+          </div>
+        </li>
+        <li class="gstep" id="plan-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ตั้งกติกาหยุดไว้ก่อน</h3>
+            <p>เขียนไว้ก่อนเริ่มว่าจะหยุดเมื่อไร เช่น ติดลบเกินจำนวนเงินที่ตั้งไว้ EA ทำงานต่างจากที่อธิบาย หรือเครื่องที่รันหลุดบ่อย เมื่อถึงเงื่อนไขให้หยุดจริง แล้วค่อยหาสาเหตุ</p>
+            <p class="note note--warn">{{i:alert}}<span>อย่าเพิ่มเงินหรือเปลี่ยนเป็นโหมดที่เสี่ยงกว่าเพื่อเอาคืนตอนติดลบ ความเสียหายมักโตเร็วที่สุดในจังหวะนี้</span></p>
+          </div>
+        </li>
+        <li class="gstep" id="plan-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>ทบทวนผลก่อนตัดสินใจ</h3>
+            <p>ครบช่วงที่ตั้งไว้แล้ว เทียบบันทึกกับเงื่อนไขในผล Backtest ติดลบลึกกว่าที่เคยเห็นไหม เทรดถี่เท่าที่คาดไหม เครื่องทำงานต่อเนื่องไหม แล้วจึงตัดสินใจว่าจะทดสอบต่อ เพิ่มเงิน หรือหยุด</p>
+            <a class="tlink" href="backtest.html">วิธีอ่านรายงาน Backtest {{i:arrow-right}}</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" aria-label="ติดตามและอ่านผล">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#track">ติดตามผลใน MT5</a></li>
+        <li><a href="#others">อ่านผลที่คนอื่นเผยแพร่อย่างระวัง</a></li>
+        <li><a href="#check">เช็กลิสต์ก่อนเพิ่มเงิน</a></li>
+        <li><a href="#own">ทดสอบด้วยบัญชีของคุณเอง</a></li>
+        <li><a href="#faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="track">ติดตามผลใน MT5</h2>
+      <h3>ดูว่า EA ยังทำงานอยู่</h3>
+      <p>ใน MT5 บนคอมหรือบน VPS กด Ctrl+T เพื่อเปิดหน้าต่าง Toolbox แท็บ Experts แสดงข้อความจาก EA เช่นตอนเริ่มทำงานหรือเมื่อมีข้อผิดพลาด ส่วนแท็บ Journal แสดงเหตุการณ์ของโปรแกรม เช่นการเชื่อมต่อเซิร์ฟเวอร์และคำสั่งที่ส่งออกไป</p>
+      <div class="shot">{{i:list}}<span><b>ภาพ · แท็บ Experts และ Journal ในหน้าต่าง Toolbox</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+      <p class="cap">ภาพหน้าจอโปรแกรมเพื่อบอกตำแหน่งแท็บ ไม่ใช่ผลเทรด</p>
+      <h3>ดูประวัติและสรุปผล</h3>
+      <p>แท็บ History แสดงออเดอร์ที่ปิดแล้ว คลิกขวาเพื่อเลือกช่วงวันที่ และคลิกขวาอีกครั้งแล้วเลือก Report เพื่อบันทึกรายงานเป็นไฟล์ MT5 รุ่นใหม่มีหน้ารายงานสรุปที่เปิดได้จากเมนู View แล้วเลือก Reports</p>
+      <h3>ดูจากมือถือ</h3>
+      <p>ล็อกอินบัญชีเดียวกันในแอป MT5 บนมือถือ เพื่อดูออเดอร์ที่เปิดอยู่และประวัติได้ทุกที่ แต่แอปบนมือถือรัน EA ไม่ได้ ดู<a href="mt5-login.html">คู่มือติดตั้งและล็อกอิน MT5</a></p>
+
+      <h2 id="others">อ่านผลที่คนอื่นเผยแพร่อย่างระวัง</h2>
+      <p>ภาพผลกำไรในกลุ่มแชตหรือโซเชียลตรวจสอบได้ยาก และมักเลือกมาเฉพาะช่วงที่ดี ก่อนเชื่อตัวเลขของใคร ลองถามคำถามเหล่านี้</p>
+      <ul>
+        <li>เป็นบัญชีเดโมหรือบัญชีจริง เริ่มเมื่อไร ทุนตั้งต้นเท่าไร</li>
+        <li>ใช้สินค้า โหมด และค่าเดียวกับที่คุณจะใช้หรือไม่</li>
+        <li>เห็นตลอดช่วง หรือเห็นแค่วันที่กำไร</li>
+        <li>มีการฝากหรือถอนระหว่างทางที่ทำให้ตัวเลขดูต่างไปหรือไม่</li>
+        <li>ติดลบลอยสูงสุดเท่าไร ไม่ใช่แค่กำไรตอนจบ</li>
+        <li>ให้ดูบัญชีผ่านรหัสผ่านนักลงทุน (Investor password) ซึ่งดูได้อย่างเดียวและเทรดไม่ได้ ได้หรือไม่</li>
+      </ul>
+      <p class="note note--warn">{{i:alert}}<span>ผลของคนอื่นต่อให้เป็นของจริง ก็เกิดกับทุน โบรกเกอร์ และช่วงเวลาของเขา ไม่ได้บอกว่าบัญชีของคุณจะได้ผลแบบเดียวกัน</span></p>
+
+      <h2 id="check">เช็กลิสต์ก่อนเพิ่มเงิน</h2>
+      <p>ติ๊กเฉพาะข้อที่ทำได้จริง ถ้ายังไม่ครบ ทดสอบต่ออีกช่วงดีกว่ารีบเพิ่มเงิน</p>
+      <div class="ready" data-ready>
+        <div class="ready__list" role="list">
+          <div role="listitem"><label class="ready__item"><input class="box" type="checkbox"><span><b>ทดสอบครบช่วงที่ตั้งไว้ตั้งแต่แรก</b><small>ไม่ได้หยุดเร็วเพราะเห็นกำไร</small></span></label></div>
+          <div role="listitem"><label class="ready__item"><input class="box" type="checkbox"><span><b>ใช้ค่าเดียวกันตลอดการทดสอบ</b><small>ไม่ได้เปลี่ยนโหมดหรือค่ากลางทาง</small></span></label></div>
+          <div role="listitem"><label class="ready__item"><input class="box" type="checkbox"><span><b>มีบันทึกครบทุกสัปดาห์</b><small>ทั้ง Balance Equity และเหตุการณ์ที่เกิด</small></span></label></div>
+          <div role="listitem"><label class="ready__item"><input class="box" type="checkbox"><span><b>ติดลบลอยสูงสุดยังอยู่ในเงินที่ยอมเสียได้</b><small>ลองคิดย้อนด้วย<a href="tools.html">เครื่องคำนวณ Drawdown</a></small></span></label></div>
+          <div role="listitem"><label class="ready__item"><input class="box" type="checkbox"><span><b>เครื่องที่รันทำงานต่อเนื่อง</b><small>ไม่หลุดบ่อย ดู<a href="vps-windows.html">คู่มือ VPS</a></small></span></label></div>
+          <div role="listitem"><label class="ready__item"><input class="box" type="checkbox"><span><b>เงินที่จะเพิ่มเป็นเงินที่เสียได้</b><small>และอ่าน<a href="risk-disclosure.html">ประกาศความเสี่ยง</a>แล้ว</small></span></label></div>
+        </div>
+        <div class="ready__meter" aria-live="polite">
+          <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="ready__count"><span data-ready-count>0</span><small> / 6 ข้อ</small></p>
+          <p class="ready__status" data-ready-status>ยังเหลืออีก 6 ข้อ</p>
+          <div class="ready__done" data-ready-done hidden>
+            <p>ครบแล้ว คุยกับทีมงานก่อนเพิ่มเงิน เพื่อเช็กว่าโหมดยังเหมาะกับเงินในบัญชีใหม่</p>
+            <a class="btn btn--line btn--block" {{link:line}}>{{i:chat}}คุยกับทีมงานทาง LINE</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="own" aria-labelledby="own-title">
+  <div class="wrap grid g2">
+    <div class="stack">
+      <h2 id="own-title">{{bars}}ทดสอบ EA BULL ด้วยบัญชีของคุณเอง</h2>
+      <p class="lead">วิธีที่ชัดที่สุดในการรู้ว่า EA เข้ากับคุณหรือไม่ คือดูมันทำงานบนบัญชีของคุณ กับโบรกเกอร์และเครื่องที่คุณจะใช้จริง ไม่ใช่ดูจากผลของคนอื่น</p>
+      <p class="muted">ยังไม่มีบัญชีหรือยังไม่ได้ติดตั้ง เริ่มจากคู่มือเหล่านี้ก่อน</p>
+      <div class="btns">
+        <a class="btn btn--outline btn--sm" href="open-mt5-account.html">เปิดบัญชี MT5</a>
+        <a class="btn btn--outline btn--sm" href="how-to-install.html">ติดตั้ง EA</a>
+        <a class="btn btn--outline btn--sm" href="vps-windows.html">ใช้ VPS</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>เตรียมก่อนทัก LINE</h3>
+      <ul class="checks">
+        <li>{{i:check}}มีบัญชี MT5 แล้ว จะเป็นเดโมหรือบัญชีเงินน้อยก็ได้</li>
+        <li>{{i:check}}ติดตั้ง MT5 บนคอมหรือ VPS แล้ว</li>
+        <li>{{i:check}}รู้ว่าสนใจสินค้าตัวไหน และทุนที่จะใช้หลังทดสอบ</li>
+      </ul>
+      <p>การเปิดใช้ EA บนบัญชีเดโม {{wait}}</p>
+      <a class="btn btn--line btn--block" {{link:line}}>{{i:chat}}คุยเรื่องการทดสอบทาง LINE</a>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq">
+    <div class="faq__head">
+      <h2 id="faq-title">{{bars}}คำถามที่พบบ่อย</h2>
+      <p>คำถามที่เจอบ่อยระหว่างทดสอบ ถ้าบัญชีมีอาการแปลก ส่งภาพหน้าจอให้ทีมงานดูทาง LINE ได้</p>
+      <div class="btns"><a class="btn btn--line" {{link:line}}>{{i:chat}}ถามทีมงานทาง LINE</a></div>
+    </div>
+    <div>
+      <details class="qa" open>
+        <summary>ทดสอบนานแค่ไหนถึงพอ{{i:plus}}</summary>
+        <div class="qa__a"><p>ไม่มีตัวเลขเดียวที่ใช้ได้กับทุก EA ยิ่งยาวและผ่านสภาพตลาดหลายแบบ ยิ่งบอกอะไรได้มาก ระยะเวลาที่แนะนำสำหรับสินค้าของ EA BULL {{wait}}</p></div>
+      </details>
+      <details class="qa">
+        <summary>เดโมได้ผลดี บัญชีจริงจะได้เหมือนกันไหม{{i:plus}}</summary>
+        <div class="qa__a"><p>ไม่จำเป็น บัญชีจริงอาจได้สเปรดและราคาที่ต่างจากเดโม และการตัดสินใจตอนใช้เงินจริงก็ยากกว่า จึงควรลองบัญชีเงินน้อยต่อก่อนเพิ่มเงิน</p></div>
+      </details>
+      <details class="qa">
+        <summary>ระหว่างทดสอบ ปิดคอมได้ไหม{{i:plus}}</summary>
+        <div class="qa__a"><p>ถ้า MT5 รันบนคอมที่บ้าน ปิดคอมแล้ว EA หยุดทำงาน ถ้าอยากปิดคอม ให้รัน MT5 บน VPS แทน ดู<a href="vps-windows.html">คู่มือ VPS</a></p></div>
+      </details>
+      <details class="qa">
+        <summary>ติดลบระหว่างทดสอบ ควรทำอย่างไร{{i:plus}}</summary>
+        <div class="qa__a"><p>ทำตามกติกาหยุดที่เขียนไว้ก่อนเริ่ม อย่าเพิ่มเงินหรือเปลี่ยนโหมดเพื่อเอาคืน ถ้าไม่แน่ใจว่า EA ทำงานผิดหรือไม่ ส่งภาพแท็บ Experts และ Journal ให้ทีมงานดู</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}หน้าที่ควรอ่านต่อ</h2></div></div>
+    <div class="related">
+      <a class="rel" href="backtest.html"><span class="tile">{{i:flask}}</span><span><b>Backtest</b><small>ทดสอบย้อนหลังด้วย Strategy Tester</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="vps-windows.html"><span class="tile">{{i:server}}</span><span><b>VPS บน Windows</b><small>ให้ EA ทำงานต่อแม้ปิดคอม</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="tools.html"><span class="tile">{{i:calculator}}</span><span><b>เครื่องคำนวณ Lot / Drawdown</b><small>คิดขนาดไม้จากเงินที่ยอมเสีย</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,210 @@
+<!--{"title": "ติดตั้ง MT5 และล็อกอินบนคอมและมือถือ", "desc": "คู่มือดาวน์โหลด MetaTrader 5 จากแหล่งทางการ ติดตั้งบน Windows หรือ VPS ล็อกอินบัญชีเทรดด้วย Login รหัสผ่าน และ Server แล้วล็อกอินบัญชีเดียวกันบนมือถือไว้ติดตามผล", "nav": ["guides", "mt5-login"], "dock": "guides", "cta": {"title": "ล็อกอิน MT5 ไม่ผ่าน ทักทีมงานได้", "sub": "ส่งภาพหน้าจอมุมขวาล่างของ MT5 มาทาง LINE โดยไม่ต้องส่งรหัสผ่าน ทีมงานจะช่วยดูว่าติดที่ Login หรือ Server"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li><a href="how-to-install.html">คู่มือการใช้งาน</a></li>
+      <li>ติดตั้งและล็อกอิน MT5</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>ติดตั้ง MT5 และล็อกอิน บนคอมและมือถือ</h1>
+        <p class="lead">MetaTrader 5 หรือ MT5 คือโปรแกรมเทรดที่ EA ทำงานอยู่ข้างใน ลงบนคอม Windows หรือ VPS เพื่อรัน EA และลงบนมือถือไว้ติดตามบัญชี ทั้งสองที่ใช้ข้อมูลล็อกอินชุดเดียวกัน</p>
+        <div class="phead__meta">
+          <span>{{i:clock}}ใช้เวลาราว 10 นาที</span>
+          <span>{{i:monitor}}Windows · Android · <span class="nocaps">iPhone / iPad</span></span>
+          <span>{{i:list}}6 ขั้นตอน</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn--primary" href="#step-1">{{i:download}}ไปที่ลิงก์ดาวน์โหลด</a>
+          <a class="btn btn--outline" href="#steps">ดูขั้นตอน {{i:arrow-right}}</a>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">ดาวน์โหลด {{i:chevron-right}} ติดตั้งและเปิด {{i:chevron-right}} ค้นหาโบรกเกอร์ {{i:chevron-right}} ใส่ Login และ Server {{i:chevron-right}} เช็กการเชื่อมต่อ {{i:chevron-right}} ล็อกอินบนมือถือ</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2>{{bars}}ก่อนเริ่ม</h2>
+        <p class="lead">คู่มือนี้ใช้กับบัญชีเทรดที่เปิดกับ Zaurix โบรกเกอร์พันธมิตรของ EA BULL (เราอาจได้รับค่าตอบแทนเมื่อคุณสมัครผ่านลิงก์ของเรา) ข้อมูลล็อกอินได้มาตอนสร้างบัญชีเทรด MT5 ใน Portal</p>
+        <p class="muted">ยังไม่มีบัญชีเทรด ทำตามคู่มือเปิดบัญชีให้เสร็จก่อน แล้วค่อยกลับมาที่หน้านี้</p>
+        <div class="btns">
+          <a class="btn btn--outline btn--sm" href="open-mt5-account.html">คู่มือเปิดบัญชีเทรด MT5</a>
+        </div>
+      </div>
+      <div class="prep">
+        <h3>{{i:check}}ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>Login</dt><dd>เลขบัญชีเทรด เป็นตัวเลข</dd></div>
+          <div><dt>Password</dt><dd>รหัสผ่านบัญชีเทรด อาจไม่ใช่รหัสเดียวกับ Portal</dd></div>
+          <div><dt>Server</dt><dd>ชื่อเซิร์ฟเวอร์ที่ใช้ล็อกอิน {{wait}}</dd></div>
+          <div><dt>อุปกรณ์</dt><dd>คอม Windows หรือ VPS สำหรับรัน EA · มือถือสำหรับดูบัญชี</dd></div>
+        </dl>
+        <p class="note note--info">{{i:info}}<span>หาข้อมูล 3 อย่างนี้ได้ในอีเมลที่โบรกเกอร์ส่งตอนสร้างบัญชี หรือในหน้ารายละเอียดบัญชีใน Portal</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>ดาวน์โหลด MT5</a></li>
+        <li><a href="#step-2"><b>02</b>ติดตั้งแล้วเปิดหน้าล็อกอิน</a></li>
+        <li><a href="#step-3"><b>03</b>ค้นหาโบรกเกอร์ Zaurix</a></li>
+        <li><a href="#step-4"><b>04</b>ใส่ Login รหัสผ่าน Server</a></li>
+        <li><a href="#step-5"><b>05</b>เช็กสถานะการเชื่อมต่อ</a></li>
+        <li><a href="#step-6"><b>06</b>ล็อกอินบนมือถือ</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนติดตั้งและล็อกอิน MT5</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>ดาวน์โหลด MT5 จากแหล่งทางการ</h3>
+            <p>ดาวน์โหลดจากเว็บของ MetaQuotes ผู้พัฒนา MT5 หรือจาก Store ของมือถือเท่านั้น อย่าใช้ไฟล์ติดตั้งที่ส่งต่อกันมาทางแชต เพราะอาจถูกดัดแปลง</p>
+            <div class="apps">
+              <div class="app">
+                <div class="app__head"><span class="tile">{{i:monitor}}</span><span><b>MT5 สำหรับ Windows</b><small class="nocaps">metatrader5.com</small></span></div>
+                <p>ใช้รัน EA บนคอมหรือบน VPS</p>
+                <a class="btn btn--light btn--sm" href="https://www.metatrader5.com/en/download" target="_blank" rel="noopener">ดาวน์โหลด {{i:external}}</a>
+              </div>
+              <div class="app">
+                <div class="app__head"><span class="tile">{{i:phone}}</span><span><b>MT5 สำหรับ Android</b><small>Google Play</small></span></div>
+                <p>ไว้ดูบัญชีและออเดอร์ รัน EA ไม่ได้</p>
+                <a class="btn btn--light btn--sm" href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5" target="_blank" rel="noopener">เปิด Google Play {{i:external}}</a>
+              </div>
+              <div class="app">
+                <div class="app__head"><span class="tile">{{i:tablet}}</span><span><b>MT5 สำหรับ <span class="nocaps">iPhone / iPad</span></b><small>App Store</small></span></div>
+                <p>ไว้ดูบัญชีและออเดอร์ รัน EA ไม่ได้</p>
+                <a class="btn btn--light btn--sm" href="https://apps.apple.com/app/metatrader-5/id413251709" target="_blank" rel="noopener">เปิด App Store {{i:external}}</a>
+              </div>
+            </div>
+            <div class="shot">{{i:download}}<span><b>ภาพ 01 · หน้าดาวน์โหลด MT5 บนเว็บทางการ</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>ติดตั้งแล้วเปิดหน้าล็อกอิน</h3>
+            <p>เปิดไฟล์ติดตั้งที่โหลดมา กด Next จนเสร็จ แล้วเปิด MT5 ถ้าหน้าต่างเปิดบัญชีไม่ขึ้นมาเอง ไปที่เมนู <b>File</b> แล้วเลือก <b>Open an Account</b> (ค้นหาโบรกเกอร์ก่อน) หรือ <b>Login to Trade Account</b> (ถ้าเคยเพิ่มเซิร์ฟเวอร์ไว้แล้ว)</p>
+            <p class="note note--info">{{i:info}}<span>จะรัน EA บน VPS ให้ทำขั้นนี้ในหน้าจอของ VPS ส่วนคอมที่บ้านลงไว้ดูบัญชีได้ แต่ไม่ต้องติด EA ซ้ำ</span></p>
+            <div class="shot">{{i:monitor}}<span><b>ภาพ 02 · เมนู File ของ MT5</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>ค้นหาโบรกเกอร์ Zaurix</h3>
+            <p>ในหน้าต่าง Open an Account พิมพ์ <b>Zaurix</b> ในช่องค้นหา เลือกชื่อบริษัทที่ขึ้นมาแล้วกด Next จากนั้นเลือก <b>Connect with an existing trade account</b> เพื่อใช้บัญชีที่สร้างไว้ใน Portal</p>
+            <ul>
+              <li>ชื่อบริษัทที่แสดงในรายการ: {{wait}}</li>
+            </ul>
+            <p class="note note--tip">{{i:bulb}}<span>ค้นหาไม่เจอ ให้พิมพ์ชื่อเซิร์ฟเวอร์เต็มลงในช่องค้นหาแล้วกด Enter</span></p>
+            <div class="shot">{{i:search}}<span><b>ภาพ 03 · ค้นหาโบรกเกอร์ในหน้าต่าง Open an Account</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>ใส่ Login รหัสผ่าน และ Server</h3>
+            <p>ใส่เลขบัญชีในช่อง <b>Login</b> รหัสผ่านบัญชีเทรดในช่อง <b>Password</b> และเลือก <b>Server</b> ให้ตรงกับที่โบรกเกอร์แจ้ง ติ๊ก Save password เฉพาะเครื่องส่วนตัว แล้วกด Finish</p>
+            <ul>
+              <li>ชื่อเซิร์ฟเวอร์ (Server): {{wait}}</li>
+            </ul>
+            <p class="note note--warn">{{i:alert}}<span>ถ้าใช้รหัสผ่านแบบดูอย่างเดียว (Investor password) จะเห็นบัญชีแต่ส่งคำสั่งไม่ได้ EA ก็เทรดไม่ได้เช่นกัน ใช้รหัสผ่านหลักของบัญชีเทรด</span></p>
+            <div class="shot">{{i:key}}<span><b>ภาพ 04 · ช่อง Login, Password และ Server</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>เช็กสถานะการเชื่อมต่อมุมขวาล่าง</h3>
+            <p>ดูมุมขวาล่างของ MT5 ถ้าเชื่อมต่อสำเร็จจะเห็นแถบสัญญาณพร้อมตัวเลขความเร็วหน่วย <span class="nocaps">ms</span> เลขบัญชีจะขึ้นใต้หัวข้อ Accounts ใน Navigator และแท็บ Trade ในหน้าต่าง Toolbox จะแสดงยอด Balance</p>
+            <ul>
+              <li><b>Invalid account</b>: Login หรือรหัสผ่านไม่ถูก</li>
+              <li><b>No connection</b>: เลือก Server ผิด หรืออินเทอร์เน็ตมีปัญหา</li>
+            </ul>
+            <div class="shot">{{i:wifi}}<span><b>ภาพ 05 · ตัวอย่างสถานะการเชื่อมต่อมุมขวาล่าง</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>ล็อกอินบัญชีเดียวกันบนมือถือ</h3>
+            <p>เปิดแอป MT5 บนมือถือ ไปที่หน้าจัดการบัญชีแล้วกดเพิ่มบัญชี ค้นหาโบรกเกอร์ เลือกเข้าสู่ระบบด้วยบัญชีที่มีอยู่ แล้วใส่ Login รหัสผ่าน และ Server ชุดเดียวกับบนคอม ชื่อเมนูอาจต่างกันเล็กน้อยระหว่าง Android กับ <span class="nocaps">iOS</span></p>
+            <p class="note note--warn">{{i:alert}}<span><b>MT5 บนมือถือรัน EA ไม่ได้</b> ใช้ดูยอดเงิน ออเดอร์ และประวัติได้ ตัว EA ต้องรันบน MT5 ของ Windows หรือบน VPS เท่านั้น</span></p>
+            <p class="note note--tip">{{i:bulb}}<span>ล็อกอินบนมือถือพร้อมกับคอมหรือ VPS ได้ EA ไม่หยุด แต่อย่าปิดหรือแก้ออเดอร์ที่ EA เปิดไว้จากมือถือ ถ้าทีมงานไม่ได้แนะนำ</span></p>
+            <div class="shot shot--tall">{{i:phone}}<span><b>ภาพ 06 · หน้าล็อกอินในแอป MT5 บนมือถือ</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="รายละเอียดเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#login-check">เช็กหลังล็อกอิน</a></li>
+        <li><a href="#login-trouble">ล็อกอินไม่ได้ ทำอย่างไร</a></li>
+        <li><a href="#login-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="login-check">เช็กหลังล็อกอิน</h2>
+      <ul class="checks">
+        <li>{{i:check}}มุมขวาล่างของ MT5 บนคอมหรือ VPS แสดงความเร็วการเชื่อมต่อ ไม่ขึ้น No connection</li>
+        <li>{{i:check}}เลขบัญชีใน Navigator ตรงกับบัญชีที่จะใช้กับ EA</li>
+        <li>{{i:check}}ยอด Balance ในแท็บ Trade ตรงกับยอดใน Portal</li>
+        <li>{{i:check}}แอป MT5 บนมือถือล็อกอินบัญชีเดียวกันแล้ว</li>
+        <li>{{i:check}}เก็บ Login รหัสผ่าน และ Server ไว้ในที่ที่มีแต่คุณเข้าถึงได้</li>
+      </ul>
+
+      <h2 id="login-trouble">ล็อกอินไม่ได้ ทำอย่างไร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ขึ้น Invalid account</th><td data-label="สาเหตุที่พบบ่อย">Login หรือรหัสผ่านผิด หรือใช้รหัส Portal แทนรหัสบัญชีเทรด</td><td data-label="วิธีแก้">ตรวจเลขบัญชีและรหัสผ่านจากอีเมลของโบรกเกอร์ หรือเปลี่ยนรหัสผ่านบัญชีเทรดใน Portal</td></tr>
+            <tr><th scope="row">ขึ้น No connection</th><td data-label="สาเหตุที่พบบ่อย">เลือก Server ผิด หรืออินเทอร์เน็ตมีปัญหา</td><td data-label="วิธีแก้">เลือก Server ให้ตรงกับที่โบรกเกอร์แจ้ง เช็กอินเทอร์เน็ต แล้วล็อกอินใหม่</td></tr>
+            <tr><th scope="row">ค้นหาโบรกเกอร์ไม่เจอ</th><td data-label="สาเหตุที่พบบ่อย">ชื่อในรายการต่างจากที่พิมพ์</td><td data-label="วิธีแก้">พิมพ์ชื่อเซิร์ฟเวอร์เต็มในช่องค้นหาแล้วกด Enter · ชื่อเซิร์ฟเวอร์ {{wait}}</td></tr>
+            <tr><th scope="row">ล็อกอินได้แต่ส่งคำสั่งไม่ได้</th><td data-label="สาเหตุที่พบบ่อย">ใช้รหัสผ่านแบบดูอย่างเดียว (Investor password)</td><td data-label="วิธีแก้">ล็อกอินใหม่ด้วยรหัสผ่านหลักของบัญชีเทรด</td></tr>
+            <tr><th scope="row">ยอดเงินไม่ตรงกับ Portal</th><td data-label="สาเหตุที่พบบ่อย">ล็อกอินผิดบัญชี เช่นบัญชีเดโม</td><td data-label="วิธีแก้">เช็กเลขบัญชีใน Navigator แล้วดับเบิลคลิกบัญชีที่ถูกต้อง</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="login-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ทำไมมือถือรัน EA ไม่ได้{{i:plus}}</summary><div class="qa__a"><p>แอป MT5 บน Android และ <span class="nocaps">iOS</span> ไม่รองรับ EA ใช้ได้แค่ดูบัญชีและส่งคำสั่งด้วยมือ ถ้าต้องการให้ EA ทำงานตลอดโดยไม่เปิดคอม ใช้ <a href="vps-windows.html">VPS บน Windows</a></p></div></details>
+      <details class="qa"><summary>ล็อกอินบนคอมและมือถือพร้อมกันได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ได้ บัญชีเดียวกันล็อกอินได้หลายเครื่องพร้อมกัน EA บนคอมหรือ VPS ทำงานต่อตามปกติ</p></div></details>
+      <details class="qa"><summary>รหัสผ่านบัญชีเทรดกับรหัส Portal ใช้ตัวเดียวกันไหม{{i:plus}}</summary><div class="qa__a"><p>อาจเป็นคนละชุด ดูจากอีเมลที่โบรกเกอร์ส่งตอนสร้างบัญชีเทรด หรือในหน้ารายละเอียดบัญชีใน Portal</p></div></details>
+      <details class="qa"><summary>ลืมรหัสผ่านบัญชีเทรดทำอย่างไร{{i:plus}}</summary><div class="qa__a"><p>เปลี่ยนรหัสผ่านบัญชีเทรดใน Portal ตามที่หน้าเว็บโบรกเกอร์แจ้ง แล้วล็อกอินใหม่ทุกเครื่อง รวมถึงบน VPS</p></div></details>
+      <details class="qa"><summary>ใช้ MT5 บน Mac ได้ไหม{{i:plus}}</summary><div class="qa__a"><p>การรัน EA BULL บน Mac {{wait}} ถ้าต้องการให้ EA ทำงานต่อเนื่อง ทางที่ตรงที่สุดคือรันบน <a href="vps-windows.html">Windows VPS</a></p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="how-to-install.html"><span class="tile">{{i:box}}</span><span><b>ติดตั้ง EA บน MT5</b><small>วางไฟล์ เปิดสวิตช์ ลากลงกราฟ</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="vps-windows.html"><span class="tile">{{i:server}}</span><span><b>VPS บน Windows</b><small>ให้ EA ทำงานต่อแม้ปิดคอม</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="deposit.html"><span class="tile">{{i:wallet}}</span><span><b>ฝากเงินเข้าบัญชีเทรด</b><small>ฝากผ่าน Portal แล้วเช็กยอดใน MT5</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>

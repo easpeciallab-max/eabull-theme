@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- Dev helper for dev/tools/shoot.py: headless Chrome cannot open a window
+     narrower than about 500px, so phone widths render inside this iframe. -->
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<style>html, body { margin: 0; background: #0B0B0C; } iframe { display: block; border: 0; }</style>
+</head>
+<body>
+<iframe id="f" title="preview"></iframe>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var f = document.getElementById('f');
+  f.style.width = (parseInt(p.get('w'), 10) || 375) + 'px';
+  f.style.height = (parseInt(p.get('vh'), 10) || 812) + 'px';
+  f.onload = function () {
+    var d = f.contentDocument;
+    (d.fonts ? d.fonts.ready : Promise.resolve()).then(function () {
+      setTimeout(function () {
+        var h = d.documentElement.scrollHeight;
+        if (!p.has('keep')) f.style.height = h + 'px';
+        var m = document.createElement('meta');
+        m.name = 'page-height';
+        m.content = String(p.has('keep') ? f.offsetHeight : h);
+        document.head.appendChild(m);
+      }, 300);
+    });
+  };
+  f.src = p.get('src');
+})();
+</script>
+</body>
+</html>

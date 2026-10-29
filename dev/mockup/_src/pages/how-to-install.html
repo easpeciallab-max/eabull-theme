@@ -1,0 +1,210 @@
+<!--{"title": "ติดตั้ง EA BULL บน MT5 ทีละขั้น", "desc": "คู่มือติดตั้ง EA BULL บน MetaTrader 5 ตั้งแต่วางไฟล์ในโฟลเดอร์ Experts รีเฟรช Navigator ลาก EA ลงกราฟ ไปจนถึงเปิด Algo Trading พร้อมเช็กลิสต์และวิธีแก้อาการที่พบบ่อย", "nav": ["guides", "how-to-install"], "dock": "guides", "cta": {"title": "ติดตั้งแล้ว EA ไม่ขึ้น ทักทีมงานได้", "sub": "ถ่ายภาพหน้าจอ MT5 ให้เห็นทั้งกราฟและแท็บ Experts แล้วส่งมาทาง LINE ทีมงานจะช่วยไล่ดูทีละจุด"}}-->
+<section class="phead">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="home.html">หน้าแรก</a></li>
+      <li>คู่มือการใช้งาน</li>
+      <li>ติดตั้ง EA บน MT5</li>
+    </ol>
+    <div class="phead__grid">
+      <div>
+        <h1>ติดตั้ง EA BULL บน MT5 ทีละขั้น</h1>
+        <p class="lead">EA คือไฟล์โปรแกรมที่ทำงานอยู่ใน MetaTrader 5 คู่มือนี้พาวางไฟล์ให้ถูกโฟลเดอร์ ลาก EA ลงกราฟ และเปิดสิทธิ์ให้ EA ส่งคำสั่งได้ ทำบนคอม Windows หรือบน VPS ก็ใช้ขั้นตอนเดียวกัน</p>
+        <div class="phead__meta">
+          <span>{{i:clock}}ใช้เวลาราว 10 นาที</span>
+          <span>{{i:monitor}}MT5 บน Windows หรือ VPS</span>
+          <span>{{i:list}}6 ขั้นตอน</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn--line" {{link:line}}>{{i:chat}}ขอไฟล์ EA ทาง LINE</a>
+          <a class="btn btn--outline" href="#steps">ดูขั้นตอน {{i:arrow-right}}</a>
+        </div>
+      </div>
+      <aside class="sumbox" aria-label="สรุปขั้นตอน">
+        <h2>สรุปแบบสั้น</h2>
+        <p class="flow">เปิดโฟลเดอร์ข้อมูล {{i:chevron-right}} วางไฟล์ใน Experts {{i:chevron-right}} รีเฟรช Navigator {{i:chevron-right}} ลากลงกราฟ {{i:chevron-right}} อนุญาต Algo Trading {{i:chevron-right}} เช็กมุมกราฟ</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid g2">
+      <div class="stack">
+        <h2>{{bars}}ก่อนเริ่ม</h2>
+        <p class="lead">ไฟล์ EA ได้จากทีมงาน EA BULL โดยตรง ใช้เฉพาะไฟล์ที่ทีมงานส่งให้คุณ อย่าใช้ไฟล์ที่ส่งต่อกันมาในกลุ่มแชตหรือโหลดจากเว็บอื่น</p>
+        <p class="muted">ยังไม่ได้ลง MT5 หรือยังไม่มีบัญชีเทรด ทำสองคู่มือนี้ให้เสร็จก่อน แล้วค่อยกลับมาที่หน้านี้</p>
+        <div class="btns">
+          <a class="btn btn--outline btn--sm" href="open-mt5-account.html">เปิดบัญชีเทรด MT5</a>
+          <a class="btn btn--outline btn--sm" href="mt5-login.html">ติดตั้งและล็อกอิน MT5</a>
+        </div>
+      </div>
+      <div class="prep">
+        <h3>{{i:check}}ต้องมีก่อนเริ่ม</h3>
+        <dl>
+          <div><dt>ไฟล์ EA</dt><dd>ไฟล์จากทีมงาน EA BULL · ชื่อไฟล์ {{wait}}</dd></div>
+          <div><dt>MT5 บน Windows</dt><dd>ลงไว้ในคอม Windows หรือบน VPS · แอป MT5 บนมือถือรัน EA ไม่ได้</dd></div>
+          <div><dt>บัญชีเทรด</dt><dd>ล็อกอินใน MT5 แล้ว มุมขวาล่างไม่ขึ้น No connection</dd></div>
+          <div><dt>ตัวเลือกเพิ่มเติม</dt><dd>ตัวเลือกอื่นที่ต้องติ๊กในหน้าต่างตั้งค่า EA {{wait}}</dd></div>
+        </dl>
+        <p class="note note--info">{{i:info}}<span>จะรัน EA บน VPS ให้เชื่อมต่อ VPS ก่อน แล้วทำตามคู่มือนี้ในหน้าจอของ VPS</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt" id="steps" aria-labelledby="steps-title">
+  <div class="wrap guide">
+    <nav class="rail" aria-label="ขั้นตอนในหน้านี้">
+      <h2>ขั้นตอน</h2>
+      <ol>
+        <li><a href="#step-1"><b>01</b>เปิดโฟลเดอร์ข้อมูล</a></li>
+        <li><a href="#step-2"><b>02</b>วางไฟล์ใน Experts</a></li>
+        <li><a href="#step-3"><b>03</b>รีเฟรช Navigator</a></li>
+        <li><a href="#step-4"><b>04</b>ลาก EA ลงกราฟ</a></li>
+        <li><a href="#step-5"><b>05</b>อนุญาต Algo Trading</a></li>
+        <li><a href="#step-6"><b>06</b>เปิดปุ่มและเช็กมุมกราฟ</a></li>
+      </ol>
+    </nav>
+    <div>
+      <h2 id="steps-title" class="sr-only">ขั้นตอนติดตั้ง EA บน MT5</h2>
+      <ol class="gsteps">
+        <li class="gstep" id="step-1">
+          <span class="gstep__n">01</span>
+          <div class="gstep__body">
+            <h3>เปิดโฟลเดอร์ข้อมูลของ MT5</h3>
+            <p>ใน MT5 กดเมนู <b>File &gt; Open Data Folder</b> หน้าต่างโฟลเดอร์ของ MT5 ตัวที่เปิดอยู่จะขึ้นมา ใช้วิธีนี้แทนการค้นหาเองในเครื่อง เพราะ MT5 แต่ละตัวที่ลงไว้มีโฟลเดอร์ข้อมูลแยกกัน</p>
+            <div class="shot">{{i:folder}}<span><b>ภาพ 01 · เมนู File &gt; Open Data Folder</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-2">
+          <span class="gstep__n">02</span>
+          <div class="gstep__body">
+            <h3>วางไฟล์ในโฟลเดอร์ MQL5 &gt; Experts</h3>
+            <p>ดับเบิลคลิกเข้าโฟลเดอร์ <b>MQL5</b> แล้วเข้า <b>Experts</b> คัดลอกไฟล์ EA ที่ได้จากทีมงานมาวางไว้ที่นี่ ถ้าได้มาเป็นไฟล์ <span class="nocaps">.zip</span> ให้แตกไฟล์ก่อน แล้ววางเฉพาะไฟล์ตัว EA</p>
+            <ul>
+              <li>ไฟล์อื่นที่อาจมาพร้อมกัน เช่นไฟล์ตั้งค่า และตำแหน่งที่ต้องวาง: {{wait}}</li>
+            </ul>
+            <div class="shot">{{i:folder}}<span><b>ภาพ 02 · โฟลเดอร์ MQL5 &gt; Experts ที่มีไฟล์ EA</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-3">
+          <span class="gstep__n">03</span>
+          <div class="gstep__body">
+            <h3>รีเฟรชรายการใน Navigator</h3>
+            <p>กลับมาที่ MT5 เปิดหน้าต่าง Navigator (กด Ctrl + N ถ้ายังไม่เห็น) คลิกขวาที่หัวข้อ <b>Expert Advisors</b> แล้วเลือก <b>Refresh</b> ชื่อ EA จะขึ้นในรายการ ถ้ายังไม่ขึ้น ปิด MT5 แล้วเปิดใหม่หนึ่งครั้ง</p>
+            <div class="shot">{{i:refresh}}<span><b>ภาพ 03 · คลิกขวาที่ Expert Advisors แล้วเลือก Refresh</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-4">
+          <span class="gstep__n">04</span>
+          <div class="gstep__body">
+            <h3>เปิดกราฟที่ถูกต้อง แล้วลาก EA ลงไป</h3>
+            <p>เปิดกราฟของสินทรัพย์ที่ EA ใช้ ตั้งกรอบเวลาให้ตรงกับคู่มือสินค้า จากนั้นลากชื่อ EA จาก Navigator ไปวางบนกราฟ หรือดับเบิลคลิกที่ชื่อ EA ขณะที่กราฟนั้นเปิดอยู่</p>
+            <ul>
+              <li>สินทรัพย์ (Symbol): {{wait}}</li>
+              <li>กรอบเวลา (Timeframe): {{wait}}</li>
+            </ul>
+            <p class="note note--info">{{i:info}}<span>ชื่อสินทรัพย์ของแต่ละโบรกเกอร์อาจมีตัวอักษรต่อท้าย ให้เลือกชื่อที่ตรงกับคู่มือสินค้า และกราฟหนึ่งกราฟติด EA ได้ทีละตัว ถ้าลากตัวใหม่ลงไป ตัวเดิมจะถูกแทนที่</span></p>
+            <div class="shot">{{i:candles}}<span><b>ภาพ 04 · ลาก EA จาก Navigator ลงกราฟ</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-5">
+          <span class="gstep__n">05</span>
+          <div class="gstep__body">
+            <h3>ติ๊ก Allow Algo Trading ในหน้าต่าง EA</h3>
+            <p>เมื่อวาง EA ลงกราฟ หน้าต่างตั้งค่าของ EA จะเปิดขึ้น ไปที่แท็บ <b>Common</b> แล้วติ๊ก <b>Allow Algo Trading</b> ส่วนแท็บ <b>Inputs</b> คือค่าตั้งของ EA ใช้ตามที่ทีมงานแนะนำ แล้วกด OK</p>
+            <ul>
+              <li>ตัวเลือกอื่นในแท็บ Common ที่ต้องติ๊ก: {{wait}}</li>
+              <li>ค่าที่แนะนำในแท็บ Inputs: {{wait}}</li>
+            </ul>
+            <p class="note note--warn">{{i:alert}}<span>อย่าเปลี่ยนค่าใน Inputs เองถ้ายังไม่แน่ใจว่าแต่ละค่าทำอะไร ค่าบางตัวเปลี่ยนขนาดไม้และความเสี่ยงของบัญชีได้มาก</span></p>
+            <div class="shot">{{i:sliders}}<span><b>ภาพ 05 · แท็บ Common และช่อง Allow Algo Trading</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+        <li class="gstep" id="step-6">
+          <span class="gstep__n">06</span>
+          <div class="gstep__body">
+            <h3>เปิดปุ่ม Algo Trading แล้วเช็กมุมกราฟ</h3>
+            <p>กดปุ่ม <b>Algo Trading</b> บนแถบเครื่องมือด้านบนให้เป็นสีเขียว แล้วดูมุมขวาบนของกราฟ ชื่อ EA ต้องขึ้นอยู่ และไอคอนข้างชื่อไม่เป็นสีเทา ถ้ายังเป็นสีเทา กลับไปดูขั้นที่ 5</p>
+            <ul>
+              <li>การเปิดใช้งานหรือใส่สิทธิ์ใช้งาน (license): {{wait}}</li>
+            </ul>
+            <p class="note note--tip">{{i:bulb}}<span>เปิดหน้าต่าง Toolbox (กด Ctrl + T) แล้วดูแท็บ <b>Experts</b> จะเห็นข้อความว่า EA โหลดสำเร็จ หรือมีข้อผิดพลาดอะไรขึ้นมา</span></p>
+            <div class="shot">{{i:power}}<span><b>ภาพ 06 · ปุ่ม Algo Trading สีเขียวและชื่อ EA มุมขวาบนของกราฟ</b>ภาพหน้าจอ รอจากเจ้าของ</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="รายละเอียดเพิ่มเติม">
+  <div class="wrap doclay">
+    <details class="toc" open>
+      <summary>ในหน้านี้{{i:chevron-down}}</summary>
+      <ol>
+        <li><a href="#install-check">เช็กหลังติดตั้งเสร็จ</a></li>
+        <li><a href="#install-trouble">ติดตั้งแล้วไม่ทำงาน แก้อย่างไร</a></li>
+        <li><a href="#install-update">อัปเดตเป็นเวอร์ชันใหม่</a></li>
+        <li><a href="#install-faq">คำถามที่พบบ่อย</a></li>
+      </ol>
+    </details>
+    <article class="doc paper">
+      <h2 id="install-check">เช็กหลังติดตั้งเสร็จ</h2>
+      <ul class="checks">
+        <li>{{i:check}}ชื่อ EA ขึ้นใน Navigator ใต้หัวข้อ Expert Advisors</li>
+        <li>{{i:check}}ติด EA บนกราฟสินทรัพย์และกรอบเวลาตามคู่มือสินค้า</li>
+        <li>{{i:check}}ปุ่ม Algo Trading บนแถบเครื่องมือเป็นสีเขียว</li>
+        <li>{{i:check}}มุมขวาบนของกราฟแสดงชื่อ EA และไอคอนไม่เป็นสีเทา</li>
+        <li>{{i:check}}แท็บ Experts ไม่มีข้อความแจ้งข้อผิดพลาด</li>
+        <li>{{i:check}}MT5 ล็อกอินบัญชีที่จะใช้จริง มุมขวาล่างไม่ขึ้น No connection</li>
+      </ul>
+
+      <h2 id="install-trouble">ติดตั้งแล้วไม่ทำงาน แก้อย่างไร</h2>
+      <div class="tbl-wrap">
+        <table class="tbl tbl--stack">
+          <thead><tr><th scope="col">อาการ</th><th scope="col">สาเหตุที่พบบ่อย</th><th scope="col">วิธีแก้</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ไม่เห็นชื่อ EA ใน Navigator</th><td data-label="สาเหตุที่พบบ่อย">วางไฟล์ผิดโฟลเดอร์ หรือวางไว้ใน MT5 อีกตัวที่ลงไว้ในเครื่อง</td><td data-label="วิธีแก้">เปิด File &gt; Open Data Folder จาก MT5 ตัวที่ใช้อยู่ วางไฟล์ใน MQL5 &gt; Experts แล้วกด Refresh</td></tr>
+            <tr><th scope="row">ไอคอน EA มุมกราฟเป็นสีเทา</th><td data-label="สาเหตุที่พบบ่อย">ยังไม่ได้ติ๊ก Allow Algo Trading ในหน้าต่าง EA หรือปุ่ม Algo Trading ปิดอยู่</td><td data-label="วิธีแก้">ลาก EA ลงกราฟเดิมอีกครั้ง ติ๊กในแท็บ Common แล้วเช็กปุ่ม Algo Trading</td></tr>
+            <tr><th scope="row">ปุ่ม Algo Trading ไม่เป็นสีเขียว</th><td data-label="สาเหตุที่พบบ่อย">กดปิดไว้ หรือ MT5 ปิดให้เองหลังเปลี่ยนบัญชีตามที่ตั้งใน Options</td><td data-label="วิธีแก้">กดปุ่มให้เป็นสีเขียว และเช็กใน Tools &gt; Options &gt; Expert Advisors ว่าติ๊ก Allow algorithmic trading ไว้</td></tr>
+            <tr><th scope="row">มีข้อความผิดพลาดในแท็บ Experts หรือ Journal</th><td data-label="สาเหตุที่พบบ่อย">ขึ้นกับข้อความ เช่นตลาดปิด เงินในบัญชีไม่พอ หรือค่าตั้งไม่ตรง</td><td data-label="วิธีแก้">ถ่ายภาพข้อความบรรทัดล่าสุดทั้งบรรทัดส่งให้ทีมงานทาง LINE · ความหมายของข้อความเฉพาะของ EA BULL {{wait}}</td></tr>
+            <tr><th scope="row">EA ขึ้นที่กราฟแต่ยังไม่เปิดออเดอร์</th><td data-label="สาเหตุที่พบบ่อย">ยังไม่ครบเงื่อนไขของระบบ หรืออยู่นอกเวลาทำงานของ EA</td><td data-label="วิธีแก้">ถ้าแท็บ Experts ไม่มีข้อผิดพลาด ให้รอตามเงื่อนไขของ EA · ช่วงเวลาทำงานของ EA {{wait}}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="install-update">อัปเดตเป็นเวอร์ชันใหม่</h2>
+      <p>เมื่อทีมงานแจ้งว่ามีเวอร์ชันใหม่ ทำตามลำดับนี้บน MT5 ตัวที่รัน EA อยู่ ถ้ารันบน VPS ต้องทำในหน้าจอของ VPS</p>
+      <ol>
+        <li>เช็กว่ามีออเดอร์ที่ EA เปิดค้างอยู่ไหม และอัปเดตระหว่างมีออเดอร์ได้หรือไม่ {{wait}}</li>
+        <li>คลิกขวาบนกราฟ เลือก Expert Advisors &gt; Remove เพื่อถอด EA ตัวเดิมออก</li>
+        <li>เปิด File &gt; Open Data Folder &gt; MQL5 &gt; Experts ย้ายไฟล์เดิมไปเก็บที่อื่น แล้ววางไฟล์ใหม่แทน</li>
+        <li>กลับไปที่ Navigator กด Refresh แล้วลาก EA ลงกราฟใหม่ ตั้งค่าตามคู่มือของเวอร์ชันใหม่</li>
+        <li>เช็กมุมกราฟและแท็บ Experts อีกครั้งตามเช็กลิสต์ด้านบน</li>
+      </ol>
+      <p class="note note--info">{{i:info}}<span>ค่าที่ตั้งไว้ในเวอร์ชันเดิมใช้ต่อได้หรือไม่ และสิ่งที่เปลี่ยนในแต่ละเวอร์ชัน {{wait}}</span></p>
+
+      <h2 id="install-faq">คำถามที่พบบ่อย</h2>
+      <details class="qa"><summary>ติดตั้ง EA บน MT5 ในมือถือได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ไม่ได้ แอป MT5 บน Android และ <span class="nocaps">iOS</span> รัน EA ไม่ได้ ใช้ได้แค่ดูบัญชีและออเดอร์ ตัว EA ต้องติดตั้งบน MT5 ของ Windows หรือบน VPS</p></div></details>
+      <details class="qa"><summary>ปิด MT5 แล้ว EA ยังทำงานไหม{{i:plus}}</summary><div class="qa__a"><p>ไม่ทำงาน EA ทำงานเฉพาะตอนที่ MT5 เปิดอยู่และต่ออินเทอร์เน็ต ถ้าไม่อยากเปิดคอมทิ้งไว้ ให้รันบน VPS ดู<a href="vps-windows.html">คู่มือ VPS บน Windows</a></p></div></details>
+      <details class="qa"><summary>ติด EA บัญชีเดียวกันทั้งบนคอมและบน VPS ได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ไม่ควรทำ EA ทั้งสองที่จะทำงานแยกกันและอาจเปิดออเดอร์ซ้ำ เลือกรันที่เดียว แล้วใช้แอป MT5 บนมือถือดูผล</p></div></details>
+      <details class="qa"><summary>ใช้ EA กับหลายบัญชีได้ไหม{{i:plus}}</summary><div class="qa__a"><p>จำนวนบัญชีที่ใช้ได้ขึ้นกับแพ็กเกจ {{wait}} ดูรายละเอียดที่<a href="pricing.html">หน้าแพ็กเกจ</a></p></div></details>
+      <details class="qa"><summary>ต้องเปลี่ยนค่าใน Inputs ไหม{{i:plus}}</summary><div class="qa__a"><p>ใช้ค่าตามที่ทีมงานแนะนำสำหรับทุนและโหมดที่คุณเลือก ค่าที่แนะนำของแต่ละสินค้า {{wait}}</p></div></details>
+      <details class="qa"><summary>ทดลองบนบัญชีเดโมก่อนได้ไหม{{i:plus}}</summary><div class="qa__a"><p>ควรเริ่มจากบัญชีเดโมหรือเงินจำนวนน้อยก่อน ดู<a href="forward-test.html">คู่มือ Forward Test</a> ส่วนการใช้ EA BULL บนบัญชีเดโม {{wait}}</p></div></details>
+    </article>
+  </div>
+</section>
+
+<section class="band band--alt" aria-labelledby="rel-title">
+  <div class="wrap">
+    <div class="shead"><div class="shead__text"><h2 id="rel-title">{{bars}}คู่มือที่เกี่ยวข้อง</h2></div></div>
+    <div class="related">
+      <a class="rel" href="mt5-login.html"><span class="tile">{{i:download}}</span><span><b>ติดตั้งและล็อกอิน MT5</b><small>คอม มือถือ และแท็บเล็ต</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="vps-windows.html"><span class="tile">{{i:server}}</span><span><b>VPS บน Windows</b><small>ให้ EA ทำงานต่อแม้ปิดคอม</small></span>{{i:arrow-right}}</a>
+      <a class="rel" href="tools.html"><span class="tile">{{i:calculator}}</span><span><b>เครื่องคำนวณ Lot และ Drawdown</b><small>คิดขนาดไม้จากเงินที่ยอมเสีย</small></span>{{i:arrow-right}}</a>
+    </div>
+  </div>
+</section>
