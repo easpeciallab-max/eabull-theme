@@ -841,7 +841,7 @@ function eab_seo_is_go_page() {
 
 /**
  * เหตุผลที่หน้าปัจจุบันควร noindex · '' = ปล่อยตามค่าปกติ
- * go / example-product / articles-empty / search / author / date / empty-term (แก้เพิ่มได้ด้วยฟิลเตอร์ eab_seo_noindex_reason)
+ * go / example-product / articles-empty / 404 / search / author / date / empty-term (แก้เพิ่มได้ด้วยฟิลเตอร์ eab_seo_noindex_reason)
  */
 function eab_seo_noindex_reason() {
 	$reason = '';
@@ -853,6 +853,8 @@ function eab_seo_noindex_reason() {
 		$reason = 'example-product';
 	} elseif ( is_home() ) {
 		$reason = 0 === eab_seo_published_post_count() ? 'articles-empty' : '';
+	} elseif ( is_404() ) {
+		$reason = '404';
 	} elseif ( is_search() ) {
 		$reason = 'search';
 	} elseif ( function_exists( 'is_author' ) && is_author() ) {
