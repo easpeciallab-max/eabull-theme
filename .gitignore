@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 .claude/*
 !.claude/launch.json
+
+# dashboard redesign: captures show real customer data, design shows the admin UI (public repo) · keep local
+design/dashboard/
