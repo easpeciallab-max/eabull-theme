@@ -43,8 +43,8 @@ function eab_go_defaults( $d ) {
 			'go_btn2_url'            => '/forward-test/',
 			'go_btn3_label'          => 'รู้จัก EA BULL',
 			'go_btn3_url'            => '/about/',
-			'go_btn4_label'          => 'ประกาศความเสี่ยง',
-			'go_btn4_url'            => '/risk-disclosure/',
+			'go_btn4_label'          => 'คู่มือ Backtest',
+			'go_btn4_url'            => '/backtest/',
 
 			/* Steps: shared */
 			'go_steps_title'         => 'เริ่มใช้งานใน {n} ขั้นตอน',
@@ -471,9 +471,15 @@ function eab_go_steps() {
  * "ข้อมูลก่อนตัดสินใจ" buttons (outline, small).
  */
 function eab_go_info_buttons() {
-	$html = '';
+	$icons = array( 1 => 'tag', 2 => 'pulse', 3 => 'user', 4 => 'flask' );
+	$html  = '';
 	for ( $i = 1; $i <= 4; $i++ ) {
-		$html .= eab_go_btn( 'btn btn--outline btn--sm', eab_go_mod( 'go_btn' . $i . '_label' ), eab_go_link( eab_go_mod( 'go_btn' . $i . '_url' ) ) );
+		$label = eab_go_mod( 'go_btn' . $i . '_label' );
+		$url   = eab_go_link( eab_go_mod( 'go_btn' . $i . '_url' ) );
+		if ( '' === trim( (string) $label ) || ! $url ) {
+			continue;
+		}
+		$html .= '<a class="golink" href="' . esc_url( $url['href'] ) . '">' . eab_icon( $icons[ $i ] ) . '<span>' . esc_html( $label ) . '</span>' . eab_icon( 'arrow-right', 'golink__go' ) . '</a>';
 	}
 	return $html;
 }

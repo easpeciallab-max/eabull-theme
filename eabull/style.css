@@ -930,44 +930,47 @@ a.card:hover { border-color: var(--accent); }
 .ddbar { height: 14px; background: var(--k3); border: 1px solid #2E2E33; }
 .ddbar i { display: block; height: 100%; background: var(--accent); }
 
-/* 15. /go -------------------------------------------------------------------- */
+/* 15. /go: one narrow card stacked top to bottom on every screen (owner 29 Oct 2026) */
 .go-page { background: var(--k0); }
-.go { padding: 28px 0 40px; }
-@media (min-width: 900px) { .go { padding: 56px 0 72px; } }
-.gocard { width: min(100% - 24px, 1080px); margin-inline: auto; background: var(--k1); --cut: 28px; }
-@media (min-width: 960px) { .gocard { display: grid; grid-template-columns: 380px minmax(0, 1fr); } }
-.gocard__side { padding: 28px 22px; border-bottom: 1px solid var(--line); }
-@media (min-width: 960px) { .gocard__side { padding: 40px 36px; border-bottom: 0; border-right: 1px solid var(--line); } .gocard__stick { position: sticky; top: 32px; } }
+.go { padding: 20px 0 36px; }
+@media (min-width: 700px) { .go { padding: 48px 0 64px; } }
+.gocard { width: min(100% - 24px, 520px); margin-inline: auto; padding: 32px 20px 26px; background: var(--k1); border: 1px solid var(--line); --cut: 22px; }
+@media (min-width: 560px) { .gocard { padding: 40px 36px 30px; } }
 .gocard__brand { text-align: center; }
-.gocard__brand img:first-child { width: 150px; margin: 0 auto; }
-.gocard__brand .go-word { width: 200px; margin: 14px auto 0; }
-.gocard__brand h1 { margin-top: 12px; font-size: 20px; color: var(--accent); }
+.gocard__brand img:first-child { width: 132px; margin: 0 auto; }
+.gocard__brand .go-word { width: 184px; margin: 12px auto 0; }
+.gocard__brand h1 { margin-top: 14px; font-size: 21px; color: var(--accent); }
 .gocard__brand p { margin-top: 6px; font-size: 15px; color: var(--fg-2); }
-.gocard__help { display: grid; gap: 10px; margin-top: 24px; }
-.gocard__help h2 { font-size: 16px; color: var(--fg); }
-.gocard__main { padding: 28px 22px; }
-@media (min-width: 960px) { .gocard__main { padding: 40px 40px 44px; } }
-.gocard__main > h2 { font-size: clamp(22px, 2.6vw, 28px); margin-bottom: 8px; }
-.gosteps { list-style: none; margin: 0; padding: 0; }
-.gostep { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-top: 1px solid var(--line); }
-.gostep:first-child { border-top: 0; }
-.gostep__n { display: grid; place-items: center; width: 40px; height: 40px; background: var(--accent); color: var(--k0); font: 700 17px/1 var(--f-head); clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
-.gostep h3 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 18px; margin-top: 6px; }
-.gostep p { margin-top: 4px; font-size: 15px; color: var(--fg-2); }
-.gostep__act { display: grid; gap: 10px; margin-top: 14px; }
-@media (min-width: 560px) { .gostep__act { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); } }
-.gotiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
-@media (min-width: 560px) { .gotiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.gocard__sec { margin-top: 28px; padding-top: 26px; border-top: 1px solid var(--line); }
+.gocard__h { font-size: 18px; text-align: center; }
+.gocard__h::after { content: ""; display: block; width: 36px; height: 3px; margin: 10px auto 0; background: var(--accent); }
+.gocard__sub { margin-top: 10px; font-size: 14.5px; color: var(--fg-2); text-align: center; }
+.gocard__stack { display: grid; gap: 10px; margin-top: 16px; }
+.gosteps { list-style: none; margin: 18px 0 0; padding: 0; }
+.gostep { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 20px 0; border-top: 1px solid var(--line); }
+.gostep:first-child { border-top: 0; padding-top: 4px; }
+.gostep__n { display: grid; place-items: center; width: 34px; height: 34px; background: var(--accent); color: var(--k0); font: 700 16px/1 var(--f-head); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
+.gostep h3 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 17px; margin-top: 4px; }
+.gostep p { margin-top: 4px; font-size: 14.5px; color: var(--fg-2); }
+.gostep__act { display: grid; gap: 8px; margin-top: 12px; }
+.gotiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
 .gotile { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px; background: var(--k2); border: 1px solid var(--line); border-radius: var(--r-sm); text-align: center; font: 600 14px/1.35 var(--f-head); color: var(--fg); }
 .gotile .i { color: var(--accent); }
 .gotile:hover { border-color: var(--accent); }
-.dlcards { display: grid; gap: 10px; margin-top: 14px; }
-.dlcard { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; padding: 12px; background: var(--k2); border: 1px solid var(--line); border-radius: var(--r-sm); }
-.dlcard__ver { display: grid; place-items: center; height: 64px; background: var(--accent); color: var(--k0); font: 700 20px/1 var(--f-head); }
+.dlcards { display: grid; gap: 10px; margin-top: 12px; }
+.dlcard { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; background: var(--k2); border: 1px solid var(--line); border-radius: var(--r-sm); }
+.dlcard__ver { display: grid; place-items: center; height: 60px; background: var(--accent); color: var(--k0); font: 700 19px/1 var(--f-head); }
 .dlcard b { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 700 16px/1.4 var(--f-head); }
 .dlcard .row { margin-top: 8px; gap: 8px; }
-.go__info { display: grid; gap: 8px; margin-top: 8px; }
-@media (min-width: 560px) { .go__info { grid-template-columns: 1fr 1fr; } }
+.golinks { display: grid; gap: 8px; margin-top: 16px; }
+.golink { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 14px; background: var(--k2); border: 1px solid var(--line); color: var(--fg); font: 600 15.5px/1.35 var(--f-head); text-decoration: none; }
+.golink .i { width: 20px; height: 20px; color: var(--accent); }
+.golink span { flex: 1; }
+.golink .golink__go { width: 18px; height: 18px; color: var(--muted); transition: transform .15s, color .15s; }
+.golink:hover { border-color: var(--accent); }
+.golink:hover .golink__go { color: var(--accent); transform: translateX(3px); }
+.gocard__social { margin-top: 26px; }
+.gocard__social > * { justify-content: center; }
 .go__legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-top: 22px; font-size: 13.5px; color: var(--muted); }
 .go__legal a, .go__legal .linkish { color: var(--fg-2); text-decoration: underline; }
 

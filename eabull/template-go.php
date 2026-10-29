@@ -4,8 +4,8 @@
  *
  * Standalone link page (mockup dev/mockup/_src/pages/go.html): no header, footer, dock or
  * floating button · noindex via inc/seo.php · the cookie card still prints through wp_body_open.
- * Desktop: one card in two columns (sticky brand + contact + info + socials | 6 steps).
- * Phones: one column. Texts and links: Customizer sections 30) and 31) (inc/modules/go.php).
+ * One narrow card on every screen, stacked like EA WING's /go (owner 29 Oct 2026): brand, contact,
+ * 6 steps, info links, socials, policy links. Texts and links: Customizer sections 30) and 31) (inc/modules/go.php).
  *
  * @package eabull
  */
@@ -32,7 +32,7 @@ if ( function_exists( 'eab_chrome_openchat_link' ) ) {
 }
 $eab_go_info_title = eab_go_mod( 'go_info_title' );
 $eab_go_info       = eab_go_info_buttons();
-$eab_go_socials    = function_exists( 'eab_chrome_social_icons' ) ? eab_chrome_social_icons( 'go-social', 'mt-24' ) : '';
+$eab_go_socials    = function_exists( 'eab_chrome_social_icons' ) ? eab_chrome_social_icons( 'go-social' ) : '';
 
 $eab_go_steps       = eab_go_steps();
 $eab_go_steps_title = str_replace( '{n}', (string) count( $eab_go_steps ), eab_go_mod( 'go_steps_title' ) );
@@ -67,48 +67,37 @@ add_filter( 'body_class', 'eab_go_body_class', 99 );
 <main id="main">
 <div class="go">
 	<div class="gocard cut">
-		<div class="gocard__side">
-			<div class="gocard__stick">
-				<div class="gocard__brand">
-					<img src="<?php echo esc_url( eab_go_logo_url() ); ?>" width="640" height="571" alt="" fetchpriority="high" decoding="async">
-					<img class="go-word" src="<?php echo esc_url( eab_wordmark_url( 'dark' ) ); ?>" width="720" height="100" alt="<?php echo esc_attr( $eab_go_brand ); ?>" decoding="async">
-					<h1><?php echo esc_html( $eab_go_title ); ?></h1>
-					<?php if ( '' !== $eab_go_sub ) : ?>
-						<p><?php echo nl2br( esc_html( $eab_go_sub ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped ?></p>
-					<?php endif; ?>
-				</div>
-				<?php if ( '' !== $eab_go_line || '' !== $eab_go_openchat ) : ?>
-					<div class="gocard__help">
-						<?php if ( '' !== $eab_go_help ) : ?>
-							<h2><?php echo esc_html( $eab_go_help ); ?></h2>
-						<?php endif; ?>
-						<?php echo $eab_go_line . $eab_go_openchat; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_go_btn ?>
-					</div>
-				<?php endif; ?>
-				<?php if ( '' !== $eab_go_info ) : ?>
-					<div class="gocard__help">
-						<?php if ( '' !== $eab_go_info_title ) : ?>
-							<h2><?php echo esc_html( $eab_go_info_title ); ?></h2>
-						<?php endif; ?>
-						<div class="go__info"><?php echo $eab_go_info; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_go_btn ?></div>
-					</div>
-				<?php endif; ?>
-				<?php echo $eab_go_socials; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_chrome_social_icons ?>
-			</div>
-		</div>
-		<div class="gocard__main">
-			<?php if ( '' !== $eab_go_steps_title ) : ?>
-				<h2><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><?php echo esc_html( $eab_go_steps_title ); ?></h2>
+		<header class="gocard__brand">
+			<img src="<?php echo esc_url( eab_go_logo_url() ); ?>" width="640" height="571" alt="" fetchpriority="high" decoding="async">
+			<img class="go-word" src="<?php echo esc_url( eab_wordmark_url( 'dark' ) ); ?>" width="720" height="100" alt="<?php echo esc_attr( $eab_go_brand ); ?>" decoding="async">
+			<h1><?php echo esc_html( $eab_go_title ); ?></h1>
+			<?php if ( '' !== $eab_go_sub ) : ?>
+				<p><?php echo nl2br( esc_html( $eab_go_sub ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped ?></p>
 			<?php endif; ?>
-			<?php if ( '' !== $eab_go_steps_sub ) : ?>
-				<p class="muted"><?php echo esc_html( $eab_go_steps_sub ); ?></p>
-			<?php endif; ?>
-			<?php if ( $eab_go_steps ) : ?>
-				<ol class="gosteps mt-16">
+		</header>
+
+		<?php if ( '' !== $eab_go_line || '' !== $eab_go_openchat ) : ?>
+			<section class="gocard__sec">
+				<?php if ( '' !== $eab_go_help ) : ?>
+					<h2 class="gocard__h"><?php echo esc_html( $eab_go_help ); ?></h2>
+				<?php endif; ?>
+				<div class="gocard__stack"><?php echo $eab_go_line . $eab_go_openchat; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_go_btn ?></div>
+			</section>
+		<?php endif; ?>
+
+		<?php if ( $eab_go_steps ) : ?>
+			<section class="gocard__sec">
+				<?php if ( '' !== $eab_go_steps_title ) : ?>
+					<h2 class="gocard__h"><?php echo esc_html( $eab_go_steps_title ); ?></h2>
+				<?php endif; ?>
+				<?php if ( '' !== $eab_go_steps_sub ) : ?>
+					<p class="gocard__sub"><?php echo esc_html( $eab_go_steps_sub ); ?></p>
+				<?php endif; ?>
+				<ol class="gosteps">
 					<?php foreach ( $eab_go_steps as $eab_go_i => $eab_go_step ) : ?>
 						<li class="gostep">
 							<span class="gostep__n"><?php echo esc_html( (string) ( $eab_go_i + 1 ) ); ?></span>
-							<div>
+							<div class="gostep__body">
 								<h3><?php echo esc_html( $eab_go_step['title'] ); ?><?php if ( '' !== $eab_go_step['badge'] ) : ?> <span class="badge badge--acc"><?php echo esc_html( $eab_go_step['badge'] ); ?></span><?php endif; ?></h3>
 								<?php if ( '' !== $eab_go_step['desc'] ) : ?>
 									<p><?php echo esc_html( $eab_go_step['desc'] ); ?></p>
@@ -118,22 +107,36 @@ add_filter( 'body_class', 'eab_go_body_class', 99 );
 						</li>
 					<?php endforeach; ?>
 				</ol>
-			<?php endif; ?>
-			<?php if ( '' !== $eab_go_risk ) : ?>
-				<p class="note note--warn mt-16"><?php echo eab_icon( 'alert' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php echo eab_go_rich( $eab_go_risk ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_go_rich ?></span></p>
-			<?php endif; ?>
-			<?php if ( '' !== $eab_go_home || $eab_go_legal || '' !== $eab_go_cookie ) : ?>
-				<div class="go__legal">
-					<?php if ( '' !== $eab_go_home ) : ?>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( $eab_go_home ); ?></a>
-					<?php endif; ?>
-					<?php foreach ( $eab_go_legal as $eab_go_link ) : ?>
-						<a href="<?php echo esc_url( $eab_go_link['url'] ); ?>"><?php echo esc_html( $eab_go_link['title'] ); ?></a>
-					<?php endforeach; ?>
-					<?php echo $eab_go_cookie; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_consent_link ?>
-				</div>
-			<?php endif; ?>
-		</div>
+			</section>
+		<?php endif; ?>
+
+		<?php if ( '' !== $eab_go_info ) : ?>
+			<section class="gocard__sec">
+				<?php if ( '' !== $eab_go_info_title ) : ?>
+					<h2 class="gocard__h"><?php echo esc_html( $eab_go_info_title ); ?></h2>
+				<?php endif; ?>
+				<div class="golinks"><?php echo $eab_go_info; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_go_info_buttons ?></div>
+			</section>
+		<?php endif; ?>
+
+		<?php if ( '' !== $eab_go_socials ) : ?>
+			<div class="gocard__social"><?php echo $eab_go_socials; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_chrome_social_icons ?></div>
+		<?php endif; ?>
+
+		<?php if ( '' !== $eab_go_risk ) : ?>
+			<p class="note note--warn mt-16"><?php echo eab_icon( 'alert' ); // phpcs:ignore WordPress.Security.EscapeOutput ?><span><?php echo eab_go_rich( $eab_go_risk ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_go_rich ?></span></p>
+		<?php endif; ?>
+		<?php if ( '' !== $eab_go_home || $eab_go_legal || '' !== $eab_go_cookie ) : ?>
+			<div class="go__legal">
+				<?php if ( '' !== $eab_go_home ) : ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( $eab_go_home ); ?></a>
+				<?php endif; ?>
+				<?php foreach ( $eab_go_legal as $eab_go_link ) : ?>
+					<a href="<?php echo esc_url( $eab_go_link['url'] ); ?>"><?php echo esc_html( $eab_go_link['title'] ); ?></a>
+				<?php endforeach; ?>
+				<?php echo $eab_go_cookie; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in eab_consent_link ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>
 </main>
