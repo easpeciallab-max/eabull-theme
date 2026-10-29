@@ -17,7 +17,7 @@
  *
  * ค่าที่ตั้งได้ใน Customizer (เพิ่มผ่านฟิลเตอร์ eab_defaults / eab_customizer_sections):
  * seo_gsc_verify, seo_gsc_file, seo_bing_verify, seo_product_name, seo_product_os,
- * seo_product_requirements, seo_product_version, seo_pricing_confirmed
+ * seo_product_requirements, seo_product_version, seo_pricing_confirmed, seo_org_description
  *
  * @package eabull
  */
@@ -53,6 +53,9 @@ function eab_seo_default_values( $d ) {
 			'seo_product_requirements' => 'MetaTrader 5',
 			'seo_product_version'      => '',
 			'seo_pricing_confirmed'    => true,
+
+			/* คำอธิบายองค์กรใน Organization schema (ช่องนี้ใน Yoast ต้องใช้ Premium · อีเมลใช้ contact_email) */
+			'seo_org_description'      => 'EA BULL ทีมงานที่ดูแลระบบเทรดอัตโนมัติ (EA) บน MetaTrader 5 มีคู่มือติดตั้งภาษาไทยทีละขั้น และคุยกับลูกค้าผ่าน LINE',
 		)
 	);
 }
@@ -93,6 +96,7 @@ function eab_seo_customizer_sections( $sections, $d ) {
 				'seo_product_requirements' => array( 'โปรแกรมที่ต้องมีก่อนใช้งาน', 'text' ),
 				'seo_product_version'      => array( 'เวอร์ชันของ EA (เว้นว่าง = ไม่ระบุ)', 'text' ),
 				'seo_pricing_confirmed'    => array( 'ยืนยันแล้วว่าราคาแพ็กเกจถูกต้อง ส่งราคาให้ Google ได้', 'checkbox', 'เปิดเมื่อหน้าแพ็กเกจแสดงราคาจริงเป็นตัวเลขแล้วเท่านั้น · ปิดไว้ = ธีมไม่ประกาศราคาในข้อมูลโครงสร้าง แพ็กเกจที่ราคาไม่ใช่ตัวเลขจะถูกข้ามเสมอ' ),
+				'seo_org_description'      => array( 'คำอธิบายองค์กร (Organization)', 'textarea', 'ใช้ในข้อมูลโครงสร้างขององค์กร ผู้เข้าชมมองไม่เห็น · อีเมลขององค์กรดึงจากช่องอีเมลติดต่อ · เว้นว่าง = ไม่ส่ง' ),
 			),
 		),
 	);
@@ -503,6 +507,7 @@ add_action( 'wp_head', 'eab_seo_site_schema', 6 );
 
 /**
  * เติมลิงก์โซเชียลจาก Customizer เข้า sameAs ของ Organization ที่ Yoast ออก
+ * พร้อมคำอธิบายและอีเมลขององค์กร (สองช่องนี้ใน Yoast ต้องใช้ Premium)
  * (Yoast ไม่อ่านช่องของธีม เจ้าของจึงกรอกที่ Customizer ที่เดียวพอ)
  */
 function eab_seo_yoast_org_same_as( $data ) {
@@ -513,6 +518,14 @@ function eab_seo_yoast_org_same_as( $data ) {
 	$same = array_values( array_unique( array_merge( $same, eab_seo_same_as() ) ) );
 	if ( $same ) {
 		$data['sameAs'] = $same;
+	}
+	$desc = trim( wp_strip_all_tags( (string) eab_mod( 'seo_org_description' ) ) );
+	if ( '' !== $desc && empty( $data['description'] ) ) {
+		$data['description'] = $desc;
+	}
+	$email = sanitize_email( (string) eab_mod( 'contact_email' ) );
+	if ( '' !== $email && empty( $data['email'] ) ) {
+		$data['email'] = $email;
 	}
 	return $data;
 }
