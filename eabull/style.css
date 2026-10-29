@@ -331,9 +331,13 @@ h4 { font-size: 17px; }
   background: var(--k1); border: 1px solid var(--line); border-top: 3px solid var(--accent);
 }
 .sub--wide { width: 600px; grid-template-columns: 1fr 1fr; gap: 2px; left: auto; right: -160px; }
-.sub a { display: block; padding: 10px 12px; border-radius: var(--r-sm); color: #F4F4F5; line-height: 1.5; }
-.sub a b { display: block; font: 600 15.5px/1.4 var(--f-head); }
-.sub a span { display: block; font-size: 13.5px; color: var(--muted); }
+.sub a { display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: 12px; align-items: center; padding: 8px 12px 8px 8px; border-radius: var(--r-sm); color: #F4F4F5; line-height: 1.5; }
+.sub a b { display: block; grid-column: 2; font: 600 15.5px/1.4 var(--f-head); }
+.sub a span { display: block; grid-column: 2; font-size: 13.5px; color: var(--muted); }
+/* icon tile in front of each dropdown item (owner 29 Oct 2026) */
+.sub__ic { grid-row: 1 / span 2; display: grid; place-items: center; width: 34px; height: 34px; background: var(--k2); border: 1px solid var(--line); color: var(--accent); transition: background-color .15s, color .15s, border-color .15s; }
+.sub__ic .i { width: 18px; height: 18px; }
+.sub a:hover .sub__ic, .sub a[aria-current] .sub__ic { background: var(--accent); border-color: var(--accent); color: var(--k0); }
 .sub a b span { display: inline; font: inherit; color: inherit; }
 .sub a:hover { background: var(--k3); }
 .sub a[aria-current] { background: var(--k3); }

@@ -704,7 +704,7 @@ function eab_chrome_fallback_menu( $args = array() ) {
 		$html .= '<li class="has-sub"><button class="nav__link nav__parent" type="button" aria-expanded="false">' . esc_html( $item['label'] ) . ' ' . eab_icon( 'chevron-down' ) . '</button>';
 		$html .= '<ul class="sub' . ( ! empty( $item['wide'] ) ? ' sub--wide' : '' ) . '">';
 		foreach ( $item['children'] as $child ) {
-			$html .= '<li><a href="' . esc_url( $child['url'] ) . '"' . ( $child['current'] ? ' aria-current="page"' : '' ) . '><b>' . eab_chrome_nocaps( $child['title'] ) . '</b>';
+			$html .= '<li><a href="' . esc_url( $child['url'] ) . '"' . ( $child['current'] ? ' aria-current="page"' : '' ) . '>' . eab_chrome_menu_icon( $child['url'] ) . '<b>' . eab_chrome_nocaps( $child['title'] ) . '</b>';
 			if ( '' !== $child['sub'] ) {
 				$html .= '<span>' . eab_chrome_nocaps( $child['sub'] ) . '</span>';
 			}
@@ -815,7 +815,34 @@ function eab_chrome_menu_title( $title, $item, $args, $depth = 0 ) {
 		return in_array( 'menu-item-has-children', (array) $item->classes, true ) ? $title . ' ' . eab_icon( 'chevron-down' ) : $title;
 	}
 	$desc = isset( $item->description ) ? trim( wp_strip_all_tags( (string) $item->description ) ) : '';
-	return '<b>' . $title . '</b>' . ( '' !== $desc ? '<span>' . esc_html( $desc ) . '</span>' : '' );
+	return eab_chrome_menu_icon( isset( $item->url ) ? $item->url : '' ) . '<b>' . $title . '</b>' . ( '' !== $desc ? '<span>' . esc_html( $desc ) . '</span>' : '' );
+}
+
+/**
+ * Icon tile in front of a dropdown item, picked from the link's page slug (owner asked for menu icons 29 Oct 2026).
+ */
+function eab_chrome_menu_icon( $url ) {
+	$map  = array(
+		'how-to-install'   => 'box',
+		'open-mt5-account' => 'user',
+		'deposit'          => 'wallet',
+		'mt5-login'        => 'download',
+		'vps-windows'      => 'monitor',
+		'vps-android'      => 'phone',
+		'vps-ios'          => 'tablet',
+		'tools'            => 'calculator',
+		'backtest'         => 'flask',
+		'forward-test'     => 'pulse',
+		'pricing'          => 'tag',
+		'articles'         => 'news',
+		'about'            => 'info',
+		'risk-disclosure'  => 'shield',
+		'go'               => 'chats',
+	);
+	$path = trim( (string) wp_parse_url( (string) $url, PHP_URL_PATH ), '/' );
+	$slug = '' !== $path ? basename( $path ) : '';
+	$icon = isset( $map[ $slug ] ) ? $map[ $slug ] : ( 0 === strpos( $slug, 'product' ) ? 'cpu' : 'arrow-right' );
+	return '<i class="sub__ic">' . eab_icon( $icon ) . '</i>';
 }
 add_filter( 'nav_menu_item_title', 'eab_chrome_menu_title', 10, 4 );
 
