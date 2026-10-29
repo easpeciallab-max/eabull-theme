@@ -722,7 +722,7 @@ a.card:hover { border-color: var(--accent); }
   .dock a[aria-current] .dock__ico::before,
   .dock a[aria-current] .dock__ico::after { content: ""; position: absolute; clip-path: var(--hex); }
   .dock a[aria-current] .dock__ico::before { inset: 1px; background: var(--k0); }
-  .dock a[aria-current] .dock__ico::after { inset: 5px; background: var(--accent); }
+  .dock a[aria-current] .dock__ico::after { inset: 3px; background: var(--accent); } /* thin black ring (owner 29 Oct 2026) */
   .dock a[aria-current] .i { color: var(--k0); }
   .ft { padding-bottom: 120px; }
 }
