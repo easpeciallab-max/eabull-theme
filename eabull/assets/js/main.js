@@ -25,6 +25,27 @@
 			});
 		}, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
 		motionEls.forEach(function (el) { motionObs.observe(el); });
+		/* second path: a plain position check on scroll and resize, so nothing can stay hidden
+		   if the observer misses a fast scroll or a jump to an anchor */
+		var motionTick = false;
+		var motionCheck = function () {
+			motionTick = false;
+			var line = window.innerHeight * 0.95;
+			motionEls = motionEls.filter(function (el) {
+				if (el.getBoundingClientRect().top < line) { el.classList.add('is-in'); return false; }
+				return true;
+			});
+			if (!motionEls.length) {
+				window.removeEventListener('scroll', motionQueue);
+				window.removeEventListener('resize', motionQueue);
+			}
+		};
+		var motionQueue = function () {
+			if (!motionTick) { motionTick = true; window.requestAnimationFrame(motionCheck); }
+		};
+		window.addEventListener('scroll', motionQueue, { passive: true });
+		window.addEventListener('resize', motionQueue);
+		window.addEventListener('load', motionQueue);
 	} else {
 		motionEls.forEach(function (el) { el.classList.add('is-in'); });
 	}
