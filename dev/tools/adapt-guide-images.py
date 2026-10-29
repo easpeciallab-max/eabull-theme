@@ -26,6 +26,8 @@ SKIP = {'eawing-go-zaurix-signup-button-v1.webp'} | {
     }.items() for n in names}
 FONT = r'C:\Windows\Fonts\segoeui.ttf'
 FONT_BOLD = r'C:\Windows\Fonts\segoeuib.ttf'
+# output names that must not hint a symbol or timeframe the owner has not given
+RENAME = {'eawing-mt5-xauusd-m1-chart-v2.webp': 'eabull-mt5-ea-on-chart-v2.webp'}
 NEW = 'EA_BULL'
 OLD = 'EA_WING_V5.0'
 
@@ -105,7 +107,8 @@ def main():
             edit(im, region, text, bold)
         if 'navigator' in name:
             navigator(im)
-        im.save(OUT / 'install' / name.replace('eawing-', 'eabull-'), quality=90, method=6)
+        out = RENAME.get(name, name.replace('eawing-', 'eabull-'))
+        im.save(OUT / 'install' / out, quality=90, method=6)
         print('install/', name.replace('eawing-', 'eabull-'), f'{len(edits)} edit(s)')
 
 

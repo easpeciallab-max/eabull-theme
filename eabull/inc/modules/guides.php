@@ -233,7 +233,7 @@ function eab_guide_data() {
 		'apps'        => array(
 			array( 'monitor', 'MT5 สำหรับ Windows', 'metatrader5.com', 'ใช้รัน EA บนคอมหรือบน VPS', 'https://www.metatrader5.com/en/download', 'ดาวน์โหลด' ),
 			array( 'phone', 'MT5 สำหรับ Android', 'Google Play', 'ไว้ดูบัญชีและออเดอร์ รัน EA ไม่ได้', 'https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5', 'เปิด Google Play' ),
-			array( 'tablet', 'MT5 สำหรับ iPhone / iPad', 'App Store', 'ไว้ดูบัญชีและออเดอร์ รัน EA ไม่ได้', 'https://apps.apple.com/app/metatrader-5/id413251709', 'เปิด App Store' ),
+			array( 'tablet', 'MT5 สำหรับ iPhone / iPad', 'App Store', 'ไว้ดูบัญชีและออเดอร์ รัน EA ไม่ได้', 'https://apps.apple.com/th/app/metatrader-5/id413251709', 'เปิด App Store' ),
 		),
 		'check_title' => 'เช็กหลังล็อกอิน',
 		'check'       => "มุมขวาล่างของ MT5 บนคอมหรือ VPS แสดงความเร็วการเชื่อมต่อ ไม่ขึ้น No connection\nเลขบัญชีใน Navigator ตรงกับบัญชีที่จะใช้กับ EA\nยอด Balance ในแท็บ Trade ตรงกับยอดใน Portal\nมือถือเปิดแอป MT5 ด้วยเลขบัญชีเดียวกันไว้ดูผล\nเก็บ Login รหัสผ่าน และ Server ไว้ในที่ที่มีแต่คุณเข้าถึงได้",
@@ -329,7 +329,7 @@ function eab_guide_data() {
 			array( 'บันทึกแล้วเชื่อมต่อ', 'บันทึกเครื่องแล้วแตะการ์ดเพื่อเชื่อมต่อ', "แตะ **Save** เครื่อง VPS จะขึ้นเป็นการ์ดในหน้าแรกของแอป แตะการ์ดนั้นเพื่อเชื่อมต่อ ครั้งแรกจะมีหน้าต่างเตือนเรื่องใบรับรองของเครื่องปลายทาง ตรวจว่าเป็น IP ของ VPS ที่คุณเช่าแล้วแตะยอมรับเพื่อไปต่อ\n\nเมื่อเข้าได้จะเห็นหน้าจอ Windows ของ VPS เปิด MT5 แล้วดูว่าปุ่ม Algo Trading ยังเป็นสีเขียว\n\n!bad **ห้ามกด Sign out หรือ Shut down ใน VPS** MT5 จะปิดตามและ EA หยุดทำงาน ออกด้วยการตัดการเชื่อมต่อจากแถบเมนูของแอปแทน", '', 'การ์ดเครื่อง VPS ในหน้าแรกของแอป', 'server', true ),
 		),
 		'apps'        => array(
-			array( 'tablet', 'Windows App', 'Microsoft Corporation · App Store', 'แอปทางการของ Microsoft สำหรับเชื่อมต่อเครื่อง Windows จากระยะไกล ใช้กับ VPS ได้', 'https://apps.apple.com/app/windows-app/id714464092', 'เปิด App Store' ),
+			array( 'tablet', 'Windows App', 'Microsoft Corporation · App Store', 'แอปทางการของ Microsoft สำหรับเชื่อมต่อเครื่อง Windows จากระยะไกล ใช้กับ VPS ได้', 'https://apps.apple.com/th/app/windows-app-mobile/id714464092', 'เปิด App Store' ),
 		),
 		'check_title' => 'เช็กก่อนออกจากแอป',
 		'check'       => "MT5 บน VPS ยังเปิดอยู่ มุมขวาล่างไม่ขึ้น No connection\nไอคอน Algo Trading ด้านบนของ MT5 ขึ้นสีเขียว แปลว่าเปิดให้ EA ส่งคำสั่งแล้ว\nมุมขวาบนของกราฟที่ติด EA แสดงชื่อ EA และไอคอนไม่เป็นสีเทา\nออกด้วยการตัดการเชื่อมต่อ ไม่ได้กด Sign out",
@@ -411,7 +411,7 @@ function eab_guide_images() {
 			1 => array( 'install/eabull-mt5-open-data-folder-v1.webp', '', 'เมนู File ของ MT5 ที่เลือก Open Data Folder' ),
 			2 => array( 'install/eabull-mt5-experts-folder-v2.webp', '', 'โฟลเดอร์ MQL5 > Experts ใน File Explorer ที่มีไฟล์ EA_BULL' ),
 			3 => array( 'install/eabull-mt5-navigator-v2.webp', 'ชื่อ EA ใต้หัวข้อ Expert Advisors ใน Navigator', 'หน้าต่าง Navigator ของ MT5 ที่เห็น EA_BULL ใต้หัวข้อ Expert Advisors' ),
-			4 => array( 'install/eabull-mt5-xauusd-m1-chart-v2.webp', 'กราฟที่ติด EA แล้ว ชื่อ EA อยู่มุมขวาบน', 'กราฟแท่งเทียนใน MT5 ที่ติด EA_BULL แล้ว ชื่อ EA อยู่มุมขวาบนของกราฟ' ),
+			4 => array( 'install/eabull-mt5-ea-on-chart-v2.webp', 'กราฟที่ติด EA แล้ว ชื่อ EA อยู่มุมขวาบน', 'กราฟแท่งเทียนใน MT5 ที่ติด EA_BULL แล้ว ชื่อ EA อยู่มุมขวาบนของกราฟ' ),
 			5 => array( 'install/eabull-mt5-common-tab-v3.webp', '', 'หน้าต่างตั้งค่า EA_BULL แท็บ Common ที่ติ๊ก Allow Algo Trading' ),
 		),
 		'gacct' => array(

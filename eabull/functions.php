@@ -261,7 +261,7 @@ function eab_defaults() {
 		/* หน้า /go (ลิงก์รวม) · ลิงก์ร้านแอป MT5 */
 		'mt5_dl_windows' => 'https://www.metatrader5.com/en/download',
 		'mt5_dl_android' => 'https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5',
-		'mt5_dl_ios'     => 'https://apps.apple.com/app/metatrader-5/id413251709',
+		'mt5_dl_ios'     => 'https://apps.apple.com/th/app/metatrader-5/id413251709',
 
 		/* โบรกเกอร์ (ใช้ในคู่มือเปิดบัญชี / ล็อกอิน ผ่าน shortcode [eabull_broker]) */
 		'broker_name'        => 'Zaurix',
