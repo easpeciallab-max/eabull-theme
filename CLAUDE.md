@@ -73,6 +73,17 @@
 - เครื่องมือ: `dev/tools/shoot.py` (ภาพเต็มหน้าด้วย Chrome headless · จอแคบกว่า 600 ผ่าน `_frame.html` · `--vh` ถ่ายเฉพาะจอแรก) · `dev/tools/sheet.py` (ต่อภาพมือถือเป็นคอลัมน์ / แบ่งภาพคอมให้ส่งในแชตได้ สูงไม่เกิน 8000) · `dev/mockup/_check.html` (ตรวจทุกหน้าที่ 375/820/1366: แถบเลื่อนแนวนอน H1 alt noopener ขีดยาว) · ภาพอยู่ `dev/shots/`
 - พารามิเตอร์สำหรับถ่ายภาพ: `?shot` ซ่อนการ์ดคุกกี้ · `?cookie=1|ga|settings` · `?menu=open` · `?sub=<key>` · `?quick=open` · `?tab=N` `?ready=all` `?toast=1` `?focus=<id>` (ซ่อนส่วนก่อนหน้า ใช้แทน #hash ตอนถ่ายภาพ)
 
+## เฟส 2 ธีม WordPress (`eabull/`)
+- แผนและกติกาสำหรับคนทำอยู่ใน **`docs/phase2.md`** (ใครเป็นเจ้าของไฟล์ไหน hook ของ JS ปุ่มและลิงก์ สินค้าตัวอย่าง) · อ่านก่อนแก้ธีมทุกครั้ง
+- fork จาก `eawing/` เมื่อ 29 ต.ค. 2026 (ไม่เอาบทความ zip รูป และสินค้า 3 ตัวของ EA WING) · prefix `eab_` `eab-` `eabCamel` · text domain `eabull` · REST `eabull/v1` · shortcode `[eabull_*]` · cookie `eab_consent`
+- `style.css` = ดีไซน์จากต้นแบบที่อนุมัติ (bull.css) + คลาสเนื้อหา · `main.js` เขียนใหม่ (คงระบบนับคลิก LINE โหลดเพิ่ม lightbox ของเดิม) · `eab_icon()` ใช้ไอคอนชุดต้นแบบ · `eab_wait()` = ป้ายรอข้อมูลเจ้าของ
+- ฟอนต์ Inter + Anuphan โหลดจาก Google Fonts ชั่วคราว · **ต้องขออนุญาตเจ้าของดาวน์โหลดไฟล์ฟอนต์มา self-host ก่อนขึ้นเว็บ** (infra.php สลับให้เองเมื่อมี `assets/css/fonts.css` + ไฟล์ใน `eab_infra_font_files()`)
+- รูปแบรนด์และปกธีมสร้างด้วย `py -3 -I dev/tools/make-brand.py` (จากโลโก้ของเจ้าของ)
+- Preview ธีม: launch config `eabull-preview` → http://localhost:8791/ (WordPress stubs ค่า = defaults) · ต้นแบบยังอยู่ที่ 8790
+- ตรวจ: PHP ที่ `C:/Users/THANAWUT HR/AppData/Local/Microsoft/WinGet/Packages/PHP.PHP.8.4_Microsoft.Winget.Source_8wekyb3d8bbwe/php.exe` · `dev/check-settings.php` (none) · `dev/check-content.php` all good · `dev/check-brand.php` (จับ wing/eawing/eaw_ ด้วย) no brand leaks · **`py -3 -I dev/tools/check-dup.py`** ต้องไม่มีข้อความซ้ำ EA WING (duplicate content)
+- git: repo นี้ init แล้ว branch `main` · credential helper ระดับ repo = `!gh auth git-credential` (บัญชี easpeciallab-max) · `core.autocrlf false` · **ยังไม่มี remote**: การสร้าง repo สาธารณะ `easpeciallab-max/eabull-theme` ถูกระบบหยุดไว้ รอเจ้าของยืนยัน (29 ต.ค. 2026) · WP Pusher บน eabull.com ยังไม่ได้ตั้ง (เจ้าของต้องล็อกอิน wp-admin เอง)
+- เจ้าของขอ (29 ต.ค. 2026): "เวลาสั่งในนี้ ให้เว็บอัปเดตได้ทันที" → ต้องมี GitHub + WP Pusher + `dev/deploy.sh` แบบ EA WING · เสนอเจ้าของว่าติดตั้งธีมไว้ก่อนแต่ยังไม่เปิดใช้จนรื้อหน้าตาและข้อความเสร็จ
+
 ## สถานะ
 - 29 ต.ค. 2026: เริ่มโปรเจกต์ · repo ยังไม่ได้เป็น git · เว็บ eabull.com ยังเป็นเว็บตั้งต้น (ธีม easpecial, ชื่อเว็บ "EA Special", ปุ่ม LINE ลิงก์ไป @fenixpro ของแบรนด์อื่น) ยังไม่ได้แตะ
 - 29 ต.ค. 2026: **ต้นแบบเฟส 1 ครบ 27 หน้า** (รวมสินค้าตัวอย่าง 3 หน้า หน้าเทียบสี และหน้ารวมลิงก์) · ตรวจผ่านทุกหน้าที่ 375/820/1366 · ส่งภาพให้เจ้าของ 5 ชุดแล้ว เจ้าของเลือกฟอนต์ (Inter + Anuphan) และสีแบบ C แล้ว · **รอเจ้าของยืนยันอนุมัติดีไซน์ก่อนเริ่มเฟส 2**

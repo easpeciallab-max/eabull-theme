@@ -7,8 +7,10 @@ Output: eabull/assets/img/brand/
   eabull-wordmark-dark.webp    "EA BULL" lettering for dark backgrounds
   eabull-wordmark-light.webp   same lettering (the metal colours read on light too)
   eabull-icon-512.png          emblem on a flat black square (site icon source)
-  eabull-favicon-32.png / eabull-apple-180.png
-  eabull-share-1200x630.png    default og:image: flat black, logo, yellow base bar
+  eabull-icon-180.png / eabull-icon-96.webp / favicon-32.png   (names the theme code uses)
+  eabull-logo-160.webp         emblem for the header brand
+  eabull-share-1200x630.jpg    default og:image: flat black, logo, yellow base bar
+  ../logo.png                  fallback for eab_logo_url()
   ../../../screenshot.png      theme cover in wp-admin (1200x900), same look
 Rerun after a logo change and bump the file names (Cloudflare caches by URL).
 Usage: py -3 -I dev/tools/make-brand.py
@@ -73,8 +75,11 @@ def main():
     save(fit(wordmark, 720), 'eabull-wordmark-light', png=False)
     icon = on_square(emblem, 512, 56)
     save(icon, 'eabull-icon-512', webp=False)
-    save(icon.resize((180, 180), Image.LANCZOS), 'eabull-apple-180', webp=False)
-    save(on_square(emblem, 64, 4).resize((32, 32), Image.LANCZOS), 'eabull-favicon-32', webp=False)
+    save(icon.resize((180, 180), Image.LANCZOS), 'eabull-icon-180', webp=False)
+    save(icon.resize((96, 96), Image.LANCZOS), 'eabull-icon-96', png=False)
+    save(on_square(emblem, 64, 4).resize((32, 32), Image.LANCZOS), 'favicon-32', webp=False)
+    save(fit(emblem, 160), 'eabull-logo-160', png=False)
+    fit(full, 640).save(OUT.parent / 'logo.png', optimize=True)
 
     share = Image.new('RGBA', (1200, 630), BLACK)
     art = full.copy()
@@ -82,7 +87,8 @@ def main():
     share.alpha_composite(art, ((1200 - art.width) // 2, 50))
     bar = Image.new('RGBA', (1200, 34), YELLOW)
     share.alpha_composite(bar, (0, 630 - 34))
-    save(share.convert('RGB'), 'eabull-share-1200x630', webp=False)
+    share.convert('RGB').save(OUT / 'eabull-share-1200x630.jpg', quality=88, optimize=True)
+    print('eabull-share-1200x630.jpg', share.size)
 
     cover = Image.new('RGBA', (1200, 900), BLACK)
     art = full.copy()

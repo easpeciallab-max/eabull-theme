@@ -22,7 +22,7 @@ if ( ! $root || ! is_dir( $root ) ) {
 }
 $label = basename( $root );
 
-$brand_re      = '/wing|eaw[_\-A-Z]|@fenixpro|fenixpro|fenix|falcon|ea2000|speccub/i';
+$brand_re      = '/(?<![a-z])wing|eawing|\beaw[_\-A-Z]|@fenixpro|fenixpro|fenix|falcon|ea2000|speccub/i'; // (?<![a-z]) = not inside words like "following"
 $forbidden_ext = array( 'zip', 'rar', '7z', 'ex4', 'ex5', 'mq4', 'mq5' );
 $text_ext      = array( 'php', 'css', 'js', 'html', 'htm', 'txt', 'json', 'md', 'svg', 'xml', 'po', 'pot', 'csv', 'yml', 'yaml', 'map', 'webmanifest' );
 
