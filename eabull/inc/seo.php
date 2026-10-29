@@ -841,7 +841,7 @@ function eab_seo_is_go_page() {
 
 /**
  * เหตุผลที่หน้าปัจจุบันควร noindex · '' = ปล่อยตามค่าปกติ
- * go / articles-empty / search / author / date / empty-term (แก้เพิ่มได้ด้วยฟิลเตอร์ eab_seo_noindex_reason)
+ * go / example-product / articles-empty / search / author / date / empty-term (แก้เพิ่มได้ด้วยฟิลเตอร์ eab_seo_noindex_reason)
  */
 function eab_seo_noindex_reason() {
 	$reason = '';
@@ -849,6 +849,8 @@ function eab_seo_noindex_reason() {
 		$reason = '';
 	} elseif ( eab_seo_is_go_page() ) {
 		$reason = apply_filters( 'eab_seo_noindex_go', true ) ? 'go' : '';
+	} elseif ( is_page() && in_array( (int) get_queried_object_id(), eab_seo_example_product_page_ids(), true ) ) {
+		$reason = 'example-product';
 	} elseif ( is_home() ) {
 		$reason = 0 === eab_seo_published_post_count() ? 'articles-empty' : '';
 	} elseif ( is_search() ) {
@@ -925,7 +927,34 @@ function eab_seo_noindex_page_ids() {
 	if ( 0 === eab_seo_published_post_count() ) {
 		$ids[] = (int) get_option( 'page_for_posts' );
 	}
+	$ids = array_merge( $ids, eab_seo_example_product_page_ids() );
 	return array_values( array_unique( array_filter( $ids ) ) );
+}
+
+/**
+ * เพจของสินค้าที่ยังติ๊ก "เป็นสินค้าตัวอย่าง" (ข้อมูลยังเป็นป้ายรอเจ้าของ) · noindex และไม่อยู่ใน sitemap
+ * เปิดเว็บให้ Google 29 ต.ค. 2026 ตอนสินค้ายังเป็นตัวอย่าง · เอาติ๊กออกใน Customizer เมื่อใส่ข้อมูลจริง แล้วหน้าจะถูกเก็บเอง
+ *
+ * @return int[]
+ */
+function eab_seo_example_product_page_ids() {
+	static $ids = null;
+	if ( null !== $ids ) {
+		return $ids;
+	}
+	$ids = array();
+	if ( function_exists( 'eab_products' ) ) {
+		foreach ( eab_products() as $item ) {
+			if ( empty( $item['example'] ) || '' === $item['slug'] ) {
+				continue;
+			}
+			$page = get_page_by_path( $item['slug'] );
+			if ( $page && ! empty( $page->ID ) ) {
+				$ids[] = (int) $page->ID;
+			}
+		}
+	}
+	return $ids;
 }
 
 /* sitemap ของ Yoast สร้างจากตาราง indexable ไม่ใช่ตอน render หน้า → ต้องตัดออกเองให้ตรงกับ noindex */
