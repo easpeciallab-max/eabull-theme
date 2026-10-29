@@ -8,6 +8,7 @@ has >= 30 Thai characters. Read only on both sites.
 import html
 import re
 import sys
+import time
 import urllib.request
 
 sys.stdout.reconfigure(encoding='utf-8')
@@ -19,6 +20,8 @@ UA = {'User-Agent': 'Mozilla/5.0 (dup-check)'}
 
 def get(url):
     try:
+        # cache buster: Cloudflare keeps pages up to 5 minutes (s-maxage=300)
+        url += ('&' if '?' in url else '?') + 'nocache=' + str(int(time.time()))
         with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=40) as r:
             return r.read().decode('utf-8', 'replace')
     except Exception as e:  # noqa: BLE001
