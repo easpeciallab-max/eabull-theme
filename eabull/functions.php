@@ -275,7 +275,7 @@ function eab_defaults() {
 		'ea_bt_from'         => '',
 		'ea_bt_to'           => '',
 		'facebook_url'    => 'https://www.facebook.com/eabull.trading/',
-		'contact_email'   => 'easpeciallab@gmail.com',
+		'contact_email'   => 'support@eabull.com',
 		'show_float_line' => false,
 
 		/* Mobile bottom bar */

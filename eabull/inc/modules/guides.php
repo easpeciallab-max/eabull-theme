@@ -198,7 +198,7 @@ function eab_guide_data() {
 			array( 'เลือกบัญชีเทรดปลายทาง', 'เลือกบัญชีเทรดปลายทาง', "เลือกบัญชีเทรด MT5 ที่จะใช้กับ {brand} ตรวจเลข Login ให้ตรงกับบัญชีที่ล็อกอินไว้ใน MT5 ถ้ามีหลายบัญชี ระวังอย่าเลือกผิด\n\n!info บาง Portal ให้ฝากเข้ากระเป๋าเงิน (Wallet) ก่อน แล้วค่อยโอนเข้าบัญชีเทรดอีกขั้น ถ้าหน้าเว็บเป็นแบบนี้ ให้ทำตามที่หน้าเว็บโบรกเกอร์แจ้ง", '', 'เลือกบัญชีเทรดปลายทาง', 'layers' ),
 			array( 'ใส่จำนวนเงิน', 'ใส่จำนวนเงิน', "ใส่จำนวนเงินที่จะฝาก ดูสกุลเงินที่หน้าเว็บแสดง ถ้ามีการแปลงสกุลเงิน ให้ดูอัตราแลกเปลี่ยนและยอดที่จะเข้าบัญชีเทรดจริงก่อนไปต่อ\n\n- ยอดฝากขั้นต่ำ: {fact:min_deposit}\n- ทุนที่แนะนำของแต่ละสินค้า: {fact:capital}", '', 'ช่องใส่จำนวนเงิน', 'calculator' ),
 			array( 'ยืนยันและเก็บหลักฐาน', 'ยืนยันและเก็บหลักฐาน', "ตรวจบัญชีปลายทาง จำนวนเงิน และช่องทางอีกครั้ง แล้วกดยืนยัน ทำรายการจ่ายต่อตามขั้นตอนที่หน้าเว็บโบรกเกอร์แจ้ง\n\nเก็บสลิปหรือภาพหน้าจอการโอนไว้ทุกครั้ง ให้เห็นวันที่ เวลา และจำนวนเงิน ใช้ตรวจสอบถ้ายอดยังไม่เข้า\n\n!info ค่าธรรมเนียมการฝากของแต่ละช่องทาง {fact:deposit_fees}", '', 'หน้ายืนยันรายการฝาก', 'file' ),
-			array( 'เช็กยอดใน MT5', 'เช็กยอด Balance ใน MT5', "เปิด MT5 ที่ล็อกอินบัญชีเดียวกัน บนคอมดูแท็บ **Trade** ในหน้าต่าง Toolbox บนมือถือดูหน้า Trade ยอด **Balance** ควรเพิ่มตามจำนวนที่ฝาก และในแท็บ History จะมีรายการฝากเงินขึ้นมา\n\nถ้าเกินเวลาที่ช่องทางนั้นแจ้งแล้วยอดยังไม่เข้า ติดต่อฝ่ายบริการของโบรกเกอร์พร้อมสลิป หรือทักทีมงานให้ช่วยดู", 'ทักทีมงานทาง LINE | line', 'ตัวอย่างยอด Balance ในแท็บ Trade ของ MT5', 'candles' ),
+			array( 'เช็กยอดใน MT5', 'เช็กยอด Balance ใน MT5', "เปิด MT5 ที่ล็อกอินบัญชีเดียวกัน บนคอมดูแท็บ **Trade** ในหน้าต่าง Toolbox บนมือถือดูหน้า Trade ยอด **Balance** ควรเพิ่มตามจำนวนที่ฝาก และในแท็บ History จะมีรายการฝากเงินขึ้นมา\n\nถ้าเกินเวลาที่ช่องทางนั้นแจ้งแล้วยอดยังไม่เข้า ติดต่อฝ่ายบริการของโบรกเกอร์พร้อมสลิป หรือทักทีมงานให้ช่วยดู", 'ทักทีมงานทาง LINE | line', '', 'candles' ),
 		),
 		'check_title' => 'เช็กหลังฝากเงิน',
 		'check'       => "ยอด Balance ใน MT5 เพิ่มตามจำนวนที่ฝาก\nเงินเข้าบัญชีเทรดที่ถูกต้อง เลข Login ตรงกับที่ล็อกอินใน MT5\nเก็บสลิปหรือภาพหน้าจอการโอนไว้แล้ว",
@@ -413,8 +413,10 @@ function eab_guide_images() {
 			3 => array( 'install/eabull-mt5-navigator-v2.webp', 'ชื่อ EA ใต้หัวข้อ Expert Advisors ใน Navigator', 'หน้าต่าง Navigator ของ MT5 ที่เห็น EA_BULL ใต้หัวข้อ Expert Advisors' ),
 			4 => array( 'install/eabull-mt5-ea-on-chart-v2.webp', 'กราฟที่ติด EA แล้ว ชื่อ EA อยู่มุมขวาบน', 'กราฟแท่งเทียนใน MT5 ที่ติด EA_BULL แล้ว ชื่อ EA อยู่มุมขวาบนของกราฟ' ),
 			5 => array( 'install/eabull-mt5-common-tab-v3.webp', '', 'หน้าต่างตั้งค่า EA_BULL แท็บ Common ที่ติ๊ก Allow Algo Trading' ),
+			6 => array( 'install/eabull-mt5-algo-on-ea-corner-v1.webp', 'ปุ่ม Algo Trading ที่เปิดแล้ว และชื่อ EA มุมขวาบนของกราฟ', 'แถบเครื่องมือ MT5 ที่ปุ่ม Algo Trading เปิดอยู่ และมุมขวาบนของกราฟที่มีชื่อ EA_BULL กับไอคอนหมวกสีฟ้า' ),
 		),
 		'gacct' => array(
+			1 => array( 'guides/eabull-go-zaurix-signup-v1.webp', 'ปุ่มสมัคร Zaurix ในหน้าลิงก์รวมของ EA BULL', 'ขั้นเปิดบัญชีเทรด MT5 ในหน้าลิงก์รวมของ EA BULL ที่มีปุ่มสมัคร Zaurix และปุ่มคู่มือเปิดบัญชี' ),
 			2 => array( 'guides/eabull-zaurix-signup-form-v1.webp', '', 'แบบฟอร์มสมัครสมาชิกบนเว็บ Zaurix' ),
 			3 => array( 'guides/eabull-zaurix-verify-email-v1.webp', '', 'อีเมลจาก Zaurix ที่มีปุ่มยืนยันอีเมล' ),
 			4 => array( 'guides/eabull-zaurix-kyc-form-v1.webp', 'แบบฟอร์มยืนยันตัวตนใน Portal', 'แบบฟอร์มยืนยันตัวตน (KYC) ใน Portal ของ Zaurix' ),
@@ -424,7 +426,9 @@ function eab_guide_images() {
 		'gdep'  => array(
 			1 => array( 'guides/eabull-deposit-portal-v1.webp', 'ปุ่ม Deposit ในหน้าแรกของ Portal', 'หน้าแรกของ Zaurix Portal ที่มีปุ่ม Deposit' ),
 			2 => array( 'guides/eabull-deposit-form-v1.webp', 'หน้า Deposit ใน Portal ที่ให้เลือกช่องทางฝาก', 'หน้า Funds แท็บ Deposit ใน Zaurix Portal พร้อมช่องเลือกบัญชีธนาคาร บัญชีเทรด และจำนวนเงิน' ),
+			3 => array( 'guides/eabull-deposit-trading-account-v1.webp', 'ช่อง Account สำหรับเลือกบัญชีเทรดปลายทาง', 'ฟอร์มฝากเงินใน Zaurix Portal ที่ไฮไลต์ช่อง Account สำหรับเลือกบัญชีเทรด MT5' ),
 			4 => array( 'guides/eabull-deposit-payment-details-v1.webp', 'ช่องใส่จำนวนเงินและสรุปรายการฝาก', 'ช่องใส่จำนวนเงิน USD และ THB กับกล่อง Payment Details ใน Zaurix Portal' ),
+			5 => array( 'guides/eabull-deposit-confirm-details-v1.webp', 'กล่อง Payment Details ที่ต้องตรวจก่อนยืนยัน', 'กล่อง Payment Details ใน Zaurix Portal ที่ไฮไลต์บัญชีปลายทาง ยอดฝาก ยอดโอน และยอดที่จะได้รับ' ),
 		),
 		'gmt5'  => array(
 			1 => array( 'guides/eabull-mt5-official-download-v1.webp', '', 'หน้าดาวน์โหลด MetaTrader 5 บนเว็บทางการของ MetaQuotes' ),
