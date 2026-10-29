@@ -87,7 +87,7 @@ function eab_chrome_defaults( $d ) {
 			'footer_index_items'     => "home | หน้าแรก\nproducts | สินค้า\nbacktest | Backtest\nforward-test | Forward Test\npricing | แพ็กเกจ\narticles | บทความ\ngo | ติดต่อ",
 			'footer_docs_title'      => 'ข้อมูลและนโยบาย',
 			'footer_docs_items'      => "about | เกี่ยวกับเรา\nrisk-disclosure | ประกาศความเสี่ยง\nprivacy-policy | นโยบายความเป็นส่วนตัว\nterms-of-use | ข้อกำหนดการใช้บริการ\ndata-deletion | ขอลบข้อมูลส่วนบุคคล",
-			'footer_risk_short'      => 'EA ช่วยทำตามแผน แต่ไม่ได้กันขาดทุน เงินในบัญชีเทรดหมดได้ และตัวเลขทดสอบย้อนหลังไม่ได้บอกว่าข้างหน้าจะเป็นอย่างไร',
+			'footer_risk_short'      => '',
 			'footer_risk_more'       => 'อ่านประกาศความเสี่ยงฉบับเต็ม',
 			'footer_copyright_text'  => 'สงวนลิขสิทธิ์',
 			'footer_legal_items'     => "privacy-policy | นโยบายความเป็นส่วนตัว\nterms-of-use | ข้อกำหนดการใช้บริการ",
@@ -1161,7 +1161,7 @@ function eab_chrome_fab() {
 	$go       = eab_chrome_page_url( 'go' );
 	$go_label = eab_chrome_mod( 'chrome_quick_go' );
 	?>
-<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="<?php echo esc_attr( eab_chrome_mod( 'float_line_text' ) ); ?>"><?php echo eab_icon( 'line' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+<button class="fab" type="button" aria-controls="quick" aria-expanded="false" aria-label="<?php echo esc_attr( eab_chrome_mod( 'float_line_text' ) ); ?>"><?php echo eab_icon( 'chats' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
 <div class="quick dark" id="quick" role="dialog" aria-label="<?php echo esc_attr( '' !== $title ? $title : eab_chrome_mod( 'float_line_text' ) ); ?>" hidden>
 	<div class="quick__head">
 		<b><?php echo esc_html( $title ); ?></b>

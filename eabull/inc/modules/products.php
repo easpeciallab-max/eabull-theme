@@ -39,7 +39,7 @@ function eab_products_defaults( $d ) {
 		'show_home_products'    => true,
 		'home_products_title'   => 'สินค้า EA ของ EA BULL',
 		'home_products_sub'     => 'เรียงตามเลขรุ่นจากน้อยไปมาก แต่ละตัวมีหน้าของตัวเองที่บอกวิธีทำงาน ทุนที่ต้องใช้ และผลทดสอบพร้อมเงื่อนไข',
-		'home_products_note'    => 'EA แต่ละตัวรับความเสี่ยงไม่เท่ากัน อ่านหน้าสินค้าและ[ประกาศความเสี่ยง](/risk-disclosure/)ให้ครบก่อนเลือก',
+		'home_products_note'    => '',
 
 		/* ข้อความที่ใช้ร่วมกันทุกสินค้า */
 		'product_ver_label'     => 'รุ่น',
@@ -64,7 +64,7 @@ function eab_products_defaults( $d ) {
 		'product_sum_version'   => 'เลขรุ่น',
 		'product_info_title'    => 'ข้อมูลที่ต้องรู้ก่อนเลือก',
 		'product_info_sub'      => 'อ่านให้ครบทุกช่อง โดยเฉพาะเงินในบัญชีที่แนะนำและวิธีตัดขาดทุน เพราะสองเรื่องนี้บอกว่าบัญชีรับแรงได้แค่ไหน',
-		'product_info_warn'     => 'ถ้าเงินในบัญชีน้อยกว่าที่แนะนำ หรือใช้เลเวอเรจสูงกว่าที่ทดสอบไว้ บัญชีอาจเสียหายเร็วกว่าที่เห็นในผลทดสอบ อ่าน[ประกาศความเสี่ยง](/risk-disclosure/)ก่อนใช้เงินจริง',
+		'product_info_warn'     => '',
 		'product_doc_label'     => 'รายละเอียด{name}',
 		'product_toc_title'     => 'ในหน้านี้',
 		'product_cmp_head'      => 'หัวข้อ',

@@ -346,9 +346,12 @@ h4 { font-size: 17px; }
 .hd__dash .i { width: 20px; height: 20px; }
 .hd__dash:hover { background: var(--accent); color: var(--k0); }
 .hd__toggle {
-  display: none; place-items: center; width: 46px; height: 46px; flex: none;
-  background: var(--k2); border: 1px solid var(--line); border-radius: var(--r-sm); cursor: pointer;
+  display: none; place-items: center; width: 46px; height: 46px; flex: none; margin-right: -8px;
+  background: none; border: 0; border-radius: 0; color: #fff; cursor: pointer;
 }
+/* three plain white bars with square ends, no box (owner 29 Oct 2026) */
+.hd__toggle .i { width: 30px; height: 30px; stroke-width: 2.4; stroke-linecap: square; }
+.hd__toggle:hover, .hd__toggle:focus-visible { color: var(--accent); }
 .hd__ico-close { display: none; }
 .hd__toggle[aria-expanded="true"] .hd__ico-open { display: none; }
 .hd__toggle[aria-expanded="true"] .hd__ico-close { display: block; }
@@ -745,9 +748,9 @@ a.card:hover { border-color: var(--accent); }
 .quick__btns { display: grid; gap: 10px; }
 .quick__go { display: inline-flex; gap: 6px; align-items: center; margin-top: 14px; color: var(--accent); font: 600 15px/1.4 var(--f-head); }
 .quick__go .i { width: 18px; height: 18px; }
+/* where the bottom bar shows, its LINE slot replaces the floating button (owner 29 Oct 2026) */
 @media (max-width: 900px) {
-  .fab { bottom: calc(80px + env(safe-area-inset-bottom)); right: 12px; width: 52px; height: 52px; }
-  .quick { bottom: calc(146px + env(safe-area-inset-bottom)); right: 12px; }
+  .fab, .quick { display: none !important; }
 }
 
 .cookie {

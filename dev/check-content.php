@@ -77,9 +77,7 @@ foreach ( array_merge( glob( $root . 'pages/*.html' ), glob( $root . 'articles/*
 	if ( preg_match( '/<img[\s>]/i', $raw ) ) {
 		$issue[] = 'contains <img>';
 	}
-	if ( false === strpos( $raw, 'callout--warn' ) ) {
-		$issue[] = 'no callout--warn (risk context)';
-	}
+	/* ไม่บังคับ callout--warn แล้ว: เจ้าของสั่ง 29 ต.ค. 2026 ให้คำเตือนความเสี่ยงอยู่หน้าประกาศความเสี่ยงหน้าเดียว */
 	/* ชื่อไฟล์ EA และช่วง Backtest มาตรฐานเปลี่ยนตามรุ่น: ต้องมาจาก [eabull_ea] ไม่พิมพ์ตรง ๆ */
 	if ( preg_match( '/EA_BULL_V\d|WING_TWIN_V\d|WING_NITRO_V\d|2026\.01\.01 ถึง 2026\.\d\d\.\d\d/u', $raw ) ) {
 		$issue[] = 'hardcoded EA file name or backtest range (use [eabull_ea] / [eabull_ea product="nitro|twin"] / [eabull_ea field="bt_range"])';

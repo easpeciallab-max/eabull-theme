@@ -107,7 +107,7 @@ function eab_go_defaults( $d ) {
 			'go_vps_line_label'      => 'ถามสเปก VPS',
 
 			/* Card foot */
-			'go_risk_text'           => 'EA ช่วยเทรดตามแผน แต่เงินในบัญชีก็ยังหมดได้ ลงเฉพาะเงินที่ไม่กระทบค่าใช้จ่ายประจำ และอ่าน[ประกาศความเสี่ยง](/risk-disclosure/)ก่อนเริ่ม',
+			'go_risk_text'           => '',
 			'go_home_label'          => 'ไปหน้าแรกของ EA BULL',
 		)
 	);
