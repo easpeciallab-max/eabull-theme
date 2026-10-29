@@ -55,7 +55,7 @@ def main():
     # eabull.com hides itself from search engines for now, so the sitemap may be off: use the known slugs
     slugs = ['', 'about', 'backtest', 'forward-test', 'how-to-install', 'open-mt5-account', 'deposit', 'mt5-login',
              'vps-windows', 'vps-android', 'vps-ios', 'tools', 'pricing', 'product-1', 'product-2', 'product-3',
-             'risk-disclosure', 'privacy-policy', 'data-deletion', 'go', 'articles']
+             'risk-disclosure', 'privacy-policy', 'terms-of-use', 'data-deletion', 'go', 'articles']
     bull_urls = list(dict.fromkeys([f'https://eabull.com/{s}{"/" if s else ""}' for s in slugs]
                                    + [u for u in bull_urls if 'eabull.com' in u]))
     # old EA Special pages still waiting for the trash are not ours

@@ -300,7 +300,7 @@ h4 { font-size: 17px; }
   background: var(--k0); border-bottom: 1px solid var(--line);
 }
 .hd__in { display: flex; align-items: center; gap: 20px; height: var(--hd-h); }
-.hd__brand { display: flex; align-items: center; gap: 10px; flex: none; }
+.hd__brand { display: flex; align-items: flex-end; gap: 10px; flex: none; } /* lettering sits on the bull's base line (owner 29 Oct 2026) */
 .hd__emblem { width: 44px; }
 .hd__word { width: 118px; }
 @media (min-width: 900px) {

@@ -74,7 +74,7 @@ try {
   await send('Network.enable');
   await send('Network.setCacheDisabled', { cacheDisabled: true });
 
-  const ALL = ['', 'about', 'backtest', 'forward-test', 'how-to-install', 'open-mt5-account', 'deposit', 'mt5-login', 'vps-windows', 'vps-android', 'vps-ios', 'tools', 'pricing', 'product-1', 'product-2', 'product-3', 'risk-disclosure', 'privacy-policy', 'data-deletion', 'go', 'articles', 'no-such-page-xyz', '?s=MT5'];
+  const ALL = ['', 'about', 'backtest', 'forward-test', 'how-to-install', 'open-mt5-account', 'deposit', 'mt5-login', 'vps-windows', 'vps-android', 'vps-ios', 'tools', 'pricing', 'product-1', 'product-2', 'product-3', 'risk-disclosure', 'privacy-policy', 'terms-of-use', 'data-deletion', 'go', 'articles', 'no-such-page-xyz', '?s=MT5'];
   for (const kind of Object.keys(WIDTHS)) {
     await viewport(kind);
     for (const p of ALL) {
