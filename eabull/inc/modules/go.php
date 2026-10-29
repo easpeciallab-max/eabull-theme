@@ -69,12 +69,12 @@ function eab_go_defaults( $d ) {
 			'go_mt5_login_label'     => 'คู่มือล็อกอิน',
 			'go_mt5_login_url'       => '/mt5-login/',
 
-			/* Step 3 · deposit (no portal link yet: toast) */
+			/* Step 3 · deposit · Zaurix Portal sign-in page, same as the sister brand (owner 29 Oct 2026 "ใส่เลย") */
 			'go_step3_title'         => 'ฝากเงินเข้าบัญชีเทรด',
 			'go_step3_desc'          => 'ฝากผ่าน Portal ของโบรกเกอร์ แล้วเช็กยอด Balance ในแอป MT5',
 			'go_step3_badge'         => '',
 			'go_deposit_label'       => 'เข้า Portal Zaurix',
-			'go_deposit_url'         => '',
+			'go_deposit_url'         => 'https://portal.zaurix.com/',
 			'go_deposit_wait'        => 'ลิงก์เข้า Portal รอยืนยันจากเจ้าของ',
 			'go_deposit_guide_label' => 'คู่มือฝากเงิน',
 			'go_deposit_guide_url'   => '/deposit/',

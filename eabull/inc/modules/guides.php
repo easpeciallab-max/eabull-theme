@@ -552,7 +552,7 @@ function eab_guide_flat_defaults() {
 	$flat['guides_toc_title']   = 'ในหน้านี้';
 	$flat['guides_doc_label']   = 'รายละเอียดเพิ่มเติม';
 	$flat['guides_more_title']  = 'คู่มือที่เกี่ยวข้อง';
-	$flat['guides_portal_url']  = ''; // ลิงก์เข้า Portal ของโบรกเกอร์ (ที่ได้มาเป็นลิงก์สมัคร) · รอเจ้าของยืนยัน
+	$flat['guides_portal_url']  = 'https://portal.zaurix.com/'; // หน้าล็อกอิน Portal ของ Zaurix แบบเดียวกับแบรนด์ในเครือ · เจ้าของสั่งใส่ 29 ต.ค. 2026
 	$flat['guides_portal_wait'] = 'ลิงก์เข้า Portal รอยืนยันจากเจ้าของ';
 
 	return $flat;
