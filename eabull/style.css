@@ -992,6 +992,37 @@ a.card:hover { border-color: var(--accent); }
 }
 .field input:focus, .field select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .field input[readonly] { color: var(--muted); }
+/* select box (owner 29 Oct 2026: arrow too close to the edge, list looked unfinished)
+   .sel > select is the no-JS fallback; main.js adds .sel__btn + .sel__list and hides the select */
+.sel { position: relative; }
+.sel > select { appearance: none; -webkit-appearance: none; padding-right: 64px; cursor: pointer; }
+.sel.is-on > select { display: none; }
+.sel__arrow { position: absolute; top: 0; right: 0; bottom: 0; display: grid; place-items: center; width: 50px; border-left: 1px solid var(--line-2); color: var(--hl); pointer-events: none; }
+.sel__arrow .i { width: 20px; height: 20px; transition: transform .2s; }
+.sel__btn {
+  position: relative; display: flex; align-items: center; width: 100%; min-height: 60px; padding: 10px 66px 10px 16px;
+  background: var(--surface-2); color: var(--fg); border: 1px solid var(--line-2); border-radius: var(--r-sm);
+  text-align: left; text-transform: none; cursor: pointer; transition: border-color .15s;
+}
+.sel__btn:hover { border-color: var(--fg-2); }
+.sel__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.sel__btn[aria-expanded="true"] { border-color: var(--accent); }
+.sel__btn[aria-expanded="true"] .sel__arrow { border-left-color: var(--accent); }
+.sel__btn[aria-expanded="true"] .sel__arrow .i { transform: rotate(180deg); }
+.sel__val, .sel__opt > span { display: grid; gap: 2px; min-width: 0; }
+.sel__val b, .sel__opt b { font: 600 16px/1.4 var(--f-head); color: var(--fg); }
+.sel__val small, .sel__opt small { font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.sel__list {
+  position: absolute; z-index: 40; top: calc(100% + 6px); left: 0; right: 0; max-height: 340px; overflow-y: auto;
+  margin: 0; padding: 0; list-style: none; background: var(--surface); border: 1px solid var(--accent); text-transform: none;
+}
+.sel--up .sel__list { top: auto; bottom: calc(100% + 6px); }
+.sel__opt { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px 12px 13px; border-left: 3px solid transparent; cursor: pointer; }
+.sel__opt + .sel__opt { border-top: 1px solid var(--line); }
+.sel__opt.is-active { background: var(--surface-2); border-left-color: var(--accent); }
+.sel__opt .i { width: 20px; height: 20px; color: var(--hl); visibility: hidden; }
+.sel__opt[aria-selected="true"] .i { visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .sel__arrow .i, .sel__btn { transition: none; } }
 .calc__out { display: grid; align-content: start; gap: 18px; padding: 24px; background: var(--k0); color: #F4F4F5; border-top: 1px solid var(--line); }
 @media (min-width: 900px) { .calc__out { border-top: 0; border-left: 1px solid var(--line); } }
 .out span { display: block; font-size: 14px; color: #9B9BA3; }

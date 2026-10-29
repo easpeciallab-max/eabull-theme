@@ -1,12 +1,12 @@
 // Screenshot one element of a live eabull.com page through the Chrome DevTools protocol.
 // Used for guide images that show EA BULL's own pages (e.g. the Zaurix signup step on /go/).
-// Usage: node dev/tools/shot-element.mjs <url> <css selector> <out.png> [width=480] [scale=2] [pad=0]
+// Usage: node dev/tools/shot-element.mjs <url> <css selector> <out.png> [width=480] [scale=2] [pad=0] [selector to click first]
 import { spawn } from 'node:child_process';
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-const [url, selector, out, width = '480', scale = '2', pad = '0'] = process.argv.slice(2);
+const [url, selector, out, width = '480', scale = '2', pad = '0', click = ''] = process.argv.slice(2);
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const PORT = 9334;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -57,6 +57,13 @@ try {
     return { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height }; })()`);
   if (!box) throw new Error(`no element ${selector}`);
   await sleep(800);
+  if (click) {
+    // open a UI state (e.g. a dropdown) before the capture · several selectors: "a || b"
+    for (const sel of click.split('||').map((s) => s.trim()).filter(Boolean)) {
+      await evaluate(`(document.querySelector(${JSON.stringify(sel)}) || { click() {} }).click()`);
+      await sleep(500);
+    }
+  }
   const p = +pad;
   const r = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true,
     clip: { x: Math.max(0, box.x - p), y: Math.max(0, box.y - p), width: box.w + 2 * p, height: box.h + 2 * p, scale: 1 } });

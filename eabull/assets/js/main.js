@@ -182,6 +182,127 @@
 		update();
 	});
 
+	/* Select boxes · .sel > select becomes a Bull Black listbox (owner 29 Oct 2026: the browser's own list
+	   looked unfinished). The native select stays in place, hidden, keeps the value and gets the change
+	   event, so the calculators read it as before. Option text "name · detail" shows on two lines. */
+	var selCheck = '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+	var selText = function (el, text) {
+		var cut = text.indexOf(' · ');
+		var b = document.createElement('b');
+		b.textContent = cut > 0 ? text.slice(0, cut) : text;
+		el.appendChild(b);
+		if (cut > 0) {
+			var small = document.createElement('small');
+			small.textContent = text.slice(cut + 3);
+			el.appendChild(small);
+		}
+	};
+	$$('.sel > select').forEach(function (sel, n) {
+		var wrap = sel.parentNode;
+		var base = sel.id || 'sel-' + n;
+		var label = sel.id ? $('label[for="' + sel.id + '"]') : null;
+		var arrow = $('.sel__arrow', wrap);
+		var btn = document.createElement('button');
+		var val = document.createElement('span');
+		var list = document.createElement('ul');
+		var opts = [];
+		var active = -1;
+
+		if (label && !label.id) label.id = base + '-label';
+		btn.type = 'button';
+		btn.className = 'sel__btn';
+		btn.id = base + '-btn';
+		btn.setAttribute('role', 'combobox');
+		btn.setAttribute('aria-haspopup', 'listbox');
+		btn.setAttribute('aria-expanded', 'false');
+		btn.setAttribute('aria-controls', base + '-list');
+		btn.setAttribute('aria-labelledby', (label ? label.id + ' ' : '') + base + '-val');
+		val.className = 'sel__val';
+		val.id = base + '-val';
+		btn.appendChild(val);
+		if (arrow) btn.appendChild(arrow);
+		list.className = 'sel__list';
+		list.id = base + '-list';
+		list.setAttribute('role', 'listbox');
+		list.tabIndex = -1;
+		if (label) list.setAttribute('aria-labelledby', label.id);
+		list.hidden = true;
+
+		Array.prototype.forEach.call(sel.options, function (o, i) {
+			var li = document.createElement('li');
+			var txt = document.createElement('span');
+			li.className = 'sel__opt';
+			li.id = base + '-opt' + i;
+			li.setAttribute('role', 'option');
+			selText(txt, o.text);
+			li.appendChild(txt);
+			li.insertAdjacentHTML('beforeend', selCheck);
+			li.addEventListener('mousemove', function () { setActive(i, false); });
+			li.addEventListener('click', function () { pick(i); close(true); });
+			list.appendChild(li);
+			opts.push(li);
+		});
+
+		function show() {
+			val.textContent = '';
+			if (sel.selectedIndex >= 0) selText(val, sel.options[sel.selectedIndex].text);
+			opts.forEach(function (li, i) { li.setAttribute('aria-selected', String(i === sel.selectedIndex)); });
+		}
+		function setActive(i, scroll) {
+			active = Math.max(0, Math.min(opts.length - 1, i));
+			opts.forEach(function (li, j) { li.classList.toggle('is-active', j === active); });
+			btn.setAttribute('aria-activedescendant', opts[active].id);
+			if (scroll) opts[active].scrollIntoView({ block: 'nearest' });
+		}
+		function open() {
+			if (!list.hidden) return;
+			list.hidden = false;
+			btn.setAttribute('aria-expanded', 'true');
+			/* open upward when the page has no room below and more room above */
+			var r = btn.getBoundingClientRect();
+			wrap.classList.toggle('sel--up', window.innerHeight - r.bottom < list.offsetHeight + 12 && r.top > window.innerHeight - r.bottom);
+			setActive(sel.selectedIndex, true);
+		}
+		function close(focus) {
+			if (list.hidden) return;
+			list.hidden = true;
+			btn.setAttribute('aria-expanded', 'false');
+			btn.removeAttribute('aria-activedescendant');
+			if (focus) btn.focus();
+		}
+		function pick(i) {
+			if (i === sel.selectedIndex) return;
+			sel.selectedIndex = i;
+			show();
+			sel.dispatchEvent(new Event('change', { bubbles: true }));
+		}
+
+		btn.addEventListener('click', function () { if (list.hidden) open(); else close(false); });
+		btn.addEventListener('keydown', function (e) {
+			var k = e.key;
+			if (list.hidden) {
+				if (k === 'ArrowDown' || k === 'ArrowUp' || k === 'Enter' || k === ' ') { e.preventDefault(); open(); }
+				return;
+			}
+			if (k === 'ArrowDown') { e.preventDefault(); setActive(active + 1, true); }
+			else if (k === 'ArrowUp') { e.preventDefault(); setActive(active - 1, true); }
+			else if (k === 'Home') { e.preventDefault(); setActive(0, true); }
+			else if (k === 'End') { e.preventDefault(); setActive(opts.length - 1, true); }
+			else if (k === 'Enter' || k === ' ') { e.preventDefault(); pick(active); close(true); }
+			else if (k === 'Escape') { e.preventDefault(); close(true); }
+			else if (k === 'Tab') { pick(active); close(false); }
+		});
+		document.addEventListener('pointerdown', function (e) { if (!wrap.contains(e.target)) close(false); });
+		sel.addEventListener('change', show);
+		if (label) label.htmlFor = btn.id;
+		sel.tabIndex = -1;
+		sel.setAttribute('aria-hidden', 'true');
+		wrap.insertBefore(btn, sel.nextSibling);
+		wrap.appendChild(list);
+		wrap.classList.add('is-on');
+		show();
+	});
+
 	/* Calculators · .calc[data-calc="lot"|"dd"] (unit and empty texts from data-* on the box) */
 	var num = function (el) { var v = parseFloat(el && el.value); return isFinite(v) ? v : 0; };
 	var fmt = function (v, d) { return v.toLocaleString('th-TH', { minimumFractionDigits: d, maximumFractionDigits: d }); };

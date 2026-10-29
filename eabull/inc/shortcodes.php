@@ -245,7 +245,7 @@ function eab_sc_calc( $atts ) {
 		. eab_calc_field( 'lot-sl' . $sfx, 'sl', 'sl', 'min="0" step="any"' )
 		. eab_calc_field( 'lot-step' . $sfx, 'step', 'step', 'min="0.01" step="0.01"' )
 		. '<div class="field field--full"><label for="' . esc_attr( 'lot-preset' . $sfx ) . '">' . esc_html( eab_mod( 'calc_preset_label' ) ) . '</label>'
-		. '<select id="' . esc_attr( 'lot-preset' . $sfx ) . '" name="preset">' . $options . '</select>'
+		. '<div class="sel"><select id="' . esc_attr( 'lot-preset' . $sfx ) . '" name="preset">' . $options . '</select><span class="sel__arrow" aria-hidden="true">' . eab_icon( 'chevron-down' ) . '</span></div>'
 		. ( '' !== trim( (string) eab_mod( 'calc_preset_help' ) ) ? '<small>' . esc_html( eab_mod( 'calc_preset_help' ) ) . '</small>' : '' ) . '</div>'
 		. str_replace( '<div class="field">', '<div class="field field--full">', eab_calc_field( 'lot-pip' . $sfx, 'pip', 'pip', 'min="0" step="any"', $pip, ! $custom ) )
 		. '</div><div class="calc__out" aria-live="polite">'
