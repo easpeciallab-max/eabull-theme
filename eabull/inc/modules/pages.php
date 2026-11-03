@@ -362,7 +362,7 @@ function eab_pages_defaults( $d ) {
 		'ar_topics_title'   => 'เลือกอ่านตามเรื่องที่อยากรู้',
 		'ar_topics_sub'     => 'แต่ละหมวดรวมบทความเรื่องเดียวกันไว้ด้วยกัน เริ่มจากหมวดที่ตรงกับสิ่งที่คุณกำลังทำอยู่',
 		'ar_topics_more'    => 'ดูบทความ',
-		'ar_topics_icons'   => "ea-basics | candles\nmt5 | monitor\nvps | server\ngold-trading | target\nrisk-management | shield\ntrading-plan | calendar\nmonitoring | bars\nbroker-account | bank",
+		'ar_topics_icons'   => "gold-bot | robot\nrun-ea | server\nea-testing | flask\ntrading-safety | shield\ngold-basics | target\ncapital-lot | wallet\norder-control | sliders\ngold-strategy | flag\ngold-market | globe\ngold-chart | candles",
 		'ar_guides_title'   => 'คู่มือใช้งานทีละขั้น',
 		'ar_guides_more'    => 'ดูทุกลิงก์เริ่มต้น | /go/',
 		'ar_guides_items'   => "user | /open-mt5-account/ | เปิดบัญชีเทรด MT5 | สมัครและยืนยันตัวตน\n"

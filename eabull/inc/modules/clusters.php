@@ -22,14 +22,16 @@ function eab_cluster_pillars() {
 	return (array) apply_filters(
 		'eab_cluster_pillars',
 		array(
-			'ea-basics'       => 'what-is-ea',
-			'mt5'             => 'mt5-guide',
-			'vps'             => 'vps-for-ea',
-			'gold-trading'    => 'xauusd-guide',
-			'risk-management' => 'money-management',
-			'trading-plan'    => 'trading-plan-for-ea',
-			'monitoring'      => 'monitoring-guide',
-			'broker-account'  => 'choose-forex-broker',
+			'gold-bot'       => 'gold-trading-bot',
+			'run-ea'         => 'run-ea-guide',
+			'ea-testing'     => 'backtest-explained',
+			'trading-safety' => 'trading-scams',
+			'gold-basics'    => 'what-is-gold-trading',
+			'capital-lot'    => 'gold-trading-capital',
+			'order-control'  => 'stop-loss-take-profit',
+			'gold-strategy'  => 'gold-trading-techniques',
+			'gold-market'    => 'world-gold-price',
+			'gold-chart'     => 'gold-chart-reading',
 		)
 	);
 }

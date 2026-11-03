@@ -16,7 +16,7 @@ $articles = array_map(
 );
 $valid    = array_merge( $pages, $articles );
 $problems = 0;
-// article categories = the 8 article clusters (eab_article_categories() in inc/setup.php · docs/content-plan.md)
+// article categories = the 10 article clusters (eab_article_categories() in inc/setup.php · docs/content-plan.md)
 $cats_ok = array_values( array_map( function ( $c ) { return $c[0]; }, eab_article_categories() ) );
 $dates   = array();
 

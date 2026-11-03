@@ -1,0 +1,3134 @@
+{
+ "clusters": {
+  "gold-bot": {
+   "slug": "gold-bot",
+   "name": "บอทเทรดทอง",
+   "money": "home",
+   "sources": "mql5.com/en/docs (MQL5 Reference) · metatrader5.com/en/terminal/help/algotrading (Algo Trading)"
+  },
+  "run-ea": {
+   "slug": "run-ea",
+   "name": "รัน EA 24 ชั่วโมง",
+   "money": "vps-windows",
+   "sources": "learn.microsoft.com (Windows App · Remote Desktop · Power options) · metatrader5.com/en/terminal/help (Virtual Hosting · Web Terminal)"
+  },
+  "ea-testing": {
+   "slug": "ea-testing",
+   "name": "ทดสอบและปรับค่า EA",
+   "money": "backtest",
+   "sources": "metatrader5.com/en/terminal/help/algotrading/testing (Strategy Tester) · mql5.com/en/docs"
+  },
+  "trading-safety": {
+   "slug": "trading-safety",
+   "name": "เทรดอย่างปลอดภัย",
+   "money": "about",
+   "sources": "sec.or.th (เตือนภัยและตรวจสอบรายชื่อ) · thaipoliceonline.go.th (แจ้งความออนไลน์) · metatrader5.com (OTP)"
+  },
+  "gold-basics": {
+   "slug": "gold-basics",
+   "name": "พื้นฐานเทรดทอง",
+   "money": "open-mt5-account",
+   "sources": "cmegroup.com (Gold Futures contract) · gold.org (World Gold Council)"
+  },
+  "capital-lot": {
+   "slug": "capital-lot",
+   "name": "ทุนและขนาดไม้",
+   "money": "tools",
+   "sources": "metatrader5.com/en/terminal/help (Margin · Contract specification)"
+  },
+  "order-control": {
+   "slug": "order-control",
+   "name": "จัดการออเดอร์",
+   "money": "how-to-install",
+   "sources": "metatrader5.com/en/terminal/help/trading (Orders · Trailing Stop)"
+  },
+  "gold-strategy": {
+   "slug": "gold-strategy",
+   "name": "กลยุทธ์เทรดทอง",
+   "money": "backtest",
+   "sources": "metatrader5.com/en/terminal/help/indicators (Technical indicators)"
+  },
+  "gold-market": {
+   "slug": "gold-market",
+   "name": "ราคาทองโลก",
+   "money": "home",
+   "sources": "gold.org · lbma.org.uk · cmegroup.com · federalreserve.gov · home.treasury.gov"
+  },
+  "gold-chart": {
+   "slug": "gold-chart",
+   "name": "อ่านกราฟทองคำ",
+   "money": "home",
+   "sources": "metatrader5.com/en/terminal/help/indicators (Technical indicators)"
+  }
+ },
+ "articles": [
+  {
+   "cluster": "gold-bot",
+   "slug": "gold-trading-bot",
+   "title": "บอทเทรดทอง คืออะไร: ทำงานยังไงบน MT5 และเลือกแบบไหนดี",
+   "kw": "บอทเทรดทอง",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "บอทเทรด คือ",
+    "บอทเทรดทอง mt5",
+    "โรบอทเทรด คืออะไร",
+    "ea xauusd mt5",
+    "การใช้บอทเทรดทอง"
+   ],
+   "longtail": [
+    "บอทเทรด คือ อะไร",
+    "บอทเทรด ea คือ",
+    "robot เทรดทอง",
+    "xauusd ea bot",
+    "ใช้บอทเทรดทอง"
+   ],
+   "bridges": [
+    "run-ea-guide",
+    "backtest-explained"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": true,
+   "n": 1,
+   "date": "2026-11-09 09:00",
+   "date_th": "จ. 9 พ.ย. 69"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "gold-bot-worth-it",
+   "title": "บอทเทรดทองดีไหม: ข้อดี ข้อจำกัด และคนแบบไหนเหมาะ",
+   "kw": "บอทเทรดทองดีไหม",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "บอทเทรด ดีไหม",
+    "บอทเทรด pantip",
+    "ใช้ ea เทรด"
+   ],
+   "longtail": [
+    "ใช้บอทเทรดทองดีไหม",
+    "บอทเทรดทองดีไหม pantip"
+   ],
+   "bridges": [
+    "trading-scams",
+    "overfitting-trading"
+   ],
+   "money": "pricing",
+   "note": "",
+   "pillar": false,
+   "n": 2,
+   "date": "2026-11-10 09:00",
+   "date_th": "อ. 10 พ.ย. 69"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "how-to-use-trading-bot",
+   "title": "วิธีใช้บอทเทรด: เปิดให้ EA เทรดบน MT5 ครั้งแรกทีละขั้น",
+   "kw": "วิธีใช้บอทเทรด",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "วิธีใช้ ea mt5",
+    "การใช้ ea",
+    "สอนใช้ ea mt5",
+    "การใช้ ea ใน mt5"
+   ],
+   "longtail": [
+    "วิธีใช้บอทเทรด forex",
+    "สอนใช้บอทเทรด",
+    "วิธีเปิดใช้งาน ea mt5"
+   ],
+   "bridges": [
+    "ea-settings",
+    "run-ea-guide"
+   ],
+   "money": "how-to-install",
+   "note": "ห้ามแย่งคีย์เพจ /how-to-install/ (วิธีติดตั้ง EA บน MT5): บทนี้คือภาพรวมการใช้ ส่งต่อไปเพจติดตั้ง",
+   "pillar": false,
+   "n": 3,
+   "date": "2026-11-11 09:00",
+   "date_th": "พ. 11 พ.ย. 69"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "gold-trading-program",
+   "title": "โปรแกรมเทรดทอง: เทรดทองใช้โปรแกรมอะไร และตัวไหนเทรดแทนได้",
+   "kw": "โปรแกรมเทรดทอง",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "เทรดทองใช้โปรแกรมอะไร",
+    "โปรแกรมเทรดทอง mt5",
+    "โปรแกรมเทรดทองในคอม",
+    "โปรแกรมวิเคราะห์เทรดทอง"
+   ],
+   "longtail": [
+    "โปรแกรม ai เทรดทอง",
+    "โปรแกรมเทรดทองคำ"
+   ],
+   "bridges": [
+    "mt5-web-terminal",
+    "gold-mt5-first-order"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 4,
+   "date": "2026-11-12 09:00",
+   "date_th": "พฤ. 12 พ.ย. 69"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "gold-trading-system",
+   "title": "ระบบเทรดทอง: ระบบที่ดีต้องมีอะไรบ้าง ก่อนให้บอทเทรดแทน",
+   "kw": "ระบบเทรดทอง",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ระบบเทรดทองคำ",
+    "ระบบเทรดที่ดี",
+    "ระบบเทรดทองที่ดีที่สุด",
+    "ระบบเทรด ea คือ"
+   ],
+   "longtail": [
+    "ระบบเทรด คือ",
+    "ระบบเทรดทอง m5"
+   ],
+   "bridges": [
+    "gold-trading-techniques",
+    "backtest-explained"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 5,
+   "date": "2026-11-13 09:00",
+   "date_th": "ศ. 13 พ.ย. 69"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "buy-ea-mt5",
+   "title": "ซื้อ EA MT5: ขั้นตอนซื้อบอทเทรดทองให้ปลอดภัย ตั้งแต่คุยจนติดตั้ง",
+   "kw": "ซื้อ ea mt5",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ซื้อ ea เทรดทอง",
+    "ซื้อ ea mql5",
+    "คนซื้อ ea",
+    "บอทเทรดทอง ราคา"
+   ],
+   "longtail": [
+    "ซื้อ ea ใน mql5",
+    "ซื้อรหัส ea"
+   ],
+   "bridges": [
+    "fake-pages",
+    "ea-review-check"
+   ],
+   "money": "pricing",
+   "note": "ใช้ข้อเท็จจริงแพ็กเกจที่ยืนยันแล้วเท่านั้น (content-spec ข้อ 3)",
+   "pillar": false,
+   "n": 6,
+   "date": "2026-11-14 09:00",
+   "date_th": "ส. 14 พ.ย. 69"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "run-ea-guide",
+   "title": "รัน EA คืออะไร: วิธีรัน EA บน MT5 ให้ทำงานต่อเนื่อง 24 ชั่วโมง",
+   "kw": "รัน ea",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "รัน ea คือ",
+    "วิธีรัน ea mt5",
+    "การรัน ea",
+    "วิธีรัน ea บน vps",
+    "คอมรัน ea"
+   ],
+   "longtail": [
+    "รันea คืออะไร",
+    "การรัน ea mt5",
+    "รัน ea บนมือถือ"
+   ],
+   "bridges": [
+    "how-to-use-trading-bot",
+    "gold-trading-bot"
+   ],
+   "money": "vps-windows",
+   "note": "คีย์ \"vps รัน ea\" เป็นของเพจ /vps-windows/ ห้ามใช้เป็นคีย์หลัก",
+   "pillar": true,
+   "n": 7,
+   "date": "2026-11-15 09:00",
+   "date_th": "อา. 15 พ.ย. 69"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "vps-explained",
+   "title": "VPS คืออะไร: ทำไมคนใช้ EA ถึงเช่า VPS แทนเปิดคอมทิ้งไว้",
+   "kw": "vps คืออะไร",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "vps คืออะไร forex",
+    "vps mt5 คือ",
+    "เช่า vps คือ",
+    "cloud vps คือ",
+    "vps server คือ"
+   ],
+   "longtail": [
+    "vps คือ อะไร pantip",
+    "metatrader vps คือ",
+    "vps hosting คือ"
+   ],
+   "bridges": [
+    "gold-trading-bot"
+   ],
+   "money": "vps-windows",
+   "note": "",
+   "pillar": false,
+   "n": 8,
+   "date": "2026-11-16 09:00",
+   "date_th": "จ. 16 พ.ย. 69"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "ea-per-vps",
+   "title": "VPS รัน EA ได้กี่ตัว: คิดจาก CPU RAM และจำนวน MT5",
+   "kw": "vps รัน ea ได้กี่ตัว",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "vps สําหรับ mt5",
+    "vps รัน mt5",
+    "vps mt5 ราคา"
+   ],
+   "longtail": [
+    "mt5 กินแรมเท่าไหร่"
+   ],
+   "bridges": [
+    "ea-settings"
+   ],
+   "money": "vps-windows",
+   "note": "",
+   "pillar": false,
+   "n": 9,
+   "date": "2026-11-17 09:00",
+   "date_th": "อ. 17 พ.ย. 69"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "remote-desktop",
+   "title": "Remote Desktop คืออะไร: ควบคุม VPS ระยะไกลเพื่อดูแล EA",
+   "kw": "remote desktop คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "remote desktop วิธีใช้",
+    "remote desktop มือถือ",
+    "remote desktop คีย์ลัด"
+   ],
+   "longtail": [
+    "remote desktop ค้าง",
+    "remote desktop กระตุก",
+    "remote desktop ทำยังไง"
+   ],
+   "bridges": [
+    "mt5-2fa"
+   ],
+   "money": "vps-windows",
+   "note": "",
+   "pillar": false,
+   "n": 10,
+   "date": "2026-11-18 09:00",
+   "date_th": "พ. 18 พ.ย. 69"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "windows-app",
+   "title": "Windows App คืออะไร: แอปเข้า VPS จากมือถือที่มาแทน Remote Desktop",
+   "kw": "windows app คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "windows app วิธีใช้",
+    "windows app mobile คือ",
+    "สมัคร windows app"
+   ],
+   "longtail": [
+    "windows app mobile วิธีใช้"
+   ],
+   "bridges": [
+    "mt5-2fa"
+   ],
+   "money": "vps-android",
+   "note": "ลิงก์ทั้ง /vps-android/ และ /vps-ios/",
+   "pillar": false,
+   "n": 11,
+   "date": "2026-11-19 09:00",
+   "date_th": "พฤ. 19 พ.ย. 69"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "pc-sleep-ea",
+   "title": "ปิดสลีปคอม: ตั้ง Windows ไม่ให้หลับระหว่างรัน EA",
+   "kw": "ปิดสลีปคอม",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ปิดคอมแล้ว ea ทำงานไหม",
+    "ปิดคอมออโต้",
+    "ปิดอัพเดทคอม"
+   ],
+   "longtail": [
+    "ปิดจอคอมแต่ไม่ปิดเครื่อง"
+   ],
+   "bridges": [
+    "gold-weekend"
+   ],
+   "money": "vps-windows",
+   "note": "",
+   "pillar": false,
+   "n": 12,
+   "date": "2026-11-20 09:00",
+   "date_th": "ศ. 20 พ.ย. 69"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "backtest-explained",
+   "title": "Backtest คืออะไร: ทดสอบระบบเทรดย้อนหลังให้เป็นก่อนใช้เงินจริง",
+   "kw": "backtest คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "การ backtest ea",
+    "backtest ทอง",
+    "วิธี backtest mt5",
+    "backtest forex คือ",
+    "ทำ backtest mt5"
+   ],
+   "longtail": [
+    "backtest คือ อะไร",
+    "สอน backtest mt5",
+    "backtest กราฟ"
+   ],
+   "bridges": [
+    "gold-trading-system",
+    "gold-bot-worth-it"
+   ],
+   "money": "backtest",
+   "note": "เพจ /backtest/ ถือคีย์ \"Backtest EA MT5\" (วิธีทดสอบ EA BULL): บทนี้คือความรู้ แล้วส่งต่อไปเพจ",
+   "pillar": true,
+   "n": 13,
+   "date": "2026-11-21 09:00",
+   "date_th": "ส. 21 พ.ย. 69"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "ea-settings",
+   "title": "ตั้งค่า EA: ช่อง Inputs ใน MT5 อ่านยังไง แก้ตรงไหนได้บ้าง",
+   "kw": "ตั้งค่า ea",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ตั้งค่า ea mt5",
+    "วิธีตั้งค่า ea",
+    "การตั้งค่า ea forex"
+   ],
+   "longtail": [
+    "ค่า input ea",
+    "ตั้งค่า ea ก่อนรัน"
+   ],
+   "bridges": [
+    "how-to-use-trading-bot",
+    "fixed-lot-vs-auto-lot"
+   ],
+   "money": "how-to-install",
+   "note": "ห้ามบอกค่าตั้งของ EA BULL (ยังไม่มีข้อมูล)",
+   "pillar": false,
+   "n": 14,
+   "date": "2026-11-22 09:00",
+   "date_th": "อา. 22 พ.ย. 69"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "every-tick-real-ticks",
+   "title": "Every Tick Based on Real Ticks คืออะไร: โหมดทดสอบที่ใกล้ตลาดจริงที่สุด",
+   "kw": "every tick based on real ticks",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "every tick based on real ticks คือ",
+    "every tick vs every tick based on real ticks",
+    "every tick based on real ticks mt5"
+   ],
+   "longtail": [],
+   "bridges": [
+    "xauusd-spread"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 15,
+   "date": "2026-11-23 09:00",
+   "date_th": "จ. 23 พ.ย. 69"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "overfitting-trading",
+   "title": "Overfitting คืออะไร: ทำไม EA ที่ Backtest สวยถึงพังในบัญชีจริง",
+   "kw": "overfitting คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "curve fitting",
+    "overfitting เกิดจาก",
+    "overfitting and underfitting คือ"
+   ],
+   "longtail": [
+    "ปัญหา overfitting คือ"
+   ],
+   "bridges": [
+    "gold-bot-worth-it",
+    "ea-review-check"
+   ],
+   "money": "forward-test",
+   "note": "",
+   "pillar": false,
+   "n": 16,
+   "date": "2026-11-24 09:00",
+   "date_th": "อ. 24 พ.ย. 69"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "optimize-ea-mt5",
+   "title": "Optimize EA MT5: หาค่าที่เหมาะโดยไม่หลอกตัวเอง",
+   "kw": "optimize ea mt5",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "optimization คือ",
+    "การ optimization",
+    "optimization mt5",
+    "ปรับค่า ea"
+   ],
+   "longtail": [
+    "optimization คืออะไร"
+   ],
+   "bridges": [
+    "mt5-cloud"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 17,
+   "date": "2026-11-25 09:00",
+   "date_th": "พ. 25 พ.ย. 69"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "walk-forward",
+   "title": "Walk Forward คืออะไร: ทดสอบ EA แบบแบ่งช่วงให้ผลน่าเชื่อขึ้น",
+   "kw": "walk forward คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "walk forward analysis mt5",
+    "walk forward optimization",
+    "walk forward test"
+   ],
+   "longtail": [
+    "walk forward validation คือ",
+    "forward test คือ"
+   ],
+   "bridges": [
+    "ai-trading-bot-builder"
+   ],
+   "money": "forward-test",
+   "note": "",
+   "pillar": false,
+   "n": 18,
+   "date": "2026-11-26 09:00",
+   "date_th": "พฤ. 26 พ.ย. 69"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "trading-scams",
+   "title": "มิจฉาชีพสายเทรด: กลโกงชวนเทรดทองและวิธีเช็กก่อนโอนเงิน",
+   "kw": "มิจฉาชีพ เทรด",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "มิจฉาชีพ ชวน เทรด ทอง",
+    "หลอกลงทุนทองคำ",
+    "เทรดทอง หลอกลวง",
+    "มิจฉาชีพ หลอก เทรด ทอง",
+    "เทรดทอง โดนหลอก"
+   ],
+   "longtail": [
+    "หลอกลงทุน forex",
+    "เทรดทอง มิจฉาชีพ",
+    "รับเทรดแทน"
+   ],
+   "bridges": [
+    "buy-ea-mt5",
+    "rent-vs-buy-ea"
+   ],
+   "money": "about",
+   "note": "⚠ · EA WING มี \"บอทเทรด หลอก\" (ผู้ขายบอท): บทนี้คือมิจฉาชีพชวนเทรด",
+   "pillar": true,
+   "n": 19,
+   "date": "2026-11-27 09:00",
+   "date_th": "ศ. 27 พ.ย. 69"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "is-gold-trading-real",
+   "title": "เทรดทองมีจริงไหม: แยกการเทรดจริงออกจากแอปหลอกลงทุน",
+   "kw": "เทรดทอง มีจริงไหม",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "app หลอกลงทุน",
+    "หลอกลงทุน ทอง",
+    "เทรดทอง หลอกลวง ไหม"
+   ],
+   "longtail": [
+    "เทรด ทอง ถอนเงิน ไม่ ได้"
+   ],
+   "bridges": [
+    "what-is-gold-trading"
+   ],
+   "money": "open-mt5-account",
+   "note": "",
+   "pillar": false,
+   "n": 20,
+   "date": "2026-11-28 09:00",
+   "date_th": "ส. 28 พ.ย. 69"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "fake-pages",
+   "title": "เพจปลอม: เช็กเพจ Facebook และบัญชี LINE ที่แอบอ้างทีมเทรด",
+   "kw": "เพจปลอม",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "เพจปลอมดูยังไง",
+    "ระวังเพจปลอม",
+    "รายงานเพจปลอม",
+    "เพจทองปลอม"
+   ],
+   "longtail": [
+    "ค้นหาเพจปลอม",
+    "เพจปลอมคือ"
+   ],
+   "bridges": [
+    "buy-ea-mt5"
+   ],
+   "money": "about",
+   "note": "ช่องทางจริงของ EA BULL: Facebook และ OpenChat (ยืนยันแล้ว) · LINE OA ยังไม่มี",
+   "pillar": false,
+   "n": 21,
+   "date": "2026-11-29 09:00",
+   "date_th": "อา. 29 พ.ย. 69"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "prop-firm",
+   "title": "กองทุน Forex คืออะไร: สอบกองทุนทำงานยังไง และใช้ EA ได้ไหม",
+   "kw": "กองทุน forex",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "กองทุน forex คือ อะไร",
+    "สอบกองทุน forex",
+    "สอบกองทุน forex คือ อะไร",
+    "กองทุน forex ที่น่าเชื่อถือ",
+    "เทรด กองทุน forex คือ"
+   ],
+   "longtail": [
+    "สอบ กองทุน forex เพื่อ อะไร",
+    "สอบ กองทุน forex ได้ อะไร",
+    "กองทุน forex ไม่ต้องสอบ"
+   ],
+   "bridges": [
+    "drawdown-limiter",
+    "gold-trading-bot"
+   ],
+   "money": "home",
+   "note": "⚠ ไม่จัดอันดับหรือแนะนำกองทุนเจ้าไหน",
+   "pillar": false,
+   "n": 22,
+   "date": "2026-11-30 09:00",
+   "date_th": "จ. 30 พ.ย. 69"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "ea-review-check",
+   "title": "รีวิวบอทเทรด: อ่านรีวิว EA ยังไงให้ไม่โดนหลอก",
+   "kw": "รีวิวบอทเทรด",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "รีวิว ea",
+    "copy trade รีวิว",
+    "myfxbook รีวิว"
+   ],
+   "longtail": [],
+   "bridges": [
+    "overfitting-trading",
+    "copy-trade-gold"
+   ],
+   "money": "forward-test",
+   "note": "",
+   "pillar": false,
+   "n": 23,
+   "date": "2026-12-01 09:00",
+   "date_th": "อ. 1 ธ.ค. 69"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "ai-investment-scam",
+   "title": "AI หลอกลงทุน: คลิปปลอมคนดังชวนเทรด สังเกตยังไง",
+   "kw": "ai หลอกลงทุน",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "หลอกลงทุนออนไลน์",
+    "หลอก ลงทุน คือ",
+    "deepfake หลอกลงทุน"
+   ],
+   "longtail": [],
+   "bridges": [
+    "ai-trading-bot-builder"
+   ],
+   "money": "about",
+   "note": "⚠ ตรวจข้อเท็จจริง",
+   "pillar": false,
+   "n": 24,
+   "date": "2026-12-02 09:00",
+   "date_th": "พ. 2 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "what-is-gold-trading",
+   "title": "เทรดทอง คืออะไร: เทรดทองออนไลน์ทำงานยังไง และเริ่มยังไงให้ถูก",
+   "kw": "เทรดทอง คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "เทรดทองคำ คือ",
+    "เทรดทองออนไลน์",
+    "เทรดทอง forex คือ",
+    "การเทรดทอง forex",
+    "เริ่มเทรดทอง"
+   ],
+   "longtail": [
+    "เทรดทอง ทำยังไง",
+    "เทรดทอง คืออะไร pantip",
+    "เริ่มเทรดทองยังไง",
+    "วิธีเริ่มเทรดทอง"
+   ],
+   "bridges": [
+    "gold-trading-bot",
+    "world-gold-price"
+   ],
+   "money": "open-mt5-account",
+   "note": "",
+   "pillar": true,
+   "n": 25,
+   "date": "2026-12-03 09:00",
+   "date_th": "พฤ. 3 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-vs-forex",
+   "title": "เทรดทองกับ Forex ต่างกันอย่างไร: เทียบทีละข้อก่อนเลือก",
+   "kw": "เทรดทอง กับ forex ต่างกันอย่างไร",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "เทรดทอง คือ forex ไหม",
+    "ทองคำ forex",
+    "เทรดทอง forex"
+   ],
+   "longtail": [],
+   "bridges": [
+    "xauusd-001-lot-thb"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 26,
+   "date": "2026-12-04 09:00",
+   "date_th": "ศ. 4 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-trading-vs-saving",
+   "title": "เทรดทองกับออมทองต่างกันยังไง: เทียบกับทองแท่งและ ETF ทองคำ",
+   "kw": "เทรดทอง กับ ออมทอง ต่างกัน",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "etf ทองคำ คือ",
+    "ออมทอง",
+    "ทองแท่ง"
+   ],
+   "longtail": [
+    "etf ทองคำ ไทย"
+   ],
+   "bridges": [
+    "spdr-gold",
+    "world-gold-price"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 27,
+   "date": "2026-12-05 09:00",
+   "date_th": "ส. 5 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-sessions",
+   "title": "เทรดทองกี่โมงดี: ช่วงลอนดอนและนิวยอร์กที่ทองวิ่งแรง",
+   "kw": "เทรดทอง กี่โมง",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "อเมริกา เริ่มเทรดทองกี่โมง",
+    "เทรดทองคำ 24 ชั่วโมง",
+    "เทรด ทอง วัน จันทร์ เปิด กี่ โมง"
+   ],
+   "longtail": [
+    "เทรดทอง วันศุกร์ปิดกี่โมง",
+    "ราคาทองโลก เปิดกี่โมง"
+   ],
+   "bridges": [
+    "news-filter-ea",
+    "gold-short-term"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง · EA WING มี \"xauusd เปิดกี่โมง\" (เวลาเปิดปิด): บทนี้คือช่วงที่ทองวิ่ง",
+   "pillar": false,
+   "n": 28,
+   "date": "2026-12-06 09:00",
+   "date_th": "อา. 6 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-trading-costs",
+   "title": "เทรดทองมีค่าธรรมเนียมไหม: Spread Commission Swap ต้นทุนที่จ่ายจริง",
+   "kw": "เทรดทอง มีค่าธรรมเนียมไหม",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ค่าธรรมเนียมเทรดทอง",
+    "swap ทองคำ",
+    "commission ทองคำ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "position-size"
+   ],
+   "money": "open-mt5-account",
+   "note": "",
+   "pillar": false,
+   "n": 29,
+   "date": "2026-12-07 09:00",
+   "date_th": "จ. 7 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-mt5-first-order",
+   "title": "เทรดทองใน MT5: เปิดออเดอร์ทองครั้งแรกทีละขั้น",
+   "kw": "เทรดทอง mt5",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "เทรดทอง metatrader 5",
+    "เทรด ทอง forex mt5",
+    "กราฟทอง mt5"
+   ],
+   "longtail": [
+    "เทรด ทอง buy sell คือ"
+   ],
+   "bridges": [
+    "stop-loss-take-profit",
+    "gold-trading-program"
+   ],
+   "money": "mt5-login",
+   "note": "",
+   "pillar": false,
+   "n": 30,
+   "date": "2026-12-08 09:00",
+   "date_th": "อ. 8 ธ.ค. 69"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "gold-trading-capital",
+   "title": "เทรดทองต้องมีทุนเท่าไหร่: คิดทุนและขนาดไม้ให้พอร์ตรับแรงเหวี่ยงไหว",
+   "kw": "เทรดทอง ต้องมีทุนเท่าไหร่",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "เทรดทองควรมีทุนเท่าไหร่",
+    "เทรดทอง ทุนน้อย",
+    "เทรด ทอง ทุน เท่า ไหร่",
+    "ขนาดไม้"
+   ],
+   "longtail": [
+    "เทรด ทอง กัน หน้า ทุน คือ"
+   ],
+   "bridges": [
+    "what-is-gold-trading",
+    "buy-ea-mt5"
+   ],
+   "money": "tools",
+   "note": "ห้ามบอกทุนแนะนำของ EA BULL (ยังไม่มีข้อมูล)",
+   "pillar": true,
+   "n": 31,
+   "date": "2026-12-09 09:00",
+   "date_th": "พ. 9 ธ.ค. 69"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "xauusd-001-lot-thb",
+   "title": "XAUUSD 0.01 Lot เท่ากับกี่บาท: มูลค่าต่อจุดและ Margin ที่ต้องมี",
+   "kw": "xauusd 0.01 lot เท่ากับกี่บาท",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "xauusd 1 lot เท่ากับกี่บาท",
+    "xauusd 0.01 lot margin",
+    "xauusd 1 lot margin",
+    "คำนวณ lot ทองคำ"
+   ],
+   "longtail": [
+    "xauusd micro lot",
+    "1 lot ทองคำ"
+   ],
+   "bridges": [
+    "gold-vs-forex"
+   ],
+   "money": "tools",
+   "note": "ตรวจข้อเท็จจริง · EA WING มี \"ทองคำ 1 lot\" (ขนาดสัญญา): บทนี้คิดเป็นเงินบาท",
+   "pillar": false,
+   "n": 32,
+   "date": "2026-12-10 09:00",
+   "date_th": "พฤ. 10 ธ.ค. 69"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "blown-account",
+   "title": "พอร์ตแตก คืออะไร: ทำไมบัญชีเทรดหมดได้ และสัญญาณก่อนแตก",
+   "kw": "พอร์ตแตก",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "พอร์ตแตก คือ",
+    "พอร์ตทองแตก",
+    "ล้างพอร์ต คือ",
+    "โดนล้างพอร์ต",
+    "พอร์ตแตกทำไงดี"
+   ],
+   "longtail": [
+    "mt5 พอร์ตแตก",
+    "พอร์ตแตก pantip",
+    "ล้างพอร์ต ทอง"
+   ],
+   "bridges": [
+    "cut-loss",
+    "monte-carlo-trading"
+   ],
+   "money": "tools",
+   "note": "ลิงก์ /risk-disclosure/ ได้ 1 ครั้ง",
+   "pillar": false,
+   "n": 33,
+   "date": "2026-12-11 09:00",
+   "date_th": "ศ. 11 ธ.ค. 69"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "position-size",
+   "title": "Position Size คืออะไร: คำนวณขนาดไม้จากทุนและจุด Stop Loss",
+   "kw": "position size คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "คำนวณ position size",
+    "position size คือ อะไร"
+   ],
+   "longtail": [],
+   "bridges": [
+    "stop-loss-take-profit"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 34,
+   "date": "2026-12-12 09:00",
+   "date_th": "ส. 12 ธ.ค. 69"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "fixed-lot-vs-auto-lot",
+   "title": "Fixed Lot กับ Lot อัตโนมัติ: EA ควรออกไม้แบบไหน",
+   "kw": "fixed lot คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "fixed lot size คือ",
+    "lot อัตโนมัติ",
+    "auto lot"
+   ],
+   "longtail": [],
+   "bridges": [
+    "ea-settings"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 35,
+   "date": "2026-12-13 09:00",
+   "date_th": "อา. 13 ธ.ค. 69"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "stuck-trade",
+   "title": "ติดดอยคืออะไร: ทองติดดอยแล้วทำยังไงต่อ",
+   "kw": "ติดดอย คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "ติดดอยทอง",
+    "ติดดอยทำไง",
+    "ติดดอยทองคำ"
+   ],
+   "longtail": [
+    "ติดดอยทอง pantip",
+    "ติด ดอย ทอง คือ"
+   ],
+   "bridges": [
+    "averaging-dca",
+    "cut-loss"
+   ],
+   "money": "tools",
+   "note": "⚠",
+   "pillar": false,
+   "n": 36,
+   "date": "2026-12-14 09:00",
+   "date_th": "จ. 14 ธ.ค. 69"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "stop-loss-take-profit",
+   "title": "Stop Loss กับ Take Profit คืออะไร: ตั้ง SL TP ยังไงให้มีแผน",
+   "kw": "stop loss คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "take profit คือ",
+    "sl tp คือ",
+    "stop loss กับ take profit คือ",
+    "stop loss ทอง คือ",
+    "take profit stop loss คือ"
+   ],
+   "longtail": [
+    "จุด stop loss คือ",
+    "stop loss มีกี่แบบ",
+    "การตั้ง sl กับ tp ใน mt5",
+    "เทรดทอง sl tp คืออะไร"
+   ],
+   "bridges": [
+    "position-size",
+    "gold-mt5-first-order"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": true,
+   "n": 37,
+   "date": "2026-12-15 09:00",
+   "date_th": "อ. 15 ธ.ค. 69"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "trailing-stop",
+   "title": "Trailing Stop คืออะไร: เลื่อน Stop Loss ตามราคาอัตโนมัติ",
+   "kw": "trailing stop คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "trailing stop mt5",
+    "trailing stop loss คือ",
+    "trailing stop กับ stop loss ต่างกันอย่างไร",
+    "trailing stop ตั้งอย่างไร"
+   ],
+   "longtail": [
+    "trailing stop ทำงานยังไง",
+    "trailing stop ตั้งค่าอะไรบ้าง"
+   ],
+   "bridges": [
+    "trend-following"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 38,
+   "date": "2026-12-16 09:00",
+   "date_th": "พ. 16 ธ.ค. 69"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "break-even",
+   "title": "Break Even คืออะไร: เลื่อน SL มาจุดคุ้มทุนตอนไหนดี",
+   "kw": "break even คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "break even forex คือ",
+    "break even ในการเทรด คือ",
+    "break even point คือ"
+   ],
+   "longtail": [
+    "break even แปลว่า"
+   ],
+   "bridges": [
+    "ea-settings"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 39,
+   "date": "2026-12-17 09:00",
+   "date_th": "พฤ. 17 ธ.ค. 69"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "cut-loss",
+   "title": "Cut Loss คืออะไร: ตัดขาดทุนตอนไหน ต่างจาก Stop Loss ยังไง",
+   "kw": "cut loss คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "คัทลอส คือ",
+    "cut loss ทอง",
+    "cut loss กับ stop loss",
+    "ควร cut loss ที่เท่าไหร่",
+    "จุด cut loss คือ"
+   ],
+   "longtail": [
+    "cut loss กี่เปอร์เซ็นต์"
+   ],
+   "bridges": [
+    "blown-account",
+    "stuck-trade"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 40,
+   "date": "2026-12-18 09:00",
+   "date_th": "ศ. 18 ธ.ค. 69"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "close-all-orders-mt5",
+   "title": "ปิดออเดอร์ทั้งหมด MT5: ปิดทีเดียวทั้งในคอมและมือถือ",
+   "kw": "ปิดออเดอร์ทั้งหมด mt5",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "close all mt5",
+    "วิธีปิดออเดอร์ทั้งหมด mt5 มือถือ",
+    "ปิดออเดอร์ mt5 พร้อมกัน",
+    "close all mt5 android"
+   ],
+   "longtail": [
+    "ปิดออเดอร์ mt5 ทั้งหมด pc",
+    "close all mt5 script"
+   ],
+   "bridges": [
+    "ea-power-outage"
+   ],
+   "money": "mt5-login",
+   "note": "ตรวจข้อเท็จจริง (เมนู Bulk Operations)",
+   "pillar": false,
+   "n": 41,
+   "date": "2026-12-19 09:00",
+   "date_th": "ส. 19 ธ.ค. 69"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "buy-limit-buy-stop",
+   "title": "Buy Limit กับ Buy Stop ต่างกันยังไง: คำสั่งรอใน MT5 ใช้ตอนไหน",
+   "kw": "buy limit กับ buy stop",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "buy limit คือ",
+    "buy stop คือ",
+    "sell limit sell stop",
+    "buy stop limit คือ",
+    "pending order คือ"
+   ],
+   "longtail": [
+    "buy limit buy stop คือ",
+    "buy limit sell stop คือ"
+   ],
+   "bridges": [
+    "breakout"
+   ],
+   "money": "mt5-login",
+   "note": "EA WING มี \"คำสั่ง mt5\" (ประเภทคำสั่ง): บทนี้เน้นเลือก Buy Limit หรือ Buy Stop กับทอง",
+   "pillar": false,
+   "n": 42,
+   "date": "2026-12-20 09:00",
+   "date_th": "อา. 20 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "gold-trading-techniques",
+   "title": "เทคนิคเทรดทอง: กลยุทธ์หลักที่เทรดเดอร์และ EA ใช้ เลือกให้เข้ากับตัวเอง",
+   "kw": "เทคนิคเทรดทอง",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "กลยุทธ์เทรดทอง",
+    "เทคนิคการเทรดทองคำ",
+    "สูตรเทรดทอง",
+    "เทรดทอง มีเทคนิคอะไรบ้าง"
+   ],
+   "longtail": [
+    "รวมเทคนิคเทรดทอง",
+    "กลยุทธ์การเทรดทองคำ",
+    "เทคนิคเทรดทอง m15"
+   ],
+   "bridges": [
+    "gold-trading-system",
+    "gold-chart-reading"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": true,
+   "n": 43,
+   "date": "2026-12-21 09:00",
+   "date_th": "จ. 21 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "gold-short-term",
+   "title": "เทรดทองระยะสั้น: Scalping ทองทำงานยังไง และต้นทุนที่ต้องคิด",
+   "kw": "เทรดทองระยะสั้น",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "เทคนิคเทรดทองระยะสั้น",
+    "เทรดทองระยะสั้น คือ",
+    "วิธีเทรดทองระยะสั้น",
+    "scalping ทอง",
+    "scalping คือ"
+   ],
+   "longtail": [
+    "เทรดทองระยะสั้น pantip",
+    "ข้อดีของการเทรดทองระยะสั้น",
+    "เทรดทองระยะสั้นดีไหม"
+   ],
+   "bridges": [
+    "xauusd-spread"
+   ],
+   "money": "backtest",
+   "note": "⚠ · EA WING มี \"ea scalping คือ\": บทนี้คือการเทรดทองระยะสั้น",
+   "pillar": false,
+   "n": 44,
+   "date": "2026-12-22 09:00",
+   "date_th": "อ. 22 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "breakout",
+   "title": "Breakout คืออะไร: เทรดตอนราคาทะลุกรอบ และกับดัก False Breakout",
+   "kw": "breakout คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "breakout forex คือ",
+    "breakout ทอง",
+    "กลยุทธ์ breakout",
+    "false breakout คือ",
+    "breakout กราฟ"
+   ],
+   "longtail": [
+    "breakout คือ อะไร",
+    "กราฟ breakout คือ"
+   ],
+   "bridges": [
+    "buy-limit-buy-stop",
+    "support-resistance"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 45,
+   "date": "2026-12-23 09:00",
+   "date_th": "พ. 23 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "trend-following",
+   "title": "Trend Following คืออะไร: เทรดตามเทรนด์ทองแบบมีกติกา",
+   "kw": "trend following คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "เทรดตามเทรนด์",
+    "กลยุทธ์ trend following",
+    "ระบบ trend following",
+    "trend following strategy"
+   ],
+   "longtail": [
+    "เทรด ตาม เทรน คือ"
+   ],
+   "bridges": [
+    "trailing-stop",
+    "ema"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 46,
+   "date": "2026-12-24 09:00",
+   "date_th": "พฤ. 24 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "gold-5-minute",
+   "title": "เทคนิคเทรดทอง 5 นาที: เทรด M5 และ M1 ต้องระวังอะไร",
+   "kw": "เทคนิคเทรดทอง 5 นาที",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ระบบเทรดทอง 5 นาที",
+    "เทคนิคการเทรดทองคำ 5 นาที",
+    "เทรดทอง m5",
+    "เทรดทอง m1",
+    "ระบบเทรดทอง m1"
+   ],
+   "longtail": [
+    "เทคนิคเทรดทอง m1",
+    "เทรดทองคำ m5"
+   ],
+   "bridges": [
+    "timeframe"
+   ],
+   "money": "backtest",
+   "note": "⚠",
+   "pillar": false,
+   "n": 47,
+   "date": "2026-12-25 09:00",
+   "date_th": "ศ. 25 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "day-trade",
+   "title": "Day Trade คืออะไร: เทรดทองจบในวันต่างจากถือข้ามคืนยังไง",
+   "kw": "day trade คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "day trade ทอง",
+    "กลยุทธ์ day trade",
+    "เทรดทอง รายวัน",
+    "วิธี day trade"
+   ],
+   "longtail": [
+    "เทรดทอง รายวัน ดีไหม",
+    "day trade มือใหม่"
+   ],
+   "bridges": [
+    "gold-sessions"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 48,
+   "date": "2026-12-26 09:00",
+   "date_th": "ส. 26 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "world-gold-price",
+   "title": "ราคาทองโลก คืออะไร: มาจากไหน ใครกำหนด และดูที่ไหน",
+   "kw": "ราคาทองโลก",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "ราคาทองโลก คือ",
+    "ราคาทองโลก ใครกำหนด",
+    "ราคาทองโลก ดูที่ไหน",
+    "ราคาทองโลก คิดยังไง",
+    "ราคาทองโลก หน่วยเป็นอะไร"
+   ],
+   "longtail": [
+    "ราคาทองโลกเรียลไทม์",
+    "กราฟราคาทองโลก",
+    "ราคาทองเท่ากันทั่วโลกไหม",
+    "ราคาทองโลก ต่อออนซ์"
+   ],
+   "bridges": [
+    "what-is-gold-trading",
+    "gold-chart-reading"
+   ],
+   "money": "home",
+   "note": "ไม่ใส่ราคาวันนี้ (ต้องอัปเดตทุกวัน)",
+   "pillar": true,
+   "n": 49,
+   "date": "2026-12-27 09:00",
+   "date_th": "อา. 27 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "gold-world-vs-thai",
+   "title": "ราคาทองโลกกับราคาทองไทย: คิดเป็นเงินบาทยังไง ทำไมขยับไม่เท่ากัน",
+   "kw": "ราคาทองโลก กับ ราคาทองไทย",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "ราคาทองโลก คิดเป็นเงินไทย",
+    "ราคาทองโลก เทียบ ทองไทย",
+    "ราคาทองโลก กี่บาท",
+    "บาททองคำ"
+   ],
+   "longtail": [
+    "ทองคำ 1 บาท กี่กรัม",
+    "ทอง คำ บาท ต่อ ออนซ์"
+   ],
+   "bridges": [
+    "xauusd-001-lot-thb"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง (สูตรแปลงหน่วย)",
+   "pillar": false,
+   "n": 50,
+   "date": "2026-12-28 09:00",
+   "date_th": "จ. 28 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "gold-ounce",
+   "title": "ทองคำ 1 ออนซ์ เท่ากับกี่บาท: ทรอยออนซ์ กรัม และบาททองคำ",
+   "kw": "ทองคำ 1 ออนซ์",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "ทองคำ 1 ทรอยออนซ์",
+    "ทองคำ 1 ออนซ์ กี่กรัม",
+    "ทองคำ 1 ออนซ์ เท่ากับกี่บาท",
+    "ออนซ์ ทอง",
+    "oz ทอง คือ"
+   ],
+   "longtail": [
+    "ทองคำ 1 ออนซ์มีกี่บาท",
+    "ทองคำ 1 ออนซ์กี่ดอลลาร์"
+   ],
+   "bridges": [
+    "xauusd-minimum-lot"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง",
+   "pillar": false,
+   "n": 51,
+   "date": "2026-12-29 09:00",
+   "date_th": "อ. 29 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "dxy",
+   "title": "DXY คืออะไร: ดัชนีดอลลาร์กับราคาทองสัมพันธ์กันยังไง",
+   "kw": "dxy คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "dollar index คือ",
+    "dxy กับทอง",
+    "dxy ลง ทองขึ้น",
+    "dollar index กับราคาทอง",
+    "dxy ดูยังไง"
+   ],
+   "longtail": [
+    "dxy mt5",
+    "dxy แข็งค่า",
+    "dxy อ่อนค่า",
+    "dxy บอกอะไร"
+   ],
+   "bridges": [
+    "trend-following"
+   ],
+   "money": "home",
+   "note": "EA WING มี \"ทองคำ ดอลลาร์\": บทนี้อธิบายตัว DXY เป็นหลัก",
+   "pillar": false,
+   "n": 52,
+   "date": "2026-12-30 09:00",
+   "date_th": "พ. 30 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "fed-rates-gold",
+   "title": "ดอกเบี้ยขึ้น ทองลงจริงไหม: Fed กับราคาทองคำ",
+   "kw": "ดอกเบี้ยขึ้น ทองลง",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "ทำไมดอกเบี้ยขึ้นทองลง",
+    "fed ลดดอกเบี้ย ทอง",
+    "เฟด ทองคำ",
+    "ดอกเบี้ยขึ้น ทองจะขึ้นหรือลง"
+   ],
+   "longtail": [
+    "fed คง ดอกเบี้ย ทอง ขึ้น หรือ ลง",
+    "เฟด ลด ดอกเบี้ย มี ผล ต่อ ทอง อย่างไร"
+   ],
+   "bridges": [
+    "news-filter-ea"
+   ],
+   "money": "home",
+   "note": "EA WING มี \"fomc คือ\"",
+   "pillar": false,
+   "n": 53,
+   "date": "2026-12-31 09:00",
+   "date_th": "พฤ. 31 ธ.ค. 69"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "bond-yield-gold",
+   "title": "Bond Yield คืออะไร: ผลตอบแทนพันธบัตรสหรัฐฯ กดดันราคาทองยังไง",
+   "kw": "bond yield คือ",
+   "stars": 2,
+   "round": 1,
+   "kw2": [
+    "bond yield สหรัฐฯ",
+    "bond yield กับราคา",
+    "bond yield บอกอะไร",
+    "bond yield ดูที่ไหน"
+   ],
+   "longtail": [],
+   "bridges": [
+    "swing-trade"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 54,
+   "date": "2027-01-01 09:00",
+   "date_th": "ศ. 1 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "gold-chart-reading",
+   "title": "วิเคราะห์กราฟทอง: อ่านกราฟทองคำให้เป็น ตั้งแต่แท่งเทียนถึง Indicator",
+   "kw": "วิเคราะห์กราฟทอง",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "กราฟทองคำ",
+    "วิธีวิเคราะห์กราฟทอง",
+    "สอนวิเคราะห์กราฟทอง",
+    "กราฟทอง mt5",
+    "การวิเคราะห์กราฟทองคำ"
+   ],
+   "longtail": [
+    "กราฟทองคำเรียลไทม์",
+    "ai วิเคราะห์กราฟทอง",
+    "กราฟทอง m5"
+   ],
+   "bridges": [
+    "gold-trading-techniques",
+    "world-gold-price"
+   ],
+   "money": "home",
+   "note": "ไม่วิเคราะห์ทองรายวัน",
+   "pillar": true,
+   "n": 55,
+   "date": "2027-01-02 09:00",
+   "date_th": "ส. 2 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "candlestick-chart",
+   "title": "กราฟแท่งเทียน คืออะไร: อ่านแท่งเทียนทองคำให้เป็น",
+   "kw": "กราฟแท่งเทียน",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "กราฟแท่งเทียน คือ",
+    "แท่งเทียน คือ",
+    "อ่านกราฟแท่งเทียน",
+    "กราฟแท่งเทียนทองคำ",
+    "แท่งเทียนกลับตัว"
+   ],
+   "longtail": [
+    "แท่งเทียน doji",
+    "แท่งเทียน hammer",
+    "กราฟแท่งเทียนอ่านยังไง"
+   ],
+   "bridges": [
+    "visual-mode-mt5"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 56,
+   "date": "2027-01-03 09:00",
+   "date_th": "อา. 3 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "support-resistance",
+   "title": "แนวรับแนวต้าน คืออะไร: หาแนวรับแนวต้านทองคำยังไง",
+   "kw": "แนวรับแนวต้าน",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "แนวรับแนวต้าน คือ",
+    "แนวรับแนวต้านทอง",
+    "แนวรับ ทอง",
+    "แนวรับแนวต้าน mt5",
+    "สอนแนวรับแนวต้าน"
+   ],
+   "longtail": [
+    "แนวรับแนวต้านคืออะไร",
+    "วิเคราะห์แนวรับทอง",
+    "กรอบแนวรับแนวต้าน"
+   ],
+   "bridges": [
+    "breakout"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 57,
+   "date": "2027-01-04 09:00",
+   "date_th": "จ. 4 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "what-is-indicator",
+   "title": "Indicator คืออะไร: ตัวชี้วัดบนกราฟ MT5 มีกี่แบบ ใช้ยังไง",
+   "kw": "indicator คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "indicator คืออะไร",
+    "indicator ทองคำ",
+    "leading indicator คือ",
+    "lagging indicator คือ"
+   ],
+   "longtail": [
+    "indicator mt5"
+   ],
+   "bridges": [
+    "ea-vs-indicator"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 58,
+   "date": "2027-01-05 09:00",
+   "date_th": "อ. 5 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "ema",
+   "title": "EMA คืออะไร: เส้นค่าเฉลี่ยที่เทรดทองใช้กัน ตั้งค่ายังไง",
+   "kw": "ema คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "เส้น ema คือ",
+    "ema 200 คือ",
+    "ema ใน mt5",
+    "เส้น ema เทรดทอง",
+    "ema cross คือ",
+    "ma คือ"
+   ],
+   "longtail": [
+    "เส้น ema ที่นิยมใช้",
+    "เส้น ema 50 คือ",
+    "เส้น ema ตั้งค่า"
+   ],
+   "bridges": [
+    "trend-following"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 59,
+   "date": "2027-01-06 09:00",
+   "date_th": "พ. 6 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "rsi",
+   "title": "RSI คืออะไร: ดูแรงซื้อขายทองคำ Overbought Oversold",
+   "kw": "rsi คือ",
+   "stars": 3,
+   "round": 1,
+   "kw2": [
+    "rsi ทองคำ",
+    "rsi ทอง คือ",
+    "rsi 14 คือ",
+    "สัญญาณ rsi",
+    "stochastic rsi คือ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "mean-reversion"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 60,
+   "date": "2027-01-07 09:00",
+   "date_th": "พฤ. 7 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "algo-trading",
+   "title": "Algo Trading คืออะไร: เทรดด้วยอัลกอริทึมบน MT5 ทำงานยังไง",
+   "kw": "algo trading คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "algo trading mt5 คือ",
+    "mql5 algo trading คือ",
+    "algo trading metatrader 5"
+   ],
+   "longtail": [
+    "algo trading คือ อะไร"
+   ],
+   "bridges": [
+    "strategy-tester-mt5"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 61,
+   "date": "2027-01-08 09:00",
+   "date_th": "ศ. 8 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "build-trading-bot",
+   "title": "สร้างบอทเทรดเอง: เขียนบอทเทรดทองบน MT5 ต้องรู้อะไรบ้าง",
+   "kw": "สร้างบอทเทรด",
+   "stars": 3,
+   "round": 2,
+   "kw2": [
+    "เขียนบอทเทรด",
+    "สร้างบอทเทรด mt5",
+    "สร้างบอทเทรดทอง",
+    "สอนเขียนบอทเทรด",
+    "วิธีสร้างบอทเทรด"
+   ],
+   "longtail": [
+    "การสร้างบอทเทรดใน mt5",
+    "ea ใช้ภาษาอะไร",
+    "รับเขียนบอทเทรด"
+   ],
+   "bridges": [
+    "backtest-explained",
+    "overfitting-trading"
+   ],
+   "money": "pricing",
+   "note": "",
+   "pillar": false,
+   "n": 62,
+   "date": "2027-01-09 09:00",
+   "date_th": "ส. 9 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "ai-trading-bot-builder",
+   "title": "ให้ AI สร้างบอทเทรด: ได้จริงแค่ไหน และต้องเช็กอะไรก่อนใช้เงินจริง",
+   "kw": "ai สร้างบอทเทรด",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ai เขียนบอทเทรด",
+    "สร้างบอทเทรดด้วย ai",
+    "ใช้ ai สร้าง ea",
+    "บอทเทรด ai"
+   ],
+   "longtail": [
+    "ea ที่ใช้ ai",
+    "เทรดทองด้วย ai"
+   ],
+   "bridges": [
+    "walk-forward",
+    "ai-investment-scam"
+   ],
+   "money": "pricing",
+   "note": "",
+   "pillar": false,
+   "n": 63,
+   "date": "2027-01-10 09:00",
+   "date_th": "อา. 10 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "rent-vs-buy-ea",
+   "title": "เช่า EA หรือซื้อขาด: เทียบ EA รายเดือนกับจ่ายครั้งเดียว",
+   "kw": "เช่า ea",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ea รายเดือน",
+    "เช่าea เทรด",
+    "ea ฟรีตลอดชีพ"
+   ],
+   "longtail": [
+    "สมัคร ea รายเดือน"
+   ],
+   "bridges": [
+    "trading-scams"
+   ],
+   "money": "pricing",
+   "note": "EA BULL จ่ายครั้งเดียว ไม่มีรายเดือน (ยืนยันแล้ว)",
+   "pillar": false,
+   "n": 64,
+   "date": "2027-01-11 09:00",
+   "date_th": "จ. 11 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "copy-trade-gold",
+   "title": "Copy Trade ทอง กับบอทเทรดทอง: ตามออเดอร์คนอื่นหรือให้ EA เทรด",
+   "kw": "copy trade ทอง",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "copy trade ดีไหม",
+    "ระบบ copy trade",
+    "ea copy trade คือ",
+    "social trading คือ"
+   ],
+   "longtail": [
+    "copy trade รีวิว",
+    "copy trade ทำยังไง"
+   ],
+   "bridges": [
+    "ea-review-check"
+   ],
+   "money": "home",
+   "note": "EA WING มี \"copy trade คือ\" แล้ว: บทนี้เทียบกับบอทเทรดทองเท่านั้น",
+   "pillar": false,
+   "n": 65,
+   "date": "2027-01-12 09:00",
+   "date_th": "อ. 12 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-bot",
+   "slug": "ea-vs-indicator",
+   "title": "EA กับ Indicator ต่างกันยังไง: ไฟล์ไหนเทรดให้ ไฟล์ไหนแค่ชี้สัญญาณ",
+   "kw": "ea กับ indicator",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "indicator mt5",
+    "script mt5",
+    "ไฟล์ ex5"
+   ],
+   "longtail": [],
+   "bridges": [
+    "what-is-indicator"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 66,
+   "date": "2027-01-13 09:00",
+   "date_th": "พ. 13 ม.ค. 70"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "mt5-web-terminal",
+   "title": "MT5 Web Terminal: เทรดบนเว็บได้ แต่รัน EA ได้ไหม",
+   "kw": "mt5 web terminal",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "mt5 บนเว็บ",
+    "mt5 webtrader",
+    "mt5 web login",
+    "mt5 web app"
+   ],
+   "longtail": [
+    "mt5 web terminal real account"
+   ],
+   "bridges": [
+    "gold-trading-program"
+   ],
+   "money": "mt5-login",
+   "note": "",
+   "pillar": false,
+   "n": 67,
+   "date": "2027-01-14 09:00",
+   "date_th": "พฤ. 14 ม.ค. 70"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "mt5-cloud",
+   "title": "MT5 Cloud: Virtual Hosting กับ MQL5 Cloud Network ต่างกันยังไง",
+   "kw": "mt5 cloud",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "mt5 cloud server",
+    "mt5 cloud vps",
+    "mql5 cloud network"
+   ],
+   "longtail": [
+    "mt5 cloud network mode is off"
+   ],
+   "bridges": [
+    "optimize-ea-mt5"
+   ],
+   "money": "vps-windows",
+   "note": "",
+   "pillar": false,
+   "n": 68,
+   "date": "2027-01-15 09:00",
+   "date_th": "ศ. 15 ม.ค. 70"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "ea-not-working-check",
+   "title": "EA MT5 ไม่ทำงาน: เช็กทีละจุดว่า EA ยังรันอยู่จริงไหม",
+   "kw": "ea mt5 ไม่ทำงาน",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ea ไม่ทำงาน",
+    "ea ไม่ทำงาน mt5"
+   ],
+   "longtail": [
+    "ไอคอน ea บนกราฟ",
+    "ea หายจากกราฟ"
+   ],
+   "bridges": [
+    "ea-settings"
+   ],
+   "money": "how-to-install",
+   "note": "EA WING มี \"EA ไม่เปิดออเดอร์\" (EA รันแต่ไม่เทรด): บทนี้คือ EA ไม่รันเลย",
+   "pillar": false,
+   "n": 69,
+   "date": "2027-01-16 09:00",
+   "date_th": "ส. 16 ม.ค. 70"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "mt5-update",
+   "title": "อัปเดต MT5: วิธีอัปเดตในคอมและ VPS โดยที่ EA ไม่สะดุด",
+   "kw": "mt5 อัพเดท",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "อัพเดท mt5 ยังไง",
+    "วิธีอัพเดท mt5 ในคอม",
+    "mt5 อัพเดท ล่าสุด"
+   ],
+   "longtail": [],
+   "bridges": [
+    "download-mt5"
+   ],
+   "money": "mt5-login",
+   "note": "",
+   "pillar": false,
+   "n": 70,
+   "date": "2027-01-17 09:00",
+   "date_th": "อา. 17 ม.ค. 70"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "mt5-linux",
+   "title": "MT5 บน Linux: รันบน VPS Linux ได้ไหม และต่างจาก Windows ตรงไหน",
+   "kw": "mt5 linux",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "mt5 linux vps",
+    "mt5 linux ubuntu",
+    "mt5 linux install"
+   ],
+   "longtail": [],
+   "bridges": [
+    "strategy-tester-mt5"
+   ],
+   "money": "vps-windows",
+   "note": "",
+   "pillar": false,
+   "n": 71,
+   "date": "2027-01-18 09:00",
+   "date_th": "จ. 18 ม.ค. 70"
+  },
+  {
+   "cluster": "run-ea",
+   "slug": "ea-power-outage",
+   "title": "ไฟดับ เน็ตหลุด ระหว่าง EA เทรด: ออเดอร์ค้างเป็นยังไง และต้องเช็กอะไร",
+   "kw": "ไฟดับ ea",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "เน็ตหลุด mt5",
+    "mt5 หลุด",
+    "ea หยุดทำงาน"
+   ],
+   "longtail": [],
+   "bridges": [
+    "stop-loss-take-profit"
+   ],
+   "money": "vps-windows",
+   "note": "คำถามลูกค้า (Autocomplete ยังไม่มี)",
+   "pillar": false,
+   "n": 72,
+   "date": "2027-01-19 09:00",
+   "date_th": "อ. 19 ม.ค. 70"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "strategy-tester-mt5",
+   "title": "Strategy Tester MT5: เมนูและโหมดทดสอบทุกตัวที่ต้องรู้",
+   "kw": "strategy tester mt5",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "strategy tester",
+    "mt5 strategy tester agent",
+    "strategy tester mt5 shortcut"
+   ],
+   "longtail": [],
+   "bridges": [
+    "algo-trading"
+   ],
+   "money": "backtest",
+   "note": "EA WING มี \"backtest mt5 ไม่ได้\" (แก้ปัญหา): บทนี้คือแผนที่เมนู",
+   "pillar": false,
+   "n": 73,
+   "date": "2027-01-20 09:00",
+   "date_th": "พ. 20 ม.ค. 70"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "tick-data-mt5",
+   "title": "Tick Data คืออะไร: ข้อมูลราคาทีละ Tick สำคัญกับการทดสอบ EA ยังไง",
+   "kw": "tick data คือ",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "tick data mt5",
+    "tick data manager",
+    "tick data download"
+   ],
+   "longtail": [],
+   "bridges": [
+    "bid-ask"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 74,
+   "date": "2027-01-21 09:00",
+   "date_th": "พฤ. 21 ม.ค. 70"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "max-spread",
+   "title": "Max Spread คืออะไร: ค่าที่ EA ใช้กันเข้าออเดอร์ตอนสเปรดกว้าง",
+   "kw": "max spread คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "max spread forex",
+    "xauusd max spread",
+    "max spread points"
+   ],
+   "longtail": [],
+   "bridges": [
+    "xauusd-spread"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 75,
+   "date": "2027-01-22 09:00",
+   "date_th": "ศ. 22 ม.ค. 70"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "news-filter-ea",
+   "title": "News Filter EA: หยุดเปิดออเดอร์ช่วงข่าวแรง ทำงานยังไง",
+   "kw": "news filter ea",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "news filter ea mt5",
+    "mql5 news filter ea"
+   ],
+   "longtail": [],
+   "bridges": [
+    "fed-rates-gold"
+   ],
+   "money": "backtest",
+   "note": "⚠",
+   "pillar": false,
+   "n": 76,
+   "date": "2027-01-23 09:00",
+   "date_th": "ส. 23 ม.ค. 70"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "monte-carlo-trading",
+   "title": "Monte Carlo คืออะไร: สุ่มลำดับออเดอร์ดูความเสี่ยงที่ Backtest ไม่บอก",
+   "kw": "monte carlo คือ",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "monte carlo simulation คือ",
+    "monte carlo method คือ",
+    "walk forward monte carlo"
+   ],
+   "longtail": [],
+   "bridges": [
+    "blown-account"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 77,
+   "date": "2027-01-24 09:00",
+   "date_th": "อา. 24 ม.ค. 70"
+  },
+  {
+   "cluster": "ea-testing",
+   "slug": "visual-mode-mt5",
+   "title": "Visual Mode MT5: ดู EA เทรดย้อนหลังทีละแท่งเทียน",
+   "kw": "visual mode mt5",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "strategy tester visualization",
+    "backtest แบบเห็นกราฟ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "candlestick-chart"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 78,
+   "date": "2027-01-25 09:00",
+   "date_th": "จ. 25 ม.ค. 70"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "download-mt5",
+   "title": "ดาวน์โหลด MT5: โหลดของแท้จากที่ไหน ทั้งคอม มือถือ และ VPS",
+   "kw": "ดาวน์โหลด mt5",
+   "stars": 3,
+   "round": 2,
+   "kw2": [
+    "ดาวน์โหลด mt5 pc",
+    "ดาวน์โหลด mt5 ฟรี",
+    "วิธีดาวน์โหลด mt5 ในคอม",
+    "download mt5 for windows"
+   ],
+   "longtail": [
+    "ดาวน์โหลด mt5 ลงคอม",
+    "วิธีดาวน์โหลด mt5 ในโน้ตบุ๊ก"
+   ],
+   "bridges": [
+    "mt5-update",
+    "run-ea-guide"
+   ],
+   "money": "mt5-login",
+   "note": "เพจ /mt5-login/ ถือคีย์ \"ล็อกอิน MT5\": บทนี้เน้นแหล่งโหลดของแท้ · ห้ามใช้ชื่อโบรกเกอร์อื่น",
+   "pillar": false,
+   "n": 79,
+   "date": "2027-01-26 09:00",
+   "date_th": "อ. 26 ม.ค. 70"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "forex-ponzi",
+   "title": "แชร์ลูกโซ่ Forex: สังเกตยังไง ต่างจากการเทรดจริงตรงไหน",
+   "kw": "แชร์ลูกโซ่ forex",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "แชร์ลูกโซ่ forex คืออะไร",
+    "คดีแชร์ลูกโซ่ forex",
+    "ข่าวแชร์ลูกโซ่ forex"
+   ],
+   "longtail": [],
+   "bridges": [
+    "what-is-gold-trading"
+   ],
+   "money": "about",
+   "note": "⚠ ไม่เล่ารายละเอียดคดีหรือชื่อบุคคล",
+   "pillar": false,
+   "n": 80,
+   "date": "2027-01-27 09:00",
+   "date_th": "พ. 27 ม.ค. 70"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "investment-scam-report",
+   "title": "โดนหลอกลงทุนต้องทำยังไง: ขั้นตอนแจ้งความและอายัดบัญชี",
+   "kw": "โดนหลอกลงทุน",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "หลอกลงทุนออนไลน์ แจ้งความ",
+    "โดนหลอก ร่วมลงทุน"
+   ],
+   "longtail": [],
+   "bridges": [
+    "buy-ea-mt5"
+   ],
+   "money": "about",
+   "note": "ตรวจข้อเท็จจริง (สายด่วนและขั้นตอนของรัฐ)",
+   "pillar": false,
+   "n": 81,
+   "date": "2027-01-28 09:00",
+   "date_th": "พฤ. 28 ม.ค. 70"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "trading-groups",
+   "title": "กลุ่มเทรดทอง: เข้ากลุ่ม LINE OpenChat Telegram ยังไงไม่ให้โดนหลอก",
+   "kw": "กลุ่มเทรดทอง",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "กลุ่มเทรดทอง forex",
+    "กลุ่มเทรดทอง telegram",
+    "กลุ่มเทรดทองคำ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "copy-trade-gold"
+   ],
+   "money": "about",
+   "note": "",
+   "pillar": false,
+   "n": 82,
+   "date": "2027-01-29 09:00",
+   "date_th": "ศ. 29 ม.ค. 70"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "trading-course-check",
+   "title": "คอร์สเทรดทอง: เช็กก่อนจ่ายเงินเรียน และสัญญาณคอร์สขายฝัน",
+   "kw": "คอร์สเทรดทอง",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "คอร์สเรียนเทรดทองฟรี",
+    "คอร์ส เทรด ทอง"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-trading-techniques"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 83,
+   "date": "2027-01-30 09:00",
+   "date_th": "ส. 30 ม.ค. 70"
+  },
+  {
+   "cluster": "trading-safety",
+   "slug": "mt5-2fa",
+   "title": "MT5 2FA: เปิด OTP กันคนอื่นเข้าบัญชีเทรด",
+   "kw": "mt5 2fa",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "otp mt5",
+    "รหัส otp metatrader 5"
+   ],
+   "longtail": [],
+   "bridges": [
+    "remote-desktop"
+   ],
+   "money": "mt5-login",
+   "note": "ตรวจข้อเท็จจริง (เมนู OTP ของ MT5)",
+   "pillar": false,
+   "n": 84,
+   "date": "2027-01-31 09:00",
+   "date_th": "อา. 31 ม.ค. 70"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-weekend",
+   "title": "เทรดทองวันเสาร์อาทิตย์ได้ไหม: ตลาดปิดแล้วออเดอร์และ EA เป็นยังไง",
+   "kw": "เทรดทอง วันเสาร์อาทิตย์",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "เทรดทอง มีวันหยุดไหม",
+    "ราคาทองโลก มีวันหยุดไหม",
+    "ราคาทองโลก เสาร์อาทิตย์"
+   ],
+   "longtail": [],
+   "bridges": [
+    "pc-sleep-ea"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง",
+   "pillar": false,
+   "n": 85,
+   "date": "2027-02-01 09:00",
+   "date_th": "จ. 1 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "xauusd-spread",
+   "title": "XAUUSD Spread: สเปรดทองเท่าไหร่ถึงปกติ และกว้างขึ้นตอนไหน",
+   "kw": "xauusd spread",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "เทรดทอง สเปรดต่ำ",
+    "xauusd average spread",
+    "spread ทองคำ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "max-spread",
+    "every-tick-real-ticks"
+   ],
+   "money": "open-mt5-account",
+   "note": "ไม่ใส่ตัวเลขสเปรดของโบรกเกอร์ใด",
+   "pillar": false,
+   "n": 86,
+   "date": "2027-02-02 09:00",
+   "date_th": "อ. 2 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "gold-trading-types",
+   "title": "เทรดทองมีกี่แบบ: CFD Futures ออมทอง และ ETF ต่างกันยังไง",
+   "kw": "เทรดทอง มีกี่แบบ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "เทรดทอง มีแบบไหนบ้าง",
+    "เทรดทอง มีอะไรบ้าง",
+    "gold futures"
+   ],
+   "longtail": [],
+   "bridges": [
+    "comex-gold"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 87,
+   "date": "2027-02-03 09:00",
+   "date_th": "พ. 3 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "short-gold",
+   "title": "Short ทอง คืออะไร: เปิด Sell ทำกำไรตอนทองลงได้ยังไง",
+   "kw": "short ทอง",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "short ทอง คือ",
+    "short sell ทอง",
+    "sell ทอง คือ",
+    "เทรด ทอง buy sell คือ"
+   ],
+   "longtail": [
+    "วิธี short ทอง",
+    "เล่น short ทอง"
+   ],
+   "bridges": [
+    "why-gold-falls"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 88,
+   "date": "2027-02-04 09:00",
+   "date_th": "พฤ. 4 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "bid-ask",
+   "title": "Bid Ask คืออะไร: ราคาซื้อขายทองใน MT5 และทำไมเปิดแล้วติดลบทันที",
+   "kw": "bid ask คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "bid ask spread คือ",
+    "ราคา bid ask คือ",
+    "เส้น bid ask คือ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "max-spread"
+   ],
+   "money": "mt5-login",
+   "note": "",
+   "pillar": false,
+   "n": 89,
+   "date": "2027-02-05 09:00",
+   "date_th": "ศ. 5 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-basics",
+   "slug": "cfd-explained",
+   "title": "CFD คืออะไร: ทอง CFD ต่างจากซื้อทองจริงยังไง",
+   "kw": "cfd คืออะไร",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ทอง cfd คือ",
+    "gold cfd คือ",
+    "เทรด cfd คือ",
+    "cfd forex คือ"
+   ],
+   "longtail": [
+    "cfd คือ pantip"
+   ],
+   "bridges": [
+    "blown-account"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 90,
+   "date": "2027-02-06 09:00",
+   "date_th": "ส. 6 ก.พ. 70"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "floating-loss",
+   "title": "Floating Loss คืออะไร: ขาดทุนลอยตัวกับขาดทุนจริงต่างกันยังไง",
+   "kw": "floating loss คือ",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "floating loss limit",
+    "ขาดทุนลอยตัว"
+   ],
+   "longtail": [],
+   "bridges": [
+    "stop-loss-take-profit"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 91,
+   "date": "2027-02-07 09:00",
+   "date_th": "อา. 7 ก.พ. 70"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "drawdown-limiter",
+   "title": "Drawdown Limiter: ตั้งเพดานขาดทุนให้ EA หยุดเอง",
+   "kw": "drawdown limiter",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "drawdown limiter ea",
+    "drawdown limiter mt5",
+    "max drawdown limit"
+   ],
+   "longtail": [],
+   "bridges": [
+    "prop-firm"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 92,
+   "date": "2027-02-08 09:00",
+   "date_th": "จ. 8 ก.พ. 70"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "xauusd-minimum-lot",
+   "title": "XAUUSD Minimum Lot: ไม้เล็กสุดของทอง และทุนเริ่มต้นที่ใช้ได้จริง",
+   "kw": "xauusd minimum lot",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "xauusd minimum lot size",
+    "xauusd micro lot size",
+    "xauusd mini lot size"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-trading-costs"
+   ],
+   "money": "tools",
+   "note": "ตรวจข้อเท็จจริง",
+   "pillar": false,
+   "n": 93,
+   "date": "2027-02-09 09:00",
+   "date_th": "อ. 9 ก.พ. 70"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "gold-trading-loss",
+   "title": "เทรดทองขาดทุน: สาเหตุที่เจอบ่อย และวิธีกลับมาตั้งหลัก",
+   "kw": "เทรดทอง ขาดทุน",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "เทรดทอง ขาดทุน pantip"
+   ],
+   "longtail": [],
+   "bridges": [
+    "overfitting-trading",
+    "trading-scams"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 94,
+   "date": "2027-02-10 09:00",
+   "date_th": "พ. 10 ก.พ. 70"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "capital-per-lot",
+   "title": "ทุนต่อ 0.01 Lot: คิดยังไงให้ EA รับแรงเหวี่ยงทองไหว",
+   "kw": "ทุนต่อ 0.01 lot",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "ทุนคิดไม้",
+    "ทุนกี่บาทต่อ lot"
+   ],
+   "longtail": [],
+   "bridges": [
+    "every-tick-real-ticks"
+   ],
+   "money": "tools",
+   "note": "คำถามลูกค้า · ห้ามบอกตัวเลขของ EA BULL",
+   "pillar": false,
+   "n": 95,
+   "date": "2027-02-11 09:00",
+   "date_th": "พฤ. 11 ก.พ. 70"
+  },
+  {
+   "cluster": "capital-lot",
+   "slug": "protect-capital",
+   "title": "กันหน้าทุนคืออะไร: ถอนทุนคืนก่อน แล้วปล่อยกำไรทำงาน",
+   "kw": "กันหน้าทุน",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "เทรด ทอง กัน หน้า ทุน คือ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "trailing-stop"
+   ],
+   "money": "tools",
+   "note": "",
+   "pillar": false,
+   "n": 96,
+   "date": "2027-02-12 09:00",
+   "date_th": "ศ. 12 ก.พ. 70"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "partial-close-mt5",
+   "title": "ปิดออเดอร์บางส่วน MT5: แบ่งปิดกำไรทีละส่วนยังไง",
+   "kw": "ปิดออเดอร์บางส่วน mt5",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "แบ่งปิดออเดอร์ mt5",
+    "partial close"
+   ],
+   "longtail": [],
+   "bridges": [
+    "protect-capital"
+   ],
+   "money": "mt5-login",
+   "note": "",
+   "pillar": false,
+   "n": 97,
+   "date": "2027-02-13 09:00",
+   "date_th": "ส. 13 ก.พ. 70"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "trailing-stop-mt5-mobile",
+   "title": "ตั้ง Trailing Stop MT5 มือถือ: ทำได้ไหม และทางเลือกที่ใช้ได้จริง",
+   "kw": "ตั้ง trailing stop mt5 มือถือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "trailing stop mt5 มือถือ",
+    "trailing stop metatrader 5 mobile",
+    "mt5 android trailing stop"
+   ],
+   "longtail": [],
+   "bridges": [
+    "remote-desktop"
+   ],
+   "money": "vps-windows",
+   "note": "ตรวจข้อเท็จจริง (แอปมือถือไม่มี Trailing Stop)",
+   "pillar": false,
+   "n": 98,
+   "date": "2027-02-14 09:00",
+   "date_th": "อา. 14 ก.พ. 70"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "atr-trailing-stop",
+   "title": "ATR Trailing Stop: ระยะ Stop ที่ปรับตามความผันผวนของทอง",
+   "kw": "atr trailing stop",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "atr คือ",
+    "trailing stop atr mt5",
+    "atr คือ forex"
+   ],
+   "longtail": [],
+   "bridges": [
+    "bollinger-band"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 99,
+   "date": "2027-02-15 09:00",
+   "date_th": "จ. 15 ก.พ. 70"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "stop-loss-not-triggered",
+   "title": "Stop Loss ไม่ทำงาน: ทำไมราคาเลยจุด SL แล้วยังไม่ปิด",
+   "kw": "stop loss ไม่ทำงาน",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "sl ไม่ทำงาน",
+    "stop loss ไม่ปิด"
+   ],
+   "longtail": [],
+   "bridges": [
+    "bid-ask",
+    "xauusd-spread"
+   ],
+   "money": "how-to-install",
+   "note": "",
+   "pillar": false,
+   "n": 100,
+   "date": "2027-02-16 09:00",
+   "date_th": "อ. 16 ก.พ. 70"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "modify-order-mt5",
+   "title": "แก้ไขออเดอร์ MT5: เลื่อน SL TP และแก้คำสั่งรอ",
+   "kw": "แก้ไขออเดอร์ mt5",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "modify order mt5",
+    "ยกเลิกคำสั่งรอ mt5"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-mt5-first-order"
+   ],
+   "money": "mt5-login",
+   "note": "",
+   "pillar": false,
+   "n": 101,
+   "date": "2027-02-17 09:00",
+   "date_th": "พ. 17 ก.พ. 70"
+  },
+  {
+   "cluster": "order-control",
+   "slug": "ea-without-stop-loss",
+   "title": "EA ไม่มี Stop Loss: เสี่ยงตรงไหน และคุมด้วยอะไรแทน",
+   "kw": "ea ไม่มี stop loss",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "ea ไม่ตั้ง sl",
+    "ea ไม่มี sl"
+   ],
+   "longtail": [],
+   "bridges": [
+    "recovery-ea",
+    "drawdown-limiter"
+   ],
+   "money": "tools",
+   "note": "⚠ ห้ามใบ้ว่า EA BULL มีหรือไม่มี SL",
+   "pillar": false,
+   "n": 102,
+   "date": "2027-02-18 09:00",
+   "date_th": "พฤ. 18 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "sideway",
+   "title": "Sideway คืออะไร: ทองวิ่งในกรอบ เทรดยังไงให้ไม่โดนหลอก",
+   "kw": "sideway คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ทอง sideway",
+    "ตลาด sideway คือ",
+    "กรอบ sideway คือ",
+    "ทอง sideway คืออะไร"
+   ],
+   "longtail": [
+    "sideway up คือ",
+    "sideway down คือ"
+   ],
+   "bridges": [
+    "support-resistance"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 103,
+   "date": "2027-02-19 09:00",
+   "date_th": "ศ. 19 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "mean-reversion",
+   "title": "Mean Reversion คืออะไร: กลยุทธ์รอราคากลับเข้าค่าเฉลี่ย",
+   "kw": "mean reversion คือ",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "กลยุทธ์ mean reversion",
+    "mean reversion trading",
+    "trend following and mean reversion"
+   ],
+   "longtail": [],
+   "bridges": [
+    "bollinger-band"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 104,
+   "date": "2027-02-20 09:00",
+   "date_th": "ส. 20 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "swing-trade",
+   "title": "Swing Trade คืออะไร: ถือออเดอร์ทองหลายวันต่างจากเทรดสั้นยังไง",
+   "kw": "swing trade คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "swing trade ทอง",
+    "กลยุทธ์ swing trade",
+    "swing trade gold",
+    "เทรดทอง ระยะยาว"
+   ],
+   "longtail": [
+    "swing trade สอน"
+   ],
+   "bridges": [
+    "gold-weekend"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 105,
+   "date": "2027-02-21 09:00",
+   "date_th": "อา. 21 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "averaging-dca",
+   "title": "ถัวเฉลี่ยในการเทรด: Averaging และ DCA กับทองคำต่างกันยังไง",
+   "kw": "averaging คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "dca เทรด",
+    "เทรด dca คือ",
+    "เทรดทอง dca",
+    "dollar cost averaging คือ"
+   ],
+   "longtail": [
+    "ถัวขาดทุน"
+   ],
+   "bridges": [
+    "stuck-trade",
+    "blown-account"
+   ],
+   "money": "backtest",
+   "note": "⚠ ห้ามใบ้ว่า EA BULL ใช้หรือไม่ใช้",
+   "pillar": false,
+   "n": 106,
+   "date": "2027-02-22 09:00",
+   "date_th": "จ. 22 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "recovery-ea",
+   "title": "EA แก้ไม้ คืออะไร: ระบบกู้ออเดอร์ติดลบทำงานยังไง",
+   "kw": "ea แก้ไม้",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "ea แก้ไม้ mt5",
+    "ระบบเทรด มาติงเกล"
+   ],
+   "longtail": [],
+   "bridges": [
+    "blown-account",
+    "ea-without-stop-loss"
+   ],
+   "money": "backtest",
+   "note": "⚠ ห้ามใบ้ว่า EA BULL ใช้หรือไม่ใช้ · EA WING มี \"martingale คือ\"",
+   "pillar": false,
+   "n": 107,
+   "date": "2027-02-23 09:00",
+   "date_th": "อ. 23 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-strategy",
+   "slug": "multi-timeframe",
+   "title": "Multi Timeframe คืออะไร: ดูหลายกรอบเวลาก่อนเข้าออเดอร์ทอง",
+   "kw": "multi timeframe คือ",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "มัลติไทม์เฟรม",
+    "multi timeframe analysis คือ",
+    "ดูกราฟมัลติไทม์เฟรม"
+   ],
+   "longtail": [],
+   "bridges": [
+    "timeframe"
+   ],
+   "money": "backtest",
+   "note": "",
+   "pillar": false,
+   "n": 108,
+   "date": "2027-02-24 09:00",
+   "date_th": "พ. 24 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "central-bank-gold",
+   "title": "ธนาคารกลางซื้อทอง: ทำไมแบงก์ชาติทั่วโลกสะสมทอง และส่งผลกับราคายังไง",
+   "kw": "ธนาคารกลางซื้อทอง",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ธนาคารกลางจีนซื้อทอง",
+    "ธนาคารกลางทั่วโลกซื้อทอง"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-trading-vs-saving"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง (ข้อมูล gold.org)",
+   "pillar": false,
+   "n": 109,
+   "date": "2027-02-25 09:00",
+   "date_th": "พฤ. 25 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "spdr-gold",
+   "title": "SPDR คืออะไร: กองทุนทองคำที่คนดูยอดถือทองทุกวัน",
+   "kw": "spdr คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "spdr ทองคำ",
+    "spdr gold คือ",
+    "spdr ถือทอง",
+    "etf ทองคำ"
+   ],
+   "longtail": [
+    "spdr ซื้อทอง",
+    "spdr ขายทอง",
+    "รายงาน spdr"
+   ],
+   "bridges": [
+    "gold-trading-vs-saving"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 110,
+   "date": "2027-02-26 09:00",
+   "date_th": "ศ. 26 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "comex-gold",
+   "title": "COMEX คืออะไร: ตลาดทองล่วงหน้าที่ขยับราคาทองโลก",
+   "kw": "comex คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ทอง comex",
+    "ราคาทอง comex",
+    "comex gold คือ",
+    "ตลาด comex คือ",
+    "comex เปิดกี่โมง"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-trading-types"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง",
+   "pillar": false,
+   "n": 111,
+   "date": "2027-02-27 09:00",
+   "date_th": "ส. 27 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "lbma",
+   "title": "LBMA คืออะไร: มาตรฐานทองคำและราคาอ้างอิงจากลอนดอน",
+   "kw": "lbma คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ราคาทอง lbma",
+    "มาตรฐาน lbma",
+    "lbma gold price"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-sessions"
+   ],
+   "money": "home",
+   "note": "ตรวจข้อเท็จจริง",
+   "pillar": false,
+   "n": 112,
+   "date": "2027-02-28 09:00",
+   "date_th": "อา. 28 ก.พ. 70"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "safe-haven-gold",
+   "title": "ทองคำ Safe Haven: ทำไมทองขึ้นตอนสงครามและวิกฤต",
+   "kw": "ทองคำ safe haven",
+   "stars": 1,
+   "round": 2,
+   "kw2": [
+    "ทองคำ สงคราม",
+    "ทองขึ้นเพราะ",
+    "ทองขึ้นทำไม"
+   ],
+   "longtail": [
+    "ทอง ขึ้น ทอง ลง"
+   ],
+   "bridges": [
+    "news-filter-ea"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 113,
+   "date": "2027-03-01 09:00",
+   "date_th": "จ. 1 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-market",
+   "slug": "why-gold-falls",
+   "title": "ทองลงเพราะอะไร: สาเหตุที่ราคาทองร่วงแรง และอ่านสัญญาณยังไง",
+   "kw": "ทองลงเพราะอะไร",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ทอง ลง ทำไม",
+    "ราคาทองโลกร่วง",
+    "ทองคำ ลง"
+   ],
+   "longtail": [],
+   "bridges": [
+    "short-gold"
+   ],
+   "money": "home",
+   "note": "EA WING มี \"ทองคำขึ้นลงขึ้นอยู่กับอะไร\": บทนี้เน้นขาลง",
+   "pillar": false,
+   "n": 114,
+   "date": "2027-03-02 09:00",
+   "date_th": "อ. 2 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "macd",
+   "title": "MACD คืออะไร: อ่านเส้น MACD และ Histogram บนกราฟทอง",
+   "kw": "macd คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "macd histogram คือ",
+    "macd divergence คือ",
+    "กราฟทอง macd",
+    "สัญญาณ macd"
+   ],
+   "longtail": [],
+   "bridges": [
+    "trend-following"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 115,
+   "date": "2027-03-03 09:00",
+   "date_th": "พ. 3 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "fibonacci",
+   "title": "Fibonacci คืออะไร: กาง Fibo หาแนวรับแนวต้านทองคำ",
+   "kw": "fibonacci คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "fibonacci ทอง",
+    "กาง fibonacci",
+    "ระดับ fibonacci",
+    "fibonacci สอน"
+   ],
+   "longtail": [],
+   "bridges": [
+    "buy-limit-buy-stop"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 116,
+   "date": "2027-03-04 09:00",
+   "date_th": "พฤ. 4 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "bollinger-band",
+   "title": "Bollinger Band คืออะไร: ตั้งค่าและอ่านกรอบราคาทอง",
+   "kw": "bollinger band คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "วิธีใช้ bollinger band",
+    "bollinger band ตั้งค่า",
+    "bollinger band ค่ามาตรฐาน"
+   ],
+   "longtail": [],
+   "bridges": [
+    "mean-reversion"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 117,
+   "date": "2027-03-05 09:00",
+   "date_th": "ศ. 5 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "timeframe",
+   "title": "Timeframe คืออะไร: M1 M5 H1 H4 ต่างกันยังไง ทองควรดูกรอบไหน",
+   "kw": "timeframe คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "ไทม์เฟรม คือ",
+    "timeframe h4 คือ",
+    "ไทม์เฟรม h1 คือ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "gold-5-minute"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 118,
+   "date": "2027-03-06 09:00",
+   "date_th": "ส. 6 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "price-action",
+   "title": "Price Action คืออะไร: อ่านพฤติกรรมราคาทองโดยไม่พึ่ง Indicator",
+   "kw": "price action คือ",
+   "stars": 3,
+   "round": 2,
+   "kw2": [
+    "price action กลับตัว",
+    "price action รูปแบบ",
+    "price action forex คือ",
+    "price action มีกี่แบบ"
+   ],
+   "longtail": [],
+   "bridges": [
+    "breakout"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 119,
+   "date": "2027-03-07 09:00",
+   "date_th": "อา. 7 มี.ค. 70"
+  },
+  {
+   "cluster": "gold-chart",
+   "slug": "order-block",
+   "title": "Order Block คืออะไร: ดูโซนคำสั่งใหญ่บนกราฟทองยังไง",
+   "kw": "order block คือ",
+   "stars": 2,
+   "round": 2,
+   "kw2": [
+    "order block ดูยังไง",
+    "smc คือ forex",
+    "supply demand zone คือ",
+    "order block กับ fvg",
+    "ระบบเทรด smc"
+   ],
+   "longtail": [
+    "order block มีกี่แบบ",
+    "เทรดทอง เทคนิค ดูกราฟ ob"
+   ],
+   "bridges": [
+    "gold-trading-techniques"
+   ],
+   "money": "home",
+   "note": "",
+   "pillar": false,
+   "n": 120,
+   "date": "2027-03-08 09:00",
+   "date_th": "จ. 8 มี.ค. 70"
+  }
+ ]
+}
