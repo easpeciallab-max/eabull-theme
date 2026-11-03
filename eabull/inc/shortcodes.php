@@ -9,6 +9,7 @@
  * [eabull_ea product="1|2|3" field="file|name|version"] ชื่อไฟล์ / ชื่อไม่มีนามสกุล / เลขรุ่น ของสินค้าในหมวด 3.x (ยังไม่กรอก = ป้ายรอข้อมูล)
  * [eabull_calc type="lot|drawdown"]                เครื่องคำนวณ markup ตามต้นแบบ (ตัวเลขคำนวณใน assets/js/main.js · ข้อความใน setting calc_*)
  * [eabull_figure name="..." alt="" caption=""]     แผนภาพในธีม (assets/img/illus · ลงทะเบียนผ่านฟิลเตอร์ eab_figure_registry · ไม่มีไฟล์ = ไม่แสดง)
+ * [eabull_photo file="slug/name.webp" alt="" caption=""] รูปประกอบบทความ (assets/img/articles · ตอนนำเข้าแทนด้วยรูปในคลังสื่อ)
  *
  * @package eabull
  */
@@ -162,6 +163,36 @@ function eab_sc_figure( $atts ) {
 	return $html . '</figure>';
 }
 add_shortcode( 'eabull_figure', 'eab_sc_figure' );
+
+/**
+ * [eabull_photo file="<slug>/<ชื่อ>.webp" alt="" caption="" w="1200" h="675" credit=""]
+ * รูปประกอบบทความจาก assets/img/articles/ · ตอนนำเข้าบทความ eab_seed_photos() (inc/setup.php) แทนด้วยรูปในคลังสื่อ
+ * shortcode นี้ทำงานเฉพาะเมื่อยังไม่ได้แทน (preview หรือไฟล์ที่ยังไม่ได้นำเข้า) · ไม่มีไฟล์ = ไม่แสดงอะไร
+ */
+function eab_sc_photo( $atts ) {
+	$atts = shortcode_atts(
+		array(
+			'file'    => '',
+			'alt'     => '',
+			'caption' => '',
+			'w'       => 1200,
+			'h'       => 675,
+			'credit'  => '',
+		),
+		$atts,
+		'eabull_photo'
+	);
+	$file = ltrim( (string) $atts['file'], '/' );
+	if ( ! preg_match( '#^[a-z0-9-]+/[a-z0-9-]+\.webp$#', $file ) || ! is_readable( get_template_directory() . '/assets/img/articles/' . $file ) ) {
+		return '';
+	}
+	$html = '<figure class="eab-photo"><img src="' . esc_url( get_template_directory_uri() . '/assets/img/articles/' . $file ) . '" alt="' . esc_attr( $atts['alt'] ) . '" width="' . (int) $atts['w'] . '" height="' . (int) $atts['h'] . '" loading="lazy" decoding="async">';
+	if ( '' !== trim( (string) $atts['caption'] ) ) {
+		$html .= '<figcaption>' . esc_html( $atts['caption'] ) . '</figcaption>';
+	}
+	return $html . '</figure>';
+}
+add_shortcode( 'eabull_photo', 'eab_sc_photo' );
 
 /**
  * ตัวเลขสำหรับแสดงผลตอนโหลดหน้า (รูปแบบเดียวกับ main.js: คั่นหลักพัน ทศนิยม 2 ตำแหน่ง)

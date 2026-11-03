@@ -1,0 +1,62 @@
+[
+ {
+  "slug": "gold-trading-bot",
+  "file": "gold-trading-bot/checklist-choose-gold-trading-bot.webp",
+  "name": "checklist-choose-gold-trading-bot",
+  "alt": "มือกำลังติ๊กเช็กลิสต์ในสมุด เหมือนการเช็ก 8 ข้อก่อนเลือกบอทเทรด",
+  "caption": "เช็กทีละข้อก่อนตัดสินใจ ช่วยกรองผู้ขายที่ไม่โปร่งใสออกได้มาก",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/weJ7qyjHYwk",
+  "src": "https://images.unsplash.com/photo-1754039985008-a15410211b67",
+  "src_id": "1754039985008-a15410211b67",
+  "page_id": "weJ7qyjHYwk",
+  "dhash": "38ba0606366e2733",
+  "bytes": 30510,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-bot",
+  "file": "gold-trading-bot/gold-bars-trading-bot.webp",
+  "name": "gold-bars-trading-bot",
+  "alt": "ทองคำแท่งวางเรียงกัน สินทรัพย์ที่บอทเทรดทองซื้อขายผ่านราคา XAUUSD",
+  "caption": "ทองคำแท่งคือสินทรัพย์ที่อยู่หลังราคา XAUUSD ซึ่งบอทเทรดบน MT5",
+  "credit": "Jingming Pan",
+  "page": "https://unsplash.com/photos/stacked-gold-bullion-bars-iYsrkq5qq0Q",
+  "src": "https://images.unsplash.com/photo-1610375461246-83df859d849d",
+  "src_id": "1610375461246-83df859d849d",
+  "page_id": "iYsrkq5qq0Q",
+  "dhash": "4ee9d29ac7673432",
+  "bytes": 115702,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-bot",
+  "file": "gold-trading-bot/gold-bot-mt5-candlestick-chart.webp",
+  "name": "gold-bot-mt5-candlestick-chart",
+  "alt": "กราฟแท่งเทียนบนจอมืดพร้อมเส้นค่าเฉลี่ย ข้อมูลที่บอทอ่านก่อนเปิดออเดอร์",
+  "caption": "ภาพประกอบ: กราฟแท่งเทียนและเส้นค่าเฉลี่ย ข้อมูลแบบที่ EA อ่านทุกครั้งที่ราคาขยับ",
+  "credit": "Maxim Hopman",
+  "page": "https://unsplash.com/photos/fiXLQXAhCfk",
+  "src": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3",
+  "src_id": "1611974789855-9c2a0a7236a3",
+  "page_id": "fiXLQXAhCfk",
+  "dhash": "526d339d06070313",
+  "bytes": 34840,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-bot",
+  "file": "gold-trading-bot/vps-server-rack-run-ea-24h.webp",
+  "name": "vps-server-rack-run-ea-24h",
+  "alt": "ตู้เซิร์ฟเวอร์ในศูนย์ข้อมูล เครื่องแบบที่ VPS ใช้รันบอทเทรดได้ตลอด 24 ชั่วโมง",
+  "caption": "VPS คือคอมพิวเตอร์ในศูนย์ข้อมูลที่เปิดอยู่ตลอด จึงรันบอทได้แม้คอมที่บ้านปิด",
+  "credit": "Kevin Ache",
+  "page": "https://unsplash.com/photos/2JJ3wBHu4_0",
+  "src": "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee",
+  "src_id": "1695668548342-c0c1ad479aee",
+  "page_id": "2JJ3wBHu4_0",
+  "dhash": "d4dcdc9c1c1cfcfc",
+  "bytes": 63966,
+  "license": "Unsplash License"
+ }
+]

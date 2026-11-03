@@ -1219,6 +1219,7 @@ details[open] > summary .faq-plus::after { transform: rotate(90deg) scaleX(0); }
 .wp-caption, figure { margin: 1.4em 0; max-width: 100%; }
 .wp-caption-text, figcaption { margin-top: 8px; font-size: 13.5px; color: var(--muted); }
 .doc img { border: 1px solid var(--line); }
+.eab-photo img { display: block; width: 100%; height: auto; } /* article photos (inc/setup.php eab_seed_photos) · colours as shot, square corners */
 .admin-hint { display: inline-block; padding: 2px 8px; border: 1px dashed var(--warn); color: var(--warn); font-size: 13px; }
 
 /* 20. Lightbox, load more, active TOC (assets/js/main.js) ------------------- */

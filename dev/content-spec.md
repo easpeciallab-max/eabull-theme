@@ -81,7 +81,7 @@ The link rules per article (pillar, siblings, bridges, money page, anchor text) 
 
 - `callout--warn` is not used in articles (owner, 29 Oct 2026: no warning boxes outside /risk-disclosure/). A practical caution ("อย่าส่งรหัสผ่านให้ใคร") goes in normal text or a `callout--tip`.
 - The theme builds the table of contents from H2/H3 and turns `faq-item` blocks into FAQPage schema. Do not write a TOC.
-- No `<img>` (use `[eabull_figure]`), no inline styles or scripts.
+- No `<img>` (photos go in only through `[eabull_photo]`, written by `dev/tools/article-photos.py`), no inline styles or scripts.
 
 ## Writing rules (must follow)
 
@@ -99,6 +99,20 @@ The link rules per article (pillar, siblings, bridges, money page, anchor text) 
 
 12. **Brand statements**: only the confirmed business facts in rule 3. Do not write promises about how the team works that nobody confirmed (no "ทีมงาน EA BULL ไม่เคยขอรหัสผ่าน", no response times, no office hours). General safety advice is fine ("อย่าส่งรหัสผ่านหลักของบัญชีเทรดให้ใคร").
 13. **Time-proof text**: articles publish between Nov 2026 and Mar 2027. No "ปีนี้", no "ตอนนี้ดอกเบี้ยอยู่ที่ ...". Market numbers that change (rates, prices, spreads) are written as clearly marked examples, or with the source and the check date: "(ข้อมูลจาก <source> ตรวจเมื่อ พ.ย. 2569)". Thai dates use the Buddhist year.
+
+## Photos (owner, 3 Nov 2026)
+
+Every article carries real photographs: 4 in a pillar, 3 in a supporting article. They are free photos from unsplash.com with the "free" licence filter (never Unsplash+), placed with `py -3 -I dev/tools/article-photos.py add ...`, which crops to 16:9, saves `eabull/assets/img/articles/<slug>/<name>.webp` (1200 × 675, about 150 KB at most), writes `[eabull_photo file="..." alt="..." caption="..." ...]` under the chosen H2 and records the photographer and photo page in `dev/content/photos/<slug>.json`. Setup uploads them to the Media Library on import or update (`eab_seed_photos()` in `inc/setup.php`). Rules:
+
+1. Real photographs only: no illustrations, 3D renders, AI images, text overlays or watermarks.
+2. No company, broker, exchange or platform names or logos on screens or products (owner, 29 Oct 2026), no crypto coins or tickers, no readable stock tickers of real companies. A prominent brand logo on a laptop or phone is a reason to skip the photo.
+3. No recognisable faces in the trading-safety cluster (a face next to a scam topic reads as an accusation); elsewhere prefer hands, screens and objects over faces.
+4. Colours as shot (no tint), sharp, not near-duplicates of another photo on the site (the tool checks Unsplash ids and image hashes; also avoid two shots from the same photographer's series in one article).
+5. Placement: under a body H2 where the photo fits the section (never in the FAQ or the related box, and not under the closing EA BULL section), spread through the article.
+6. File name: English, lower-case words joined by `-`, describing the photo and the topic, unique on the site (e.g. `trailing-stop-gold-chart`).
+7. Alt: Thai, 15 to 140 characters, says what is in the photo and how it relates to the section; the first photo's alt contains the focus keyword; every alt is unique; no keyword stuffing, no dashes.
+8. Caption: one short Thai sentence that adds meaning; start with "ภาพประกอบ:" when the photo shows prices, numbers or a chart.
+9. `py -3 -I dev/tools/article-photos.py check` must pass (counts, files, sizes, alt, duplicates).
 
 ## Article layout (in this order)
 

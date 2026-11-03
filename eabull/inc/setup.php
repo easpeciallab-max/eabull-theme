@@ -418,6 +418,80 @@ function eab_banner_attachment( $file, $alt = '' ) {
 }
 
 /**
+ * รูปประกอบบทความ (ภาพถ่ายฟรีจาก Unsplash · ที่มาและช่างภาพอยู่ใน dev/content/photos/<slug>.json)
+ * ไฟล์บทความเขียนเป็น [eabull_photo file="<slug>/<ชื่อ>.webp" alt="..." caption="..." w="1200" h="675" credit="..."]
+ * ตอนนำเข้าหรืออัปเดตบทความ: นำไฟล์จาก assets/img/articles/ เข้าคลังสื่อครั้งเดียว (ผูกกับบทความ · alt · คำบรรยาย)
+ * แล้วแทน shortcode ด้วย <figure> ของ WordPress (class wp-image-ID ทำให้ได้ srcset และ lazy load เอง · Yoast เห็นรูปและ alt)
+ * ถ้ายังไม่ได้แทน (เช่นใน preview) shortcode แสดงรูปจากธีมตรง ๆ (eab_sc_photo ใน inc/shortcodes.php)
+ */
+function eab_photo_attachment( $file, $alt, $caption, $credit, $post_id ) {
+	$file = ltrim( str_replace( '\\', '/', (string) $file ), '/' );
+	if ( ! preg_match( '#^[a-z0-9-]+/[a-z0-9-]+\.webp$#', $file ) ) {
+		return 0;
+	}
+	$map = get_option( 'eab_photo_attachments', array() );
+	if ( ! empty( $map[ $file ] ) && get_post( $map[ $file ] ) ) {
+		return (int) $map[ $file ];
+	}
+	$src = get_template_directory() . '/assets/img/articles/' . $file;
+	if ( ! file_exists( $src ) ) {
+		return 0;
+	}
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+
+	$tmp = wp_tempnam( basename( $file ) );
+	if ( ! $tmp || ! copy( $src, $tmp ) ) {
+		return 0;
+	}
+	$id = media_handle_sideload(
+		array(
+			'name'     => basename( $file ),
+			'tmp_name' => $tmp,
+		),
+		(int) $post_id,
+		$alt,
+		array(
+			'post_excerpt' => $caption,
+			'post_content' => $credit,
+		)
+	);
+	if ( is_wp_error( $id ) ) {
+		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		return 0;
+	}
+	update_post_meta( $id, '_wp_attachment_image_alt', $alt );
+	$map[ $file ] = (int) $id;
+	update_option( 'eab_photo_attachments', $map, false );
+	return (int) $id;
+}
+
+/**
+ * แทน [eabull_photo ...] ในเนื้อหาบทความด้วยรูปจากคลังสื่อ · รูปที่ยังไม่มีไฟล์คงเป็น shortcode ไว้
+ */
+function eab_seed_photos( $content, $post_id ) {
+	return preg_replace_callback(
+		'/\[eabull_photo\s+([^\]]*)\]/',
+		function ( $m ) use ( $post_id ) {
+			$a  = shortcode_parse_atts( $m[1] );
+			$a  = is_array( $a ) ? $a : array();
+			$a  = array_merge( array( 'file' => '', 'alt' => '', 'caption' => '', 'credit' => '', 'w' => 1200, 'h' => 675 ), $a );
+			$id = eab_photo_attachment( $a['file'], $a['alt'], $a['caption'], $a['credit'], $post_id );
+			if ( ! $id ) {
+				return $m[0];
+			}
+			$html = '<figure class="wp-block-image size-full eab-photo"><img src="' . esc_url( wp_get_attachment_url( $id ) ) . '" alt="' . esc_attr( $a['alt'] ) . '" width="' . (int) $a['w'] . '" height="' . (int) $a['h'] . '" class="wp-image-' . (int) $id . '"/>';
+			if ( '' !== trim( $a['caption'] ) ) {
+				$html .= '<figcaption class="wp-element-caption">' . esc_html( $a['caption'] ) . '</figcaption>';
+			}
+			return $html . '</figure>';
+		},
+		$content
+	);
+}
+
+/**
  * สร้างเพจที่ยังไม่มี · ไม่แตะเนื้อหาเพจที่มีอยู่แล้ว (เว้นแต่เลือก overwrite)
  * ลำดับเพจ (menu_order) = ลำดับใน eab_site_pages() × 10 · เพจเดิมที่ลำดับยังเป็น 0 จะได้ลำดับนี้ ส่วนที่เจ้าของจัดเองไม่ถูกแตะ
  */
@@ -642,6 +716,12 @@ function eab_setup_import_articles( $publish = false ) {
 			$log[] = '✗ ' . $slug . ' · ' . $id->get_error_message();
 			continue;
 		}
+		// รูปประกอบเข้าคลังสื่อหลังได้ ID บทความ (ผูก post_parent) แล้วแทน shortcode ในเนื้อหา
+		$body   = eab_seed_content( $art['content'] );
+		$photos = eab_seed_photos( $body, $id );
+		if ( $photos !== $body ) {
+			wp_update_post( array( 'ID' => $id, 'post_content' => wp_slash( $photos ) ) );
+		}
 		eab_apply_seo_meta( $id, $meta );
 		update_post_meta( $id, 'eab_seed_rev', ! empty( $meta['rev'] ) ? (int) $meta['rev'] : 1 );
 		// รูปปกเฉพาะบทความ (covers/) ใช้ชื่อบทความเป็น alt · แบนเนอร์สำรองใช้ alt กลาง
@@ -864,7 +944,7 @@ function eab_seed_article_date( $meta ) {
  * อัปเดตบทความที่นำเข้าแล้ว: หมวดให้ตรงไฟล์ · ชื่อและคำอธิบายหมวด · เนื้อหารุ่นใหม่ (rev ในไฟล์มากกว่าที่เคยนำเข้า)
  * · วันตั้งเวลาของบทความที่ยังไม่ถึงวันลง · ไม่แตะเนื้อหาบทความที่ไฟล์ไม่มี rev (กันทับที่แก้ในหลังบ้าน)
  */
-function eab_setup_sync_articles() {
+function eab_setup_sync_articles( $only = '' ) {
 	$log = array();
 	foreach ( eab_article_categories() as $slug => $cat ) {
 		$term = get_term_by( 'slug', $slug, 'category' );
@@ -874,6 +954,9 @@ function eab_setup_sync_articles() {
 		}
 	}
 	foreach ( eab_seed_articles() as $slug => $art ) {
+		if ( '' !== $only && $slug !== $only ) {
+			continue; // ลองกับบทเดียวก่อน (ช่อง slug ในหน้า Setup)
+		}
 		$found = eab_find_post( $slug );
 		if ( ! $found ) {
 			continue;
@@ -891,7 +974,7 @@ function eab_setup_sync_articles() {
 				array(
 					'ID'           => $found->ID,
 					'post_title'   => wp_slash( $art['title'] ),
-					'post_content' => wp_slash( eab_seed_content( $art['content'] ) ),
+					'post_content' => wp_slash( eab_seed_photos( eab_seed_content( $art['content'] ), $found->ID ) ),
 					'post_excerpt' => isset( $meta['excerpt'] ) ? wp_slash( $meta['excerpt'] ) : $found->post_excerpt,
 				)
 			);
@@ -991,7 +1074,8 @@ function eab_setup_handle() {
 		$log = array_merge( $log, eab_setup_import_articles( ! empty( $_POST['eab_publish'] ) ) );
 	}
 	if ( 'article_sync' === $do ) {
-		$log = array_merge( $log, eab_setup_sync_articles() );
+		$only = isset( $_POST['eab_only'] ) ? sanitize_key( wp_unslash( $_POST['eab_only'] ) ) : '';
+		$log  = array_merge( $log, eab_setup_sync_articles( $only ) );
 	}
 	if ( 'seo' === $do ) {
 		$log = array_merge( $log, eab_setup_seo() );
@@ -1048,7 +1132,8 @@ function eab_setup_screen() {
 			<p>นำเข้าเฉพาะบทความที่ยังไม่มีในเว็บ พร้อมหมวด คำอธิบาย SEO และรูปหน้าปก · บทความที่มีวันลงในไฟล์จะเข้าเป็น <strong>ตั้งเวลา</strong> ตามปฏิทินใน docs/content-plan.md (WordPress เผยแพร่เองเมื่อถึงเวลา) · บทความที่ไม่มีวันลงเข้าเป็นฉบับร่าง</p>
 			<p><label><input type="checkbox" name="eab_publish" value="1"> เผยแพร่ทันทีสำหรับบทความที่ไม่มีวันลง (ไม่แนะนำ)</label></p>
 			<p><button class="button button-primary" name="eab_do" value="articles">นำเข้าบทความ</button>
-				<button class="button" name="eab_do" value="article_sync">อัปเดตบทความที่มีอยู่ (หมวด · รุ่นใหม่ · วันลง)</button></p>
+				<button class="button" name="eab_do" value="article_sync">อัปเดตบทความที่มีอยู่ (หมวด · รุ่นใหม่ · วันลง)</button>
+				<label style="margin-left:8px">เฉพาะ slug <input type="text" name="eab_only" value="" placeholder="ว่าง = ทุกบท" style="width:180px"></label></p>
 		</form>
 
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" style="margin:0 0 26px;padding:18px 20px;background:#fff;border:1px solid #dcdcde;border-radius:8px;max-width:760px">
