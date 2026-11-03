@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "mt5-cloud",
+  "file": "mt5-cloud/cpu-chip-mql5-cloud-network.webp",
+  "name": "cpu-chip-mql5-cloud-network",
+  "alt": "ชิปประมวลผลที่ถูกคีบตั้งไว้ด้วยแหนบสีดำ ภาพของพลังคำนวณจากคอมทั่วโลกที่ MQL5 Cloud Network รวมไว้",
+  "caption": "เครือข่ายนี้ช่วยคิดตอน Optimize ใน Strategy Tester และไม่ได้ต่อกับบัญชีเทรดของคุณ",
+  "credit": "Brian Kostiuk",
+  "page": "https://unsplash.com/photos/S4jSvcHYcOs",
+  "src": "https://images.unsplash.com/photo-1494083306499-e22e4a457632",
+  "src_id": "1494083306499-e22e4a457632",
+  "page_id": "S4jSvcHYcOs",
+  "dhash": "3f3f37372f3f3737",
+  "bytes": 33170,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-cloud",
+  "file": "mt5-cloud/laptop-code-virtual-hosting-migration.webp",
+  "name": "laptop-code-virtual-hosting-migration",
+  "alt": "โน้ตบุ๊กเปิดหน้าต่างโค้ดโปรแกรมในห้องมืด ภาพประกอบเงื่อนไขที่ต้องเช็กก่อนย้าย EA ขึ้น Virtual Hosting",
+  "caption": "EA ที่เรียกไฟล์ DLL ทำงานบน Virtual Hosting ไม่ได้ ควรถามผู้พัฒนาก่อนย้าย",
+  "credit": "AltumCode",
+  "page": "https://unsplash.com/photos/U0tBTn8UR8I",
+  "src": "https://images.unsplash.com/photo-1525373698358-041e3a460346",
+  "src_id": "1525373698358-041e3a460346",
+  "page_id": "U0tBTn8UR8I",
+  "dhash": "3d7c6e6c7c3a673f",
+  "bytes": 59546,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-cloud",
+  "file": "mt5-cloud/server-lights-mt5-cloud.webp",
+  "name": "server-lights-mt5-cloud",
+  "alt": "ไฟสีฟ้าของตู้เซิร์ฟเวอร์ในศูนย์ข้อมูล ภาพของ MT5 Cloud ที่ทำงานบนเครื่องของผู้ให้บริการ ไม่ใช่คอมของคุณ",
+  "caption": "ทั้ง Virtual Hosting และ MQL5 Cloud Network ทำงานบนเครื่องนอกบ้านคุณ แต่ใช้คนละงาน",
+  "credit": "Krzysztof Kowalik",
+  "page": "https://unsplash.com/photos/KiH2-tdGQRY",
+  "src": "https://images.unsplash.com/photo-1561233835-f937539b95b9",
+  "src_id": "1561233835-f937539b95b9",
+  "page_id": "KiH2-tdGQRY",
+  "dhash": "e7ee6d5cd150c1e2",
+  "bytes": 134478,
+  "license": "Unsplash License"
+ }
+]

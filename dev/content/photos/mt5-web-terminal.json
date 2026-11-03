@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "mt5-web-terminal",
+  "file": "mt5-web-terminal/hand-laptop-chart-mt5-web-terminal.webp",
+  "name": "hand-laptop-chart-mt5-web-terminal",
+  "alt": "มือวางบนโน้ตบุ๊กที่เปิดกราฟราคาในหน้าเว็บ ภาพของ MT5 Web Terminal ที่ใช้ผ่านเบราว์เซอร์โดยไม่ต้องลงโปรแกรม",
+  "caption": "ภาพประกอบ: เวอร์ชันเว็บดูกราฟและเทรดเองได้ แต่ไม่มีที่ให้ EA ทำงาน",
+  "credit": "Jason Briscoe",
+  "page": "https://unsplash.com/photos/amLfrL8LGls",
+  "src": "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9",
+  "src_id": "1569025690938-a00729c9e1f9",
+  "page_id": "amLfrL8LGls",
+  "dhash": "2e1a1a1a181e2c6c",
+  "bytes": 33474,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-web-terminal",
+  "file": "mt5-web-terminal/laptop-cafe-window-mt5-web-safety.webp",
+  "name": "laptop-cafe-window-mt5-web-safety",
+  "alt": "โน้ตบุ๊กบนโต๊ะริมหน้าต่างในร้านกาแฟ ที่ที่หลายคนใช้เน็ตสาธารณะเปิด MT5 บนเว็บ",
+  "caption": "จุดเสี่ยงอยู่ที่หน้าเว็บที่เปิดและรหัสที่พิมพ์ ให้เข้าจากลิงก์บนเว็บของโบรกเกอร์เอง",
+  "credit": "Nguyen Phan Nam Anh",
+  "page": "https://unsplash.com/photos/v6vxTvqeVuo",
+  "src": "https://images.unsplash.com/photo-1722864671434-cedda1132d82",
+  "src_id": "1722864671434-cedda1132d82",
+  "page_id": "v6vxTvqeVuo",
+  "dhash": "2b6bcf33634f7d73",
+  "bytes": 72930,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-web-terminal",
+  "file": "mt5-web-terminal/laptop-tablet-phone-mt5-web-app.webp",
+  "name": "laptop-tablet-phone-mt5-web-app",
+  "alt": "โน้ตบุ๊ก แท็บเล็ต และมือถือวางเรียงบนโต๊ะไม้ อุปกรณ์สามแบบที่ใช้ MT5 ได้ต่างกัน",
+  "caption": "โปรแกรมบนคอมหรือ VPS ใช้รัน EA ส่วนเว็บและแอปเหมาะกับการดูบัญชี",
+  "credit": "Firmbee.com",
+  "page": "https://unsplash.com/photos/2mc2B5iX6as",
+  "src": "https://images.unsplash.com/photo-1426024084828-5da21e13f5dc",
+  "src_id": "1426024084828-5da21e13f5dc",
+  "page_id": "2mc2B5iX6as",
+  "dhash": "383436b5e1c4c8e6",
+  "bytes": 80896,
+  "license": "Unsplash License"
+ }
+]

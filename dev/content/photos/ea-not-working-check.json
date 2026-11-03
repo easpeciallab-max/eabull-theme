@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ea-not-working-check",
+  "file": "ea-not-working-check/candlestick-chart-dark-ea-mt5-not-working.webp",
+  "name": "candlestick-chart-dark-ea-mt5-not-working",
+  "alt": "กราฟแท่งเทียนบนจอมืด จุดแรกที่ดูเมื่อสงสัยว่า EA MT5 ไม่ทำงาน หรือแค่ยังไม่มีจังหวะเข้า",
+  "caption": "ภาพประกอบ: EA ที่ทำงานปกติอาจเงียบหลายชั่วโมงได้ ถ้าเงื่อนไขในกฎยังไม่ครบ",
+  "credit": "Arturo Añez",
+  "page": "https://unsplash.com/photos/RxbkUG80Rag",
+  "src": "https://images.unsplash.com/photo-1745509267699-1b1db256601e",
+  "src_id": "1745509267699-1b1db256601e",
+  "page_id": "RxbkUG80Rag",
+  "dhash": "6d2e319b9b96ae49",
+  "bytes": 22454,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-not-working-check",
+  "file": "ea-not-working-check/code-editor-errors-ea-compile.webp",
+  "name": "code-editor-errors-ea-compile",
+  "alt": "หน้าจอโปรแกรมแก้โค้ดที่มีรายการข้อผิดพลาดด้านล่าง ภาพประกอบกรณี EA คอมไพล์ไม่ผ่านจึงไม่ขึ้นใน Navigator",
+  "caption": "ถ้ามีแค่ไฟล์ .mq5 ที่คอมไพล์ไม่ผ่าน จะไม่มีไฟล์ .ex5 ให้ลากลงกราฟ",
+  "credit": "Riku Lu",
+  "page": "https://unsplash.com/photos/wvJuYrM5iuw",
+  "src": "https://images.unsplash.com/photo-1591439657848-9f4b9ce436b9",
+  "src_id": "1591439657848-9f4b9ce436b9",
+  "page_id": "wvJuYrM5iuw",
+  "dhash": "7f7f6f6f2f2f3d2d",
+  "bytes": 51880,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-not-working-check",
+  "file": "ea-not-working-check/log-lines-screen-mt5-experts-journal.webp",
+  "name": "log-lines-screen-mt5-experts-journal",
+  "alt": "หน้าจอที่มีบรรทัดบันทึกเหตุการณ์และข้อความผิดพลาดเรียงกัน แบบที่ต้องไล่อ่านในแท็บ Experts และ Journal",
+  "caption": "ไล่หาบรรทัดที่เวลาใกล้กับตอนที่ EA หยุด ข้อความตรงนั้นมักบอกสาเหตุไว้",
+  "credit": "Lukas",
+  "page": "https://unsplash.com/photos/ktmQBr5hNd8",
+  "src": "https://images.unsplash.com/photo-1714846201700-35b42d937158",
+  "src_id": "1714846201700-35b42d937158",
+  "page_id": "ktmQBr5hNd8",
+  "dhash": "dbda583f67656567",
+  "bytes": 114542,
+  "license": "Unsplash License"
+ }
+]

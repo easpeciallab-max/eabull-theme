@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "build-trading-bot",
+  "file": "build-trading-bot/code-editor-ea-functions-mql5.webp",
+  "name": "code-editor-ea-functions-mql5",
+  "alt": "โค้ดหลายหน้าต่างบนจอคู่ในห้องมืด เหมือนไฟล์ EA ที่แบ่งงานเป็นฟังก์ชัน OnInit OnTick และ OnDeinit",
+  "caption": "แต่ละฟังก์ชันถูก MT5 เรียกในจังหวะต่างกัน จึงต้องรู้ว่าโค้ดส่วนไหนควรอยู่ตรงไหน",
+  "credit": "Fotis Fotopoulos",
+  "page": "https://unsplash.com/photos/DuHKoV44prg",
+  "src": "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2",
+  "src_id": "1571171637578-41bc2dd41cd2",
+  "page_id": "DuHKoV44prg",
+  "dhash": "2b2f6f6f6fafab4e",
+  "bytes": 39504,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "build-trading-bot",
+  "file": "build-trading-bot/three-monitors-desk-build-trading-bot.webp",
+  "name": "three-monitors-desk-build-trading-bot",
+  "alt": "มุมมองจากด้านบนของโต๊ะที่มีจอสามจอและคีย์บอร์ด อุปกรณ์ที่ต้องมีก่อนสร้างบอทเทรดเอง",
+  "caption": "ของส่วนใหญ่ไม่ต้องซื้อ ที่ต้องลงทุนจริงคือเวลาเรียนภาษาและเวลาทดสอบ",
+  "credit": "Max Duzij",
+  "page": "https://unsplash.com/photos/qAjJk-un3BI",
+  "src": "https://images.unsplash.com/photo-1550439062-609e1531270e",
+  "src_id": "1550439062-609e1531270e",
+  "page_id": "qAjJk-un3BI",
+  "dhash": "066b510d0f171c4c",
+  "bytes": 27084,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "build-trading-bot",
+  "file": "build-trading-bot/typing-laptop-hire-bot-developer.webp",
+  "name": "typing-laptop-hire-bot-developer",
+  "alt": "มือพิมพ์บนแล็ปท็อปบนโต๊ะทำงาน งานรับเขียนบอทเทรดควรตกลงสเปกและการส่งมอบเป็นลายลักษณ์อักษรก่อนเริ่ม",
+  "caption": "ถามให้ชัดว่าจะได้ไฟล์ .mq5 หรือแค่ .ex5 และตรวจรับงานด้วยวิธีไหน",
+  "credit": "Mina Rad",
+  "page": "https://unsplash.com/photos/jdS1UfbbIA8",
+  "src": "https://images.unsplash.com/photo-1729714055320-4d1c5d5e213d",
+  "src_id": "1729714055320-4d1c5d5e213d",
+  "page_id": "jdS1UfbbIA8",
+  "dhash": "b2e6ccbc88c97ce3",
+  "bytes": 55278,
+  "license": "Unsplash License"
+ }
+]

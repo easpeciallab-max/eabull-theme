@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ea-per-vps",
+  "file": "ea-per-vps/resource-monitor-ram-cpu-mt5.webp",
+  "name": "resource-monitor-ram-cpu-mt5",
+  "alt": "หน้าจอโปรแกรมดูการใช้ CPU และแรมแยกตามโปรแกรม แบบที่ใช้วัดว่า MT5 กินแรมเท่าไหร่บนเครื่องจริง",
+  "caption": "ภาพประกอบ: ตัวเลขการใช้แรมที่วัดจากเครื่องของคุณเอง แม่นกว่าตัวเลขที่บอกต่อกันมา",
+  "credit": "Lukas",
+  "page": "https://unsplash.com/photos/MU8w72PzRow",
+  "src": "https://images.unsplash.com/photo-1640552435845-d65c23b75934",
+  "src_id": "1640552435845-d65c23b75934",
+  "page_id": "MU8w72PzRow",
+  "dhash": "0eab9d8f06060746",
+  "bytes": 45894,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-per-vps",
+  "file": "ea-per-vps/server-racks-vps-for-mt5.webp",
+  "name": "server-racks-vps-for-mt5",
+  "alt": "ตู้เซิร์ฟเวอร์ในห้องมืดที่มีไฟสถานะสีแดงและเขียว เครื่องที่ VPS สำหรับ MT5 ทำงานอยู่ตลอดเดือน",
+  "caption": "นอกจากแรม ให้ดูรุ่นของ Windows ที่ตั้งของศูนย์ข้อมูล ดิสก์ และการแจ้งบำรุงรักษา",
+  "credit": "Matthieu Beaumont",
+  "page": "https://unsplash.com/photos/iYnpYeyu57k",
+  "src": "https://images.unsplash.com/photo-1639066648921-82d4500abf1a",
+  "src_id": "1639066648921-82d4500abf1a",
+  "page_id": "iYnpYeyu57k",
+  "dhash": "6563616165666261",
+  "bytes": 32696,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-per-vps",
+  "file": "ea-per-vps/two-laptops-charts-ea-per-vps.webp",
+  "name": "two-laptops-charts-ea-per-vps",
+  "alt": "โน้ตบุ๊กสองเครื่องเปิดกราฟหลายหน้าต่างบนโต๊ะเดียว ภาพประกอบคำถามว่า VPS รัน EA ได้กี่ตัว",
+  "caption": "ภาพประกอบ: ยิ่งเปิดกราฟและ MT5 หลายชุด เครื่องก็ต้องใช้แรมและ CPU มากขึ้น",
+  "credit": "Adam Nowakowski",
+  "page": "https://unsplash.com/photos/D4LDw5eXhgg",
+  "src": "https://images.unsplash.com/photo-1579226905180-636b76d96082",
+  "src_id": "1579226905180-636b76d96082",
+  "page_id": "D4LDw5eXhgg",
+  "dhash": "4ecf8d0b1f1f1713",
+  "bytes": 77676,
+  "license": "Unsplash License"
+ }
+]

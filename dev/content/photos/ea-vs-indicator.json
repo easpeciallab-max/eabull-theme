@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ea-vs-indicator",
+  "file": "ea-vs-indicator/desk-printed-charts-check-before-paying.webp",
+  "name": "desk-printed-charts-check-before-paying",
+  "alt": "โต๊ะทำงานที่มีรายงานกราฟพิมพ์ออกมาและมือถือเปิดเครื่องคิดเลข ก่อนจ่ายเงินให้ขอดูผลทดสอบการเทรด ไม่ใช่แค่ภาพลูกศรบนกราฟ",
+  "caption": "ภาพประกอบ: บอทจริงทดสอบใน Strategy Tester ได้ และมีรายงานผลเป็นตัวเลข",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/heiYgqp0Tsk",
+  "src": "https://images.unsplash.com/photo-1707157284454-553ef0a4ed0d",
+  "src_id": "1707157284454-553ef0a4ed0d",
+  "page_id": "heiYgqp0Tsk",
+  "dhash": "7d398899d9493333",
+  "bytes": 32254,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-vs-indicator",
+  "file": "ea-vs-indicator/red-binders-mql5-folders.webp",
+  "name": "red-binders-mql5-folders",
+  "alt": "แฟ้มสีแดงเรียงเป็นแถวบนชั้น เหมือนโฟลเดอร์ใน MQL5 ที่แยกไฟล์ตามชนิดโปรแกรม",
+  "caption": "EA อยู่ใน Experts ส่วน Indicator อยู่ใน Indicators วางผิดที่จะหาไม่เจอใน Navigator",
+  "credit": "Zulfugar Karimov",
+  "page": "https://unsplash.com/photos/SiJt15u6Yw4",
+  "src": "https://images.unsplash.com/photo-1750935578389-6e1445f5fd8d",
+  "src_id": "1750935578389-6e1445f5fd8d",
+  "page_id": "SiJt15u6Yw4",
+  "dhash": "2b6b6b0b091b0bff",
+  "bytes": 49442,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-vs-indicator",
+  "file": "ea-vs-indicator/tablet-chart-moving-average-ea-vs-indicator.webp",
+  "name": "tablet-chart-moving-average-ea-vs-indicator",
+  "alt": "แท็บเล็ตเปิดกราฟแท่งเทียนพร้อมเส้นค่าเฉลี่ย เส้นบนกราฟคือ Indicator ความต่างของ EA กับ Indicator อยู่ที่ใครส่งคำสั่ง",
+  "caption": "ภาพประกอบ: Indicator คำนวณและวาดเส้นให้ดู ส่วน EA เป็นตัวตัดสินใจและส่งคำสั่ง",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/-nJ9k6iU6_g",
+  "src": "https://images.unsplash.com/photo-1737703638422-2cfa152cdcb7",
+  "src_id": "1737703638422-2cfa152cdcb7",
+  "page_id": "-nJ9k6iU6_g",
+  "dhash": "cc0d43d7e794d3f3",
+  "bytes": 56304,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "vps-explained",
+  "file": "vps-explained/laptop-desk-night-vs-vps.webp",
+  "name": "laptop-desk-night-vs-vps",
+  "alt": "โน้ตบุ๊กเปิดทิ้งไว้บนโต๊ะใต้โคมไฟตอนกลางคืน ทางเลือกแรกที่คนใช้ EA เทียบก่อนตัดสินใจเช่า VPS",
+  "caption": "คอมที่บ้านรัน EA ได้ แต่ไฟดับหรือเน็ตบ้านล่มเมื่อไหร่ EA ก็หยุดตาม",
+  "credit": "Avtar Singh",
+  "page": "https://unsplash.com/photos/odyglVvZv18",
+  "src": "https://images.unsplash.com/photo-1779444480590-9bf6f021d5d4",
+  "src_id": "1779444480590-9bf6f021d5d4",
+  "page_id": "odyglVvZv18",
+  "dhash": "0f03f3db6be2733b",
+  "bytes": 34276,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "vps-explained",
+  "file": "vps-explained/server-drive-bays-vps-explained.webp",
+  "name": "server-drive-bays-vps-explained",
+  "alt": "เครื่องเซิร์ฟเวอร์ในศูนย์ข้อมูลที่ไฟเขียวติดเรียงกัน ภาพที่ช่วยให้เห็นว่า VPS คืออะไรและอยู่ที่ไหน",
+  "caption": "VPS หนึ่งเครื่องคือส่วนที่แบ่งมาจากเซิร์ฟเวอร์จริงแบบนี้ มีทรัพยากรเป็นของตัวเอง",
+  "credit": "Domaintechnik",
+  "page": "https://unsplash.com/photos/VHmBX7FnXw0",
+  "src": "https://images.unsplash.com/photo-1762163516269-3c143e04175c",
+  "src_id": "1762163516269-3c143e04175c",
+  "page_id": "VHmBX7FnXw0",
+  "dhash": "5946d8c098101343",
+  "bytes": 48602,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "vps-explained",
+  "file": "vps-explained/technician-server-maintenance-vps.webp",
+  "name": "technician-server-maintenance-vps",
+  "alt": "ช่างเทคนิคกำลังดูแลอุปกรณ์ในตู้เซิร์ฟเวอร์ งานบำรุงรักษาที่อาจทำให้ VPS รีสตาร์ตได้",
+  "caption": "ผู้ให้บริการอาจปิดเครื่องเพื่อบำรุงรักษาเป็นครั้งคราว ควรอ่านเงื่อนไขก่อนเช่า",
+  "credit": "Valentin Lacoste",
+  "page": "https://unsplash.com/photos/ufT32_VFS-I",
+  "src": "https://images.unsplash.com/photo-1785682117028-6fcf2c0b515b",
+  "src_id": "1785682117028-6fcf2c0b515b",
+  "page_id": "ufT32_VFS-I",
+  "dhash": "6c6cccc4c6465c44",
+  "bytes": 31480,
+  "license": "Unsplash License"
+ }
+]

@@ -1,4 +1,4 @@
-<!--meta {"title":"EA กับ Indicator ต่างกันยังไง: ไฟล์ไหนเทรดให้ ไฟล์ไหนแค่ชี้สัญญาณ","seo_title":"EA กับ Indicator ต่างกันยังไง: แยกไฟล์ใน MT5 · EA BULL","description":"EA กับ Indicator ต่างกันที่หน้าที่ EA เปิดปิดออเดอร์เองได้ ส่วน Indicator แค่คำนวณและแสดงผล บทนี้แยกโปรแกรมสี่แบบใน MT5 พร้อมโฟลเดอร์และชนิดไฟล์","keyword":"ea กับ indicator","excerpt":"ไฟล์ .ex5 ที่ได้มาอาจเป็นบอทที่เทรดให้ หรือเป็นแค่ตัวชี้สัญญาณก็ได้ บทนี้แยกโปรแกรมสี่แบบใน MT5 ให้ชัด พร้อมวิธีดูว่าไฟล์ในมือเป็นแบบไหนและต้องวางไว้ที่ใด","category":"บอทเทรดทอง","date":"2027-01-13 09:00"} -->
+<!--meta {"title": "EA กับ Indicator ต่างกันยังไง: ไฟล์ไหนเทรดให้ ไฟล์ไหนแค่ชี้สัญญาณ", "seo_title": "EA กับ Indicator ต่างกันยังไง: แยกไฟล์ใน MT5 · EA BULL", "description": "EA กับ Indicator ต่างกันที่หน้าที่ EA เปิดปิดออเดอร์เองได้ ส่วน Indicator แค่คำนวณและแสดงผล บทนี้แยกโปรแกรมสี่แบบใน MT5 พร้อมโฟลเดอร์และชนิดไฟล์", "keyword": "ea กับ indicator", "excerpt": "ไฟล์ .ex5 ที่ได้มาอาจเป็นบอทที่เทรดให้ หรือเป็นแค่ตัวชี้สัญญาณก็ได้ บทนี้แยกโปรแกรมสี่แบบใน MT5 ให้ชัด พร้อมวิธีดูว่าไฟล์ในมือเป็นแบบไหนและต้องวางไว้ที่ใด", "category": "บอทเทรดทอง", "date": "2027-01-13 09:00", "rev": 2} -->
 <p class="lead">EA กับ Indicator ต่างกันที่หน้าที่ EA หรือ Expert Advisor คือโปรแกรมที่เปิด ปิด และแก้ออเดอร์ให้เองตลอดเวลาที่ติดอยู่บนกราฟ ส่วน Indicator ทำได้แค่คำนวณและแสดงผล เช่น วาดเส้นหรือลูกศร แต่ส่งคำสั่งซื้อขายไม่ได้ ใน MT5 ยังมี Script ที่ทำงานรอบเดียวแล้วจบ และ Service ที่ทำงานเบื้องหลัง แต่ละแบบมีโฟลเดอร์ของตัวเองใน MQL5</p>
 <div class="callout callout--info"><p><strong>สรุปสั้น</strong></p><ul>
 <li>EA เทรดได้ต่อเนื่อง หนึ่งกราฟรันได้ตัวเดียว ส่วน Indicator ซื้อขายไม่ได้ แต่ใส่บนกราฟได้ไม่จำกัด</li>
@@ -11,6 +11,7 @@
 
 <h2>EA กับ Indicator ต่างกันยังไง: ดูจากหน้าที่</h2>
 <p>MT5 แบ่งโปรแกรมเสริมเป็นสี่ชนิด ข้อมูลในตารางสรุปจาก <a href="https://www.mql5.com/en/docs/runtime/running" target="_blank" rel="noopener">คู่มือ MQL5 เรื่องการทำงานของโปรแกรม</a> (ตรวจเมื่อ พ.ย. 2569)</p>
+[eabull_photo file="ea-vs-indicator/tablet-chart-moving-average-ea-vs-indicator.webp" alt="แท็บเล็ตเปิดกราฟแท่งเทียนพร้อมเส้นค่าเฉลี่ย เส้นบนกราฟคือ Indicator ความต่างของ EA กับ Indicator อยู่ที่ใครส่งคำสั่ง" caption="ภาพประกอบ: Indicator คำนวณและวาดเส้นให้ดู ส่วน EA เป็นตัวตัดสินใจและส่งคำสั่ง" w="1200" h="675" credit="ภาพ: Jakub Żerdzicki / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>ชนิด</th><th>ทำอะไร</th><th>ส่งคำสั่งซื้อขายได้ไหม</th><th>ทำงานเมื่อไหร่</th><th>ต่อกราฟ</th></tr></thead>
 <tbody>
@@ -37,6 +38,7 @@
 
 <h2>วางไฟล์ให้ถูกโฟลเดอร์</h2>
 <p>เปิดโฟลเดอร์ข้อมูลด้วยเมนู File → Open Data Folder แล้วเข้าโฟลเดอร์ MQL5 ข้างในแบ่งตามชนิดโปรแกรม รายชื่อโฟลเดอร์อ้างอิง <a href="https://www.metatrader5.com/en/metaeditor/help/structure" target="_blank" rel="noopener">คู่มือโครงสร้างโฟลเดอร์ของ MetaEditor</a></p>
+[eabull_photo file="ea-vs-indicator/red-binders-mql5-folders.webp" alt="แฟ้มสีแดงเรียงเป็นแถวบนชั้น เหมือนโฟลเดอร์ใน MQL5 ที่แยกไฟล์ตามชนิดโปรแกรม" caption="EA อยู่ใน Experts ส่วน Indicator อยู่ใน Indicators วางผิดที่จะหาไม่เจอใน Navigator" w="1200" h="675" credit="ภาพ: Zulfugar Karimov / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>ไฟล์ที่ได้มา</th><th>วางที่</th><th>ขึ้นใน Navigator หัวข้อ</th></tr></thead>
 <tbody>
@@ -85,6 +87,7 @@
 
 <h2>ซื้อบอทแต่ได้ Indicator: เช็กก่อนจ่าย</h2>
 <p>การขาย Indicator ไม่ใช่เรื่องผิด แต่ถ้าผู้ซื้อแยก EA กับ Indicator ไม่ออก แล้วเข้าใจว่าได้โปรแกรมที่เทรดให้ เขาจะผิดหวังตั้งแต่วันแรก ถามคำถามเหล่านี้ก่อนโอนเงินทุกครั้ง</p>
+[eabull_photo file="ea-vs-indicator/desk-printed-charts-check-before-paying.webp" alt="โต๊ะทำงานที่มีรายงานกราฟพิมพ์ออกมาและมือถือเปิดเครื่องคิดเลข ก่อนจ่ายเงินให้ขอดูผลทดสอบการเทรด ไม่ใช่แค่ภาพลูกศรบนกราฟ" caption="ภาพประกอบ: บอทจริงทดสอบใน Strategy Tester ได้ และมีรายงานผลเป็นตัวเลข" w="1200" h="675" credit="ภาพ: Jakub Żerdzicki / Unsplash"]
 <ol class="guide-steps">
 <li><h3>ถามชนิดของโปรแกรม</h3><p>เป็น Expert Advisor ที่เปิดปิดออเดอร์เองใช่ไหม หรือเป็น Indicator ที่แค่แสดงสัญญาณ</p></li>
 <li><h3>ถามว่าต้องใช้ไฟล์อื่นประกอบไหม</h3><p>เช่น Indicator เฉพาะ ไฟล์ค่าตั้ง .set หรือไฟล์ DLL ถ้ามี DLL ให้ถามเหตุผลที่ต้องใช้</p></li>

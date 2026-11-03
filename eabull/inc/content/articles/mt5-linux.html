@@ -1,4 +1,4 @@
-<!--meta {"title":"MT5 บน Linux: รันบน VPS Linux ได้ไหม และต่างจาก Windows ตรงไหน","seo_title":"MT5 Linux: ใช้ VPS Linux แทน Windows ได้ไหม · EA BULL","description":"MT5 Linux ทำได้ด้วย Wine ตามคู่มือทางการ บทนี้บอกสิ่งที่คู่มือรองรับและไม่ได้พูดถึง วิธีติดตั้งบน Ubuntu สิ่งที่ VPS Linux ต้องเตรียม และการทดสอบ EA","keyword":"mt5 linux","excerpt":"MT5 รันบน Linux ได้ผ่าน Wine และ MetaQuotes มีสคริปต์ติดตั้งให้ แต่ตัวโปรแกรมยังเป็นของ Windows บทนี้แยกให้เห็นว่าอะไรรองรับทางการ อะไรต้องลองเอง และ VPS Linux ต่างจาก Windows VPS ตรงไหน","category":"รัน EA 24 ชั่วโมง","date":"2027-01-18 09:00"} -->
+<!--meta {"title": "MT5 บน Linux: รันบน VPS Linux ได้ไหม และต่างจาก Windows ตรงไหน", "seo_title": "MT5 Linux: ใช้ VPS Linux แทน Windows ได้ไหม · EA BULL", "description": "MT5 Linux ทำได้ด้วย Wine ตามคู่มือทางการ บทนี้บอกสิ่งที่คู่มือรองรับและไม่ได้พูดถึง วิธีติดตั้งบน Ubuntu สิ่งที่ VPS Linux ต้องเตรียม และการทดสอบ EA", "keyword": "mt5 linux", "excerpt": "MT5 รันบน Linux ได้ผ่าน Wine และ MetaQuotes มีสคริปต์ติดตั้งให้ แต่ตัวโปรแกรมยังเป็นของ Windows บทนี้แยกให้เห็นว่าอะไรรองรับทางการ อะไรต้องลองเอง และ VPS Linux ต่างจาก Windows VPS ตรงไหน", "category": "รัน EA 24 ชั่วโมง", "date": "2027-01-18 09:00", "rev": 2} -->
 <p class="lead">MT5 Linux ทำได้ โดยรันโปรแกรมผ่าน Wine ซึ่ง MetaQuotes มีหน้าคู่มือและสคริปต์ติดตั้งให้สำหรับ Ubuntu Debian Linux Mint และ Fedora แต่ตัว MT5 ยังเป็นโปรแกรม Windows ที่ทำงานผ่านตัวแปลง และคู่มือการติดตั้งระบุระบบที่โปรแกรมทำงานได้ไว้ว่า Windows 10 และ 11 ถ้าจะใช้ EA บน Linux หรือบน VPS Linux คุณจึงต้องทดสอบเองว่า EA ทำงานปกติ และต้องเตรียมหน้าจอกราฟิกกับวิธีเข้าเครื่องเพิ่ม</p>
 <div class="callout callout--info"><p><strong>สรุปสั้น</strong></p><ul>
 <li>MT5 บน Linux ทำงานผ่าน Wine ซึ่งเป็นตัวกลางฟรีที่ให้โปรแกรม Windows รันบนระบบตระกูล Unix ได้</li>
@@ -11,6 +11,7 @@
 
 <h2>MT5 Linux ทำได้ไหม: คำตอบตามคู่มือทางการ</h2>
 <p>คู่มือ MetaTrader 5 มีหน้าเฉพาะสำหรับการติดตั้งบน Linux จึงถือว่าเป็นวิธีที่ผู้พัฒนาเตรียมไว้ให้ ไม่ใช่วิธีลัดที่ผู้ใช้คิดกันเอง แต่ให้อ่านให้ครบว่าคู่มือพูดถึงอะไร และอะไรที่ไม่ได้พูดถึง (ข้อมูลจาก <a href="https://www.metatrader5.com/en/terminal/help/start_advanced/install_linux" target="_blank" rel="noopener">คู่มือ MetaTrader 5: Installation on Linux</a> และ <a href="https://www.metatrader5.com/en/terminal/help/start_advanced/installation" target="_blank" rel="noopener">Platform Installation</a> ตรวจเมื่อ พ.ย. 2569)</p>
+[eabull_photo file="mt5-linux/laptop-terminal-mt5-linux.webp" alt="หน้าต่าง Terminal บนโน้ตบุ๊กในห้องมืด ภาพของการลง MT5 Linux ที่ต้องพิมพ์คำสั่งติดตั้งเอง" caption="MT5 บน Linux ทำงานผ่าน Wine ตามคู่มือทางการ แต่ต้องทดสอบ EA ของคุณเอง" w="1200" h="675" credit="ภาพ: Ilnur / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>คู่มือทางการบอกไว้</th><th>คู่มือทางการไม่ได้พูดถึง</th></tr></thead>
 <tbody>
@@ -40,6 +41,7 @@
 
 <h2>MT5 Linux VPS: ต้องเตรียมอะไรเพิ่ม</h2>
 <p>คนที่ค้นหา MT5 Linux VPS ส่วนใหญ่อยากรู้ว่าเช่า VPS ที่เป็น Linux มาลง MT5 แทน Windows VPS ได้ไหม ทำได้ แต่ต้องรู้ก่อนว่า VPS Linux หลายแบบมาเป็นระบบเซิร์ฟเวอร์ที่ใช้งานผ่านบรรทัดคำสั่งอย่างเดียว ไม่มีหน้าจอกราฟิก ขณะที่ MT5 เป็นโปรแกรมที่ต้องมีหน้าต่างให้เห็น งานที่ต้องทำเพิ่มจึงมีดังนี้</p>
+[eabull_photo file="mt5-linux/server-rack-cables-mt5-linux-vps.webp" alt="ตู้เซิร์ฟเวอร์ที่มีสายแลนเสียบเต็มในห้องมืด เครื่องแบบที่ VPS Linux หลายเจ้าให้ใช้ผ่านบรรทัดคำสั่ง" caption="VPS Linux หลายแบบไม่มีหน้าจอกราฟิก ต้องติดตั้งเพิ่มก่อนจะเปิดหน้าต่าง MT5 ได้" w="1200" h="675" credit="ภาพ: Taylor Vick / Unsplash"]
 <ul class="checklist">
 <li>ติดตั้งหน้าจอกราฟิกแบบเดสก์ท็อปลงบน VPS</li>
 <li>ติดตั้งตัวรับการเชื่อมต่อระยะไกลที่ใช้กับ Linux ได้ แล้วเข้าเครื่องจากคอมหรือมือถือด้วยโปรแกรมที่เข้ากัน</li>
@@ -72,6 +74,7 @@
 
 <h2>ทดสอบ EA บน Linux ก่อนใช้เงินจริง</h2>
 <p>เพราะไม่มีใครรับรองได้ล่วงหน้าว่า EA ทุกตัวทำงานบน Wine เหมือนบน Windows ทางที่ปลอดภัยคือทดสอบบนเครื่องที่จะใช้จริง ไม่ใช่ทดสอบบนคอมอีกเครื่องแล้วย้ายมา รายการนี้ช่วยให้มั่นใจขึ้นก่อนเปลี่ยนไปบัญชีจริง</p>
+[eabull_photo file="mt5-linux/tablet-candlestick-test-ea-linux.webp" alt="แท็บเล็ตแสดงกราฟแท่งเทียนวางข้างคีย์บอร์ด ภาพประกอบการดูผลระหว่างทดสอบ EA บน Linux กับบัญชีทดลอง" caption="ภาพประกอบ: ทดสอบบนเครื่องที่จะใช้จริงด้วยบัญชีทดลองก่อนเปลี่ยนไปบัญชีจริง" w="1200" h="675" credit="ภาพ: Jakub Żerdzicki / Unsplash"]
 <ol class="guide-steps">
 <li><h3>ติด EA กับบัญชีทดลอง</h3><p>วางไฟล์ ลากลงกราฟ แล้วดูว่าแท็บ Journal ขึ้นว่าโหลดสำเร็จ และแท็บ Experts ไม่มีข้อผิดพลาด</p></li>
 <li><h3>ปล่อยรันหลายวันทำการ</h3><p>ดูว่า EA เปิด ปิด และแก้ออเดอร์ได้ตามที่คู่มือของมันบอก ไม่มีข้อความแปลกในแท็บ Experts</p></li>

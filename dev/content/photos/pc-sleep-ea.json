@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "pc-sleep-ea",
+  "file": "pc-sleep-ea/laptop-clock-auto-shutdown.webp",
+  "name": "laptop-clock-auto-shutdown",
+  "alt": "โน้ตบุ๊กแสดงนาฬิกาตัวเลขใหญ่ข้างแก้วกาแฟ ภาพประกอบการตั้งเวลาที่เครื่องจะปิดหรือรีสตาร์ตเอง",
+  "caption": "ภาพประกอบ: ตั้ง Active hours ให้ครอบช่วงตลาดเปิด เครื่องจะไม่รีสตาร์ตเองตอน EA ทำงาน",
+  "credit": "Olena Bohovyk",
+  "page": "https://unsplash.com/photos/1S_c_O_glv4",
+  "src": "https://images.unsplash.com/photo-1663704399456-de719a56fc09",
+  "src_id": "1663704399456-de719a56fc09",
+  "page_id": "1S_c_O_glv4",
+  "dhash": "1393e383a3b27242",
+  "bytes": 39386,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "pc-sleep-ea",
+  "file": "pc-sleep-ea/laptop-dim-room-pc-sleep.webp",
+  "name": "laptop-dim-room-pc-sleep",
+  "alt": "โน้ตบุ๊กเปิดทิ้งไว้ในห้องมืด เครื่องที่ต้องปิดสลีปคอมก่อนปล่อยให้ EA ทำงานข้ามคืน",
+  "caption": "ตั้งสลีปเป็น Never ตอนเสียบปลั๊ก หน้าจอดับได้ แต่เครื่องต้องไม่หลับ",
+  "credit": "Martin Katler",
+  "page": "https://unsplash.com/photos/o9XN28KdyN8",
+  "src": "https://images.unsplash.com/photo-1606229365485-93a3b8ee0385",
+  "src_id": "1606229365485-93a3b8ee0385",
+  "page_id": "o9XN28KdyN8",
+  "dhash": "0000802b0313070e",
+  "bytes": 28240,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "pc-sleep-ea",
+  "file": "pc-sleep-ea/plug-wall-socket-pc-overnight.webp",
+  "name": "plug-wall-socket-pc-overnight",
+  "alt": "มือกำลังเสียบปลั๊กเข้าเต้ารับบนผนัง ข้อแรกของเช็กลิสต์ก่อนปล่อยโน้ตบุ๊กรัน EA ข้ามคืน",
+  "caption": "โน้ตบุ๊กต้องเสียบสายชาร์จไว้ เพราะค่า Never ที่ตั้งไว้ใช้กับตอนเสียบปลั๊ก",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/fZirmwarM0E",
+  "src": "https://images.unsplash.com/photo-1610056494071-9373f12bf769",
+  "src_id": "1610056494071-9373f12bf769",
+  "page_id": "fZirmwarM0E",
+  "dhash": "d4d5cfd9d9adb53a",
+  "bytes": 22992,
+  "license": "Unsplash License"
+ }
+]

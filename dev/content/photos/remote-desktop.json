@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "remote-desktop",
+  "file": "remote-desktop/keyboard-ctrl-alt-remote-desktop-shortcuts.webp",
+  "name": "keyboard-ctrl-alt-remote-desktop-shortcuts",
+  "alt": "คีย์บอร์ดไฟสีแดงที่เห็นปุ่ม Ctrl Alt และ Shift ชัด ปุ่มที่ใช้กดคีย์ลัดของ Remote Desktop บน VPS",
+  "caption": "คีย์ลัดบางชุดของ Windows ถูกเครื่องของคุณดักไว้ จึงต้องใช้ชุดเฉพาะของ Remote Desktop",
+  "credit": "shri",
+  "page": "https://unsplash.com/photos/VqAMQdoLejI",
+  "src": "https://images.unsplash.com/photo-1570944891413-e09ccc306147",
+  "src_id": "1570944891413-e09ccc306147",
+  "page_id": "VqAMQdoLejI",
+  "dhash": "372349c767178773",
+  "bytes": 22346,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "remote-desktop",
+  "file": "remote-desktop/laptop-desk-remote-desktop.webp",
+  "name": "laptop-desk-remote-desktop",
+  "alt": "โน้ตบุ๊กบนโต๊ะไม้ข้างแก้วกาแฟ ภาพของ Remote Desktop คือการนั่งที่เครื่องนี้แต่สั่งงาน VPS อีกเครื่อง",
+  "caption": "หน้าจอที่เห็นมาจาก VPS ส่วน MT5 และ EA ยังทำงานอยู่บน VPS ไม่ใช่ในโน้ตบุ๊ก",
+  "credit": "Salah Ait Mokhtar",
+  "page": "https://unsplash.com/photos/-Px5V6LDxCo",
+  "src": "https://images.unsplash.com/photo-1734208682292-df2643d0c8d9",
+  "src_id": "1734208682292-df2643d0c8d9",
+  "page_id": "-Px5V6LDxCo",
+  "dhash": "735369636263031e",
+  "bytes": 87508,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "remote-desktop",
+  "file": "remote-desktop/router-ethernet-ports-remote-desktop-lag.webp",
+  "name": "router-ethernet-ports-remote-desktop-lag",
+  "alt": "ช่องสาย LAN และสายเน็ตที่เสียบอยู่หลังเราเตอร์ จุดแรกที่ควรเช็กเมื่อ Remote Desktop ค้างหรือกระตุก",
+  "caption": "อาการค้างส่วนใหญ่มาจากเน็ตฝั่งคุณ ไม่ได้แปลว่า MT5 บน VPS มีปัญหา",
+  "credit": "Stephen Phillips",
+  "page": "https://unsplash.com/photos/tN344soypQM",
+  "src": "https://images.unsplash.com/photo-1554098415-4052459dc340",
+  "src_id": "1554098415-4052459dc340",
+  "page_id": "tN344soypQM",
+  "dhash": "0f09088f5d28b010",
+  "bytes": 40598,
+  "license": "Unsplash License"
+ }
+]

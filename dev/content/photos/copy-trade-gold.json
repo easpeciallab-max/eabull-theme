@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "copy-trade-gold",
+  "file": "copy-trade-gold/coin-stacks-copy-trade-different-results.webp",
+  "name": "coin-stacks-copy-trade-different-results",
+  "alt": "เหรียญซ้อนเป็นห้าตั้งสูงต่ำไม่เท่ากัน เหมือนผลของบัญชีผู้ตามที่ไม่เท่ากับบัญชีต้นทาง",
+  "caption": "ทุนต่างกัน ไม้ต่างกัน และราคาที่เข้าช้ากว่า ทำให้ผลของคุณไม่เท่ากับต้นทาง",
+  "credit": "Kamil",
+  "page": "https://unsplash.com/photos/894I850Hyl0",
+  "src": "https://images.unsplash.com/photo-1768207450151-30c0bf8e8091",
+  "src_id": "1768207450151-30c0bf8e8091",
+  "page_id": "894I850Hyl0",
+  "dhash": "0301030e3ad28200",
+  "bytes": 42114,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "copy-trade-gold",
+  "file": "copy-trade-gold/people-phones-social-trading.webp",
+  "name": "people-phones-social-trading",
+  "alt": "หลายคนยืนก้มดูมือถือพร้อมกัน ภาพแทน Social Trading ที่เทรดเดอร์แชร์การเทรดให้คนอื่นติดตาม",
+  "caption": "Social Trading เน้นการเปิดเผยและติดตาม ส่วน Copy Trade คือการให้บัญชีเปิดไม้ตาม",
+  "credit": "camilo jimenez",
+  "page": "https://unsplash.com/photos/qZenO_gQ7QA",
+  "src": "https://images.unsplash.com/photo-1573152143286-0c422b4d2175",
+  "src_id": "1573152143286-0c422b4d2175",
+  "page_id": "qZenO_gQ7QA",
+  "dhash": "339b2b0713034343",
+  "bytes": 54974,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "copy-trade-gold",
+  "file": "copy-trade-gold/phone-chart-copy-trade-gold.webp",
+  "name": "phone-chart-copy-trade-gold",
+  "alt": "มือที่ถือมือถือเปิดกราฟแท่งเทียน Copy Trade ทองคือให้บัญชีเปิดไม้ตามต้นทาง ต่างจากบอทที่ทำตามกฎที่เขียนไว้",
+  "caption": "ภาพประกอบ: Copy Trade ตามการตัดสินใจของคนอื่น ส่วนบอทตามกฎที่เขียนไว้และทดสอบย้อนหลังได้",
+  "credit": "Denise Chan",
+  "page": "https://unsplash.com/photos/KZ-pyx0KLS0",
+  "src": "https://images.unsplash.com/photo-1671459922221-be8beec5c9fa",
+  "src_id": "1671459922221-be8beec5c9fa",
+  "page_id": "KZ-pyx0KLS0",
+  "dhash": "9bc9c99cb7b59098",
+  "bytes": 22670,
+  "license": "Unsplash License"
+ }
+]

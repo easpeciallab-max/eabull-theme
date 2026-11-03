@@ -113,6 +113,7 @@ Every article carries real photographs: 4 in a pillar, 3 in a supporting article
 7. Alt: Thai, 15 to 140 characters, says what is in the photo and how it relates to the section; the first photo's alt contains the focus keyword; every alt is unique; no keyword stuffing, no dashes.
 8. Caption: one short Thai sentence that adds meaning; start with "ภาพประกอบ:" when the photo shows prices, numbers or a chart.
 9. `py -3 -I dev/tools/article-photos.py check` must pass (counts, files, sizes, alt, duplicates).
+10. Literal over metaphor: at most 1 metaphor photo per article (dice, puzzle, hourglass, balance scale); the others show the subject itself (computers, monitors with charts or code, phones, desks, keyboards, calculators, notebooks, servers, money, gold, trading workplaces). No unrelated landscapes, playgrounds, animals, bridges or vehicles, and no foreign-language text on objects.
 
 ## Article layout (in this order)
 

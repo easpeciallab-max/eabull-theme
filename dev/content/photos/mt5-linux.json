@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "mt5-linux",
+  "file": "mt5-linux/laptop-terminal-mt5-linux.webp",
+  "name": "laptop-terminal-mt5-linux",
+  "alt": "หน้าต่าง Terminal บนโน้ตบุ๊กในห้องมืด ภาพของการลง MT5 Linux ที่ต้องพิมพ์คำสั่งติดตั้งเอง",
+  "caption": "MT5 บน Linux ทำงานผ่าน Wine ตามคู่มือทางการ แต่ต้องทดสอบ EA ของคุณเอง",
+  "credit": "Ilnur",
+  "page": "https://unsplash.com/photos/sxK8RUCpqoQ",
+  "src": "https://images.unsplash.com/photo-1762242298589-582f5f6c3fb1",
+  "src_id": "1762242298589-582f5f6c3fb1",
+  "page_id": "sxK8RUCpqoQ",
+  "dhash": "034152d353ce8303",
+  "bytes": 42318,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-linux",
+  "file": "mt5-linux/server-rack-cables-mt5-linux-vps.webp",
+  "name": "server-rack-cables-mt5-linux-vps",
+  "alt": "ตู้เซิร์ฟเวอร์ที่มีสายแลนเสียบเต็มในห้องมืด เครื่องแบบที่ VPS Linux หลายเจ้าให้ใช้ผ่านบรรทัดคำสั่ง",
+  "caption": "VPS Linux หลายแบบไม่มีหน้าจอกราฟิก ต้องติดตั้งเพิ่มก่อนจะเปิดหน้าต่าง MT5 ได้",
+  "credit": "Taylor Vick",
+  "page": "https://unsplash.com/photos/M5tzZtFCOfs",
+  "src": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+  "src_id": "1558494949-ef010cbdcc31",
+  "page_id": "M5tzZtFCOfs",
+  "dhash": "9e1e1e1616161614",
+  "bytes": 144566,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-linux",
+  "file": "mt5-linux/tablet-candlestick-test-ea-linux.webp",
+  "name": "tablet-candlestick-test-ea-linux",
+  "alt": "แท็บเล็ตแสดงกราฟแท่งเทียนวางข้างคีย์บอร์ด ภาพประกอบการดูผลระหว่างทดสอบ EA บน Linux กับบัญชีทดลอง",
+  "caption": "ภาพประกอบ: ทดสอบบนเครื่องที่จะใช้จริงด้วยบัญชีทดลองก่อนเปลี่ยนไปบัญชีจริง",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/vKNRKjSNbTo",
+  "src": "https://images.unsplash.com/photo-1767424412548-1a1ac7f4b9bc",
+  "src_id": "1767424412548-1a1ac7f4b9bc",
+  "page_id": "vKNRKjSNbTo",
+  "dhash": "241c78faf2763496",
+  "bytes": 33214,
+  "license": "Unsplash License"
+ }
+]

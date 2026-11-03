@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "mt5-2fa",
+  "file": "mt5-2fa/phone-left-on-table-lost-device.webp",
+  "name": "phone-left-on-table-lost-device",
+  "alt": "โทรศัพท์วางทิ้งไว้บนโต๊ะไม้กลางแจ้ง กรณีลืมหรือทำโทรศัพท์หายที่ต้องเตรียมทางกลับเข้าบัญชีไว้",
+  "caption": "ก่อนเปลี่ยนเครื่องให้ยกเลิกการผูกเดิมก่อน ถ้าโทรศัพท์หายอาจต้องพึ่งโบรกเกอร์",
+  "credit": "Olga Nayda",
+  "page": "https://unsplash.com/photos/cSskyN592g8",
+  "src": "https://images.unsplash.com/photo-1535312833541-9fb671a581b0",
+  "src_id": "1535312833541-9fb671a581b0",
+  "page_id": "cSskyN592g8",
+  "dhash": "c6449cb8f1e3e1f0",
+  "bytes": 45552,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-2fa",
+  "file": "mt5-2fa/phone-lock-icon-mt5-2fa.webp",
+  "name": "phone-lock-icon-mt5-2fa",
+  "alt": "โทรศัพท์มือถือที่ขึ้นไอคอนแม่กุญแจบนจอ สื่อถึง MT5 2FA ที่เพิ่มรหัสชั้นที่สองจากโทรศัพท์",
+  "caption": "ชั้นที่สองคือรหัสที่เปลี่ยนตามเวลา คนที่รู้แค่รหัสผ่านจึงยังเข้าบัญชีไม่ได้",
+  "credit": "Dan Nelson",
+  "page": "https://unsplash.com/photos/ah-HeguOe9k",
+  "src": "https://images.unsplash.com/photo-1584433144859-1fc3ab64a957",
+  "src_id": "1584433144859-1fc3ab64a957",
+  "page_id": "ah-HeguOe9k",
+  "dhash": "753430b012909993",
+  "bytes": 61956,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mt5-2fa",
+  "file": "mt5-2fa/phone-over-laptop-authenticator-setup.webp",
+  "name": "phone-over-laptop-authenticator-setup",
+  "alt": "มือถือโทรศัพท์เหนือโน้ตบุ๊ก ขั้นตอนใช้แอปในโทรศัพท์สแกนรหัสจาก MT5 บนคอมเพื่อเปิด OTP",
+  "caption": "เปิด 2FA จากโปรแกรม MT5 บนคอม แล้วใช้แอป Authenticator ในโทรศัพท์สแกนรหัส",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/0lHyhuwtyDI",
+  "src": "https://images.unsplash.com/photo-1734070447512-2917a9e7393a",
+  "src_id": "1734070447512-2917a9e7393a",
+  "page_id": "0lHyhuwtyDI",
+  "dhash": "3796b21116569737",
+  "bytes": 30994,
+  "license": "Unsplash License"
+ }
+]

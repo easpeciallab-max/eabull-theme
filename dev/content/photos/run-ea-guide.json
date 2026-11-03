@@ -1,0 +1,62 @@
+[
+ {
+  "slug": "run-ea-guide",
+  "file": "run-ea-guide/candlestick-chart-screen-run-ea.webp",
+  "name": "candlestick-chart-screen-run-ea",
+  "alt": "จอแสดงกราฟแท่งเทียนสีเขียวแดง ภาพของการรัน EA ที่ติดอยู่บนกราฟและอ่านราคาทุกครั้งที่ขยับ",
+  "caption": "ภาพประกอบ: เมื่อรัน EA แล้ว EA จะอยู่บนกราฟและคิดใหม่ทุกครั้งที่ราคาขยับ",
+  "credit": "m.",
+  "page": "https://unsplash.com/photos/ZzOa5G8hSPI",
+  "src": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29",
+  "src_id": "1535320903710-d993d3d77d29",
+  "page_id": "ZzOa5G8hSPI",
+  "dhash": "0d09010e84870b03",
+  "bytes": 22388,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "run-ea-guide",
+  "file": "run-ea-guide/data-center-server-room-vps-ea.webp",
+  "name": "data-center-server-room-vps-ea",
+  "alt": "ห้องเซิร์ฟเวอร์ในศูนย์ข้อมูลที่มีตู้เครื่องเรียงกัน ที่ตั้งของ VPS ซึ่งเปิดให้ EA ทำงานได้ตลอดเวลา",
+  "caption": "ศูนย์ข้อมูลมีไฟสำรองและเน็ตความเร็วสูง VPS ที่อยู่ในนั้นจึงไม่ดับตามไฟบ้าน",
+  "credit": "Taylor Vick",
+  "page": "https://unsplash.com/photos/aWslrFhs1w4",
+  "src": "https://images.unsplash.com/photo-1564457461758-8ff96e439e83",
+  "src_id": "1564457461758-8ff96e439e83",
+  "page_id": "aWslrFhs1w4",
+  "dhash": "14d072323233303a",
+  "bytes": 124566,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "run-ea-guide",
+  "file": "run-ea-guide/home-desk-computers-run-ea.webp",
+  "name": "home-desk-computers-run-ea",
+  "alt": "โต๊ะทำงานที่บ้านมีจอคอมสองจอกับโน้ตบุ๊ก เครื่องแบบที่หลายคนใช้เริ่มรัน EA ก่อนย้ายไป VPS",
+  "caption": "คอมที่บ้านเริ่มได้ทันที แต่ต้องตั้งไม่ให้สลีปและให้ต่อเน็ตอยู่ตลอด",
+  "credit": "Pedro Henrique Santos",
+  "page": "https://unsplash.com/photos/4IoS45J9pmk",
+  "src": "https://images.unsplash.com/photo-1505327191481-d31e1fb4ff79",
+  "src_id": "1505327191481-d31e1fb4ff79",
+  "page_id": "4IoS45J9pmk",
+  "dhash": "1e1e1e1c3d199f97",
+  "bytes": 26526,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "run-ea-guide",
+  "file": "run-ea-guide/padlock-keyboard-ea-machine-security.webp",
+  "name": "padlock-keyboard-ea-machine-security",
+  "alt": "แม่กุญแจวางบนคีย์บอร์ดสีขาว ภาพของการดูแลความปลอดภัยเครื่องที่ล็อกอินบัญชีเทรดค้างไว้",
+  "caption": "ใครเข้าเครื่องที่เปิด EA ได้ก็แก้ค่าและปิดออเดอร์ได้ รหัสผ่านจึงต้องเก็บไว้กับตัว",
+  "credit": "Sasun Bughdaryan",
+  "page": "https://unsplash.com/photos/QP7RBa5r8HM",
+  "src": "https://images.unsplash.com/photo-1774898989484-0b9becf69efb",
+  "src_id": "1774898989484-0b9becf69efb",
+  "page_id": "QP7RBa5r8HM",
+  "dhash": "18040c4c2ca446d1",
+  "bytes": 64730,
+  "license": "Unsplash License"
+ }
+]

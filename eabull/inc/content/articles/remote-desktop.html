@@ -1,4 +1,4 @@
-<!--meta {"title":"Remote Desktop คืออะไร: ควบคุม VPS ระยะไกลเพื่อดูแล EA","seo_title":"Remote Desktop คืออะไร: วิธีใช้คุม VPS ดูแล EA · EA BULL","description":"Remote Desktop คือวิธีควบคุมคอมหรือ VPS ที่เป็น Windows จากระยะไกล บทนี้สอนวิธีใช้ คีย์ลัดที่ควรรู้ วิธีออกโดยไม่ให้ MT5 ปิด และวิธีแก้อาการค้างหรือกระตุก","keyword":"remote desktop คือ","excerpt":"Remote Desktop คือเครื่องมือที่ใช้เข้าไปควบคุม Windows VPS จากคอมหรือมือถือ อ่านแล้วจะรู้วิธีเชื่อมต่อ คีย์ลัดที่ใช้บ่อย วิธีออกที่ไม่ทำให้ EA หยุด และวิธีแก้ภาพค้าง","category":"รัน EA 24 ชั่วโมง","date":"2026-11-18 09:00"} -->
+<!--meta {"title": "Remote Desktop คืออะไร: ควบคุม VPS ระยะไกลเพื่อดูแล EA", "seo_title": "Remote Desktop คืออะไร: วิธีใช้คุม VPS ดูแล EA · EA BULL", "description": "Remote Desktop คือวิธีควบคุมคอมหรือ VPS ที่เป็น Windows จากระยะไกล บทนี้สอนวิธีใช้ คีย์ลัดที่ควรรู้ วิธีออกโดยไม่ให้ MT5 ปิด และวิธีแก้อาการค้างหรือกระตุก", "keyword": "remote desktop คือ", "excerpt": "Remote Desktop คือเครื่องมือที่ใช้เข้าไปควบคุม Windows VPS จากคอมหรือมือถือ อ่านแล้วจะรู้วิธีเชื่อมต่อ คีย์ลัดที่ใช้บ่อย วิธีออกที่ไม่ทำให้ EA หยุด และวิธีแก้ภาพค้าง", "category": "รัน EA 24 ชั่วโมง", "date": "2026-11-18 09:00", "rev": 2} -->
 <p class="lead">Remote Desktop คือวิธีเข้าไปใช้คอม Windows อีกเครื่องผ่านอินเทอร์เน็ต คุณเห็นหน้าจอของเครื่องนั้นในหน้าต่างหนึ่ง และใช้เมาส์กับคีย์บอร์ดของคุณสั่งงานได้เหมือนนั่งอยู่หน้าเครื่อง คนใช้ EA ใช้มันเข้า Windows VPS เพื่อติดตั้ง MT5 เช็กว่า EA ยังทำงาน และแก้ปัญหา โดยที่โปรแกรมทั้งหมดยังทำงานอยู่บน VPS ไม่ได้ย้ายมาอยู่บนเครื่องของคุณ</p>
 <div class="callout callout--info"><p><strong>สรุปสั้น</strong></p><ul>
 <li>บนคอม Windows ใช้โปรแกรม Remote Desktop Connection ที่ติดมากับเครื่อง เปิดเร็ว ๆ ได้ด้วยคำสั่ง mstsc</li>
@@ -11,6 +11,7 @@
 
 <h2>Remote Desktop คืออะไร</h2>
 <p>Remote Desktop คือความสามารถของ Windows ที่ให้เครื่องหนึ่งควบคุมอีกเครื่องหนึ่งจากระยะไกล ใช้มาตรฐานการเชื่อมต่อที่ชื่อ RDP (Remote Desktop Protocol) ของ Microsoft ฝั่งที่ถูกควบคุมเรียกว่าเครื่องปลายทาง หรือ host ส่วนฝั่งที่คุณนั่งใช้เรียกว่าเครื่องลูก หรือ client</p>
+[eabull_photo file="remote-desktop/laptop-desk-remote-desktop.webp" alt="โน้ตบุ๊กบนโต๊ะไม้ข้างแก้วกาแฟ ภาพของ Remote Desktop คือการนั่งที่เครื่องนี้แต่สั่งงาน VPS อีกเครื่อง" caption="หน้าจอที่เห็นมาจาก VPS ส่วน MT5 และ EA ยังทำงานอยู่บน VPS ไม่ใช่ในโน้ตบุ๊ก" w="1200" h="675" credit="ภาพ: Salah Ait Mokhtar / Unsplash"]
 <p>บนคอม Windows โปรแกรมฝั่ง client ชื่อ Remote Desktop Connection ติดมากับ Windows ทุกรุ่น ส่วนฝั่ง host ต้องเป็น Windows รุ่น Pro ขึ้นไปหรือ Windows Server เพราะ Windows รุ่น Home ใช้เข้าเครื่องอื่นได้ แต่เปิดให้เครื่องอื่นเข้ามาควบคุมไม่ได้ (ข้อมูลจาก <a href="https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access" target="_blank" rel="noopener">Microsoft Learn: Enable Remote Desktop on your PC</a> ตรวจเมื่อ พ.ย. 2569) Windows VPS ที่เช่ามาถูกตั้งให้เป็น host พร้อมใช้อยู่แล้ว คุณจึงแค่ต้องมีโปรแกรมฝั่ง client</p>
 <p>สำหรับคนใช้ EA เรื่องที่ต้องเข้าใจที่สุดคือ Remote Desktop ไม่ได้ย้ายโปรแกรมมาไว้ที่เครื่องคุณ MT5 และ EA ยังทำงานบน VPS ตลอด สิ่งที่วิ่งไปมาบนอินเทอร์เน็ตมีแค่ภาพหน้าจอจาก VPS กับการกดเมาส์และคีย์บอร์ดจากเครื่องคุณ เมื่อเลิกดู VPS ก็ยังทำงานต่อเหมือนเดิม</p>
 <p>ถ้ายังไม่ชัดว่า VPS คือเครื่องแบบไหน และทำไมคนใช้ EA ถึงเช่ามันแทนการเปิดคอมทิ้งไว้ อ่านพื้นฐานได้ในบท <a href="{{home}}/vps-explained/">VPS คืออะไร</a></p>
@@ -54,6 +55,7 @@
 
 <h2>Remote Desktop คีย์ลัดที่ควรรู้</h2>
 <p>ในหน้าจอระยะไกล คีย์ลัดบางชุดของ Windows ถูกเครื่องของคุณดักไว้ก่อน ไม่ส่งไปถึง VPS Microsoft จึงมีคีย์ลัดเฉพาะของ Remote Desktop ให้ใช้แทน ตารางนี้คัดตัวที่ใช้บ่อยเวลาดูแล MT5 (ข้อมูลจาก <a href="https://learn.microsoft.com/en-us/windows/win32/termserv/terminal-services-shortcut-keys" target="_blank" rel="noopener">Microsoft Learn: Remote Desktop Services Shortcut Keys</a> ตรวจเมื่อ พ.ย. 2569)</p>
+[eabull_photo file="remote-desktop/keyboard-ctrl-alt-remote-desktop-shortcuts.webp" alt="คีย์บอร์ดไฟสีแดงที่เห็นปุ่ม Ctrl Alt และ Shift ชัด ปุ่มที่ใช้กดคีย์ลัดของ Remote Desktop บน VPS" caption="คีย์ลัดบางชุดของ Windows ถูกเครื่องของคุณดักไว้ จึงต้องใช้ชุดเฉพาะของ Remote Desktop" w="1200" h="675" credit="ภาพ: shri / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>คีย์ลัด</th><th>ทำอะไร</th><th>ใช้ตอนไหน</th></tr></thead>
 <tbody>
@@ -72,6 +74,7 @@
 
 <h2>Remote Desktop ค้าง หรือ กระตุก: สาเหตุและวิธีแก้</h2>
 <p>อาการ Remote Desktop ค้าง หรือ Remote Desktop กระตุก ส่วนใหญ่เกิดจากฝั่งการเชื่อมต่อ ไม่ได้แปลว่า MT5 บน VPS มีปัญหา ตารางนี้ช่วยแยกสาเหตุ</p>
+[eabull_photo file="remote-desktop/router-ethernet-ports-remote-desktop-lag.webp" alt="ช่องสาย LAN และสายเน็ตที่เสียบอยู่หลังเราเตอร์ จุดแรกที่ควรเช็กเมื่อ Remote Desktop ค้างหรือกระตุก" caption="อาการค้างส่วนใหญ่มาจากเน็ตฝั่งคุณ ไม่ได้แปลว่า MT5 บน VPS มีปัญหา" w="1200" h="675" credit="ภาพ: Stephen Phillips / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>อาการ</th><th>สาเหตุที่พบบ่อย</th><th>ลองแก้</th></tr></thead>
 <tbody>

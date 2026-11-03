@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "algo-trading",
+  "file": "algo-trading/keyboard-calculator-tablet-chart-algo-trading-cycle.webp",
+  "name": "keyboard-calculator-tablet-chart-algo-trading-cycle",
+  "alt": "คีย์บอร์ด เครื่องคิดเลข และแท็บเล็ตที่เปิดกราฟราคา โต๊ะทำงานที่ใช้ไล่วงจรของ Algo Trading ตั้งแต่ทดสอบจนถึงบัญชีจริง",
+  "caption": "ภาพประกอบ: ข้ามขั้นไหนไป ปัญหามักโผล่ตอนใช้เงินจริง",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/pxZcruj0Xkw",
+  "src": "https://images.unsplash.com/photo-1735467547583-d9fc4503f238",
+  "src_id": "1735467547583-d9fc4503f238",
+  "page_id": "pxZcruj0Xkw",
+  "dhash": "8c0c9ce5c9deb389",
+  "bytes": 50026,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "algo-trading",
+  "file": "algo-trading/on-off-button-algo-trading-switch.webp",
+  "name": "on-off-button-algo-trading-switch",
+  "alt": "ปุ่มเปิดปิดบนแผงสีดำ เหมือนปุ่ม Algo Trading ใน MT5 ที่ต้องเปิดก่อน EA จะส่งคำสั่งได้",
+  "caption": "ปิดปุ่มนี้ทีเดียว EA ทุกตัวในโปรแกรมหยุดส่งคำสั่งใหม่",
+  "credit": "Marcel Strauß",
+  "page": "https://unsplash.com/photos/UcOJRLYq9cY",
+  "src": "https://images.unsplash.com/photo-1631551045549-9a735b8e4ea3",
+  "src_id": "1631551045549-9a735b8e4ea3",
+  "page_id": "UcOJRLYq9cY",
+  "dhash": "01000305100d0d0c",
+  "bytes": 57040,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "algo-trading",
+  "file": "algo-trading/program-code-screen-algo-trading.webp",
+  "name": "program-code-screen-algo-trading",
+  "alt": "โค้ดโปรแกรมหลายบรรทัดบนจอมืด Algo Trading คือการเขียนกฎเทรดเป็นคำสั่งที่โปรแกรมทำตามได้ทุกครั้ง",
+  "caption": "เงื่อนไขซื้อขายที่ชัดพอจะกลายเป็นโค้ดที่โปรแกรมทำตามโดยไม่ต้องตีความ",
+  "credit": "Chris Ried",
+  "page": "https://unsplash.com/photos/ieic5Tq8YMk",
+  "src": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+  "src_id": "1515879218367-8466d910aaa4",
+  "page_id": "ieic5Tq8YMk",
+  "dhash": "8f8faf8383878fc3",
+  "bytes": 59156,
+  "license": "Unsplash License"
+ }
+]

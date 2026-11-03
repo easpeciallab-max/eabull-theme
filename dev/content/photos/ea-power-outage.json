@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ea-power-outage",
+  "file": "ea-power-outage/candle-dark-room-power-outage-ea.webp",
+  "name": "candle-dark-room-power-outage-ea",
+  "alt": "เทียนจุดบนโต๊ะกลมในห้องที่ไฟดับ สถานการณ์ที่ไฟดับ EA บนคอมที่บ้านหยุดทำงานทันที",
+  "caption": "เครื่องดับ EA ก็หยุด แต่ออเดอร์ยังอยู่ในบัญชีที่เซิร์ฟเวอร์ของโบรกเกอร์",
+  "credit": "Alice Kotlyarenko",
+  "page": "https://unsplash.com/photos/n4sjEVninD4",
+  "src": "https://images.unsplash.com/photo-1719935114301-eac84a6591cf",
+  "src_id": "1719935114301-eac84a6591cf",
+  "page_id": "n4sjEVninD4",
+  "dhash": "4d4d4d0544070740",
+  "bytes": 18804,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-power-outage",
+  "file": "ea-power-outage/modem-status-lights-mt5-disconnect.webp",
+  "name": "modem-status-lights-mt5-disconnect",
+  "alt": "ไฟสถานะบนเราเตอร์ที่บอกว่าเน็ตยังต่ออยู่ไหม จุดที่ควรดูคู่กับมุมขวาล่างของ MT5 เมื่อหลุด",
+  "caption": "ดูไฟสถานะเน็ตที่เราเตอร์ด้วย จะได้รู้ว่าหลุดเพราะเน็ตบ้านหรือเพราะโปรแกรม",
+  "credit": "Stephen Phillips",
+  "page": "https://unsplash.com/photos/LR_wX_klOPM",
+  "src": "https://images.unsplash.com/photo-1554098415-cae1af5e4f1a",
+  "src_id": "1554098415-cae1af5e4f1a",
+  "page_id": "LR_wX_klOPM",
+  "dhash": "1a1a9fdb5f5f5b1b",
+  "bytes": 51828,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-power-outage",
+  "file": "ea-power-outage/power-strip-switch-ups-backup.webp",
+  "name": "power-strip-switch-ups-backup",
+  "alt": "ปลั๊กพ่วงสีขาวที่มีสวิตช์ไฟสีแดง จุดที่คอม เราเตอร์ และโมเด็มรับไฟ ควรต่อผ่านเครื่องสำรองไฟ",
+  "caption": "เครื่องสำรองไฟช่วยตอนไฟกระพริบหรือดับสั้น ๆ ถ้าดับนานกว่านั้น VPS ช่วยได้มากกว่า",
+  "credit": "Zonduurzaam Deventer",
+  "page": "https://unsplash.com/photos/BFNi3TWB2fw",
+  "src": "https://images.unsplash.com/photo-1637920951583-ff7221021e21",
+  "src_id": "1637920951583-ff7221021e21",
+  "page_id": "BFNi3TWB2fw",
+  "dhash": "010114bcfcf4fc1e",
+  "bytes": 18908,
+  "license": "Unsplash License"
+ }
+]

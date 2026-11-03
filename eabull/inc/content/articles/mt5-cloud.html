@@ -1,4 +1,4 @@
-<!--meta {"title":"MT5 Cloud: Virtual Hosting กับ MQL5 Cloud Network ต่างกันยังไง","seo_title":"MT5 Cloud: Virtual Hosting กับ MQL5 Cloud Network · EA BULL","description":"MT5 Cloud มีสองบริการ Virtual Hosting ให้ EA เทรดบนเครื่องเสมือน ส่วน MQL5 Cloud Network ช่วยคำนวณตอน Optimize บทนี้บอกเมนูและเงื่อนไขของแต่ละตัว","keyword":"mt5 cloud","excerpt":"คำว่า MT5 Cloud ใช้เรียกสองบริการที่ต่างกันมาก ตัวหนึ่งให้ EA เทรดตลอดเวลาบนเครื่องเสมือน อีกตัวช่วยคำนวณการทดสอบ บทนี้บอกเมนู วิธีทำงาน เงื่อนไข และความหมายของข้อความที่บอกว่าโหมดคลาวด์ปิดอยู่","category":"รัน EA 24 ชั่วโมง","date":"2027-01-15 09:00"} -->
+<!--meta {"title": "MT5 Cloud: Virtual Hosting กับ MQL5 Cloud Network ต่างกันยังไง", "seo_title": "MT5 Cloud: Virtual Hosting กับ MQL5 Cloud Network · EA BULL", "description": "MT5 Cloud มีสองบริการ Virtual Hosting ให้ EA เทรดบนเครื่องเสมือน ส่วน MQL5 Cloud Network ช่วยคำนวณตอน Optimize บทนี้บอกเมนูและเงื่อนไขของแต่ละตัว", "keyword": "mt5 cloud", "excerpt": "คำว่า MT5 Cloud ใช้เรียกสองบริการที่ต่างกันมาก ตัวหนึ่งให้ EA เทรดตลอดเวลาบนเครื่องเสมือน อีกตัวช่วยคำนวณการทดสอบ บทนี้บอกเมนู วิธีทำงาน เงื่อนไข และความหมายของข้อความที่บอกว่าโหมดคลาวด์ปิดอยู่", "category": "รัน EA 24 ชั่วโมง", "date": "2027-01-15 09:00", "rev": 2} -->
 <p class="lead">MT5 Cloud เป็นคำที่คนใช้เรียกบริการสองอย่างในโปรแกรม MetaTrader 5 ซึ่งทำงานคนละเรื่อง อย่างแรกคือ Virtual Hosting ที่เช่าเครื่องเสมือนให้ EA ทำงานแทนคอมของคุณตลอด 24 ชั่วโมงและเทรดบัญชีจริง อย่างที่สองคือ MQL5 Cloud Network ที่รวมพลังคอมพิวเตอร์ทั่วโลกไว้ช่วยคำนวณตอนทดสอบหรือ Optimize EA ใน Strategy Tester โดยไม่ได้แตะบัญชีเทรดเลย</p>
 <div class="callout callout--info"><p><strong>สรุปสั้น</strong></p><ul>
 <li>Virtual Hosting เปิดจากหน้าต่าง Navigator คลิกขวาที่บัญชีเทรดแล้วเลือก Register a Virtual Server และดูแลต่อในหน้าต่าง Toolbox ส่วน VPS</li>
@@ -11,6 +11,7 @@
 
 <h2>MT5 Cloud คืออะไร: สองบริการที่ชื่อคล้ายกัน</h2>
 <p>ที่คนสับสนเพราะทั้งสองบริการเป็นของ MetaQuotes บริษัทผู้ทำ MT5 ทั้งคู่ใช้บัญชี MQL5.community เหมือนกัน และทั้งคู่ทำงานบนเครื่องที่ไม่ใช่คอมของคุณ แต่จุดประสงค์ต่างกันคนละขั้ว ตารางนี้แยกให้เห็นทีละเรื่อง</p>
+[eabull_photo file="mt5-cloud/server-lights-mt5-cloud.webp" alt="ไฟสีฟ้าของตู้เซิร์ฟเวอร์ในศูนย์ข้อมูล ภาพของ MT5 Cloud ที่ทำงานบนเครื่องของผู้ให้บริการ ไม่ใช่คอมของคุณ" caption="ทั้ง Virtual Hosting และ MQL5 Cloud Network ทำงานบนเครื่องนอกบ้านคุณ แต่ใช้คนละงาน" w="1200" h="675" credit="ภาพ: Krzysztof Kowalik / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>เรื่อง</th><th>Virtual Hosting</th><th>MQL5 Cloud Network</th></tr></thead>
 <tbody>
@@ -38,6 +39,7 @@
 
 <h2>ก่อนย้าย EA ขึ้น Virtual Hosting ต้องรู้อะไร</h2>
 <p>คู่มือเรื่อง Migration มีเงื่อนไขหลายข้อที่ทำให้ EA บางตัวทำงานบนเครื่องเสมือนไม่เหมือนบนคอม (ข้อมูลจาก <a href="https://www.metatrader5.com/en/terminal/help/virtual_hosting/virtual_hosting_migration" target="_blank" rel="noopener">คู่มือ MetaTrader 5: Virtual Hosting Migration</a> ตรวจเมื่อ พ.ย. 2569) ข้อที่คนใช้ EA ควรรู้มีดังนี้</p>
+[eabull_photo file="mt5-cloud/laptop-code-virtual-hosting-migration.webp" alt="โน้ตบุ๊กเปิดหน้าต่างโค้ดโปรแกรมในห้องมืด ภาพประกอบเงื่อนไขที่ต้องเช็กก่อนย้าย EA ขึ้น Virtual Hosting" caption="EA ที่เรียกไฟล์ DLL ทำงานบน Virtual Hosting ไม่ได้ ควรถามผู้พัฒนาก่อนย้าย" w="1200" h="675" credit="ภาพ: AltumCode / Unsplash"]
 <ul class="checklist">
 <li>การเรียก DLL ถูกห้ามทั้งหมด EA ที่ต้องใช้ไฟล์ DLL จะทำงานไม่ได้</li>
 <li>สคริปต์ย้ายขึ้นไปไม่ได้ แม้จะรันค้างอยู่บนกราฟตอนสั่งย้าย</li>
@@ -65,6 +67,7 @@
 
 <h2>MQL5 Cloud Network คืออะไร และใช้ตอนไหน</h2>
 <p>MQL5 Cloud Network คือเครือข่ายที่รวม Agent จากคอมพิวเตอร์จำนวนมากทั่วโลกไว้ด้วยกัน Agent คือโปรแกรมย่อยที่รับงานคำนวณรอบทดสอบไปทำ เวลาคุณ Optimize EA ด้วยการลองค่าหลายพันชุด Strategy Tester จะแบ่งงานส่งให้ Agent ช่วยกันคิด แล้วรวมผลกลับมาให้ เครือข่ายนี้มาจากคอมของคนที่ติดตั้งโปรแกรม MetaTester แล้วเปิดให้ใช้พลังเครื่องที่ว่างอยู่</p>
+[eabull_photo file="mt5-cloud/cpu-chip-mql5-cloud-network.webp" alt="ชิปประมวลผลที่ถูกคีบตั้งไว้ด้วยแหนบสีดำ ภาพของพลังคำนวณจากคอมทั่วโลกที่ MQL5 Cloud Network รวมไว้" caption="เครือข่ายนี้ช่วยคิดตอน Optimize ใน Strategy Tester และไม่ได้ต่อกับบัญชีเทรดของคุณ" w="1200" h="675" credit="ภาพ: Brian Kostiuk / Unsplash"]
 <p>ใน Strategy Tester มี Agent สามแบบ แบบในเครื่องติดตั้งมาให้พร้อมโปรแกรม จำนวนเท่ากับคอร์เชิงตรรกะของ CPU แบบระยะไกลคือคอมเครื่องอื่นในเครือข่ายของคุณเอง และแบบคลาวด์คือ MQL5 Cloud Network เงื่อนไขของแบบคลาวด์ตามคู่มือมีดังนี้ (ข้อมูลจาก <a href="https://www.metatrader5.com/en/terminal/help/mql5cloud/mql5cloud_use" target="_blank" rel="noopener">คู่มือ MetaTrader 5: MQL5 Cloud Network How to Use</a> ตรวจเมื่อ พ.ย. 2569)</p>
 <ol class="guide-steps">
 <li><h3>ใส่บัญชี MQL5.community</h3><p>ใส่ชื่อผู้ใช้และรหัสผ่านใน Tools → Options → Community ถ้ายังไม่ได้ใส่ ระบบจะถามตอนเปิดใช้</p></li>

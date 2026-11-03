@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "fake-pages",
+  "file": "fake-pages/finger-phone-report-fake-page.webp",
+  "name": "finger-phone-report-fake-page",
+  "alt": "นิ้วชี้แตะจอโทรศัพท์ เหมือนการกดรายงานบัญชีที่แอบอ้างเป็นแบรนด์อื่นในแอป",
+  "caption": "การรายงานบัญชีที่แอบอ้างใช้เวลาไม่ถึงนาที และช่วยให้คนอื่นไม่โดนหลอกต่อ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/5SFiVF4lfnM",
+  "src": "https://images.unsplash.com/photo-1716113837779-dc9196cd7f5d",
+  "src_id": "1716113837779-dc9196cd7f5d",
+  "page_id": "5SFiVF4lfnM",
+  "dhash": "1999110911194917",
+  "bytes": 17680,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "fake-pages",
+  "file": "fake-pages/magnifying-glass-check-fake-page.webp",
+  "name": "magnifying-glass-check-fake-page",
+  "alt": "แว่นขยายวางบนโต๊ะไม้ สื่อถึงการไล่เช็กเพจทีละจุดก่อนเชื่อว่าเป็นตัวจริง",
+  "caption": "ใช้เวลาไม่กี่นาทีเช็กวันที่สร้างเพจและประวัติเปลี่ยนชื่อ ก่อนทักแชตไป",
+  "credit": "Jon Tyson",
+  "page": "https://unsplash.com/photos/ZSBFoikEu_Q",
+  "src": "https://images.unsplash.com/photo-1568495341369-1066472c7a27",
+  "src_id": "1568495341369-1066472c7a27",
+  "page_id": "ZSBFoikEu_Q",
+  "dhash": "495d4a2a30121213",
+  "bytes": 143394,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "fake-pages",
+  "file": "fake-pages/orange-mask-fake-pages.webp",
+  "name": "orange-mask-fake-pages",
+  "alt": "หน้ากากสีส้มวางบนโต๊ะ สื่อถึงเพจปลอมที่ทำทีเป็นแบรนด์หรือทีมเทรดตัวจริง",
+  "caption": "เพจปลอมใช้ชื่อ รูป และโพสต์ของตัวจริงเป็นหน้ากาก เพื่อให้คุณทักแชตเข้าไปเอง",
+  "credit": "Marina Zaharkina",
+  "page": "https://unsplash.com/photos/rEYE6FRy6Og",
+  "src": "https://images.unsplash.com/photo-1560964042-6e1d2060d33e",
+  "src_id": "1560964042-6e1d2060d33e",
+  "page_id": "rEYE6FRy6Og",
+  "dhash": "0f0fcf6f6f6ecf0d",
+  "bytes": 44982,
+  "license": "Unsplash License"
+ }
+]

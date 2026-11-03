@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "how-to-use-trading-bot",
+  "file": "how-to-use-trading-bot/coffee-planner-daily-bot-routine.webp",
+  "name": "coffee-planner-daily-bot-routine",
+  "alt": "แก้วกาแฟวางบนสมุดแพลนเนอร์รายเดือน กิจวัตรดูแลบอททุกวันและทุกสัปดาห์ที่ควรทำให้เป็นนิสัย",
+  "caption": "ใช้เวลาไม่กี่นาทีต่อวันเช็กการเชื่อมต่อ ปุ่ม Algo Trading และแท็บ Experts",
+  "credit": "Estée Janssens",
+  "page": "https://unsplash.com/photos/aQfhbxailCs",
+  "src": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe",
+  "src_id": "1506784983877-45594efa4cbe",
+  "page_id": "aQfhbxailCs",
+  "dhash": "13138b9999991327",
+  "bytes": 39666,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "how-to-use-trading-bot",
+  "file": "how-to-use-trading-bot/laptop-notebook-prepare-how-to-use-trading-bot.webp",
+  "name": "laptop-notebook-prepare-how-to-use-trading-bot",
+  "alt": "มือพิมพ์บนแล็ปท็อปข้างสมุดจด เตรียมบัญชี MT5 เครื่อง และไฟล์ EA ให้ครบก่อนเริ่มวิธีใช้บอทเทรด",
+  "caption": "ของที่ขาดไปอย่างเดียวทำให้บอทไม่ทำงานได้ทั้งระบบ เช็กให้ครบก่อนลงมือ",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/kA50vHmCxbk",
+  "src": "https://images.unsplash.com/photo-1663524789611-2c8330848379",
+  "src_id": "1663524789611-2c8330848379",
+  "page_id": "kA50vHmCxbk",
+  "dhash": "83c1681c3d5b4f6e",
+  "bytes": 63304,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "how-to-use-trading-bot",
+  "file": "how-to-use-trading-bot/toggle-switches-enable-ea-mt5.webp",
+  "name": "toggle-switches-enable-ea-mt5",
+  "alt": "สวิตช์โยกสามตัวบนผนัง เหมือนสวิตช์อนุญาตหลายชั้นใน MT5 ที่ต้องเปิดครบก่อน EA จะเทรดได้",
+  "caption": "ทั้งปุ่ม Algo Trading บนแถบเครื่องมือ และช่อง Allow Algo Trading ของ EA แต่ละตัว ต้องเปิดอยู่",
+  "credit": "Alan Jiang",
+  "page": "https://unsplash.com/photos/xMaXGXFl-SA",
+  "src": "https://images.unsplash.com/photo-1775377573310-66375d017b68",
+  "src_id": "1775377573310-66375d017b68",
+  "page_id": "xMaXGXFl-SA",
+  "dhash": "0420066869390703",
+  "bytes": 14132,
+  "license": "Unsplash License"
+ }
+]
