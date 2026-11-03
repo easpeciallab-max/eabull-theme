@@ -481,7 +481,7 @@ function eab_seed_photos( $content, $post_id ) {
 			if ( ! $id ) {
 				return $m[0];
 			}
-			$html = '<figure class="wp-block-image size-full eab-photo"><img src="' . esc_url( wp_get_attachment_url( $id ) ) . '" alt="' . esc_attr( $a['alt'] ) . '" width="' . (int) $a['w'] . '" height="' . (int) $a['h'] . '" class="wp-image-' . (int) $id . '"/>';
+			$html = '<figure class="wp-block-image size-full eab-photo"><img src="' . esc_url( wp_get_attachment_url( $id ) ) . '" alt="' . esc_attr( $a['alt'] ) . '" width="' . (int) $a['w'] . '" height="' . (int) $a['h'] . '" loading="lazy" decoding="async" class="wp-image-' . (int) $id . '"/>';
 			if ( '' !== trim( $a['caption'] ) ) {
 				$html .= '<figcaption class="wp-element-caption">' . esc_html( $a['caption'] ) . '</figcaption>';
 			}
@@ -490,6 +490,22 @@ function eab_seed_photos( $content, $post_id ) {
 		$content
 	);
 }
+
+/**
+ * รูปประกอบบทความอยู่ใต้ปกเสมอ (ปกคือภาพแรกของหน้า) จึง lazy load ทุกรูป
+ * WordPress ปกติไม่ใส่ loading="lazy" ให้ 3 รูปแรกในเนื้อหา · ใช้กับรูปที่นำเข้าก่อนมี loading ใน markup ด้วย
+ */
+add_filter(
+	'wp_content_img_tag',
+	function ( $img, $context, $id ) {
+		if ( $id && false === strpos( $img, ' loading=' ) && in_array( (int) $id, array_map( 'intval', (array) get_option( 'eab_photo_attachments', array() ) ), true ) ) {
+			$img = str_replace( '<img ', '<img loading="lazy" ', preg_replace( '/\s+fetchpriority="high"/', '', $img ) );
+		}
+		return $img;
+	},
+	10,
+	3
+);
 
 /**
  * สร้างเพจที่ยังไม่มี · ไม่แตะเนื้อหาเพจที่มีอยู่แล้ว (เว้นแต่เลือก overwrite)
