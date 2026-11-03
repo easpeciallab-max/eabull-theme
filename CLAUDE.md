@@ -159,6 +159,9 @@
 - ข้อเท็จจริงที่ผู้ช่วยตรวจแล้วและใช้ซ้ำทั้งชุด: ปุ่ม Algo Trading (คู่มือทางการบางหน้ายังเรียก AutoTrading) · Trailing Stop ทำงานในโปรแกรม SL/TP ที่เซิร์ฟเวอร์ · แอปมือถือไม่มีเมนู Trailing Stop ในคู่มือ · กราฟวาดจาก Bid · ค่าสมมติ ราคาทอง 4,000 USD สัญญา 100 ออนซ์ 1 USD = 35 บาท 1 pip = 0.10 · สายด่วน AOC 1441 · ETDA 1212 · thaipoliceonline.go.th · ไม่ใส่ 1207 และ "72 ชั่วโมง" (ยืนยันไม่ได้) · cmegroup.com บล็อกบอต จึงไม่ลิงก์ CME
 - ปกบทความ: `dev/preview/cover.php` เปลี่ยนเป็นแบบ Bull Black แล้ว (เดิมเป็น Glass Sky ของ EA WING) · สร้างด้วย `EAB_PREVIEW=http://localhost:8791 php -d extension=mbstring -d extension=gd dev/make-covers.php` (ต้องเปิด preview `eabull-preview` ก่อน)
 - หมวดเดิม "EA และบอทเทรด" (ea-basics) บนเว็บเป็นหมวดตั้งต้น id 1 และมี 0 โพสต์ ปล่อยไว้ได้
+- **นำเข้าแล้ว 3 พ.ย. 2026** (commit 2f92ce4 · Setup → นำเข้าบทความ): ตั้งเวลา 120 บท error 0 · หมวดถูกทุกบท · ปกครบ 120 รูป (ไม่ซ้ำ) · Yoast focuskw/title/metadesc มาจากไฟล์ · บทแรก จ. 9 พ.ย. 2026 09:00 บทสุดท้าย 8 มี.ค. 2027 09:00 · /articles/ และหน้าหมวดเลิก noindex เองเมื่อมีบทเผยแพร่ (inc/seo.php)
+- จุดคะแนน Yoast ของบทความยังเป็น "Not available" (คำนวณตอนเปิด editor) · ปุ่ม LINE ทุกบทยังไป /go/ จนกว่าจะได้ LINE OA
+- style.css: `.artlay` `.calc` `.calc__in` `.field` `.guide-steps` ใช้คอลัมน์ minmax(0, 1fr) แล้ว (เดิมตารางกว้าง ชื่อตัวเลือกยาว และ path ยาวดันจอมือถือล้นใน 3 บท) · ตรวจ 120 บทที่ 375/820 + บางบทที่ 1366 ไม่ล้นจอ
 
 ## สถานะ
 - 29 ต.ค. 2026: เริ่มโปรเจกต์ · repo ยังไม่ได้เป็น git · เว็บ eabull.com ยังเป็นเว็บตั้งต้น (ธีม easpecial, ชื่อเว็บ "EA Special", ปุ่ม LINE ลิงก์ไป @fenixpro ของแบรนด์อื่น) ยังไม่ได้แตะ
