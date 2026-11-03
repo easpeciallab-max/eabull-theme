@@ -1,4 +1,4 @@
-<!--meta {"title":"Every Tick Based on Real Ticks คืออะไร: โหมดทดสอบที่ใกล้ตลาดจริงที่สุด","seo_title":"Every Tick Based on Real Ticks คืออะไร ใน MT5 · EA BULL","description":"Every Tick Based on Real Ticks คือโหมดทดสอบใน MT5 ที่ใช้ tick จริงของโบรกเกอร์ บทนี้เทียบกับ Every tick และโหมดอื่น บอกวิธีเลือกใช้ และข้อจำกัดที่ควรรู้","keyword":"every tick based on real ticks","excerpt":"โหมดที่ใช้ tick จริงใน Strategy Tester ทำให้ลำดับราคาและ Spread เป็นของจริง บทนี้อธิบายว่ามันต่างจาก Every tick ยังไง ใช้ตอนไหน และทำไมผลยังต่างกันในแต่ละโบรกเกอร์","category":"ทดสอบและปรับค่า EA","date":"2026-11-23 09:00"} -->
+<!--meta {"title": "Every Tick Based on Real Ticks คืออะไร: โหมดทดสอบที่ใกล้ตลาดจริงที่สุด", "seo_title": "Every Tick Based on Real Ticks คืออะไร ใน MT5 · EA BULL", "description": "Every Tick Based on Real Ticks คือโหมดทดสอบใน MT5 ที่ใช้ tick จริงของโบรกเกอร์ บทนี้เทียบกับ Every tick และโหมดอื่น บอกวิธีเลือกใช้ และข้อจำกัดที่ควรรู้", "keyword": "every tick based on real ticks", "excerpt": "โหมดที่ใช้ tick จริงใน Strategy Tester ทำให้ลำดับราคาและ Spread เป็นของจริง บทนี้อธิบายว่ามันต่างจาก Every tick ยังไง ใช้ตอนไหน และทำไมผลยังต่างกันในแต่ละโบรกเกอร์", "category": "ทดสอบและปรับค่า EA", "date": "2026-11-23 09:00", "rev": 2} -->
 <p class="lead">Every Tick Based on Real Ticks คือโหมดจำลองราคาใน Strategy Tester ของ MT5 ที่ป้อน tick จริงซึ่งโบรกเกอร์บันทึกไว้ให้ EA แทนการสร้าง tick ขึ้นเองจากแท่ง 1 นาที ลำดับราคาและ Spread จึงเป็นของจริงทุกจังหวะ ใกล้ตลาดจริงที่สุดในทุกโหมดที่มี แลกกับเวลาทดสอบที่นานขึ้นและพื้นที่เก็บข้อมูลที่มากขึ้น</p>
 <div class="callout callout--info"><p><strong>สรุปสั้น</strong></p><ul>
 <li>เป็นหนึ่งในห้าตัวเลือกของช่อง Modelling ในแท็บ Settings ของ Strategy Tester</li>
@@ -11,6 +11,7 @@
 
 <h2>Every Tick Based on Real Ticks คืออะไร</h2>
 <p>ชื่อโหมดแปลตรงตัวได้ว่า "ทุก tick โดยอิงจาก tick จริง" คำว่า tick คือการเปลี่ยนแปลงของราคาหนึ่งครั้ง ทุกครั้งที่ราคาเสนอซื้อ (Bid) หรือราคาเสนอขาย (Ask) ขยับ ก็นับเป็นหนึ่ง tick</p>
+[eabull_photo file="every-tick-real-ticks/watch-second-hand-every-tick-real-ticks.webp" alt="หน้าปัดนาฬิกากับเข็มวินาที เปรียบกับราคาที่ขยับทีละ tick ในโหมด Every Tick Based on Real Ticks" caption="ทุกครั้งที่ราคาเสนอซื้อหรือเสนอขายขยับ นับเป็นหนึ่ง tick และ EA จะคิดตามกฎใหม่ทุกครั้ง" w="1200" h="675" credit="ภาพ: Agê Barros / Unsplash"]
 <p>EA ใน MT5 ส่วนใหญ่ทำงานทุกครั้งที่มี tick ใหม่เข้ามา มันอ่านราคา คิดตามกฎ แล้วตัดสินใจว่าจะเปิด ปิด หรือแก้ออเดอร์ ใน Strategy Tester ก็เหมือนกัน แต่ละ tick ที่ป้อนเข้าไปคือหนึ่งรอบที่ EA ได้คิด ดังนั้นคำถามสำคัญคือ tick ที่ป้อนให้ EA มาจากไหน และเหมือนของจริงแค่ไหน</p>
 <p>โหมดนี้ตอบด้วยข้อมูลจริง Tester ดาวน์โหลด tick ที่เซิร์ฟเวอร์ของโบรกเกอร์เก็บไว้ แล้วเล่นย้อนให้ EA ตามลำดับเวลาเดิม คู่มือของ MetaTrader ระบุว่าการทดสอบด้วย tick จริงใกล้สภาพการเทรดจริงที่สุดเท่าที่ทำได้ อ่านรายละเอียดเชิงเทคนิคได้ที่ <a href="https://www.metatrader5.com/en/terminal/help/algotrading/tick_generation" target="_blank" rel="noopener">หน้า Real and Generated Ticks ของ MetaTrader 5</a></p>
 
@@ -52,6 +53,7 @@
 
 <h2>ถ้าข้อมูล tick ไม่ครบ ผลทดสอบจะเป็นยังไง</h2>
 <p>tick จริงมาจากเซิร์ฟเวอร์ของโบรกเกอร์ และไม่ใช่ทุกเซิร์ฟเวอร์จะเก็บไว้ครบทุกนาทีย้อนหลังไปไกล คู่มือ MetaTrader อธิบายกติกาไว้สองข้อ ข้อแรก ถ้านาทีไหนมีแท่ง 1 นาทีแต่ไม่มี tick จริง Tester จะสร้าง tick ของนาทีนั้นแบบโหมด Every tick ข้อสอง ถ้ามี tick ในนาทีที่ไม่มีแท่ง 1 นาที tick เหล่านั้นจะถูกข้ามไป เพราะโปรแกรมถือว่าข้อมูลแท่ง 1 นาทีน่าเชื่อกว่า</p>
+[eabull_photo file="every-tick-real-ticks/puzzle-missing-piece-tick-gap.webp" alt="จิ๊กซอว์สีฟ้าที่ขาดไปหนึ่งชิ้น เหมือนข้อมูล tick ที่หายไปบางนาทีจนผลทดสอบคลาด" caption="นาทีที่ไม่มี tick จริง Tester จะสร้าง tick ขึ้นแทน ผลช่วงนั้นจึงไม่ใช่ราคาจริงทั้งหมด" w="1200" h="675" credit="ภาพ: Tanja Tepavac / Unsplash"]
 <p>ผลคือการทดสอบช่วงยาว ๆ อาจเป็นลูกผสม ช่วงหลังใช้ tick จริง ช่วงต้นที่ไม่มีข้อมูลกลับใช้ tick ที่สร้างขึ้น ถ้าไม่สังเกตก็จะเข้าใจว่าทั้งช่วงทดสอบด้วยข้อมูลจริง วิธีป้องกันคือ</p>
 <ul class="checklist">
 <li>ดูช่อง History Quality ในรายงาน ถ้าต่ำ แปลว่าข้อมูลมีรูหรือผิดรูป</li>
@@ -92,6 +94,7 @@
 
 <h2>สิ่งที่โหมด tick จริงยังจำลองไม่ได้</h2>
 <p>ต่อให้ข้อมูลครบทุก tick ก็ยังมีบางเรื่องที่ข้อมูลย้อนหลังให้ไม่ได้ รู้ไว้จะได้ไม่เชื่อผลเกินจริง</p>
+[eabull_photo file="every-tick-real-ticks/network-cables-latency-real-ticks.webp" alt="สายแลนสีน้ำเงินจำนวนมากต่อเข้าอุปกรณ์เครือข่าย ความหน่วงของเน็ตที่ข้อมูลย้อนหลังจำลองไม่ได้" caption="ความช้าของเน็ตและเซิร์ฟเวอร์ในวันที่เทรดจริง เป็นสิ่งที่ Tester ทำได้แค่ประมาณ" w="1200" h="675" credit="ภาพ: Scott Rodgerson / Unsplash"]
 <ul class="crosslist">
 <li>ความช้าของเน็ตและเซิร์ฟเวอร์ในวันที่คุณเทรดจริง Tester มีช่องหน่วงเวลาให้ตั้ง แต่เป็นการประมาณ</li>
 <li>การเลื่อนราคาและการขอราคาใหม่ตอนตลาดเร็ว ซึ่งขึ้นกับสภาพคล่องในวินาทีนั้น</li>

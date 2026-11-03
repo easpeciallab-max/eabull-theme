@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "overfitting-trading",
+  "file": "overfitting-trading/dashboard-warning-light-overfit-signs.webp",
+  "name": "dashboard-warning-light-overfit-signs",
+  "alt": "ไฟเตือนสีส้มบนหน้าปัดรถ เหมือนสัญญาณเตือนในผล Backtest ที่บอกว่าระบบอาจ Overfit",
+  "caption": "เส้นเงินทุนที่เรียบเกินไปหรือค่าที่เจาะจงแปลก ๆ คือไฟเตือนที่ควรหยุดดูให้ละเอียด",
+  "credit": "Andrew Thongkham",
+  "page": "https://unsplash.com/photos/DmuHOi56xu8",
+  "src": "https://images.unsplash.com/photo-1777991506119-aec61a4a3c94",
+  "src_id": "1777991506119-aec61a4a3c94",
+  "page_id": "DmuHOi56xu8",
+  "dhash": "988c94a5e6e66666",
+  "bytes": 47472,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "overfitting-trading",
+  "file": "overfitting-trading/exam-answer-sheet-overfitting.webp",
+  "name": "exam-answer-sheet-overfitting",
+  "alt": "Overfitting คือระบบที่ท่องข้อสอบเก่าได้ทุกข้อ ภาพมือกำลังฝนกระดาษคำตอบในห้องสอบ",
+  "caption": "ระบบที่ Overfit เหมือนนักเรียนที่จำคำตอบชุดเดิม พอโจทย์เปลี่ยนก็ทำไม่ได้",
+  "credit": "Nguyen Dang Hoang Nhu",
+  "page": "https://unsplash.com/photos/qDgTQOYk6B8",
+  "src": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b",
+  "src_id": "1606326608606-aa0b62935f2b",
+  "page_id": "qDgTQOYk6B8",
+  "dhash": "96363ffb7c9cc623",
+  "bytes": 53268,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "overfitting-trading",
+  "file": "overfitting-trading/tape-measure-curve-fitting.webp",
+  "name": "tape-measure-curve-fitting",
+  "alt": "สายวัดตัวแบบช่างตัดเสื้อ เปรียบกับการดัดระบบให้พอดีกับข้อมูลอดีตมากเกินไป",
+  "caption": "ปรับให้เข้ากับลักษณะทั่วไปของตลาดยังพอดี แต่ตัดให้พอดีทุกรอยของอดีตจะใส่กับอนาคตไม่ได้",
+  "credit": "Siora Photography",
+  "page": "https://unsplash.com/photos/cixohzDpNIo",
+  "src": "https://images.unsplash.com/photo-1523901839036-a3030662f220",
+  "src_id": "1523901839036-a3030662f220",
+  "page_id": "cixohzDpNIo",
+  "dhash": "eccc8d981c1a98cc",
+  "bytes": 33646,
+  "license": "Unsplash License"
+ }
+]

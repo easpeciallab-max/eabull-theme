@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "tick-data-mt5",
+  "file": "tick-data-mt5/hard-drive-tick-data-download.webp",
+  "name": "hard-drive-tick-data-download",
+  "alt": "ฮาร์ดดิสก์ที่เปิดฝาให้เห็นจานเก็บข้อมูล เปรียบกับการดาวน์โหลดข้อมูล tick มาเก็บไว้ในเครื่อง",
+  "caption": "ข้อมูลที่โหลดได้เป็นของเซิร์ฟเวอร์ที่บัญชีต่ออยู่ จึงควรโหลดจากบัญชีของโบรกเกอร์ที่จะเทรดจริง",
+  "credit": "Frank R",
+  "page": "https://unsplash.com/photos/SaiJ_n1TvCU",
+  "src": "https://images.unsplash.com/photo-1581725645226-92ad3b4c16d8",
+  "src_id": "1581725645226-92ad3b4c16d8",
+  "page_id": "SaiJ_n1TvCU",
+  "dhash": "9e9686a696969c8c",
+  "bytes": 31458,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "tick-data-mt5",
+  "file": "tick-data-mt5/magnifier-history-quality-check.webp",
+  "name": "magnifier-history-quality-check",
+  "alt": "แว่นขยายวางบนกระดาษที่มีเส้นกราฟข้างเครื่องคิดเลข เหมือนการเช็ก History Quality ก่อนเชื่อผลทดสอบ",
+  "caption": "ภาพประกอบ: เช็กคุณภาพข้อมูลและจำนวน tick ก่อน แล้วค่อยอ่านตัวเลขกำไรในรายงาน",
+  "credit": "Sasun Bughdaryan",
+  "page": "https://unsplash.com/photos/njiadDwbgaM",
+  "src": "https://images.unsplash.com/photo-1768839724256-28cd4a373209",
+  "src_id": "1768839724256-28cd4a373209",
+  "page_id": "njiadDwbgaM",
+  "dhash": "f7e4edcde5f9f9b6",
+  "bytes": 47176,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "tick-data-mt5",
+  "file": "tick-data-mt5/printed-numbers-tick-data.webp",
+  "name": "printed-numbers-tick-data",
+  "alt": "Tick Data คือข้อมูลราคาทีละรายการ ภาพแถวตัวเลขยาวเรียงต่อกันบนกระดาษ",
+  "caption": "ภาพประกอบ: ข้อมูล tick แต่ละรายการเก็บเวลา ราคา Bid ราคา Ask และค่าอื่นของวินาทีนั้น",
+  "credit": "Mika Baumeister",
+  "page": "https://unsplash.com/photos/Wpnoqo2plFA",
+  "src": "https://images.unsplash.com/photo-1529078155058-5d716f45d604",
+  "src_id": "1529078155058-5d716f45d604",
+  "page_id": "Wpnoqo2plFA",
+  "dhash": "bfe767cfcfefdfcf",
+  "bytes": 79354,
+  "license": "Unsplash License"
+ }
+]

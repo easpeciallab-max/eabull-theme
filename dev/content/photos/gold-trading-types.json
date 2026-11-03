@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "gold-trading-types",
+  "file": "gold-trading-types/calendar-circled-date-gold-futures.webp",
+  "name": "calendar-circled-date-gold-futures",
+  "alt": "ปฏิทินที่มีวงกลมหมึกล้อมวันที่ไว้ เหมือนวันส่งมอบที่กำหนดไว้ล่วงหน้าในสัญญา Gold Futures",
+  "caption": "ฟิวเจอร์สกำหนดราคาและปริมาณไว้ตั้งแต่วันทำสัญญา แต่สัญญาส่วนใหญ่ถูกปิดก่อนถึงวันส่งมอบ",
+  "credit": "Glen Carrie",
+  "page": "https://unsplash.com/photos/P1kP-BfIelI",
+  "src": "https://images.unsplash.com/photo-1642943392730-ae57c9b77522",
+  "src_id": "1642943392730-ae57c9b77522",
+  "page_id": "P1kP-BfIelI",
+  "dhash": "eb2d61a484f49088",
+  "bytes": 92340,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-types",
+  "file": "gold-trading-types/candlestick-chart-ea-gold-cfd.webp",
+  "name": "candlestick-chart-ea-gold-cfd",
+  "alt": "กราฟแท่งเทียนสีแดงเขียวบนจอสว่าง ราคาของสัญลักษณ์ใน MT5 แบบที่ EA อ่านและเปิดออเดอร์ได้",
+  "caption": "ภาพประกอบ: EA ทำงานได้เฉพาะสัญลักษณ์ในบัญชี MT5 ซึ่งสำหรับทองส่วนใหญ่คือ XAUUSD แบบ CFD",
+  "credit": "Arturo Añez",
+  "page": "https://unsplash.com/photos/MA1Xobltz5o",
+  "src": "https://images.unsplash.com/photo-1745509267945-b25cbb4d50ef",
+  "src_id": "1745509267945-b25cbb4d50ef",
+  "page_id": "MA1Xobltz5o",
+  "dhash": "ffffdfefefffffff",
+  "bytes": 59068,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-types",
+  "file": "gold-trading-types/gold-bangles-stack-gold-trading-types.webp",
+  "name": "gold-bangles-stack-gold-trading-types",
+  "alt": "กำไลทองลายวิจิตรหลายวงวางซ้อนกันบนพื้นมืด ทองรูปพรรณคือหนึ่งในคำตอบว่าเทรดทอง มีกี่แบบ",
+  "caption": "ทองรูปพรรณและทองแท่งให้เนื้อทองจริง แต่ซื้อขายผ่านร้านและมีส่วนต่างราคารับซื้อกับขายออก",
+  "credit": "Zayed Ahmed Zadu",
+  "page": "https://unsplash.com/photos/wreS7kv_tLE",
+  "src": "https://images.unsplash.com/photo-1758995116383-f51775896add",
+  "src_id": "1758995116383-f51775896add",
+  "page_id": "wreS7kv_tLE",
+  "dhash": "05383f6763776b3f",
+  "bytes": 111560,
+  "license": "Unsplash License"
+ }
+]

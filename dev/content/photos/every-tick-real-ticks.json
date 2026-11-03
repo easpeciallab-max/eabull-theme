@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "every-tick-real-ticks",
+  "file": "every-tick-real-ticks/network-cables-latency-real-ticks.webp",
+  "name": "network-cables-latency-real-ticks",
+  "alt": "สายแลนสีน้ำเงินจำนวนมากต่อเข้าอุปกรณ์เครือข่าย ความหน่วงของเน็ตที่ข้อมูลย้อนหลังจำลองไม่ได้",
+  "caption": "ความช้าของเน็ตและเซิร์ฟเวอร์ในวันที่เทรดจริง เป็นสิ่งที่ Tester ทำได้แค่ประมาณ",
+  "credit": "Scott Rodgerson",
+  "page": "https://unsplash.com/photos/PSpf_XgOM5w",
+  "src": "https://images.unsplash.com/photo-1683322499436-f4383dd59f5a",
+  "src_id": "1683322499436-f4383dd59f5a",
+  "page_id": "PSpf_XgOM5w",
+  "dhash": "4d551717b233a623",
+  "bytes": 52150,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "every-tick-real-ticks",
+  "file": "every-tick-real-ticks/puzzle-missing-piece-tick-gap.webp",
+  "name": "puzzle-missing-piece-tick-gap",
+  "alt": "จิ๊กซอว์สีฟ้าที่ขาดไปหนึ่งชิ้น เหมือนข้อมูล tick ที่หายไปบางนาทีจนผลทดสอบคลาด",
+  "caption": "นาทีที่ไม่มี tick จริง Tester จะสร้าง tick ขึ้นแทน ผลช่วงนั้นจึงไม่ใช่ราคาจริงทั้งหมด",
+  "credit": "Tanja Tepavac",
+  "page": "https://unsplash.com/photos/cWMhxNmQVq0",
+  "src": "https://images.unsplash.com/photo-1730804518415-75297e8d2a41",
+  "src_id": "1730804518415-75297e8d2a41",
+  "page_id": "cWMhxNmQVq0",
+  "dhash": "f9796d6d7dfd7dfd",
+  "bytes": 67098,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "every-tick-real-ticks",
+  "file": "every-tick-real-ticks/watch-second-hand-every-tick-real-ticks.webp",
+  "name": "watch-second-hand-every-tick-real-ticks",
+  "alt": "หน้าปัดนาฬิกากับเข็มวินาที เปรียบกับราคาที่ขยับทีละ tick ในโหมด Every Tick Based on Real Ticks",
+  "caption": "ทุกครั้งที่ราคาเสนอซื้อหรือเสนอขายขยับ นับเป็นหนึ่ง tick และ EA จะคิดตามกฎใหม่ทุกครั้ง",
+  "credit": "Agê Barros",
+  "page": "https://unsplash.com/photos/rBPOfVqROzY",
+  "src": "https://images.unsplash.com/photo-1508962914676-134849a727f0",
+  "src_id": "1508962914676-134849a727f0",
+  "page_id": "rBPOfVqROzY",
+  "dhash": "9a342a6d554d72d8",
+  "bytes": 93174,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "visual-mode-mt5",
+  "file": "visual-mode-mt5/candlestick-dark-screen-visual-mode-mt5.webp",
+  "name": "candlestick-dark-screen-visual-mode-mt5",
+  "alt": "กราฟแท่งเทียนบนจอมืด ภาพแบบที่ Visual Mode MT5 เล่นให้ดูทีละแท่งระหว่างทดสอบย้อนหลัง",
+  "caption": "ภาพประกอบ: Visual Mode เปิดหน้าต่างแยกที่แสดงกราฟและดีลของ EA ระหว่างการทดสอบ",
+  "credit": "Austin Hervias",
+  "page": "https://unsplash.com/photos/VLpWpv3oDB4",
+  "src": "https://images.unsplash.com/photo-1689732888407-310424e3a372",
+  "src_id": "1689732888407-310424e3a372",
+  "page_id": "VLpWpv3oDB4",
+  "dhash": "20309012125d4d0b",
+  "bytes": 16400,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "visual-mode-mt5",
+  "file": "visual-mode-mt5/media-buttons-visual-mode-playback.webp",
+  "name": "media-buttons-visual-mode-playback",
+  "alt": "ปุ่มหยุด พัก เล่น และเร่งวางเรียงกัน เหมือนแถบควบคุมในหน้าต่างภาพของ Visual Mode",
+  "caption": "เร่งผ่านช่วงที่ไม่สำคัญ แล้วชะลอตรงช่วงที่อยากดูว่า EA เปิดไม้เพราะอะไร",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/e5I_83RQi58",
+  "src": "https://images.unsplash.com/photo-1694878981776-82e8479aab12",
+  "src_id": "1694878981776-82e8479aab12",
+  "page_id": "e5I_83RQi58",
+  "dhash": "030f110bafb58f07",
+  "bytes": 16830,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "visual-mode-mt5",
+  "file": "visual-mode-mt5/stylus-tablet-chart-visual-mode-limits.webp",
+  "name": "stylus-tablet-chart-visual-mode-limits",
+  "alt": "มือใช้ปากกาลากเส้นบนกราฟในแท็บเล็ต การไล่ดูทีละช่วงแบบนี้ใช้เวลานาน เหมือน Visual Mode ที่ช้ากว่าการทดสอบปกติมาก",
+  "caption": "ภาพประกอบ: ใช้ดูช่วงสั้น ๆ ให้เข้าใจระบบ ส่วนการเก็บสถิติและเทียบผลหลายชุดให้ใช้การทดสอบปกติ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/kSuDK74izRk",
+  "src": "https://images.unsplash.com/photo-1748609700323-483a007ed311",
+  "src_id": "1748609700323-483a007ed311",
+  "page_id": "kSuDK74izRk",
+  "dhash": "f9f88c0d68c9cbc6",
+  "bytes": 25366,
+  "license": "Unsplash License"
+ }
+]

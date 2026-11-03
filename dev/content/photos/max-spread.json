@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "max-spread",
+  "file": "max-spread/calculator-coins-spread-cost.webp",
+  "name": "calculator-coins-spread-cost",
+  "alt": "เครื่องคิดเลขวางข้างเหรียญและธนบัตร ใช้คิดต้นทุน Spread ต่อไม้จากระยะราคา ขนาดสัญญา และจำนวน lot",
+  "caption": "ต้นทุนต่อไม้เท่ากับระยะ Spread คูณขนาดสัญญาและจำนวน lot ยิ่ง Spread กว้างยิ่งจ่ายมาก",
+  "credit": "Sasun Bughdaryan",
+  "page": "https://unsplash.com/photos/X4VwfPzy_2o",
+  "src": "https://images.unsplash.com/photo-1631511258193-252ab3da6b8b",
+  "src_id": "1631511258193-252ab3da6b8b",
+  "page_id": "X4VwfPzy_2o",
+  "dhash": "9213070b32b8df17",
+  "bytes": 140992,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "max-spread",
+  "file": "max-spread/caliper-max-spread-points.webp",
+  "name": "caliper-max-spread-points",
+  "alt": "เวอร์เนียร์ที่มีสเกลมิลลิเมตรและนิ้ว เตือนว่าค่า Max Spread ต้องแปลงหน่วย point ให้ถูกก่อนตั้ง",
+  "caption": "หนึ่ง point คือการขยับของทศนิยมตัวสุดท้าย ขนาดจึงขึ้นกับจำนวนทศนิยมที่โบรกเกอร์แสดง",
+  "credit": "Ag PIC",
+  "page": "https://unsplash.com/photos/Te2zcvp3X1g",
+  "src": "https://images.unsplash.com/photo-1564901523975-b18a3eb1d11f",
+  "src_id": "1564901523975-b18a3eb1d11f",
+  "page_id": "Te2zcvp3X1g",
+  "dhash": "0f0f0f2f3f272f0f",
+  "bytes": 63344,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "max-spread",
+  "file": "max-spread/trading-desk-calculator-max-spread.webp",
+  "name": "trading-desk-calculator-max-spread",
+  "alt": "มือข้างจอกราฟแท่งเทียนและเครื่องคิดเลขบนโต๊ะเทรด ภาพที่ช่วยอธิบายว่า Max Spread คือเพดานส่วนต่างราคาก่อนเข้าไม้",
+  "caption": "ภาพประกอบ: EA ที่มีตัวกรองนี้จะวัด Spread ก่อนส่งคำสั่ง ถ้ากว้างเกินค่าที่ตั้งไว้ก็ข้ามสัญญาณนั้นไป",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/eGI0aGwuE-A",
+  "src": "https://images.unsplash.com/photo-1713461983836-de0a45009424",
+  "src_id": "1713461983836-de0a45009424",
+  "page_id": "eGI0aGwuE-A",
+  "dhash": "6a9a7e2301011319",
+  "bytes": 37986,
+  "license": "Unsplash License"
+ }
+]

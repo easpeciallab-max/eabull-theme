@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "short-gold",
+  "file": "short-gold/gold-bangles-red-stones-physical-gold.webp",
+  "name": "gold-bangles-red-stones-physical-gold",
+  "alt": "กำไลทองประดับพลอยสีแดงสองวง ทองจริงที่คนถือไว้ทำกำไรตอนราคาลงไม่ได้ ต่างจากไม้ Sell ใน CFD",
+  "caption": "คนถือทองจริงต้องขายของที่มีอยู่ก่อน ส่วนบัญชี CFD เปิด Sell ได้ทันทีโดยไม่ต้องมีทอง",
+  "credit": "Sanjay Jain",
+  "page": "https://unsplash.com/photos/ynts2uDw1ws",
+  "src": "https://images.unsplash.com/photo-1728381031272-ba3f537feadd",
+  "src_id": "1728381031272-ba3f537feadd",
+  "page_id": "ynts2uDw1ws",
+  "dhash": "c726169696ee2eee",
+  "bytes": 88092,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "short-gold",
+  "file": "short-gold/red-falling-chart-short-gold.webp",
+  "name": "red-falling-chart-short-gold",
+  "alt": "กราฟเส้นสีแดงดิ่งลงบนจอคอมพิวเตอร์ จังหวะราคาลงที่คนเปิด Short ทองหวังจะได้กำไร",
+  "caption": "ภาพประกอบ: ไม้ Sell ได้เงินเมื่อราคาลง และเสียเงินเมื่อราคาขึ้น ตรงข้ามกับไม้ Buy",
+  "credit": "m.",
+  "page": "https://unsplash.com/photos/W7wEqy01K3s",
+  "src": "https://images.unsplash.com/photo-1638481826540-7710b13f7d53",
+  "src_id": "1638481826540-7710b13f7d53",
+  "page_id": "W7wEqy01K3s",
+  "dhash": "b4b0042002216124",
+  "bytes": 27042,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "short-gold",
+  "file": "short-gold/stop-sign-sell-stop-loss.webp",
+  "name": "stop-sign-sell-stop-loss",
+  "alt": "ป้ายหยุดสีแดงแปดเหลี่ยมริมทาง เตือนให้วาง Stop Loss ของไม้ Sell เผื่อระยะสเปรดไว้ด้วย",
+  "caption": "Stop Loss ของไม้ Sell ตรวจด้วยราคา Ask ที่สูงกว่าเส้นกราฟ จึงอาจโดนก่อนแท่งเทียนจะแตะ",
+  "credit": "Joshua Hoehne",
+  "page": "https://unsplash.com/photos/WPrTKRw8KRQ",
+  "src": "https://images.unsplash.com/photo-1572670014853-1d3a3f22b40f",
+  "src_id": "1572670014853-1d3a3f22b40f",
+  "page_id": "WPrTKRw8KRQ",
+  "dhash": "b231686464647931",
+  "bytes": 18438,
+  "license": "Unsplash License"
+ }
+]

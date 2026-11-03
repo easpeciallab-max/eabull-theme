@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "optimize-ea-mt5",
+  "file": "optimize-ea-mt5/cpu-chip-optimization-agents.webp",
+  "name": "cpu-chip-optimization-agents",
+  "alt": "ชิปประมวลผล CPU วางบนโต๊ะ ตัวที่ Agent ของ MT5 ใช้คำนวณแต่ละรอบของ Optimization",
+  "caption": "MT5 ติดตั้ง Agent ให้เท่ากับจำนวนคอร์เชิงตรรกะของ CPU ยิ่งมีคอร์มาก งานลองค่ายิ่งเสร็จเร็ว",
+  "credit": "Stan Hutter",
+  "page": "https://unsplash.com/photos/2W_xwTDeSmM",
+  "src": "https://images.unsplash.com/photo-1682068548081-50aa8b92c8c1",
+  "src_id": "1682068548081-50aa8b92c8c1",
+  "page_id": "2W_xwTDeSmM",
+  "dhash": "ffe7f1e8b0d4ccf0",
+  "bytes": 51102,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "optimize-ea-mt5",
+  "file": "optimize-ea-mt5/mixing-console-optimize-ea-mt5.webp",
+  "name": "mixing-console-optimize-ea-mt5",
+  "alt": "ปุ่มและแถบเลื่อนจำนวนมากบนแผงควบคุมเสียง เหมือนการ Optimize EA MT5 ที่ลองค่าหลายชุด",
+  "caption": "Optimization คือการให้โปรแกรมลองค่าหลายชุดทีละรอบ แทนการทดสอบค่าชุดเดียว",
+  "credit": "Sašo Tušar",
+  "page": "https://unsplash.com/photos/QtgGYlug6Cw",
+  "src": "https://images.unsplash.com/photo-1483000805330-4eaf0a0d82da",
+  "src_id": "1483000805330-4eaf0a0d82da",
+  "page_id": "QtgGYlug6Cw",
+  "dhash": "85f13f1300042d23",
+  "bytes": 86058,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "optimize-ea-mt5",
+  "file": "optimize-ea-mt5/printed-charts-notebook-ea-optimization.webp",
+  "name": "printed-charts-notebook-ea-optimization",
+  "alt": "มือถือดินสอชี้กระดาษกราฟข้างสมุดจดและเครื่องคิดเลข เหมือนการจดค่าเดิมก่อนปรับค่า EA ทีละตัว",
+  "caption": "ภาพประกอบ: ปรับน้อยค่า จดค่าเดิมไว้ทุกครั้ง และตรวจผลกับช่วงข้อมูลที่ไม่ได้ใช้ปรับ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/9PwLeZA-RGc",
+  "src": "https://images.unsplash.com/photo-1711097383282-28097ae16b1d",
+  "src_id": "1711097383282-28097ae16b1d",
+  "page_id": "9PwLeZA-RGc",
+  "dhash": "18581818194c2c0c",
+  "bytes": 37934,
+  "license": "Unsplash License"
+ }
+]

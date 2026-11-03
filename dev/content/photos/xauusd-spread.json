@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "xauusd-spread",
+  "file": "xauusd-spread/phone-calculator-low-spread-cost.webp",
+  "name": "phone-calculator-low-spread-cost",
+  "alt": "มือถือเปิดเครื่องคิดเลขวางบนกระดาษรายงานกราฟแท่ง ใช้คิดต้นทุนรวมต่อ lot ก่อนเลือกบัญชีสเปรดต่ำ",
+  "caption": "บัญชีที่สเปรดแคบมากมักเก็บ Commission แยก เทียบต้นทุนรวมต่อ lot แบบไปกลับจึงจะยุติธรรม",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/4rTXOMv28VA",
+  "src": "https://images.unsplash.com/photo-1709534486708-fb8f94150d0a",
+  "src_id": "1709534486708-fb8f94150d0a",
+  "page_id": "4rTXOMv28VA",
+  "dhash": "3272727170f0b839",
+  "bytes": 35452,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "xauusd-spread",
+  "file": "xauusd-spread/red-green-price-digits-xauusd-spread.webp",
+  "name": "red-green-price-digits-xauusd-spread",
+  "alt": "ตัวเลขราคาสีแดงและเขียวบนจอแสดงผล เหมือนราคาสองฝั่งที่ทำให้เกิด XAUUSD Spread ใน MT5",
+  "caption": "ภาพประกอบ: ราคาเสนอซื้อและเสนอขายขยับตลอดเวลา ช่องว่างระหว่างสองราคาคือสเปรดที่จ่ายทุกไม้",
+  "credit": "Compagnons",
+  "page": "https://unsplash.com/photos/R401qwThw7w",
+  "src": "https://images.unsplash.com/photo-1579407364450-481fe19dbfaa",
+  "src_id": "1579407364450-481fe19dbfaa",
+  "page_id": "R401qwThw7w",
+  "dhash": "3c0f010ccbcfc3c6",
+  "bytes": 89854,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "xauusd-spread",
+  "file": "xauusd-spread/tape-measure-average-spread.webp",
+  "name": "tape-measure-average-spread",
+  "alt": "สายวัดสีเหลืองบนพื้นดำเห็นขีดตัวเลขชัด การวัดสเปรดเฉลี่ยของบัญชีตัวเองต้องจดค่าหลายช่วงเวลา",
+  "caption": "จดค่าสเปรดในเวลาเดิมทุกวันสักสองสัปดาห์ จะได้ค่าปกติที่ตรงกับบัญชีของคุณมากกว่าตัวเลขโฆษณา",
+  "credit": "Immo Wegmann",
+  "page": "https://unsplash.com/photos/1abCQ_3g_UY",
+  "src": "https://images.unsplash.com/photo-1602503497726-dc6cfaab7e17",
+  "src_id": "1602503497726-dc6cfaab7e17",
+  "page_id": "1abCQ_3g_UY",
+  "dhash": "4d4d0d8e8e8e8e9e",
+  "bytes": 30734,
+  "license": "Unsplash License"
+ }
+]

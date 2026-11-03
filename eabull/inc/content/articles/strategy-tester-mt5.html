@@ -1,4 +1,4 @@
-<!--meta {"title":"Strategy Tester MT5: เมนูและโหมดทดสอบทุกตัวที่ต้องรู้","seo_title":"Strategy Tester MT5: ทุกเมนู ทุกแท็บ และปุ่มลัด · EA BULL","description":"Strategy Tester MT5 คือหน้าต่างทดสอบ EA ที่มากับโปรแกรม บทนี้พาไล่ทุกช่องในแท็บ Settings การหน่วงเวลา Inputs Agents และแท็บผลลัพธ์ พร้อมปุ่มลัดที่ใช้บ่อย","keyword":"strategy tester mt5","excerpt":"แผนที่หน้าต่างทดสอบของ MT5 แบบครบทุกช่อง ตั้งแต่วิธีเปิด ปุ่มลัด การหน่วงเวลา ค่าคอมมิชชัน Agent ไปจนถึงแท็บผลลัพธ์ อ่านจบแล้วตั้งการทดสอบให้ตรงงานได้ตั้งแต่รอบแรก","category":"ทดสอบและปรับค่า EA","date":"2027-01-20 09:00"} -->
+<!--meta {"title": "Strategy Tester MT5: เมนูและโหมดทดสอบทุกตัวที่ต้องรู้", "seo_title": "Strategy Tester MT5: ทุกเมนู ทุกแท็บ และปุ่มลัด · EA BULL", "description": "Strategy Tester MT5 คือหน้าต่างทดสอบ EA ที่มากับโปรแกรม บทนี้พาไล่ทุกช่องในแท็บ Settings การหน่วงเวลา Inputs Agents และแท็บผลลัพธ์ พร้อมปุ่มลัดที่ใช้บ่อย", "keyword": "strategy tester mt5", "excerpt": "แผนที่หน้าต่างทดสอบของ MT5 แบบครบทุกช่อง ตั้งแต่วิธีเปิด ปุ่มลัด การหน่วงเวลา ค่าคอมมิชชัน Agent ไปจนถึงแท็บผลลัพธ์ อ่านจบแล้วตั้งการทดสอบให้ตรงงานได้ตั้งแต่รอบแรก", "category": "ทดสอบและปรับค่า EA", "date": "2027-01-20 09:00", "rev": 2} -->
 <p class="lead">Strategy Tester MT5 คือหน้าต่างทดสอบ EA ที่ติดมากับโปรแกรม MetaTrader 5 บนคอม กด Ctrl+R ก็เปิดได้ ข้างในมีแท็บ Settings สำหรับเลือก EA ช่วงเวลา และโหมดจำลองราคา แท็บ Inputs สำหรับค่าของ EA แท็บ Agents สำหรับตัวประมวลผล และแท็บผลลัพธ์ที่ขึ้นหลังทดสอบจบ รู้ว่าแต่ละช่องทำอะไร คุณจะตั้งการทดสอบได้ตรงงานตั้งแต่รอบแรก</p>
 <div class="callout callout--info"><p><strong>สรุปสั้น</strong></p><ul>
 <li>เปิดได้สามทาง คือ Ctrl+R เมนู View หรือคลิกขวาชื่อ EA ใน Navigator แล้วเลือก Test</li>
@@ -10,6 +10,7 @@
 
 <h2>Strategy Tester MT5 คืออะไร และเปิดได้กี่ทาง</h2>
 <p>Strategy Tester คือเครื่องมือที่ป้อนราคาย้อนหลังให้ EA ทีละจังหวะ แล้วจดทุกคำสั่งที่ EA ส่งออกมา ใช้ได้สองงาน คือทดสอบรอบเดียวด้วยค่าชุดเดียว กับ Optimization ที่รันซ้ำหลายรอบด้วยค่าต่างกันแล้วเรียงผล ทั้งสองงานใช้หน้าต่างเดียวกัน มันเป็นชิ้นหนึ่งของระบบเทรดอัตโนมัติใน MT5 ภาพใหญ่ของระบบนี้อยู่ในบท <a href="{{home}}/algo-trading/">การเทรดแบบ Algo Trading บน MT5</a></p>
+[eabull_photo file="strategy-tester-mt5/backlit-keyboard-strategy-tester-mt5.webp" alt="คีย์บอร์ดที่มีไฟส่องใต้ปุ่มในห้องมืด กด Ctrl+R ในโปรแกรมเพื่อเปิด Strategy Tester MT5" caption="เปิดหน้าต่างทดสอบได้ทั้งปุ่ม Ctrl+R เมนู View และการคลิกขวาที่ชื่อ EA ใน Navigator" w="1200" h="675" credit="ภาพ: Paul Zoetemeijer / Unsplash"]
 <ul>
 <li>กด Ctrl+R ขณะอยู่ในโปรแกรม MT5</li>
 <li>ไปที่เมนู View แล้วเลือก Strategy Tester</li>
@@ -51,6 +52,7 @@
 
 <h2>การหน่วงเวลา: No Delay, Random Delay และ Fixed Delay</h2>
 <p>ในตลาดจริง ระหว่างที่ EA ส่งคำสั่งจนเซิร์ฟเวอร์ทำรายการ ราคาอาจขยับไปแล้ว Tester จำลองช่องว่างนี้ด้วยการแทรกเวลาหน่วง ถ้าสัญลักษณ์ใช้ Instant Execution และราคาขยับเกินค่าที่ EA ยอมรับ EA จะได้รับ requote ด้วย</p>
+[eabull_photo file="strategy-tester-mt5/hourglass-tester-execution-delay.webp" alt="นาฬิกาทรายที่ทรายกำลังไหล เปรียบกับเวลาหน่วงที่ Tester แทรกระหว่างคำสั่งของ EA กับการทำรายการ" caption="ในตลาดจริงราคาอาจขยับไปแล้วระหว่างที่คำสั่งเดินทาง Tester จึงให้เลือกแทรกเวลาหน่วงได้" w="1200" h="675" credit="ภาพ: Callum Mullin / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>ตัวเลือก</th><th>ทำงานยังไง</th><th>ใช้ตอนไหน</th></tr></thead>
 <tbody>
@@ -76,6 +78,7 @@
 
 <h2>MT5 Strategy Tester Agent คืออะไร</h2>
 <p>MT5 Strategy Tester Agent คือโปรแกรมย่อยที่คำนวณจริงอยู่เบื้องหลัง ติดตั้งเป็นบริการของ Windows และทำงานแยกเป็นตัว ๆ ระหว่าง Optimization แต่ละตัวรับรอบทดสอบไปคำนวณพร้อมกัน ถ้าเห็นโปรแกรม metatester64.exe ทำงานตอนทดสอบ นั่นคือ Agent</p>
+[eabull_photo file="strategy-tester-mt5/circuit-board-strategy-tester-agent.webp" alt="แผงวงจรคอมพิวเตอร์ระยะใกล้ เปรียบกับ Agent ที่คำนวณงานทดสอบอยู่เบื้องหลังของ MT5" caption="Agent ติดตั้งเป็นบริการของ Windows และรับงานแยกกันเป็นตัว ๆ ระหว่าง Optimization" w="1200" h="675" credit="ภาพ: Alexandre Debiève / Unsplash"]
 <div class="table-wrap"><table class="data-table">
 <thead><tr><th>ชนิด</th><th>อยู่ที่ไหน</th><th>ข้อจำกัด</th></tr></thead>
 <tbody>

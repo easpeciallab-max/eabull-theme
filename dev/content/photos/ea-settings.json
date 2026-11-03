@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ea-settings",
+  "file": "ea-settings/clipboard-pencil-ea-settings-checklist.webp",
+  "name": "clipboard-pencil-ea-settings-checklist",
+  "alt": "คลิปบอร์ดกับดินสอบนโต๊ะไม้ พร้อมจดเช็กลิสต์ทีละข้อก่อนกด OK ให้ EA เริ่มรัน",
+  "caption": "เช็กกราฟ สวิตช์อนุญาตให้เทรด และขนาดไม้ให้ครบก่อนปล่อยให้ EA ทำงาน",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/zQCDJZLS-Ms",
+  "src": "https://images.unsplash.com/photo-1743385779431-45d26d9775b1",
+  "src_id": "1743385779431-45d26d9775b1",
+  "page_id": "zQCDJZLS-Ms",
+  "dhash": "dd8a9e9e9e9e9e1f",
+  "bytes": 34078,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-settings",
+  "file": "ea-settings/code-screen-ea-input-settings.webp",
+  "name": "code-screen-ea-input-settings",
+  "alt": "โค้ดโปรแกรมบนจอคอมพิวเตอร์ ค่าที่ผู้พัฒนาเปิดไว้ในโค้ดคือช่องที่เห็นตอนตั้งค่า EA ในแท็บ Inputs",
+  "caption": "ชื่อในแท็บ Inputs อาจไม่ใช่ชื่อตัวแปรในโค้ด เพราะผู้พัฒนาตั้งคำอธิบายให้แสดงแทนได้",
+  "credit": "Ilya Pavlov",
+  "page": "https://unsplash.com/photos/OqtafYT5kTw",
+  "src": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+  "src_id": "1461749280684-dccba630e2f6",
+  "page_id": "OqtafYT5kTw",
+  "dhash": "ae8cb8aead8f8d8f",
+  "bytes": 71344,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-settings",
+  "file": "ea-settings/typewriter-instructions-ea-manual.webp",
+  "name": "typewriter-instructions-ea-manual",
+  "alt": "กระดาษพิมพ์คำว่า INSTRUCTIONS ในเครื่องพิมพ์ดีด เตือนให้แก้ค่าตามคู่มือของ EA ก่อนลองเอง",
+  "caption": "ค่าที่ผูกกับบัญชีปรับให้ตรงกับบัญชีจริง ส่วนค่าที่เป็นกฎของระบบควรยึดตามคู่มือของผู้พัฒนา",
+  "credit": "Markus Winkler",
+  "page": "https://unsplash.com/photos/bWQO95IzWW8",
+  "src": "https://images.unsplash.com/photo-1653378972320-9ebab5c8c3f2",
+  "src_id": "1653378972320-9ebab5c8c3f2",
+  "page_id": "bWQO95IzWW8",
+  "dhash": "301f030343453b07",
+  "bytes": 69136,
+  "license": "Unsplash License"
+ }
+]

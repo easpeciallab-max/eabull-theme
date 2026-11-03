@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "walk-forward",
+  "file": "walk-forward/concrete-steps-walk-forward-rounds.webp",
+  "name": "concrete-steps-walk-forward-rounds",
+  "alt": "บันไดคอนกรีตที่ไต่ขึ้นไปทีละขั้น เหมือนการทดสอบ Walk Forward ทีละรอบต่อกันไป",
+  "caption": "แต่ละรอบปรับค่าในช่วงหนึ่ง แล้วทดสอบกับช่วงถัดไป ก่อนเลื่อนต่อไปอีกขั้น",
+  "credit": "Scott Webb",
+  "page": "https://unsplash.com/photos/-WwGlaPd2sY",
+  "src": "https://images.unsplash.com/photo-1505027725876-3eefb3af668f",
+  "src_id": "1505027725876-3eefb3af668f",
+  "page_id": "-WwGlaPd2sY",
+  "dhash": "6b63e3dbb5f57fab",
+  "bytes": 139452,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "walk-forward",
+  "file": "walk-forward/lab-samples-in-sample-out-of-sample.webp",
+  "name": "lab-samples-in-sample-out-of-sample",
+  "alt": "หยดตัวอย่างลงหลอดทดลองจำนวนมากในห้องแล็บ เปรียบกับการแยกข้อมูล In-sample และ Out-of-sample",
+  "caption": "ข้อมูลที่ใช้ปรับค่าเรียกว่า In-sample ส่วนข้อมูลที่กันไว้ตรวจผลเรียกว่า Out-of-sample",
+  "credit": "Louis Reed",
+  "page": "https://unsplash.com/photos/pwcKF7L4-no",
+  "src": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+  "src_id": "1532187863486-abf9dbad1b69",
+  "page_id": "pwcKF7L4-no",
+  "dhash": "396a871323472e5d",
+  "bytes": 72980,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "walk-forward",
+  "file": "walk-forward/tablet-chart-walk-forward.webp",
+  "name": "tablet-chart-walk-forward",
+  "alt": "Walk Forward คือการทดสอบที่เดินไปข้างหน้าทีละช่วง ภาพมือใช้ปากกาวงจุดบนกราฟในแท็บเล็ต",
+  "caption": "ภาพประกอบ: เลือกค่าจากช่วงที่ผ่านมา แล้วเดินต่อไปทดสอบกับช่วงถัดไปที่ระบบยังไม่เคยเห็น",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/oLy-V3jAxBE",
+  "src": "https://images.unsplash.com/photo-1748609664795-11546ad62000",
+  "src_id": "1748609664795-11546ad62000",
+  "page_id": "oLy-V3jAxBE",
+  "dhash": "07854136383a95c7",
+  "bytes": 31324,
+  "license": "Unsplash License"
+ }
+]

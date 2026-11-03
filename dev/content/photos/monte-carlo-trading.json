@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "monte-carlo-trading",
+  "file": "monte-carlo-trading/dice-monte-carlo-trading.webp",
+  "name": "dice-monte-carlo-trading",
+  "alt": "ลูกเต๋าหลายลูกกำลังตกลงมาแบบสุ่ม ภาพที่ช่วยอธิบายว่า Monte Carlo คือการหาคำตอบจากการสุ่มจำนวนมาก",
+  "caption": "Monte Carlo ใช้หลักเดียวกับการทอยลูกเต๋าซ้ำหลายพันครั้ง แล้วดูว่าผลแบบไหนเกิดบ่อย",
+  "credit": "Riho Kroll",
+  "page": "https://unsplash.com/photos/m4sGYaHYN5o",
+  "src": "https://images.unsplash.com/photo-1570303345338-e1f0eddf4946",
+  "src_id": "1570303345338-e1f0eddf4946",
+  "page_id": "m4sGYaHYN5o",
+  "dhash": "749aa92d1a563655",
+  "bytes": 13434,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "monte-carlo-trading",
+  "file": "monte-carlo-trading/domino-row-trade-sequence.webp",
+  "name": "domino-row-trade-sequence",
+  "alt": "โดมิโนสีขาวตั้งเรียงเป็นแถว เปรียบกับเทรดชุดเดิมที่เรียงลำดับใหม่แล้วให้การลดลงของเงินทุนต่างกัน",
+  "caption": "ไม้ชุดเดิมเมื่อเรียงคนละลำดับ ช่วงขาดทุนติดกันอาจยาวกว่าที่ Backtest รอบเดียวแสดง",
+  "credit": "Robert Stump",
+  "page": "https://unsplash.com/photos/QQndccmxOA0",
+  "src": "https://images.unsplash.com/photo-1705771423441-f2f635e892dc",
+  "src_id": "1705771423441-f2f635e892dc",
+  "page_id": "QQndccmxOA0",
+  "dhash": "0609c6feeee6f6b6",
+  "bytes": 14242,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "monte-carlo-trading",
+  "file": "monte-carlo-trading/two-puzzle-pieces-walk-forward-monte-carlo.webp",
+  "name": "two-puzzle-pieces-walk-forward-monte-carlo",
+  "alt": "มือสองข้างถือจิ๊กซอว์สองชิ้นที่ต่อกันได้ เปรียบกับการใช้ Walk Forward และ Monte Carlo ต่อกัน",
+  "caption": "นำเทรดจากช่วงทดสอบของ Walk Forward มาสุ่มลำดับ ผลจะน่าเชื่อกว่าสุ่มจากช่วงที่ใช้ปรับค่า",
+  "credit": "Vardan Papikyan",
+  "page": "https://unsplash.com/photos/JzE1dHEaAew",
+  "src": "https://images.unsplash.com/photo-1637094408647-0d81d08f81b5",
+  "src_id": "1637094408647-0d81d08f81b5",
+  "page_id": "JzE1dHEaAew",
+  "dhash": "e6c6cecececece86",
+  "bytes": 29624,
+  "license": "Unsplash License"
+ }
+]

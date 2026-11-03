@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "gold-trading-costs",
+  "file": "gold-trading-costs/calculator-pen-gold-trading-costs.webp",
+  "name": "calculator-pen-gold-trading-costs",
+  "alt": "เครื่องคิดเลขกับดินสอวางบนกระดาษจดตัวเลข ใช้ตอบว่าเทรดทอง มีค่าธรรมเนียมไหม และรวมแล้วเท่าไหร่",
+  "caption": "Spread Commission และ Swap ไม่ได้อยู่ในบิลใบเดียว ต้องหยิบมาคิดรวมเองทีละตัว",
+  "credit": "Aaron Lefler",
+  "page": "https://unsplash.com/photos/Vs6ip7fsld8",
+  "src": "https://images.unsplash.com/photo-1648201637025-1c77b9be3013",
+  "src_id": "1648201637025-1c77b9be3013",
+  "page_id": "Vs6ip7fsld8",
+  "dhash": "051d696163b3de74",
+  "bytes": 36478,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-costs",
+  "file": "gold-trading-costs/city-night-skyline-overnight-swap.webp",
+  "name": "city-night-skyline-overnight-swap",
+  "alt": "ตึกสูงในเมืองเปิดไฟยามค่ำคืน ช่วงเวลาที่ออเดอร์ทองถือข้ามรอบวันทำการแล้วถูกคิด Swap",
+  "caption": "ออเดอร์ที่ยังเปิดอยู่ตอนตัดรอบวันจะถูกหักหรือบวก Swap ตามตัวคูณของวันนั้นในหน้า Specification",
+  "credit": "Henry Chen",
+  "page": "https://unsplash.com/photos/x7clQSWhlfE",
+  "src": "https://images.unsplash.com/photo-1611416457332-946853cc75d6",
+  "src_id": "1611416457332-946853cc75d6",
+  "page_id": "x7clQSWhlfE",
+  "dhash": "07070707133783ab",
+  "bytes": 69682,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-trading-costs",
+  "file": "gold-trading-costs/coins-in-hand-deposit-withdraw-fees.webp",
+  "name": "coins-in-hand-deposit-withdraw-fees",
+  "alt": "ฝ่ามือรองเหรียญหลายเหรียญเหนือกองเหรียญ ค่าฝากถอนและส่วนต่างค่าแลกเงินที่ไม่ขึ้นในโปรแกรมเทรด",
+  "caption": "จดยอดเงินบาทที่โอนเข้าและยอดที่ได้รับจริงตอนถอน สองตัวเลขนี้รวมต้นทุนที่ซ่อนอยู่ไว้แล้ว",
+  "credit": "Immo Wegmann",
+  "page": "https://unsplash.com/photos/klezRf1_0Pk",
+  "src": "https://images.unsplash.com/photo-1744978083824-808f188a8da5",
+  "src_id": "1744978083824-808f188a8da5",
+  "page_id": "klezRf1_0Pk",
+  "dhash": "9c4606192b031e1f",
+  "bytes": 142138,
+  "license": "Unsplash License"
+ }
+]

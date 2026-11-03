@@ -1,0 +1,62 @@
+[
+ {
+  "slug": "backtest-explained",
+  "file": "backtest-explained/calculator-printed-chart-backtest-report.webp",
+  "name": "calculator-printed-chart-backtest-report",
+  "alt": "เครื่องคิดเลข แว่นตา และกระดาษที่พิมพ์กราฟวางบนโต๊ะ เหมือนการนั่งอ่านรายงาน Backtest ทีละค่า",
+  "caption": "ภาพประกอบ: อย่าดูแค่กำไรสุทธิ อ่านการลดลงของเงินทุนและคุณภาพข้อมูลไปพร้อมกัน",
+  "credit": "Berke Citak",
+  "page": "https://unsplash.com/photos/QV5VoI18Ld8",
+  "src": "https://images.unsplash.com/photo-1779729686198-117c1307894d",
+  "src_id": "1779729686198-117c1307894d",
+  "page_id": "QV5VoI18Ld8",
+  "dhash": "2f071709070e3c79",
+  "bytes": 53812,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "backtest-explained",
+  "file": "backtest-explained/data-center-servers-backtest-limits.webp",
+  "name": "data-center-servers-backtest-limits",
+  "alt": "ตู้เซิร์ฟเวอร์เรียงเป็นแถวในศูนย์ข้อมูล เน็ตและเซิร์ฟเวอร์จริงคือส่วนที่ Backtest จำลองได้แค่ประมาณ",
+  "caption": "ความหน่วงและราคาคลาดตอนส่งคำสั่งจริงขึ้นกับเน็ตและเซิร์ฟเวอร์ของโบรกเกอร์ ซึ่ง Tester จำลองได้ไม่ครบ",
+  "credit": "Tony Marinescu",
+  "page": "https://unsplash.com/photos/fImCPTZ026U",
+  "src": "https://images.unsplash.com/photo-1784652852605-6945598f2af3",
+  "src_id": "1784652852605-6945598f2af3",
+  "page_id": "fImCPTZ026U",
+  "dhash": "2797dc86dff003ff",
+  "bytes": 40268,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "backtest-explained",
+  "file": "backtest-explained/finger-candlestick-tablet-backtest.webp",
+  "name": "finger-candlestick-tablet-backtest",
+  "alt": "นิ้วไล่ดูกราฟแท่งเทียนบนแท็บเล็ต ภาพที่ช่วยอธิบายว่า Backtest คือการนำกฎไปลองกับราคาในอดีต",
+  "caption": "ภาพประกอบ: โปรแกรมทดสอบป้อนราคาในอดีตให้ระบบทีละจังหวะตามลำดับเวลา แล้วจดทุกออเดอร์ที่ระบบเปิด",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/lnuOh9vs8v0",
+  "src": "https://images.unsplash.com/photo-1768242079046-c9c633187db1",
+  "src_id": "1768242079046-c9c633187db1",
+  "page_id": "lnuOh9vs8v0",
+  "dhash": "cfb69bce0e0d2d2c",
+  "bytes": 19824,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "backtest-explained",
+  "file": "backtest-explained/hand-drawn-graph-manual-backtest.webp",
+  "name": "hand-drawn-graph-manual-backtest",
+  "alt": "กราฟเส้นที่วาดด้วยมือบนกระดาษพร้อมไม้บรรทัดและปากกา เหมือนการ Backtest กราฟด้วยตาแล้วจดผลเอง",
+  "caption": "ภาพประกอบ: ทดสอบด้วยมือคือเลื่อนกราฟทีละแท่ง ถามว่าตามกฎต้องเข้าหรือยัง แล้วจดผลลงตาราง",
+  "credit": "Isaac Smith",
+  "page": "https://unsplash.com/photos/6EnTPvPPL6I",
+  "src": "https://images.unsplash.com/photo-1543286386-713bdd548da4",
+  "src_id": "1543286386-713bdd548da4",
+  "page_id": "6EnTPvPPL6I",
+  "dhash": "2d8f9f9787862664",
+  "bytes": 106496,
+  "license": "Unsplash License"
+ }
+]

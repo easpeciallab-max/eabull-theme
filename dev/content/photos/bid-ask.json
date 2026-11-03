@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "bid-ask",
+  "file": "bid-ask/exchange-rate-led-board-bid-ask.webp",
+  "name": "exchange-rate-led-board-bid-ask",
+  "alt": "ป้ายไฟตัวเลขสองช่องคู่กันแบบป้ายอัตราแลกเงิน เหมือนร้านที่ประกาศราคารับซื้อและราคาขายออกเสมอ",
+  "caption": "ภาพประกอบ: ร้านแลกเงินและร้านทองประกาศสองราคา ราคารับซื้อต่ำกว่าราคาขายออก แบบเดียวกับ Bid และ Ask",
+  "credit": "Elena Mozhvilo",
+  "page": "https://unsplash.com/photos/Sq9x7yg9wLY",
+  "src": "https://images.unsplash.com/photo-1610136024570-b27a9a781aba",
+  "src_id": "1610136024570-b27a9a781aba",
+  "page_id": "Sq9x7yg9wLY",
+  "dhash": "180c044822184e0b",
+  "bytes": 91620,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "bid-ask",
+  "file": "bid-ask/hands-passing-banknotes-bid-ask.webp",
+  "name": "hands-passing-banknotes-bid-ask",
+  "alt": "มือสองข้างส่งธนบัตรต่อกันบนโต๊ะ การซื้อขายที่อธิบายได้ว่า Bid Ask คือราคาของผู้ซื้อและผู้ขาย",
+  "caption": "ผู้ซื้อเสนอราคาที่ยอมจ่าย ผู้ขายเสนอราคาที่ยอมขาย และสองราคานี้ไม่เคยเท่ากัน",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/Gh98onAtKTE",
+  "src": "https://images.unsplash.com/photo-1759162165431-533eed77db79",
+  "src_id": "1759162165431-533eed77db79",
+  "page_id": "Gh98onAtKTE",
+  "dhash": "df7bc9e953df979f",
+  "bytes": 35310,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "bid-ask",
+  "file": "bid-ask/traffic-light-order-trigger-price.webp",
+  "name": "traffic-light-order-trigger-price",
+  "alt": "สัญญาณไฟจราจรสีแดง เหลือง เขียวในที่มืด เหมือนราคาที่เป็นตัวสั่งให้ SL TP และคำสั่งรอทำงาน",
+  "caption": "คำสั่งที่ทำให้เกิดการซื้อดูราคา Ask ส่วนคำสั่งที่ทำให้เกิดการขายดูราคา Bid",
+  "credit": "Drew Beamer",
+  "page": "https://unsplash.com/photos/aHaNA8Qcpa8",
+  "src": "https://images.unsplash.com/photo-1779138398880-44ce10f022b2",
+  "src_id": "1779138398880-44ce10f022b2",
+  "page_id": "aHaNA8Qcpa8",
+  "dhash": "94b434b4b4b4b430",
+  "bytes": 23300,
+  "license": "Unsplash License"
+ }
+]

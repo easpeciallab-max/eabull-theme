@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "strategy-tester-mt5",
+  "file": "strategy-tester-mt5/backlit-keyboard-strategy-tester-mt5.webp",
+  "name": "backlit-keyboard-strategy-tester-mt5",
+  "alt": "คีย์บอร์ดที่มีไฟส่องใต้ปุ่มในห้องมืด กด Ctrl+R ในโปรแกรมเพื่อเปิด Strategy Tester MT5",
+  "caption": "เปิดหน้าต่างทดสอบได้ทั้งปุ่ม Ctrl+R เมนู View และการคลิกขวาที่ชื่อ EA ใน Navigator",
+  "credit": "Paul Zoetemeijer",
+  "page": "https://unsplash.com/photos/cZ1R4Q9ZDW0",
+  "src": "https://images.unsplash.com/photo-1528198083909-60c0bf5b0718",
+  "src_id": "1528198083909-60c0bf5b0718",
+  "page_id": "cZ1R4Q9ZDW0",
+  "dhash": "4ca9d1952a6b95b5",
+  "bytes": 52008,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "strategy-tester-mt5",
+  "file": "strategy-tester-mt5/circuit-board-strategy-tester-agent.webp",
+  "name": "circuit-board-strategy-tester-agent",
+  "alt": "แผงวงจรคอมพิวเตอร์ระยะใกล้ เปรียบกับ Agent ที่คำนวณงานทดสอบอยู่เบื้องหลังของ MT5",
+  "caption": "Agent ติดตั้งเป็นบริการของ Windows และรับงานแยกกันเป็นตัว ๆ ระหว่าง Optimization",
+  "credit": "Alexandre Debiève",
+  "page": "https://unsplash.com/photos/FO7JIlwjOtU",
+  "src": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+  "src_id": "1518770660439-4636190af475",
+  "page_id": "FO7JIlwjOtU",
+  "dhash": "cb76c3491eacc193",
+  "bytes": 93992,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "strategy-tester-mt5",
+  "file": "strategy-tester-mt5/hourglass-tester-execution-delay.webp",
+  "name": "hourglass-tester-execution-delay",
+  "alt": "นาฬิกาทรายที่ทรายกำลังไหล เปรียบกับเวลาหน่วงที่ Tester แทรกระหว่างคำสั่งของ EA กับการทำรายการ",
+  "caption": "ในตลาดจริงราคาอาจขยับไปแล้วระหว่างที่คำสั่งเดินทาง Tester จึงให้เลือกแทรกเวลาหน่วงได้",
+  "credit": "Callum Mullin",
+  "page": "https://unsplash.com/photos/ozuQ8EY2CRA",
+  "src": "https://images.unsplash.com/photo-1766179031087-088a7d0e9ae3",
+  "src_id": "1766179031087-088a7d0e9ae3",
+  "page_id": "ozuQ8EY2CRA",
+  "dhash": "06364e0d2606a60e",
+  "bytes": 39398,
+  "license": "Unsplash License"
+ }
+]
