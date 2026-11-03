@@ -160,7 +160,7 @@
 - ปกบทความ: `dev/preview/cover.php` เปลี่ยนเป็นแบบ Bull Black แล้ว (เดิมเป็น Glass Sky ของ EA WING) · สร้างด้วย `EAB_PREVIEW=http://localhost:8791 php -d extension=mbstring -d extension=gd dev/make-covers.php` (ต้องเปิด preview `eabull-preview` ก่อน)
 - หมวดเดิม "EA และบอทเทรด" (ea-basics) บนเว็บเป็นหมวดตั้งต้น id 1 และมี 0 โพสต์ ปล่อยไว้ได้
 - **นำเข้าแล้ว 3 พ.ย. 2026** (commit 2f92ce4 · Setup → นำเข้าบทความ): ตั้งเวลา 120 บท error 0 · หมวดถูกทุกบท · ปกครบ 120 รูป (ไม่ซ้ำ) · Yoast focuskw/title/metadesc มาจากไฟล์ · บทแรก จ. 9 พ.ย. 2026 09:00 บทสุดท้าย 8 มี.ค. 2027 09:00 · /articles/ และหน้าหมวดเลิก noindex เองเมื่อมีบทเผยแพร่ (inc/seo.php)
-- จุดคะแนน Yoast ของบทความยังเป็น "Not available" (คำนวณตอนเปิด editor) · ปุ่ม LINE ทุกบทยังไป /go/ จนกว่าจะได้ LINE OA
+- **จุดคะแนน Yoast ครบ 120 บทแล้ว (3 พ.ย. 2026 · เจ้าของสั่ง "ทำเลย")**: เปิด editor ทีละบทแล้ว `wp.data.dispatch('core/editor').savePost()` รอ #yoast_wpseo_linkdex มีค่าก่อน · ตรวจหลังทำ: เนื้อหา (SHA-1) วันลง และสถานะ "ตั้งเวลา" ไม่เปลี่ยนทั้ง 120 บท · หน้ารายการขึ้นจุดสีครบ · iframe เข้าถึงหน้า wp-admin ของ eabull.com ไม่ได้ในเบราว์เซอร์ของ Claude ต้องเปิดในแท็บหลัก (browser_batch ได้สูงสุด 25 คำสั่ง) · ปุ่ม LINE ทุกบทยังไป /go/ จนกว่าจะได้ LINE OA
 - style.css: `.artlay` `.calc` `.calc__in` `.field` `.guide-steps` ใช้คอลัมน์ minmax(0, 1fr) แล้ว (เดิมตารางกว้าง ชื่อตัวเลือกยาว และ path ยาวดันจอมือถือล้นใน 3 บท) · ตรวจ 120 บทที่ 375/820 + บางบทที่ 1366 ไม่ล้นจอ
 
 ## สถานะ
