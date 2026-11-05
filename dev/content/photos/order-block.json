@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "order-block",
+  "file": "order-block/colorful-code-screen-order-block-ea-rules.webp",
+  "name": "colorful-code-screen-order-block-ea-rules",
+  "alt": "โค้ดหลากสีเต็มจอมืด ภาพของการแปลงโซน Order Block ให้เป็นตัวเลขที่บอทเลือกเองได้ทุกครั้ง",
+  "caption": "ทุกตัวเลือกในการนิยามโซนเปลี่ยนจำนวนโซนที่บอทเห็น ผลทดสอบย้อนหลังจึงเปลี่ยนตามไปด้วย",
+  "credit": "Markus Spiske",
+  "page": "https://unsplash.com/photos/cvBBO4PzWPg",
+  "src": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2",
+  "src_id": "1516259762381-22954d7d3ad2",
+  "page_id": "cvBBO4PzWPg",
+  "dhash": "d69c1624b48284d3",
+  "bytes": 131616,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "order-block",
+  "file": "order-block/hand-drawn-flowchart-smc-trading-steps.webp",
+  "name": "hand-drawn-flowchart-smc-trading-steps",
+  "alt": "มือวาดผังขั้นตอนเป็นกล่องและลูกศรบนกระดาษ ภาพของลำดับขั้นในระบบเทรด SMC ตั้งแต่กรอบใหญ่ถึงจุดเข้า",
+  "caption": "ทุกขั้นของ SMC ต้องตีความ สองคนทำตามลำดับเดียวกันจึงอาจได้โซนคนละที่",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/mC0KIWO0yYA",
+  "src": "https://images.unsplash.com/photo-1698434156088-a80e7bcdd198",
+  "src_id": "1698434156088-a80e7bcdd198",
+  "page_id": "mC0KIWO0yYA",
+  "dhash": "964747830b9b9b9e",
+  "bytes": 79890,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "order-block",
+  "file": "order-block/pencil-tip-drawing-line-order-block-zone.webp",
+  "name": "pencil-tip-drawing-line-order-block-zone",
+  "alt": "ปลายดินสอกำลังลากเส้นบนกระดาษสีเทา ภาพของการตีขอบบนและขอบล่าง เพราะ Order Block คือโซนราคา ไม่ใช่เส้นเดียว",
+  "caption": "ตีกรอบจากราคาสูงสุดถึงต่ำสุดของแท่ง แล้วลากยาวไปทางขวาเพื่อให้เห็นตอนราคากลับมา",
+  "credit": "Qeis Ismail",
+  "page": "https://unsplash.com/photos/qO_1O_2mg4k",
+  "src": "https://images.unsplash.com/photo-1737473537973-a6ae12b498c8",
+  "src_id": "1737473537973-a6ae12b498c8",
+  "page_id": "qO_1O_2mg4k",
+  "dhash": "09191b1337272331",
+  "bytes": 10720,
+  "license": "Unsplash License"
+ }
+]

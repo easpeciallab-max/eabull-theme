@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "bollinger-band",
+  "file": "bollinger-band/code-if-conditions-bollinger-ea-rules.webp",
+  "name": "code-if-conditions-bollinger-ea-rules",
+  "alt": "โค้ดโปรแกรมบนจอมืดที่มีเงื่อนไข if หลายบรรทัด ภาพของการเขียนกฎ EA ที่อ่านค่าเส้นบน เส้นกลาง และเส้นล่างของกรอบ",
+  "caption": "EA ไม่ได้มองกรอบบนจอ แต่อ่านค่าเส้นทั้งสามจาก buffer แล้วนำไปเทียบกับราคาปิดตามเงื่อนไข",
+  "credit": "Markus Spiske",
+  "page": "https://unsplash.com/photos/1LLh8k2_YFk",
+  "src": "https://images.unsplash.com/photo-1551033406-611cf9a28f67",
+  "src_id": "1551033406-611cf9a28f67",
+  "page_id": "1LLh8k2_YFk",
+  "dhash": "9c9a8c8d8dce8d9f",
+  "bytes": 36792,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "bollinger-band",
+  "file": "bollinger-band/hands-stretching-rubber-band-bollinger-mean-reversion.webp",
+  "name": "hands-stretching-rubber-band-bollinger-mean-reversion",
+  "alt": "มือดึงหนังยางให้ยืดจนตึง ภาพเปรียบว่า Bollinger Band คือกรอบที่ยืดตามความผันผวน และราคาที่ห่างเส้นกลางมากอาจดีดกลับหาค่าเฉลี่ย",
+  "caption": "หนังยางที่ยืดสุดอาจดีดกลับหรือขาดก็ได้ ราคาที่แตะขอบกรอบก็ต้องดูว่าตลาดยังแกว่งในกรอบอยู่ไหม",
+  "credit": "Quilia",
+  "page": "https://unsplash.com/photos/t_-HffGSnyE",
+  "src": "https://images.unsplash.com/photo-1518129979913-10ab8451e143",
+  "src_id": "1518129979913-10ab8451e143",
+  "page_id": "t_-HffGSnyE",
+  "dhash": "0f6f4fdb938b2d23",
+  "bytes": 15360,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "bollinger-band",
+  "file": "bollinger-band/pencil-blank-notebook-bollinger-settings.webp",
+  "name": "pencil-blank-notebook-bollinger-settings",
+  "alt": "มือจับดินสอเหนือสมุดหน้าว่าง จดผลเมื่อเปลี่ยนค่า เพราะ Bollinger Band คือกรอบที่รูปร่างขึ้นกับ Period และ Deviations",
+  "caption": "เปลี่ยนทีละช่องแล้วจดว่ากรอบเปลี่ยนไปแบบไหน จะรู้ว่าค่าใหม่ทำให้ราคาหลุดขอบบ่อยขึ้นหรือน้อยลง",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/9j7Xm9hUvwo",
+  "src": "https://images.unsplash.com/photo-1623697899804-7b38dfbd8423",
+  "src_id": "1623697899804-7b38dfbd8423",
+  "page_id": "9j7Xm9hUvwo",
+  "dhash": "0c2c0e0e0c0c6c6c",
+  "bytes": 69426,
+  "license": "Unsplash License"
+ }
+]

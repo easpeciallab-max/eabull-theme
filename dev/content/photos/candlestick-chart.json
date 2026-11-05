@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "candlestick-chart",
+  "file": "candlestick-chart/hand-phone-candlestick-chart.webp",
+  "name": "hand-phone-candlestick-chart",
+  "alt": "มือถือโทรศัพท์ที่เปิดกราฟแท่งเทียนสีเขียวแดง ภาพที่ช่วยอธิบายว่ากราฟแท่งเทียนบอกทิศของราคาแต่ละช่วงได้จากสี",
+  "caption": "ภาพประกอบ: แท่งสีเขียวคือช่วงที่ราคาปิดสูงกว่าเปิด แท่งสีแดงคือช่วงที่ราคาปิดต่ำกว่าเปิด",
+  "credit": "Joshua Mayo",
+  "page": "https://unsplash.com/photos/obJBg2lZjMg",
+  "src": "https://images.unsplash.com/photo-1607459726451-44808af96022",
+  "src_id": "1607459726451-44808af96022",
+  "page_id": "obJBg2lZjMg",
+  "dhash": "33230b6b4b4b53c7",
+  "bytes": 17674,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "candlestick-chart",
+  "file": "candlestick-chart/stylus-tablet-downtrend-candlestick-context.webp",
+  "name": "stylus-tablet-downtrend-candlestick-context",
+  "alt": "มือจับปากกาสไตลัสลากเส้นบนแท็บเล็ตที่เปิดกราฟแท่งเทียนขาลง ภาพของการอ่านแท่งเทียนคู่กับทิศและตำแหน่งของราคา",
+  "caption": "ภาพประกอบ: แท่งแบบเดียวกันมีน้ำหนักต่างกันเมื่อเกิดกลางทางของขาลง หรือเกิดที่โซนที่ราคาเคยกลับตัว",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/PPcUjZVDvqY",
+  "src": "https://images.unsplash.com/photo-1748609576508-a3f88707fc91",
+  "src_id": "1748609576508-a3f88707fc91",
+  "page_id": "PPcUjZVDvqY",
+  "dhash": "0e4e8918283b1989",
+  "bytes": 31718,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "candlestick-chart",
+  "file": "candlestick-chart/white-candle-wick-candlestick-body.webp",
+  "name": "white-candle-wick-candlestick-body",
+  "alt": "เทียนไขสีขาวบนเชิงเทียนสีดำ ภาพเปรียบที่มาของชื่อตัวแท่งและไส้เทียนบนกราฟแท่งเทียน",
+  "caption": "บนกราฟ ตัวแท่งคือช่วงราคาเปิดถึงปิด ส่วนไส้ที่ยื่นออกมาคือราคาสูงสุดและต่ำสุดของช่วงนั้น",
+  "credit": "Rob Wicks",
+  "page": "https://unsplash.com/photos/J3H-rth8cck",
+  "src": "https://images.unsplash.com/photo-1640085461451-e3dc47415dd1",
+  "src_id": "1640085461451-e3dc47415dd1",
+  "page_id": "J3H-rth8cck",
+  "dhash": "0d0e0e0e0d0e0e0e",
+  "bytes": 9648,
+  "license": "Unsplash License"
+ }
+]

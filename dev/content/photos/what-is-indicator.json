@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "what-is-indicator",
+  "file": "what-is-indicator/analog-meters-indicator-measures-price.webp",
+  "name": "analog-meters-indicator-measures-price",
+  "alt": "หน้าปัดเครื่องวัดแบบเข็มสองตัวบนแผงควบคุม ภาพเปรียบว่า Indicator คือเครื่องวัดสภาพราคา ไม่ใช่ตัวสั่งซื้อขาย",
+  "caption": "เข็มบอกค่าที่วัดได้ แต่คนอ่านยังต้องตัดสินใจเอง Indicator บนกราฟทำหน้าที่แบบเดียวกัน",
+  "credit": "Markus Spiske",
+  "page": "https://unsplash.com/photos/ar6XfQSeSwM",
+  "src": "https://images.unsplash.com/photo-1587317304283-b01650dc735e",
+  "src_id": "1587317304283-b01650dc735e",
+  "page_id": "ar6XfQSeSwM",
+  "dhash": "ce8e6969cc969669",
+  "bytes": 109584,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "what-is-indicator",
+  "file": "what-is-indicator/code-screen-average-calculation-indicator-ea.webp",
+  "name": "code-screen-average-calculation-indicator-ea",
+  "alt": "โค้ดโปรแกรมบนจอมืดที่วนคำนวณค่าเฉลี่ยจากชุดข้อมูล แบบเดียวกับที่ EA เรียกค่า Indicator มาใช้ในกฎ",
+  "caption": "EA ไม่ได้มองเส้นบนจอ แต่เรียกค่าจากสูตรเดียวกันผ่านโค้ดแล้วนำไปเทียบกับเงื่อนไข",
+  "credit": "Gabriel Heinzer",
+  "page": "https://unsplash.com/photos/g5jpH62pwes",
+  "src": "https://images.unsplash.com/photo-1627398242454-45a1465c2479",
+  "src_id": "1627398242454-45a1465c2479",
+  "page_id": "g5jpH62pwes",
+  "dhash": "1c0e3e3808034130",
+  "bytes": 60560,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "what-is-indicator",
+  "file": "what-is-indicator/handwritten-math-red-pencil-indicator-calculation.webp",
+  "name": "handwritten-math-red-pencil-indicator-calculation",
+  "alt": "แบบฝึกคิดเลขที่เขียนด้วยมือพร้อมดินสอสีแดง เหมือนการคำนวณซ้ำทีละแท่งที่ Indicator ทำอยู่เบื้องหลัง",
+  "caption": "ภาพประกอบ: Indicator ทุกตัวคือการคิดเลขจากราคาตามสูตรและจำนวนแท่งที่ตั้งไว้",
+  "credit": "Chris Liverani",
+  "page": "https://unsplash.com/photos/rD2dc_2S3i0",
+  "src": "https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5",
+  "src_id": "1518133835878-5a93cc3f89e5",
+  "page_id": "rD2dc_2S3i0",
+  "dhash": "e773f373fb69ed64",
+  "bytes": 95860,
+  "license": "Unsplash License"
+ }
+]

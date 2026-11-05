@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ema",
+  "file": "ema/desk-tablet-candles-moving-average-ema.webp",
+  "name": "desk-tablet-candles-moving-average-ema",
+  "alt": "โต๊ะทำงานที่มีแท็บเล็ตเปิดกราฟแท่งเทียนพร้อมเส้นค่าเฉลี่ยสีเหลือง ภาพที่ช่วยอธิบายว่า EMA คือเส้นค่าเฉลี่ยที่ตามราคา",
+  "caption": "ภาพประกอบ: เส้นค่าเฉลี่ยเรียบกว่าแท่งเทียน จึงช่วยให้เห็นทิศของราคาชัดขึ้น",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/JgYPFFOE-2E",
+  "src": "https://images.unsplash.com/photo-1736751035793-353baaa416cf",
+  "src_id": "1736751035793-353baaa416cf",
+  "page_id": "JgYPFFOE-2E",
+  "dhash": "9a9a95b3b2f363c7",
+  "bytes": 50076,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ema",
+  "file": "ema/hand-mouse-screen-ema-settings-mt5.webp",
+  "name": "hand-mouse-screen-ema-settings-mt5",
+  "alt": "มือจับเมาส์หน้าจอคอมในห้องแสงสลัว ภาพของการลาก Moving Average ไปวางบนกราฟแล้วเลือกวิธีคำนวณแบบ Exponential",
+  "caption": "ลาก Moving Average จาก Navigator ไปวาง แล้วเปลี่ยน MA method เป็น Exponential ก็ได้เส้น EMA",
+  "credit": "Francisca Silva",
+  "page": "https://unsplash.com/photos/L3UjKpkowIo",
+  "src": "https://images.unsplash.com/photo-1778524863613-48be4f9edd97",
+  "src_id": "1778524863613-48be4f9edd97",
+  "page_id": "L3UjKpkowIo",
+  "dhash": "3c3a8c9d3636b528",
+  "bytes": 115458,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ema",
+  "file": "ema/pen-math-formula-paper-ema-formula.webp",
+  "name": "pen-math-formula-paper-ema-formula",
+  "alt": "ปากกาวางบนกระดาษที่เขียนสูตรคณิตศาสตร์หลายบรรทัด ภาพของการไล่สูตรเส้นค่าเฉลี่ยทีละขั้น",
+  "caption": "ภาพประกอบ: สูตร EMA ใช้ราคาปิดล่าสุดส่วนหนึ่งบวกกับค่า EMA เดิมอีกส่วนหนึ่ง",
+  "credit": "Antony Hyson Seltran",
+  "page": "https://unsplash.com/photos/7RgWuLlea24",
+  "src": "https://images.unsplash.com/photo-1676302447092-14a103558511",
+  "src_id": "1676302447092-14a103558511",
+  "page_id": "7RgWuLlea24",
+  "dhash": "4793999d9795d3d9",
+  "bytes": 55392,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "macd",
+  "file": "macd/price-line-moving-average-macd-gap.webp",
+  "name": "price-line-moving-average-macd-gap",
+  "alt": "กราฟเส้นราคาสีดำกับเส้นค่าเฉลี่ยสีฟ้าที่วิ่งตาม ภาพที่ช่วยอธิบายว่า MACD คือระยะห่างระหว่างเส้นค่าเฉลี่ยเร็วกับเส้นค่าเฉลี่ยช้า",
+  "caption": "เมื่อราคาวิ่งต่อเนื่อง เส้นค่าเฉลี่ยเร็วจะลอยห่างเส้นช้า ระยะห่างนั้นคือค่า MACD",
+  "credit": "Beatriz Cattel",
+  "page": "https://unsplash.com/photos/C55M3wxaoB0",
+  "src": "https://images.unsplash.com/photo-1769740029093-83f39268a6a7",
+  "src_id": "1769740029093-83f39268a6a7",
+  "page_id": "C55M3wxaoB0",
+  "dhash": "87839387b5b1a3e3",
+  "bytes": 20994,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "macd",
+  "file": "macd/printed-graph-lower-peaks-macd-divergence.webp",
+  "name": "printed-graph-lower-peaks-macd-divergence",
+  "alt": "กราฟเส้นพิมพ์บนกระดาษที่ยอดแต่ละรอบต่ำลงเรื่อย ๆ ภาพของแรงส่งที่อ่อนลงแบบเดียวกับยอด MACD ตอนเกิด Divergence",
+  "caption": "ภาพประกอบ: ถ้าราคาทำยอดใหม่แต่ยอดของ MACD ต่ำลง แปลว่าการวิ่งรอบหลังมีแรงส่งน้อยกว่าเดิม",
+  "credit": "Bozhin Karaivanov",
+  "page": "https://unsplash.com/photos/oLGgmg9PVBY",
+  "src": "https://images.unsplash.com/photo-1754304342491-6572d4bd2a03",
+  "src_id": "1754304342491-6572d4bd2a03",
+  "page_id": "oLGgmg9PVBY",
+  "dhash": "dcded3d6d1ccef6b",
+  "bytes": 18342,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "macd",
+  "file": "macd/tablet-bar-chart-macd-histogram.webp",
+  "name": "tablet-bar-chart-macd-histogram",
+  "alt": "มือถือแท็บเล็ตที่แสดงกราฟแท่งแนวตั้ง หน้าตาคล้ายแท่ง Histogram ที่ MACD ใช้แสดงค่าในหน้าต่างย่อยใต้กราฟ",
+  "caption": "ภาพประกอบ: ใน MT5 แท่งของ MACD คือค่า MACD เอง ส่วนผลต่างกับเส้นสัญญาณแยกไปอยู่ใน OsMA",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/EL16ACtwLxg",
+  "src": "https://images.unsplash.com/photo-1748609160056-7b95f30041f0",
+  "src_id": "1748609160056-7b95f30041f0",
+  "page_id": "EL16ACtwLxg",
+  "dhash": "766e6766321b89c1",
+  "bytes": 29970,
+  "license": "Unsplash License"
+ }
+]

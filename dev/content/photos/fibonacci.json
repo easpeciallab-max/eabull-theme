@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "fibonacci",
+  "file": "fibonacci/compass-pencil-graph-paper-fibonacci-levels.webp",
+  "name": "compass-pencil-graph-paper-fibonacci-levels",
+  "alt": "วงเวียนกับดินสอวางบนกระดาษกราฟ อุปกรณ์แบ่งระยะเป็นสัดส่วนแบบเดียวกับที่ระดับ Fibonacci แบ่งช่วงราคาของคลื่น",
+  "caption": "ระดับ Fibonacci ไม่ได้บอกราคาตายตัว แต่แบ่งระยะของคลื่นที่เลือกเป็นสัดส่วนเดียวกันทุกครั้ง",
+  "credit": "Derrick Treadwell",
+  "page": "https://unsplash.com/photos/VSs1yWHiluA",
+  "src": "https://images.unsplash.com/photo-1624295873035-7b9ebf7b385f",
+  "src_id": "1624295873035-7b9ebf7b385f",
+  "page_id": "VSs1yWHiluA",
+  "dhash": "079b9b53b3633319",
+  "bytes": 29582,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "fibonacci",
+  "file": "fibonacci/nautilus-shell-spiral-fibonacci.webp",
+  "name": "nautilus-shell-spiral-fibonacci",
+  "alt": "เปลือกหอยงวงช้างผ่าครึ่งเห็นห้องวนเป็นเกลียว ภาพที่มักยกมาเล่าเวลาอธิบายว่า Fibonacci คือลำดับตัวเลขแบบไหน",
+  "caption": "เกลียวแบบนี้มักถูกยกมาเล่าคู่กับลำดับฟีโบนักชี ส่วนบนกราฟเราใช้แค่อัตราส่วนที่ได้จากลำดับนั้น",
+  "credit": "Content Pixie",
+  "page": "https://unsplash.com/photos/2bKHyFH_S7o",
+  "src": "https://images.unsplash.com/photo-1700164748020-263700047c4b",
+  "src_id": "1700164748020-263700047c4b",
+  "page_id": "2bKHyFH_S7o",
+  "dhash": "43992524242c2133",
+  "bytes": 27528,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "fibonacci",
+  "file": "fibonacci/pen-notebook-fibonacci-pending-order-plan.webp",
+  "name": "pen-notebook-fibonacci-pending-order-plan",
+  "alt": "ปากกาวางบนสมุดเส้นบรรทัด ภาพของการจดราคาตั้ง Buy Limit จุดตัดขาดทุน และเป้าหมายก่อนส่งคำสั่งรอ",
+  "caption": "จดระดับที่จะรอ จุดตัดขาดทุน และความเสี่ยงต่อไม้ให้ครบก่อน แล้วค่อยตั้งคำสั่งรอใน MT5",
+  "credit": "Ryunosuke Kikuno",
+  "page": "https://unsplash.com/photos/viEzuL1ouDs",
+  "src": "https://images.unsplash.com/photo-1679119790850-161688b0417e",
+  "src_id": "1679119790850-161688b0417e",
+  "page_id": "viEzuL1ouDs",
+  "dhash": "2f9fcf73198d5b4f",
+  "bytes": 36336,
+  "license": "Unsplash License"
+ }
+]

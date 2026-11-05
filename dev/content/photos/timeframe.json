@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "timeframe",
+  "file": "timeframe/calculator-notes-chart-timeframe-cost-per-bar.webp",
+  "name": "calculator-notes-chart-timeframe-cost-per-bar",
+  "alt": "มือกดเครื่องคิดเลขข้างกระดาษจดตัวเลขหน้าจอกราฟ ภาพของการเทียบ Spread กับขนาดแท่งในแต่ละกรอบเวลา",
+  "caption": "ภาพประกอบ: กรอบเล็กมีแท่งสั้น Spread จึงกินสัดส่วนของระยะที่ราคาวิ่งได้มากกว่ากรอบใหญ่",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/Jfm-icueJUU",
+  "src": "https://images.unsplash.com/photo-1768055104923-a6f76e7478c7",
+  "src_id": "1768055104923-a6f76e7478c7",
+  "page_id": "Jfm-icueJUU",
+  "dhash": "367cced5179bcf4f",
+  "bytes": 38622,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "timeframe",
+  "file": "timeframe/laptop-code-editor-ea-timeframe-setting.webp",
+  "name": "laptop-code-editor-ea-timeframe-setting",
+  "alt": "หน้าจอโน้ตบุ๊กที่เปิดโปรแกรมแก้โค้ดในห้องมืด ภาพของการกำหนดกรอบเวลาที่ EA ใช้คำนวณไว้ในโค้ด",
+  "caption": "ถ้าโค้ดใช้กรอบของกราฟที่ติดอยู่ การวางบอทผิดกรอบจะทำให้ค่า Indicator ทุกตัวเปลี่ยนไปทันที",
+  "credit": "Mohammad Rahmani",
+  "page": "https://unsplash.com/photos/8qEB0fTe9Vw",
+  "src": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3",
+  "src_id": "1607799279861-4dd421887fb3",
+  "page_id": "8qEB0fTe9Vw",
+  "dhash": "033c0f0f0f0f8f07",
+  "bytes": 28422,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "timeframe",
+  "file": "timeframe/stopwatch-timeframe-candle-period.webp",
+  "name": "stopwatch-timeframe-candle-period",
+  "alt": "นาฬิกาจับเวลาวางบนพื้นสีขาว ภาพแทนช่วงเวลาที่ใช้ตัดราคาเป็นแท่ง ซึ่ง Timeframe คือความยาวของช่วงนั้น",
+  "caption": "แท่ง M5 เก็บราคา 5 นาที แท่ง H1 เก็บราคา 1 ชั่วโมง ราคาชุดเดียวกันแค่ถูกหั่นต่างกัน",
+  "credit": "Stanislav",
+  "page": "https://unsplash.com/photos/2Yj6MBvJ0sg",
+  "src": "https://images.unsplash.com/photo-1628678172909-13a7209c7d62",
+  "src_id": "1628678172909-13a7209c7d62",
+  "page_id": "2Yj6MBvJ0sg",
+  "dhash": "2b33316961713303",
+  "bytes": 21406,
+  "license": "Unsplash License"
+ }
+]

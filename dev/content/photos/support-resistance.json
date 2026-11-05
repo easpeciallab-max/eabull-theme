@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "support-resistance",
+  "file": "support-resistance/code-lines-screen-ea-price-levels.webp",
+  "name": "code-lines-screen-ea-price-levels",
+  "alt": "บรรทัดโค้ดหลากสีบนจอมืด ภาพของการนิยามระดับราคาเป็นสูตรที่บอทคำนวณซ้ำได้ แทนเส้นที่วาดด้วยสายตา",
+  "caption": "บอทไม่เห็นเส้นที่คุณวาด แต่คำนวณระดับจากสูตร เช่น ราคาสูงสุดของ 20 แท่งล่าสุด แล้วเขียนเงื่อนไขว่าจะทำอะไรเมื่อราคาเข้าใกล้",
+  "credit": "Florian Olivo",
+  "page": "https://unsplash.com/photos/4hbJ-eymZ1o",
+  "src": "https://images.unsplash.com/photo-1542831371-29b0f74f9713",
+  "src_id": "1542831371-29b0f74f9713",
+  "page_id": "4hbJ-eymZ1o",
+  "dhash": "3737757b67973f19",
+  "bytes": 53434,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "support-resistance",
+  "file": "support-resistance/hand-notebook-laptop-multi-timeframe-levels.webp",
+  "name": "hand-notebook-laptop-multi-timeframe-levels",
+  "alt": "มือจดบันทึกลงสมุดข้างโน้ตบุ๊ก ภาพของการจดโซนจากกรอบ D1 และ H4 ไว้ก่อนลงไปดูกรอบเล็ก",
+  "caption": "จดระดับจากกรอบใหญ่ไว้ก่อน แล้วค่อยใช้กรอบเล็กดูว่าราคาตอบสนองยังไงเมื่อมาถึงโซนนั้น",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/C9HUHreoPc0",
+  "src": "https://images.unsplash.com/photo-1763729625610-f356196f587a",
+  "src_id": "1763729625610-f356196f587a",
+  "page_id": "C9HUHreoPc0",
+  "dhash": "606035140417030b",
+  "bytes": 35642,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "support-resistance",
+  "file": "support-resistance/ruler-pen-graph-paper-draw-support-resistance.webp",
+  "name": "ruler-pen-graph-paper-draw-support-resistance",
+  "alt": "ไม้บรรทัดกับปากกาวางบนกระดาษกราฟ อุปกรณ์ตีแนวรับแนวต้านแบบเดิมที่บน MT5 ใช้เครื่องมือเส้นแนวนอนแทน",
+  "caption": "ตีเส้นบนกรอบใหญ่ก่อน แล้วค่อยซูมลงมาดูกรอบเล็ก จะได้ระดับที่คนส่วนใหญ่เห็นตรงกัน",
+  "credit": "Benjamin Smith",
+  "page": "https://unsplash.com/photos/jWFXGclQr1M",
+  "src": "https://images.unsplash.com/photo-1526597739419-78e8efd06947",
+  "src_id": "1526597739419-78e8efd06947",
+  "page_id": "jWFXGclQr1M",
+  "dhash": "b2861b33630f1707",
+  "bytes": 65028,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "rsi",
+  "file": "rsi/gauge-red-green-zones-rsi-momentum.webp",
+  "name": "gauge-red-green-zones-rsi-momentum",
+  "alt": "หน้าปัดเกจเก่าที่มีโซนสีแดงสองฝั่งและสีเขียวตรงกลาง ภาพเปรียบว่า RSI คือเครื่องวัดแรงส่งที่มีสเกลตายตัว",
+  "caption": "ภาพประกอบ: RSI วิ่งอยู่ระหว่าง 0 ถึง 100 เสมอ ปลายทั้งสองฝั่งคือช่วงที่ราคาขึ้นหรือลงติดกันแรงผิดปกติ",
+  "credit": "Ali Yılmaz",
+  "page": "https://unsplash.com/photos/hySWpxoQ7io",
+  "src": "https://images.unsplash.com/photo-1629756072875-d679f123a79a",
+  "src_id": "1629756072875-d679f123a79a",
+  "page_id": "hySWpxoQ7io",
+  "dhash": "c88c3737272f2726",
+  "bytes": 89594,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "rsi",
+  "file": "rsi/hand-pen-keyboard-rsi-settings-notes.webp",
+  "name": "hand-pen-keyboard-rsi-settings-notes",
+  "alt": "มือถือปากกาข้างคีย์บอร์ด จดค่า Period 14 และเส้นระดับ 30 50 70 ไว้ก่อนใส่ RSI บนกราฟ XAUUSD",
+  "caption": "RSI จะเปิดในหน้าต่างย่อยใต้กราฟราคา พร้อมเส้น 30 และ 70 ที่ MT5 ใส่มาให้",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/50comlI_39U",
+  "src": "https://images.unsplash.com/photo-1748609422318-7301636fb625",
+  "src_id": "1748609422318-7301636fb625",
+  "page_id": "50comlI_39U",
+  "dhash": "3082d8d9b36b66a4",
+  "bytes": 28576,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "rsi",
+  "file": "rsi/printed-sum-formula-rsi-formula.webp",
+  "name": "printed-sum-formula-rsi-formula",
+  "alt": "สูตรคณิตศาสตร์ที่มีเครื่องหมายผลรวมพิมพ์บนกระดาษ ภาพของการเฉลี่ยการขึ้นลงหลายแท่งในสูตร RSI",
+  "caption": "ภาพประกอบ: RSI เทียบค่าเฉลี่ยของการขึ้นกับการลงในช่วงที่กำหนด แล้วแปลงเป็นสเกล 0 ถึง 100",
+  "credit": "Bozhin Karaivanov",
+  "page": "https://unsplash.com/photos/5z70PsbFCMM",
+  "src": "https://images.unsplash.com/photo-1708011271935-3e109df56fe0",
+  "src_id": "1708011271935-3e109df56fe0",
+  "page_id": "5z70PsbFCMM",
+  "dhash": "52ac09b231635335",
+  "bytes": 29912,
+  "license": "Unsplash License"
+ }
+]
