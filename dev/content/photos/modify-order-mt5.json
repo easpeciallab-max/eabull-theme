@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "modify-order-mt5",
+  "file": "modify-order-mt5/hand-white-mouse-modify-order-mt5.webp",
+  "name": "hand-white-mouse-modify-order-mt5",
+  "alt": "มือจับเมาส์สีขาวบนโต๊ะ ขั้นตอนดับเบิลคลิกที่ไม้ในแท็บ Trade เพื่อแก้ไขออเดอร์ MT5 บนคอม",
+  "caption": "ไม้ที่ถืออยู่แก้ได้แค่ SL กับ TP ส่วนคำสั่งรอแก้ราคาที่ตั้งได้ด้วย",
+  "credit": "Markus Spiske",
+  "page": "https://unsplash.com/photos/givZa50I9HA",
+  "src": "https://images.unsplash.com/photo-1511619203235-41ec2fe54782",
+  "src_id": "1511619203235-41ec2fe54782",
+  "page_id": "givZa50I9HA",
+  "dhash": "49892391cd67170f",
+  "bytes": 17326,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "modify-order-mt5",
+  "file": "modify-order-mt5/pencils-eraser-modify-order-plan.webp",
+  "name": "pencils-eraser-modify-order-plan",
+  "alt": "ดินสอสีเหลืองหลายแท่งกับยางลบที่ปลาย ภาพของการแก้คำสั่งที่ควรทำเมื่อช่วยลดความเสี่ยง ไม่ใช่เพิ่มความเสี่ยง",
+  "caption": "ก่อนกดแก้ทุกครั้ง ถามตัวเองว่าความเสี่ยงของไม้ลดลงหรือเพิ่มขึ้น",
+  "credit": "Tracey Parish",
+  "page": "https://unsplash.com/photos/wQ7OUETaYIg",
+  "src": "https://images.unsplash.com/photo-1698365902200-360ea4eea247",
+  "src_id": "1698365902200-360ea4eea247",
+  "page_id": "wQ7OUETaYIg",
+  "dhash": "2d29292969696979",
+  "bytes": 79522,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "modify-order-mt5",
+  "file": "modify-order-mt5/stylus-tablet-chart-drag-sl-line.webp",
+  "name": "stylus-tablet-chart-drag-sl-line",
+  "alt": "มือใช้ปากกาสไตลัสบนแท็บเล็ตที่เปิดกราฟ เหมือนการลากเส้น SL TP บนกราฟ MT5 ไปยังราคาใหม่",
+  "caption": "ภาพประกอบ: ลากเส้นบนกราฟแก้ได้เร็ว แต่ต้องดูราคาที่ปล่อยเมาส์ให้ตรงกับที่ตั้งใจ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/vWkwul5Bpbs",
+  "src": "https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91",
+  "src_id": "1759661966728-4a02e3c6ed91",
+  "page_id": "vWkwul5Bpbs",
+  "dhash": "7e6f47e2341b9389",
+  "bytes": 33398,
+  "license": "Unsplash License"
+ }
+]

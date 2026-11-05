@@ -1,0 +1,62 @@
+[
+ {
+  "slug": "stop-loss-take-profit",
+  "file": "stop-loss-take-profit/calculator-desk-lot-size-stop-loss.webp",
+  "name": "calculator-desk-lot-size-stop-loss",
+  "alt": "เครื่องคิดเลขวางบนเอกสารข้างโน้ตบุ๊ก ใช้คิดขนาดไม้จากระยะ Stop Loss และเงินที่ยอมเสียต่อไม้",
+  "caption": "หาจุด SL จากกราฟก่อน แล้วค่อยคำนวณขนาดไม้ให้เงินที่เสียอยู่ในงบ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/8wLZi9OhsWU",
+  "src": "https://images.unsplash.com/photo-1709880945165-d2208c6ad2ec",
+  "src_id": "1709880945165-d2208c6ad2ec",
+  "page_id": "8wLZi9OhsWU",
+  "dhash": "99954f195933170f",
+  "bytes": 30228,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stop-loss-take-profit",
+  "file": "stop-loss-take-profit/candlestick-chart-price-levels-stop-loss.webp",
+  "name": "candlestick-chart-price-levels-stop-loss",
+  "alt": "กราฟแท่งเทียนขาลงบนจอที่มีเส้นระดับราคาแนวนอน ภาพของ Stop Loss คือราคาที่ตั้งไว้ให้ระบบปิดไม้เมื่อราคาวิ่งสวน",
+  "caption": "ภาพประกอบ: SL เป็นระดับราคาบนกราฟแบบเส้นแนวนอนเหล่านี้ ไม่ใช่จำนวนเงิน",
+  "credit": "Aedrian Salazar",
+  "page": "https://unsplash.com/photos/MTxseYMqYzk",
+  "src": "https://images.unsplash.com/photo-1640459958548-56c1c6717a40",
+  "src_id": "1640459958548-56c1c6717a40",
+  "page_id": "MTxseYMqYzk",
+  "dhash": "9060391b092333a1",
+  "bytes": 31188,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stop-loss-take-profit",
+  "file": "stop-loss-take-profit/dart-bullseye-take-profit-target.webp",
+  "name": "dart-bullseye-take-profit-target",
+  "alt": "ลูกดอกปักกลางเป้าบนกระดานปาเป้า ภาพของ Take Profit ซึ่งเป็นราคาเป้าหมายที่สั่งให้ปิดไม้เก็บกำไร",
+  "caption": "TP คือเป้าที่วางไว้ก่อนเข้าไม้ ยิ่งตั้งไกล โอกาสที่ราคาไปถึงก็ยิ่งน้อยลง",
+  "credit": "Mauro Gigli",
+  "page": "https://unsplash.com/photos/1JX4J_kq7sU",
+  "src": "https://images.unsplash.com/photo-1596008194705-2091cd6764d4",
+  "src_id": "1596008194705-2091cd6764d4",
+  "page_id": "1JX4J_kq7sU",
+  "dhash": "b22b4d5153534d2b",
+  "bytes": 61378,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stop-loss-take-profit",
+  "file": "stop-loss-take-profit/phone-laptop-chart-set-sl-tp-mt5.webp",
+  "name": "phone-laptop-chart-set-sl-tp-mt5",
+  "alt": "มือถือกับโน้ตบุ๊กที่เปิดกราฟราคาพร้อมกัน การตั้ง SL กับ TP ใน MT5 ทำได้ทั้งบนคอมและในแอปมือถือ",
+  "caption": "ภาพประกอบ: ตั้งค่าบนเครื่องไหนก็ได้ เพราะ SL TP ไปเก็บไว้ที่เซิร์ฟเวอร์ของโบรกเกอร์",
+  "credit": "Jason Briscoe",
+  "page": "https://unsplash.com/photos/Gw_sFen8VhU",
+  "src": "https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9",
+  "src_id": "1569025743873-ea3a9ade89f9",
+  "page_id": "Gw_sFen8VhU",
+  "dhash": "39c0e3e1c1e5e7e7",
+  "bytes": 43364,
+  "license": "Unsplash License"
+ }
+]

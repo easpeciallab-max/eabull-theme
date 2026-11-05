@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "mean-reversion",
+  "file": "mean-reversion/candlestick-moving-averages-mean-reversion.webp",
+  "name": "candlestick-moving-averages-mean-reversion",
+  "alt": "กราฟแท่งเทียนบนจอมืดที่มีเส้นค่าเฉลี่ยหลายเส้นพาดผ่าน ภาพที่ช่วยอธิบายว่า Mean Reversion คือการรอราคากลับเข้าหาค่าเฉลี่ย",
+  "caption": "ภาพประกอบ: เมื่อราคาวิ่งห่างจากเส้นค่าเฉลี่ยมาก ระบบเข้าสวนจะเดิมพันว่าราคาจะกลับเข้าหาเส้น",
+  "credit": "lonely blue",
+  "page": "https://unsplash.com/photos/44ls9V31hPc",
+  "src": "https://images.unsplash.com/photo-1643962577481-4ff81600e439",
+  "src_id": "1643962577481-4ff81600e439",
+  "page_id": "44ls9V31hPc",
+  "dhash": "2248601c0c03066c",
+  "bytes": 16404,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mean-reversion",
+  "file": "mean-reversion/graphing-calculator-notes-mean-reversion-math.webp",
+  "name": "graphing-calculator-notes-mean-reversion-math",
+  "alt": "เครื่องคิดเลขกราฟวางบนกระดาษจดตัวเลขด้วยลายมือ ใช้คิดผลรวมของระบบที่ชนะบ่อยแต่เสียทีละก้อนใหญ่",
+  "caption": "อัตราชนะสูงไม่ได้แปลว่าระบบมีกำไร ต้องคิดขนาดไม้เสียเทียบกับไม้ได้ด้วย",
+  "credit": "Aaron Lefler",
+  "page": "https://unsplash.com/photos/ySZdYkPGEbs",
+  "src": "https://images.unsplash.com/photo-1648201188793-418f2b9b4b32",
+  "src_id": "1648201188793-418f2b9b4b32",
+  "page_id": "ySZdYkPGEbs",
+  "dhash": "0000e470b0301b9d",
+  "bytes": 32650,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "mean-reversion",
+  "file": "mean-reversion/newtons-cradle-swing-back-mean-reversion.webp",
+  "name": "newtons-cradle-swing-back-mean-reversion",
+  "alt": "ลูกตุ้มนิวตันที่ลูกเหล็กแกว่งออกแล้วจะตกกลับเข้าแถว ภาพเปรียบของการเดิมพันว่าราคาที่วิ่งออกไปไกลจะกลับมา",
+  "caption": "Mean Reversion เดิมพันว่าราคาจะแกว่งกลับ ส่วน Trend Following เดิมพันว่าราคาจะวิ่งต่อ",
+  "credit": "Sunder Muthukumaran",
+  "page": "https://unsplash.com/photos/d7SxBxEAOfU",
+  "src": "https://images.unsplash.com/photo-1633493702341-4d04841df53b",
+  "src_id": "1633493702341-4d04841df53b",
+  "page_id": "d7SxBxEAOfU",
+  "dhash": "3ce0c4ccd9b0f4d8",
+  "bytes": 35702,
+  "license": "Unsplash License"
+ }
+]

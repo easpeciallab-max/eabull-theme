@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "close-all-orders-mt5",
+  "file": "close-all-orders-mt5/hand-phone-chart-close-all-orders-mobile.webp",
+  "name": "hand-phone-chart-close-all-orders-mobile",
+  "alt": "มือถือที่เปิดกราฟแท่งเทียนวางอยู่ในมือ ขั้นตอนปิดออเดอร์ทั้งหมดบนแอป MT5 มือถือจากแท็บ Trade",
+  "caption": "ภาพประกอบ: แอปมือถือมีคำสั่งกลุ่มเหมือนบนคอม ซ้อมในบัญชีทดลองก่อนวันที่ต้องใช้จริง",
+  "credit": "Denise Chan",
+  "page": "https://unsplash.com/photos/i-EZGbJOMKQ",
+  "src": "https://images.unsplash.com/photo-1671459923834-47a0b8ed93f5",
+  "src_id": "1671459923834-47a0b8ed93f5",
+  "page_id": "i-EZGbJOMKQ",
+  "dhash": "da181d99ba3691b1",
+  "bytes": 24200,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "close-all-orders-mt5",
+  "file": "close-all-orders-mt5/hands-laptop-many-charts-close-all-orders-mt5.webp",
+  "name": "hands-laptop-many-charts-close-all-orders-mt5",
+  "alt": "มือพิมพ์บนโน้ตบุ๊กที่เปิดกราฟหลายช่องพร้อมกัน ภาพของคนถือหลายไม้ที่ควรรู้วิธีปิดออเดอร์ทั้งหมด MT5 ไว้ก่อน",
+  "caption": "ภาพประกอบ: ยิ่งถือหลายไม้หลายกราฟ การปิดทีละไม้ยิ่งช้า คำสั่งกลุ่มของ MT5 ช่วยได้",
+  "credit": "Adam Nowakowski",
+  "page": "https://unsplash.com/photos/MFms-wkv3Ow",
+  "src": "https://images.unsplash.com/photo-1579225663317-c0251b4369bc",
+  "src_id": "1579225663317-c0251b4369bc",
+  "page_id": "MFms-wkv3Ow",
+  "dhash": "3333f9c7afcf9e96",
+  "bytes": 55112,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "close-all-orders-mt5",
+  "file": "close-all-orders-mt5/red-stop-button-stop-ea-before-close-all.webp",
+  "name": "red-stop-button-stop-ea-before-close-all",
+  "alt": "ปุ่มหยุดสีแดงบนแผงเหล็ก เหมือนการหยุด EA ก่อนสั่งปิดทุกไม้ เพื่อไม่ให้ EA เปิดไม้ใหม่ตามมา",
+  "caption": "ปิด Algo Trading หรือถอด EA ออกจากกราฟก่อน แล้วค่อยใช้คำสั่งปิดทั้งหมด",
+  "credit": "Hans Westbeek",
+  "page": "https://unsplash.com/photos/Po6upO2VQig",
+  "src": "https://images.unsplash.com/photo-1758873263520-1f77729ad5b8",
+  "src_id": "1758873263520-1f77729ad5b8",
+  "page_id": "Po6upO2VQig",
+  "dhash": "69696d3439693132",
+  "bytes": 55740,
+  "license": "Unsplash License"
+ }
+]

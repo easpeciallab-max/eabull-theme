@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "capital-per-lot",
+  "file": "capital-per-lot/hands-counting-banknotes-capital-in-baht.webp",
+  "name": "hands-counting-banknotes-capital-in-baht",
+  "alt": "สองมือนับธนบัตรบนสมุดจด ภาพของการแปลงทุนต่อ 0.01 lot เป็นเงินบาทแล้วคูณขยายตามขนาดไม้",
+  "caption": "ทุนต่อไม้คูณตรงตามขนาดไม้ได้ ตราบที่เลเวอเรจและระดับ Stop Out ยังเท่าเดิม",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/guRMSJRd2Zo",
+  "src": "https://images.unsplash.com/photo-1763729714062-5f97ce629106",
+  "src_id": "1763729714062-5f97ce629106",
+  "page_id": "guRMSJRd2Zo",
+  "dhash": "6ca4341e16b421e4",
+  "bytes": 42048,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "capital-per-lot",
+  "file": "capital-per-lot/printed-report-charts-test-report-steps.webp",
+  "name": "printed-report-charts-test-report-steps",
+  "alt": "เอกสารที่พิมพ์กราฟแท่งและกราฟวงกลมวางข้างแฟ้มสีแดง ภาพของการอ่านรายงานผลทดสอบทีละขั้นเพื่อหาทุนต่อไม้",
+  "caption": "ภาพประกอบ: ดึงความลึกสูงสุดและขนาดไม้รวมตอนลึกที่สุดจากรายงาน แล้วจดไว้ก่อนคำนวณ",
+  "credit": "Cht Gsml",
+  "page": "https://unsplash.com/photos/q21XvpB7uQU",
+  "src": "https://images.unsplash.com/photo-1762427354251-f008b64dbc32",
+  "src_id": "1762427354251-f008b64dbc32",
+  "page_id": "q21XvpB7uQU",
+  "dhash": "9c880c4ecec686c7",
+  "bytes": 26236,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "capital-per-lot",
+  "file": "capital-per-lot/tall-coin-stack-capital-per-lot.webp",
+  "name": "tall-coin-stack-capital-per-lot",
+  "alt": "เหรียญซ้อนกันเป็นกองสูงหนึ่งกอง ภาพของทุนต่อ 0.01 lot ที่ต้องมีในบัญชีเพื่อรองรับไม้หนึ่งหน่วยของ EA",
+  "caption": "เมื่อรู้ทุนต่อ 0.01 lot แล้ว จะขยายหรือลดขนาดไม้ตามทุนในบัญชีก็คิดได้ทันที",
+  "credit": "Matthew Lancaster",
+  "page": "https://unsplash.com/photos/OtfnlTw0lH4",
+  "src": "https://images.unsplash.com/photo-1583902340370-6a3fc847d373",
+  "src_id": "1583902340370-6a3fc847d373",
+  "page_id": "OtfnlTw0lH4",
+  "dhash": "333333333333131e",
+  "bytes": 31290,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "xauusd-minimum-lot",
+  "file": "xauusd-minimum-lot/coins-in-wallet-small-account-lot-steps.webp",
+  "name": "coins-in-wallet-small-account-lot-steps",
+  "alt": "นิ้วมือหยิบเหรียญไม่กี่เหรียญในกระเป๋าสตางค์หนังสีดำ ภาพของบัญชีทุนน้อยที่ปรับขนาดไม้ได้ทีละขั้นหยาบ",
+  "caption": "บัญชีเล็กขยับไม้จาก 0.01 เป็น 0.02 lot เท่ากับเพิ่มความเสี่ยงต่อไม้ขึ้นเท่าตัวทันที",
+  "credit": "Immo Wegmann",
+  "page": "https://unsplash.com/photos/Kbwrq6rxRDE",
+  "src": "https://images.unsplash.com/photo-1760262362688-d539798b56f3",
+  "src_id": "1760262362688-d539798b56f3",
+  "page_id": "Kbwrq6rxRDE",
+  "dhash": "db9a9a1d996366bc",
+  "bytes": 111642,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "xauusd-minimum-lot",
+  "file": "xauusd-minimum-lot/gold-coin-stack-xauusd-minimum-lot.webp",
+  "name": "gold-coin-stack-xauusd-minimum-lot",
+  "alt": "เหรียญทองซ้อนกันเป็นกองเล็กบนพื้นมืด ภาพของ XAUUSD Minimum Lot ไม้เล็กสุดที่หลายบัญชีคุมทองราว 1 ออนซ์",
+  "caption": "ไม้เล็กสุดของทองถูกกำหนดโดยโบรกเกอร์ ดูได้จากช่อง Minimal volume ใน Specification",
+  "credit": "Anthony Aird",
+  "page": "https://unsplash.com/photos/MEE_C_8fLvU",
+  "src": "https://images.unsplash.com/photo-1755369355222-8146801ccf90",
+  "src_id": "1755369355222-8146801ccf90",
+  "page_id": "MEE_C_8fLvU",
+  "dhash": "b18f9a0f4f4e8f9b",
+  "bytes": 37126,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "xauusd-minimum-lot",
+  "file": "xauusd-minimum-lot/phone-calculator-banknotes-minimum-lot-cost.webp",
+  "name": "phone-calculator-banknotes-minimum-lot-cost",
+  "alt": "มือกดเครื่องคิดเลขในมือถือเหนือธนบัตร ภาพของการคิดค่า Spread ของไม้เล็กสุดเทียบเป็นสัดส่วนของทุน",
+  "caption": "ไม้เล็กจ่าย Spread น้อยลงตามขนาด แต่บัญชีเล็กที่ลดไม้ต่อไม่ได้แล้วจะจ่ายหนักกว่าเมื่อคิดเป็นสัดส่วนของทุน",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/SQMKCU7m0Lw",
+  "src": "https://images.unsplash.com/photo-1764231467896-73f0ef4438aa",
+  "src_id": "1764231467896-73f0ef4438aa",
+  "page_id": "SQMKCU7m0Lw",
+  "dhash": "188a9a244e593125",
+  "bytes": 35992,
+  "license": "Unsplash License"
+ }
+]

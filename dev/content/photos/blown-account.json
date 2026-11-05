@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "blown-account",
+  "file": "blown-account/empty-leather-wallet-blown-account.webp",
+  "name": "empty-leather-wallet-blown-account",
+  "alt": "มือเปิดกระเป๋าสตางค์หนังที่ว่างเปล่า ภาพของพอร์ตแตกที่เงินในบัญชีเหลือไม่พอค้ำไม้ที่เปิดอยู่",
+  "caption": "พอร์ตแตกคือตอนที่ระบบปิดไม้ให้เอง เพราะเงินที่เหลือไม่พอเป็นหลักประกันของไม้ที่ค้างอยู่",
+  "credit": "Towfiqu barbhuiya",
+  "page": "https://unsplash.com/photos/3aGZ7a97qwA",
+  "src": "https://images.unsplash.com/photo-1624811532681-e58a7e25f273",
+  "src_id": "1624811532681-e58a7e25f273",
+  "page_id": "3aGZ7a97qwA",
+  "dhash": "031218180824a499",
+  "bytes": 43506,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "blown-account",
+  "file": "blown-account/hand-writing-notebook-after-blown-account.webp",
+  "name": "hand-writing-notebook-after-blown-account",
+  "alt": "มือจับปากกาเขียนลงสมุดบันทึกเล่มเล็ก ภาพของการทบทวนสาเหตุทีละข้อหลังบัญชีถูกปิดไม้จนเงินแทบหมด",
+  "caption": "จดสาเหตุและตัวเลขของรอบที่เสียไว้ก่อน ดีกว่ารีบฝากเงินใหม่เพื่อเอาคืนทันที",
+  "credit": "Marcos Paulo Prado",
+  "page": "https://unsplash.com/photos/tcyW6Im5Uug",
+  "src": "https://images.unsplash.com/photo-1579017308347-e53e0d2fc5e9",
+  "src_id": "1579017308347-e53e0d2fc5e9",
+  "page_id": "tcyW6Im5Uug",
+  "dhash": "ce1f2fbb99989eca",
+  "bytes": 35864,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "blown-account",
+  "file": "blown-account/pressure-gauge-red-zone-margin-level.webp",
+  "name": "pressure-gauge-red-zone-margin-level",
+  "alt": "มาตรวัดแรงดันที่มีช่วงสีเขียว เหลือง และแดง ภาพของ Margin Level ที่ค่อย ๆ ลดลงเข้าใกล้เส้น Stop Out",
+  "caption": "Margin Level เหมือนเข็มบนหน้าปัด ยิ่งเข้าใกล้เส้นที่โบรกเกอร์ขีดไว้ ยิ่งต้องลดความเสี่ยงก่อนระบบปิดไม้ให้",
+  "credit": "Crystal Kwok",
+  "page": "https://unsplash.com/photos/9XsXOdkdxPQ",
+  "src": "https://images.unsplash.com/photo-1513827574967-e763dd0bc329",
+  "src_id": "1513827574967-e763dd0bc329",
+  "page_id": "9XsXOdkdxPQ",
+  "dhash": "b8b2f2635f7fa9ad",
+  "bytes": 42936,
+  "license": "Unsplash License"
+ }
+]

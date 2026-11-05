@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "trend-following",
+  "file": "trend-following/grey-calculator-win-rate-trend-following.webp",
+  "name": "grey-calculator-win-rate-trend-following",
+  "alt": "เครื่องคิดเลขสีเทาวางบนพื้นสีส้ม ใช้คิดผลรวมของไม้ที่ชนะน้อยแต่ได้ยาวกับไม้ที่เสียบ่อยแต่เสียสั้น",
+  "caption": "ระบบตามเทรนด์ตัดสินกันที่ผลรวม ไม่ใช่จำนวนไม้ที่ชนะ ลองคิดเลขเองก่อนเชื่อเปอร์เซ็นต์ชนะ",
+  "credit": "Behnam Norouzi",
+  "page": "https://unsplash.com/photos/wBKWM-DLhzg",
+  "src": "https://images.unsplash.com/photo-1668930185267-1f3c19851b5b",
+  "src_id": "1668930185267-1f3c19851b5b",
+  "page_id": "wBKWM-DLhzg",
+  "dhash": "b0f0ccc4f0f0f0f8",
+  "bytes": 72324,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "trend-following",
+  "file": "trend-following/stylus-uptrend-candlestick-trend-following.webp",
+  "name": "stylus-uptrend-candlestick-trend-following",
+  "alt": "ปากกาสไตลัสชี้กราฟแท่งเทียนขาขึ้นที่มีเส้นค่าเฉลี่ยวิ่งตามใต้ราคา ภาพที่ช่วยอธิบายว่า Trend Following คือการตามราคาที่เลือกทางแล้ว",
+  "caption": "ภาพประกอบ: ระบบตามเทรนด์ไม่ทายจุดกลับตัว แต่รอให้ราคาพิสูจน์ทิศทางก่อนแล้วค่อยตามไป",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/dLZbAuSA_EI",
+  "src": "https://images.unsplash.com/photo-1737442528819-5526652236e8",
+  "src_id": "1737442528819-5526652236e8",
+  "page_id": "dLZbAuSA_EI",
+  "dhash": "c2526933c7cfdeb8",
+  "bytes": 36136,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "trend-following",
+  "file": "trend-following/typing-laptop-test-trend-following-mt5.webp",
+  "name": "typing-laptop-test-trend-following-mt5",
+  "alt": "มือที่ใส่นาฬิกากำลังพิมพ์บนโน้ตบุ๊ก ขั้นตั้งค่าทดสอบระบบตามเทรนด์ด้วยข้อมูลย้อนหลังยาวหลายปีใน MT5",
+  "caption": "ระบบตามเทรนด์มีไม้น้อย ต้องทดสอบช่วงยาวพอให้เจอทั้งตลาดมีเทรนด์และตลาดแกว่ง",
+  "credit": "Zulfugar Karimov",
+  "page": "https://unsplash.com/photos/VSC7cKE9qj4",
+  "src": "https://images.unsplash.com/photo-1762341103888-8ccf22b482d4",
+  "src_id": "1762341103888-8ccf22b482d4",
+  "page_id": "VSC7cKE9qj4",
+  "dhash": "07070617b2baf8c0",
+  "bytes": 27056,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "multi-timeframe",
+  "file": "multi-timeframe/alarm-clock-unclosed-higher-timeframe-bar.webp",
+  "name": "alarm-clock-unclosed-higher-timeframe-bar",
+  "alt": "นาฬิกาปลุกเข็มทอดเงาบนพื้นมืด ภาพของเวลาที่ต้องรอให้แท่งกรอบใหญ่ปิดก่อนใช้เป็นสัญญาณ",
+  "caption": "ราคาปิดของแท่ง H4 ที่ยังไม่จบเปลี่ยนได้ทุก tick สัญญาณจากแท่งนั้นจึงยังไม่นิ่ง",
+  "credit": "Suhas Hanjar",
+  "page": "https://unsplash.com/photos/OOrv_TEAl24",
+  "src": "https://images.unsplash.com/photo-1774185644257-45e6e4280064",
+  "src_id": "1774185644257-45e6e4280064",
+  "page_id": "OOrv_TEAl24",
+  "dhash": "1326424c4c487020",
+  "bytes": 41078,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "multi-timeframe",
+  "file": "multi-timeframe/desk-monitors-laptop-tablet-multi-timeframe.webp",
+  "name": "desk-monitors-laptop-tablet-multi-timeframe",
+  "alt": "โต๊ะทำงานที่มีจอสองจอ โน้ตบุ๊ก และแท็บเล็ตเปิดกราฟพร้อมกัน ภาพที่ช่วยอธิบายว่า Multi Timeframe คือการดูราคาชุดเดียวกันหลายกรอบเวลา",
+  "caption": "ภาพประกอบ: ราคาทองชุดเดียวกันดูต่างกันมากในแต่ละกรอบเวลา การเปิดหลายกราฟช่วยให้เห็นภาพใหญ่ก่อนหาจังหวะ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/Ata9YsB2Qu8",
+  "src": "https://images.unsplash.com/photo-1735469157670-1212e570eadc",
+  "src_id": "1735469157670-1212e570eadc",
+  "page_id": "Ata9YsB2Qu8",
+  "dhash": "1ccccd4f5b6766bb",
+  "bytes": 82136,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "multi-timeframe",
+  "file": "multi-timeframe/writing-notes-planner-top-down-multi-timeframe.webp",
+  "name": "writing-notes-planner-top-down-multi-timeframe",
+  "alt": "มือกำลังจดลงสมุดบนโต๊ะหินอ่อนข้างแก้วกาแฟและโน้ตบุ๊ก ภาพของการเขียนลำดับอ่านจากกรอบใหญ่ลงกรอบเล็กก่อนเข้าออเดอร์",
+  "caption": "จดทีละขั้นว่ากรอบใหญ่บอกทิศอะไร แล้วค่อยรอให้กรอบเล็กให้จังหวะที่ไปทางเดียวกัน",
+  "credit": "Swello",
+  "page": "https://unsplash.com/photos/DC4Kp8spV58",
+  "src": "https://images.unsplash.com/photo-1789724919872-00dc3c222e3d",
+  "src_id": "1789724919872-00dc3c222e3d",
+  "page_id": "DC4Kp8spV58",
+  "dhash": "0f172d7ccee66534",
+  "bytes": 39346,
+  "license": "Unsplash License"
+ }
+]

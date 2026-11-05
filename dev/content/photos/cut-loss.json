@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "cut-loss",
+  "file": "cut-loss/hand-calculator-monitor-cut-loss-percent.webp",
+  "name": "hand-calculator-monitor-cut-loss-percent",
+  "alt": "มือถือเครื่องคิดเลขอยู่ใต้จอที่เปิดกราฟ คิดว่าควร Cut Loss ที่กี่เปอร์เซ็นต์ของทุนก่อนเปิดไม้",
+  "caption": "ภาพประกอบ: คิดเงินที่ยอมเสียต่อไม้จากทุนทั้งบัญชี แล้วค่อยแปลงเป็นระยะราคาและขนาดไม้",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/d0_1CoAsDR0",
+  "src": "https://images.unsplash.com/photo-1712640183722-ec59693f7c82",
+  "src_id": "1712640183722-ec59693f7c82",
+  "page_id": "d0_1CoAsDR0",
+  "dhash": "dcb9b76702262600",
+  "bytes": 35878,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "cut-loss",
+  "file": "cut-loss/hand-over-face-laptop-afraid-to-cut-loss.webp",
+  "name": "hand-over-face-laptop-afraid-to-cut-loss",
+  "alt": "ชายเอามือปิดหน้าอยู่หน้าโน้ตบุ๊ก ความรู้สึกเจ็บกับการขาดทุนที่ทำให้หลายคนไม่กล้า Cut Loss",
+  "caption": "ความกลัวเสียเงินทำให้คนถือไม้ขาดทุนนานเกินไป กฎที่คิดไว้ก่อนช่วยตัดอารมณ์ออกได้",
+  "credit": "Vitaly Gariev",
+  "page": "https://unsplash.com/photos/bl7h_R-PKpU",
+  "src": "https://images.unsplash.com/photo-1758598497429-6eb3895d5bfa",
+  "src_id": "1758598497429-6eb3895d5bfa",
+  "page_id": "bl7h_R-PKpU",
+  "dhash": "294b4a4b4f870541",
+  "bytes": 36868,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "cut-loss",
+  "file": "cut-loss/steel-scissors-cut-loss.webp",
+  "name": "steel-scissors-cut-loss",
+  "alt": "กรรไกรเหล็กวางบนพื้นสีดำ ภาพของ Cut Loss คือการตัดไม้ที่ขาดทุนทิ้งเพื่อจำกัดความเสียหายไว้แค่นั้น",
+  "caption": "ตัดตอนแผลยังเล็ก ดีกว่ารอจนขาดทุนก้อนใหญ่แล้วปิดไม่ลง",
+  "credit": "Matt Artz",
+  "page": "https://unsplash.com/photos/SmocKx2oDZc",
+  "src": "https://images.unsplash.com/photo-1503792501406-2c40da09e1e2",
+  "src_id": "1503792501406-2c40da09e1e2",
+  "page_id": "SmocKx2oDZc",
+  "dhash": "0421034f11303130",
+  "bytes": 21236,
+  "license": "Unsplash License"
+ }
+]

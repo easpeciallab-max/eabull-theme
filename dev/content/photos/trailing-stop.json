@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "trailing-stop",
+  "file": "trailing-stop/finger-laptop-power-button-trailing-stop.webp",
+  "name": "finger-laptop-power-button-trailing-stop",
+  "alt": "นิ้วกดปุ่มเปิดปิดบนคีย์บอร์ดโน้ตบุ๊ก เมื่อปิดเครื่อง Trailing Stop ที่ทำงานในโปรแกรม MT5 ก็หยุดเลื่อนตาม",
+  "caption": "SL ที่วางไว้แล้วยังอยู่ที่เซิร์ฟเวอร์ แต่จะไม่ขยับต่อจนกว่าจะเปิดโปรแกรมอีกครั้ง",
+  "credit": "Aleksandar Cvetanovic",
+  "page": "https://unsplash.com/photos/cw_uvISXkCI",
+  "src": "https://images.unsplash.com/photo-1537606845186-9921373c310f",
+  "src_id": "1537606845186-9921373c310f",
+  "page_id": "cw_uvISXkCI",
+  "dhash": "194967b3d1616949",
+  "bytes": 17614,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "trailing-stop",
+  "file": "trailing-stop/hand-mouse-right-click-trailing-stop-mt5.webp",
+  "name": "hand-mouse-right-click-trailing-stop-mt5",
+  "alt": "มือจับเมาส์บนโต๊ะทำงานข้างคีย์บอร์ด ขั้นตอนคลิกขวาที่ออเดอร์เพื่อตั้ง Trailing Stop ในโปรแกรม MT5",
+  "caption": "บนคอมตั้งได้จากเมนูคลิกขวาของไม้ในแท็บ Trade แล้วเลือกระยะเป็น point",
+  "credit": "Carrie Allen www.carrieallen.com",
+  "page": "https://unsplash.com/photos/UP7ZCldZOGY",
+  "src": "https://images.unsplash.com/photo-1642522029695-2d4d222e41f5",
+  "src_id": "1642522029695-2d4d222e41f5",
+  "page_id": "UP7ZCldZOGY",
+  "dhash": "98d262574763a0c0",
+  "bytes": 29938,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "trailing-stop",
+  "file": "trailing-stop/rising-candlestick-chart-trailing-stop.webp",
+  "name": "rising-candlestick-chart-trailing-stop",
+  "alt": "กราฟแท่งเทียนที่ราคาไต่ขึ้นต่อเนื่องบนจอมืด ภาพของ Trailing Stop คือ SL ที่ขยับตามหลังราคาเมื่อไม้มีกำไร",
+  "caption": "ภาพประกอบ: ยิ่งราคาวิ่งไปทางที่ถูก SL ก็ยิ่งเลื่อนตามขึ้นมาโดยรักษาระยะห่างเท่าเดิม",
+  "credit": "Arturo Añez",
+  "page": "https://unsplash.com/photos/aChQ2cYg1ys",
+  "src": "https://images.unsplash.com/photo-1745270917449-c2e2c5806586",
+  "src_id": "1745270917449-c2e2c5806586",
+  "page_id": "aChQ2cYg1ys",
+  "dhash": "0d899bd9cbc6df9d",
+  "bytes": 21076,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "sideway",
+  "file": "sideway/code-dark-screen-sideway-ea-filter.webp",
+  "name": "code-dark-screen-sideway-ea-filter",
+  "alt": "โค้ดโปรแกรมพร้อมเลขบรรทัดบนจอมืด ส่วนที่ต้องเขียนบอก EA ว่าตอนนี้ตลาดเป็นกรอบหรือเป็นเทรนด์",
+  "caption": "EA รู้สภาพตลาดได้เฉพาะเมื่อมีคนเขียนกติกาวัดกรอบไว้ในโค้ดเป็นตัวเลข",
+  "credit": "Harshit Katiyar",
+  "page": "https://unsplash.com/photos/CxOPZszqCQ0",
+  "src": "https://images.unsplash.com/photo-1767817099805-d79e31fb968c",
+  "src_id": "1767817099805-d79e31fb968c",
+  "page_id": "CxOPZszqCQ0",
+  "dhash": "0727273d23032324",
+  "bytes": 30248,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "sideway",
+  "file": "sideway/line-graph-grid-screen-sideway.webp",
+  "name": "line-graph-grid-screen-sideway",
+  "alt": "จอแสดงกราฟเส้นสีขาวบนตารางที่แกว่งขึ้นลงในระดับใกล้เดิมเป็นช่วงยาว ภาพที่ช่วยอธิบายว่า Sideway คือภาวะที่ราคาไม่ไปทางไหนชัด",
+  "caption": "ภาพประกอบ: เมื่อราคาแกว่งอยู่ในระดับใกล้เดิม เส้นกราฟจะเรียงไปทางข้างแทนที่จะชี้ขึ้นหรือลง",
+  "credit": "Chris Liverani",
+  "page": "https://unsplash.com/photos/dBI_My696Rk",
+  "src": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0",
+  "src_id": "1518186285589-2f7649de83e0",
+  "page_id": "dBI_My696Rk",
+  "dhash": "337b77666ce0806a",
+  "bytes": 68566,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "sideway",
+  "file": "sideway/ruler-grid-paper-range-lines-sideway.webp",
+  "name": "ruler-grid-paper-range-lines-sideway",
+  "alt": "ไม้บรรทัดใสวางบนกระดาษตารางพร้อมดินสอและปากกา เครื่องมือขีดเส้นขอบบนและขอบล่างของกรอบก่อนเทรดในกรอบ",
+  "caption": "ขีดขอบกรอบด้วยกติกาเดิมทุกครั้ง จุดซื้อใกล้ขอบล่างและจุดขายใกล้ขอบบนจึงไม่ขึ้นกับความรู้สึก",
+  "credit": "Galina Svyatova",
+  "page": "https://unsplash.com/photos/nVmk5nhY6xM",
+  "src": "https://images.unsplash.com/photo-1749044089415-df1f96a13fab",
+  "src_id": "1749044089415-df1f96a13fab",
+  "page_id": "nVmk5nhY6xM",
+  "dhash": "bb33b9981d5c4c1e",
+  "bytes": 106612,
+  "license": "Unsplash License"
+ }
+]

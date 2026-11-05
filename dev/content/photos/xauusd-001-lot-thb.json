@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "xauusd-001-lot-thb",
+  "file": "xauusd-001-lot-thb/desk-calculator-notebook-gold-lot-to-baht.webp",
+  "name": "desk-calculator-notebook-gold-lot-to-baht",
+  "alt": "มือจดตัวเลขลงสมุดข้างเครื่องคิดเลขบนโต๊ะทำงาน ภาพของการคำนวณกำไรขาดทุนของไม้ทองแล้วแปลงเป็นเงินบาท",
+  "caption": "ใช้สูตรระยะราคา คูณขนาดสัญญา คูณ lot แล้วคูณอัตราแลกเปลี่ยนของวันนั้น",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/LNnmSumlwO4",
+  "src": "https://images.unsplash.com/photo-1707902665498-a202981fb5ac",
+  "src_id": "1707902665498-a202981fb5ac",
+  "page_id": "LNnmSumlwO4",
+  "dhash": "7d7988b9190c2c0c",
+  "bytes": 33898,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "xauusd-001-lot-thb",
+  "file": "xauusd-001-lot-thb/price-digits-screen-xauusd-001-lot-thb.webp",
+  "name": "price-digits-screen-xauusd-001-lot-thb",
+  "alt": "ตัวเลขราคาสีแดงและเขียวเรียงบนจอเทรดสีดำ ภาพของคำถามว่า XAUUSD 0.01 Lot เท่ากับกี่บาท เมื่อราคาขยับแต่ละช่วง",
+  "caption": "ภาพประกอบ: คิดจากระยะที่ราคาขยับเป็น USD แล้วคูณอัตราแลกเปลี่ยน จะไม่สับสนเรื่องการนับจุด",
+  "credit": "Aedrian Salazar",
+  "page": "https://unsplash.com/photos/OKNJX7B-cbc",
+  "src": "https://images.unsplash.com/photo-1640458240527-6f27eabe8368",
+  "src_id": "1640458240527-6f27eabe8368",
+  "page_id": "OKNJX7B-cbc",
+  "dhash": "0d27264f8db63263",
+  "bytes": 25132,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "xauusd-001-lot-thb",
+  "file": "xauusd-001-lot-thb/rising-gold-coin-stacks-xauusd-1-lot.webp",
+  "name": "rising-gold-coin-stacks-xauusd-1-lot",
+  "alt": "เหรียญสีทองซ้อนเป็นกองสูงขึ้นทีละกองบนพื้นขาว ภาพของมูลค่าที่โตตามขนาดไม้จาก 0.01 lot ไปถึง 1 lot",
+  "caption": "ไม้ 1 lot ได้เสียเป็น 100 เท่าของไม้ 0.01 lot ที่ระยะราคาเท่ากัน",
+  "credit": "William Warby",
+  "page": "https://unsplash.com/photos/KqZIFALjBw8",
+  "src": "https://images.unsplash.com/photo-1704026437282-91dfa7ced81e",
+  "src_id": "1704026437282-91dfa7ced81e",
+  "page_id": "KqZIFALjBw8",
+  "dhash": "2b573aaaeaca298a",
+  "bytes": 54408,
+  "license": "Unsplash License"
+ }
+]

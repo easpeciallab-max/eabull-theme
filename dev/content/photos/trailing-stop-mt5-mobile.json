@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "trailing-stop-mt5-mobile",
+  "file": "trailing-stop-mt5-mobile/hand-phone-chart-trailing-stop-mt5-mobile.webp",
+  "name": "hand-phone-chart-trailing-stop-mt5-mobile",
+  "alt": "มือถือแสดงกราฟที่มีเส้นระดับราคาแนวนอนในมือ คำถามว่าตั้ง Trailing Stop MT5 มือถือได้ไหมต้องดูจากคู่มือแอปทางการ",
+  "caption": "ภาพประกอบ: แอปมือถือตั้งและแก้ SL TP ได้ แต่ไม่มีคำสั่ง Trailing Stop ในหมวด Trade",
+  "credit": "Denise Chan",
+  "page": "https://unsplash.com/photos/xy4KNIVzm4c",
+  "src": "https://images.unsplash.com/photo-1671459926356-9d06ffea5d4e",
+  "src_id": "1671459926356-9d06ffea5d4e",
+  "page_id": "xy4KNIVzm4c",
+  "dhash": "cfcfcfcbcbcb8b93",
+  "bytes": 145060,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "trailing-stop-mt5-mobile",
+  "file": "trailing-stop-mt5-mobile/phone-lock-screen-desk-trade-closed-alert.webp",
+  "name": "phone-lock-screen-desk-trade-closed-alert",
+  "alt": "มือถือวางบนโต๊ะข้างคีย์บอร์ด หน้าจอล็อกสว่างขึ้น ภาพของการให้มือถือแจ้งเตือนทันทีเมื่อไม้ถูกปิด",
+  "caption": "เปิดการแจ้งเตือนแบบ Push จาก MT5 บนคอมหรือ VPS แล้วใส่ MetaQuotes ID ของมือถือ",
+  "credit": "Max Duzij",
+  "page": "https://unsplash.com/photos/MgjmXawAPDY",
+  "src": "https://images.unsplash.com/photo-1556578330-5caf4520131e",
+  "src_id": "1556578330-5caf4520131e",
+  "page_id": "MgjmXawAPDY",
+  "dhash": "5e6b71390b3a3626",
+  "bytes": 16356,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "trailing-stop-mt5-mobile",
+  "file": "trailing-stop-mt5-mobile/server-rack-green-lights-vps-trailing-stop.webp",
+  "name": "server-rack-green-lights-vps-trailing-stop",
+  "alt": "ตู้เซิร์ฟเวอร์ในห้องมืดที่มีไฟสีเขียว เครื่องแบบที่ VPS ใช้เปิด MT5 ค้างไว้ให้ Trailing Stop ไล่ SL ได้ตลอด",
+  "caption": "ตั้ง Trailing Stop ใน MT5 บน VPS ครั้งเดียว แล้วใช้มือถือคอยดูไม้",
+  "credit": "Tyler",
+  "page": "https://unsplash.com/photos/OnI_TNcIv9U",
+  "src": "https://images.unsplash.com/photo-1680992046626-418f7e910589",
+  "src_id": "1680992046626-418f7e910589",
+  "page_id": "OnI_TNcIv9U",
+  "dhash": "4145645141e5e161",
+  "bytes": 47074,
+  "license": "Unsplash License"
+ }
+]

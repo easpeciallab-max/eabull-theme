@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "drawdown-limiter",
+  "file": "drawdown-limiter/desk-keyboard-calculator-after-drawdown-stop.webp",
+  "name": "desk-keyboard-calculator-after-drawdown-stop",
+  "alt": "โต๊ะทำงานที่มีคีย์บอร์ด เมาส์ เครื่องคิดเลข และเอกสาร ภาพของการเช็กบัญชีทีละขั้นหลังเพดานขาดทุนสั่งให้ EA หยุด",
+  "caption": "ดูให้แน่ใจว่าไม่มีไม้ค้างและ EA หยุดอยู่จริง ก่อนหาสาเหตุและตัดสินใจรันต่อ",
+  "credit": "vũ tuấn",
+  "page": "https://unsplash.com/photos/ZGkckENa2MQ",
+  "src": "https://images.unsplash.com/photo-1646041293273-788e7543dd3d",
+  "src_id": "1646041293273-788e7543dd3d",
+  "page_id": "ZGkckENa2MQ",
+  "dhash": "53b39f130b0f0393",
+  "bytes": 49608,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "drawdown-limiter",
+  "file": "drawdown-limiter/hands-laptop-drawdown-limiter-inputs.webp",
+  "name": "hands-laptop-drawdown-limiter-inputs",
+  "alt": "สองมือพิมพ์บนโน้ตบุ๊กที่วางบนโต๊ะไม้ ภาพของการตั้งช่องเพดานขาดทุนในแท็บ Inputs ของ EA",
+  "caption": "ช่องเพดานขาดทุนต้องบอกให้ชัดว่าวัดจาก Balance หรือ Equity และถึงแล้วให้ทำอะไร",
+  "credit": "Kelly Sikkema",
+  "page": "https://unsplash.com/photos/r3zfwg1ByUI",
+  "src": "https://images.unsplash.com/photo-1663524789637-1a0ad51c64c2",
+  "src_id": "1663524789637-1a0ad51c64c2",
+  "page_id": "r3zfwg1ByUI",
+  "dhash": "93898c94952da72b",
+  "bytes": 74704,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "drawdown-limiter",
+  "file": "drawdown-limiter/red-emergency-stop-button-drawdown-limiter.webp",
+  "name": "red-emergency-stop-button-drawdown-limiter",
+  "alt": "ปุ่มหยุดฉุกเฉินสีแดงบนด้ามจับสีส้ม ภาพของ drawdown limiter ที่สั่งให้ EA หยุดเมื่อบัญชีลดลงถึงเพดานที่ตั้งไว้",
+  "caption": "เพดานขาดทุนทำงานเหมือนปุ่มหยุดฉุกเฉิน ถึงระดับที่ตั้งไว้แล้วระบบหยุดเปิดไม้หรือปิดไม้ให้",
+  "credit": "Enchanted Tools",
+  "page": "https://unsplash.com/photos/4l2ryu35hCY",
+  "src": "https://images.unsplash.com/photo-1786539861527-ef6552d05c78",
+  "src_id": "1786539861527-ef6552d05c78",
+  "page_id": "4l2ryu35hCY",
+  "dhash": "3ce6c7e7765e2e34",
+  "bytes": 33678,
+  "license": "Unsplash License"
+ }
+]

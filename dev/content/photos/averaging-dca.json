@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "averaging-dca",
+  "file": "averaging-dca/coin-stacks-grey-averaging-position-size.webp",
+  "name": "coin-stacks-grey-averaging-position-size",
+  "alt": "เหรียญวางซ้อนกันเป็นกองบนโต๊ะสีเทา ภาพที่ช่วยอธิบายว่า Averaging คือการเพิ่มออเดอร์ทีละก้อนจนขนาดรวมโตขึ้น",
+  "caption": "ทุกครั้งที่ถัว ขนาดรวมของออเดอร์จะโตขึ้น ราคาเฉลี่ยขยับแต่ความเสี่ยงก็โตตามไปด้วย",
+  "credit": "Alexandra Dobrin",
+  "page": "https://unsplash.com/photos/blwOTf6fFAk",
+  "src": "https://images.unsplash.com/photo-1700303043287-656327196056",
+  "src_id": "1700303043287-656327196056",
+  "page_id": "blwOTf6fFAk",
+  "dhash": "1c1c1c1c3c3c3474",
+  "bytes": 10202,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "averaging-dca",
+  "file": "averaging-dca/hand-writing-questions-averaging-system.webp",
+  "name": "hand-writing-questions-averaging-system",
+  "alt": "มือกำลังเขียนลงสมุดบนโต๊ะสีขาวข้างโทรศัพท์ ภาพของการจดคำถามไว้ถามผู้ขายก่อนใช้ระบบที่ถัวออเดอร์",
+  "caption": "จดคำถามเรื่องจำนวนไม้สูงสุด ขนาดไม้รวม และจุดหยุดไว้ก่อน แล้วขอคำตอบเป็นตัวเลข",
+  "credit": "Mengkol Smile",
+  "page": "https://unsplash.com/photos/7MbJh7ge6y8",
+  "src": "https://images.unsplash.com/photo-1784798429938-039db6783292",
+  "src_id": "1784798429938-039db6783292",
+  "page_id": "7MbJh7ge6y8",
+  "dhash": "070d191d1b59597d",
+  "bytes": 29028,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "averaging-dca",
+  "file": "averaging-dca/planner-calculator-dca-lot-margin.webp",
+  "name": "planner-calculator-dca-lot-margin",
+  "alt": "สมุดบันทึกเปิดอยู่ข้างเครื่องคิดเลขบนโต๊ะไม้ ใช้จดขนาดไม้รวม ขาดทุนลอย และ Margin ทุกครั้งที่ถัวเพิ่ม",
+  "caption": "จดตัวเลขทุกขั้นของการถัว จะเห็นว่าขนาดไม้รวมและ Margin โตเร็วกว่าที่รู้สึก",
+  "credit": "Iryna Tysiak",
+  "page": "https://unsplash.com/photos/kRaH720CCRE",
+  "src": "https://images.unsplash.com/photo-1516201580490-33550d32de5c",
+  "src_id": "1516201580490-33550d32de5c",
+  "page_id": "kRaH720CCRE",
+  "dhash": "40743408485838ac",
+  "bytes": 76036,
+  "license": "Unsplash License"
+ }
+]

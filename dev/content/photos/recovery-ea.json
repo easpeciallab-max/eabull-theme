@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "recovery-ea",
+  "file": "recovery-ea/code-screen-recovery-ea-logic.webp",
+  "name": "code-screen-recovery-ea-logic",
+  "alt": "จอคอมพิวเตอร์แสดงโค้ดโปรแกรมหลายบรรทัด ภาพของ EA แก้ไม้ซึ่งเป็นโปรแกรมที่เขียนให้เปิดไม้เพิ่มเมื่อออเดอร์ติดลบ",
+  "caption": "ระบบกู้ไม้ทุกแบบคือกติกาในโค้ด ต้องรู้ว่ากติกานั้นเพิ่มไม้เมื่อไหร่และหยุดตรงไหน",
+  "credit": "Jiří Navrátil",
+  "page": "https://unsplash.com/photos/YxSKnaiYpig",
+  "src": "https://images.unsplash.com/photo-1738255654134-1877cb984a8f",
+  "src_id": "1738255654134-1877cb984a8f",
+  "page_id": "YxSKnaiYpig",
+  "dhash": "9f9bb99d8f9d94dd",
+  "bytes": 40374,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "recovery-ea",
+  "file": "recovery-ea/magnifying-glass-laptop-recovery-ea-test.webp",
+  "name": "magnifying-glass-laptop-recovery-ea-test",
+  "alt": "แว่นขยายวางข้างโน้ตบุ๊กบนโต๊ะสีขาว ภาพของการอ่านรายงานผลทดสอบระบบแก้ไม้ให้ละเอียดกว่ากราฟกำไร",
+  "caption": "ในรายงานทดสอบ ให้ดู Equity Drawdown และขนาดไม้รวมสูงสุดที่เคยเปิดค้าง ไม่ใช่แค่กำไรรวม",
+  "credit": "MJ Duford",
+  "page": "https://unsplash.com/photos/P_5mirRrg0k",
+  "src": "https://images.unsplash.com/photo-1743796055664-3473eedab36e",
+  "src_id": "1743796055664-3473eedab36e",
+  "page_id": "P_5mirRrg0k",
+  "dhash": "1858c8a8e4e41210",
+  "bytes": 26042,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "recovery-ea",
+  "file": "recovery-ea/printed-equations-martingale-math-recovery-ea.webp",
+  "name": "printed-equations-martingale-math-recovery-ea",
+  "alt": "สมการคณิตศาสตร์พิมพ์บนกระดาษขาว ภาพของการคิดเลขว่าขนาดไม้รวมโตเร็วแค่ไหนเมื่อระบบทบไม้ทีละขั้น",
+  "caption": "ทบไม้เป็นเท่าตัวไม่กี่ครั้ง ขนาดรวมก็โตเกินกว่าที่บัญชีส่วนใหญ่รับไหว ลองคิดตามตารางในหัวข้อนี้",
+  "credit": "Antoine Dautry",
+  "page": "https://unsplash.com/photos/05A-kdOH6Hw",
+  "src": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+  "src_id": "1509228468518-180dd4864904",
+  "page_id": "05A-kdOH6Hw",
+  "dhash": "0f0f1f0faf17540f",
+  "bytes": 20032,
+  "license": "Unsplash License"
+ }
+]

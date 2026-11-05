@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "breakout",
+  "file": "breakout/metal-strainer-false-breakout-filter.webp",
+  "name": "metal-strainer-false-breakout-filter",
+  "alt": "กระชอนตาข่ายโลหะแขวนบนผนังสีอ่อน ภาพเปรียบของตัวกรองที่คัดการทะลุกรอบหลอกออกไปบางส่วน",
+  "caption": "ตัวกรองทุกแบบลดการโดนหลอกได้บางส่วน แต่ก็ทำให้พลาดการหลุดกรอบจริงไปบ้างเช่นกัน",
+  "credit": "Olga Kovalski",
+  "page": "https://unsplash.com/photos/SbB6nEuHHio",
+  "src": "https://images.unsplash.com/photo-1711610378106-e06a37bac30c",
+  "src_id": "1711610378106-e06a37bac30c",
+  "page_id": "SbB6nEuHHio",
+  "dhash": "33694dd4d4f0d2d8",
+  "bytes": 105386,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "breakout",
+  "file": "breakout/phone-chart-circled-levels-breakout.webp",
+  "name": "phone-chart-circled-levels-breakout",
+  "alt": "จอมือถือหน้าคีย์บอร์ดแสดงกราฟราคาที่มีวงกลมสีเหลืองล้อมจุดที่ราคาหลุดระดับ ภาพที่ช่วยอธิบายว่า Breakout คือการที่ราคาหลุดกรอบเดิม",
+  "caption": "ภาพประกอบ: จุดที่ราคาวิ่งออกจากระดับที่เคยกั้นไว้ คือจังหวะที่ระบบ Breakout เฝ้ารอ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/rUimC7J5j1k",
+  "src": "https://images.unsplash.com/photo-1748439281934-2803c6a3ee36",
+  "src_id": "1748439281934-2803c6a3ee36",
+  "page_id": "rUimC7J5j1k",
+  "dhash": "0f1ed2cedddadecb",
+  "bytes": 32498,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "breakout",
+  "file": "breakout/writing-notebook-laptop-breakout-rules.webp",
+  "name": "writing-notebook-laptop-breakout-rules",
+  "alt": "คนเขียนลงสมุดข้างโน้ตบุ๊กบนโต๊ะสีเข้ม ขั้นรวมกรอบ จุดเข้า และจุดออกของกลยุทธ์ Breakout เป็นกติกาชุดเดียว",
+  "caption": "เขียนกติกาให้ครบก่อนทดสอบ แล้วค่อยวัดผลจากข้อมูลย้อนหลังแทนการดูกราฟด้วยตา",
+  "credit": "Vadim Bozhko",
+  "page": "https://unsplash.com/photos/lbO1iCnbTW0",
+  "src": "https://images.unsplash.com/photo-1615914143778-1a1a6e50c5dd",
+  "src_id": "1615914143778-1a1a6e50c5dd",
+  "page_id": "lbO1iCnbTW0",
+  "dhash": "cdc933a66646acac",
+  "bytes": 75646,
+  "license": "Unsplash License"
+ }
+]

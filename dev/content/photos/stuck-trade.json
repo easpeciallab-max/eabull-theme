@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "stuck-trade",
+  "file": "stuck-trade/calculator-yellow-averaging-down-numbers.webp",
+  "name": "calculator-yellow-averaging-down-numbers",
+  "alt": "เครื่องคิดเลขสีเทาวางบนพื้นสีเหลือง ภาพของการคิดจุดคุ้มทุนและขนาดไม้รวมก่อนถัวเฉลี่ยไม้ที่ติดลบ",
+  "caption": "ถัวแล้วจุดคุ้มทุนใกล้ขึ้นก็จริง แต่ไม้รวมใหญ่ขึ้น ราคาวิ่งสวนต่ออีกนิดก็เสียมากกว่าเดิม",
+  "credit": "Behnam Norouzi",
+  "page": "https://unsplash.com/photos/xMiOZbMUBWk",
+  "src": "https://images.unsplash.com/photo-1668930171580-07c624f74cb0",
+  "src_id": "1668930171580-07c624f74cb0",
+  "page_id": "xMiOZbMUBWk",
+  "dhash": "6260266068686868",
+  "bytes": 24974,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stuck-trade",
+  "file": "stuck-trade/coin-stacks-cost-of-stuck-trade.webp",
+  "name": "coin-stacks-cost-of-stuck-trade",
+  "alt": "เหรียญหลายกองวางบนพื้นสีเทา ภาพของต้นทุนที่สะสมทุกวัน เพราะการติดดอย คือ การถือไม้ติดลบไว้โดยไม่มีจุดออก",
+  "caption": "ไม้ที่ติดดอยมีต้นทุนทุกวัน ทั้ง Swap Margin ที่ถูกกันไว้ และระยะถึง Stop Out ที่สั้นลง",
+  "credit": "Jorge Campos",
+  "page": "https://unsplash.com/photos/cDOebhAKFZY",
+  "src": "https://images.unsplash.com/photo-1762884613665-43e760bb15b2",
+  "src_id": "1762884613665-43e760bb15b2",
+  "page_id": "cDOebhAKFZY",
+  "dhash": "0702000309133069",
+  "bytes": 40870,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stuck-trade",
+  "file": "stuck-trade/red-stop-sign-prevent-stuck-trade.webp",
+  "name": "red-stop-sign-prevent-stuck-trade",
+  "alt": "ป้ายหยุดสีแดงแปดเหลี่ยมตั้งอยู่หน้าต้นไม้ ภาพของการกำหนดจุดออกไว้ก่อนกดเปิดไม้ เพื่อไม่ให้ติดดอยซ้ำรอบหน้า",
+  "caption": "ตั้ง Stop Loss และขนาดไม้ไว้ก่อนเปิดไม้ ได้ผลกว่าการหาทางออกหลังติดดอยไปแล้ว",
+  "credit": "Will Porada",
+  "page": "https://unsplash.com/photos/ZaGcU6BxJEc",
+  "src": "https://images.unsplash.com/photo-1546617885-4822125f891e",
+  "src_id": "1546617885-4822125f891e",
+  "page_id": "ZaGcU6BxJEc",
+  "dhash": "ed7c542c97f3dfbb",
+  "bytes": 54610,
+  "license": "Unsplash License"
+ }
+]

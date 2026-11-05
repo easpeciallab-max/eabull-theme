@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "floating-loss",
+  "file": "floating-loss/banknotes-chart-screens-floating-loss.webp",
+  "name": "banknotes-chart-screens-floating-loss",
+  "alt": "มือถือธนบัตรอยู่หน้าจอคอมที่เปิดกราฟราคาหลายจอ ภาพของ floating loss คือ เงินที่ยังไม่เสียจริงแต่ขยับขึ้นลงตามราคาบนจอ",
+  "caption": "ภาพประกอบ: ตราบใดที่ไม้ยังไม่ปิด ตัวเลขติดลบยังลอยขึ้นลงตามราคาล่าสุด",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/TUmKOI0bK-w",
+  "src": "https://images.unsplash.com/photo-1719464521902-4dc9595b182d",
+  "src_id": "1719464521902-4dc9595b182d",
+  "page_id": "TUmKOI0bK-w",
+  "dhash": "91c3cf1f1f4f1c1c",
+  "bytes": 53458,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "floating-loss",
+  "file": "floating-loss/hand-mouse-close-order-realized-loss.webp",
+  "name": "hand-mouse-close-order-realized-loss",
+  "alt": "มือจับเมาส์คอมพิวเตอร์บนโต๊ะทำงาน ภาพของการกดปิดไม้เองซึ่งเปลี่ยนขาดทุนลอยตัวเป็นขาดทุนจริงใน Balance",
+  "caption": "ปิดไม้เอง โดน Stop Loss EA ปิดให้ หรือถึง Stop Out ทุกทางจบที่ตัวเลขลอยตัวกลายเป็นยอดจริง",
+  "credit": "Jeswin Thomas",
+  "page": "https://unsplash.com/photos/5nWgzq7srvo",
+  "src": "https://images.unsplash.com/photo-1596495717655-5a38ee8ad7b2",
+  "src_id": "1596495717655-5a38ee8ad7b2",
+  "page_id": "5nWgzq7srvo",
+  "dhash": "9a9e8ec647133be9",
+  "bytes": 28614,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "floating-loss",
+  "file": "floating-loss/white-calculator-equity-free-margin.webp",
+  "name": "white-calculator-equity-free-margin",
+  "alt": "เครื่องคิดเลขสีขาววางบนพื้นสีเทาอ่อน ภาพของการคิดว่าขาดทุนลอยตัวทำให้ Equity Free Margin และ Margin Level ลดลงเท่าไหร่",
+  "caption": "ขาดทุนลอยตัวทุกดอลลาร์หักออกจาก Equity ทันที Free Margin และ Margin Level จึงลดตามไปด้วย",
+  "credit": "Teuku Fadhil",
+  "page": "https://unsplash.com/photos/aqB6_P5Z_Lg",
+  "src": "https://images.unsplash.com/photo-1683884361203-69b7f969e9ff",
+  "src_id": "1683884361203-69b7f969e9ff",
+  "page_id": "aqB6_P5Z_Lg",
+  "dhash": "03034f8b8b830303",
+  "bytes": 15528,
+  "license": "Unsplash License"
+ }
+]

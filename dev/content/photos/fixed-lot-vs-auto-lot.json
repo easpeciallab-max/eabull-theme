@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "fixed-lot-vs-auto-lot",
+  "file": "fixed-lot-vs-auto-lot/equal-coin-stacks-fixed-lot.webp",
+  "name": "equal-coin-stacks-fixed-lot",
+  "alt": "มือกำลังวางเหรียญเป็นกองสูงเท่ากันสามกอง ภาพของ Fixed Lot คือการออกไม้ขนาดเดิมทุกครั้งไม่ว่าทุนจะเปลี่ยนแค่ไหน",
+  "caption": "Fixed Lot เปิดไม้ขนาดเท่าเดิมทุกไม้ เงินที่เสียต่อไม้จึงคาดได้ล่วงหน้า แต่สัดส่วนต่อทุนจะเปลี่ยนตามบัญชี",
+  "credit": "Towfiqu barbhuiya",
+  "page": "https://unsplash.com/photos/jpqyfK7GB4w",
+  "src": "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf",
+  "src_id": "1633158829585-23ba8f7c8caf",
+  "page_id": "jpqyfK7GB4w",
+  "dhash": "a697979f8d8c9631",
+  "bytes": 29998,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "fixed-lot-vs-auto-lot",
+  "file": "fixed-lot-vs-auto-lot/typing-laptop-ea-lot-size-inputs.webp",
+  "name": "typing-laptop-ea-lot-size-inputs",
+  "alt": "มือพิมพ์บนคีย์บอร์ดโน้ตบุ๊กข้างกระถางต้นไม้ ภาพของการกรอกช่องขนาดไม้ในแท็บ Inputs ก่อนเริ่มรัน EA",
+  "caption": "ชื่อช่องขนาดไม้ของแต่ละ EA ไม่เหมือนกัน อ่านคู่มือของผู้พัฒนาก่อนกรอกทุกครั้ง",
+  "credit": "Alexander Polous",
+  "page": "https://unsplash.com/photos/mpmNrm_AWhY",
+  "src": "https://images.unsplash.com/photo-1667058014960-b4d3c76047a2",
+  "src_id": "1667058014960-b4d3c76047a2",
+  "page_id": "mpmNrm_AWhY",
+  "dhash": "0e12827e368a4a6a",
+  "bytes": 34782,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "fixed-lot-vs-auto-lot",
+  "file": "fixed-lot-vs-auto-lot/uneven-coin-stacks-auto-lot.webp",
+  "name": "uneven-coin-stacks-auto-lot",
+  "alt": "เหรียญทองแดงและเหรียญสีทองซ้อนเป็นกองสูงต่ำไม่เท่ากัน ภาพของ Auto Lot ที่ขนาดไม้ลดลงตามทุนหลังแพ้ติดกันหลายไม้",
+  "caption": "Auto Lot คิดไม้ใหม่จากทุนที่เหลือก่อนเปิดทุกไม้ ช่วงแพ้ติดกันไม้จึงเล็กลงเอง",
+  "credit": "Ibrahim Rifath",
+  "page": "https://unsplash.com/photos/OApHds2yEGQ",
+  "src": "https://images.unsplash.com/photo-1534951009808-766178b47a4f",
+  "src_id": "1534951009808-766178b47a4f",
+  "page_id": "OApHds2yEGQ",
+  "dhash": "9669ceccc6d230ce",
+  "bytes": 42626,
+  "license": "Unsplash License"
+ }
+]

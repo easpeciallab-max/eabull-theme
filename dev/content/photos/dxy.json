@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "dxy",
+  "file": "dxy/candlestick-chart-dxy-watchlist.webp",
+  "name": "candlestick-chart-dxy-watchlist",
+  "alt": "กราฟแท่งเทียนบนจอมืดที่มีชื่อ DXY อยู่ในรายการดัชนีด้านข้าง เปิดดูคู่กับกราฟทองใน Timeframe เดียวกัน",
+  "caption": "ภาพประกอบ: ดู DXY เป็นบริบทข้างกราฟทอง ว่าทองขยับเพราะดอลลาร์หรือเพราะเรื่องอื่น",
+  "credit": "Tötös Ádám",
+  "page": "https://unsplash.com/photos/3r8rcSy0Ffg",
+  "src": "https://images.unsplash.com/photo-1649003515353-c58a239cf662",
+  "src_id": "1649003515353-c58a239cf662",
+  "page_id": "3r8rcSy0Ffg",
+  "dhash": "b3b191f176363252",
+  "bytes": 107900,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "dxy",
+  "file": "dxy/dollar-stacks-dxy-dollar-index.webp",
+  "name": "dollar-stacks-dxy-dollar-index",
+  "alt": "ปึกธนบัตรร้อยดอลลาร์วางเรียงเป็นแถว DXY คือดัชนีที่วัดค่าเงินดอลลาร์เทียบกับเงิน 6 สกุลหลัก",
+  "caption": "ตัวเลข DXY ตัวเดียวสรุปว่าดอลลาร์แข็งหรืออ่อนเทียบกับหลายสกุลพร้อมกัน",
+  "credit": "Logan Voss",
+  "page": "https://unsplash.com/photos/DyYbAk1LFEs",
+  "src": "https://images.unsplash.com/photo-1744130400729-c4aee523f490",
+  "src_id": "1744130400729-c4aee523f490",
+  "page_id": "DyYbAk1LFEs",
+  "dhash": "4de62552b9a9d6c6",
+  "bytes": 137426,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "dxy",
+  "file": "dxy/euro-dollar-banknotes-dxy-basket.webp",
+  "name": "euro-dollar-banknotes-dxy-basket",
+  "alt": "ธนบัตรยูโรปนกับธนบัตรดอลลาร์ ยูโรคือสกุลที่มีน้ำหนักมากที่สุดในตะกร้าเงินของ DXY",
+  "caption": "ยูโรมีน้ำหนักเกินครึ่งของดัชนี ค่าเงินยูโรจึงขยับ DXY ได้มากกว่าสกุลอื่นรวมกัน",
+  "credit": "Ibrahim Boran",
+  "page": "https://unsplash.com/photos/bnW9O5ZOys4",
+  "src": "https://images.unsplash.com/photo-1623106405790-0ed93dd15bab",
+  "src_id": "1623106405790-0ed93dd15bab",
+  "page_id": "bnW9O5ZOys4",
+  "dhash": "d4f0a6b3b39931b9",
+  "bytes": 148564,
+  "license": "Unsplash License"
+ }
+]
