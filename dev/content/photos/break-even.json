@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "break-even",
+  "file": "break-even/code-screen-ea-break-even-setting.webp",
+  "name": "code-screen-ea-break-even-setting",
+  "alt": "โค้ดโปรแกรมหลายบรรทัดบนจอสีเข้ม ระบบเลื่อน SL ไป Break Even ที่เขียนไว้ใน EA มักมีค่าให้ตั้งในแท็บ Inputs",
+  "caption": "เช็กคู่มือว่าค่ากำไรก่อนเลื่อนและค่าที่ล็อกไว้ใช้หน่วย point หรือเงิน",
+  "credit": "Markus Spiske",
+  "page": "https://unsplash.com/photos/MgtHZ4zlC1U",
+  "src": "https://images.unsplash.com/photo-1576836165612-8bc9b07e7778",
+  "src_id": "1576836165612-8bc9b07e7778",
+  "page_id": "MgtHZ4zlC1U",
+  "dhash": "d0dc991d32e3a84c",
+  "bytes": 60948,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "break-even",
+  "file": "break-even/hands-keyboard-mouse-move-sl-break-even.webp",
+  "name": "hands-keyboard-mouse-move-sl-break-even",
+  "alt": "มือพิมพ์คีย์บอร์ดและจับเมาส์ที่โต๊ะคอม ขั้นตอนแก้ช่อง Stop Loss ของไม้ที่เปิดอยู่ให้เป็นราคาคุ้มทุนใน MT5",
+  "caption": "คลิกขวาที่ไม้ในแท็บ Trade เลือก Modify or Delete แล้วใส่ราคาเปิดพร้อมระยะเผื่อค่าคอมและ Swap",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/2ADlI3Nv6g0",
+  "src": "https://images.unsplash.com/photo-1748609029863-cd7031eacd4e",
+  "src_id": "1748609029863-cd7031eacd4e",
+  "page_id": "2ADlI3Nv6g0",
+  "dhash": "7b5397125b0e848b",
+  "bytes": 39572,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "break-even",
+  "file": "break-even/spirit-level-bubble-break-even.webp",
+  "name": "spirit-level-bubble-break-even",
+  "alt": "มือวางไม้วัดระดับน้ำบนโต๊ะไม้ ฟองอากาศอยู่กึ่งกลางพอดี ภาพของ Break Even คือจุดเสมอตัวที่ไม่ได้และไม่เสีย",
+  "caption": "Break Even คือจุดที่ผลรวมของไม้เป็นศูนย์ ไม่ได้กำไรและไม่ขาดทุน",
+  "credit": "Louis Hansel",
+  "page": "https://unsplash.com/photos/_qpY2jqedwU",
+  "src": "https://images.unsplash.com/photo-1567361808976-260065224468",
+  "src_id": "1567361808976-260065224468",
+  "page_id": "_qpY2jqedwU",
+  "dhash": "53330fc763cf1921",
+  "bytes": 59054,
+  "license": "Unsplash License"
+ }
+]

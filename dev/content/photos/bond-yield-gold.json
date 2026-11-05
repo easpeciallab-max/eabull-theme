@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "bond-yield-gold",
+  "file": "bond-yield-gold/hands-tablet-check-bond-yields.webp",
+  "name": "hands-tablet-check-bond-yields",
+  "alt": "มือถือแท็บเล็ตแล้วใช้นิ้วเลื่อนหน้าจอ ตัวเลข Bond Yield เช็กได้ทั้งจากเว็บทางการของสหรัฐฯ และเว็บข้อมูลตลาด",
+  "caption": "ตัวเลขของกระทรวงการคลังสหรัฐฯ เป็นตัวเลขปิดวันที่ดูย้อนหลังได้ ส่วนเว็บกราฟเหมาะกับการดู Yield ระหว่างวันตอนมีข่าว",
+  "credit": "Marta Filipczyk",
+  "page": "https://unsplash.com/photos/mN5-yjVGBAI",
+  "src": "https://images.unsplash.com/photo-1568918460973-fe7f54f82482",
+  "src_id": "1568918460973-fe7f54f82482",
+  "page_id": "mN5-yjVGBAI",
+  "dhash": "a693d3d7cb7abbe7",
+  "bytes": 26798,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "bond-yield-gold",
+  "file": "bond-yield-gold/price-tag-inflation-real-yield.webp",
+  "name": "price-tag-inflation-real-yield",
+  "alt": "ป้ายราคาสินค้าขาวดำแสดงตัวเลขราคา เงินเฟ้อที่กินผลตอบแทนพันธบัตรจนเหลือเป็น Real Yield",
+  "caption": "ภาพประกอบ: เมื่อราคาสินค้าสูงขึ้น ผลตอบแทนที่เป็นตัวเงินซื้อของได้น้อยลง ตัวเลขหลังหักเงินเฟ้อจึงสำคัญกว่า",
+  "credit": "Denis Bayer",
+  "page": "https://unsplash.com/photos/PAeZ-9qvoRw",
+  "src": "https://images.unsplash.com/photo-1654370849443-0aa7e3d2920f",
+  "src_id": "1654370849443-0aa7e3d2920f",
+  "page_id": "PAeZ-9qvoRw",
+  "dhash": "5d35392b33c3a393",
+  "bytes": 31590,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "bond-yield-gold",
+  "file": "bond-yield-gold/us-treasury-building-bond-yield.webp",
+  "name": "us-treasury-building-bond-yield",
+  "alt": "อาคารกระทรวงการคลังสหรัฐฯ ในวอชิงตัน ผู้ออกพันธบัตรที่ทำให้คนถามว่า Bond Yield คือ อะไร",
+  "caption": "พันธบัตรรัฐบาลสหรัฐฯ ออกโดยกระทรวงการคลัง และผลตอบแทนของมันคือตัวเลขที่ตลาดทองจับตา",
+  "credit": "Malek Jamal",
+  "page": "https://unsplash.com/photos/vRkxkKxnJqw",
+  "src": "https://images.unsplash.com/photo-1589726393469-fcd6f4ce1c24",
+  "src_id": "1589726393469-fcd6f4ce1c24",
+  "page_id": "vRkxkKxnJqw",
+  "dhash": "e88e33f0f0f07133",
+  "bytes": 104620,
+  "license": "Unsplash License"
+ }
+]

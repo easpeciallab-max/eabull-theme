@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "spdr-gold",
+  "file": "spdr-gold/laptop-data-dashboard-spdr-holdings.webp",
+  "name": "laptop-data-dashboard-spdr-holdings",
+  "alt": "แล็ปท็อปเปิดหน้าข้อมูลที่มีกราฟและตัวเลขสรุป คล้ายการไล่ดูยอดถือทองรายวันของกองทุน",
+  "caption": "ภาพประกอบ: ยอดถือทองของกองทุนเป็นตัวเลขรายวัน ต้องเทียบกับวันก่อนหน้าจึงเห็นทิศทางของเงิน",
+  "credit": "Carlos Muza",
+  "page": "https://unsplash.com/photos/hpjSkU2UYSU",
+  "src": "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+  "src_id": "1460925895917-afdab827c52f",
+  "page_id": "hpjSkU2UYSU",
+  "dhash": "383cac8c3c3b9c9c",
+  "bytes": 43694,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "spdr-gold",
+  "file": "spdr-gold/vault-door-bolts-gold-custody.webp",
+  "name": "vault-door-bolts-gold-custody",
+  "alt": "กลไกสลักเหล็กของประตูห้องนิรภัยธนาคาร ทองแท่งของกองทุนเก็บในห้องนิรภัยของผู้รับฝากและมีรายการทองแท่งให้ตรวจ",
+  "caption": "บริษัทตรวจสอบอิสระเข้านับทองของกองทุนปีละสองครั้ง และเว็บไซต์กองทุนเปิดให้ดาวน์โหลดรายการทองเป็นรายแท่ง",
+  "credit": "Roberto moller",
+  "page": "https://unsplash.com/photos/eAlxjGt3tl0",
+  "src": "https://images.unsplash.com/photo-1732384001863-59ecbb9dd827",
+  "src_id": "1732384001863-59ecbb9dd827",
+  "page_id": "eAlxjGt3tl0",
+  "dhash": "cfc7d7d7d7cfcfc7",
+  "bytes": 102954,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "spdr-gold",
+  "file": "spdr-gold/wall-street-flags-spdr-etf.webp",
+  "name": "wall-street-flags-spdr-etf",
+  "alt": "อาคารเสาหินประดับธงชาติสหรัฐฯ บนถนน Wall Street นิวยอร์ก SPDR คือตระกูลกองทุน ETF ที่ซื้อขายในตลาดหลักทรัพย์สหรัฐฯ",
+  "caption": "SPDR เป็นชื่อตระกูลกองทุน ETF จำนวนมาก แต่เมื่อคนไทยพูดถึง SPDR ทองคำ ส่วนใหญ่หมายถึงกองทุน SPDR Gold Shares",
+  "credit": "Maria Lin Kim",
+  "page": "https://unsplash.com/photos/PdtSqv_EWVQ",
+  "src": "https://images.unsplash.com/photo-1661959118121-c3f0ebf1345e",
+  "src_id": "1661959118121-c3f0ebf1345e",
+  "page_id": "PdtSqv_EWVQ",
+  "dhash": "70717160646c4850",
+  "bytes": 141050,
+  "license": "Unsplash License"
+ }
+]

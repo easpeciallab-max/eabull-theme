@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "lbma",
+  "file": "lbma/city-of-london-old-new-buildings.webp",
+  "name": "city-of-london-old-new-buildings",
+  "alt": "อาคารเก่าแก่กับตึกกระจกสูงในย่านการเงินลอนดอน ที่ธนาคารและผู้ค้าทองเสนอราคาซื้อขายกันเองแบบ Over the Counter",
+  "caption": "ทองที่ส่งมอบกันในลอนดอนเรียกว่าทอง Loco London และเปลี่ยนเจ้าของได้ด้วยการโอนในบัญชีโดยไม่ต้องขนย้าย",
+  "credit": "Dan Lynn",
+  "page": "https://unsplash.com/photos/lo1DWaxkdA0",
+  "src": "https://images.unsplash.com/photo-1652049133878-fefb2a6a2130",
+  "src_id": "1652049133878-fefb2a6a2130",
+  "page_id": "lo1DWaxkdA0",
+  "dhash": "f3f2d2d3d2e6ea6f",
+  "bytes": 145630,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "lbma",
+  "file": "lbma/rotary-telephone-london-gold-fixing.webp",
+  "name": "rotary-telephone-london-gold-fixing",
+  "alt": "โทรศัพท์แบบหมุนสีดำรุ่นเก่า ราคาอ้างอิงทองลอนดอนยุคแรกได้มาจากการโทรถามคำสั่งซื้อขายของโบรกเกอร์ทองสี่ราย",
+  "caption": "ระบบ London Gold Fixing เริ่มในปี 2462 และถูกแทนด้วยการประมูลอิเล็กทรอนิกส์ชื่อ LBMA Gold Price ในปี 2558",
+  "credit": "Quino Al",
+  "page": "https://unsplash.com/photos/9blSF_Ay3MY",
+  "src": "https://images.unsplash.com/photo-1512125098323-cce1035bf4bf",
+  "src_id": "1512125098323-cce1035bf4bf",
+  "page_id": "9blSF_Ay3MY",
+  "dhash": "7c7a6a74b474b4f4",
+  "bytes": 42978,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "lbma",
+  "file": "lbma/royal-exchange-london-lbma.webp",
+  "name": "royal-exchange-london-lbma",
+  "alt": "อาคาร Royal Exchange กลางย่านการเงินลอนดอนยามเย็น เมืองของตลาดทองที่ LBMA คือผู้ดูแลกติกา",
+  "caption": "LBMA ตั้งขึ้นในลอนดอนเมื่อปี 2530 เพื่อดูแลตลาดทองและเงินที่ซื้อขายกันในเมืองนี้",
+  "credit": "SOHAM BANERJEE",
+  "page": "https://unsplash.com/photos/dtJKVdgM-Lk",
+  "src": "https://images.unsplash.com/photo-1790856206683-9d206b990ee8",
+  "src_id": "1790856206683-9d206b990ee8",
+  "page_id": "dtJKVdgM-Lk",
+  "dhash": "652b230797333313",
+  "bytes": 90372,
+  "license": "Unsplash License"
+ }
+]

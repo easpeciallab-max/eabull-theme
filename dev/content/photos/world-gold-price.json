@@ -1,0 +1,62 @@
+[
+ {
+  "slug": "world-gold-price",
+  "file": "world-gold-price/gold-nuggets-world-gold-price.webp",
+  "name": "gold-nuggets-world-gold-price",
+  "alt": "ก้อนทองคำหลายก้อนวางบนโต๊ะไม้ ราคาทองโลกคือราคาของทองคำที่ซื้อขายกันเป็นดอลลาร์ต่อทรอยออนซ์",
+  "caption": "ราคาทองโลกที่ข่าวพูดถึงส่วนใหญ่คือราคาสปอต ซึ่งเปลี่ยนไปตลอดเวลาที่ตลาดเปิด",
+  "credit": "suradeach saetang",
+  "page": "https://unsplash.com/photos/jrA2l3JjD5k",
+  "src": "https://images.unsplash.com/photo-1737815914093-becb6c9ac064",
+  "src_id": "1737815914093-becb6c9ac064",
+  "page_id": "jrA2l3JjD5k",
+  "dhash": "0f3fdf56636e1b4f",
+  "bytes": 105934,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "world-gold-price",
+  "file": "world-gold-price/gold-price-quote-screen-bid-ask.webp",
+  "name": "gold-price-quote-screen-bid-ask",
+  "alt": "ตัวเลขราคาทองบนจอข้อมูลตลาด ราคาที่ขยับตลอดเวลาซึ่งต้องแยกให้ออกว่าเป็นฝั่ง Bid หรือ Ask",
+  "caption": "ภาพประกอบ: ราคาทองบนจอข้อมูลมักแสดงตัวเลขเดียว แต่ราคาที่ซื้อขายได้จริงมีทั้งฝั่ง Bid และ Ask",
+  "credit": "Anne Nygård",
+  "page": "https://unsplash.com/photos/g9EoUnFuqyM",
+  "src": "https://images.unsplash.com/photo-1651340927948-26826aaef4b0",
+  "src_id": "1651340927948-26826aaef4b0",
+  "page_id": "g9EoUnFuqyM",
+  "dhash": "5894841ed2ce58e0",
+  "bytes": 40938,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "world-gold-price",
+  "file": "world-gold-price/wall-street-sign-who-sets-gold-price.webp",
+  "name": "wall-street-sign-who-sets-gold-price",
+  "alt": "ป้ายถนน Wall Street ย่านการเงินนิวยอร์ก เมืองที่ตลาดฟิวเจอร์สทองมีน้ำหนักต่อราคาทองโลก",
+  "caption": "ราคาทองโลกไม่มีใครกำหนดคนเดียว แต่เกิดจากการซื้อขายในลอนดอน นิวยอร์ก และเซี่ยงไฮ้ที่เปิดซ้อนกัน",
+  "credit": "Lo Lo",
+  "page": "https://unsplash.com/photos/CeVj8lPBJSc",
+  "src": "https://images.unsplash.com/photo-1586815634274-bf5eb51055c9",
+  "src_id": "1586815634274-bf5eb51055c9",
+  "page_id": "CeVj8lPBJSc",
+  "dhash": "cc8fafb7131a4b2b",
+  "bytes": 65038,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "world-gold-price",
+  "file": "world-gold-price/wooden-world-map-gold-price-worldwide.webp",
+  "name": "wooden-world-map-gold-price-worldwide",
+  "alt": "แผนที่โลกไม้ติดผนังสีขาว ราคาทองโลกเป็นดอลลาร์ใกล้กันทุกประเทศ แต่ราคาที่คนแต่ละประเทศจ่ายจริงไม่เท่ากัน",
+  "caption": "ราคาเดียวกันเป็นดอลลาร์กลายเป็นคนละตัวเลขเมื่อแปลงเป็นบาท หยวน หรือรูปี และยังต่างกันตามความบริสุทธิ์กับต้นทุนนำเข้า",
+  "credit": "Nikhilesh Boppana",
+  "page": "https://unsplash.com/photos/j9jBsNg2pSw",
+  "src": "https://images.unsplash.com/photo-1706823871410-ed8b01faef7e",
+  "src_id": "1706823871410-ed8b01faef7e",
+  "page_id": "j9jBsNg2pSw",
+  "dhash": "b486de9cd84a4afc",
+  "bytes": 135576,
+  "license": "Unsplash License"
+ }
+]

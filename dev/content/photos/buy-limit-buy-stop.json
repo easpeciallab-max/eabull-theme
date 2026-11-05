@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "buy-limit-buy-stop",
+  "file": "buy-limit-buy-stop/elevator-up-down-buttons-buy-limit-buy-stop.webp",
+  "name": "elevator-up-down-buttons-buy-limit-buy-stop",
+  "alt": "นิ้วกดปุ่มลิฟต์ที่มีลูกศรขึ้นและลง ภาพของ Buy Limit กับ Buy Stop ที่รอซื้อคนละทาง ตัวหนึ่งรอราคาลง อีกตัวรอราคาขึ้น",
+  "caption": "Buy Limit วางต่ำกว่าราคาปัจจุบันเพื่อรอซื้อตอนย่อ ส่วน Buy Stop วางสูงกว่าเพื่อรอซื้อตอนทะลุขึ้น",
+  "credit": "Cohen Berg",
+  "page": "https://unsplash.com/photos/U98q5oToyp4",
+  "src": "https://images.unsplash.com/photo-1753796934455-816c2a54e317",
+  "src_id": "1753796934455-816c2a54e317",
+  "page_id": "U98q5oToyp4",
+  "dhash": "c3c3c3838785d9c9",
+  "bytes": 14710,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "buy-limit-buy-stop",
+  "file": "buy-limit-buy-stop/laptop-and-phone-place-pending-order-mt5.webp",
+  "name": "laptop-and-phone-place-pending-order-mt5",
+  "alt": "ผู้ชายใช้แล็ปท็อปพร้อมถือมือถือไว้อีกมือ คำสั่งรอใน MT5 ตั้งได้ทั้งในโปรแกรมบนคอมและในแอปมือถือ",
+  "caption": "บนคอมกด F9 เปิดหน้าต่าง New Order ส่วนในแอปเปิด New Order จากหน้าราคาหรือแท็บ Trade แล้วเปลี่ยนเป็นคำสั่งรอ",
+  "credit": "Anastasiia Nelen",
+  "page": "https://unsplash.com/photos/7Nj2lrn1fAg",
+  "src": "https://images.unsplash.com/photo-1654686475159-d4787eee42ac",
+  "src_id": "1654686475159-d4787eee42ac",
+  "page_id": "7Nj2lrn1fAg",
+  "dhash": "1c1f3a12320b9f1b",
+  "bytes": 27622,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "buy-limit-buy-stop",
+  "file": "buy-limit-buy-stop/tablet-breakout-chart-buy-stop.webp",
+  "name": "tablet-breakout-chart-buy-stop",
+  "alt": "แท็บเล็ตแสดงกราฟแท่งเทียนที่ราคาทะลุขึ้นต่อเนื่อง จังหวะที่ Buy Stop รอซื้อเมื่อราคาผ่านระดับที่ตั้งไว้",
+  "caption": "ภาพประกอบ: Buy Stop วางเหนือราคาปัจจุบัน ให้ตลาดยืนยันทิศด้วยการทะลุขึ้นก่อนจึงซื้อ",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/ynllMMWBdi0",
+  "src": "https://images.unsplash.com/photo-1734503937317-3b88a42ac50c",
+  "src_id": "1734503937317-3b88a42ac50c",
+  "page_id": "ynllMMWBdi0",
+  "dhash": "8d4c70242879786e",
+  "bytes": 41760,
+  "license": "Unsplash License"
+ }
+]

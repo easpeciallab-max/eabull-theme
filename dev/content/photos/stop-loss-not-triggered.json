@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "stop-loss-not-triggered",
+  "file": "stop-loss-not-triggered/desk-tablet-chart-circled-points-check-sl.webp",
+  "name": "desk-tablet-chart-circled-points-check-sl",
+  "alt": "โต๊ะทำงานที่มีจอกราฟ คีย์บอร์ด และแท็บเล็ตที่วงจุดบนกราฟไว้ ภาพของการไล่หาสาเหตุทีละขั้นใน MT5 ว่าทำไม SL ไม่ปิด",
+  "caption": "ภาพประกอบ: เทียบเวลาและราคาที่ไม้ปิดในแท็บ History กับกราฟ Bid และ Ask ทีละจุด",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/itgsDhR1e2w",
+  "src": "https://images.unsplash.com/photo-1748439146117-31978164865d",
+  "src_id": "1748439146117-31978164865d",
+  "page_id": "itgsDhR1e2w",
+  "dhash": "637171790f1d1a5d",
+  "bytes": 50494,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stop-loss-not-triggered",
+  "file": "stop-loss-not-triggered/hand-mouse-modify-sl-stops-level.webp",
+  "name": "hand-mouse-modify-sl-stops-level",
+  "alt": "มือจับเมาส์ที่เรืองแสงบนแผ่นรองเมาส์หน้าจอคอม จังหวะกดแก้ SL ที่อาจไม่ผ่านเพราะ Stops level หรือ Freeze level",
+  "caption": "ถ้าปุ่ม Modify กดไม่ได้หรือขึ้น Invalid stops ให้เช็กระยะขั้นต่ำในหน้า Specification ของสัญลักษณ์ก่อน",
+  "credit": "Vadim Bogulov",
+  "page": "https://unsplash.com/photos/Jw39KjPUciE",
+  "src": "https://images.unsplash.com/photo-1737227671689-63f46fdf474d",
+  "src_id": "1737227671689-63f46fdf474d",
+  "page_id": "Jw39KjPUciE",
+  "dhash": "c2c9c36f8f97f796",
+  "bytes": 29352,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "stop-loss-not-triggered",
+  "file": "stop-loss-not-triggered/magnifying-glass-check-stop-loss-not-working.webp",
+  "name": "magnifying-glass-check-stop-loss-not-working",
+  "alt": "แว่นขยายวางบนพื้นสีฟ้า ภาพของการเช็กทีละข้อเมื่อ Stop Loss ไม่ทำงาน เริ่มจากดูว่าไม้นั้นมี SL อยู่จริงไหม",
+  "caption": "สาเหตุที่พบบ่อยที่สุดคือไม้ไม่มี SL อยู่จริงในตอนที่ราคาผ่านไป",
+  "credit": "Markus Winkler",
+  "page": "https://unsplash.com/photos/afW1hht0NSs",
+  "src": "https://images.unsplash.com/photo-1586769852836-bc069f19e1b6",
+  "src_id": "1586769852836-bc069f19e1b6",
+  "page_id": "afW1hht0NSs",
+  "dhash": "f8e494b0b0b4c490",
+  "bytes": 43444,
+  "license": "Unsplash License"
+ }
+]

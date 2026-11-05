@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "ea-without-stop-loss",
+  "file": "ea-without-stop-loss/code-lines-dark-screen-ea-no-stop-loss.webp",
+  "name": "code-lines-dark-screen-ea-no-stop-loss",
+  "alt": "บรรทัดโค้ดบนจอในห้องมืด ผู้พัฒนา EA ไม่มี Stop Loss มักเขียนกฎปิดไม้ไว้ในโปรแกรมแทนการวาง SL รายไม้",
+  "caption": "ระบบที่ไม่วาง SL มักปิดไม้จากยอดรวม จากสัญญาณกลับทิศ หรือเมื่อถือนานเกินที่กำหนด",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/n3ba57RKVNs",
+  "src": "https://images.unsplash.com/photo-1759661881353-5b9cc55e1cf4",
+  "src_id": "1759661881353-5b9cc55e1cf4",
+  "page_id": "n3ba57RKVNs",
+  "dhash": "acec6c2d2dbdbcf8",
+  "bytes": 15190,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-without-stop-loss",
+  "file": "ea-without-stop-loss/phone-calculator-chart-monitor-loss-budget.webp",
+  "name": "phone-calculator-chart-monitor-loss-budget",
+  "alt": "ผู้ชายกดเครื่องคิดเลขในมือถือหน้าจอกราฟราคา ขั้นตอนคิดว่าราคาสวนได้กี่ดอลลาร์ก่อนขาดทุนเกินงบที่รับได้",
+  "caption": "ภาพประกอบ: ระยะที่รับได้เท่ากับเงินที่ยอมเสียหารด้วยจำนวนออนซ์รวมที่ถือ ยิ่งถือมากระยะยิ่งสั้น",
+  "credit": "Chris Liverani",
+  "page": "https://unsplash.com/photos/NDfqqq_7QWM",
+  "src": "https://images.unsplash.com/photo-1518186233392-c232efbf2373",
+  "src_id": "1518186233392-c232efbf2373",
+  "page_id": "NDfqqq_7QWM",
+  "dhash": "f373d795a3895978",
+  "bytes": 91426,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "ea-without-stop-loss",
+  "file": "ea-without-stop-loss/unplugged-power-cord-ea-guard-stops.webp",
+  "name": "unplugged-power-cord-ea-guard-stops",
+  "alt": "ปลั๊กไฟสีดำถูกดึงออกจากเต้ารับบนผนัง วันที่ไฟดับหรือเครื่องปิด ตัวคุมความเสี่ยงที่อยู่ใน EA ก็หยุดทำงานตาม",
+  "caption": "จุดตัดที่อยู่ใน EA ทำงานได้เฉพาะตอนที่เครื่องและโปรแกรมเปิดอยู่เท่านั้น",
+  "credit": "Clint Patterson",
+  "page": "https://unsplash.com/photos/exfrR9KkzlE",
+  "src": "https://images.unsplash.com/photo-1565049981953-379c9c2a5d48",
+  "src_id": "1565049981953-379c9c2a5d48",
+  "page_id": "exfrR9KkzlE",
+  "dhash": "2c5ccccc4b5d6cce",
+  "bytes": 14642,
+  "license": "Unsplash License"
+ }
+]

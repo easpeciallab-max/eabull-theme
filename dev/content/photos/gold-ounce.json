@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "gold-ounce",
+  "file": "gold-ounce/globe-in-hands-gold-units-by-region.webp",
+  "name": "globe-in-hands-gold-units-by-region",
+  "alt": "มือประคองลูกโลกที่มีไฟส่องในห้องมืด แต่ละภูมิภาคใช้หน่วยชั่งทองต่างกัน ทั้งทรอยออนซ์ บาท ตำลึง และโทลา",
+  "caption": "ข่าวทองจากฮ่องกงหรืออินเดียอาจใช้ตำลึงหรือโทลา ให้แปลงเป็นกรัมก่อนแล้วจึงเทียบกับหน่วยไทย",
+  "credit": "Greg Rosenke",
+  "page": "https://unsplash.com/photos/1TjORT2dLOw",
+  "src": "https://images.unsplash.com/photo-1589519160732-57fc498494f8",
+  "src_id": "1589519160732-57fc498494f8",
+  "page_id": "1TjORT2dLOw",
+  "dhash": "27272307470f0a1c",
+  "bytes": 32062,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-ounce",
+  "file": "gold-ounce/gold-nugget-troy-ounce.webp",
+  "name": "gold-nugget-troy-ounce",
+  "alt": "ก้อนทองคำธรรมชาติบนพื้นสีดำ น้ำหนักของทองคำ 1 ออนซ์ในตลาดโลกวัดเป็นทรอยออนซ์ ไม่ใช่ออนซ์ที่ใช้ชั่งของทั่วไป",
+  "caption": "ทอง เงิน และแพลทินัมชั่งด้วยทรอยออนซ์ 31.1034768 กรัม ซึ่งหนักกว่าออนซ์บนฉลากอาหารราว 9.7%",
+  "credit": "Marko Ivanov",
+  "page": "https://unsplash.com/photos/eLeXwRx4ALs",
+  "src": "https://images.unsplash.com/photo-1705073703601-eed67020c5ee",
+  "src_id": "1705073703601-eed67020c5ee",
+  "page_id": "eLeXwRx4ALs",
+  "dhash": "2d8d8f08981d0913",
+  "bytes": 120252,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "gold-ounce",
+  "file": "gold-ounce/hundred-dollar-bills-gold-ounce-price.webp",
+  "name": "hundred-dollar-bills-gold-ounce-price",
+  "alt": "ธนบัตรร้อยดอลลาร์วางเรียงเหลื่อมกัน ราคาทองต่อออนซ์ตั้งเป็นดอลลาร์ก่อน แล้วจึงคูณอัตราแลกเปลี่ยนเป็นเงินบาท",
+  "caption": "ถ้าถามว่าทอง 1 ออนซ์มีกี่บาทในความหมายของเงิน ต้องใช้ราคา XAUUSD กับอัตรา USD/THB ของช่วงเวลาเดียวกัน",
+  "credit": "engin akyurt",
+  "page": "https://unsplash.com/photos/x9maSBSQBfM",
+  "src": "https://images.unsplash.com/photo-1636112161903-caa252ab5160",
+  "src_id": "1636112161903-caa252ab5160",
+  "page_id": "x9maSBSQBfM",
+  "dhash": "3d22537a2a959b6f",
+  "bytes": 82318,
+  "license": "Unsplash License"
+ }
+]

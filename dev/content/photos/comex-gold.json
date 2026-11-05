@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "comex-gold",
+  "file": "comex-gold/lower-manhattan-towers-comex.webp",
+  "name": "lower-manhattan-towers-comex",
+  "alt": "ตึกระฟ้าย่านการเงินแมนฮัตตันตอนล่าง นิวยอร์ก เมืองต้นทางของ COMEX คือตลาดฟิวเจอร์สโลหะที่ปัจจุบันอยู่ในเครือ CME Group",
+  "caption": "COMEX รวมกิจการกับ NYMEX ในนิวยอร์กตั้งแต่ปี 2537 และกลายเป็นส่วนหนึ่งของ CME Group ในปี 2551",
+  "credit": "Elijah Cobb",
+  "page": "https://unsplash.com/photos/cAKjjYC2sps",
+  "src": "https://images.unsplash.com/photo-1765581307364-41f806e3de07",
+  "src_id": "1765581307364-41f806e3de07",
+  "page_id": "cAKjjYC2sps",
+  "dhash": "08131313d2da5336",
+  "bytes": 101620,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "comex-gold",
+  "file": "comex-gold/roman-numeral-clock-comex-hours.webp",
+  "name": "roman-numeral-clock-comex-hours",
+  "alt": "หน้าปัดนาฬิกาเลขโรมันสีทองบนพื้นมืด เวลาที่ต้องแปลงจากนิวยอร์กเป็นเวลาไทยเมื่อดูว่า COMEX เปิดกี่โมง",
+  "caption": "เวลาเปิดปิดของ COMEX อิงเวลานิวยอร์ก เวลาไทยจึงเลื่อนไปหนึ่งชั่วโมงเมื่อสหรัฐฯ เปลี่ยนเวลาฤดูร้อน",
+  "credit": "Thomas Bormans",
+  "page": "https://unsplash.com/photos/JsTmUnHdVYQ",
+  "src": "https://images.unsplash.com/photo-1504197832061-98356e3dcdcf",
+  "src_id": "1504197832061-98356e3dcdcf",
+  "page_id": "JsTmUnHdVYQ",
+  "dhash": "304c0e8a86960e0c",
+  "bytes": 49322,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "comex-gold",
+  "file": "comex-gold/signing-contract-gold-futures.webp",
+  "name": "signing-contract-gold-futures",
+  "alt": "มือกำลังเซ็นเอกสารด้วยปากกา ฟิวเจอร์สทองคำคือสัญญาที่ตกลงราคาวันนี้ เพื่อส่งมอบทองในเดือนที่กำหนดข้างหน้า",
+  "caption": "ทั้งฝั่งซื้อและฝั่งขายวางเงินประกันเพียงส่วนหนึ่งของมูลค่าสัญญา และกำไรขาดทุนถูกคิดเข้าบัญชีทุกวันตามราคาปิด",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/QI6NLgN5XnM",
+  "src": "https://images.unsplash.com/photo-1763729805496-b5dbf7f00c79",
+  "src_id": "1763729805496-b5dbf7f00c79",
+  "page_id": "QI6NLgN5XnM",
+  "dhash": "cd6831110b032787",
+  "bytes": 34398,
+  "license": "Unsplash License"
+ }
+]

@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "protect-capital",
+  "file": "protect-capital/hands-wallet-cash-withdraw-plan.webp",
+  "name": "hands-wallet-cash-withdraw-plan",
+  "alt": "มือสอดธนบัตรเข้ากระเป๋าสตางค์บนโต๊ะที่มีเอกสาร ภาพของการถอนเงินต้นออกจากบัญชีตามกติกาที่ตั้งไว้ล่วงหน้า",
+  "caption": "จะถอนทั้งก้อน ถอนทีละส่วน หรือถอนตามรอบเวลา ให้ตั้งกติกาไว้ก่อน ไม่ใช่ถอนเมื่อรู้สึกว่าได้เยอะแล้ว",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/LtsCX4MBKpU",
+  "src": "https://images.unsplash.com/photo-1763729548552-abacc879f71c",
+  "src_id": "1763729548552-abacc879f71c",
+  "page_id": "LtsCX4MBKpU",
+  "dhash": "104a271c1b31190f",
+  "bytes": 34036,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "protect-capital",
+  "file": "protect-capital/piggy-bank-coins-protect-capital.webp",
+  "name": "piggy-bank-coins-protect-capital",
+  "alt": "กระปุกออมสินรูปหมูสีชมพูลายจุดกับเหรียญบนโต๊ะไม้ ภาพของกันหน้าทุนที่เก็บเงินต้นไว้ไม่ให้รับความเสี่ยงต่อ",
+  "caption": "กันหน้าทุนมีสองระดับ คือถอนเงินต้นคืนจากบัญชี และกันไม้ที่กำไรอยู่ไม่ให้กลับไปขาดทุน",
+  "credit": "Andre Taissin",
+  "page": "https://unsplash.com/photos/5OUMf1Mr5pU",
+  "src": "https://images.unsplash.com/photo-1607863680198-23d4b2565df0",
+  "src_id": "1607863680198-23d4b2565df0",
+  "page_id": "5OUMf1Mr5pU",
+  "dhash": "0b13240c0c3d7c33",
+  "bytes": 18990,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "protect-capital",
+  "file": "protect-capital/tablet-uptrend-chart-break-even-trailing-stop.webp",
+  "name": "tablet-uptrend-chart-break-even-trailing-stop",
+  "alt": "แท็บเล็ตแสดงกราฟแท่งเทียนขาขึ้นที่มีลูกศรและวงกลมเขียนกำกับ ภาพของการเลื่อน Stop Loss ตามราคาเมื่อไม้กำไรอยู่",
+  "caption": "ภาพประกอบ: เมื่อราคาไปทางที่คิด Break Even และ Trailing Stop ช่วยไม่ให้ไม้ที่กำไรอยู่กลับไปเป็นไม้ขาดทุน",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/j_hho1mE47s",
+  "src": "https://images.unsplash.com/photo-1768055105681-7d2096c5165f",
+  "src_id": "1768055105681-7d2096c5165f",
+  "page_id": "j_hho1mE47s",
+  "dhash": "37656766c7776746",
+  "bytes": 36720,
+  "license": "Unsplash License"
+ }
+]

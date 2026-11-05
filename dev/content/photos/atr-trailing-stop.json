@@ -1,0 +1,47 @@
+[
+ {
+  "slug": "atr-trailing-stop",
+  "file": "atr-trailing-stop/code-editor-screen-ea-atr-settings.webp",
+  "name": "code-editor-screen-ea-atr-settings",
+  "alt": "จอแสดงโค้ดในโปรแกรมเขียนโค้ดบนพื้นสีเข้ม EA ที่ไล่ SL ด้วย ATR มักมีช่องตั้งคาบ ตัวคูณ และกรอบเวลาของ ATR ให้ปรับ",
+  "caption": "ชื่อช่องตั้งค่าต่างกันไปตามผู้พัฒนา อ่านคู่มือของ EA ตัวนั้นว่าแต่ละช่องหมายถึงอะไรและใช้หน่วยอะไร",
+  "credit": "Mohammad Rahmani",
+  "page": "https://unsplash.com/photos/3Sx3hSQcQIA",
+  "src": "https://images.unsplash.com/photo-1733412505442-36cfa59a4240",
+  "src_id": "1733412505442-36cfa59a4240",
+  "page_id": "3Sx3hSQcQIA",
+  "dhash": "2c1c1c1c1e1e1e16",
+  "bytes": 35014,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "atr-trailing-stop",
+  "file": "atr-trailing-stop/ruler-cutting-mat-atr-measure-range.webp",
+  "name": "ruler-cutting-mat-atr-measure-range",
+  "alt": "ไม้บรรทัดใสวางบนแผ่นรองตัดที่มีเส้นตาราง ภาพของ ATR ที่วัดว่าราคาแกว่งกว้างแค่ไหน ก่อนนำไปตั้งระยะ ATR Trailing Stop",
+  "caption": "ATR บอกขนาดการแกว่งเฉลี่ยต่อแท่งเป็นหน่วยราคา ไม่ได้บอกว่าราคาจะขึ้นหรือลง",
+  "credit": "Brett Jordan",
+  "page": "https://unsplash.com/photos/W0P49gE3cN8",
+  "src": "https://images.unsplash.com/photo-1590926239780-317350f9c3bb",
+  "src_id": "1590926239780-317350f9c3bb",
+  "page_id": "W0P49gE3cN8",
+  "dhash": "be9c39e3c78f172e",
+  "bytes": 86898,
+  "license": "Unsplash License"
+ },
+ {
+  "slug": "atr-trailing-stop",
+  "file": "atr-trailing-stop/tablet-calculator-desk-atr-multiplier.webp",
+  "name": "tablet-calculator-desk-atr-multiplier",
+  "alt": "มือจดตัวเลขบนแท็บเล็ตข้างเครื่องคิดเลขและแล็ปท็อป ขั้นตอนเทียบตัวคูณและคาบของ ATR ว่าระยะ SL ออกมาเท่าไหร่",
+  "caption": "ภาพประกอบ: ลองคิดระยะจากหลายตัวคูณ แล้วทดสอบย้อนหลังกับข้อมูลทองของโบรกเกอร์ที่ใช้จริงก่อนเลือก",
+  "credit": "Jakub Żerdzicki",
+  "page": "https://unsplash.com/photos/fgNgbnMdgBM",
+  "src": "https://images.unsplash.com/photo-1710488350873-392a99d1da5d",
+  "src_id": "1710488350873-392a99d1da5d",
+  "page_id": "fgNgbnMdgBM",
+  "dhash": "1c1c3c358c080d19",
+  "bytes": 43674,
+  "license": "Unsplash License"
+ }
+]
