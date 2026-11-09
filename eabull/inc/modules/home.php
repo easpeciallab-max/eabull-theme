@@ -50,6 +50,8 @@ function eab_home_defaults( $d ) {
 		'home_hero_lead'       => 'EA BULL คือ Expert Advisor สำหรับ MT5 ที่เปิดและปิดออเดอร์ตามกติกาในระบบ ติดตั้งตามคู่มือทีละขั้น ปล่อยรันบน VPS แล้วดูบัญชีจากแอป MT5 บนมือถือ ถามทุกเรื่องกับทีมงานทาง LINE',
 		'home_hero_btn1_text'  => 'เลือก EA ที่เหมาะกับคุณ',
 		'home_hero_btn1_url'   => '#products',
+		'home_hero_btn1_wait_text' => 'ดูแพ็กเกจและราคา', // ใช้แทนปุ่มหลักเมื่อสินค้ายังซ่อนอยู่
+		'home_hero_btn1_wait_url'  => '#plans',
 		'home_hero_btn2_text'  => 'เริ่มใช้งานใน 6 ขั้นตอน',
 		'home_hero_btn2_url'   => '#steps',
 		'home_hero_risk'       => '',
@@ -171,7 +173,7 @@ function eab_home_defaults( $d ) {
 		'home_faq7_q'          => 'ใช้แล้วได้กำไรแน่ไหม',
 		'home_faq7_a'          => 'ไม่มี EA ตัวไหนรับรองกำไรได้ EA BULL ก็เช่นกัน ตลาดเปลี่ยนได้ตลอด และบัญชีอาจขาดทุนจนหมดได้ อ่าน[ประกาศความเสี่ยง](/risk-disclosure/)ก่อนเริ่ม',
 		'home_faq8_q'          => 'ทดลองก่อนใช้เงินจริงได้ไหม',
-		'home_faq8_a'          => 'ควรเริ่มจากบัญชีเดโมหรือบัญชีเงินน้อยก่อน ดู[คู่มือ Forward Test](/forward-test/) ส่วนการเปิดใช้งานบนบัญชีเดโม {wait}',
+		'home_faq8_a'          => 'ควรเริ่มจากบัญชีเดโมหรือบัญชีเงินน้อยก่อน ดู[คู่มือ Forward Test](/forward-test/) [[ส่วนการเปิดใช้งานบนบัญชีเดโม {wait}]]',
 
 		'home_faq9_q'          => 'EA BULL ใช้กับ MT4 ได้ไหม',
 		'home_faq9_a'          => 'EA BULL ทำมาสำหรับ MetaTrader 5 ถ้าตอนนี้ใช้ MT4 อยู่ เปิดบัญชี MT5 เพิ่มได้ตาม[คู่มือเปิดบัญชีเทรด](/open-mt5-account/)',
@@ -673,6 +675,9 @@ function eab_home_pending( $value, $hint = '' ) {
 	$value = trim( (string) $value );
 	if ( '' !== $value ) {
 		return eab_home_keep( esc_html( $value ) );
+	}
+	if ( eab_hide_wait() ) {
+		return '';
 	}
 	$hint = trim( (string) $hint );
 	return ( '' !== $hint ? esc_html( $hint ) . ' ' : '' ) . eab_wait( '' );

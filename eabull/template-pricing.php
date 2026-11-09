@@ -43,7 +43,10 @@ while ( have_posts() ) :
 								<span class="plan__flag"><?php echo esc_html( eab_mod( 'pr_flag_label' ) ); ?></span>
 							<?php endif; ?>
 							<h3><?php echo esc_html( $eab_name ); ?></h3>
-							<p><?php echo '' !== trim( (string) eab_mod( 'pkg' . $eab_n . '_tag' ) ) ? eab_pages_fmt( eab_mod( 'pkg' . $eab_n . '_tag' ) ) : eab_wait( '' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
+							<?php $eab_tag = '' !== trim( (string) eab_mod( 'pkg' . $eab_n . '_tag' ) ) ? eab_pages_fmt( eab_mod( 'pkg' . $eab_n . '_tag' ) ) : eab_wait( '' ); ?>
+							<?php if ( '' !== $eab_tag ) : ?>
+							<p><?php echo $eab_tag; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
+							<?php endif; ?>
 							<div class="plan__price"><?php echo eab_pages_price_html( $eab_n ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
 						</div>
 						<div class="plan__body">

@@ -23,13 +23,21 @@ while ( have_posts() ) :
 <main id="main">
 	<?php eab_pages_head( 'bt', array( 'steps' => count( $eab_steps ) ) ); ?>
 
+	<?php
+	ob_start();
+	eab_pages_stats( 'bt', 8 );
+	$eab_stats = (string) ob_get_clean();
+	$eab_r1    = eab_pages_shot( 'bt_report1_img', eab_mod( 'bt_report1_shot' ), eab_mod( 'bt_report1_cap' ), 'bt-report' );
+	$eab_r2    = eab_pages_shot( 'bt_report2_img', eab_mod( 'bt_report2_shot' ), eab_mod( 'bt_report2_cap' ), 'bt-report' );
+	/* ซ่อนข้อมูลที่รอเจ้าของ (eab_hide_wait) และยังไม่มีผลทดสอบเลย = ไม่แสดงส่วนผล Backtest ทั้งส่วน */
+	$eab_show_results = ! eab_hide_wait() || '' !== trim( $eab_stats . $eab_r1 . $eab_r2 );
+	?>
+	<?php if ( $eab_show_results ) : ?>
 	<section class="band" id="results" aria-labelledby="results-title">
 		<div class="wrap">
 			<?php echo eab_pages_shead( 'results-title', eab_mod( 'bt_results_title' ), eab_mod( 'bt_results_sub' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
-			<?php eab_pages_stats( 'bt', 8 ); ?>
+			<?php echo $eab_stats; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
 			<?php
-			$eab_r1 = eab_pages_shot( 'bt_report1_img', eab_mod( 'bt_report1_shot' ), eab_mod( 'bt_report1_cap' ), 'bt-report' );
-			$eab_r2 = eab_pages_shot( 'bt_report2_img', eab_mod( 'bt_report2_shot' ), eab_mod( 'bt_report2_cap' ), 'bt-report' );
 			if ( '' !== $eab_r1 . $eab_r2 ) :
 				?>
 				<div class="grid g2 mt-24">
@@ -48,6 +56,7 @@ while ( have_posts() ) :
 			<?php endif; ?>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<?php
 	eab_pages_guide_band(

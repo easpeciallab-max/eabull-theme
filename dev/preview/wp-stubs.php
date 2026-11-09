@@ -113,7 +113,7 @@ function get_stylesheet_directory() { return fx_theme_dir(); }
 function get_template_directory_uri() { return 'http://localhost:8791/theme'; }
 function get_stylesheet_directory_uri() { return get_template_directory_uri(); }
 function get_stylesheet_uri() { return get_template_directory_uri() . '/style.css'; }
-function get_theme_mod( $k, $d = false ) { return $d; }
+function get_theme_mod( $k, $d = false ) { return ( 'hide_wait' === $k && isset( $_GET['hide_wait'] ) ) ? (bool) $_GET['hide_wait'] : $d; } // ?hide_wait=0 = ดูป้ายรอข้อมูล
 function get_option( $k, $d = false ) {
 	$m = array( 'posts_per_page' => 9, 'blog_public' => 1, 'date_format' => 'j M Y', 'show_on_front' => 'page', 'page_for_posts' => 0 );
 	return isset( $m[ $k ] ) ? $m[ $k ] : $d;

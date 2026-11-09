@@ -69,6 +69,7 @@ function eab_customize_register( $wp_customize ) {
 				'line_url'        => array( 'ลิงก์ LINE OA', 'url', 'เช่น https://lin.ee/xxxxx หรือ https://line.me/R/ti/p/@xxxxx' ),
 				'facebook_url'    => array( 'ลิงก์ Facebook Page (ถ้ามี)', 'url' ),
 				'contact_email'   => array( 'อีเมลติดต่อ (ถ้ามี)', 'text' ),
+				'hide_wait'       => array( 'ซ่อนข้อมูลที่ยังรอจากเจ้าของ (ป้ายรอข้อมูล · สินค้าตัวอย่าง · กรอบภาพที่ยังไม่มีรูป)', 'checkbox', 'เอาติ๊กออกเพื่อดูว่ายังขาดข้อมูลตรงไหน' ),
 				'show_float_line' => array( 'แสดงปุ่ม LINE ลอยมุมขวาล่าง', 'checkbox' ),
 				'float_line_text' => array( 'ข้อความบนปุ่ม LINE ลอย', 'text' ),
 				'line_openchat_url'  => array( 'ลิงก์ LINE OpenChat (ถ้ามี)', 'url' ),

@@ -307,7 +307,8 @@ function eab_unreachable_slugs() {
 			$drafts[] = $slug;
 		}
 	}
-	return array_merge( $drafts, eab_unpublished_seed_articles() );
+	$hidden = function_exists( 'eab_hidden_product_slugs' ) ? eab_hidden_product_slugs() : array();
+	return array_merge( $drafts, eab_unpublished_seed_articles(), $hidden );
 }
 add_filter( 'the_content', 'eab_unlink_draft_pages', 15 );
 

@@ -250,6 +250,7 @@ function eab_defaults() {
 	 */
 	$d = array(
 		/* ทั่วไป */
+		'hide_wait'       => true, // ซ่อนข้อมูลที่ยังรอจากเจ้าของ (eab_hide_wait)
 		'line_url'        => 'https://lin.ee/T3EUkoh', // LINE Official EA BULL (@066xczch) จากเจ้าของ 9 พ.ย. 2026
 		'contact_fallback_text' => 'ติดต่อทีมงาน',
 		'wordmark_dark'   => '',
@@ -381,7 +382,68 @@ function eab_defaults() {
 function eab_mod( $key ) {
 	$defaults = eab_defaults();
 	$default  = isset( $defaults[ $key ] ) ? $defaults[ $key ] : '';
-	return get_theme_mod( $key, $default );
+	$value    = get_theme_mod( $key, $default );
+	if ( is_string( $value ) && ( false !== strpos( $value, '{wait' ) || false !== strpos( $value, '[[' ) || false !== strpos( $value, '{fact:' ) ) ) {
+		$value = eab_wait_text( $value );
+	}
+	return $value;
+}
+
+/**
+ * ซ่อนข้อมูลที่ยังรอจากเจ้าของหรือไม่ (เปิดเป็นค่าเริ่มต้น · เจ้าของสั่ง 9 พ.ย. 2026 "ซ่อนไว้ก่อน")
+ * เปิด = ไม่แสดงป้าย "รอข้อมูลจากเจ้าของ" · ตัดทั้งแถว/ทั้งวลีที่ยังไม่มีข้อมูล · ซ่อนสินค้าตัวอย่างและกรอบภาพที่ยังไม่มีรูป
+ * ปิดได้ที่ ปรับแต่ง → 1) ช่องทางติดต่อ (ใช้ดูว่ายังขาดข้อมูลตรงไหน)
+ */
+function eab_hide_wait() {
+	static $hide = null;
+	if ( null === $hide || is_customize_preview() ) {
+		$hide = (bool) get_theme_mod( 'hide_wait', true );
+	}
+	return $hide;
+}
+
+/**
+ * ข้อความจาก setting ที่มีข้อมูลรอเจ้าของ
+ * · [[ ... ]] = วลีที่ตัดได้ทั้งก้อน: มี {wait} หรือข้อมูลคู่มือ {fact:…} ที่ยังว่าง → ตัดทิ้งเมื่อซ่อน · ไม่ซ่อนหรือมีข้อมูลแล้ว → แสดงตามปกติ (เอาวงเล็บออก)
+ * · เมื่อซ่อน: ข้อความหลายบรรทัด ตัดบรรทัดที่ยังมี {wait} ทั้งบรรทัด (แถว ตาราง รายการ) · ข้อความบรรทัดเดียว ตัดเฉพาะป้าย
+ */
+function eab_wait_text( $text ) {
+	$hide = eab_hide_wait();
+	if ( $hide && false !== strpos( $text, '{fact:' ) ) {
+		$text = (string) preg_replace_callback(
+			'/\{fact:([a-z0-9_]+)\}/',
+			function ( $m ) {
+				return '' === trim( (string) eab_mod( 'guide_fact_' . $m[1] ) ) ? '{wait}' : $m[0];
+			},
+			$text
+		);
+	}
+	if ( false !== strpos( $text, '[[' ) ) {
+		$text = (string) preg_replace_callback(
+			'/(\s?)\[\[(.*?)\]\]/su',
+			function ( $m ) use ( $hide ) {
+				if ( $hide && false !== strpos( $m[2], '{wait' ) ) {
+					return '';
+				}
+				return $m[1] . $m[2];
+			},
+			$text
+		);
+	}
+	if ( ! $hide || false === strpos( $text, '{wait' ) ) {
+		return $text;
+	}
+	$lines = preg_split( '/\r\n|\r|\n/', $text );
+	if ( count( $lines ) > 1 ) {
+		$keep = array();
+		foreach ( $lines as $line ) {
+			if ( false === strpos( $line, '{wait' ) ) {
+				$keep[] = $line;
+			}
+		}
+		return implode( "\n", $keep );
+	}
+	return trim( (string) preg_replace( '/\s*\{wait(?::[^{}]*)?\}/u', '', $text ) );
 }
 
 /**
@@ -624,6 +686,9 @@ function eab_page_longform( $section_class = 'section' ) {
 function eab_wait( $value, $label = '' ) {
 	$value = is_string( $value ) ? trim( $value ) : $value;
 	if ( null === $value || '' === $value ) {
+		if ( eab_hide_wait() ) {
+			return '';
+		}
 		$label = '' !== $label ? $label : apply_filters( 'eab_wait_label', 'รอข้อมูลจากเจ้าของ' );
 		return '<span class="wait">' . esc_html( $label ) . '</span>';
 	}

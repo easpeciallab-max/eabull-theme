@@ -345,6 +345,78 @@ function eab_products() {
 }
 
 /**
+ * สินค้าที่แสดงให้ผู้เข้าชม (หน้าแรก เมนู หน้าเกี่ยวกับเรา /go) · ระหว่างซ่อนข้อมูลที่รอเจ้าของ (eab_hide_wait) ไม่รวมสินค้าตัวอย่าง
+ * หน้าสินค้าเอง ตารางเทียบ และ SEO (noindex/sitemap) ใช้ eab_products() ชุดเต็ม
+ */
+function eab_products_public() {
+	$items = eab_products();
+	if ( ! function_exists( 'eab_hide_wait' ) || ! eab_hide_wait() ) {
+		return $items;
+	}
+	return array_values(
+		array_filter(
+			$items,
+			static function ( $item ) {
+				return empty( $item['example'] );
+			}
+		)
+	);
+}
+
+/**
+ * slug ของหน้าสินค้าตัวอย่างที่ซ่อนอยู่ (ลิงก์ไปหน้าเหล่านี้กลายเป็นข้อความธรรมดา · เมนูตัดออก)
+ */
+function eab_hidden_product_slugs() {
+	if ( ! function_exists( 'eab_hide_wait' ) || ! eab_hide_wait() ) {
+		return array();
+	}
+	$slugs = array();
+	foreach ( eab_products() as $item ) {
+		if ( ! empty( $item['example'] ) && '' !== $item['slug'] ) {
+			$slugs[] = $item['slug'];
+		}
+	}
+	return $slugs;
+}
+
+/**
+ * เมนู WordPress: ตัดรายการที่ชี้ไปหน้าสินค้าตัวอย่างที่ซ่อนอยู่ (รวมรายการย่อยของรายการนั้น)
+ */
+function eab_products_hide_menu_items( $items ) {
+	$slugs = eab_hidden_product_slugs();
+	if ( ! $slugs || ! is_array( $items ) ) {
+		return $items;
+	}
+	$drop = array();
+	foreach ( $items as $item ) {
+		if ( isset( $item->object, $item->object_id ) && 'page' === $item->object && in_array( (string) get_post_field( 'post_name', (int) $item->object_id ), $slugs, true ) ) {
+			$drop[ (int) $item->ID ] = true;
+		}
+	}
+	if ( ! $drop ) {
+		return $items;
+	}
+	do {
+		$more = false;
+		foreach ( $items as $item ) {
+			if ( ! isset( $drop[ (int) $item->ID ] ) && isset( $drop[ (int) $item->menu_item_parent ] ) ) {
+				$drop[ (int) $item->ID ] = true;
+				$more                    = true;
+			}
+		}
+	} while ( $more );
+	return array_values(
+		array_filter(
+			$items,
+			static function ( $item ) use ( $drop ) {
+				return ! isset( $drop[ (int) $item->ID ] );
+			}
+		)
+	);
+}
+add_filter( 'wp_nav_menu_objects', 'eab_products_hide_menu_items', 5 );
+
+/**
  * สินค้าตาม key ('product1' · '1' · 1) · ไม่พบ = null
  */
 function eab_product( $key ) {
@@ -475,7 +547,7 @@ function eab_product_value( $value, $tag = 'span', $label = '' ) {
  * ============================================================== */
 
 function eab_homeplus_products() {
-	$items = eab_products();
+	$items = eab_products_public();
 	if ( ! $items ) {
 		return;
 	}
@@ -529,7 +601,7 @@ function eab_homeplus_products() {
  * @return string HTML เมื่อ $echo = false
  */
 function eab_go_product_downloads( $echo = true ) {
-	$items = eab_products();
+	$items = eab_products_public();
 	$html  = '';
 	if ( $items ) {
 		$label = trim( (string) eab_mod( 'product_updated_label' ) );

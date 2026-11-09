@@ -61,6 +61,11 @@ function eab_homeplus_hero() {
 	$btn1_to = eab_home_link( eab_mod( 'home_hero_btn1_url' ) );
 	$btn2    = trim( (string) eab_mod( 'home_hero_btn2_text' ) );
 	$btn2_to = eab_home_link( eab_mod( 'home_hero_btn2_url' ) );
+	/* ปุ่มหลักชี้ไปส่วนสินค้า แต่สินค้ายังซ่อนอยู่ (เป็นตัวอย่าง · eab_hide_wait) → ไปส่วนแพ็กเกจแทน */
+	if ( '#products' === trim( (string) eab_mod( 'home_hero_btn1_url' ) ) && function_exists( 'eab_products_public' ) && ! eab_products_public() ) {
+		$btn1    = trim( (string) eab_mod( 'home_hero_btn1_wait_text' ) );
+		$btn1_to = eab_home_link( eab_mod( 'home_hero_btn1_wait_url' ) );
+	}
 	$pillars = eab_home_rows( eab_mod( 'home_pillars' ) );
 	?>
 <section class="hero" aria-labelledby="hero-title">
@@ -153,6 +158,21 @@ function eab_homeplus_modes() {
 		$label = trim( (string) eab_mod( 'home_modes_row' . $r ) );
 		if ( '' !== $label ) {
 			$rows[ $r ] = $label;
+		}
+	}
+	/* ซ่อนข้อมูลที่รอเจ้าของ: แสดงเฉพาะโหมดที่มีข้อมูลจริงอย่างน้อย 1 ช่อง · ไม่มีเลย = ไม่แสดงส่วนนี้ */
+	if ( eab_hide_wait() ) {
+		foreach ( $modes as $m => $name ) {
+			$has = '' !== trim( (string) eab_mod( 'home_mode' . $m . '_text' ) ) || '' !== trim( (string) eab_mod( 'home_mode' . $m . '_tag' ) );
+			foreach ( $rows as $r => $label ) {
+				$has = $has || '' !== trim( (string) eab_mod( 'home_mode' . $m . '_row' . $r ) );
+			}
+			if ( ! $has ) {
+				unset( $modes[ $m ] );
+			}
+		}
+		if ( ! $modes ) {
+			return;
 		}
 	}
 	$empty = trim( (string) eab_mod( 'home_modes_tag_empty' ) );

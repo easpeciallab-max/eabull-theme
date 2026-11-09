@@ -316,6 +316,9 @@ add_action(
  * URL of a page when it is published ('' otherwise).
  */
 function eab_chrome_page_url( $slug ) {
+	if ( function_exists( 'eab_hidden_product_slugs' ) && in_array( (string) $slug, eab_hidden_product_slugs(), true ) ) {
+		return '';
+	}
 	return function_exists( 'eab_published_page_url' ) ? (string) eab_published_page_url( $slug ) : '';
 }
 
@@ -387,7 +390,7 @@ function eab_chrome_products() {
 	if ( ! function_exists( 'eab_products' ) ) {
 		return array();
 	}
-	$items = eab_products();
+	$items = function_exists( 'eab_products_public' ) ? eab_products_public() : eab_products();
 	if ( ! is_array( $items ) ) {
 		return array();
 	}
