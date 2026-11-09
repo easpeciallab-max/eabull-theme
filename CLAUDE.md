@@ -51,12 +51,12 @@
   - ภาพคู่มือที่ขาด: "เอาภาพของอีเอวิงก์มาแปลงแล้วใส่ได้เลย ต้องการแบบนี้เท่านั้น" → `py -3 -I dev/tools/guide-extra-images.py` (ขั้นสมัครในหน้า /go/ ของ EA BULL ถ่ายจากเว็บจริงด้วย `dev/tools/shot-element.mjs` · ครอปหน้า Funds ของ Zaurix พร้อมกรอบเหลือง · ปุ่ม Algo Trading + ชื่อ EA มุมกราฟ) · ขั้นเช็ก Balance ไม่มีภาพเหมือน EA WING · ไม่ใช้ภาพแดชบอร์ดสินค้าของ EA WING (ไม่มีข้อมูลสินค้า EA BULL)
   - แดชบอร์ดลูกค้า **https://dashboard.eabull.com/** · เจ้าของสั่งใส่ลิงก์แล้ว ("ใส่ก่อนไม่ได้หรอ" 29 ต.ค. 2026 ทั้งที่ยังปรับหน้าตาอยู่) → ค่าเริ่มต้น `dashboard_url` ใน chrome.php · ปุ่มบนแถบด้านบน + ช่องแดชบอร์ดในแถบล่างมือถือ
   - LINE OA · สินค้า · ข้อมูล Zaurix · ผู้ให้บริการ VPS · ข้อมูลหน้าเกี่ยวกับเรา/Forward Test: "เดี๋ยวมีแล้วจะส่งให้"
-- โบรกเกอร์ **Zaurix** · ลิงก์พาร์ตเนอร์ `https://portal.zaurix.com/sign-up?ref=211281` (ติด `rel="sponsored noopener"` เสมอ · บอกความเป็นพันธมิตรตรงที่พูดถึงครั้งแรก)
+- โบรกเกอร์ **Zaurix** · ลิงก์พาร์ตเนอร์ **`https://portal.zaurix.com/?ref=278004`** ("Referral Link EA BULL" จากเจ้าของ 9 พ.ย. 2026 · แทน `sign-up?ref=211281` เดิม · ค่า `broker_signup_url` ใน functions.php) (ติด `rel="sponsored noopener"` เสมอ · บอกความเป็นพันธมิตรตรงที่พูดถึงครั้งแรก)
+- **LINE Official EA BULL** `https://lin.ee/T3EUkoh` = **@066xczch** (เจ้าของส่ง 9 พ.ย. 2026 · ค่า `line_url` ใน functions.php · @ID ได้จาก redirect ของ lin.ee) · QR ทางการของ LINE จาก `https://qr-official.line.me/sid/L/066xczch.png` วาดใหม่ให้คม 720px เป็น `assets/img/brand/line-qr.png` (`line_qr_image`) · ปุ่ม LINE ทุกปุ่มรวมในบทความ (`[eabull_line]`) ไป lin.ee แล้ว
 - Facebook `https://www.facebook.com/eabull.trading/`
 - OpenChat `https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw` (ตัด utm ที่ติดมาตอนคัดลอกแล้ว)
 
 ## ข้อมูลที่ยังรอจากเจ้าของ
-- LINE OA (ลิงก์, @ID, QR)
 - รายชื่อสินค้า EA (ชื่อ เลขรุ่น) และชุดเอกสารของแต่ละตัว (zip, คู่มือ PDF, อ่านก่อน/มีอะไรใหม่, รายงาน MT5, คำแคมเปญขาย) · กฎ "ต้องบอก / พูดได้ / ห้าม" ของแต่ละตัวมาจากเอกสารเหล่านี้
 - ชื่อเซิร์ฟเวอร์ Zaurix ที่ใช้ล็อกอิน MT5 (เจ้าของส่งลิงก์สมัครมาแล้ว แต่ชื่อเซิร์ฟเวอร์ยังไม่ได้ · รอถึงเฟส 2 ได้)
 - ข้อมูลหน้าเกี่ยวกับเราและ Forward Test
@@ -182,5 +182,7 @@
 - **www**: Cloudflare Redirect Rule "Redirect from WWW to root [Template]" (https://www.* → https://${1} · 301 · เก็บ query string) **Deploy แล้ว 29 ต.ค. 2026** (เจ้าของสั่ง "กด Deploy เลย") · ก่อนหน้านี้หน้าแรก www ตอบ 200 จากแคชของโฮสต์ · ตอนนี้ www ทุกหน้าเด้งไป eabull.com โดย Cloudflare (ไม่ผ่าน WordPress)
 - **29 ต.ค. 2026 เปิดให้ Google เห็นเว็บแล้ว**: robots.txt ไม่บล็อก · sitemap_index.xml มี 17 เพจ · หน้าสินค้าที่ยังติ๊ก "เป็นสินค้าตัวอย่าง" ถูก noindex และไม่อยู่ใน sitemap อัตโนมัติ (`eab_seo_example_product_page_ids()` ใน inc/seo.php) · ใส่ข้อมูลสินค้าจริงแล้ว **เอาติ๊ก "เป็นสินค้าตัวอย่าง" ออกใน Customizer** หน้าจะถูกเก็บเอง · /go และ /articles (ยังไม่มีบทความ) noindex ตามเดิม · Yoast Problems 0 · ยังไม่ได้เชื่อม Google Search Console (ต้องให้เจ้าของล็อกอิน Google ผ่าน Site Kit แล้วส่ง sitemap)
 - ปุ่ม "เข้า Portal Zaurix" (/go) และ "เปิด Zaurix Portal" (/deposit) ลิงก์ `https://portal.zaurix.com/` แบบ EA WING แล้ว (เจ้าของสั่ง "ใส่เลย" 29 ต.ค. 2026 · หน้าล็อกอิน ไม่ใช่ลิงก์พาร์ตเนอร์)
-- **ลิงก์ที่ยังขาด (ตรวจทุกหน้า 29 ต.ค. 2026)**: LINE OA + @ID + QR (ปุ่ม LINE ทุกปุ่มไปหน้า /go/ ก่อน) · ลิงก์ไฟล์ EA ของสินค้าแต่ละตัว (`product{n}_dl_url`) · ตรวจซ้ำด้วยการไล่หา `data-wait` ในทุกหน้า
+- **ลิงก์ที่ยังขาด (ตรวจ 9 พ.ย. 2026)**: เหลือแค่ลิงก์ไฟล์ EA ของสินค้าแต่ละตัว (`product{n}_dl_url` · `data-wait` 3 จุดต่อหน้าที่มีการ์ดสินค้า) · LINE OA ใส่แล้ว 9 พ.ย. 2026 · ตรวจซ้ำด้วยการไล่หา `data-wait` ในทุกหน้า
+- **9 พ.ย. 2026 บทความแรก (gold-trading-bot) ขึ้นเองตรงเวลา 09:00**: 200 · index · รูป 4 รูป · ลิงก์ในหน้า 27 ลิงก์ไม่เสีย · /articles/ เลิก noindex เอง · sitemap มี post-sitemap และ category-sitemap แล้ว
+- **แดชบอร์ดยังใช้ลิงก์ชั่วคราว** `line.me/R/ti/p/@TODO-eabull` (6 จุด รวมปุ่ม "เปิดบัญชี ZAURIX" ในเมนูข้าง) · ทีมแดชบอร์ดต้องเปลี่ยนเป็น `https://lin.ee/T3EUkoh` (และลิงก์ Zaurix เป็น `https://portal.zaurix.com/?ref=278004` ถ้าปุ่มนั้นควรไปหน้าสมัคร) · เจ้าของเป็นคนส่งเรื่องให้ทีม
 - **ไม่แนะนำผู้ให้บริการ VPS เจ้าไหน** (เจ้าของ 29 ต.ค. 2026: "ของวิงก์เค้ามีมั้ย ถ้าไม่มี เราก็ไม่ต้องมี" · EA WING ไม่มี) · เอาข้อความ "ผู้ให้บริการ VPS ที่แนะนำ" ออกจากคู่มือ VPS 3 หน้าและลบ fact `vps_provider` แล้ว
