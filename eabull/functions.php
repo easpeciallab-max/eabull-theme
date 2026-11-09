@@ -250,13 +250,13 @@ function eab_defaults() {
 	 */
 	$d = array(
 		/* ทั่วไป */
-		'line_url'        => '',
+		'line_url'        => 'https://lin.ee/T3EUkoh', // LINE Official EA BULL (@066xczch) จากเจ้าของ 9 พ.ย. 2026
 		'contact_fallback_text' => 'ติดต่อทีมงาน',
 		'wordmark_dark'   => '',
 		'wordmark_light'  => '',
 		'line_openchat_url'  => 'https://line.me/ti/g2/2JBjB5FQGk26L9d0Nm-geWaVr-CUFe2y8MONQw',
 		'line_openchat_text' => 'เข้ากลุ่ม OpenChat',
-		'line_qr_image'      => '', // QR ของ LINE OA EA BULL รอจากเจ้าของ
+		'line_qr_image'      => 'assets/img/brand/line-qr.png', // QR ทางการของ LINE สำหรับ @066xczch (qr-official.line.me)
 
 		/* หน้า /go (ลิงก์รวม) · ลิงก์ร้านแอป MT5 */
 		'mt5_dl_windows' => 'https://www.metatrader5.com/en/download',
@@ -266,7 +266,7 @@ function eab_defaults() {
 		/* โบรกเกอร์ (ใช้ในคู่มือเปิดบัญชี / ล็อกอิน ผ่าน shortcode [eabull_broker]) */
 		'broker_name'        => 'Zaurix',
 		'broker_server'      => 'Zaurix-Server', // ชื่อเดียวกับเว็บในเครือไปก่อน (29 ต.ค. 2026) รอเจ้าของยืนยัน
-		'broker_signup_url'  => 'https://portal.zaurix.com/sign-up?ref=211281', // ลิงก์พาร์ตเนอร์ EA BULL จากเจ้าของ 29 ต.ค. 2026
+		'broker_signup_url'  => 'https://portal.zaurix.com/?ref=278004', // Referral Link EA BULL จากเจ้าของ 9 พ.ย. 2026 (แทน ref=211281)
 		'broker_signup_text' => 'สมัครบัญชี Zaurix',
 
 		/* ค่ากลางของไฟล์ EA แบบไม่ผูกสินค้า ([eabull_ea] ไม่ใส่ product) · สินค้าแต่ละตัวมีชื่อไฟล์และรุ่นของตัวเองใน product{n}_*

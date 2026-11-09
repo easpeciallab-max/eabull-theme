@@ -67,7 +67,7 @@ function eab_chrome_defaults( $d ) {
 			'contact_text'           => 'ทักมาทาง LINE ได้ทุกเรื่อง ตั้งแต่เลือกแพ็กเกจ เปิดบัญชี ไปจนถึงติดตั้ง EA บน MT5',
 			'contact_hide_on'        => "privacy-policy\nterms-of-use\ndata-deletion",
 			'contact_line_title'     => 'LINE Official EA BULL',
-			'contact_line_sub'       => 'ทักแชตกับทีมงาน',
+			'contact_line_sub'       => 'ทักแชตกับทีมงาน · @066xczch',
 			'contact_line_pending'   => 'ลิงก์รอข้อมูลจากเจ้าของ',
 			'contact_openchat_title' => 'OpenChat EA BULL',
 			'contact_openchat_sub'   => 'ห้องพูดคุยของผู้ใช้ EA BULL',
@@ -983,7 +983,7 @@ function eab_chrome_contact_panel( $args = array() ) {
 	$fb_host = $fb ? preg_replace( '#^(?:https?:)?//(?:www\.)?#i', '', rtrim( $fb['href'], '/' ) ) : '';
 
 	$channels = array(
-		array( eab_chrome_line_link( 'footer-channels' ), 'line', eab_chrome_mod( 'contact_line_title' ), $line_sub, '' ),
+		array( eab_chrome_line_link( 'footer-channels' ), 'line', eab_chrome_mod( 'contact_line_title' ), $line_sub, 'nocaps' ),
 		array( eab_chrome_openchat_link( 'footer-channels-openchat' ), 'users', eab_chrome_mod( 'contact_openchat_title' ), eab_chrome_mod( 'contact_openchat_sub' ), '' ),
 		array( $fb, 'facebook', eab_chrome_mod( 'contact_fb_title' ), $fb_host, 'nocaps' ),
 	);
