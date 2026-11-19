@@ -402,8 +402,26 @@ function eab_hidden_product_slugs() {
  * เมนู WordPress: ตัดรายการที่ชี้ไปหน้าสินค้าตัวอย่างที่ซ่อนอยู่ (รวมรายการย่อยของรายการนั้น)
  */
 function eab_products_hide_menu_items( $items ) {
+	if ( ! is_array( $items ) ) {
+		return $items;
+	}
+	/* รายการย่อยที่ชี้ไปหน้าสินค้า ใช้ชื่อสินค้าปัจจุบัน (ชื่อ · Vรุ่น) แทนชื่อที่บันทึกไว้ตอนสร้างเมนู · หัวข้อหลัก "สินค้า" ไม่แตะ */
+	$labels = array();
+	foreach ( eab_products() as $product ) {
+		if ( '' !== $product['slug'] ) {
+			$labels[ $product['slug'] ] = $product['label'];
+		}
+	}
+	foreach ( $items as $item ) {
+		if ( isset( $item->object, $item->object_id ) && 'page' === $item->object && ! empty( $item->menu_item_parent ) ) {
+			$slug = (string) get_post_field( 'post_name', (int) $item->object_id );
+			if ( isset( $labels[ $slug ] ) ) {
+				$item->title = $labels[ $slug ];
+			}
+		}
+	}
 	$slugs = eab_hidden_product_slugs();
-	if ( ! $slugs || ! is_array( $items ) ) {
+	if ( ! $slugs ) {
 		return $items;
 	}
 	$drop = array();
