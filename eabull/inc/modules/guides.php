@@ -547,6 +547,7 @@ function eab_guide_flat_defaults() {
 	$flat['guide_fact_inputs']         = 'ชุดค่าและระดับ LOT เปลี่ยนได้จากแดชบอร์ดบนกราฟ ค่าอื่นให้ทีมงานช่วยดูก่อนเปลี่ยน';
 	$flat['guide_fact_license']        = 'แจ้งเลขบัญชี MT5 และชื่อ Server ทาง LINE ให้ทีมงานลงทะเบียนบัญชีก่อนใช้งานจริง';
 	$flat['guide_fact_broker_company'] = 'Zaurix Ltd.';
+	$flat['guide_fact_leverage']       = 'บัญชีสกุล USD · EA BULL 1.0 ทดสอบที่เลเวอเรจ 1:2000';
 	$flat['guide_fact_capital']        = 'EA BULL 1.0 ใช้ทุนทดสอบทางการ 20,000 USD ต่อ LOTx1 (LOTx32 = 640,000 USD)';
 
 	/* ตั้งค่าร่วมทุกหน้าคู่มือ */
