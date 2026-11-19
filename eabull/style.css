@@ -1075,10 +1075,23 @@ a.card:hover { border-color: var(--accent); }
 .dlcard__ver { display: grid; place-items: center; height: 60px; background: var(--accent); color: var(--k0); font: 700 19px/1 var(--f-head); }
 .dlcard b { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 700 16px/1.4 var(--f-head); }
 .dlcard .row { margin-top: 8px; gap: 8px; }
-.dlcard--cover { grid-template-columns: 150px minmax(0, 1fr); }
-.dlcard__cover { display: block; background: var(--k0); }
-.dlcard__cover img { display: block; width: 100%; height: auto; }
-@media (max-width: 479px) { .dlcard--cover { grid-template-columns: minmax(0, 1fr); } }
+/* card with the product cover: full-width image, version tag and download button on top of it */
+.dlcard--cover { display: block; padding: 0; overflow: hidden; container-type: inline-size; }
+.dlcard__media { position: relative; background: var(--k0); }
+.dlcard__media img { display: block; width: 100%; height: auto; }
+.dlcard__tag { position: absolute; top: 12px; left: 12px; padding: 7px 10px; background: var(--accent); color: var(--k0); font: 700 15px/1 var(--f-head); }
+.dlcard__dl { position: absolute; right: 12px; bottom: 12px; }
+.dlcard__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; padding: 12px 14px; }
+@media (min-width: 640px) {
+  .dlcard__tag { top: 16px; left: 16px; padding: 8px 12px; font-size: 17px; }
+  .dlcard__dl { right: 16px; bottom: 16px; }
+}
+/* narrow card: the button would cover "BULL" on the cover → smaller, bottom-left over the floor */
+@container (max-width: 419px) {
+  .dlcard__tag { top: 8px; left: 8px; padding: 6px 8px; font-size: 13px; }
+  .dlcard__dl { right: auto; left: 8px; bottom: 8px; min-height: 0; padding: 7px 10px; font-size: 13px; gap: 6px; }
+  .dlcard__dl .i { width: 16px; height: 16px; }
+}
 .golinks { display: grid; gap: 8px; margin-top: 16px; }
 .golink { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 14px; background: var(--k2); border: 1px solid var(--line); color: var(--fg); font: 600 15.5px/1.35 var(--f-head); text-decoration: none; }
 .golink .i { width: 20px; height: 20px; color: var(--accent); }

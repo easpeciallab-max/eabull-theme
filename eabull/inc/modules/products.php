@@ -711,15 +711,25 @@ function eab_go_product_downloads( $echo = true ) {
 		$read  = trim( (string) eab_mod( 'product_go_read_text' ) );
 		$html .= '<div class="dlcards">';
 		foreach ( $items as $item ) {
-			$cover = eab_product_cover_img( $item, '(min-width: 480px) 150px, 100vw' );
-			$html .= '<div class="dlcard' . ( '' !== $cover ? ' dlcard--cover' : '' ) . '">';
+			$cover = eab_product_cover_img( $item, '(min-width: 640px) 560px, 100vw' );
 			if ( '' !== $cover ) {
-				$html .= '<span class="dlcard__cover">' . $cover . '</span>';
-			} else {
-				$html .= '<span class="dlcard__ver">' . ( '' !== $item['version'] ? esc_html( 'V' . $item['version'] ) : '' ) . '</span>';
+				/* มีปก = การ์ดปกเต็ม: ป้ายรุ่นมุมซ้ายบน ปุ่มดาวน์โหลดมุมขวาล่างทับรูป · ใต้รูปเป็นวันที่อัปเดตกับลิงก์อ่านก่อนใช้ */
+				$html .= '<div class="dlcard dlcard--cover"><div class="dlcard__media">' . $cover;
+				if ( '' !== $item['version'] ) {
+					$html .= '<span class="dlcard__tag">' . esc_html( 'V' . $item['version'] ) . '</span>';
+				}
+				$html .= eab_product_dl_link( $item, 'btn btn--primary btn--sm dlcard__dl', eab_mod( 'product_go_dl_text' ), 'go-download-' . $item['n'] );
+				$html .= '</div><div class="dlcard__foot"><span class="small muted">' . ( '' !== $item['updated'] ? ( '' !== $label ? esc_html( $label ) . ' ' : '' ) . esc_html( $item['updated'] ) : esc_html( $item['label'] ) ) . '</span>';
+				if ( '' !== $item['url'] && '' !== $read ) {
+					$html .= '<a class="tlink" href="' . esc_url( $item['url'] ) . '">' . esc_html( $read ) . ' ' . eab_icon( 'arrow-right' ) . '</a>';
+				}
+				$html .= '</div></div>';
+				continue;
 			}
+			$html .= '<div class="dlcard">';
+			$html .= '<span class="dlcard__ver">' . ( '' !== $item['version'] ? esc_html( 'V' . $item['version'] ) : '' ) . '</span>';
 			$html .= '<div>';
-			$html .= '<b>' . esc_html( '' !== $cover ? $item['label'] : $item['name'] ) . ( $item['example'] ? ' ' . eab_product_badge( $item ) : '' ) . '</b>';
+			$html .= '<b>' . esc_html( $item['name'] ) . ( $item['example'] ? ' ' . eab_product_badge( $item ) : '' ) . '</b>';
 			$html .= '<span class="small muted">' . ( '' !== $label ? esc_html( $label ) . ' ' : '' ) . eab_wait( $item['updated'] ) . '</span>';
 			$html .= '<div class="row">' . eab_product_dl_link( $item, 'btn btn--primary btn--sm', eab_mod( 'product_go_dl_text' ), 'go-download-' . $item['n'] );
 			if ( '' !== $item['url'] && '' !== $read ) {
