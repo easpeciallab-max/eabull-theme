@@ -19,7 +19,7 @@
   "file": "swing-trade/small-desk-calendar-weekend-gap-swing.webp",
   "name": "small-desk-calendar-weekend-gap-swing",
   "alt": "ปฏิทินตั้งโต๊ะขนาดเล็กวางบนผ้าสีขาว ภาพของการนับวันที่ต้องถือออเดอร์ผ่านเสาร์อาทิตย์ไปถึงราคาเปิดวันจันทร์",
-  "caption": "ราคาเปิดวันจันทร์อาจห่างจากราคาปิดวันศุกร์ Stop Loss จึงอาจถูกปิดที่ราคาแย่กว่าที่ตั้งไว้",
+  "caption": "ถ้าราคาวันจันทร์เปิดกระโดดข้ามจุด Stop Loss ออเดอร์จะปิดที่ราคาแรกที่มี ซึ่งอาจแย่กว่าจุดที่ตั้งไว้",
   "credit": "Kyrie kim",
   "page": "https://unsplash.com/photos/jqxB3C0YNG0",
   "src": "https://images.unsplash.com/photo-1611988615248-5d4f0b9ac31e",
