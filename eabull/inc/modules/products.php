@@ -106,6 +106,8 @@ function eab_products_defaults( $d ) {
 		$p[ $k . 'file' ]    = '';
 		$p[ $k . 'dl_url' ]  = '';
 		$p[ $k . 'updated' ] = '';
+		$p[ $k . 'cover' ]     = '';
+		$p[ $k . 'cover_alt' ] = '';
 		foreach ( $specs as $i => $label ) {
 			$p[ $k . 'spec' . ( $i + 1 ) . '_label' ] = $label;
 			$p[ $k . 'spec' . ( $i + 1 ) . '_value' ] = '';
@@ -130,6 +132,8 @@ function eab_products_defaults( $d ) {
 	$p['product1_file']    = 'EA_BULL_V1.0.ex5';
 	$p['product1_dl_url']  = 'assets/downloads/EA_BULL_V1.0.zip';
 	$p['product1_updated'] = '19 พ.ย. 2569';
+	$p['product1_cover']     = 'assets/img/products/ea-bull-1-0-cover.webp'; // ปกดาวน์โหลดจากเจ้าของ (EA META DATA/EA BULL/WEB/EA_BULL_DOWNLOAD_COVER.png)
+	$p['product1_cover_alt'] = 'ปก EA BULL 1.0 รูปกระทิงดำลายทองคู่กับตัวอักษร EA BULL';
 	$p['product1_spec1_value'] = 'ทองคำ XAUUSD';
 	$p['product1_spec2_value'] = 'M1';
 	$p['product1_spec4_value'] = '20,000 USD ต่อ LOTx1';
@@ -241,6 +245,8 @@ function eab_products_customizer_sections( $sections, $d ) {
 			$k . 'file'    => array( 'ชื่อไฟล์ EA (เช่น ชื่อไฟล์.ex5)', 'text', $wait ),
 			$k . 'dl_url'  => array( 'ลิงก์ดาวน์โหลดไฟล์ (URL เต็ม หรือ assets/...)', 'path', 'เว้นว่าง = ปุ่มดาวน์โหลดแจ้งว่าไฟล์ยังไม่พร้อม' ),
 			$k . 'updated' => array( 'อัปเดตล่าสุด (วันที่)', 'text', $wait ),
+			$k . 'cover'     => array( 'รูปปกสินค้า 1200×630 (การ์ดดาวน์โหลด การ์ดสินค้า หน้าสินค้า และรูปแชร์)', 'image', 'ไฟล์ชื่อเดียวกันลงท้าย -600 ในโฟลเดอร์เดียวกัน = ใช้เป็นรูปเล็กให้อัตโนมัติ' ),
+			$k . 'cover_alt' => array( 'คำอธิบายรูปปก (alt)', 'text' ),
 		);
 		for ( $i = 1; $i <= 4; $i++ ) {
 			$fields[ $k . 'spec' . $i . '_label' ] = array( 'สเปกแถวที่ ' . $i . ' (หน้าแรก) · ชื่อ', 'text' );
@@ -334,6 +340,9 @@ function eab_products() {
 			if ( '' === $value ) {
 				$value = eab_product_stat_by_label( $n, $label );
 			}
+			if ( '' === $value && function_exists( 'eab_hide_wait' ) && eab_hide_wait() ) {
+				continue; // ช่องที่ยังรอเจ้าของ ไม่แสดงทั้งแถว
+			}
 			$specs[] = array( $label, $value );
 		}
 		$items[] = array(
@@ -349,6 +358,8 @@ function eab_products() {
 			'file'    => trim( (string) eab_mod( $k . 'file' ) ),
 			'dl_url'  => eab_theme_asset_url( eab_mod( $k . 'dl_url' ) ),
 			'updated' => trim( (string) eab_mod( $k . 'updated' ) ),
+			'cover'     => trim( (string) eab_mod( $k . 'cover' ) ),
+			'cover_alt' => trim( (string) eab_mod( $k . 'cover_alt' ) ),
 			'example' => $example,
 			'specs'   => $specs,
 		);
@@ -454,6 +465,32 @@ function eab_products_hide_menu_items( $items ) {
 add_filter( 'wp_nav_menu_objects', 'eab_products_hide_menu_items', 5 );
 
 /**
+ * รูปแชร์ (Open Graph / Twitter) ของหน้าสินค้าที่มีปก · ใช้ไฟล์ .jpg ชื่อเดียวกับปกถ้ามี (ขนาดและชนิดตรงกับรูปแชร์ตั้งต้น 1200×630 JPEG)
+ */
+function eab_products_share_image( $url ) {
+	if ( is_admin() || ! is_page() ) {
+		return $url;
+	}
+	$slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+	foreach ( eab_products() as $item ) {
+		if ( '' === $item['slug'] || $item['slug'] !== $slug || '' === $item['cover'] ) {
+			continue;
+		}
+		$value = $item['cover'];
+		if ( 0 === strpos( $value, 'assets/' ) ) {
+			$jpg = preg_replace( '/\.[a-z0-9]+$/i', '.jpg', $value );
+			if ( file_exists( get_template_directory() . '/' . $jpg ) ) {
+				$value = $jpg;
+			}
+		}
+		return eab_theme_asset_url( $value );
+	}
+	return $url;
+}
+add_filter( 'wpseo_opengraph_image', 'eab_products_share_image', 20 );
+add_filter( 'wpseo_twitter_image', 'eab_products_share_image', 20 );
+
+/**
  * สินค้าตาม key ('product1' · '1' · 1) · ไม่พบ = null
  */
 function eab_product( $key ) {
@@ -532,6 +569,30 @@ function eab_product_inline( $text ) {
 }
 
 /**
+ * รูปปกสินค้า (<img>) · '' = ไม่มีปก
+ * ปกในธีม assets/... ที่มีไฟล์ -600 คู่กัน (เช่น cover.webp + cover-600.webp) ได้ srcset ให้เบราว์เซอร์เลือกขนาดเอง
+ *
+ * @param array  $item  สินค้าจาก eab_products()
+ * @param string $sizes ค่า sizes ของ <img>
+ */
+function eab_product_cover_img( $item, $sizes = '(min-width: 1100px) 340px, (min-width: 760px) 280px, 100vw' ) {
+	$value = isset( $item['cover'] ) ? (string) $item['cover'] : '';
+	if ( '' === $value ) {
+		return '';
+	}
+	$src    = eab_theme_asset_url( $value );
+	$srcset = '';
+	if ( 0 === strpos( $value, 'assets/' ) ) {
+		$small = preg_replace( '/(\.[a-z0-9]+)$/i', '-600$1', $value );
+		if ( $small !== $value && file_exists( get_template_directory() . '/' . $small ) ) {
+			$srcset = ' srcset="' . esc_url( eab_theme_asset_url( $small ) ) . ' 600w, ' . esc_url( $src ) . ' 1200w" sizes="' . esc_attr( $sizes ) . '"';
+		}
+	}
+	$alt = '' !== $item['cover_alt'] ? $item['cover_alt'] : 'ปก ' . $item['label'];
+	return '<img src="' . esc_url( $src ) . '"' . $srcset . ' alt="' . esc_attr( $alt ) . '" width="1200" height="630" loading="lazy" decoding="async">';
+}
+
+/**
  * ป้ายสินค้าตัวอย่าง
  */
 function eab_product_badge( $item ) {
@@ -597,11 +658,16 @@ function eab_homeplus_products() {
 		<?php eab_home_shead( 'products-title', eab_mod( 'home_products_title' ), eab_mod( 'home_products_sub' ) ); ?>
 		<div class="prods">
 			<?php foreach ( $items as $item ) : ?>
-			<article class="prow">
+				<?php $cover = eab_product_cover_img( $item ); ?>
+			<article class="prow<?php echo '' !== $cover ? ' prow--cover' : ''; ?>">
+				<?php if ( '' !== $cover ) : ?>
+				<a class="prow__cover" href="<?php echo esc_url( '' !== $item['url'] ? $item['url'] : '#products' ); ?>" tabindex="-1" aria-hidden="true"><?php echo $cover; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></a>
+				<?php else : ?>
 				<div class="prow__ver"><?php echo '' !== $ver ? '<small>' . esc_html( $ver ) . '</small>' : ''; ?><b><?php echo eab_wait( $item['version'] ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></b></div>
+				<?php endif; ?>
 				<div class="prow__body">
 					<div>
-						<div class="prow__title"><h3><?php echo esc_html( $item['name'] ); ?></h3><?php echo eab_product_badge( $item ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
+						<div class="prow__title"><h3><?php echo esc_html( $item['name'] ); ?></h3><?php echo '' !== $cover && '' !== $item['version'] ? '<span class="badge badge--acc">' . esc_html( trim( $ver . ' ' . $item['version'] ) ) . '</span>' : ''; ?><?php echo eab_product_badge( $item ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></div>
 						<p><?php echo eab_home_pending( $item['desc'], eab_mod( 'product_desc_hint' ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></p>
 					</div>
 					<?php if ( $item['specs'] ) : ?>
@@ -645,10 +711,15 @@ function eab_go_product_downloads( $echo = true ) {
 		$read  = trim( (string) eab_mod( 'product_go_read_text' ) );
 		$html .= '<div class="dlcards">';
 		foreach ( $items as $item ) {
-			$html .= '<div class="dlcard">';
-			$html .= '<span class="dlcard__ver">' . ( '' !== $item['version'] ? esc_html( 'V' . $item['version'] ) : '' ) . '</span>';
+			$cover = eab_product_cover_img( $item, '(min-width: 480px) 150px, 100vw' );
+			$html .= '<div class="dlcard' . ( '' !== $cover ? ' dlcard--cover' : '' ) . '">';
+			if ( '' !== $cover ) {
+				$html .= '<span class="dlcard__cover">' . $cover . '</span>';
+			} else {
+				$html .= '<span class="dlcard__ver">' . ( '' !== $item['version'] ? esc_html( 'V' . $item['version'] ) : '' ) . '</span>';
+			}
 			$html .= '<div>';
-			$html .= '<b>' . esc_html( $item['name'] ) . ( $item['example'] ? ' ' . eab_product_badge( $item ) : '' ) . '</b>';
+			$html .= '<b>' . esc_html( '' !== $cover ? $item['label'] : $item['name'] ) . ( $item['example'] ? ' ' . eab_product_badge( $item ) : '' ) . '</b>';
 			$html .= '<span class="small muted">' . ( '' !== $label ? esc_html( $label ) . ' ' : '' ) . eab_wait( $item['updated'] ) . '</span>';
 			$html .= '<div class="row">' . eab_product_dl_link( $item, 'btn btn--primary btn--sm', eab_mod( 'product_go_dl_text' ), 'go-download-' . $item['n'] );
 			if ( '' !== $item['url'] && '' !== $read ) {
@@ -739,6 +810,10 @@ function eab_products_page() {
 				</div>
 			</div>
 			<aside class="sumbox"<?php echo '' !== $sum_title ? ' aria-label="' . esc_attr( $sum_title ) . '"' : ''; ?>>
+				<?php $cover = eab_product_cover_img( $item, '(min-width: 960px) 420px, 100vw' ); ?>
+				<?php if ( '' !== $cover ) : ?>
+				<figure class="sumbox__cover"><?php echo str_replace( ' loading="lazy"', ' fetchpriority="high"', $cover ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?></figure>
+				<?php endif; ?>
 				<?php if ( '' !== $sum_title ) : ?>
 				<h2><?php echo esc_html( $sum_title ); ?></h2>
 				<?php endif; ?>

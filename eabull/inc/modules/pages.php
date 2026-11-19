@@ -1519,7 +1519,12 @@ function eab_pages_product_rows() {
 	$html  = '';
 	foreach ( $items as $item ) {
 		$badge = function_exists( 'eab_product_badge' ) ? eab_product_badge( $item ) : '';
-		$html .= '<article class="prow"><div class="prow__ver">' . ( '' !== $ver ? '<small>' . esc_html( $ver ) . '</small>' : '' ) . '<b>' . eab_wait( isset( $item['version'] ) ? $item['version'] : '' ) . '</b></div><div class="prow__body"><div>';
+		$cover = function_exists( 'eab_product_cover_img' ) ? eab_product_cover_img( $item ) : '';
+		if ( '' !== $cover ) {
+			$html .= '<article class="prow prow--cover"><a class="prow__cover" href="' . esc_url( ! empty( $item['url'] ) ? $item['url'] : '#products' ) . '" tabindex="-1" aria-hidden="true">' . $cover . '</a><div class="prow__body"><div>';
+		} else {
+			$html .= '<article class="prow"><div class="prow__ver">' . ( '' !== $ver ? '<small>' . esc_html( $ver ) . '</small>' : '' ) . '<b>' . eab_wait( isset( $item['version'] ) ? $item['version'] : '' ) . '</b></div><div class="prow__body"><div>';
+		}
 		$html .= '<div class="prow__title"><h3>' . esc_html( isset( $item['label'] ) ? $item['label'] : $item['name'] ) . '</h3>' . $badge . '</div>';
 		$html .= '<p>' . eab_wait( isset( $item['desc'] ) ? $item['desc'] : '' ) . '</p></div>';
 		$list = isset( $item['specs'] ) ? array_slice( (array) $item['specs'], 0, $specs ) : array();

@@ -425,6 +425,8 @@ h4 { font-size: 17px; }
 .phead__meta .i { width: 18px; height: 18px; }
 .sumbox { padding: 22px 24px; background: var(--k1); border-left: 3px solid var(--accent); }
 .sumbox h2 { font-size: 17px; margin-bottom: 12px; color: var(--fg); }
+.sumbox__cover { margin: -22px -24px 20px; }
+.sumbox__cover img { display: block; width: 100%; height: auto; }
 .sumbox ol, .sumbox ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .sumbox li { display: flex; gap: 10px; color: var(--fg-2); font-size: 15px; line-height: 1.6; }
 .sumbox li > b:first-child { flex: none; min-width: 24px; color: var(--accent); font-family: var(--f-head); }
@@ -560,6 +562,11 @@ a.card:hover { border-color: var(--accent); }
   .prow__cta { flex-direction: column; width: 210px; }
   .prow__cta .btn { width: 100%; }
 }
+/* product cover (1200×630) instead of the version tile */
+.prow__cover { display: flex; align-items: center; background: var(--k0); }
+.prow__cover img { display: block; width: 100%; height: auto; }
+@media (min-width: 760px) { .prow--cover { grid-template-columns: 280px minmax(0, 1fr); } }
+@media (min-width: 1100px) { .prow--cover { grid-template-columns: 340px minmax(0, 1fr); } }
 
 /* modes tabs */
 .tabs__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
@@ -1068,6 +1075,10 @@ a.card:hover { border-color: var(--accent); }
 .dlcard__ver { display: grid; place-items: center; height: 60px; background: var(--accent); color: var(--k0); font: 700 19px/1 var(--f-head); }
 .dlcard b { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 700 16px/1.4 var(--f-head); }
 .dlcard .row { margin-top: 8px; gap: 8px; }
+.dlcard--cover { grid-template-columns: 150px minmax(0, 1fr); }
+.dlcard__cover { display: block; background: var(--k0); }
+.dlcard__cover img { display: block; width: 100%; height: auto; }
+@media (max-width: 479px) { .dlcard--cover { grid-template-columns: minmax(0, 1fr); } }
 .golinks { display: grid; gap: 8px; margin-top: 16px; }
 .golink { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 14px; background: var(--k2); border: 1px solid var(--line); color: var(--fg); font: 600 15.5px/1.35 var(--f-head); text-decoration: none; }
 .golink .i { width: 20px; height: 20px; color: var(--accent); }
