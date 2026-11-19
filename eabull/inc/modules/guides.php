@@ -539,6 +539,15 @@ function eab_guide_flat_defaults() {
 	foreach ( array_keys( eab_guide_facts() ) as $fact ) {
 		$flat[ 'guide_fact_' . $fact ] = '';
 	}
+	/* จากเอกสาร EA BULL 1.0 และรายงาน MT5 ของเจ้าของ (19 พ.ย. 2026) · ช่องที่เหลือยังรอเจ้าของ */
+	$flat['guide_fact_ea_file']        = 'EA_BULL_V1.0.ex5';
+	$flat['guide_fact_extra_files']    = 'ไม่มี ในไฟล์ zip มีแค่ตัว EA ไฟล์เดียว';
+	$flat['guide_fact_symbol']         = 'XAUUSD.s (ทองคำ ชื่อในบัญชี Zaurix)';
+	$flat['guide_fact_timeframe']      = 'M1';
+	$flat['guide_fact_inputs']         = 'ชุดค่าและระดับ LOT เปลี่ยนได้จากแดชบอร์ดบนกราฟ ค่าอื่นให้ทีมงานช่วยดูก่อนเปลี่ยน';
+	$flat['guide_fact_license']        = 'แจ้งเลขบัญชี MT5 และชื่อ Server ทาง LINE ให้ทีมงานลงทะเบียนบัญชีก่อนใช้งานจริง';
+	$flat['guide_fact_broker_company'] = 'Zaurix Ltd.';
+	$flat['guide_fact_capital']        = 'EA BULL 1.0 ใช้ทุนทดสอบทางการ 20,000 USD ต่อ LOTx1 (LOTx32 = 640,000 USD)';
 
 	/* ตั้งค่าร่วมทุกหน้าคู่มือ */
 	$flat['guides_sum_title']   = 'สรุปแบบสั้น';

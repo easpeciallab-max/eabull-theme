@@ -266,7 +266,7 @@ function eab_defaults() {
 
 		/* โบรกเกอร์ (ใช้ในคู่มือเปิดบัญชี / ล็อกอิน ผ่าน shortcode [eabull_broker]) */
 		'broker_name'        => 'Zaurix',
-		'broker_server'      => 'Zaurix-Server', // ชื่อเดียวกับเว็บในเครือไปก่อน (29 ต.ค. 2026) รอเจ้าของยืนยัน
+		'broker_server'      => 'Zaurix-Server', // ยืนยันจากรายงาน MT5 ของ EA BULL 1.0 (19 พ.ย. 2026 · Company: Zaurix Ltd.)
 		'broker_signup_url'  => 'https://portal.zaurix.com/?ref=278004', // Referral Link EA BULL จากเจ้าของ 9 พ.ย. 2026 (แทน ref=211281)
 		'broker_signup_text' => 'สมัครบัญชี Zaurix',
 

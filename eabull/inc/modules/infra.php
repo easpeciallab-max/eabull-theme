@@ -696,6 +696,7 @@ function eab_nocaps_pattern() {
 		'\b[A-Z]{6}\.[a-z]{1,3}\b',                                                // XAUUSD.c
 		'(?<=\s)\.[a-z]{1,3}(?=[\s,)])',                                           // ตัวท้ายสัญลักษณ์ที่เขียนลำพัง เช่น .c .s
 		'\b(?:iPhone|iPad|iPadOS|iOS|macOS)\b',                                    // ชื่อแบรนด์ที่ใช้ตัวเล็กนำ
+		'\bLOTx\d+\b',                                                             // ระดับ LOT ของ EA BULL (LOTx1 ถึง LOTx32)
 	);
 	return (string) apply_filters( 'eab_nocaps_pattern', '/' . implode( '|', $parts ) . '/u' );
 }

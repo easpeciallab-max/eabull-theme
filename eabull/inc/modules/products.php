@@ -38,7 +38,7 @@ function eab_products_defaults( $d ) {
 		/* หน้าแรก · ส่วนสินค้า */
 		'show_home_products'    => true,
 		'home_products_title'   => 'สินค้า EA ของ EA BULL',
-		'home_products_sub'     => 'เรียงตามเลขรุ่นจากน้อยไปมาก แต่ละตัวมีหน้าของตัวเองที่บอกวิธีทำงาน ทุนที่ต้องใช้ และผลทดสอบพร้อมเงื่อนไข',
+		'home_products_sub'     => 'เรียงตามเลขรุ่นจากน้อยไปมาก แต่ละตัวมีหน้าของตัวเองที่บอกวิธีทำงาน ระดับ LOT และทุนที่ใช้ทดสอบ',
 		'home_products_note'    => '',
 
 		/* ข้อความที่ใช้ร่วมกันทุกสินค้า */
@@ -120,6 +120,25 @@ function eab_products_defaults( $d ) {
 		$p[ $k . 'panel_img' ]  = '';
 		$p[ $k . 'report_img' ] = '';
 	}
+
+	/* สินค้าตัวที่ 1 · EA BULL 1.0 · จากเอกสารของเจ้าของ (EA META DATA/EA BULL/EA VERSIONS/EA_BULL_V1.0 · 19 พ.ย. 2026)
+	 * เจ้าของเลือก: ไม่แสดงตัวเลขกำไรจาก Backtest บนเว็บ · ใช้กับแพ็กเกจ Pro และ VIP · ให้ดาวน์โหลดไฟล์จากเว็บ */
+	$p['product1_name']    = 'EA BULL';
+	$p['product1_version'] = '1.0';
+	$p['product1_example'] = false;
+	$p['product1_sub']     = 'EA เทรดทองคำ XAUUSD แบบกริดสองทาง ปิดทั้งตะกร้าเมื่อถึงเป้า มีไม้กู้ตะกร้าค้างและแดชบอร์ดบนกราฟให้ปรับระดับ LOT ได้ในปุ่มเดียว';
+	$p['product1_file']    = 'EA_BULL_V1.0.ex5';
+	$p['product1_dl_url']  = 'assets/downloads/EA_BULL_V1.0.zip';
+	$p['product1_updated'] = '19 พ.ย. 2569';
+	$p['product1_spec1_value'] = 'ทองคำ XAUUSD';
+	$p['product1_spec2_value'] = 'M1';
+	$p['product1_spec4_value'] = '20,000 USD ต่อ LOTx1';
+	$p['product1_stat1_value'] = 'ทองคำ XAUUSD';
+	$p['product1_stat2_value'] = 'M1';
+	$p['product1_stat4_value'] = 'ชุดค่า TAURUS · LOTx1 ถึง LOTx32';
+	$p['product1_stat5_value'] = '20,000 USD ต่อ LOTx1';
+	$p['product1_stat6_value'] = 'ไม่มี';
+	$p['product1_stat8_value'] = 'กริดสองทาง + ไม้กู้ตะกร้าค้าง';
 
 	return array_merge( $d, $p );
 }
@@ -763,7 +782,11 @@ function eab_product_stats( $type, $n, $echo = true ) {
 		if ( '' === $label ) {
 			continue;
 		}
-		$html .= '<div class="stat"><span>' . esc_html( $label ) . '</span>' . eab_product_value( eab_mod( 'product' . $n . '_' . $type . $i . '_value' ), 'b' ) . '</div>';
+		$value = trim( (string) eab_mod( 'product' . $n . '_' . $type . $i . '_value' ) );
+		if ( '' === $value && function_exists( 'eab_hide_wait' ) && eab_hide_wait() ) {
+			continue;
+		}
+		$html .= '<div class="stat"><span>' . esc_html( $label ) . '</span>' . eab_product_value( $value, 'b' ) . '</div>';
 	}
 	if ( '' !== $html ) {
 		$html = '<div class="stats' . ( 'stat' === $type ? ' mt-24' : '' ) . '">' . $html . '</div>';
@@ -786,6 +809,8 @@ function eab_product_shot( $item, $type ) {
 	if ( '' !== $img ) {
 		$html = '<a class="lightbox" href="' . esc_url( $img ) . '" data-group="product-' . (int) $item['n'] . '" data-caption="' . esc_attr( '' !== $cap ? $cap : $title ) . '">'
 			. '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title ) . '" width="1280" height="720" loading="lazy" decoding="async"></a>';
+	} elseif ( function_exists( 'eab_hide_wait' ) && eab_hide_wait() ) {
+		return '';
 	} else {
 		$html = '<div class="shot">' . eab_icon( 'report' === $type ? 'file' : 'candles' ) . '<span><b>' . esc_html( $title ) . '</b>' . esc_html( $wait ) . '</span></div>';
 	}

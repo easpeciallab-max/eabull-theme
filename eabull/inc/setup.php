@@ -36,7 +36,7 @@ function eab_site_pages() {
 		'tools'            => array( 'title' => 'เครื่องมือคำนวณ', 'template' => 'template-guide.php', 'content' => 'pages/tools', 'group' => 'guide', 'menu' => 'เครื่องคำนวณ Lot / Drawdown' ),
 		'pricing'          => array( 'title' => 'แพ็กเกจ EA BULL', 'template' => 'template-pricing.php', 'content' => 'pages/pricing', 'group' => 'pricing' ),
 		/* สินค้าตัวอย่าง 3 รุ่น (slug ชั่วคราว · ชื่อ เลขรุ่น และ slug จริงตั้งใน Customizer หมวด 3.x · inc/modules/products.php) */
-		'product-1'        => array( 'title' => 'สินค้าตัวอย่าง 1', 'template' => 'template-product.php', 'content' => 'pages/product-1', 'group' => 'product' ),
+		'product-1'        => array( 'title' => 'EA BULL 1.0', 'template' => 'template-product.php', 'content' => 'pages/product-1', 'group' => 'product' ),
 		'product-2'        => array( 'title' => 'สินค้าตัวอย่าง 2', 'template' => 'template-product.php', 'content' => 'pages/product-2', 'group' => 'product' ),
 		'product-3'        => array( 'title' => 'สินค้าตัวอย่าง 3', 'template' => 'template-product.php', 'content' => 'pages/product-3', 'group' => 'product' ),
 		'risk-disclosure'  => array( 'title' => 'ความเสี่ยงของการใช้ EA เทรดบน MT5', 'template' => 'template-risk.php', 'content' => 'pages/risk-disclosure', 'group' => 'doc' ),
