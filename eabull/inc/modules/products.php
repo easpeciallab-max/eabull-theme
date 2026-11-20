@@ -143,6 +143,10 @@ function eab_products_defaults( $d ) {
 	$p['product1_stat5_value'] = '20,000 USD ต่อ LOTx1';
 	$p['product1_stat6_value'] = 'ไม่มี';
 	$p['product1_stat8_value'] = 'กริดสองทาง + ไม้กู้ตะกร้าค้าง';
+	/* เจ้าของตอบ 20 พ.ย. 2026: ใช้ได้กับบัญชี Zaurix ทุกประเภท (โบรกเกอร์อื่นไม่ได้) · มีตัวกรองข่าวทั้ง 2 ตัว */
+	$p['product1_spec3_value'] = 'บัญชี Zaurix ทุกประเภท';
+	$p['product1_stat3_value'] = 'บัญชี Zaurix ทุกประเภท · ทดสอบกับบัญชี USD';
+	$p['product1_stat7_value'] = 'มี';
 
 	/* สินค้าตัวที่ 2 · EA BULL BTC 1.0 · จากเอกสารของเจ้าของ (EA VERSIONS/EA_BULL_BTC_V1.0 · 20 พ.ย. 2026: อ่านก่อน.md · คู่มือการตลาด · รายงาน x1/x32 LOT)
 	 * ไม่แสดงตัวเลขกำไรบนเว็บ (ตามที่เจ้าของเลือกกับ EA BULL 1.0) · ไฟล์ zip ชุดส่งลูกค้ามีรายงาน MT5 อยู่ข้างใน */
@@ -166,6 +170,7 @@ function eab_products_defaults( $d ) {
 	$p['product2_stat4_value'] = 'ชุดกระทิง TORO · x1 ถึง x64 LOT';
 	$p['product2_stat5_value'] = '4,000 ต่อ x1 LOT (บัญชีเซนต์นับเป็น USC)';
 	$p['product2_stat6_value'] = 'ไม่มี';
+	$p['product2_stat7_value'] = 'มี';
 	$p['product2_stat8_value'] = 'กริดทบ lot + ไม้หนุนตะกร้าค้าง';
 
 	return array_merge( $d, $p );
