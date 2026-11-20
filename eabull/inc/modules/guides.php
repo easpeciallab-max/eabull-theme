@@ -1084,7 +1084,7 @@ function eab_guide_buttons( $text, $args = array() ) {
 			$class    = 'btn btn--primary';
 		} elseif ( 'portal' === $dest ) {
 			$url      = trim( (string) eab_mod( 'guides_portal_url' ) );
-			$attrs    = '' !== $url ? ' target="_blank" rel="noopener"' : ' data-wait="' . esc_attr( eab_mod( 'guides_portal_wait' ) ) . '"';
+			$attrs    = '' !== $url ? ' target="_blank" rel="sponsored noopener"' : ' data-wait="' . esc_attr( eab_mod( 'guides_portal_wait' ) ) . '"'; // Portal ของโบรกเกอร์พันธมิตร = sponsored เหมือนลิงก์สมัคร
 			$external = true;
 			$class    = 'btn btn--primary';
 		} elseif ( preg_match( '#^https?://#i', $dest ) ) {

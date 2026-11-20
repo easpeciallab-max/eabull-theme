@@ -305,7 +305,8 @@ function eab_go_link( $url, $wait = '' ) {
 	$ext   = function_exists( 'eab_chrome_is_external' ) ? eab_chrome_is_external( $href ) : (bool) preg_match( '#^(https?:)?//#i', $href );
 	if ( $ext ) {
 		$attrs['target'] = '_blank';
-		$attrs['rel']    = 'noopener';
+		// ลิงก์ของโบรกเกอร์พันธมิตร (เช่นปุ่มเข้า Portal) ติด sponsored เสมอ
+		$attrs['rel']    = false !== stripos( (string) wp_parse_url( $href, PHP_URL_HOST ), 'zaurix' ) ? 'sponsored noopener' : 'noopener';
 	}
 	return $attrs;
 }

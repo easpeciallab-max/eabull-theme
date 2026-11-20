@@ -63,8 +63,10 @@ if ( $eab_cats ) {
 	?>
 
 	<?php if ( $eab_has ) : ?>
-		<section class="band" aria-label="<?php echo esc_attr( $eab_title ); ?>">
+		<section class="band" aria-labelledby="posts-title">
 			<div class="wrap">
+				<?php /* h2 ซ่อน: ให้ลำดับหัวข้อ h1 → h2 → h3 (การ์ดบทความเป็น h3) */ ?>
+				<h2 id="posts-title" class="sr-only"><?php echo esc_html( $eab_is_cat ? 'บทความในหมวด ' . $eab_title : 'บทความทั้งหมด' ); ?></h2>
 				<div class="posts">
 					<?php
 					while ( have_posts() ) :

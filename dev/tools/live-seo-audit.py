@@ -20,7 +20,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 SITE = 'https://eabull.com/'
 HOST = 'eabull.com'
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'
-NOINDEX_EXPECTED = ('/go/', '/articles/', '/product-1/', '/product-2/', '/product-3/')
+NOINDEX_EXPECTED = ('/go/', '/product-3/')  # /articles/ is indexed since the first post (9 Nov 2026) · product 1 and 2 are real products
 EXTRA = ['/go/', '/articles/', '/product-1/', '/product-2/', '/product-3/', '/no-such-page-seo-check/', '/?s=MT5']
 BROKERS = ('zaurix.com',)
 
