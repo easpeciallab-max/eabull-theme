@@ -42,7 +42,7 @@ def fetch(url, body=True, buster=True):
             data = r.read() if body else b''
             return r.status, dict(r.headers), data
     except urllib.error.HTTPError as e:
-        return e.code, dict(e.headers), b''
+        return e.code, dict(e.headers), (e.read() if body else b'')  # 404 page body: needed to read its robots meta
     except Exception as e:  # noqa: BLE001
         return 0, {}, str(e).encode()
 
