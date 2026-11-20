@@ -540,14 +540,17 @@ function eab_guide_flat_defaults() {
 		$flat[ 'guide_fact_' . $fact ] = '';
 	}
 	/* จากเอกสาร EA BULL 1.0 และรายงาน MT5 ของเจ้าของ (19 พ.ย. 2026) · ช่องที่เหลือยังรอเจ้าของ */
-	$flat['guide_fact_ea_file']        = 'EA_BULL_V1.0.ex5';
-	$flat['guide_fact_extra_files']    = 'ไม่มี ในไฟล์ zip มีแค่ตัว EA ไฟล์เดียว';
-	$flat['guide_fact_symbol']         = 'XAUUSD.s (ทองคำ ชื่อในบัญชี Zaurix)';
-	$flat['guide_fact_timeframe']      = 'M1';
-	$flat['guide_fact_inputs']         = 'ชุดค่าและระดับ LOT เปลี่ยนได้จากแดชบอร์ดบนกราฟ ค่าอื่นให้ทีมงานช่วยดูก่อนเปลี่ยน';
-	$flat['guide_fact_license']        = 'แจ้งเลขบัญชี MT5 และชื่อ Server ทาง LINE ให้ทีมงานลงทะเบียนบัญชีก่อนใช้งานจริง';
+	$flat['guide_fact_ea_file']        = 'EA_BULL_V1.0.ex5 (EA BULL 1.0) · EA_BULL_BTC_V1.0.ex5 (EA BULL BTC 1.0)';
+	$flat['guide_fact_extra_files']    = 'EA BULL 1.0 ไม่มี · EA BULL BTC 1.0 มีไฟล์ .set สำหรับ Strategy Tester คู่มืออ่านก่อน และรายงาน MT5 มาในชุด ไม่ต้องวางใน Experts';
+	$flat['guide_fact_symbol']         = 'EA BULL 1.0: XAUUSD.s · EA BULL BTC 1.0: BTCUSD.c (บัญชีเซนต์) หรือ BTCUSD.s (บัญชี USD)';
+	$flat['guide_fact_timeframe']      = 'M1 ทั้งสองตัว';
+	$flat['guide_fact_options']        = 'EA BULL BTC 1.0 ต้องติ๊ก Allow DLL imports ทั้งในเมนู Tools → Options → Expert Advisors และในแท็บ Common';
+	$flat['guide_fact_inputs']         = 'ใช้ค่าเดิมของไฟล์ ระดับ LOT และชุดค่าเปลี่ยนได้จากแดชบอร์ดบนกราฟ (EA BULL BTC 1.0 ห้ามแก้ค่าใน Inputs)';
+	$flat['guide_fact_license']        = 'แจ้งเลขบัญชี MT5 และชื่อ Server ทาง LINE ให้ทีมงานลงทะเบียนบัญชีก่อนใช้งานจริง (EA BULL BTC 1.0 ขึ้นสถานะสิทธิ์บนการ์ด เพิ่มสิทธิ์แล้วเริ่มเองภายใน 5 นาที)';
+	$flat['guide_fact_account_type']   = 'EA BULL BTC 1.0 ใช้บัญชีเซนต์หรือบัญชี USD แบบ Hedging';
 	$flat['guide_fact_broker_company'] = 'Zaurix Ltd.';
-	$flat['guide_fact_leverage']       = 'บัญชีสกุล USD · EA BULL 1.0 ทดสอบที่เลเวอเรจ 1:2000';
+	$flat['guide_fact_capital']        = 'EA BULL 1.0 ใช้ทุนทดสอบทางการ 20,000 USD ต่อ LOTx1 (LOTx32 = 640,000 USD) · EA BULL BTC 1.0 ใช้ 4,000 ต่อ x1 LOT (บัญชีเซนต์นับเป็น USC)';
+	$flat['guide_fact_leverage']       = 'EA BULL 1.0 ทดสอบกับบัญชีสกุล USD และ EA BULL BTC 1.0 ทดสอบกับบัญชีเซนต์ (USC) ทั้งคู่ใช้เลเวอเรจ 1:2000';
 	$flat['guide_fact_capital']        = 'EA BULL 1.0 ใช้ทุนทดสอบทางการ 20,000 USD ต่อ LOTx1 (LOTx32 = 640,000 USD)';
 
 	/* ตั้งค่าร่วมทุกหน้าคู่มือ */

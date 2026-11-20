@@ -144,6 +144,30 @@ function eab_products_defaults( $d ) {
 	$p['product1_stat6_value'] = 'ไม่มี';
 	$p['product1_stat8_value'] = 'กริดสองทาง + ไม้กู้ตะกร้าค้าง';
 
+	/* สินค้าตัวที่ 2 · EA BULL BTC 1.0 · จากเอกสารของเจ้าของ (EA VERSIONS/EA_BULL_BTC_V1.0 · 20 พ.ย. 2026: อ่านก่อน.md · คู่มือการตลาด · รายงาน x1/x32 LOT)
+	 * ไม่แสดงตัวเลขกำไรบนเว็บ (ตามที่เจ้าของเลือกกับ EA BULL 1.0) · ไฟล์ zip ชุดส่งลูกค้ามีรายงาน MT5 อยู่ข้างใน */
+	$p['product2_name']      = 'EA BULL BTC';
+	$p['product2_version']   = '1.0';
+	$p['product2_example']   = false;
+	$p['product2_sub']       = 'EA เทรด Bitcoin BTCUSD บนกราฟ M1 ทำงานทุกวันรวมเสาร์อาทิตย์ มีชุดกระทิง TORO ในตัว ปรับพลัง x1 ถึง x64 LOT หรือให้ระบบเลือกจากเงินในบัญชี';
+	$p['product2_file']      = 'EA_BULL_BTC_V1.0.ex5';
+	$p['product2_dl_url']    = 'assets/downloads/EA_BULL_BTC_V1.0.zip';
+	$p['product2_updated']   = '19 พ.ย. 2569';
+	$p['product2_cover']     = 'assets/img/products/ea-bull-btc-1-0-cover.webp'; // EA META DATA/EA BULL/WEB/EA_BULL_BTC_APPROVED.png
+	$p['product2_cover_alt'] = 'ปก EA BULL BTC 1.0 รูปกระทิงดำลายทองยืนบนเหรียญ Bitcoin คู่กับตัวอักษร EA BULL BTC';
+	$p['product2_panel_img'] = 'assets/img/products/ea-bull-btc-1-0-dashboard.webp'; // ภาพตัวอย่างจากโหมดถ่ายภาพ ไม่ได้เทรด (คู่มือการตลาดข้อ 3)
+	$p['product2_spec1_value'] = 'Bitcoin BTCUSD';
+	$p['product2_spec2_value'] = 'M1';
+	$p['product2_spec3_value'] = 'เซนต์ หรือ USD แบบ Hedging';
+	$p['product2_spec4_value'] = '4,000 ต่อ x1 LOT';
+	$p['product2_stat1_value'] = 'Bitcoin BTCUSD';
+	$p['product2_stat2_value'] = 'M1';
+	$p['product2_stat3_value'] = 'เซนต์ (BTCUSD.c) หรือ USD (BTCUSD.s) · Hedging';
+	$p['product2_stat4_value'] = 'ชุดกระทิง TORO · x1 ถึง x64 LOT';
+	$p['product2_stat5_value'] = '4,000 ต่อ x1 LOT (บัญชีเซนต์นับเป็น USC)';
+	$p['product2_stat6_value'] = 'ไม่มี';
+	$p['product2_stat8_value'] = 'กริดทบ lot + ไม้หนุนตะกร้าค้าง';
+
 	return array_merge( $d, $p );
 }
 
@@ -910,8 +934,9 @@ function eab_product_shot( $item, $type ) {
 	$cap   = trim( (string) eab_mod( 'product_' . $type . '_cap' ) );
 	$wait  = trim( (string) eab_mod( 'report' === $type ? 'product_report_wait' : 'product_shot_wait' ) );
 	if ( '' !== $img ) {
+		$size = function_exists( 'eab_media_info' ) ? eab_media_info( $img, 1280, 720 ) : array( 'width' => 1280, 'height' => 720 );
 		$html = '<a class="lightbox" href="' . esc_url( $img ) . '" data-group="product-' . (int) $item['n'] . '" data-caption="' . esc_attr( '' !== $cap ? $cap : $title ) . '">'
-			. '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title ) . '" width="1280" height="720" loading="lazy" decoding="async"></a>';
+			. '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title ) . '" width="' . (int) $size['width'] . '" height="' . (int) $size['height'] . '" loading="lazy" decoding="async"></a>';
 	} elseif ( function_exists( 'eab_hide_wait' ) && eab_hide_wait() ) {
 		return '';
 	} else {
